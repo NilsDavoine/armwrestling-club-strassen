@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'app mobile pour progresser en bras de fer | ACS Luxembourg</title>
+  <meta name="description" content="Découvrez l'application mobile de l'Armwrestling Club Strassen : testez votre profil de force sur des exercices spécifiques au bras de fer, analysez vos forces et faiblesses pour progresser plus vite au Luxembourg." />
+  <meta name="keywords" content="application bras de fer, app armwrestling, analyse force bras de fer, progresser armwrestling, entrainement bras de fer luxembourg, armwrestling club strassen app" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/blog-app-bras-de-fer.html" />
+
+  <meta property="og:title" content="L'app mobile pour analyser ta force et progresser en bras de fer" />
+  <meta property="og:description" content="Une application unique développée par l'ACS Luxembourg pour tester ton profil de force sur des exercices spécifiques au bras de fer." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nilsdavoine.github.io/armwrestling-club-strassen/blog-app-bras-de-fer.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "L'application mobile pour analyser sa force et progresser en bras de fer",
+    "author": { "@type": "Person", "name": "Nils Davoine" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Armwrestling Club Strassen",
+      "url": "https://nilsdavoine.github.io/armwrestling-club-strassen/"
+    },
+    "description": "Présentation de l'application mobile de l'ACS pour analyser le profil de force en bras de fer.",
+    "inLanguage": "fr"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --red: #c0392b;
+      --red-hot: #e74c3c;
+      --gold: #d4a017;
+      --white: #f5f0e8;
+      --grey: #888;
+      --light-grey: #ccc;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4rem; height: 68px;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(192,57,43,0.2);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 900; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0.7rem; }
+    .nav-logo span { color: var(--red); }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; border-radius: 50%; background: var(--dark2); }
+    .nav-back { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light-grey); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--red); }
+
+    .article-hero {
+      min-height: 55vh; display: flex; align-items: flex-end;
+      padding: 68px 4rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0a0a0a 30%, rgba(212,160,23,0.06) 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(212,160,23,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,160,23,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .article-tag { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; }
+    .article-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+    h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+    h1 span { color: var(--red); }
+    .article-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .meta-item { font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); }
+
+    .article-body { max-width: 760px; margin: 0 auto; padding: 5rem 4rem; }
+
+    .lead { font-size: 1.15rem; color: rgba(245,240,232,0.85); line-height: 1.9; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; margin: 3rem 0 1rem; color: var(--white); }
+    h2::before { content: '— '; color: var(--red); }
+
+    p { font-size: 0.98rem; color: rgba(245,240,232,0.72); margin-bottom: 1.3rem; line-height: 1.9; }
+
+    .highlight { background: rgba(212,160,23,0.07); border-left: 3px solid var(--gold); padding: 1.5rem 2rem; margin: 2rem 0; }
+    .highlight p { color: var(--white); margin: 0; font-size: 1rem; }
+
+    /* FEATURE CARDS */
+    .features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 2rem 0; }
+    .feature { background: var(--dark); padding: 1.8rem 1.5rem; position: relative; overflow: hidden; }
+    .feature::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .feature:hover::after { transform: scaleX(1); }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.5rem; }
+    .feature-desc { font-size: 0.82rem; color: var(--grey); line-height: 1.7; }
+
+    /* MUSCLES */
+    .muscle-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 2rem 0; }
+    .muscle-item { background: var(--dark2); padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .muscle-bar-wrap { flex: 1; }
+    .muscle-name { font-family: var(--font-display); font-size: 0.88rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); margin-bottom: 0.4rem; }
+    .muscle-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .muscle-fill { height: 100%; background: var(--red); border-radius: 2px; }
+    .muscle-pct { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: var(--grey); flex-shrink: 0; }
+
+    /* INSTAGRAM PRIVATE */
+    .insta-private { background: var(--dark); border: 1px solid rgba(212,160,23,0.2); padding: 2rem; margin: 2rem 0; display: flex; align-items: center; gap: 1.5rem; text-decoration: none; transition: border-color 0.2s; }
+    .insta-private:hover { border-color: var(--gold); }
+    .insta-badge { background: var(--gold); color: var(--black); font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25rem 0.6rem; margin-bottom: 0.5rem; display: inline-block; }
+    .insta-icon { width: 52px; height: 52px; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.6rem; }
+    .insta-text { flex: 1; }
+    .insta-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.3rem; }
+    .insta-sub { font-size: 0.82rem; color: var(--grey); }
+    .insta-arrow { color: var(--gold); font-size: 1.2rem; }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 1px; margin: 2rem 0; }
+    .step { background: var(--dark); padding: 1.5rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+    .step-num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; width: 2.5rem; }
+    .step-content {}
+    .step-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.7; }
+
+    .article-cta { background: var(--dark); border: 1px solid rgba(192,57,43,0.25); padding: 3rem; margin: 4rem 0 0; text-align: center; }
+    .cta-title { font-family: var(--font-display); font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .cta-title span { color: var(--red); }
+    .cta-desc { font-size: 0.95rem; color: rgba(245,240,232,0.65); margin-bottom: 2rem; }
+    .btn-primary { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 0.9rem 2rem; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--red-hot); }
+    .btn-outline { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: var(--white); padding: 0.9rem 2rem; border: 1px solid rgba(245,240,232,0.25); text-decoration: none; display: inline-block; transition: border-color 0.2s; margin-left: 1rem; }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 4rem; }
+    .footer-logo { font-family: var(--font-display); font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-logo span { color: var(--red); }
+    footer p { font-size: 0.78rem; color: var(--grey); }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .article-hero { padding: 68px 1.5rem 3rem; }
+      .article-body { padding: 3rem 1.5rem; }
+      .features { grid-template-columns: 1fr; }
+      .muscle-list { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .btn-outline { margin-left: 0; margin-top: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="ACS" />
+    ACS <span>Luxembourg</span>
+  </a>
+  <a href="index.html" class="nav-back">← Retour au site</a>
+</nav>
+
+<header class="article-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="article-tag">Technologie · Entraînement</div>
+    <h1>L'app qui analyse<br>ta <span>force</span><br>en bras de fer</h1>
+    <div class="article-meta">
+      <span class="meta-item">✍ Nils Davoine</span>
+      <span class="meta-item">📍 ACS Luxembourg</span>
+      <span class="meta-item">⏱ 4 min de lecture</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="lead fade-in">
+    Progresser en bras de fer, c'est bien. Savoir exactement pourquoi tu perds un match et sur quel point précis travailler, c'est encore mieux. C'est l'idée derrière l'application mobile développée au sein de l'Armwrestling Club Strassen — un outil unique pour analyser ton profil de force sur des exercices spécifiques au bras de fer.
+  </p>
+
+  <h2 class="fade-in">Pourquoi le bras de fer demande une analyse spécifique</h2>
+  <p class="fade-in">Le bras de fer mobilise des chaînes musculaires très particulières — poignet, pronateurs, biceps, deltoïde postérieur, grand dorsal — dans des angles et des ratios qui ne se retrouvent dans aucun autre sport. Un athlète fort en salle de musculation peut être mis en difficulté par quelqu'un de moins musclé mais avec un profil de force mieux adapté à la table.</p>
+  <p class="fade-in">C'est pourquoi les méthodes de progression génériques ne suffisent pas. Il faut identifier <strong>tes forces et tes faiblesses spécifiques</strong> pour orienter ton entraînement avec précision.</p>
+
+  <div class="highlight fade-in">
+    <p>💡 <strong>Le problème classique :</strong> la plupart des athlètes s'entraînent en forçant sur leurs points forts. Résultat : les déséquilibres s'accentuent et les blessures arrivent. L'app fait l'inverse — elle révèle ce qui manque.</p>
+  </div>
+
+  <h2 class="fade-in">Ce que fait l'application</h2>
+
+  <div class="features fade-in">
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Profil de force</div>
+      <div class="feature-desc">Teste ta force sur une série d'exercices spécifiques au bras de fer disponibles dans le club. L'app génère ton profil complet.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">Analyse des faiblesses</div>
+      <div class="feature-desc">Identifie précisément les groupes musculaires et les angles de force qui te limitent sur la table.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📈</div>
+      <div class="feature-title">Suivi de progression</div>
+      <div class="feature-desc">Compare tes résultats dans le temps et visualise ta progression sur chaque exercice spécifique.</div>
+    </div>
+  </div>
+
+  <h2 class="fade-in">Les groupes musculaires analysés</h2>
+  <p class="fade-in">L'app évalue ta force sur les groupes clés du bras de fer, dans des ratios qui correspondent aux exigences réelles de la table :</p>
+
+  <div class="muscle-list fade-in">
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Pronation du poignet</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:95%"></div></div>
+      </div>
+      <div class="muscle-pct">Clé</div>
+    </div>
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Flexion du poignet</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:90%"></div></div>
+      </div>
+      <div class="muscle-pct">Clé</div>
+    </div>
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Biceps (angle bas)</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:85%"></div></div>
+      </div>
+      <div class="muscle-pct">Fort</div>
+    </div>
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Deltoïde postérieur</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:80%"></div></div>
+      </div>
+      <div class="muscle-pct">Fort</div>
+    </div>
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Grand dorsal</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:75%"></div></div>
+      </div>
+      <div class="muscle-pct">Moyen</div>
+    </div>
+    <div class="muscle-item">
+      <div class="muscle-bar-wrap">
+        <div class="muscle-name">Force de prise</div>
+        <div class="muscle-bar"><div class="muscle-fill" style="width:88%"></div></div>
+      </div>
+      <div class="muscle-pct">Clé</div>
+    </div>
+  </div>
+
+  <h2 class="fade-in">Comment ça fonctionne</h2>
+
+  <div class="steps fade-in">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Tu viens t'entraîner au club</div>
+        <div class="step-desc">L'application utilise l'équipement spécifique disponible à l'Armwrestling Club Strassen — tables, barres de traction, poulies. Les tests sont réalisés sur le matériel professionnel du club.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Tu passes la batterie de tests</div>
+        <div class="step-desc">Chaque exercice est calibré pour mesurer une chaîne musculaire précise dans les angles spécifiques au bras de fer. Les données sont enregistrées dans l'app.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">L'app génère ton profil</div>
+        <div class="step-desc">Tu obtiens une représentation visuelle de ta force par groupe musculaire, avec les déséquilibres identifiés et les axes prioritaires à travailler.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Tu construis ton plan d'entraînement</div>
+        <div class="step-desc">Sur la base de ton profil, les entraîneurs orientent ton travail vers les exercices qui auront le plus d'impact sur tes performances à la table.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="fade-in">Découvre l'app en vidéo</h2>
+  <p class="fade-in">J'explique le fonctionnement complet de l'application et comment l'utiliser pour progresser dans cette vidéo exclusive — disponible sur Instagram :</p>
+
+  <a href="https://www.instagram.com/p/DWe0WbkjIib/" target="_blank" rel="noopener" class="insta-private fade-in">
+    <div class="insta-icon">📱</div>
+    <div class="insta-text">
+      <div class="insta-badge">Vidéo exclusive</div>
+      <div class="insta-title">Voir la démo de l'application</div>
+      <div class="insta-sub">@armwrestlingclubstrassen · Présentation complète</div>
+    </div>
+    <div class="insta-arrow">→</div>
+  </a>
+
+  <h2 class="fade-in">Pour qui est cette app ?</h2>
+  <p class="fade-in">L'application est pensée pour les membres du club qui veulent aller plus loin dans leur progression. Que tu sois débutant et que tu veuilles comprendre ta base de départ, ou compétiteur confirmé qui veut éliminer les derniers déséquilibres — l'analyse de profil est un outil précieux à tous les niveaux.</p>
+  <p class="fade-in">Elle est disponible exclusivement pour les membres de l'Armwrestling Club Strassen, avec accès à l'équipement du club nécessaire pour les tests.</p>
+
+  <div class="article-cta fade-in">
+    <div class="cta-title">Teste ton <span>profil de force</span></div>
+    <p class="cta-desc">Rejoins le club, accède à l'équipement professionnel et découvre exactement sur quoi travailler pour progresser plus vite. Première séance gratuite.</p>
+    <a href="index.html#contact" class="btn-primary">Rejoindre le club</a>
+    <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener" class="btn-outline">Instagram →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+  <p>© 2026 ACS Luxembourg · <a href="index.html" style="color:var(--grey);text-decoration:none;">Retour au site</a></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
