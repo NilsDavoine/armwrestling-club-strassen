@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nilsdavoine.github.io/armwrestling-club-strassen/sitemap.xml
