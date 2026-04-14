@@ -34,7 +34,8 @@
     "foundingDate": "2026",
     "sameAs": [
       "https://www.instagram.com/armwrestlingclubstrassen",
-      "https://www.facebook.com/armwrestlingclubstrassen"
+      "https://www.facebook.com/armwrestlingclubstrassen",
+      "https://share.google/ILHoQ0ByytjKJSuRy"
     ]
   }
   </script>
@@ -697,6 +698,133 @@
     }
     .event-detail { font-size: 0.82rem; color: var(--grey); }
 
+
+    /* ──── LOCATIONS ──── */
+    #localisation { background: var(--dark); }
+
+    .location-section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+    }
+
+    .location-panel {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .location-panel-header {
+      padding: 1.6rem 1.6rem 1.1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .location-panel-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .location-panel-subtitle {
+      font-size: 0.9rem;
+      color: var(--grey);
+    }
+
+    .location-address {
+      padding: 1.3rem 1.6rem 0.3rem;
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.82);
+      line-height: 1.8;
+    }
+
+    .location-address strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .map-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1.4rem 1.6rem 1.6rem;
+    }
+
+    .map-card {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem;
+    }
+
+    .map-card-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.65rem;
+    }
+
+    .map-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.45rem;
+    }
+
+    .map-card p {
+      font-size: 0.86rem;
+      color: rgba(245,240,232,0.62);
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+      min-height: 72px;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 240px;
+      border: 0;
+      display: block;
+      margin-bottom: 0.9rem;
+      filter: grayscale(0.15) contrast(1.02);
+    }
+
+    .map-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .map-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.35);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.7rem 1rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      flex: 1 1 180px;
+    }
+
+    .map-link-btn:hover {
+      background: rgba(192,57,43,0.2);
+      border-color: var(--red);
+      color: var(--red-hot);
+    }
+
     /* ──── CONTACT ──── */
     #contact { background: var(--black); }
 
@@ -848,9 +976,13 @@
       .training-grid,
       .licence-layout,
       .competition-layout,
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid,
+      .location-section-grid,
+      .map-cards { grid-template-columns: 1fr; gap: 2rem; }
 
       .equipment-list { grid-template-columns: 1fr 1fr; }
+
+      .map-card p { min-height: auto; }
 
       footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.5rem; }
       .footer-links { flex-wrap: wrap; gap: 1rem; }
@@ -874,6 +1006,7 @@
     <li><a href="#equipement">Équipement</a></li>
     <li><a href="#licence">Licence</a></li>
     <li><a href="#competition">Compétitions</a></li>
+    <li><a href="#localisation">Accès</a></li>
     <li><a href="#blog">Blog</a></li><li><a href="#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
@@ -993,7 +1126,7 @@
   <div class="training-grid fade-in">
     <div class="training-card">
       <div class="card-club-name">Club Strassen</div>
-      <div class="card-location">📍 Strassen, Luxembourg</div>
+      <div class="card-location">📍 86 rue des Romains, Strassen, Luxembourg</div>
 
       <div class="card-detail">
         <div class="card-detail-icon">📅</div>
@@ -1026,7 +1159,7 @@
 
     <div class="training-card">
       <div class="card-club-name">Grizzly of Luxembourg</div>
-      <div class="card-location">📍 Munsbach, Luxembourg</div>
+      <div class="card-location">📍 185 rue Principale, Munsbach, Luxembourg</div>
 
       <div class="card-detail">
         <div class="card-detail-icon">📅</div>
@@ -1237,6 +1370,114 @@
 </section>
 
 
+
+<div class="divider"></div>
+
+<!-- ══════════════ LOCATIONS ══════════════ -->
+<section id="localisation">
+  <div class="fade-in">
+    <div class="section-tag">Accès & Localisation</div>
+    <h2>Où nous trouver<br><span>et comment venir</span></h2>
+    <p class="section-intro">
+      Retrouvez facilement les deux lieux d'entraînement au Luxembourg, avec accès direct à Google Maps
+      et un itinéraire en transport en commun depuis le centre-ville de Luxembourg.
+    </p>
+  </div>
+
+  <div class="location-section-grid fade-in">
+    <div class="location-panel">
+      <div class="location-panel-header">
+        <div class="location-panel-title">Club Strassen</div>
+        <div class="location-panel-subtitle">Entraînement du mardi · Technique & fondamentaux</div>
+      </div>
+      <div class="location-address">
+        <strong>Adresse :</strong><br>
+        86 rue des Romains<br>
+        L-8041 Strassen, Luxembourg
+      </div>
+      <div class="map-cards">
+        <div class="map-card">
+          <div class="map-card-label">Carte</div>
+          <h3>Emplacement du club</h3>
+          <p>Visualise directement l'emplacement du club de bras de fer à Strassen sur Google Maps.</p>
+          <iframe
+            class="map-embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=86%20rue%20des%20Romains%20Strassen%20Luxembourg&output=embed"
+            title="Carte Armwrestling Club Strassen">
+          </iframe>
+          <div class="map-link-row">
+            <a class="map-link-btn" href="https://www.google.com/maps/search/?api=1&query=86+rue+des+Romains+Strassen+Luxembourg" target="_blank" rel="noopener">Ouvrir sur Google Maps</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="map-card-label">Transport</div>
+          <h3>Depuis Luxembourg centre-ville</h3>
+          <p>Consulte un trajet en transport en commun depuis le centre-ville de Luxembourg jusqu'au club à Strassen.</p>
+          <iframe
+            class="map-embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Luxembourg%20Centre%20Ville%20to%2086%20rue%20des%20Romains%20Strassen%20Luxembourg&output=embed"
+            title="Itinéraire transport vers Strassen">
+          </iframe>
+          <div class="map-link-row">
+            <a class="map-link-btn" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=86+rue+des+Romains+Strassen+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Voir l'itinéraire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="location-panel">
+      <div class="location-panel-header">
+        <div class="location-panel-title">Grizzly of Luxembourg</div>
+        <div class="location-panel-subtitle">Entraînement du vendredi · Sparring & match practice</div>
+      </div>
+      <div class="location-address">
+        <strong>Adresse :</strong><br>
+        185 rue Principale<br>
+        L-5366 Munsbach, Luxembourg
+      </div>
+      <div class="map-cards">
+        <div class="map-card">
+          <div class="map-card-label">Carte</div>
+          <h3>Emplacement du club</h3>
+          <p>Retrouve facilement la salle d'entraînement de Munsbach directement sur Google Maps.</p>
+          <iframe
+            class="map-embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=185%20rue%20Principale%20Munsbach%20Luxembourg&output=embed"
+            title="Carte Grizzly of Luxembourg Munsbach">
+          </iframe>
+          <div class="map-link-row">
+            <a class="map-link-btn" href="https://www.google.com/maps/search/?api=1&query=185+rue+Principale+Munsbach+Luxembourg" target="_blank" rel="noopener">Ouvrir sur Google Maps</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="map-card-label">Transport</div>
+          <h3>Depuis Luxembourg centre-ville</h3>
+          <p>Affiche un trajet en transport en commun depuis le centre-ville de Luxembourg jusqu'à Munsbach.</p>
+          <iframe
+            class="map-embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Luxembourg%20Centre%20Ville%20to%20185%20rue%20Principale%20Munsbach%20Luxembourg&output=embed"
+            title="Itinéraire transport vers Munsbach">
+          </iframe>
+          <div class="map-link-row">
+            <a class="map-link-btn" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=185+rue+Principale+Munsbach+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Voir l'itinéraire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <div class="divider"></div>
 
 <!-- BLOG -->
@@ -1281,6 +1522,7 @@
       <div class="contact-club">Armwrestling Club Strassen</div>
       <div class="contact-name">Nils Davoine</div>
       <div class="contact-role">Président</div>
+      <div style="font-size:0.9rem;color:rgba(245,240,232,0.65);margin-bottom:1rem;">📍 86 rue des Romains, Strassen</div>
       <a href="tel:+352661495319" class="contact-phone">
         📞 +352 661 495 319
       </a>
@@ -1290,6 +1532,7 @@
       <div class="contact-club">Grizzly of Luxembourg</div>
       <div class="contact-name">Roman Bogdan</div>
       <div class="contact-role">Président</div>
+      <div style="font-size:0.9rem;color:rgba(245,240,232,0.65);margin-bottom:1rem;">📍 185 rue Principale, Munsbach</div>
       <a href="tel:+352621252872" class="contact-phone">
         📞 +352 621 252 872
       </a>
@@ -1306,6 +1549,9 @@
     <a href="https://www.facebook.com/armwrestlingclubstrassen" target="_blank" rel="noopener" class="social-link">
       Facebook — Club Strassen
     </a>
+    <a href="https://share.google/ILHoQ0ByytjKJSuRy" target="_blank" rel="noopener" class="social-link">
+      Google Business Profile
+    </a>
   </div>
 </section>
 
@@ -1317,6 +1563,7 @@
     <li><a href="#entrainement">Entraînements</a></li>
     <li><a href="#licence">Licence</a></li>
     <li><a href="#competition">Compétitions</a></li>
+    <li><a href="#localisation">Accès</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <p>© 2026 Armwrestling Club Strassen · Luxembourg Armwrestling Federation</p>
