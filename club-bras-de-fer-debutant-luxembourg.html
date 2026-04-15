@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Club débutant | Bras de fer Luxembourg – Essai gratuit</title>
-  <meta name="description" content="Club de bras de fer pour débutants au Luxembourg : essai gratuit, progression encadrée, sécurité, technique et entraînement à Strassen." />
+  <title>Compétition bras de fer Luxembourg | Événement, club et scène compétitive</title>
+  <meta name="description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, arbitres, athlètes, entraînement, progression et scène armwrestling luxembourgeoise." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/club-bras-de-fer-debutant-luxembourg.html" />
-  <meta property="og:title" content="Club débutant | Bras de fer Luxembourg – Essai gratuit" />
-  <meta property="og:description" content="Club de bras de fer pour débutants au Luxembourg : essai gratuit, progression encadrée, sécurité, technique et entraînement à Strassen." />
+  <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.html" />
+  <meta property="og:title" content="Compétition bras de fer Luxembourg | Événement, club et scène compétitive" />
+  <meta property="og:description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, arbitres, athlètes, entraînement, progression et scène armwrestling luxembourgeoise." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nilsdavoine.github.io/armwrestling-club-strassen/club-bras-de-fer-debutant-luxembourg.html" />
+  <meta property="og:url" content="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.html" />
   <meta property="og:locale" content="fr_LU" />
+  <meta property="og:image" content="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.jpeg" />
+  <meta property="og:image:alt" content="Compétition de bras de fer au Luxembourg avec arbitres, athlètes et table officielle." />
 
   <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
@@ -40,33 +42,38 @@
     }
 
     :root {
-      --black:#0a0a0a;
-      --dark:#111;
-      --dark2:#1a1a1a;
-      --red:#c0392b;
-      --red-hot:#e74c3c;
-      --gold:#d4a017;
-      --white:#f5f0e8;
-      --grey:#888;
-      --light-grey:#ccc;
-      --font-display:'Barlow Condensed', sans-serif;
-      --font-body:'Barlow', sans-serif;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --red: #c0392b;
+      --red-hot: #e74c3c;
+      --gold: #d4a017;
+      --white: #f5f0e8;
+      --grey: #888;
+      --light-grey: #ccc;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
     }
 
-    * { box-sizing:border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background:var(--black);
-      color:var(--white);
-      font-family:var(--font-body);
-      font-weight:300;
-      line-height:1.7;
-      overflow-x:hidden;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    a { color:inherit; }
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: inherit;
+    }
 
     nav {
       position: fixed;
@@ -112,6 +119,7 @@
       transition: color 0.2s;
     }
 
+    .nav-links a:visited { color: var(--light-grey); }
     .nav-links a:hover { color: var(--red); }
 
     .nav-cta {
@@ -167,10 +175,11 @@
       font-family: var(--font-display);
       text-transform: uppercase;
       line-height: 1;
+      color: var(--white);
     }
 
     h1 {
-      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
       margin-bottom: 1rem;
     }
 
@@ -179,14 +188,34 @@
       margin-bottom: 1rem;
     }
 
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
     h2 span, .accent { color: var(--red); }
 
     p {
-      color: rgba(245,240,232,0.78);
+      color: rgba(245,240,232,0.82);
       font-size: 1rem;
+      line-height: 1.8;
     }
 
-    .hero p { max-width: 760px; }
+    .hero p {
+      max-width: 900px;
+      color: var(--white);
+    }
+
+    .hero p a,
+    .hero p a:visited {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero p a:hover {
+      color: var(--red);
+    }
 
     .btn-row {
       display: flex;
@@ -203,15 +232,29 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 0.9rem 1.3rem;
+      color: var(--white);
     }
+
+    .btn:visited { color: var(--white); }
 
     .btn.primary {
       background: var(--red);
       color: var(--white);
     }
 
+    .btn.primary:hover {
+      background: var(--red-hot);
+    }
+
     .btn.secondary {
       border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--red);
+      color: var(--red);
     }
 
     section { padding: 3.5rem 0; }
@@ -223,20 +266,44 @@
       background: rgba(255,255,255,0.05);
     }
 
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+    }
+
     .card {
       background: var(--dark);
       padding: 1.8rem;
     }
 
-    .faq {
-      display: grid;
-      gap: 2px;
-      background: rgba(255,255,255,0.05);
+    .card p {
+      color: rgba(245,240,232,0.78);
     }
 
-    .faq .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
+    .photo {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.64);
+      line-height: 1.7;
+    }
+
+    .section-intro {
+      max-width: 820px;
+      margin-bottom: 1.8rem;
     }
 
     .cta {
@@ -244,6 +311,10 @@
       padding: 1.2rem 1.3rem;
       border: 1px solid rgba(192,57,43,0.22);
       background: rgba(192,57,43,0.08);
+    }
+
+    .cta p {
+      color: var(--white);
     }
 
     .divider {
@@ -289,7 +360,8 @@
       list-style: none;
     }
 
-    .footer-links a {
+    .footer-links a,
+    .footer-links a:visited {
       font-family: var(--font-display);
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -319,7 +391,8 @@
         border-bottom: 1px solid rgba(192,57,43,0.2);
       }
 
-      .grid2 { grid-template-columns: 1fr; }
+      .grid2,
+      .grid3 { grid-template-columns: 1fr; }
 
       .wrap { padding: 0 1rem; }
 
@@ -345,18 +418,26 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Faut-il être fort pour commencer le bras de fer ?",
+        "name": "Existe-t-il des compétitions de bras de fer au Luxembourg ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Non. Les débutants sont les bienvenus et l'entraînement est progressif, encadré et adapté à tous les niveaux."
+          "text": "Oui. Le Luxembourg possède une vraie scène de bras de fer avec clubs officiels, événements, arbitres et compétitions."
         }
       },
       {
         "@type": "Question",
-        "name": "Peut-on venir sans réserver ?",
+        "name": "Peut-on découvrir le bras de fer avant de faire de la compétition ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Oui. Vous pouvez venir directement le mardi à 18h à Strassen pour une première séance gratuite."
+          "text": "Oui. Le plus simple est de commencer par une séance d’essai à Strassen, puis de progresser progressivement vers plus de pratique de table et d’expérience compétitive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Le bras de fer au Luxembourg est-il un vrai sport structuré ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Le bras de fer au Luxembourg s’appuie sur des clubs, des entraînements réguliers, des événements et une pratique compétitive encadrée."
         }
       }
     ]
@@ -389,41 +470,185 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <div class="eyebrow">Débutant</div>
-        <h1>Club de bras de fer <span class="accent">débutant</span> Luxembourg</h1>
+        <div class="eyebrow">Compétition · Événement · Luxembourg</div>
+        <h1>Compétition de bras de fer <span class="accent">Luxembourg</span></h1>
         <p>
-          Cette page est conçue pour quelqu'un qui tape explicitement une requête orientée débutant.
-          Elle reprend les peurs et objections les plus fréquentes : “je n'ai jamais essayé”, “je ne suis pas assez fort”,
-          “je ne sais pas comment ça se passe”. Va directement à la section
-          <a href="#rassurance" style="color:var(--white);">rassurance</a> ou à la
-          <a href="#faq" style="color:var(--white);">FAQ</a>.
+          Le bras de fer au Luxembourg ne se limite pas à une simple initiation en salle.
+          Il existe une vraie scène armwrestling luxembourgeoise, avec clubs officiels,
+          entraînements réguliers, tables de match, arbitres, événements publics et compétitions.
+          Quand quelqu’un cherche une <strong>compétition de bras de fer au Luxembourg</strong>,
+          il veut comprendre le niveau réel du sport, voir l’ambiance, découvrir les clubs,
+          et savoir s’il est possible de passer de débutant à compétiteur. C’est exactement
+          ce que cette page montre à travers l’univers de l’Armwrestling Club Strassen.
         </p>
+
         <div class="btn-row">
-          <a class="btn primary" href="https://wa.me/352661495319" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
-          <a class="btn secondary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Voir l'adresse</a>
+          <a class="btn primary" href="index.html#competition">Voir la section compétition</a>
+          <a class="btn secondary" href="index.html#contact">Demander un essai</a>
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <section id="rassurance">
+    <section id="photo">
       <div class="wrap">
+        <div class="photo">
+          <img
+            src="competition-bras-de-fer-luxembourg.jpeg"
+            alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, athlètes, table de match et ambiance événementielle."
+            loading="lazy"
+          />
+          <div class="caption">
+            Photo d’une compétition de bras de fer au Luxembourg : table officielle, arbitrage,
+            athlètes, public et ambiance réelle de la scène armwrestling luxembourgeoise.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="scene">
+      <div class="wrap">
+        <h2>Une vraie scène <span>compétitive</span></h2>
+        <p class="section-intro">
+          Le bras de fer au Luxembourg est un sport de force, de technique et de confrontation codifiée.
+          Une compétition ne se résume pas à deux personnes autour d’une table : elle implique des catégories,
+          des règles, un arbitrage, une préparation physique et mentale, ainsi qu’une vraie culture de club.
+          C’est cette dimension structurée qui donne toute sa crédibilité à la recherche “compétition bras de fer Luxembourg”.
+        </p>
+
         <div class="grid2">
           <div class="card">
-            <h2>Oui, tu peux <span>commencer de zéro</span></h2>
+            <h3>Ambiance de compétition</h3>
             <p>
-              Le mardi à Strassen est le meilleur format pour débuter : cadre clair, approche technique,
-              première séance gratuite et accès proche Luxembourg-ville.
+              Une compétition de bras de fer au Luxembourg rassemble athlètes, public, arbitres et encadrants
+              dans une atmosphère intense. On y retrouve la tension de la table, l’explosivité du départ,
+              la gestion technique de la main, du poignet, de l’épaule et de l’angle, mais aussi l’aspect
+              spectaculaire qui attire naturellement les curieux et les passionnés de sport de force.
             </p>
           </div>
+
           <div class="card">
-            <h2>Ce qu'on t'apprend</h2>
+            <h3>Crédibilité sportive</h3>
             <p>
-              La sécurité, les bases du placement, la logique du poignet et de la main, et comment progresser
-              sans brûler les étapes.
+              Quand une personne cherche un club de bras de fer au Luxembourg, voir qu’il existe une vraie pratique
+              compétitive change tout. Cela prouve que l’entraînement a une finalité, que la progression est réelle,
+              et que le sport ne s’arrête pas à la découverte. Cette page sert donc aussi de preuve sociale et sportive.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="story">
+      <div class="wrap">
+        <h2>Du premier essai à la <span>compétition</span></h2>
+        <p class="section-intro">
+          La meilleure histoire à raconter sur cette page, ce n’est pas seulement l’événement lui-même.
+          C’est le chemin complet : une personne découvre le bras de fer au Luxembourg, fait un premier entraînement,
+          apprend la sécurité et la technique, progresse en club, puis comprend peu à peu ce qu’est une vraie compétition.
+        </p>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Découverte</h3>
+            <p>
+              Le premier contact se fait souvent par curiosité. Beaucoup arrivent au club sans expérience,
+              avec une image incomplète du bras de fer. Ils découvrent rapidement que l’armwrestling est
+              un sport technique, structuré et bien plus riche qu’il n’y paraît.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Progression</h3>
+            <p>
+              Avec l’entraînement, la posture, la main, le poignet, le timing, la traction et le contrôle
+              deviennent des compétences concrètes. C’est cette progression qui crée le lien entre séance débutant,
+              sparring, confiance à la table et envie de vivre une compétition de bras de fer au Luxembourg.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Compétition</h3>
+            <p>
+              La compétition donne une autre dimension au sport : elle révèle l’ambiance, l’adrénaline,
+              la gestion de la pression, le respect des règles et l’énergie collective d’une scène sportive locale.
+              Elle montre aussi que le Luxembourg a sa place dans la discipline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="event">
+      <div class="wrap">
+        <h2>Événement de bras de fer <span>au Luxembourg</span></h2>
+        <p class="section-intro">
+          Une page performante sur ce sujet doit aussi répondre à l’intention “événement”.
+          Quelqu’un peut chercher une compétition de bras de fer au Luxembourg pour assister,
+          comprendre l’ambiance, voir des photos, découvrir les clubs ou envisager de participer plus tard.
+        </p>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>Ce que montre un événement</h3>
+            <p>
+              Un événement de bras de fer au Luxembourg montre la réalité du sport : tables officielles,
+              confrontation en match, arbitrage, catégories de poids, échauffement spécifique, tension du départ
+              et engagement total des athlètes. C’est la meilleure vitrine possible pour expliquer ce qu’est vraiment le bras de fer sportif.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Pourquoi cette page peut ressortir</h3>
+            <p>
+              Cette page cible directement des recherches comme “compétition bras de fer Luxembourg”,
+              “événement bras de fer Luxembourg”, “armwrestling Luxembourg compétition” ou encore
+              “club bras de fer Luxembourg compétition”. Elle répond donc à une intention différente de la page débutant,
+              ce qui augmente les chances d’être pertinente pour Google comme pour le visiteur.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="club-link">
+      <div class="wrap">
+        <h2>Le lien entre <span>club et compétition</span></h2>
+        <div class="grid2">
+          <div class="card">
+            <h3>Strassen comme point d’entrée</h3>
+            <p>
+              Pour beaucoup, le chemin le plus logique commence à Strassen. Le club permet de découvrir le bras de fer
+              dans un cadre sérieux, d’apprendre les fondamentaux et d’entrer progressivement dans la culture du sport.
+              Cela rend la compétition plus accessible, plus compréhensible et beaucoup moins intimidante.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Une progression naturelle</h3>
+            <p>
+              L’idée n’est pas de pousser immédiatement quelqu’un vers la compétition, mais de montrer que cette possibilité existe.
+              Entraînement, technique, pratique de table, sparring, confiance, expérience : tout cela construit une progression cohérente
+              entre découverte du bras de fer au Luxembourg et immersion dans la scène compétitive.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <p>
+            <strong>Tu veux d’abord découvrir l’entraînement ?</strong>
+            Commence à Strassen le mardi à 18h avec une première séance gratuite,
+            puis découvre la scène compétitive luxembourgeoise au fil de ta progression.
+          </p>
         </div>
       </div>
     </section>
@@ -432,21 +657,33 @@
 
     <section id="faq">
       <div class="wrap">
-        <h2>FAQ <span>débutant</span></h2>
-        <div class="faq">
+        <h2>FAQ <span>compétition</span></h2>
+        <div class="grid2">
           <div class="card">
-            <h3>Est-ce embarrassant de venir seul ?</h3>
-            <p>Non. Beaucoup de personnes commencent seules et découvrent le groupe sur place.</p>
-          </div>
-          <div class="card">
-            <h3>Dois-je déjà connaître les règles ?</h3>
-            <p>Non, elles te sont expliquées pendant l'initiation.</p>
-          </div>
-          <div class="card">
-            <h3>Pourquoi une page spécifique “débutant” ?</h3>
+            <h3>Existe-t-il vraiment des compétitions de bras de fer au Luxembourg ?</h3>
             <p>
-              Parce qu'elle répond mieux à une recherche très précise et augmente les chances
-              que Google propose la page la plus utile à l'utilisateur.
+              Oui. Le Luxembourg possède une vraie scène armwrestling avec clubs, entraînements, événements et pratique compétitive.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Peut-on assister à une compétition sans déjà pratiquer ?</h3>
+            <p>
+              Oui. Une compétition est aussi un excellent moyen de découvrir l’ambiance du bras de fer sportif et de comprendre le niveau de la discipline.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Faut-il déjà être fort pour envisager la compétition ?</h3>
+            <p>
+              Non. La compétition vient après l’apprentissage. Le plus important au départ est de découvrir la technique, la sécurité et le fonctionnement de la table.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Pourquoi créer une page dédiée à la compétition de bras de fer au Luxembourg ?</h3>
+            <p>
+              Parce que la recherche n’est pas la même qu’une recherche débutant. Ici, l’utilisateur veut des preuves, de l’ambiance, du niveau et une vraie crédibilité sportive.
             </p>
           </div>
         </div>
