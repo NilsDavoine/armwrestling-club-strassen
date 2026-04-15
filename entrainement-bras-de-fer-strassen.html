@@ -12,74 +12,354 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nilsdavoine.github.io/armwrestling-club-strassen/entrainement-bras-de-fer-strassen.html" />
   <meta property="og:locale" content="fr_LU" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2">
+  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  
-  <style>
-    :root { --black:#0a0a0a; --dark:#111; --dark2:#1a1a1a; --red:#c0392b; --red-hot:#e74c3c; --gold:#d4a017; --white:#f5f0e8; --grey:#888; --light-grey:#ccc; --font-display:'Barlow Condensed', sans-serif; --font-body:'Barlow', sans-serif; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--black); color:var(--white); font-family:var(--font-body); line-height:1.7; }
-    a { color:inherit; }
-    nav, footer { padding:1.2rem 1.5rem; background:rgba(10,10,10,0.96); border-bottom:1px solid rgba(192,57,43,0.18); }
-    nav a { text-decoration:none; font-family:var(--font-display); font-weight:800; letter-spacing:0.08em; text-transform:uppercase; }
-    .wrap { max-width:1120px; margin:0 auto; padding:0 1.5rem; }
-    .hero { padding:4.5rem 0 3rem; background:linear-gradient(135deg,#0a0a0a 0%,#111 100%); }
-    .eyebrow { color:var(--red); font-family:var(--font-display); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.18em; margin-bottom:1rem; }
-    h1, h2, h3 { font-family:var(--font-display); text-transform:uppercase; line-height:1; }
-    h1 { font-size:clamp(2.6rem, 6vw, 5rem); margin-bottom:1rem; }
-    h2 { font-size:clamp(1.8rem, 4vw, 3rem); margin-bottom:1rem; }
-    h2 span, .accent { color:var(--red); }
-    p { color:rgba(245,240,232,0.78); font-size:1rem; }
-    .hero p { max-width:760px; }
-    .btn-row { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.8rem; }
-    .btn { display:inline-block; text-decoration:none; font-family:var(--font-display); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:0.9rem 1.3rem; }
-    .btn.primary { background:var(--red); color:var(--white); }
-    .btn.secondary { border:1px solid rgba(255,255,255,0.2); }
-    section { padding:3.5rem 0; }
-    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(255,255,255,0.05); }
-    .card { background:var(--dark); padding:1.8rem; }
-    .list { display:grid; gap:0.9rem; }
-    .mini { font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.4rem; }
-    .photo { background:var(--dark); border:1px solid rgba(255,255,255,0.06); overflow:hidden; }
-    .photo img { display:block; width:100%; height:auto; }
-    .caption { padding:1rem 1.2rem; font-size:0.9rem; color:rgba(245,240,232,0.64); }
-    .faq { display:grid; gap:2px; background:rgba(255,255,255,0.05); }
-    .faq .card h3 { font-size:1.05rem; margin-bottom:0.5rem; }
-    .cta { margin-top:2rem; padding:1.2rem 1.3rem; border:1px solid rgba(192,57,43,0.22); background:rgba(192,57,43,0.08); }
-    footer { border-top:1px solid rgba(255,255,255,0.06); border-bottom:0; margin-top:2rem; }
-    @media (max-width:900px){ .grid2{grid-template-columns:1fr;} .wrap{padding:0 1rem;} }
-  </style>
-
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://nilsdavoine.github.io/armwrestling-club-strassen/sitemap.xml" />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Faut-il être fort pour commencer le bras de fer ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Non. Les débutants sont les bienvenus et l'entraînement est progressif, encadré et adapté à tous les niveaux."
+  <style>
+    .nav-logo-img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--dark2);
+      padding: 2px;
+      filter: brightness(1.1) contrast(1.05);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --red: #c0392b;
+      --red-hot: #e74c3c;
+      --gold: #d4a017;
+      --white: #f5f0e8;
+      --grey: #888;
+      --light-grey: #ccc;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      height: 68px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(192,57,43,0.2);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--red-hot) !important;
+      color: var(--white) !important;
+    }
+
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      padding: 110px 0 3rem;
+      background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    h2 span, .accent { color: var(--red); }
+
+    p {
+      color: rgba(245,240,232,0.78);
+      font-size: 1rem;
+    }
+
+    .hero p { max-width: 760px; }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.3rem;
+    }
+
+    .btn.primary {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn.secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    section { padding: 3.5rem 0; }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .card {
+      background: var(--dark);
+      padding: 1.8rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .mini {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .faq .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(192,57,43,0.22);
+      background: rgba(192,57,43,0.08);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--red), transparent);
+      margin: 0 4rem;
+      opacity: 0.3;
+    }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1160px;
+      margin: 2rem auto 0;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--grey);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--red); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--dark);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(192,57,43,0.2);
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Peut-on venir sans réserver ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Oui. Vous pouvez venir directement le mardi à 18h à Strassen pour une première séance gratuite."
+
+      .grid2 { grid-template-columns: 1fr; }
+      .wrap { padding: 0 1rem; }
+      .divider { margin: 0 1.5rem; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
       }
     }
-  ]
-}
-</script>
+  </style>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Faut-il être fort pour commencer le bras de fer ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Les débutants sont les bienvenus et l'entraînement est progressif, encadré et adapté à tous les niveaux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on venir sans réserver ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Vous pouvez venir directement le mardi à 18h à Strassen pour une première séance gratuite."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <nav>
     <a href="index.html#hero" class="logo-wrap">
@@ -101,13 +381,149 @@
       <span></span><span></span><span></span>
     </div>
   </nav>
+
   <main>
-    <section class="hero"><div class="wrap"><div class="eyebrow">Recherche locale</div><h1>Entraînement bras de fer à <span class="accent">Strassen</span></h1><p>Cette page répond à l'intention la plus directe : où faire du bras de fer au Luxembourg, quand venir, comment accéder au lieu et à qui parler. Le point d'entrée le plus simple est l'Armwrestling Club Strassen, au 86 rue des Romains, L-8041 Strassen, proche Luxembourg-ville, avec un essai gratuit le mardi à 18h. <a href="#acces" style="color:var(--white);">Accès rapide</a>, <a href="#faq" style="color:var(--white);">FAQ</a> et <a href="#contact" style="color:var(--white);">contact direct</a>.</p><div class="btn-row"><a class="btn primary" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener">WhatsApp essai gratuit</a><a class="btn secondary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Ouvrir sur Google Maps</a></div></div></section>
-    <section><div class="wrap"><div class="grid2"><div class="card"><div class="mini">Infos clés</div><h2>Le plus simple pour commencer</h2><div class="list"><p><strong>Adresse :</strong> 86 rue des Romains, L-8041 Strassen</p><p><strong>Horaire :</strong> mardi à 18h00</p><p><strong>Public :</strong> débutants, loisir, progression, compétition</p><p><strong>Accès :</strong> proche Luxembourg-ville, pratique en transport et en voiture</p></div></div><div class="card"><div class="mini">Pourquoi cette page existe</div><p>Créer une page dédiée à la recherche “entraînement bras de fer à Strassen” permet de répondre très précisément à ce que quelqu'un tape dans Google. Au lieu de le faire arriver sur une page trop générale, cette landing page lui donne tout de suite l'essentiel : lieu, horaire, accès, essai gratuit et contact.</p></div></div></div></section>
-    <section id="acces"><div class="wrap"><h2>Accès rapide <span>à Strassen</span></h2><div class="grid2"><div class="card"><p>Le club de bras de fer à Strassen se trouve au 86 rue des Romains. C'est le meilleur point d'entrée pour un premier entraînement de bras de fer au Luxembourg, surtout si tu viens de Luxembourg-ville.</p><div class="btn-row"><a class="btn primary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Voir l'adresse</a><a class="btn secondary" href="https://www.google.com/maps/dir/Luxembourg+Centre/86+rue+des+Romains,+Strassen,+Luxembourg/data=!4m2!4m1!3e3" target="_blank" rel="noopener">Itinéraire transport</a></div></div><div class="card"><p>Pour le référencement, cette section “Accès rapide” sert aussi à capter les utilisateurs qui cherchent surtout où se rendre. Les moteurs peuvent comprendre le sujet principal de la page grâce au titre, au texte local et aux liens vers l'itinéraire.</p></div></div></div></section>
-    <section id="contact"><div class="wrap"><div class="cta"><p><strong>Essai gratuit mardi 18h :</strong> contacte Nils Davoine au <a href="tel:+352661495319" style="color:var(--white);">+352 661 495 319</a> ou par <a href="https://wa.me/352661495319" style="color:var(--white);">WhatsApp</a>.</p></div></div></section>
-    <section id="faq"><div class="wrap"><h2>FAQ <span>Strassen</span></h2><div class="faq"><div class="card"><h3>Peut-on venir sans expérience ?</h3><p>Oui. Cette séance est adaptée à une première découverte du sport.</p></div><div class="card"><h3>Faut-il réserver ?</h3><p>Ce n'est pas obligatoire, mais prévenir le club est préférable.</p></div><div class="card"><h3>Pourquoi cette page peut mieux ressortir ?</h3><p>Parce qu'elle correspond exactement à une recherche locale précise, avec des signaux clairs sur le lieu, le besoin et l'action attendue.</p></div></div></div></section>
-    </main>
-  <footer><div class="wrap"><a href="index.html" style="text-decoration:none;">Retour au site principal</a></div></footer>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Recherche locale</div>
+        <h1>Entraînement bras de fer à <span class="accent">Strassen</span></h1>
+        <p>
+          Cette page répond à l'intention la plus directe : où faire du bras de fer au Luxembourg,
+          quand venir, comment accéder au lieu et à qui parler. Le point d'entrée le plus simple est
+          l'Armwrestling Club Strassen, au 86 rue des Romains, L-8041 Strassen, proche Luxembourg-ville,
+          avec un essai gratuit le mardi à 18h.
+          <a href="#acces" style="color:var(--white);">Accès rapide</a>,
+          <a href="#faq" style="color:var(--white);">FAQ</a> et
+          <a href="#contact" style="color:var(--white);">contact direct</a>.
+        </p>
+        <div class="btn-row">
+          <a class="btn primary" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener">WhatsApp essai gratuit</a>
+          <a class="btn secondary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Ouvrir sur Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="wrap">
+        <div class="grid2">
+          <div class="card">
+            <div class="mini">Infos clés</div>
+            <h2>Le plus simple pour commencer</h2>
+            <div class="list">
+              <p><strong>Adresse :</strong> 86 rue des Romains, L-8041 Strassen</p>
+              <p><strong>Horaire :</strong> mardi à 18h00</p>
+              <p><strong>Public :</strong> débutants, loisir, progression, compétition</p>
+              <p><strong>Accès :</strong> proche Luxembourg-ville, pratique en transport et en voiture</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="mini">Pourquoi cette page existe</div>
+            <p>
+              Créer une page dédiée à la recherche “entraînement bras de fer à Strassen” permet de répondre très précisément
+              à ce que quelqu'un tape dans Google. Au lieu de le faire arriver sur une page trop générale, cette landing page
+              lui donne tout de suite l'essentiel : lieu, horaire, accès, essai gratuit et contact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="acces">
+      <div class="wrap">
+        <h2>Accès rapide <span>à Strassen</span></h2>
+        <div class="grid2">
+          <div class="card">
+            <p>
+              Le club de bras de fer à Strassen se trouve au 86 rue des Romains. C'est le meilleur point d'entrée
+              pour un premier entraînement de bras de fer au Luxembourg, surtout si tu viens de Luxembourg-ville.
+            </p>
+            <div class="btn-row">
+              <a class="btn primary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Voir l'adresse</a>
+              <a class="btn secondary" href="https://www.google.com/maps/dir/Luxembourg+Centre/86+rue+des+Romains,+Strassen,+Luxembourg/data=!4m2!4m1!3e3" target="_blank" rel="noopener">Itinéraire transport</a>
+            </div>
+          </div>
+          <div class="card">
+            <p>
+              Pour le référencement, cette section “Accès rapide” sert aussi à capter les utilisateurs qui cherchent surtout où se rendre.
+              Les moteurs peuvent comprendre le sujet principal de la page grâce au titre, au texte local et aux liens vers l'itinéraire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <p>
+            <strong>Essai gratuit mardi 18h :</strong> contacte Nils Davoine au
+            <a href="tel:+352661495319" style="color:var(--white);">+352 661 495 319</a>
+            ou par
+            <a href="https://wa.me/352661495319" style="color:var(--white);">WhatsApp</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="faq">
+      <div class="wrap">
+        <h2>FAQ <span>Strassen</span></h2>
+        <div class="faq">
+          <div class="card">
+            <h3>Peut-on venir sans expérience ?</h3>
+            <p>Oui. Cette séance est adaptée à une première découverte du sport.</p>
+          </div>
+          <div class="card">
+            <h3>Faut-il réserver ?</h3>
+            <p>Ce n'est pas obligatoire, mais prévenir le club est préférable.</p>
+          </div>
+          <div class="card">
+            <h3>Pourquoi cette page peut mieux ressortir ?</h3>
+            <p>Parce qu'elle correspond exactement à une recherche locale précise, avec des signaux clairs sur le lieu, le besoin et l'action attendue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html#about">Le Club</a></li>
+      <li><a href="index.html#entrainement">Entraînements</a></li>
+      <li><a href="index.html#licence">Licence</a></li>
+      <li><a href="index.html#competition">Compétitions</a></li>
+      <li><a href="index.html#localisation">Accès</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p>© 2026 Armwrestling Club Strassen · Luxembourg Armwrestling Federation</p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 50
+        ? 'rgba(10,10,10,0.98)'
+        : 'rgba(10,10,10,0.92)';
+    });
+  </script>
 </body>
 </html>
