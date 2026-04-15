@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compétition Luxembourg | Bras de fer, club et événements</title>
-  <meta name="description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, niveau européen et comment découvrir la discipline." />
+  <title>Compétition bras de fer Luxembourg | Événement, club et scène compétitive</title>
+  <meta name="description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, niveau compétitif, arbitres, athlètes et comment découvrir la discipline à Strassen." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.html" />
-  <meta property="og:title" content="Compétition Luxembourg | Bras de fer, club et événements" />
-  <meta property="og:description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, niveau européen et comment découvrir la discipline." />
+  <meta property="og:title" content="Compétition bras de fer Luxembourg | Événement, club et scène compétitive" />
+  <meta property="og:description" content="Compétition de bras de fer au Luxembourg : clubs officiels, ambiance événementielle, niveau compétitif, arbitres, athlètes et comment découvrir la discipline à Strassen." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.html" />
   <meta property="og:locale" content="fr_LU" />
+  <meta property="og:image" content="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.jpeg" />
+  <meta property="og:image:alt" content="Compétition de bras de fer au Luxembourg avec arbitres, athlètes et table officielle." />
 
-  <!-- favicon -->
   <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://nilsdavoine.github.io/armwrestling-club-strassen/sitemap.xml" />
 
   <style>
     .nav-logo-img {
@@ -29,6 +31,7 @@
       border-radius: 50%;
       background: var(--dark2);
       padding: 2px;
+      filter: brightness(1.1) contrast(1.05);
     }
 
     .logo-wrap {
@@ -39,27 +42,39 @@
     }
 
     :root {
-      --black:#0a0a0a;
-      --dark:#111;
-      --dark2:#1a1a1a;
-      --red:#c0392b;
-      --red-hot:#e74c3c;
-      --white:#f5f0e8;
-      --grey:#888;
-      --light-grey:#ccc;
-      --font-display:'Barlow Condensed', sans-serif;
-      --font-body:'Barlow', sans-serif;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --red: #c0392b;
+      --red-hot: #e74c3c;
+      --gold: #d4a017;
+      --white: #f5f0e8;
+      --grey: #888;
+      --light-grey: #ccc;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
     }
 
-    * { box-sizing:border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      background:var(--black);
-      color:var(--white);
-      font-family:var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* NAV (identique index) */
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: inherit;
+    }
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -70,14 +85,19 @@
       padding: 0 4rem;
       height: 68px;
       background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(192,57,43,0.2);
+      transition: background 0.3s;
     }
 
     .nav-logo {
       font-family: var(--font-display);
       font-weight: 900;
       font-size: 1.3rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
     }
 
     .nav-logo span { color: var(--red); }
@@ -91,161 +111,464 @@
     .nav-links a {
       font-family: var(--font-display);
       font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--light-grey);
       text-decoration: none;
+      transition: color 0.2s;
     }
+
+    .nav-links a:visited { color: var(--light-grey); }
+    .nav-links a:hover { color: var(--red); }
 
     .nav-cta {
       background: var(--red);
+      color: var(--white) !important;
       padding: 0.45rem 1.2rem;
-      color: white !important;
+      border-radius: 2px;
+      transition: background 0.2s !important;
     }
 
-    .nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .nav-burger span { width:24px; height:2px; background:white; }
+    .nav-cta:hover {
+      background: var(--red-hot) !important;
+      color: var(--white) !important;
+    }
 
-    .wrap { max-width:1120px; margin:0 auto; padding:0 1.5rem; }
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
 
-    .hero { padding:110px 0 3rem; }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: 0.3s;
+    }
 
-    h1 {
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      padding: 110px 0 3rem;
+      background: linear-gradient(135deg,#0a0a0a 0%,#111 100%);
+    }
+
+    .eyebrow {
+      color: var(--red);
       font-family: var(--font-display);
-      font-size: clamp(2.6rem,6vw,5rem);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 1rem;
     }
 
-    .accent { color: var(--red); }
-
-    .btn-row { display:flex; gap:1rem; margin-top:1.5rem; }
-
-    .btn {
+    h1, h2, h3 {
       font-family: var(--font-display);
       text-transform: uppercase;
-      padding: 0.9rem 1.3rem;
-      text-decoration:none;
+      line-height: 1;
+      color: var(--white);
     }
 
-    .btn.primary { background:var(--red); }
-    .btn.secondary { border:1px solid rgba(255,255,255,0.2); }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      margin-bottom: 1rem;
+    }
 
-    section { padding:3.5rem 0; }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    h2 span, .accent { color: var(--red); }
+
+    p {
+      color: rgba(245,240,232,0.82);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .hero p {
+      max-width: 860px;
+      color: var(--white);
+    }
+
+    .hero p a,
+    .hero p a:visited {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero p a:hover {
+      color: var(--red);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.3rem;
+      color: var(--white);
+    }
+
+    .btn:visited { color: var(--white); }
+
+    .btn.primary {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn.primary:hover {
+      background: var(--red-hot);
+    }
+
+    .btn.secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    section { padding: 3.5rem 0; }
 
     .grid2 {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:2px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
     }
 
     .card {
-      background:var(--dark);
-      padding:1.8rem;
+      background: var(--dark);
+      padding: 1.8rem;
     }
 
-    .photo img { width:100%; }
+    .card p {
+      color: rgba(245,240,232,0.78);
+    }
+
+    .photo {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.64);
+      line-height: 1.7;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(192,57,43,0.22);
+      background: rgba(192,57,43,0.08);
+    }
+
+    .cta p {
+      color: var(--white);
+    }
 
     .divider {
-      height:1px;
-      background:linear-gradient(to right,var(--red),transparent);
-      margin:0 4rem;
-      opacity:0.3;
+      height: 1px;
+      background: linear-gradient(to right, var(--red), transparent);
+      margin: 0 4rem;
+      opacity: 0.3;
     }
 
     footer {
       background: var(--dark);
-      padding:2rem 4rem;
-      display:flex;
-      justify-content:space-between;
-      max-width:1160px;
-      margin:2rem auto 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1160px;
+      margin: 2rem auto 0;
     }
 
-    @media (max-width:900px){
-      .nav-links { display:none; }
-      .nav-burger { display:flex; }
-      .grid2 { grid-template-columns:1fr; }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--grey);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a,
+    .footer-links a:visited {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--red); }
+
+    @media (max-width:900px) {
+      nav { padding: 0 1.5rem; }
+
+      .nav-links { display: none; }
+
+      .nav-burger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--dark);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(192,57,43,0.2);
+      }
+
+      .grid2 { grid-template-columns: 1fr; }
+
+      .wrap { padding: 0 1rem; }
+
+      .divider { margin: 0 1.5rem; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Existe-t-il des compétitions de bras de fer au Luxembourg ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Le Luxembourg possède une vraie scène de bras de fer avec clubs officiels, événements, arbitres et compétitions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on découvrir le bras de fer avant de faire de la compétition ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Le plus simple est de commencer par une séance d’essai à Strassen, puis de progresser progressivement vers plus de pratique de table et d’expérience compétitive."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
-
-<nav>
-  <a href="index.html#hero" class="logo-wrap">
-    <img src="logo.png" class="nav-logo-img" />
-    <span class="nav-logo">ACS <span>Luxembourg</span></span>
-  </a>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html#about">Le Club</a></li>
-    <li><a href="index.html#entrainement">Entraînements</a></li>
-    <li><a href="index.html#equipement">Équipement</a></li>
-    <li><a href="index.html#licence">Licence</a></li>
-    <li><a href="index.html#competition">Compétitions</a></li>
-    <li><a href="index.html#localisation">Accès</a></li>
-    <li><a href="index.html#resources">Ressources</a></li>
-    <li><a href="index.html#blog">Blog</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
-  </ul>
-
-  <div class="nav-burger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<main>
-
-<section class="hero">
-  <div class="wrap">
-    <h1>Compétition de bras de fer <span class="accent">Luxembourg</span></h1>
-    <p>Cette page montre la scène compétitive et l'ambiance réelle du sport.</p>
-
-    <div class="btn-row">
-      <a class="btn primary" href="index.html#competition">Voir compétition</a>
-      <a class="btn secondary" href="https://share.google/ILHoQ0ByytjKJSuRy">Google Profile</a>
+  <nav>
+    <a href="index.html#hero" class="logo-wrap">
+      <img src="logo.png" alt="Logo de l'Armwrestling Club Strassen" class="nav-logo-img" />
+      <span class="nav-logo">ACS <span>Luxembourg</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">Le Club</a></li>
+      <li><a href="index.html#entrainement">Entraînements</a></li>
+      <li><a href="index.html#equipement">Équipement</a></li>
+      <li><a href="index.html#licence">Licence</a></li>
+      <li><a href="index.html#competition">Compétitions</a></li>
+      <li><a href="index.html#localisation">Accès</a></li>
+      <li><a href="index.html#resources">Ressources</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
+    </ul>
+    <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
     </div>
-  </div>
-</section>
+  </nav>
 
-<div class="divider"></div>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Compétition · Événement · Luxembourg</div>
+        <h1>Compétition de bras de fer <span class="accent">Luxembourg</span></h1>
+        <p>
+          Le bras de fer au Luxembourg ne se limite pas à l’initiation : il existe une vraie scène compétitive,
+          avec clubs officiels, arbitres, événements publics et athlètes engagés en compétition.
+          Cette page montre l’ambiance réelle d’une compétition de bras de fer au Luxembourg,
+          le niveau du sport dans le pays et comment découvrir cette discipline à travers l’Armwrestling Club Strassen.
+        </p>
 
-<section>
-  <div class="wrap">
-    <div class="photo">
-      <img src="competition-bras-de-fer-luxembourg.jpeg" />
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section>
-  <div class="wrap">
-    <div class="grid2">
-      <div class="card">
-        <h2>Scène <span class="accent">compétitive</span></h2>
-        <p>Le Luxembourg a une vraie scène armwrestling avec compétitions et événements.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="index.html#competition">Voir la section compétition</a>
+          <a class="btn secondary" href="index.html#contact">Demander un essai</a>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h2>Pourquoi cette page</h2>
-        <p>Elle capte les recherches liées à la compétition et crédibilise le club.</p>
+    <div class="divider"></div>
+
+    <section id="photo">
+      <div class="wrap">
+        <div class="photo">
+          <img
+            src="competition-bras-de-fer-luxembourg.jpeg"
+            alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, athlètes, table de match et ambiance événementielle."
+            loading="lazy"
+          />
+          <div class="caption">
+            Photo d’une compétition de bras de fer au Luxembourg : table officielle, arbitrage,
+            public, athlètes et ambiance réelle de la scène armwrestling luxembourgeoise.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-</main>
+    <div class="divider"></div>
 
-<footer>
-  <div>Armwrestling Club <span style="color:#c0392b;">Strassen</span></div>
-  <div>© 2026 ACS Luxembourg</div>
-</footer>
+    <section id="scene">
+      <div class="wrap">
+        <div class="grid2">
+          <div class="card">
+            <h2>Une vraie scène <span class="accent">compétitive</span></h2>
+            <p>
+              Le Luxembourg possède une vraie scène de bras de fer avec clubs officiels, entraînements réguliers,
+              démonstrations publiques et compétitions. Cette visibilité montre que l’armwrestling au Luxembourg
+              est un sport structuré, avec une communauté active et une progression possible jusqu’au niveau compétition.
+            </p>
+          </div>
 
-<script>
-function toggleNav() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
-</script>
+          <div class="card">
+            <h2>Pourquoi cette page existe</h2>
+            <p>
+              Quelqu’un qui tape “compétition bras de fer Luxembourg” ne cherche pas seulement un club débutant :
+              il veut voir l’ambiance, le niveau, les événements et la crédibilité réelle du sport.
+              Cette page est donc pensée pour répondre directement à cette intention de recherche.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <div class="divider"></div>
+
+    <section id="event">
+      <div class="wrap">
+        <div class="grid2">
+          <div class="card">
+            <h2>Événement de bras de fer <span class="accent">au Luxembourg</span></h2>
+            <p>
+              Une compétition de bras de fer au Luxembourg réunit athlètes, arbitres, tables officielles et public
+              dans une vraie atmosphère de sport de force et de confrontation. Pour un visiteur, c’est aussi la meilleure façon
+              de comprendre que le bras de fer est une discipline sérieuse, codifiée et spectaculaire.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>Du débutant à la <span class="accent">compétition</span></h2>
+            <p>
+              Le club permet d’abord de découvrir l’entraînement à Strassen, puis d’évoluer vers plus de pratique,
+              de sparring et d’expérience de table. Cela crée un lien naturel entre initiation, progression technique
+              et compétition de bras de fer au Luxembourg.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <p>
+            <strong>Tu veux d’abord découvrir l’entraînement ?</strong>
+            Commence à Strassen le mardi à 18h avec une première séance gratuite,
+            puis découvre la scène compétitive luxembourgeoise au fil de ta progression.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html#about">Le Club</a></li>
+      <li><a href="index.html#entrainement">Entraînements</a></li>
+      <li><a href="index.html#licence">Licence</a></li>
+      <li><a href="index.html#competition">Compétitions</a></li>
+      <li><a href="index.html#localisation">Accès</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p>© 2026 Armwrestling Club Strassen · Luxembourg Armwrestling Federation</p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 50
+        ? 'rgba(10,10,10,0.98)'
+        : 'rgba(10,10,10,0.92)';
+    });
+  </script>
 </body>
 </html>
