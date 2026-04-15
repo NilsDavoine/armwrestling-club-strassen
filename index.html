@@ -20,10 +20,8 @@
   <meta property="og:image" content="https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.jpeg" />
   <meta property="og:image:alt" content="Compétition de bras de fer au Luxembourg avec arbitres, athlètes et ambiance événementielle de l'Armwrestling Club Strassen" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://nilsdavoine.github.io/armwrestling-club-strassen/sitemap.xml" />
-  <!-- Google Search Console verification: ajoute ici la balise meta fournie par Google si nécessaire -->
 
-  <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -105,7 +103,6 @@
   }
   </script>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -120,12 +117,14 @@
       padding: 2px;
       filter: brightness(1.1) contrast(1.05);
     }
+
     .logo-wrap {
       display: flex;
       align-items: center;
       gap: 0.7rem;
       text-decoration: none;
     }
+
     :root {
       --black: #0a0a0a;
       --dark: #111111;
@@ -153,7 +152,6 @@
       overflow-x: hidden;
     }
 
-    /* ──── NAV ──── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -178,6 +176,7 @@
       color: var(--white);
       text-decoration: none;
     }
+
     .nav-logo span { color: var(--red); }
 
     .nav-links {
@@ -185,6 +184,7 @@
       gap: 2.5rem;
       list-style: none;
     }
+
     .nav-links a {
       font-family: var(--font-display);
       font-size: 0.85rem;
@@ -195,6 +195,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
+
     .nav-links a:hover { color: var(--red); }
 
     .nav-cta {
@@ -204,12 +205,12 @@
       border-radius: 2px;
       transition: background 0.2s !important;
     }
+
     .nav-cta:hover { background: var(--red-hot) !important; color: var(--white) !important; }
 
     .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
 
-    /* ──── HERO ──── */
     #hero {
       min-height: 100vh;
       position: relative;
@@ -276,6 +277,7 @@
       gap: 0.8rem;
       flex-wrap: wrap;
     }
+
     .hero-eyebrow::before {
       content: '';
       display: inline-block;
@@ -293,6 +295,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 1.6rem;
     }
+
     h1 em {
       font-style: normal;
       color: var(--red);
@@ -329,6 +332,7 @@
       display: inline-block;
       transition: background 0.2s, transform 0.2s;
     }
+
     .btn-primary:hover { background: var(--red-hot); transform: translateY(-1px); }
 
     .btn-outline {
@@ -346,6 +350,7 @@
       display: inline-block;
       transition: border-color 0.2s, color 0.2s;
     }
+
     .btn-outline:hover { border-color: var(--red); color: var(--red); }
 
     .hero-stats {
@@ -354,7 +359,9 @@
       gap: 2rem;
       align-items: flex-end;
     }
+
     .stat { text-align: right; }
+
     .stat-number {
       font-family: var(--font-display);
       font-size: 2.8rem;
@@ -362,7 +369,9 @@
       color: var(--white);
       line-height: 1;
     }
+
     .stat-number span { color: var(--red); }
+
     .stat-label {
       font-size: 0.72rem;
       letter-spacing: 0.15em;
@@ -386,18 +395,19 @@
       color: var(--grey);
       z-index: 2;
     }
+
     .scroll-line {
       width: 1px;
       height: 40px;
       background: linear-gradient(to bottom, var(--red), transparent);
       animation: scrollPulse 1.8s ease-in-out infinite;
     }
+
     @keyframes scrollPulse {
       0%, 100% { opacity: 0.4; transform: scaleY(1); }
       50% { opacity: 1; transform: scaleY(1.1); }
     }
 
-    /* ──── SECTIONS ──── */
     section { padding: 6rem 4rem; }
 
     .section-tag {
@@ -412,6 +422,7 @@
       align-items: center;
       gap: 0.7rem;
     }
+
     .section-tag::before {
       content: '';
       display: inline-block;
@@ -429,6 +440,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
+
     h2 span { color: var(--red); }
 
     .section-intro {
@@ -439,7 +451,6 @@
       line-height: 1.8;
     }
 
-    /* divider */
     .divider {
       height: 1px;
       background: linear-gradient(to right, var(--red), transparent);
@@ -447,26 +458,63 @@
       opacity: 0.3;
     }
 
-    /* ──── ABOUT ──── */
-    #about { background: var(--dark); }
+    #about {
+      background: var(--dark);
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 2.5rem;
       align-items: start;
       max-width: 1200px;
     }
 
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      gap: 1.5rem;
+    }
+
+    .about-text-top,
+    .about-text-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: rgba(245,240,232,0.72);
+      margin-bottom: 0;
+      line-height: 1.75;
+    }
+
     .about-visual {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
     .about-card {
       background: var(--dark2);
       border: 1px solid rgba(192,57,43,0.2);
-      padding: 2rem;
+      padding: 1.4rem;
       position: relative;
+      height: 100%;
     }
+
     .about-card::before {
       content: '';
       position: absolute;
@@ -475,15 +523,22 @@
       height: 100%;
       background: var(--red);
     }
+
     .about-card h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 0.5rem;
     }
-    .about-card p { font-size: 0.9rem; color: rgba(245,240,232,0.6); }
+
+    .about-card p {
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.6);
+      line-height: 1.7;
+    }
+
     .about-card .tag {
       display: inline-block;
       background: var(--red);
@@ -496,18 +551,6 @@
       padding: 0.25rem 0.6rem;
       margin-bottom: 0.8rem;
     }
-    .about-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .about-text p {
-      font-size: 1rem;
-      color: rgba(245,240,232,0.72);
-      margin-bottom: 0.9rem;
-      line-height: 1.75;
-    }
 
     .federation-badge {
       display: inline-flex;
@@ -515,17 +558,23 @@
       gap: 0.7rem;
       border: 1px solid rgba(212,160,23,0.4);
       padding: 0.6rem 1.2rem;
-      margin-top: 1rem;
+      margin-top: 0.2rem;
       font-family: var(--font-display);
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
+      width: fit-content;
     }
-    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
 
-    /* ──── TRAINING ──── */
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
     #entrainement { background: var(--black); }
 
     .training-grid {
@@ -542,7 +591,9 @@
       overflow: hidden;
       transition: background 0.3s;
     }
+
     .training-card:hover { background: var(--dark2); }
+
     .training-card::after {
       content: '';
       position: absolute;
@@ -553,6 +604,7 @@
       transform-origin: left;
       transition: transform 0.4s;
     }
+
     .training-card:hover::after { transform: scaleX(1); }
 
     .card-club-name {
@@ -563,6 +615,7 @@
       letter-spacing: 0.05em;
       margin-bottom: 0.3rem;
     }
+
     .card-location {
       font-size: 0.85rem;
       color: var(--grey);
@@ -571,17 +624,20 @@
       align-items: center;
       gap: 0.4rem;
     }
+
     .card-detail {
       display: flex;
       align-items: flex-start;
       gap: 0.8rem;
       margin-bottom: 1rem;
     }
+
     .card-detail-icon {
       color: var(--red);
       font-size: 1rem;
       margin-top: 0.1rem;
     }
+
     .card-detail-label {
       font-family: var(--font-display);
       font-size: 0.72rem;
@@ -590,11 +646,13 @@
       text-transform: uppercase;
       color: var(--grey);
     }
+
     .card-detail-value {
       font-size: 0.95rem;
       font-weight: 500;
       color: var(--white);
     }
+
     .card-focus {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
@@ -621,7 +679,6 @@
       border-radius: 1px;
     }
 
-    /* ──── EQUIPMENT ──── */
     #equipement { background: var(--dark); }
 
     .equipment-list {
@@ -638,6 +695,7 @@
       align-items: flex-start;
       gap: 1rem;
     }
+
     .equip-icon {
       width: 36px;
       height: 36px;
@@ -647,7 +705,16 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .equip-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    .equip-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--red);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
     .equip-name {
       font-family: var(--font-display);
       font-size: 0.9rem;
@@ -656,9 +723,9 @@
       letter-spacing: 0.06em;
       margin-bottom: 0.2rem;
     }
+
     .equip-desc { font-size: 0.8rem; color: var(--grey); }
 
-    /* ──── LICENSE ──── */
     #licence { background: var(--black); }
 
     .licence-layout {
@@ -674,6 +741,7 @@
       padding: 2.5rem;
       border: 1px solid rgba(192,57,43,0.2);
     }
+
     .price-amount {
       font-family: var(--font-display);
       font-size: 5rem;
@@ -681,7 +749,14 @@
       line-height: 1;
       color: var(--white);
     }
-    .price-amount sup { font-size: 2rem; vertical-align: top; margin-top: 0.8rem; display: inline-block; }
+
+    .price-amount sup {
+      font-size: 2rem;
+      vertical-align: top;
+      margin-top: 0.8rem;
+      display: inline-block;
+    }
+
     .price-period {
       font-family: var(--font-display);
       font-size: 0.8rem;
@@ -690,12 +765,14 @@
       color: var(--grey);
       margin-bottom: 2rem;
     }
+
     .price-includes {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
     }
+
     .price-includes li {
       font-size: 0.9rem;
       color: rgba(245,240,232,0.75);
@@ -703,6 +780,7 @@
       align-items: center;
       gap: 0.7rem;
     }
+
     .price-includes li::before {
       content: '';
       display: inline-block;
@@ -729,7 +807,6 @@
       line-height: 1.7;
     }
 
-    /* ──── COMPETITION ──── */
     #competition { background: var(--dark); }
 
     .competition-layout {
@@ -746,10 +823,12 @@
       gap: 1px;
       margin-top: 2rem;
     }
+
     .comp-number {
       background: var(--dark2);
       padding: 1.5rem;
     }
+
     .comp-num-val {
       font-family: var(--font-display);
       font-size: 2.5rem;
@@ -757,7 +836,9 @@
       line-height: 1;
       color: var(--white);
     }
+
     .comp-num-val span { color: var(--red); }
+
     .comp-num-label {
       font-size: 0.78rem;
       color: var(--grey);
@@ -778,6 +859,7 @@
       padding: 1.5rem;
       margin-top: 1.5rem;
     }
+
     .event-name {
       font-family: var(--font-display);
       font-size: 1.1rem;
@@ -786,10 +868,9 @@
       letter-spacing: 0.05em;
       margin-bottom: 0.3rem;
     }
+
     .event-detail { font-size: 0.82rem; color: var(--grey); }
 
-
-    /* ──── LOCATIONS ──── */
     #localisation { background: var(--dark); }
 
     .location-section-grid {
@@ -915,7 +996,6 @@
       color: var(--red-hot);
     }
 
-    /* ──── CONTACT ──── */
     #contact { background: var(--black); }
 
     .contact-grid {
@@ -924,13 +1004,16 @@
       gap: 2rem;
       max-width: 900px;
     }
+
     .contact-card {
       background: var(--dark);
       padding: 2rem;
       border: 1px solid rgba(255,255,255,0.05);
       transition: border-color 0.3s;
     }
+
     .contact-card:hover { border-color: rgba(192,57,43,0.3); }
+
     .contact-club {
       font-family: var(--font-display);
       font-size: 1rem;
@@ -940,6 +1023,7 @@
       color: var(--grey);
       margin-bottom: 0.5rem;
     }
+
     .contact-name {
       font-family: var(--font-display);
       font-size: 1.4rem;
@@ -947,6 +1031,7 @@
       text-transform: uppercase;
       margin-bottom: 0.3rem;
     }
+
     .contact-role {
       font-size: 0.78rem;
       color: var(--grey);
@@ -954,6 +1039,7 @@
       text-transform: uppercase;
       margin-bottom: 1.2rem;
     }
+
     .contact-phone {
       display: flex;
       align-items: center;
@@ -965,6 +1051,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
+
     .contact-phone:hover { color: var(--red); }
 
     .social-row {
@@ -973,6 +1060,7 @@
       margin-top: 3rem;
       flex-wrap: wrap;
     }
+
     .social-link {
       display: inline-flex;
       align-items: center;
@@ -989,9 +1077,9 @@
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
     }
+
     .social-link:hover { border-color: var(--red); color: var(--red); }
 
-    /* ──── FOOTER ──── */
     footer {
       background: var(--dark);
       border-top: 1px solid rgba(255,255,255,0.05);
@@ -1004,6 +1092,7 @@
       max-width: 1160px;
       margin: 0 auto;
     }
+
     .footer-logo {
       font-family: var(--font-display);
       font-size: 1rem;
@@ -1012,17 +1101,21 @@
       letter-spacing: 0.08em;
       color: var(--white);
     }
+
     .footer-logo span { color: var(--red); }
+
     footer p {
       font-size: 0.78rem;
       color: var(--grey);
       letter-spacing: 0.03em;
     }
+
     .footer-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
+
     .footer-links a {
       font-family: var(--font-display);
       font-size: 0.78rem;
@@ -1032,27 +1125,21 @@
       text-decoration: none;
       transition: color 0.2s;
     }
+
     .footer-links a:hover { color: var(--red); }
 
-    /* ──── ANIMATIONS ──── */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-
-    /* ──── SECTION ALIGNMENT / CENTERING ──── */
-    .fade-in {
       max-width: 1160px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .section-intro {
-      max-width: 620px;
-    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .section-intro { max-width: 620px; }
 
     .about-grid,
     .training-grid,
@@ -1088,62 +1175,10 @@
       max-width: 1160px;
     }
 
-    .licence-layout {
-      max-width: 1100px;
-    }
-
+    .licence-layout { max-width: 1100px; }
     .equipment-list,
-    .contact-grid {
-      max-width: 1000px;
-    }
+    .contact-grid { max-width: 1000px; }
 
-    /* ──── MOBILE ──── */
-    @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 68px; left: 0; right: 0;
-        background: var(--dark);
-        padding: 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid rgba(192,57,43,0.2);
-      }
-
-      section { padding: 4rem 1.5rem; }
-      .divider { margin: 0 1.5rem; }
-
-      #hero { padding: 92px 1.5rem 4rem; min-height: auto; }
-      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-side { justify-content: flex-start; }
-      .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; width: 100%; }
-      .stat { text-align: left; }
-
-      .about-grid,
-      .training-grid,
-      .licence-layout,
-      .competition-layout,
-      .contact-grid,
-      .location-section-grid,
-      .map-cards { grid-template-columns: 1fr; gap: 2rem; }
-
-      .equipment-list { grid-template-columns: 1fr 1fr; }
-
-      .map-card p { min-height: auto; }
-
-      footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.5rem; }
-      .footer-links { flex-wrap: wrap; gap: 1rem; }
-    }
-
-    @media (max-width: 500px) {
-      .equipment-list { grid-template-columns: 1fr; }
-      .competition-numbers { grid-template-columns: 1fr 1fr; }
-      .hero-stats { grid-template-columns: 1fr; }
-    }
-  
     .hero-highlight {
       display: inline-flex;
       align-items: center;
@@ -1159,6 +1194,7 @@
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
+
     .quick-info-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1168,11 +1204,13 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.05);
     }
+
     .quick-info-item {
       background: rgba(10,10,10,0.86);
       padding: 1.15rem 1.2rem;
       min-width: 0;
     }
+
     .quick-info-label {
       font-family: var(--font-display);
       font-size: 0.72rem;
@@ -1182,18 +1220,21 @@
       color: var(--grey);
       margin-bottom: 0.35rem;
     }
+
     .quick-info-value {
       font-size: 0.96rem;
       color: var(--white);
       font-weight: 500;
       line-height: 1.65;
     }
+
     .location-badge-row {
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
       margin-top: 1rem;
     }
+
     .location-badge {
       display: inline-flex;
       align-items: center;
@@ -1207,22 +1248,26 @@
       text-transform: uppercase;
       color: var(--light-grey);
     }
+
     .location-badge.strassen {
       color: var(--red);
       border-color: rgba(192,57,43,0.35);
       background: rgba(192,57,43,0.08);
     }
+
     .location-badge.munsbach {
       color: var(--gold);
       border-color: rgba(212,160,23,0.35);
       background: rgba(212,160,23,0.08);
     }
+
     .training-actions {
       display: flex;
       gap: 0.8rem;
       flex-wrap: wrap;
       margin-top: 1rem;
     }
+
     .training-link {
       font-family: var(--font-display);
       font-size: 0.78rem;
@@ -1234,18 +1279,22 @@
       border-bottom: 1px solid rgba(255,255,255,0.18);
       padding-bottom: 0.18rem;
     }
+
     .training-link:hover { color: var(--red); border-color: var(--red); }
+
     .proof-grid, .faq-grid, .seo-pages-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
       max-width: 1100px;
     }
+
     .proof-card, .faq-item, .seo-page-card, .start-card {
       background: var(--dark);
       padding: 2rem;
       border: 1px solid rgba(255,255,255,0.05);
     }
+
     .proof-card h3, .faq-item h3, .seo-page-card h3, .start-card h3, .section-subtitle {
       font-family: var(--font-display);
       font-size: 1.2rem;
@@ -1254,17 +1303,20 @@
       letter-spacing: 0.05em;
       margin-bottom: 0.7rem;
     }
+
     .proof-card p, .faq-item p, .seo-page-card p, .start-card p {
       font-size: 0.95rem;
       color: rgba(245,240,232,0.68);
       line-height: 1.8;
     }
+
     .start-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       max-width: 1100px;
     }
+
     .start-step {
       font-family: var(--font-display);
       font-size: 0.78rem;
@@ -1274,17 +1326,20 @@
       color: var(--red);
       margin-bottom: 0.7rem;
     }
+
     .competition-photo-wrap {
-      margin-top: 1rem;
+      margin-top: 0.25rem;
       background: var(--black);
       border: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
     }
+
     .competition-photo-wrap img {
       display: block;
       width: 100%;
       height: auto;
     }
+
     .photo-caption {
       padding: 1rem 1.2rem;
       font-size: 0.88rem;
@@ -1292,6 +1347,7 @@
       line-height: 1.7;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
+
     .cta-strip {
       margin-top: 3rem;
       display: flex;
@@ -1303,11 +1359,13 @@
       background: rgba(192,57,43,0.08);
       border: 1px solid rgba(192,57,43,0.22);
     }
+
     .cta-strip p {
       color: var(--white);
       font-size: 0.95rem;
       margin: 0;
     }
+
     .whatsapp-float {
       position: fixed;
       right: 1.2rem;
@@ -1328,7 +1386,9 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+
     .whatsapp-float:hover { border-color: rgba(37,211,102,0.65); }
+
     .seo-page-card a, .proof-card a {
       display: inline-block;
       margin-top: 1rem;
@@ -1340,19 +1400,99 @@
       text-decoration: none;
       color: var(--red);
     }
+
     @media (max-width: 900px) {
-      .quick-info-grid, .proof-grid, .faq-grid, .seo-pages-grid, .start-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--dark);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(192,57,43,0.2);
+      }
+
+      section { padding: 4rem 1.5rem; }
+      .divider { margin: 0 1.5rem; }
+
+      #hero {
+        padding: 92px 1.5rem 4rem;
+        min-height: auto;
+      }
+
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-side { justify-content: flex-start; }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        width: 100%;
+      }
+
+      .stat { text-align: left; }
+
+      .about-grid,
+      .about-cards,
+      .training-grid,
+      .licence-layout,
+      .competition-layout,
+      .contact-grid,
+      .location-section-grid,
+      .map-cards,
+      .quick-info-grid,
+      .proof-grid,
+      .faq-grid,
+      .seo-pages-grid,
+      .start-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .equipment-list { grid-template-columns: 1fr 1fr; }
+      .map-card p { min-height: auto; }
+
       .hero-actions { width: 100%; }
-      .hero-actions .btn-primary, .hero-actions .btn-outline { width: 100%; text-align: center; }
-      .whatsapp-float { right: 0.9rem; bottom: 0.9rem; padding: 0.8rem 0.9rem; font-size: 0.72rem; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-outline {
+        width: 100%;
+        text-align: center;
+      }
+
+      .whatsapp-float {
+        right: 0.9rem;
+        bottom: 0.9rem;
+        padding: 0.8rem 0.9rem;
+        font-size: 0.72rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
 
+    @media (max-width: 500px) {
+      .equipment-list { grid-template-columns: 1fr; }
+      .competition-numbers { grid-template-columns: 1fr 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- ══════════════ NAV ══════════════ -->
 <nav>
   <a href="#hero" class="logo-wrap"><img src="logo.png" alt="Logo de l'Armwrestling Club Strassen" class="nav-logo-img" /><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
   <ul class="nav-links" id="navLinks">
@@ -1371,7 +1511,6 @@
   </div>
 </nav>
 
-<!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -1437,7 +1576,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ ABOUT ══════════════ -->
 <section id="about">
   <div class="fade-in">
     <div class="section-tag">À propos</div>
@@ -1450,27 +1588,31 @@
 
   <div class="about-grid fade-in">
     <div class="about-text">
-      <p>
-        Fondé en 2026, l'Armwrestling Club Strassen a pour mission de développer et promouvoir
-        le bras de fer au Luxembourg — en tant que sport de compétition structuré et discipline
-        de force technique.
-      </p>
+      <div class="about-text-top">
+        <p>
+          Fondé en 2026, l'Armwrestling Club Strassen a pour mission de développer et promouvoir
+          le bras de fer au Luxembourg — en tant que sport de compétition structuré et discipline
+          de force technique.
+        </p>
 
-      <div class="federation-badge">
-        <div class="badge-dot"></div>
-        Membre — Luxembourg Armwrestling Federation
+        <div class="federation-badge">
+          <div class="badge-dot"></div>
+          Membre — Luxembourg Armwrestling Federation
+        </div>
       </div>
 
-      <p style="margin-top: 1.2rem;">
-        Les deux clubs opèrent sous la <strong>Luxembourg Armwrestling Federation</strong> et
-        collaborent étroitement : partage des entraînements, du matériel, et organisation
-        conjointe des compétitions et événements publics.
-      </p>
+      <div class="about-text-bottom">
+        <p>
+          Les deux clubs opèrent sous la <strong>Luxembourg Armwrestling Federation</strong> et
+          collaborent étroitement : partage des entraînements, du matériel, et organisation
+          conjointe des compétitions et événements publics.
+        </p>
 
-      <p>
-        Cette synergie permet aux athlètes de bénéficier d'environnements d'entraînement variés
-        tout en restant membres d'une seule communauté unie.
-      </p>
+        <p>
+          Cette synergie permet aux athlètes de bénéficier d'environnements d'entraînement variés
+          tout en restant membres d'une seule communauté unie.
+        </p>
+      </div>
     </div>
 
     <div class="about-visual">
@@ -1492,17 +1634,17 @@
             Tous niveaux bienvenus. Entraînements le vendredi à 18h00 à Munsbach.
           </p>
         </div>
+      </div>
 
-        <div class="competition-photo-wrap">
-          <img
-            src="competition-bras-de-fer-luxembourg.jpeg"
-            alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de l'Armwrestling Club Strassen et de la fédération luxembourgeoise."
-            loading="lazy"
-          />
-          <div class="photo-caption">
-            Photo d'une compétition de bras de fer au Luxembourg : arbitrage officiel,
-            table de match, public et ambiance réelle de la scène armwrestling luxembourgeoise.
-          </div>
+      <div class="competition-photo-wrap">
+        <img
+          src="competition-bras-de-fer-luxembourg.jpeg"
+          alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de l'Armwrestling Club Strassen et de la fédération luxembourgeoise."
+          loading="lazy"
+        />
+        <div class="photo-caption">
+          Photo d'une compétition de bras de fer au Luxembourg : arbitrage officiel,
+          table de match, public et ambiance réelle de la scène armwrestling luxembourgeoise.
         </div>
       </div>
     </div>
@@ -1511,7 +1653,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ TRAINING ══════════════ -->
 <section id="entrainement">
   <div class="fade-in">
     <div class="section-tag">Entraînements</div>
@@ -1603,7 +1744,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ EQUIPMENT ══════════════ -->
 <section id="equipement">
   <div class="fade-in">
     <div class="section-tag">Matériel</div>
@@ -1674,7 +1814,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ LICENCE ══════════════ -->
 <section id="licence">
   <div class="fade-in">
     <div class="section-tag">Adhésion</div>
@@ -1724,7 +1863,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ COMPETITION ══════════════ -->
 <section id="competition">
   <div class="fade-in">
     <div class="section-tag">Compétitions & Événements</div>
@@ -1778,11 +1916,8 @@
   </div>
 </section>
 
-
-
 <div class="divider"></div>
 
-<!-- ══════════════ LOCATIONS ══════════════ -->
 <section id="localisation">
   <div class="fade-in">
     <div class="section-tag">Accès & Localisation</div>
@@ -1885,8 +2020,6 @@
     </div>
   </div>
 </section>
-
-
 
 <div class="divider"></div>
 
@@ -2006,7 +2139,6 @@
 
 <div class="divider"></div>
 
-<!-- BLOG -->
 <section id="blog" style="background:var(--dark);">
   <div class="fade-in">
     <div class="section-tag">Blog & Ressources</div>
@@ -2033,7 +2165,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact">
   <div class="fade-in">
     <div class="section-tag">Contact</div>
@@ -2086,7 +2217,6 @@
 
 <a class="whatsapp-float" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" aria-label="Contacter le club sur WhatsApp">WhatsApp · Essai gratuit</a>
 
-<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
   <ul class="footer-links">
@@ -2101,19 +2231,16 @@
 </footer>
 
 <script>
-  // Mobile nav toggle
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
 
-  // Close nav on link click
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('open');
     });
   });
 
-  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -2125,7 +2252,6 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Nav background on scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.background = window.scrollY > 50
