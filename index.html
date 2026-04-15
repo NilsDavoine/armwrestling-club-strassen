@@ -453,8 +453,8 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      gap: 3rem;
+      align-items: start;
       max-width: 1200px;
     }
 
@@ -496,13 +496,17 @@
       padding: 0.25rem 0.6rem;
       margin-bottom: 0.8rem;
     }
-    .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .about-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
 
     .about-text p {
       font-size: 1rem;
       color: rgba(245,240,232,0.72);
-      margin-bottom: 1.2rem;
-      line-height: 1.85;
+      margin-bottom: 0.9rem;
+      line-height: 1.75;
     }
 
     .federation-badge {
@@ -1271,7 +1275,7 @@
       margin-bottom: 0.7rem;
     }
     .competition-photo-wrap {
-      margin-top: 2rem;
+      margin-top: 1rem;
       background: var(--black);
       border: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
@@ -1451,19 +1455,22 @@
         le bras de fer au Luxembourg — en tant que sport de compétition structuré et discipline
         de force technique.
       </p>
-      <p>
-        Les deux clubs opèrent sous la <strong>Luxembourg Armwrestling Federation</strong> et
-        collaborent étroitement : partage des entraînements, du matériel, et organisation
-        conjointe des compétitions et événements publics.
-      </p>
-      <p>
-        Cette synergie permet aux athlètes de bénéficier d'environnements d'entraînement variés
-        tout en restant membres d'une seule communauté unie.
-      </p>
+
       <div class="federation-badge">
         <div class="badge-dot"></div>
         Membre — Luxembourg Armwrestling Federation
       </div>
+
+      <p style="margin-top: 1.2rem;">
+        Les deux clubs opèrent sous la <strong>Luxembourg Armwrestling Federation</strong> et
+        collaborent étroitement : partage des entraînements, du matériel, et organisation
+        conjointe des compétitions et événements publics.
+      </p>
+
+      <p>
+        Cette synergie permet aux athlètes de bénéficier d'environnements d'entraînement variés
+        tout en restant membres d'une seule communauté unie.
+      </p>
     </div>
 
     <div class="about-visual">
@@ -1471,21 +1478,33 @@
         <div class="about-card">
           <span class="tag">Strassen</span>
           <h3>Armwrestling Club Strassen</h3>
-          <p>Focus technique, développement progressif, équipement professionnel et accès facile depuis Luxembourg-ville. Entraînements le mardi à 18h00 à Strassen.</p>
+          <p>
+            Focus technique, développement progressif, équipement professionnel et accès facile
+            depuis Luxembourg-ville. Entraînements le mardi à 18h00 à Strassen.
+          </p>
         </div>
+
         <div class="about-card">
           <span class="tag">Munsbach</span>
           <h3>Grizzly of Luxembourg</h3>
-          <p>Accent sur le sparring, la pratique en match réel et l'expérience de table. Tous niveaux bienvenus. Entraînements le vendredi à 18h00 à Munsbach.</p>
+          <p>
+            Accent sur le sparring, la pratique en match réel et l'expérience de table.
+            Tous niveaux bienvenus. Entraînements le vendredi à 18h00 à Munsbach.
+          </p>
         </div>
-      
-      <div class="competition-photo-wrap">
-        <img src="competition-bras-de-fer-luxembourg.jpeg" alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de l'Armwrestling Club Strassen et de la fédération luxembourgeoise." loading="lazy" />
-        <div class="photo-caption">
-          Photo d'une compétition de bras de fer au Luxembourg : arbitrage officiel, table de match, public et ambiance réelle de la scène armwrestling luxembourgeoise.
+
+        <div class="competition-photo-wrap">
+          <img
+            src="competition-bras-de-fer-luxembourg.jpeg"
+            alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de l'Armwrestling Club Strassen et de la fédération luxembourgeoise."
+            loading="lazy"
+          />
+          <div class="photo-caption">
+            Photo d'une compétition de bras de fer au Luxembourg : arbitrage officiel,
+            table de match, public et ambiance réelle de la scène armwrestling luxembourgeoise.
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
