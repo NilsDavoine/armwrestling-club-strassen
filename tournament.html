@@ -11,6 +11,7 @@
   --accent:#e8c840;--a2:#3a8cff;--red:#e84040;--green:#30c060;
   --text:#e8eaf0;--muted:#8890a8;
   --fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --hp:24px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px;min-height:100vh}
@@ -35,12 +36,12 @@ lbl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;l
 
 /* ── ADMIN ── */
 #A{display:flex;flex-direction:column;height:100vh}
-.ah{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ah{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--hp);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ah h1{font-family:var(--fd);font-size:30px;font-weight:900;color:var(--accent);letter-spacing:1px;flex:1}
-.tabs{display:flex;background:var(--bg);padding:12px 20px 0;border-bottom:1px solid var(--border)}
+.tabs{display:flex;background:var(--bg);padding:12px var(--hp) 0;border-bottom:1px solid var(--border)}
 .tab{padding:8px 20px;cursor:pointer;font-family:var(--fd);font-size:16px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.5px;transition:all .15s}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}.tab:hover{color:var(--text)}
-.ab{flex:1;overflow:auto;padding:20px}
+.ab{flex:1;overflow:auto;padding:20px var(--hp)}
 
 /* ── TABLE ── */
 .tbar{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
@@ -200,7 +201,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 
 <!-- ══════════ ADMIN ══════════ -->
 <div id="A">
-  <div class="ah" style="justify-content:center;padding:10px 20px">
+  <div class="ah" style="justify-content:center;padding:10px var(--hp)">
     <div style="display:flex;align-items:center;gap:16px;justify-content:center;flex:1">
       <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px">TOURNAMENT MANAGER</span>
       <span style="color:var(--border);font-size:20px">—</span>
@@ -384,7 +385,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 
 <!-- ══════════ DISPLAY ══════════ -->
 <div id="D">
-  <div class="dh" style="display:flex;align-items:center;justify-content:center;gap:16px;padding:0 24px;position:relative">
+  <div class="dh" style="display:flex;align-items:center;justify-content:center;gap:16px;padding:0 var(--hp);position:relative">
     <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px">TOURNAMENT MANAGER</span>
     <span style="color:var(--border);font-size:20px">—</span>
     <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:8px">
@@ -395,7 +396,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
       onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADwklEQVR4nO2dQZIUOwwFGYIVwYIzcAIOwbE5BCfgLGxrMY6QkF71ZHfmsn99t5kMtcKWrXr7+u37J2Hy+dETkP9HeWCUB0Z5YJQHRnlglAfmy+k//P39c/3Lfvz68+74188rc+g+n5jP1hwqnL7LyAOjPDDKA3PMeVdOv7kVunlr8r2nHFZ5pvL5ZD5dKrnTyAOjPDDKA1PKeVcqv8Xd3/qtNV9lnMr/2/3eCom/m5EHRnlglAemnfO2qKyxrty531jJPd38msDIA6M8MMoD87Ccd6WS/xJ1ssl8HpXnrhh5YJQHRnlg2jkv8Vs/Weed2KrnbeW/xN/NyAOjPDDKA1PKeXeusa5MzptsjTP5t6f/bkYeGOWBUR6Yt0fdSZ/kg0lO6tbqtsZMYOSBUR4Y5YEp3c+bnOnYOq842fPsnsk8kag1Ts7mGHlglAdGeWCO67xJrkrky8k+5KQO96gxKxh5YJQHRnlgRmdYKne37+xLciLdP2WytznJnUYeGOWBUR6Ydj1va/13er47fmJPdStHJs6aXjHywCgPjPLArNXzuuMk6nOVcbp1uK2en1v7mVeMPDDKA6M8MO163laPkkSdbDKHxDwT+f6KkQdGeWCUB6bdY3pr3ZPuN5amsp6b9Py0nvfkKA+M8sBEeo919xW31kyTczTpvdbu3fkKRh4Y5YFRHphRzkvsc6Z7pkzqcHf2bXGd9+QoD4zywIz6sGzdS+uylWPS52W6Y7rOeyGUB0Z5YNrvSa+8QzVdw5v03kzcF5zkRet5L4rywCgPzDHndftsdWtU3fe1TupzlTrfJHdOcv8EIw+M8sAoD0xpbzNxXv80/tYd8MSaL9F31H6bL4rywCgPTOl+3kfudVlhq5d0dw5bZ3NOGHlglAdGeWBKe5sTEvuQW/cWJudIK8+nMfLAKA+M8sBEzm0m+pt0n0lwZ93Ovc0nR3lglAcmcm6zO86d9w0Sd8y7z2zVF408MMoDozwwH+I96YlzK5Vn7rxXl+i9aeSBUR4Y5YFpr/MmdHPMnWdnts7sJOqFJ4w8MMoDozww7R7TXdLvJUic4ZyM3+0rffrcet6TozwwygPT7re51YsrUcPb6jddGfP0zGRM13kvhPLAKA9M5L0KFRK9wRLvqLuSqEFWPj9h5IFRHhjlgXlYzquQ2Oe8850MaYw8MMoDozww7ZyXvnPdzWeTfp6T+VSeT2PkgVEeGOWBKfUe2yJxlzz9TrutOXTxDMuTozwwygPzsPt5MsfIA6M8MMoDozwwygOjPDDKA/MPQrnadQNN5fcAAAAASUVORK5CYII=" alt="Instagram" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(232,200,64,.3)">
     </a>
-    <div style="position:absolute;right:24px;display:flex;align-items:center;gap:16px">
+    <div style="position:absolute;right:var(--hp);display:flex;align-items:center;gap:16px">
       <span id="darm" class="arm-b abl">LEFT ARM</span>
       <span id="dclk" style="font-family:var(--fd);font-size:14px;color:var(--muted);letter-spacing:1px"></span>
     </div>
