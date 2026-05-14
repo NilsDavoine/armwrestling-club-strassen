@@ -830,22 +830,31 @@ h2 span {
 
 .competition-numbers {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   margin-top: 2rem;
+  background: rgba(192,57,43,.2);
+  border: 1px solid rgba(192,57,43,.25);
 }
 
 .comp-number {
-  background: var(--dark2);
-  padding: 1.5rem;
+  background: rgba(10,5,5,.92);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.comp-number:hover {
+  background: rgba(20,8,8,.98);
 }
 
 .comp-num-val {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   font-weight: 900;
   line-height: 1;
   color: var(--white);
+  text-shadow: 0 0 30px rgba(192,57,43,.2);
 }
 
 .comp-num-val span {
@@ -853,10 +862,13 @@ h2 span {
 }
 
 .comp-num-label {
-  font-size: 0.78rem;
-  color: var(--grey);
-  letter-spacing: 0.05em;
-  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  color: rgba(245,240,232,.45);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-top: 0.5rem;
 }
 
 .competition-text p {
@@ -1442,6 +1454,14 @@ footer p {
 
 /* ===== BLOG ===== */
 .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255,255,255,.05);
+}
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
