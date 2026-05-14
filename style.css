@@ -1456,11 +1456,10 @@ footer p {
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
+  gap: 2rem;
   max-width: 1160px;
   margin-left: auto;
   margin-right: auto;
-  background: rgba(255,255,255,.05);
 }
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1470,20 +1469,28 @@ footer p {
 }
 
 .blog-card {
-  background: var(--black);
+  background: var(--dark);
   padding: 2.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
   display: block;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  transition: border-color 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s, background 0.3s;
+  color: var(--white);
+}
+
+.blog-card *,
+.blog-card:visited * {
+  text-decoration: none !important;
 }
 
 .blog-card:hover {
-  border-color: rgba(192, 57, 43, 0.3);
+  border-color: rgba(192, 57, 43, 0.35);
+  background: var(--dark2);
 }
 
 .blog-card.gold:hover {
-  border-color: rgba(212, 160, 23, 0.3);
+  border-color: rgba(212, 160, 23, 0.35);
+  background: var(--dark2);
 }
 
 /* ===== blocs centrés ===== */
