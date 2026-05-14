@@ -1478,8 +1478,11 @@ footer p {
   color: var(--white);
 }
 
-.blog-card *,
-.blog-card:visited * {
+.blog-card,
+.blog-card:hover,
+.blog-card:visited,
+.blog-card:active,
+.blog-card * {
   text-decoration: none !important;
 }
 
