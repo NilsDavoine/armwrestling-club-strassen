@@ -997,67 +997,113 @@
 
 <div class="divider"></div>
  
-<section id="inscriptions" style="background:var(--black);overflow:hidden;position:relative">
- 
-  <!-- Background atmosphere -->
-  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(180,0,0,.12) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(212,160,23,.06) 0%,transparent 60%)"></div>
- 
-  <div class="fade-in" style="position:relative;z-index:1">
-    <div class="section-tag">Luxembourg Armwrestling Federation · Compétition Annuelle</div>
-    <h2>Compétition Annuelle<br><span>du Luxembourg</span></h2>
-    <p class="section-intro">
-      La compétition de bras de fer du Luxembourg est notre plus grand événement annuel,
-      avec plus de 100 participants et 300 spectateurs venant des quatre coins du monde.
-      En 2027 se déroulera notre 7ème édition, organisée sous l'égide de la <strong>Luxembourg Armwrestling Federation</strong>, avec toujours plus de nouveautés et d'équipement
-      pour recevoir les athlètes et les spectateurs dans les meilleures conditions. Merci à vous
-      de répondre présent chaque année pour soutenir le club et l'organisation de ces
-      fabuleux événements sportifs qui font grandir le bras de fer dans le monde.
+<section id="inscriptions" style="background:var(--black);overflow:hidden;position:relative;padding:6rem 4rem;">
+
+  <!-- Background atmosphere — plus intense -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180,0,0,.18) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 40% at 15% 100%, rgba(212,160,23,.07) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 40% at 85% 100%, rgba(180,0,0,.07) 0%, transparent 55%);
+  "></div>
+
+  <!-- Grille de fond subtile comme le hero -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(192,57,43,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(192,57,43,.03) 1px,transparent 1px);
+    background-size:60px 60px;
+  "></div>
+
+  <!-- Header -->
+  <div class="fade-in" style="position:relative;z-index:1;max-width:1200px;margin:0 auto 3.5rem;">
+    <div class="section-tag">Luxembourg Armwrestling Federation · Compétition Officielle</div>
+    <h2 style="font-size:clamp(2.8rem,6vw,5rem);margin-bottom:.75rem;">7ème Édition<br><span>Printemps 2027</span></h2>
+    <p style="font-size:1rem;color:rgba(245,240,232,.6);max-width:540px;line-height:1.8;">
+      Le plus grand événement de bras de fer du Luxembourg, organisé sous l'égide de la
+      <strong style="color:var(--white);">Luxembourg Armwrestling Federation</strong>.
+      Athlètes venus des quatre coins du monde, ambiance de scène internationale.
     </p>
   </div>
- 
-  <!-- Event info grid -->
-  <div class="fade-in" style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:3rem">
- 
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem">
-      <div style="font-size:1.6rem;margin-bottom:.6rem">📅</div>
-      <div style="font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">Date</div>
-      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1">Printemps 2027</div>
-      <div style="font-size:.8rem;color:rgba(245,240,232,.4);margin-top:.3rem">Date annoncée prochainement</div>
+
+  <!-- Stats row — chiffres qui claquent -->
+  <div class="fade-in" style="position:relative;z-index:1;max-width:1200px;margin:0 auto 4rem;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(192,57,43,.2);border:1px solid rgba(192,57,43,.25);">
+
+    <div style="background:rgba(10,5,5,.92);padding:2rem 1.5rem;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:var(--white);line-height:1;">100<span style="color:var(--red);">+</span></div>
+      <div style="font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-top:.5rem;">Athlètes</div>
     </div>
- 
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem">
-      <div style="font-size:1.6rem;margin-bottom:.6rem">📍</div>
-      <div style="font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">Lieu</div>
-      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1">Luxembourg</div>
-      <div style="font-size:.8rem;color:rgba(245,240,232,.4);margin-top:.3rem">185 rue Principale, Munsbach</div>
+
+    <div style="background:rgba(10,5,5,.92);padding:2rem 1.5rem;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:var(--white);line-height:1;">300<span style="color:var(--red);">+</span></div>
+      <div style="font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-top:.5rem;">Spectateurs</div>
     </div>
-    
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem">
-      <div style="font-size:1.6rem;margin-bottom:.6rem">ℹ️</div>
-      <div style="font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">Toutes</div>
-      <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1">Informations</div>
-      <div style="font-size:.8rem;color:rgba(245,240,232,.4);margin-top:.3rem">Cliquez sur inscription ci-dessous</div>
+
+    <div style="background:rgba(10,5,5,.92);padding:2rem 1.5rem;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:var(--white);line-height:1;"><span style="color:var(--red);">#</span>7</div>
+      <div style="font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-top:.5rem;">Édition 2027</div>
     </div>
- 
+
+    <div style="background:rgba(10,5,5,.92);padding:2rem 1.5rem;text-align:center;">
+      <div style="font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:var(--white);line-height:1;color:var(--gold);">EU</div>
+      <div style="font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-top:.5rem;">Niveau européen</div>
+    </div>
+
   </div>
- 
-  <!-- CTA -->
-  <div class="fade-in" style="position:relative;z-index:1;text-align:center">
+
+  <!-- Info + CTA block -->
+  <div class="fade-in" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-bottom:3.5rem;">
+
+    <div style="background:rgba(14,7,7,.95);padding:2rem 1.8rem;border-right:none;position:relative;">
+      <div style="font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem;">📅 Date</div>
+      <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1;margin-bottom:.5rem;">Printemps 2027</div>
+      <div style="font-size:.82rem;color:rgba(245,240,232,.4);line-height:1.6;">Date exacte annoncée prochainement sur nos réseaux.</div>
+    </div>
+
+    <div style="background:rgba(14,7,7,.95);padding:2rem 1.8rem;position:relative;">
+      <div style="font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem;">📍 Lieu</div>
+      <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1;margin-bottom:.5rem;">Munsbach</div>
+      <div style="font-size:.82rem;color:rgba(245,240,232,.4);line-height:1.6;">185 rue Principale, L-5366 Munsbach — Luxembourg</div>
+    </div>
+
+    <div style="background:rgba(14,7,7,.95);padding:2rem 1.8rem;position:relative;">
+      <div style="font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem;">🏆 Catégories</div>
+      <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.1;margin-bottom:.5rem;">Toutes classes</div>
+      <div style="font-size:.82rem;color:rgba(245,240,232,.4);line-height:1.6;">Bras gauche & droit, toutes catégories de poids, hommes et femmes.</div>
+    </div>
+
+  </div>
+
+  <!-- CTA principal -->
+  <div class="fade-in" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+    background:linear-gradient(135deg,rgba(180,0,0,.14) 0%,rgba(10,5,5,.7) 60%,rgba(212,160,23,.05) 100%);
+    border:1px solid rgba(180,0,0,.35);padding:2.5rem 2.5rem;">
+
+    <div>
+      <div style="font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Inscriptions ouvertes</div>
+      <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.05;">Participez à la 7ème édition<br><span style="color:var(--gold);">Luxembourg · 2027</span></div>
+    </div>
+
     <a href="https://nilsdavoine.github.io/tournament_registration/" target="_blank" rel="noopener"
       style="
-        display:inline-flex;align-items:center;gap:.7rem;
+        display:inline-flex;align-items:center;gap:.8rem;flex-shrink:0;
         background:var(--red);color:var(--white);
         font-family:var(--font-display);font-size:1.1rem;font-weight:700;
-        text-transform:uppercase;letter-spacing:.12em;
-        padding:1rem 2.5rem;border-radius:8px;text-decoration:none;
+        text-transform:uppercase;letter-spacing:.14em;
+        padding:1.1rem 3rem;
+        text-decoration:none;
         transition:background .2s,transform .15s;
+        border:none;
       "
-      onmouseover="this.style.background='#c00000';this.style.transform='translateY(-2px)'"
+      onmouseover="this.style.background='#e53020';this.style.transform='translateY(-2px)'"
       onmouseout="this.style.background='var(--red)';this.style.transform='none'">
-      Inscriptions →
+      S'inscrire maintenant →
     </a>
   </div>
- 
+
 </section>
   
 <footer>
