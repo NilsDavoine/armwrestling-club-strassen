@@ -71,13 +71,13 @@ nav {
 }
 
 .nav-logo-img {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   border-radius: 50%;
   background: var(--dark2);
   padding: 2px;
-  filter: brightness(1.1) contrast(1.05);
+  filter: brightness(1.15) contrast(1.08);
 }
 
 .nav-logo {
@@ -126,6 +126,17 @@ nav {
 .nav-cta:hover {
   background: var(--red-hot) !important;
   color: var(--white) !important;
+}
+
+.nav-inscriptions {
+  color: var(--gold) !important;
+  border-bottom: 1px solid rgba(212,160,23,0.4);
+  transition: color 0.2s, border-color 0.2s !important;
+}
+
+.nav-inscriptions:hover {
+  color: #f0c040 !important;
+  border-color: #f0c040 !important;
 }
 
 .nav-burger {
@@ -283,35 +294,48 @@ h1 em {
   background: transparent;
   color: var(--white);
   padding: 0.9rem 2rem;
-  border: 1px solid rgba(245, 240, 232, 0.3);
+  border: 1px solid rgba(245, 240, 232, 0.65);
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .btn-outline:hover {
   border-color: var(--red);
   color: var(--red);
+  background: rgba(192,57,43,0.06);
 }
 
 .hero-stats {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0;
   align-items: flex-end;
+  background: rgba(10,10,10,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-right: 3px solid var(--red);
+  padding: 1.5rem 1.8rem;
+  backdrop-filter: blur(8px);
 }
 
 .stat {
   text-align: right;
+  padding: 1.1rem 0;
+  width: 100%;
+}
+
+.stat + .stat {
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: 2.8rem;
+  font-size: 3.8rem;
   font-weight: 900;
   color: var(--white);
   line-height: 1;
+  text-shadow: 0 0 40px rgba(192,57,43,0.25);
 }
 
 .stat-number span {
@@ -319,10 +343,11 @@ h1 em {
 }
 
 .stat-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: rgba(245,240,232,0.55);
+  margin-top: 0.2rem;
 }
 
 .hero-scroll {
@@ -336,27 +361,33 @@ h1 em {
   gap: 0.5rem;
   font-family: var(--font-display);
   font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: rgba(245,240,232,0.55);
   z-index: 2;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.hero-scroll:hover {
+  color: var(--white);
 }
 
 .scroll-line {
   width: 1px;
-  height: 40px;
+  height: 44px;
   background: linear-gradient(to bottom, var(--red), transparent);
-  animation: scrollPulse 1.8s ease-in-out infinite;
+  animation: scrollPulse 1.6s ease-in-out infinite;
 }
 
 @keyframes scrollPulse {
   0%, 100% {
-    opacity: 0.4;
-    transform: scaleY(1);
+    opacity: 0.5;
+    transform: scaleY(1) translateY(0);
   }
   50% {
     opacity: 1;
-    transform: scaleY(1.1);
+    transform: scaleY(1.15) translateY(4px);
   }
 }
 
@@ -1281,31 +1312,37 @@ footer p {
   gap: 1px;
   width: min(100%, 980px);
   margin-top: 0.5rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(192,57,43,0.15);
+  border: 1px solid rgba(192,57,43,0.25);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
 
 .quick-info-item {
-  background: rgba(10, 10, 10, 0.86);
+  background: rgba(20, 10, 10, 0.92);
   padding: 1.15rem 1.2rem;
   min-width: 0;
+  transition: background 0.2s;
+}
+
+.quick-info-item:hover {
+  background: rgba(30,12,12,0.98);
 }
 
 .quick-info-label {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: var(--red);
   margin-bottom: 0.35rem;
 }
 
 .quick-info-value {
-  font-size: 0.96rem;
-  color: var(--white);
+  font-size: 0.92rem;
+  color: rgba(245,240,232,0.9);
   font-weight: 500;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .location-badge-row {
