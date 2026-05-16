@@ -30,44 +30,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    .local-hero{background:var(--black);padding:7rem 4rem 5rem;border-bottom:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
-    .local-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(192,57,43,.08) 0%,transparent 65%);pointer-events:none}
-    .page-tag{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-    .page-tag::before{content:'';display:block;width:2rem;height:1px;background:var(--red)}
-    .page-title{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;text-transform:uppercase;line-height:1;color:var(--white);margin-bottom:1.5rem}
-    .page-title span{color:var(--red)}
-    .hero-stats-row{display:flex;gap:3rem;margin-top:2.5rem;flex-wrap:wrap}
-    .hero-stat{text-align:left}
-    .hero-stat-num{font-family:var(--font-display);font-size:2.8rem;font-weight:900;color:var(--white);line-height:1}
-    .hero-stat-num span{color:var(--red)}
-    .hero-stat-label{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);margin-top:.2rem}
-    .page-body{max-width:900px;margin:0 auto;padding:4rem 2rem}
-    .page-body h2{font-family:var(--font-display);font-size:1.9rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:3rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)}
-    .page-body h3{font-family:var(--font-display);font-size:1.3rem;font-weight:700;text-transform:uppercase;color:var(--red);margin:2rem 0 .75rem}
-    .page-body p{font-size:1rem;color:rgba(245,240,232,.75);line-height:1.9;margin-bottom:1.5rem}
-    .page-body ul{margin:0 0 1.5rem 1.5rem}
-    .page-body li{font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.8;margin-bottom:.4rem}
-    .page-body strong{color:var(--white);font-weight:600}
-    .callout{background:rgba(192,57,43,.08);border-left:3px solid var(--red);padding:1.5rem 1.8rem;margin:2.5rem 0}
-    .callout p{margin:0;color:rgba(245,240,232,.85)}
-    .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);margin:2rem 0}
-    .access-cell{background:var(--dark);padding:1.5rem}
-    .access-cell-label{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
-    .access-cell-val{font-size:.92rem;color:rgba(245,240,232,.8);line-height:1.6}
-    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.8));border:1px solid rgba(192,57,43,.3);padding:2.5rem;margin:3rem 0;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .5rem}
-    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.6)}
-    .nearby-section{background:var(--dark);padding:3rem 2rem;margin:3rem -2rem}
-    .nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.06);margin-top:1.5rem}
-    .nearby-item{background:var(--black);padding:1.2rem 1.5rem}
-    .nearby-name{font-family:var(--font-display);font-size:.9rem;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:.3rem}
-    .nearby-dist{font-size:.82rem;color:var(--red);font-family:var(--font-display);font-weight:700}
-    .breadcrumb{font-family:var(--font-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-bottom:1.5rem}
-    .breadcrumb a{color:rgba(245,240,232,.35);text-decoration:none}
-    .breadcrumb a:hover{color:var(--red)}
-    .breadcrumb span{margin:0 .5rem}
-  </style>
 </head>
 <body>
 
