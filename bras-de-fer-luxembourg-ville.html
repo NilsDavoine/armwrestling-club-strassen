@@ -30,6 +30,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="blog.css"/>
+
+  <style>
+    .sec{padding:3.5rem 0}
+    .sec-dark{background:var(--black)}
+    .sec-light{background:var(--dark2)}
+    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
+    .sec h2{font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
+    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
+    .sec ul,.sec ol{margin:0 0 1.4rem 1.8rem}
+    .sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
+    .sec strong{color:var(--white);font-weight:600}
+    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0}
+    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
+    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem}
+    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
+    .breadcrumb{font-family:var(--font-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
+    .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}
+    .breadcrumb a:hover{color:var(--red)}
+    .breadcrumb span{margin:0 .5rem}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}}
+  </style>
 </head>
 <body>
 
@@ -44,9 +67,8 @@
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
 </nav>
-
 <div class="local-hero">
-  <div style="max-width:900px;margin:0 auto;position:relative;z-index:1">
+  <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Bras de fer Luxembourg-ville</div>
     <div class="page-tag">Page locale · Luxembourg-ville</div>
     <h1 class="page-title">Bras de fer<br><span>Luxembourg-ville</span></h1>
@@ -61,15 +83,17 @@
       <a href="https://www.google.com/maps/search/?api=1&query=86+rue+des+Romains+Strassen+Luxembourg" target="_blank" rel="noopener" class="btn-outline">Voir sur Google Maps</a>
     </div>
   </div>
-</div>
 
-<div class="page-body">
-
-  <h2>Le seul club de bras de fer proche de Luxembourg-ville</h2>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<h2>Le seul club de bras de fer proche de Luxembourg-ville</h2>
   <p>L'<strong>Armwrestling Club Strassen</strong> est implanté au 86 rue des Romains à Strassen, à seulement 8 minutes en voiture de Luxembourg-ville et 12 minutes en transport en commun. C'est le club de bras de fer le plus accessible depuis le centre de la capitale luxembourgeoise.</p>
   <p>Membre de la <strong>Luxembourg Armwrestling Federation (LAF)</strong>, le club propose des entraînements le mardi soir à partir de 18h, ouverts à tous les niveaux — y compris aux personnes qui n'ont jamais pratiqué le bras de fer.</p>
+</div>
 
-  <h2>Comment venir depuis Luxembourg-ville</h2>
+<div class="sec sec-light">
+<div class="sec-inner">
+<h2>Comment venir depuis Luxembourg-ville</h2>
 
   <div class="access-grid">
     <div class="access-cell">
@@ -89,8 +113,11 @@
       <div class="access-cell-val">Garage blanc facilement identifiable. Sonnez à la porte d'entrée à côté de la porte de garage.</div>
     </div>
   </div>
+</div>
 
-  <h2>Les quartiers et communes proches</h2>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<h2>Les quartiers et communes proches</h2>
   <p>Le club est facilement accessible depuis de nombreux quartiers de Luxembourg-ville et communes alentour :</p>
 
   <div class="nearby-section">
@@ -106,8 +133,11 @@
       <div class="nearby-item"><div class="nearby-name">Leudelange</div><div class="nearby-dist">~12 min voiture</div></div>
     </div>
   </div>
+</div>
 
-  <h2>Pourquoi pratiquer le bras de fer à Luxembourg</h2>
+<div class="sec sec-light">
+<div class="sec-inner">
+<h2>Pourquoi pratiquer le bras de fer à Luxembourg</h2>
   <p>Le bras de fer est l'un des sports de force les plus accessibles et les moins coûteux disponibles au Luxembourg. Contrairement aux salles de fitness avec des abonnements mensuels élevés, une seule licence annuelle à 150€ donne accès à deux clubs (Strassen et Munsbach), au matériel professionnel, et aux compétitions officielles.</p>
   <p>C'est aussi le seul sport de combat individuel au Luxembourg où vous pouvez passer de <strong>débutant complet à compétiteur international</strong> en moins d'un an, avec des événements organisés chaque année à Munsbach sous l'égide de la <strong>Luxembourg Armwrestling Federation</strong>.</p>
 
@@ -119,15 +149,21 @@
     <li>Parking toujours disponible</li>
     <li>Transport en commun possible depuis la gare centrale</li>
   </ul>
+</div>
 
-  <h2>Un sport ouvert à tous les profils</h2>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<h2>Un sport ouvert à tous les profils</h2>
   <p>Le bras de fer est catégorisé par <strong>poids corporel</strong>, ce qui signifie que vous ne serez jamais opposé à quelqu'un de beaucoup plus grand ou lourd que vous. C'est un sport mixte — hommes et femmes pratiquent ensemble à l'entraînement dans une ambiance inclusive.</p>
 
   <div class="callout">
     <p><strong>Première séance :</strong> Venez directement le mardi à 18h au 86 rue des Romains à Strassen. Présentez-vous comme débutant. Vous serez accueilli, on vous explique les bases de sécurité, et vous essayez sur table dans les meilleures conditions. Aucun équipement à apporter.</p>
   </div>
+</div>
 
-  <h2>Le deuxième club : Munsbach (vendredi soir)</h2>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<h2>Le deuxième club : Munsbach (vendredi soir)</h2>
   <p>Une fois licencié, vous avez également accès au <strong>Grizzly of Luxembourg</strong> à Munsbach, le vendredi à 18h. À 17 minutes en train ou 13 minutes en voiture depuis Luxembourg-ville, c'est le complément idéal pour ajouter du sparring et de la pratique en match à votre progression.</p>
 
   <div class="cta-block">
@@ -139,6 +175,9 @@
   </div>
 
 </div>
+</div>
+</div>
+
 
 <footer>
   <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
