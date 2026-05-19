@@ -319,6 +319,26 @@ h1 em {
   backdrop-filter: blur(8px);
 }
 
+.hero-stats {
+  animation: heroStatsReveal 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  transform-origin: right center;
+  will-change: transform, opacity, clip-path;
+}
+
+@keyframes heroStatsReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(90px);
+    clip-path: inset(0 0 0 100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .stat {
   text-align: right;
   padding: 1.1rem 0;
