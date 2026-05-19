@@ -1701,3 +1701,10 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Featured blog card responsive */
+@media (max-width: 900px) {
+  #blog > .fade-in > a[href] {
+    grid-template-columns: 1fr !important;
+  }
+}
