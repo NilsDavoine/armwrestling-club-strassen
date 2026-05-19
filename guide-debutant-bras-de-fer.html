@@ -7,27 +7,66 @@
   <meta name="description" content="Guide complet pour débuter le bras de fer au Luxembourg. Technique, matériel, entraînement, sécurité et premier essai gratuit à Strassen. Tout ce qu'il faut savoir." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/guide-debutant-bras-de-fer.html" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Guide débutant bras de fer : tout savoir avant de commencer",
-    "description": "Guide complet pour débuter le bras de fer au Luxembourg : technique, matériel, entraînement et premier essai.",
-    "author": { "@type": "Organization", "name": "Armwrestling Club Strassen" },
-    "publisher": { "@type": "Organization", "name": "Armwrestling Club Strassen", "url": "https://nilsdavoine.github.io/armwrestling-club-strassen/" },
-    "mainEntityOfPage": "https://nilsdavoine.github.io/armwrestling-club-strassen/guide-debutant-bras-de-fer.html"
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="blog.css" />
+  <style>
+    .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(192,57,43,.25);border:1px solid rgba(192,57,43,.4);margin:0 0 0 0}
+    .info-cell{background:rgba(10,5,5,.95);padding:1.6rem 1.4rem;text-align:center}
+    .info-cell-label{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+    .info-cell-val{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--white);text-transform:uppercase;line-height:1.1}
+    .sec{padding:3.5rem 0}
+    .sec-dark{background:var(--black)}
+    .sec-light{background:var(--dark2)}
+    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
+    .sec h2{font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
+    .sec h2 span{color:var(--red)}
+    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
+    .sec ul{margin:0 0 1.4rem 1.8rem}
+    .sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
+    .sec strong{color:var(--white);font-weight:600}
+    .img-aside{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+    .img-aside.rev{direction:rtl}
+    .img-aside.rev > *{direction:ltr}
+    .img-aside img{width:100%;height:280px;object-fit:cover;border:1px solid rgba(255,255,255,.08);display:block}
+    .img-caption{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.32);margin-top:.5rem}
+    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0}
+    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
+    .accordion{margin:1.5rem 0;border:1px solid rgba(255,255,255,.08)}
+    .accordion-item{border-bottom:1px solid rgba(255,255,255,.06)}
+    .accordion-item:last-child{border-bottom:none}
+    .acc-btn{width:100%;background:var(--dark);border:none;padding:1.3rem 1.8rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-align:left;transition:background .2s}
+    .acc-btn:hover{background:rgba(255,255,255,.04)}
+    .acc-btn.open{background:rgba(192,57,43,.1);border-left:3px solid var(--red)}
+    .acc-num{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.15em;color:var(--red);min-width:28px}
+    .acc-label{font-family:var(--font-display);font-size:1.05rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;flex:1}
+    .acc-icon{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--red);transition:transform .25s;flex-shrink:0}
+    .acc-btn.open .acc-icon{transform:rotate(45deg)}
+    .acc-body{display:none;padding:1.4rem 1.8rem 1.6rem;background:rgba(10,5,5,.55);font-size:.97rem;color:rgba(245,240,232,.72);line-height:1.85}
+    .acc-body.open{display:block}
+    .errors-box{background:linear-gradient(135deg,rgba(192,57,43,.13) 0%,rgba(10,5,5,.85) 70%);border:1px solid rgba(192,57,43,.35);padding:2.2rem 2.5rem;margin:1.5rem 0}
+    .errors-box-title{font-family:var(--font-display);font-size:1.15rem;font-weight:900;text-transform:uppercase;color:var(--white);margin-bottom:1.4rem;letter-spacing:.05em}
+    .err-item{display:flex;gap:1.2rem;padding:1rem 0;border-bottom:1px solid rgba(192,57,43,.12);align-items:flex-start}
+    .err-item:last-child{border-bottom:none;padding-bottom:0}
+    .err-num{font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:rgba(192,57,43,.3);line-height:1;min-width:34px}
+    .err-title{font-family:var(--font-display);font-size:.95rem;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:.25rem;letter-spacing:.05em}
+    .err-desc{font-size:.9rem;color:rgba(245,240,232,.62);line-height:1.7}
+    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem}
+    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
+    .breadcrumb{font-family:var(--font-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
+    .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}
+    .breadcrumb a:hover{color:var(--red)}
+    .breadcrumb span{margin:0 .5rem}
+    @media(max-width:768px){.img-aside,.img-aside.rev{grid-template-columns:1fr;direction:ltr}.info-grid{grid-template-columns:repeat(2,1fr)}.sec-inner{padding:0 1.5rem}}
+  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img" /><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
   <ul class="nav-links">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Entraînements</a></li>
@@ -39,115 +78,209 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="article-hero">
-  <div style="max-width:900px;margin:0 auto;">
+  <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="index.html#blog">Blog</a><span>›</span>Guide débutant</div>
     <div class="article-tag">Guide · Débutant</div>
     <h1 class="article-title">Guide débutant<br><span>bras de fer</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:560px;line-height:1.8;margin-bottom:1.5rem;">Tout ce qu'il faut savoir avant de venir pour la première fois : technique, sécurité, matériel, niveau requis et comment progresser.</p>
-    <div class="article-meta">Armwrestling Club Strassen · Luxembourg · Guide complet</div>
+    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Tout ce qu'il faut savoir avant de venir pour la première fois : technique, sécurité, matériel, niveau requis et comment progresser.</p>
+    <div style="font-size:.85rem;color:rgba(245,240,232,.4);letter-spacing:.1em;text-transform:uppercase;font-family:var(--font-display);">Armwrestling Club Strassen · Luxembourg · Guide complet</div>
   </div>
 </div>
 
-<div class="article-body">
-
-  <div class="info-grid">
-    <div class="info-cell"><div class="info-cell-label">Niveau requis</div><div class="info-cell-val">Aucun</div></div>
-    <div class="info-cell"><div class="info-cell-label">1ère séance</div><div class="info-cell-val">Gratuite</div></div>
-    <div class="info-cell"><div class="info-cell-label">Lieu</div><div class="info-cell-val">Strassen</div></div>
-    <div class="info-cell"><div class="info-cell-label">Horaire</div><div class="info-cell-val">Mardi 18h</div></div>
-  </div>
-
-  <h2>Qu'est-ce que le bras de fer sportif ?</h2>
-  <p>Le bras de fer, ou <strong>armwrestling</strong>, est un sport de combat individuel qui oppose deux athlètes sur une table officielle. Contrairement à l'idée reçue, ce n'est pas simplement une question de force brute — c'est un sport <strong>technique, stratégique et explosif</strong> qui combine force de prise, force d'avant-bras, placement de corps et timing.</p>
-  <p>Au Luxembourg, le bras de fer est encadré par la <strong>Luxembourg Armwrestling Federation (LAF)</strong>, qui regroupe deux clubs officiels : l'Armwrestling Club Strassen et le Grizzly of Luxembourg à Munsbach. Le sport est reconnu par le Comité International Olympique et sera présent aux Jeux Paralympiques de Los Angeles 2028.</p>
-
-  <h2>Faut-il être fort pour commencer ?</h2>
-  <p>Non — et c'est l'une des premières surprises des nouveaux venus. Un débutant bien technique peut régulièrement battre quelqu'un de plus musclé. Le bras de fer récompense d'abord le <strong>placement</strong>, l'<strong>angle de prise</strong> et la <strong>vitesse de démarrage</strong>.</p>
-
-  <div class="callout">
-    <p><strong>À savoir :</strong> Le bras de fer se pratique par catégories de poids. Vous serez toujours face à quelqu'un de gabarit comparable en compétition. Il n'y a pas de "trop petit" ou "trop léger" pour pratiquer ce sport.</p>
-  </div>
-
-  <h2>Les bases techniques à connaître</h2>
-
-  <h3>1. La prise de main</h3>
-  <p>La prise est fondamentale. En compétition, les deux athlètes saisissent la main de l'adversaire avec le pouce face au pouce. Le placement des doigts, la position du poignet et l'angle de la main avant le signal de départ conditionnent déjà une grande partie du résultat.</p>
-
-  <h3>2. Le placement du corps</h3>
-  <p>Le bras de fer n'engage pas que le bras. L'épaule, le dos, les hanches et les jambes interviennent tous dans la transmission de force. Un bon placement permet de mettre tout le poids du corps derrière le mouvement — c'est ce qu'on apprend en priorité à l'entraînement.</p>
-
-  <h3>3. Le démarrage</h3>
-  <p>Le match démarre au signal de l'arbitre. La première fraction de seconde est souvent décisive. On parle d'un sport <strong>anaérobie alactique</strong> — un effort maximal, très court, explosif. La préparation mentale au départ est donc aussi importante que la force physique.</p>
-
-  <h3>4. Les mouvements principaux</h3>
-  <ul>
-    <li><strong>Top roll</strong> : on roule sur le dessus de la main adverse pour gagner en levier</li>
-    <li><strong>Hook</strong> : on tire vers soi en fléchissant le poignet pour plaquer latéralement</li>
-    <li><strong>Press</strong> : on pousse vers le bas en utilisant l'épaule et la masse corporelle</li>
-  </ul>
-  <p>En début de pratique, on apprend à reconnaître ces mouvements et à les exécuter proprement avant de chercher à gagner.</p>
-
-  <h2>La sécurité — ce qu'il faut savoir absolument</h2>
-  <p>Le bras de fer comporte un risque réel de fracture de l'humérus, surtout chez les débutants qui résistent par réflexe dans une mauvaise position. Ce risque est quasiment nul si l'on respecte deux règles simples :</p>
-  <ul>
-    <li>Ne jamais "tordre" le bras dans un angle de résistance — si l'adversaire vous retourne le bras, <strong>lâchez prise</strong> ou faites signe à l'arbitre</li>
-    <li>Toujours s'échauffer correctement les poignets, avant-bras et épaules avant de monter sur table</li>
-  </ul>
-
-  <div class="callout">
-    <p><strong>À l'entraînement :</strong> Les coaches de l'ACS Strassen expliquent systématiquement les règles de sécurité lors de la première séance. On ne met jamais un débutant en situation de risque avant qu'il ne comprenne les gestes de sécurité de base.</p>
-  </div>
-
-  <h2>L'équipement nécessaire</h2>
-  <p>Pour débuter, vous n'avez besoin de <strong>rien de spécial</strong>. Une tenue de sport suffit. Le club met à disposition :</p>
-  <ul>
-    <li>Tables officielles aux normes compétition</li>
-    <li>Système à poulies pour le travail spécifique de force</li>
-    <li>Poignées armwrestling pour la prise et le poignet</li>
-    <li>Bandes élastiques et haltères pour l'échauffement et le renforcement</li>
-  </ul>
-  <p>Plus tard, certains athlètes investissent dans des <strong>fat grips</strong> (épaississeurs de barre), des <strong>sangles de poignet</strong> ou des <strong>poignées spécifiques</strong> pour l'entraînement à domicile — mais rien de tout cela n'est nécessaire pour commencer.</p>
-
-  <h2>Comment progresser après la première séance</h2>
-
-  <h3>Les 3 premiers mois</h3>
-  <p>L'objectif n'est pas de gagner, mais de <strong>comprendre</strong>. Technique, placement, sécurité, échauffement spécifique. La plupart des débutants progressent très vite sur les 3 premiers mois car tout est nouveau et chaque séance apporte quelque chose.</p>
-
-  <h3>Le sparring</h3>
-  <p>La progression principale vient du <strong>sparring régulier</strong> avec des partenaires de niveaux différents. C'est pour ça que les deux clubs de la LAF sont complémentaires : Strassen le mardi pour apprendre les fondamentaux, Munsbach le vendredi pour tester sa technique en match réel.</p>
-
-  <h3>Le renforcement spécifique</h3>
-  <p>Certains muscles sont particulièrement sollicités en bras de fer : les fléchisseurs des doigts, les extenseurs du poignet, le biceps, le brachioradial et les muscles de l'épaule. Des exercices ciblés à la poulie, avec des élastiques ou des poignées spécifiques accélèrent nettement la progression.</p>
-
-  <h2>Deux clubs pour progresser plus vite</h2>
-  <p>L'une des forces de la communauté armwrestling luxembourgeoise est d'avoir deux clubs actifs sous la même fédération. Une seule licence LAF donne accès aux deux :</p>
-  <ul>
-    <li><strong>Strassen (mardi 18h)</strong> — technique, fondamentaux, idéal pour débuter</li>
-    <li><strong>Munsbach (vendredi 18h)</strong> — sparring, match practice, athlètes de niveau international présents</li>
-  </ul>
-
-  <div class="cta-block">
-    <div>
-      <h3>Essayez gratuitement</h3>
-      <p>Première séance gratuite le mardi à 18h à Strassen. Aucune inscription préalable.</p>
+<!-- INFO GRID -->
+<div style="background:var(--black);padding:0 3rem;">
+  <div style="max-width:960px;margin:0 auto;padding:2rem 0 2.5rem;">
+    <div class="info-grid">
+      <div class="info-cell"><div class="info-cell-label">Niveau requis</div><div class="info-cell-val">Aucun</div></div>
+      <div class="info-cell"><div class="info-cell-label">1ère séance</div><div class="info-cell-val">Gratuite</div></div>
+      <div class="info-cell"><div class="info-cell-label">Lieu</div><div class="info-cell-val">Strassen</div></div>
+      <div class="info-cell"><div class="info-cell-label">Horaire</div><div class="info-cell-val">Mardi 18h</div></div>
     </div>
-    <a href="index.html#contact" class="btn-primary">Planifier mon essai</a>
   </div>
+</div>
 
-  <h2>Les erreurs courantes des débutants</h2>
-  <ol>
-    <li><strong>Forcer sans technique</strong> — souvent contre-productif et risqué</li>
-    <li><strong>Négliger l'échauffement</strong> — les poignets et avant-bras ont besoin de 10-15 min d'activation</li>
-    <li><strong>Se concentrer uniquement sur le biceps</strong> — la prise, le poignet et l'épaule comptent autant</li>
-    <li><strong>Comparer sa progression à celle des autres</strong> — chaque morphologie évolue différemment</li>
-    <li><strong>Ne pas venir régulièrement</strong> — deux séances par semaine font bien plus que deux séances en un mois</li>
-  </ol>
+<!-- S1 Qu'est-ce que -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <div class="img-aside">
+      <div>
+        <h2>Qu'est-ce que le bras de fer sportif ?</h2>
+        <p>Le bras de fer, ou <strong>armwrestling</strong>, est un sport de combat individuel qui oppose deux athlètes sur une table officielle. Contrairement à l'idée reçue, ce n'est pas simplement une question de force brute — c'est un sport <strong>technique, stratégique et explosif</strong> qui combine force de prise, force d'avant-bras, placement de corps et timing.</p>
+        <p>Au Luxembourg, le bras de fer est encadré par la <strong>Luxembourg Armwrestling Federation (LAF)</strong>, qui regroupe deux clubs officiels : l'Armwrestling Club Strassen et le Grizzly of Luxembourg à Munsbach.</p>
+      </div>
+      <div>
+        <img src="bras-de-fer-luxembourg-competition-officielle-table.jpg" alt="Athlètes de bras de fer sur table officielle lors d'une compétition au Luxembourg — Armwrestling Club Strassen" loading="lazy"/>
+        <div class="img-caption">Compétition officielle · Luxembourg Armwrestling Federation · Munsbach</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <h2>Le bras de fer au Luxembourg en 2025</h2>
-  <p>Le sport connaît une croissance rapide au Luxembourg. La <strong>Luxembourg Armwrestling Federation</strong> organise chaque année la Luxembourg Armwrestling Competition, qui rassemble plus de 100 athlètes de niveau international. C'est l'un des rares sports de combat où l'on peut passer de débutant complet à compétiteur en moins d'un an avec une pratique régulière.</p>
-  <p>La communauté est petite, soudée, et vraiment accueillante avec les nouveaux. Il n'y a aucun filtre à l'entrée — juste l'envie d'apprendre.</p>
+<!-- S2 Faut-il être fort -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <div class="img-aside rev">
+      <div>
+        <h2>Faut-il être fort pour commencer ?</h2>
+        <p>Non — et c'est l'une des premières surprises des nouveaux venus. Un débutant bien technique peut régulièrement battre quelqu'un de plus musclé. Le bras de fer récompense d'abord trois facteurs clés :</p>
+        <ul>
+          <li><strong>Le placement</strong> — position du corps et du coude sur la table</li>
+          <li><strong>L'angle de prise</strong> — orientation de la main et du poignet avant le signal</li>
+          <li><strong>La vitesse de démarrage</strong> — les premières millisecondes sont souvent décisives</li>
+        </ul>
+        <div class="callout"><p><strong>À savoir :</strong> Le bras de fer se pratique par catégories de poids. Vous serez toujours face à quelqu'un de gabarit comparable en compétition.</p></div>
+      </div>
+      <div>
+        <img src="bras-de-fer-placement-angle-prise-technique-debutant.jpg" alt="Démonstration du placement et de l'angle de prise en bras de fer — technique pour débutants au club de Strassen Luxembourg" loading="lazy"/>
+        <div class="img-caption">Placement · Angle de prise · Démarrage — les 3 clés techniques</div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- S3 Bases techniques accordion -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>Les bases techniques à connaître</h2>
+    <p>Cliquez sur chaque élément pour découvrir le détail.</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">01</span><span class="acc-label">La prise de main</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">La prise est fondamentale. Les deux athlètes saisissent la main de l'adversaire avec le pouce face au pouce. Le placement des doigts, la position du poignet et l'angle de la main avant le signal conditionnent déjà une grande partie du résultat. Une prise haute favorise le top roll ; une prise basse et serrée prépare le hook.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">02</span><span class="acc-label">Le placement du corps</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Le bras de fer n'engage pas que le bras. L'épaule, le dos, les hanches et les jambes interviennent tous dans la transmission de force. Un bon placement permet de mettre tout le poids du corps derrière le mouvement — c'est ce qu'on apprend en priorité lors des premières séances à l'ACS Strassen.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">03</span><span class="acc-label">Le démarrage</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Le match démarre au signal de l'arbitre. La première fraction de seconde est souvent décisive. On parle d'un sport <strong>anaérobie alactique</strong> — un effort maximal, très court, explosif. La préparation mentale au départ est aussi importante que la force physique. Travailler son démarrage de façon répétitive jusqu'à ce qu'il soit automatique est l'un des secrets des bons compétiteurs.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">04</span><span class="acc-label">Les mouvements principaux</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">
+          <strong>Top roll</strong> — on roule sur le dessus de la main adverse pour gagner en levier. Requiert une forte prise et un bon travail de poignet.<br><br>
+          <strong>Hook</strong> — on tire vers soi en fléchissant le poignet pour plaquer latéralement. Utilise davantage la force brute du biceps.<br><br>
+          <strong>Press</strong> — on pousse vers le bas en utilisant l'épaule et la masse corporelle. Souvent combiné aux deux autres.<br><br>
+          En début de pratique, on apprend à reconnaître ces mouvements et à les exécuter proprement avant de chercher à gagner.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4 Sécurité -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>La sécurité — ce qu'il faut savoir absolument</h2>
+    <p>Le bras de fer comporte un risque réel de fracture de l'humérus, surtout chez les débutants qui résistent par réflexe dans une mauvaise position. Ce risque est quasiment nul si l'on respecte deux règles simples :</p>
+    <ul>
+      <li>Ne jamais "tordre" le bras dans un angle de résistance — si l'adversaire vous retourne le bras, <strong>lâchez prise</strong> ou faites signe à l'arbitre</li>
+      <li>Toujours s'échauffer correctement les poignets, avant-bras et épaules avant de monter sur table</li>
+    </ul>
+    <div class="callout"><p><strong>À l'entraînement :</strong> Les coaches de l'ACS Strassen expliquent systématiquement les règles de sécurité lors de la première séance. On ne met jamais un débutant en situation de risque avant qu'il ne comprenne les gestes de sécurité de base.</p></div>
+  </div>
+</div>
+
+<!-- S5 Équipement -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>L'équipement nécessaire</h2>
+    <p>Pour débuter, vous n'avez besoin de <strong>rien de spécial</strong>. Une tenue de sport suffit. Le club met à disposition :</p>
+    <ul>
+      <li>Tables officielles aux normes compétition</li>
+      <li>Système à poulies pour le travail spécifique de force</li>
+      <li>Poignées armwrestling pour la prise et le poignet</li>
+      <li>Bandes élastiques et haltères pour l'échauffement et le renforcement</li>
+    </ul>
+    <p>Plus tard, certains athlètes investissent dans des <strong>fat grips</strong>, des <strong>sangles de poignet</strong> ou des <strong>poignées spécifiques</strong> — mais rien de tout cela n'est nécessaire pour commencer.</p>
+  </div>
+</div>
+
+<!-- S6 Progresser accordion -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>Comment progresser après la première séance</h2>
+    <p>Cliquez pour explorer chaque étape de progression.</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">01</span><span class="acc-label">Les 3 premiers mois</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">L'objectif n'est pas de gagner, mais de <strong>comprendre</strong>. Technique, placement, sécurité, échauffement spécifique. La plupart des débutants progressent très vite sur les 3 premiers mois car tout est nouveau et chaque séance apporte quelque chose de concret. Ne cherchez pas à forcer — observez, posez des questions, répétez.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">02</span><span class="acc-label">Le sparring</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">La progression principale vient du <strong>sparring régulier</strong> avec des partenaires de niveaux différents. Strassen le mardi pour les fondamentaux, Munsbach le vendredi pour tester sa technique en match réel face à des athlètes de niveau international.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">03</span><span class="acc-label">Le renforcement spécifique</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Certains muscles sont particulièrement sollicités : les fléchisseurs des doigts, les extenseurs du poignet, le biceps, le brachioradial et les muscles de l'épaule. Des exercices ciblés à la poulie, avec des élastiques ou des poignées spécifiques accélèrent nettement la progression entre les séances en club.</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <div>
+        <h3>Essayez gratuitement</h3>
+        <p>Première séance gratuite le mardi à 18h à Strassen. Aucune inscription préalable.</p>
+      </div>
+      <a href="index.html#contact" class="btn-primary">Planifier mon essai</a>
+    </div>
+  </div>
+</div>
+
+<!-- S7 Erreurs courantes -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>Les erreurs courantes des débutants</h2>
+    <p>À éviter absolument pour progresser vite et rester en bonne santé.</p>
+    <div class="errors-box">
+      <div class="errors-box-title">⚠ 5 erreurs qui freinent la progression</div>
+      <div class="err-item">
+        <div class="err-num">01</div>
+        <div><div class="err-title">Forcer sans technique</div><div class="err-desc">La force brute sans technique est contre-productive et dangereuse. Maîtrisez le placement et la prise avant d'augmenter l'intensité.</div></div>
+      </div>
+      <div class="err-item">
+        <div class="err-num">02</div>
+        <div><div class="err-title">Négliger l'échauffement</div><div class="err-desc">Les poignets et avant-bras ont besoin de 10-15 minutes d'activation avant tout effort. Un échauffement bâclé est la première cause de blessure.</div></div>
+      </div>
+      <div class="err-item">
+        <div class="err-num">03</div>
+        <div><div class="err-title">Se concentrer uniquement sur le biceps</div><div class="err-desc">La prise, le poignet et l'épaule comptent autant — voire plus. Travailler uniquement le biceps crée un déséquilibre musculaire.</div></div>
+      </div>
+      <div class="err-item">
+        <div class="err-num">04</div>
+        <div><div class="err-title">Comparer sa progression à celle des autres</div><div class="err-desc">Chaque morphologie évolue différemment. Un bras court ou long, une prise naturellement forte ou faible — tout cela change le rythme d'apprentissage.</div></div>
+      </div>
+      <div class="err-item">
+        <div class="err-num">05</div>
+        <div><div class="err-title">Ne pas venir régulièrement</div><div class="err-desc">Deux séances par semaine pendant un mois font bien plus que deux séances espacées. La régularité est la clé principale de la progression.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8 Luxembourg -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>Le bras de fer au Luxembourg en 2025</h2>
+    <p>Le sport connaît une croissance rapide au Luxembourg. La <strong>Luxembourg Armwrestling Federation</strong> organise chaque année la Luxembourg Armwrestling Competition, qui rassemble plus de 100 athlètes de niveau international. C'est l'un des rares sports de combat où l'on peut passer de débutant complet à compétiteur en moins d'un an avec une pratique régulière.</p>
+    <p>La communauté est petite, soudée, et vraiment accueillante avec les nouveaux. Il n'y a aucun filtre à l'entrée — juste l'envie d'apprendre.</p>
+  </div>
 </div>
 
 <footer>
@@ -162,5 +295,15 @@
   <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
+<script>
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b=>{
+    b.classList.remove('open');b.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){btn.classList.add('open');body.classList.add('open');}
+}
+</script>
 </body>
 </html>
