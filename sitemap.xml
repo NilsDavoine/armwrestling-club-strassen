@@ -3,7 +3,7 @@
 
   <!-- Page principale -->
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/</loc>
+    <loc>https://armwrestlingclubstrassen.com/</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,13 +11,14 @@
 
   <!-- Pages locales SEO -->
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/bras-de-fer-luxembourg-ville.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/bras-de-fer-luxembourg-ville.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/sport-force-luxembourg.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/sport-force-luxembourg.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -25,25 +26,28 @@
 
   <!-- Pages locales existantes -->
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/entrainement-bras-de-fer-strassen.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/competition-bras-de-fer-luxembourg.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/bras-de-fer-luxembourg-comment-commencer.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/bras-de-fer-luxembourg-comment-commencer.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/club-bras-de-fer-debutant-luxembourg.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/club-bras-de-fer-debutant-luxembourg.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -51,31 +55,35 @@
 
   <!-- Articles blog -->
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/guide-debutant-bras-de-fer.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/guide-debutant-bras-de-fer.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/preparation-competition-bras-de-fer.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/preparation-competition-bras-de-fer.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/regles-officielles-bras-de-fer.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/regles-officielles-bras-de-fer.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/sport-de-force-luxembourg-comparatif.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/sport-de-force-luxembourg-comparatif.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/entrainement-bras-de-fer-maison.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -83,7 +91,7 @@
 
   <!-- Outil tournoi -->
   <url>
-    <loc>https://nilsdavoine.github.io/armwrestling-club-strassen/tournament.html</loc>
+    <loc>https://armwrestlingclubstrassen.com/tournament.html</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
