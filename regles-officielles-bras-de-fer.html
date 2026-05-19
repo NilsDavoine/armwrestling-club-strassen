@@ -1,17 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Règles officielles du bras de fer sportif | ACS Luxembourg</title>
-  <meta name="description" content="Les règles officielles du bras de fer sportif expliquées clairement : table, prise, fautes, arbitrage, catégories de poids et format des matchs. Par l'Armwrestling Club Strassen." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/regles-officielles-bras-de-fer.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="blog.css" />
+  <meta name="description" content="Les règles officielles du bras de fer sportif expliquées clairement : table, prise, fautes, arbitrage et format des matchs. Par l'Armwrestling Club Strassen Luxembourg."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://nilsdavoine.github.io/armwrestling-club-strassen/regles-officielles-bras-de-fer.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="blog.css"/>
+  <style>
+    .sec{padding:3.5rem 0}
+    .sec-dark{background:var(--black)}
+    .sec-light{background:var(--dark2)}
+    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
+    .sec h2{font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
+    .sec h2 span{color:var(--red)}
+    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
+    .sec ul{margin:0 0 1.4rem 1.8rem}
+    .sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
+    .sec strong{color:var(--white);font-weight:600}
+    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0}
+    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
+    /* Accordion */
+    .accordion{margin:1.5rem 0;border:1px solid rgba(255,255,255,.08)}
+    .accordion-item{border-bottom:1px solid rgba(255,255,255,.06)}
+    .accordion-item:last-child{border-bottom:none}
+    .acc-btn{width:100%;background:var(--dark);border:none;padding:1.3rem 1.8rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-align:left;transition:background .2s}
+    .acc-btn:hover{background:rgba(255,255,255,.04)}
+    .acc-btn.open{background:rgba(192,57,43,.1);border-left:3px solid var(--red)}
+    .acc-num{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:.15em;color:var(--red);min-width:28px}
+    .acc-label{font-family:var(--font-display);font-size:1.05rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;flex:1}
+    .acc-icon{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--red);transition:transform .25s;flex-shrink:0}
+    .acc-btn.open .acc-icon{transform:rotate(45deg)}
+    .acc-body{display:none;padding:1.4rem 1.8rem 1.6rem;background:rgba(10,5,5,.55);font-size:.97rem;color:rgba(245,240,232,.72);line-height:1.85}
+    .acc-body.open{display:block}
+    /* Image aside */
+    .img-aside{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+    .img-aside img{width:100%;height:280px;object-fit:cover;border:1px solid rgba(255,255,255,.08);display:block}
+    .img-caption{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.32);margin-top:.5rem}
+    /* Fautes premium */
+    .foul-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(192,57,43,.2);border:1px solid rgba(192,57,43,.3);margin:1.5rem 0}
+    .foul-item{background:rgba(10,5,5,.92);padding:1.5rem 1.6rem}
+    .foul-num{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:rgba(192,57,43,.3);line-height:1;margin-bottom:.5rem}
+    .foul-name{font-family:var(--font-display);font-size:.9rem;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:.4rem;letter-spacing:.05em}
+    .foul-desc{font-size:.88rem;color:rgba(245,240,232,.58);line-height:1.65}
+    /* Format compétitions */
+    .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);margin:1.5rem 0}
+    .format-cell{background:var(--dark);padding:2rem 1.6rem}
+    .format-icon{font-size:1.6rem;margin-bottom:.75rem}
+    .format-title{font-family:var(--font-display);font-size:1rem;font-weight:900;text-transform:uppercase;color:var(--white);margin-bottom:.5rem;letter-spacing:.05em}
+    .format-desc{font-size:.88rem;color:rgba(245,240,232,.55);line-height:1.7}
+    /* Techniques premium accordion */
+    .tech-accordion{margin:1.5rem 0}
+    .tech-item{margin-bottom:2px}
+    .tech-btn{width:100%;background:var(--dark);border:1px solid rgba(255,255,255,.07);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;cursor:pointer;text-align:left;transition:background .2s,border-color .2s}
+    .tech-btn:hover{background:rgba(255,255,255,.03);border-color:rgba(192,57,43,.25)}
+    .tech-btn.open{background:rgba(192,57,43,.1);border-color:rgba(192,57,43,.4);border-left:4px solid var(--red)}
+    .tech-badge{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid rgba(192,57,43,.4);color:var(--red);background:rgba(192,57,43,.08);white-space:nowrap}
+    .tech-name{font-family:var(--font-display);font-size:1.3rem;font-weight:900;text-transform:uppercase;color:var(--white);flex:1;letter-spacing:.04em}
+    .tech-icon{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--red);transition:transform .25s;flex-shrink:0}
+    .tech-btn.open .tech-icon{transform:rotate(45deg)}
+    .tech-body{display:none;background:rgba(8,3,3,.7);border:1px solid rgba(255,255,255,.05);border-top:none;padding:1.8rem 2rem}
+    .tech-body.open{display:block}
+    .tech-body p{font-size:.97rem;color:rgba(245,240,232,.72);line-height:1.9;margin-bottom:.8rem}
+    .tech-body p:last-child{margin-bottom:0}
+    /* Age categories */
+    .age-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.05);margin:1.5rem 0}
+    .age-cell{background:var(--dark);padding:1.4rem 1.2rem;text-align:center}
+    .age-name{font-family:var(--font-display);font-size:.95rem;font-weight:900;text-transform:uppercase;color:var(--white);margin-bottom:.4rem}
+    .age-range{font-size:.82rem;color:var(--red);font-family:var(--font-display);font-weight:700;letter-spacing:.05em}
+    /* Compétition finale block */
+    .final-comp{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,5,5,.85));border:1px solid rgba(192,57,43,.3);padding:2.2rem 2.5rem;margin:1.5rem 0;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
+    .final-comp-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem}
+    .final-comp-title{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:.5rem}
+    .final-comp-desc{font-size:.9rem;color:rgba(245,240,232,.55);line-height:1.7}
+    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem}
+    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
+    .breadcrumb{font-family:var(--font-display);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
+    .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}
+    .breadcrumb a:hover{color:var(--red)}
+    .breadcrumb span{margin:0 .5rem}
+    @media(max-width:768px){.img-aside{grid-template-columns:1fr}.foul-grid,.format-grid,.age-grid{grid-template-columns:1fr 1fr}.sec-inner{padding:0 1.5rem}.final-comp{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 
@@ -27,114 +102,235 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="article-hero">
-  <div style="max-width:900px;margin:0 auto;">
+  <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="index.html#blog">Blog</a><span>›</span>Règles officielles</div>
     <div class="article-tag">Référence · Règlement</div>
     <h1 class="article-title">Règles officielles<br><span>du bras de fer</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Table, prise, fautes, arbitrage, catégories de poids et format des compétitions. Le règlement expliqué clairement pour les pratiquants et les spectateurs.</p>
+    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Table, prise, fautes, arbitrage et format des compétitions. Le règlement WAF expliqué clairement pour les pratiquants et les spectateurs.</p>
     <div style="font-size:.85rem;color:rgba(245,240,232,.4);letter-spacing:.1em;text-transform:uppercase;font-family:var(--font-display);">ACS Luxembourg · Règlement WAF / LAF</div>
   </div>
 </div>
 
-<div class="article-body">
-
-  <p>Le bras de fer sportif est régi par la <strong>World Armwrestling Federation (WAF)</strong> au niveau mondial, et par la <strong>Luxembourg Armwrestling Federation (LAF)</strong> au Luxembourg. Les règles présentées ici sont celles appliquées dans toutes les compétitions officielles, dont la Luxembourg Armwrestling Competition organisée chaque année à Munsbach.</p>
-
-  <h2>La table officielle</h2>
-  <p>La compétition se déroule sur une <strong>table officielle homologuée</strong>. Elle comporte :</p>
-  <ul>
-    <li>Deux coussins pour les coudes, positionnés à hauteur réglementaire</li>
-    <li>Deux poignées latérales que chaque athlète saisit de sa main libre</li>
-    <li>Une surface antidérapante</li>
-    <li>Des zones de "pin" (victoire) marquées de chaque côté</li>
-  </ul>
-  <p>Les athlètes sont debout ou assis selon leur confort, les coudes posés sur les coussins. La prise de main se fait au centre de la table, pouce contre pouce.</p>
-
-  <h2>Le déroulement d'un match</h2>
-
-  <div class="rule-card"><div class="rule-num">01</div><div class="rule-title">La mise en place</div><div class="rule-desc">Les deux athlètes placent leur coude sur le coussin. L'arbitre positionne et valide la prise de main — pouce contre pouce, alignés. Chaque athlète tient la poignée latérale de sa main libre.</div></div>
-  <div class="rule-card"><div class="rule-num">02</div><div class="rule-title">Le signal de départ</div><div class="rule-desc">L'arbitre vérifie que les deux athlètes sont prêts, puis donne le signal verbal "Ready — Go !" Le match commence instantanément.</div></div>
-  <div class="rule-card"><div class="rule-num">03</div><div class="rule-title">Le combat</div><div class="rule-desc">Les athlètes cherchent à amener le dos de la main adverse au contact du coussin de pin. L'utilisation du corps, des épaules et du placement est autorisée dans les limites du règlement.</div></div>
-  <div class="rule-card"><div class="rule-num">04</div><div class="rule-title">La victoire</div><div class="rule-desc">Le match est gagné quand le dos de la main adverse touche le coussin de pin, ou quand l'adversaire reçoit deux avertissements (fautes). L'arbitre siffle et désigne le vainqueur.</div></div>
-
-  <h2>Les catégories de poids</h2>
-  <p>Le bras de fer se dispute par catégories de poids corporel, bras droit et bras gauche séparément. Les catégories varient légèrement selon les compétitions, mais voici les plus courantes :</p>
-
-  <table class="weights-table">
-    <thead>
-      <tr><th>Catégorie</th><th>Hommes</th><th>Femmes</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Légère</td><td>jusqu'à 70 kg</td><td>jusqu'à 55 kg</td></tr>
-      <tr><td>Mi-légère</td><td>jusqu'à 80 kg</td><td>jusqu'à 65 kg</td></tr>
-      <tr><td>Mi-lourde</td><td>jusqu'à 90 kg</td><td>jusqu'à 75 kg</td></tr>
-      <tr><td>Lourde</td><td>jusqu'à 100 kg</td><td>jusqu'à 90 kg</td></tr>
-      <tr><td>Super-lourde</td><td>plus de 100 kg</td><td>plus de 90 kg</td></tr>
-    </tbody>
-  </table>
-
-  <p>La pesée officielle a lieu le matin de la compétition. Les athlètes doivent être dans leur catégorie à la pesée.</p>
-
-  <h2>Les fautes (avertissements)</h2>
-  <p>Deux avertissements entraînent la disqualification du match. Voici les principales fautes :</p>
-
-  <div class="foul-grid">
-    <div class="foul-item"><div class="foul-name">Fausse prise</div><div class="foul-desc">Le pouce se déplace ou la prise n'est pas conforme lors de la mise en place.</div></div>
-    <div class="foul-item"><div class="foul-name">Coude décollé</div><div class="foul-desc">Le coude quitte le coussin pendant le combat sans autorisation de l'arbitre.</div></div>
-    <div class="foul-item"><div class="foul-name">Prise de poignet</div><div class="foul-desc">Attraper le poignet adverse au lieu de la main correctement.</div></div>
-    <div class="foul-item"><div class="foul-name">Touche de l'épaule</div><div class="foul-desc">L'épaule descend en dessous du niveau de la table.</div></div>
-    <div class="foul-item"><div class="foul-name">Franchissement ligne</div><div class="foul-desc">Un pied franchit la ligne centrale délimitant les zones des athlètes.</div></div>
-    <div class="foul-item"><div class="foul-name">Corps hors zone</div><div class="foul-desc">L'athlète utilise son corps en dehors de la zone autorisée pour générer de la force.</div></div>
+<!-- INTRO dark -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <p>Le bras de fer sportif est régi par la <strong>World Armwrestling Federation (WAF)</strong> au niveau mondial, et par la <strong>Luxembourg Armwrestling Federation (LAF)</strong> au Luxembourg. Les règles présentées ici sont celles appliquées dans toutes les compétitions officielles, dont la Luxembourg Armwrestling Competition organisée chaque année à Munsbach.</p>
   </div>
+</div>
 
-  <div class="callout">
-    <p><strong>À savoir :</strong> En cas de prise brisée involontairement (la main se décroche), l'arbitre peut décider d'une "reprise de prise" à la position au moment de la rupture — un avantage est alors donné à l'athlète qui était en position favorable.</p>
-  </div>
-
-  <h2>Le format des compétitions</h2>
-
-  <h3>Système suisse (double élimination)</h3>
-  <p>La plupart des compétitions officielles au Luxembourg utilisent un <strong>système suisse à double élimination</strong> : deux défaites = élimination. Cela signifie que tout le monde a au minimum deux matchs, et qu'une seule défaite ne sort pas de la compétition.</p>
-
-  <h3>Bras droit et bras gauche</h3>
-  <p>Les catégories bras droit et bras gauche sont totalement séparées. Un athlète peut s'inscrire dans les deux. C'est un format qui double les opportunités de compétition pour les athlètes ambidextres.</p>
-
-  <h3>Poules et finales</h3>
-  <p>Dans les grandes compétitions, les athlètes sont d'abord répartis en poules. Les qualifiés de chaque poule s'affrontent ensuite dans des matchs de classement et de finale.</p>
-
-  <h2>Les mouvements principaux autorisés</h2>
-
-  <h3>Top Roll</h3>
-  <p>L'athlète cherche à prendre le dessus des doigts adverses et à "rouler" sur le dessus de la main pour forcer vers le bas et le côté. Requiert une forte prise et un bon travail de poignet.</p>
-
-  <h3>Hook</h3>
-  <p>L'athlète fléchit son poignet vers lui pour réduire le levier adverse et tire latéralement. Utilise davantage la force brute du biceps et du dos. Très efficace chez les athlètes puissants.</p>
-
-  <h3>Press (King's Move)</h3>
-  <p>L'athlète pousse verticalement vers le bas en utilisant l'épaule et le poids du corps. Requiert une bonne position et un timing précis. Souvent combiné avec d'autres mouvements.</p>
-
-  <h2>Les catégories d'âge</h2>
-  <p>Les compétitions officielles accueillent plusieurs catégories d'âge :</p>
-  <ul>
-    <li><strong>Juniors</strong> : moins de 18 ans</li>
-    <li><strong>Espoirs</strong> : 18-23 ans</li>
-    <li><strong>Seniors</strong> : 18 ans et plus</li>
-    <li><strong>Vétérans</strong> : 40 ans et plus</li>
-    <li><strong>Para-armwrestling</strong> : catégories handisport</li>
-  </ul>
-
-  <h2>La compétition officielle au Luxembourg</h2>
-  <p>La <strong>Luxembourg Armwrestling Competition</strong>, organisée par la LAF à Munsbach, applique intégralement le règlement WAF. C'est une compétition de niveau international ouverte aux athlètes de tous pays. La 7ème édition se tiendra au printemps 2027.</p>
-
-  <div class="cta-block">
-    <div>
-      <h3>Participez à la compétition</h3>
-      <p>Inscriptions ouvertes pour la 7ème édition — Munsbach, printemps 2027.</p>
+<!-- La table officielle light + image -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <div class="img-aside">
+      <div>
+        <h2>La table officielle</h2>
+        <p>La compétition se déroule sur une <strong>table officielle homologuée</strong>. Elle comporte :</p>
+        <ul>
+          <li>Deux coussins pour les coudes, positionnés à hauteur réglementaire</li>
+          <li>Deux poignées latérales que chaque athlète saisit de sa main libre</li>
+          <li>Une surface antidérapante</li>
+          <li>Des zones de "pin" (victoire) marquées de chaque côté</li>
+        </ul>
+        <p>Les athlètes sont debout ou assis selon leur confort, les coudes posés sur les coussins. La prise de main se fait au centre de la table, pouce contre pouce.</p>
+      </div>
+      <div>
+        <img src="table-officielle-bras-de-fer-competition-armwrestling-luxembourg.jpg" alt="Table officielle de bras de fer homologuée WAF utilisée lors des compétitions au Luxembourg — coussins, poignées et zones de pin" loading="lazy"/>
+        <div class="img-caption">Table homologuée WAF · Compétition officielle · Luxembourg</div>
+      </div>
     </div>
-    <a href="index.html#inscriptions" class="btn-primary">S'inscrire</a>
   </div>
+</div>
 
+<!-- Déroulement d'un match dark accordion -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>Le déroulement d'un match</h2>
+    <p>Cliquez sur chaque étape pour découvrir le détail.</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">01</span><span class="acc-label">La mise en place</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Les deux athlètes placent leur coude sur le coussin. L'arbitre positionne et valide la prise de main — pouce contre pouce, alignés. Chaque athlète tient la poignée latérale de sa main libre. La mise en place peut être recommencée si la prise n'est pas jugée conforme.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">02</span><span class="acc-label">Le signal de départ</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">L'arbitre vérifie que les deux athlètes sont prêts, puis donne le signal verbal <strong>"Ready — Go !"</strong> Le match commence instantanément. Tout faux départ peut entraîner un avertissement.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">03</span><span class="acc-label">Le combat</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Les athlètes cherchent à amener le dos de la main adverse au contact du coussin de pin. L'utilisation du corps, des épaules et du placement est autorisée dans les limites du règlement. Le coude doit rester en contact avec le coussin tout au long du combat.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-num">04</span><span class="acc-label">La victoire</span><span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body">Le match est gagné quand le dos de la main adverse touche le coussin de pin, ou quand l'adversaire reçoit deux avertissements (fautes). L'arbitre siffle et désigne le vainqueur. En cas de prise brisée involontairement, l'arbitre peut décider d'une "reprise de prise" à la position au moment de la rupture.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fautes light -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>Les fautes (avertissements)</h2>
+    <p>Deux avertissements entraînent la disqualification du match. Voici les six principales fautes sanctionnées par les arbitres.</p>
+    <div class="foul-grid">
+      <div class="foul-item">
+        <div class="foul-num">01</div>
+        <div class="foul-name">Fausse prise</div>
+        <div class="foul-desc">Le pouce se déplace ou la prise n'est pas conforme lors de la mise en place.</div>
+      </div>
+      <div class="foul-item">
+        <div class="foul-num">02</div>
+        <div class="foul-name">Coude décollé</div>
+        <div class="foul-desc">Le coude quitte le coussin pendant le combat sans autorisation de l'arbitre.</div>
+      </div>
+      <div class="foul-item">
+        <div class="foul-num">03</div>
+        <div class="foul-name">Prise de poignet</div>
+        <div class="foul-desc">Attraper le poignet adverse au lieu de la main correctement.</div>
+      </div>
+      <div class="foul-item">
+        <div class="foul-num">04</div>
+        <div class="foul-name">Touche de l'épaule</div>
+        <div class="foul-desc">L'épaule descend en dessous du niveau de la table.</div>
+      </div>
+      <div class="foul-item">
+        <div class="foul-num">05</div>
+        <div class="foul-name">Franchissement ligne</div>
+        <div class="foul-desc">Un pied franchit la ligne centrale délimitant les zones des athlètes.</div>
+      </div>
+      <div class="foul-item">
+        <div class="foul-num">06</div>
+        <div class="foul-name">Corps hors zone</div>
+        <div class="foul-desc">L'athlète utilise son corps en dehors de la zone autorisée pour générer de la force.</div>
+      </div>
+    </div>
+    <div class="callout"><p><strong>À savoir :</strong> En cas de prise brisée involontairement, l'arbitre peut décider d'une "reprise de prise" à la position au moment de la rupture — un avantage est alors donné à l'athlète qui était en position favorable.</p></div>
+  </div>
+</div>
+
+<!-- Format compétitions dark -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>Le format des compétitions</h2>
+    <div class="format-grid">
+      <div class="format-cell">
+        <div class="format-icon">⚔️</div>
+        <div class="format-title">Double élimination</div>
+        <div class="format-desc">Deux défaites = élimination. Tout le monde a au minimum deux matchs. Une seule défaite ne sort pas de la compétition.</div>
+      </div>
+      <div class="format-cell">
+        <div class="format-icon">🤜🤛</div>
+        <div class="format-title">Bras droit & gauche</div>
+        <div class="format-desc">Les catégories sont totalement séparées. Un athlète peut s'inscrire dans les deux — ce qui double les opportunités de compétition.</div>
+      </div>
+      <div class="format-cell">
+        <div class="format-icon">🏆</div>
+        <div class="format-title">Poules & finales</div>
+        <div class="format-desc">Dans les grandes compétitions, les athlètes sont d'abord répartis en poules. Les qualifiés s'affrontent ensuite en matchs de classement et finale.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Techniques light accordion premium -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>Initiation aux techniques courantes</h2>
+    <p>Les trois mouvements fondamentaux du bras de fer — cliquez pour explorer chaque technique en détail.</p>
+    <div class="tech-accordion">
+      <div class="tech-item">
+        <button class="tech-btn" onclick="toggleTech(this)">
+          <span class="tech-badge">Technique 01</span>
+          <span class="tech-name">Top Roll</span>
+          <span class="tech-icon">+</span>
+        </button>
+        <div class="tech-body">
+          <p>Le Top Roll est l'une des techniques les plus utilisées en compétition. L'athlète cherche à prendre le <strong>dessus des doigts adverses</strong> et à "rouler" sur le dessus de la main pour forcer vers le bas et le côté.</p>
+          <p>Cette technique requiert une forte prise, un bon contrôle du poignet et une capacité à supiner (tourner) la main vers l'extérieur pendant le combat. Elle est particulièrement efficace contre les adversaires qui utilisent le hook.</p>
+          <p>Points clés : prise haute, poignet en supination, traction diagonale vers le coin du coussin.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <button class="tech-btn" onclick="toggleTech(this)">
+          <span class="tech-badge">Technique 02</span>
+          <span class="tech-name">Hook</span>
+          <span class="tech-icon">+</span>
+        </button>
+        <div class="tech-body">
+          <p>Le Hook est la technique de force par excellence. L'athlète fléchit son poignet <strong>vers lui</strong> pour réduire le levier adverse et tire latéralement, en utilisant la force brute du biceps et du grand dorsal.</p>
+          <p>Cette technique est très efficace chez les athlètes puissants au niveau du biceps et de l'avant-bras médial. Elle neutralise bien les tentatives de top roll adverses.</p>
+          <p>Points clés : poignet fléchi vers soi, coude en position centrale, traction latérale avec le corps.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <button class="tech-btn" onclick="toggleTech(this)">
+          <span class="tech-badge">Technique 03</span>
+          <span class="tech-name">Press</span>
+          <span class="tech-icon">+</span>
+        </button>
+        <div class="tech-body">
+          <p>Le Press est une technique de pression verticale. L'athlète pousse <strong>vers le bas</strong> en utilisant l'épaule et le poids du corps pour écraser la main adverse directement vers le coussin de pin.</p>
+          <p>Cette technique requiert une bonne position du corps au-dessus de la table et un timing précis. Elle est souvent combinée avec d'autres mouvements pour compléter l'attaque.</p>
+          <p>Points clés : épaule au-dessus de la main, pression vers le bas, utilisation du poids corporel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Catégories d'âge dark -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <h2>Les catégories d'âge</h2>
+    <p>Les compétitions officielles accueillent cinq catégories d'âge, permettant à chacun de se mesurer à des athlètes de sa génération.</p>
+    <div class="age-grid">
+      <div class="age-cell">
+        <div class="age-name">Juniors</div>
+        <div class="age-range">- de 18 ans</div>
+      </div>
+      <div class="age-cell">
+        <div class="age-name">Espoirs</div>
+        <div class="age-range">18 – 23 ans</div>
+      </div>
+      <div class="age-cell">
+        <div class="age-name">Seniors</div>
+        <div class="age-range">18 ans et +</div>
+      </div>
+      <div class="age-cell">
+        <div class="age-name">Vétérans</div>
+        <div class="age-range">40 ans et +</div>
+      </div>
+      <div class="age-cell">
+        <div class="age-name">Para</div>
+        <div class="age-range">Handisport</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Compétition officielle Luxembourg light -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <h2>La compétition officielle au Luxembourg</h2>
+    <div class="final-comp">
+      <div>
+        <div class="final-comp-label">Luxembourg Armwrestling Federation · Événement annuel</div>
+        <div class="final-comp-title">Luxembourg Armwrestling Competition</div>
+        <div class="final-comp-desc">Organisée à Munsbach chaque année, cette compétition applique intégralement le règlement WAF. Niveau international, ouverte aux athlètes de tous pays, toutes catégories de poids, bras droit et gauche. La <strong>7ème édition</strong> se tiendra au printemps 2027.</div>
+      </div>
+      <a href="index.html#inscriptions" class="btn-primary" style="white-space:nowrap;flex-shrink:0">S'inscrire →</a>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -149,5 +345,19 @@
   <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
+<script>
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!isOpen){btn.classList.add('open');body.classList.add('open');}
+}
+function toggleTech(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.tech-btn').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!isOpen){btn.classList.add('open');body.classList.add('open');}
+}
+</script>
 </body>
 </html>
