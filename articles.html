@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Articles & ressources bras de fer | ACS Luxembourg</title>
+  <meta name="description" content="Tous les articles et guides sur le bras de fer au Luxembourg : technique, entraînement, compétition, nutrition, histoire et champions. Par l'Armwrestling Club Strassen."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://armwrestlingclubstrassen.com/articles.html"/>
+
+  <meta property="og:title" content="Articles & ressources bras de fer | ACS Luxembourg" />
+  <meta property="og:description" content="Tous les guides et articles sur le bras de fer au Luxembourg : technique, entraînement, compétition, nutrition, histoire et champions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://armwrestlingclubstrassen.com/articles.html" />
+  <meta property="og:locale" content="fr_LU" />
+  <meta property="og:image" content="https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg" />
+  <meta property="og:image:alt" content="Articles et ressources sur le bras de fer par l'Armwrestling Club Strassen Luxembourg." />
+
+  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="blog.css"/>
+
+  <style>
+    /* ===== HERO ===== */
+    .art-hero {
+      background: var(--black);
+      padding: 7rem 3rem 4.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .art-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 70% at 0% 50%, rgba(192,57,43,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .art-hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
+
+    .art-breadcrumb {
+      font-family: var(--font-display);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.28);
+      margin-bottom: 1.6rem;
+    }
+    .art-breadcrumb a { color: rgba(245,240,232,.28); text-decoration: none; }
+    .art-breadcrumb a:hover { color: var(--red); }
+    .art-breadcrumb span { margin: 0 .5rem; }
+
+    .art-hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: .95;
+      margin-bottom: 1.2rem;
+      letter-spacing: -.01em;
+    }
+    .art-hero-h1 span { color: var(--red); }
+
+    .art-hero-intro {
+      font-size: 1rem;
+      color: rgba(245,240,232,.55);
+      max-width: 520px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .art-hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(245,240,232,.07);
+    }
+    .art-hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .art-hero-stat-num span { color: var(--red); }
+    .art-hero-stat-label {
+      font-family: var(--font-display);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.3);
+      margin-top: .3rem;
+    }
+
+    /* ===== BODY WRAPPER ===== */
+    .art-body { background: var(--black); }
+
+    /* ===== SECTION BLOCK ===== */
+    .art-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+    }
+
+    .art-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(245,240,232,.07);
+    }
+    .art-section-header-left {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .art-section-num {
+      font-family: var(--font-display);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .22em;
+      color: rgba(192,57,43,.45);
+      line-height: 1;
+    }
+    .art-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--red);
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .art-section-count {
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.22);
+      white-space: nowrap;
+      padding-bottom: .1rem;
+    }
+
+    /* ===== GRID ===== */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+
+    /* ===== CARD ===== */
+    .art-card {
+      background: #0f0f0f;
+      border: 1px solid rgba(245,240,232,.07);
+      border-radius: 3px;
+      padding: 1.6rem 1.8rem 1.5rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .22s, background .22s, transform .22s;
+    }
+    .art-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--red);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .28s cubic-bezier(.4,0,.2,1);
+    }
+    .art-card:hover {
+      border-color: rgba(192,57,43,.22);
+      background: rgba(192,57,43,.04);
+      transform: translateY(-2px);
+    }
+    .art-card:hover::before { transform: scaleY(1); }
+
+    .art-card-tag {
+      font-family: var(--font-display);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .7rem;
+      opacity: .75;
+    }
+    .art-card-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: .6rem;
+      flex: 1;
+      letter-spacing: .01em;
+    }
+    .art-card-desc {
+      font-size: .82rem;
+      color: rgba(245,240,232,.45);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+    .art-card-cta {
+      font-family: var(--font-display);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.25);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: auto;
+      transition: color .2s;
+    }
+    .art-card-cta::after { content: "→"; transition: transform .2s; }
+    .art-card:hover .art-card-cta { color: var(--red); }
+    .art-card:hover .art-card-cta::after { transform: translateX(5px); }
+
+    /* ===== SECTION DIVIDER ===== */
+    .art-divider {
+      max-width: 960px;
+      margin: 0 auto;
+      height: 1px;
+      background: rgba(245,240,232,.05);
+    }
+
+    /* ===== CTA FINALE ===== */
+    .art-cta-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 3rem 5rem;
+    }
+    .art-cta {
+      background: linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,5,5,.9));
+      border: 1px solid rgba(192,57,43,.2);
+      border-top: 2px solid var(--red);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .art-cta-title {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .art-cta-sub {
+      font-size: .88rem;
+      color: rgba(245,240,232,.45);
+      margin: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 768px) {
+      .art-hero { padding: 6rem 1.5rem 3rem; }
+      .art-section { padding: 2.5rem 1.5rem; }
+      .art-grid { grid-template-columns: 1fr; gap: .5rem; }
+      .art-cta-wrap { padding: 0 1.5rem 3rem; }
+      .art-cta { padding: 1.8rem; flex-direction: column; align-items: flex-start; }
+      .art-section-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
+      .art-hero-stats { gap: 2rem; }
+    }
+    @media(min-width: 769px) and (max-width: 1024px) {
+      .art-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
+  </ul>
+  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <div class="art-breadcrumb"><a href="index.html">Accueil</a><span>›</span>Articles & ressources</div>
+    <h1 class="art-hero-h1">Articles &<br><span>ressources</span></h1>
+    <p class="art-hero-intro">Guides, techniques, compétition, nutrition et histoire du bras de fer — tout le contenu produit par l'Armwrestling Club Strassen Luxembourg.</p>
+
+    <div class="art-hero-stats">
+      <div>
+        <div class="art-hero-stat-num">17<span>+</span></div>
+        <div class="art-hero-stat-label">Articles & guides</div>
+      </div>
+      <div>
+        <div class="art-hero-stat-num">4</div>
+        <div class="art-hero-stat-label">Catégories</div>
+      </div>
+      <div>
+        <div class="art-hero-stat-num">2026</div>
+        <div class="art-hero-stat-label">Mis à jour</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="art-body">
+
+  <!-- ── 01 · TECHNIQUE & ENTRAÎNEMENT ────────────────────────────── -->
+  <div class="art-section">
+    <div class="art-section-header">
+      <div class="art-section-header-left">
+        <div class="art-section-num">01</div>
+        <div class="art-section-title">Technique & entraînement</div>
+      </div>
+      <div class="art-section-count">5 articles</div>
+    </div>
+
+    <div class="art-grid">
+
+      <a href="technique-prise-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Guide technique</div>
+        <div class="art-card-title">Technique de prise : hook, top roll et press</div>
+        <div class="art-card-desc">Les trois prises fondamentales du bras de fer expliquées pour les débutants et les pratiquants intermédiaires.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="exercices-renforcement-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Programme</div>
+        <div class="art-card-title">Exercices de renforcement</div>
+        <div class="art-card-desc">Programme complet pour avant-bras, poignet, prise, biceps et épaule — spécifique au bras de fer.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="prevention-blessures-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Santé · Sécurité</div>
+        <div class="art-card-title">Prévention des blessures</div>
+        <div class="art-card-desc">Protocole d'échauffement, exercices préventifs et signaux d'alerte pour pratiquer sans risque.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="blessures-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Sécurité</div>
+        <div class="art-card-title">Blessures au bras de fer</div>
+        <div class="art-card-desc">Fracture de l'humérus, douleurs au poignet, positions dangereuses : tout comprendre pour éviter les accidents.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="guide-debutant-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Guide · Débutant</div>
+        <div class="art-card-title">Guide débutant complet</div>
+        <div class="art-card-desc">Tout ce qu'il faut savoir avant de commencer : technique, matériel, sécurité et premier essai.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="art-divider"></div>
+
+  <!-- ── 02 · COMPÉTITION ─────────────────────────────────────────── -->
+  <div class="art-section">
+    <div class="art-section-header">
+      <div class="art-section-header-left">
+        <div class="art-section-num">02</div>
+        <div class="art-section-title">Compétition</div>
+      </div>
+      <div class="art-section-count">4 articles</div>
+    </div>
+
+    <div class="art-grid">
+
+      <a href="premier-tournoi-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Guide · Tournoi</div>
+        <div class="art-card-title">Préparer son premier tournoi</div>
+        <div class="art-card-desc">Inscription, pesée, format des poules, échauffement sur place et déroulement des matchs.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="preparation-competition-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Guide · Compétition</div>
+        <div class="art-card-title">Préparer une compétition</div>
+        <div class="art-card-desc">Entraînement, gestion du poids, tactique, échauffement le jour J et gestion du stress.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="regles-officielles-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Référence · Règlement</div>
+        <div class="art-card-title">Règles officielles WAF</div>
+        <div class="art-card-desc">Table, prise, fautes, arbitrage et format des matchs — le règlement WAF expliqué clairement.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="nutrition-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Nutrition</div>
+        <div class="art-card-title">Nutrition & gestion du poids</div>
+        <div class="art-card-desc">Catégories de poids WAF, macronutriments pour la force, gestion du poids avant compétition et timing des repas.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="art-divider"></div>
+
+  <!-- ── 03 · CULTURE & HISTOIRE ──────────────────────────────────── -->
+  <div class="art-section">
+    <div class="art-section-header">
+      <div class="art-section-header-left">
+        <div class="art-section-num">03</div>
+        <div class="art-section-title">Culture & histoire</div>
+      </div>
+      <div class="art-section-count">2 articles</div>
+    </div>
+
+    <div class="art-grid">
+
+      <a href="histoire-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Histoire du sport</div>
+        <div class="art-card-title">Histoire et origines</div>
+        <div class="art-card-desc">Des origines médiévales au sport mondial — de Petaluma 1952 à la WAF et Levan Saginashvili.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+      <a href="champions-bras-de-fer-monde.html" class="art-card">
+        <div class="art-card-tag">Champions</div>
+        <div class="art-card-title">Champions mondiaux</div>
+        <div class="art-card-desc">Devon Larratt, Denis Cyplenkov, Levan Saginashvili, John Brzenk — les plus grands noms du bras de fer mondial.</div>
+        <div class="art-card-cta">Lire l'article</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="art-divider"></div>
+
+  <!-- ── 04 · LE CLUB AU LUXEMBOURG ───────────────────────────────── -->
+  <div class="art-section">
+    <div class="art-section-header">
+      <div class="art-section-header-left">
+        <div class="art-section-num">04</div>
+        <div class="art-section-title">Le club au Luxembourg</div>
+      </div>
+      <div class="art-section-count">6 articles</div>
+    </div>
+
+    <div class="art-grid">
+
+      <a href="bras-de-fer-luxembourg-ville.html" class="art-card">
+        <div class="art-card-tag">Page locale</div>
+        <div class="art-card-title">Bras de fer Luxembourg-ville</div>
+        <div class="art-card-desc">Le club de bras de fer le plus proche du centre de Luxembourg-ville — 8 minutes en voiture.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+
+      <a href="sport-force-luxembourg.html" class="art-card">
+        <div class="art-card-tag">Sport de force</div>
+        <div class="art-card-title">Sport de force au Luxembourg</div>
+        <div class="art-card-desc">Le bras de fer dans le paysage sportif luxembourgeois — clubs, fédération, compétitions internationales.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+
+      <a href="club-bras-de-fer-debutant-luxembourg.html" class="art-card">
+        <div class="art-card-tag">Débutants</div>
+        <div class="art-card-title">Club pour débutants</div>
+        <div class="art-card-desc">Pourquoi ACS Strassen est le meilleur point d'entrée pour commencer le bras de fer au Luxembourg.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+
+      <a href="bras-de-fer-luxembourg-comment-commencer.html" class="art-card">
+        <div class="art-card-tag">Guide local</div>
+        <div class="art-card-title">Comment commencer au Luxembourg</div>
+        <div class="art-card-desc">Première séance, bases techniques, sécurité et progression — tout pour commencer sereinement.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+
+      <a href="entrainement-bras-de-fer-strassen.html" class="art-card">
+        <div class="art-card-tag">Entraînement</div>
+        <div class="art-card-title">Entraînement à Strassen</div>
+        <div class="art-card-desc">Format, équipement et déroulement des séances du mardi à 18h — ce qui se passe concrètement.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+
+      <a href="carte-clubs-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Ressource · Carte</div>
+        <div class="art-card-title">Trouver un club près de vous</div>
+        <div class="art-card-desc">Clubs actifs, tournois à venir, partenaires de sparring — SidePressMap répertorie tous les clubs de bras de fer dans le monde.</div>
+        <div class="art-card-cta">Voir la carte</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────── -->
+  <div class="art-cta-wrap">
+    <div class="art-cta">
+      <div>
+        <div class="art-cta-title">Essayez le bras de fer</div>
+        <p class="art-cta-sub">Première séance gratuite — mardi 18h à Strassen.</p>
+      </div>
+      <a href="index.html#contact" class="btn-primary">Contacter le club</a>
+    </div>
+  </div>
+
+</div><!-- /.art-body -->
+
+<footer>
+  <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
+  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
+</footer>
+
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

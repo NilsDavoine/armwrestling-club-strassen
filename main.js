@@ -39,4 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
         : 'rgba(10,10,10,0.92)';
     });
   }
+
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-accordion-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-accordion-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 });

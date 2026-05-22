@@ -1,390 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Entraînement à Strassen | Bras de fer Luxembourg – Essai gratuit</title>
-  <meta name="description" content="Entraînement de bras de fer à Strassen au Luxembourg : essai gratuit le mardi à 18h, club officiel, débutants bienvenus, accès facile depuis Luxembourg-ville et progression encadrée." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html" />
-  <meta property="og:title" content="Entraînement à Strassen | Bras de fer Luxembourg – Essai gratuit" />
-  <meta property="og:description" content="Entraînement de bras de fer à Strassen au Luxembourg : essai gratuit le mardi à 18h, club officiel, débutants bienvenus, accès facile et progression encadrée." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entraînement bras de fer Strassen | Mardi 18h — ACS Luxembourg</title>
+  <meta name="description" content="Entraînement de bras de fer à Strassen chaque mardi à 18h. Club officiel LAF, tables de compétition, débutants bienvenus, première séance gratuite. À 8 min de Luxembourg-ville."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html"/>
+
+  <meta property="og:title" content="Entraînement bras de fer Strassen | Mardi 18h — ACS Luxembourg" />
+  <meta property="og:description" content="Entraînement de bras de fer à Strassen chaque mardi à 18h. Club officiel, tables de compétition, débutants bienvenus, première séance gratuite." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html" />
   <meta property="og:locale" content="fr_LU" />
   <meta property="og:image" content="https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg" />
-  <meta property="og:image:alt" content="Entraînement et scène bras de fer Luxembourg avec club officiel et ambiance de compétition." />
+  <meta property="og:image:alt" content="Entraînement de bras de fer à Strassen, Luxembourg — tables de compétition et ambiance de club." />
 
-  <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2">
-  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://armwrestlingclubstrassen.com/sitemap.xml" />
+  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
 
-  <style>
-    .nav-logo-img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: var(--dark2);
-      padding: 2px;
-      filter: brightness(1.1) contrast(1.05);
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-    }
-
-    :root {
-      --black: #0a0a0a;
-      --dark: #111111;
-      --dark2: #1a1a1a;
-      --red: #c0392b;
-      --red-hot: #e74c3c;
-      --gold: #d4a017;
-      --white: #f5f0e8;
-      --grey: #888;
-      --light-grey: #ccc;
-      --font-display: 'Barlow Condensed', sans-serif;
-      --font-body: 'Barlow', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a,
-    a:visited,
-    a:hover,
-    a:active {
-      color: inherit;
-    }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4rem;
-      height: 68px;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(192,57,43,0.2);
-      transition: background 0.3s;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 1.3rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--red); }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-grey);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--red); }
-
-    .nav-cta {
-      background: var(--red);
-      color: var(--white) !important;
-      padding: 0.45rem 1.2rem;
-      border-radius: 2px;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--red-hot) !important;
-      color: var(--white) !important;
-    }
-
-    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
-
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .hero {
-      padding: 110px 0 3rem;
-      background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
-    }
-
-    .eyebrow {
-      color: var(--red);
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 1rem;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    h1 {
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-    }
-
-    h2 span, .accent { color: var(--red); }
-
-    p {
-      color: rgba(245,240,232,0.82);
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    .hero p { max-width: 920px; }
-
-    .hero p a,
-    .hero p a:visited {
-      color: var(--white);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .hero p a:hover { color: var(--red); }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.8rem;
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-family: var(--font-display);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.9rem 1.3rem;
-    }
-
-    .btn.primary {
-      background: var(--red);
-      color: var(--white);
-    }
-
-    .btn.primary:hover {
-      background: var(--red-hot);
-    }
-
-    .btn.secondary {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--white);
-    }
-
-    .btn.secondary:hover {
-      border-color: var(--red);
-      color: var(--red);
-    }
-
-    section { padding: 3.5rem 0; }
-
-    .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .grid3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .card {
-      background: var(--dark);
-      padding: 1.8rem;
-    }
-
-    .list {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .mini {
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-intro {
-      max-width: 860px;
-      margin-bottom: 1.8rem;
-    }
-
-    .faq {
-      display: grid;
-      gap: 2px;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .faq .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .cta {
-      margin-top: 2rem;
-      padding: 1.2rem 1.3rem;
-      border: 1px solid rgba(192,57,43,0.22);
-      background: rgba(192,57,43,0.08);
-    }
-
-    .cta p {
-      color: var(--white);
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, var(--red), transparent);
-      margin: 0 4rem;
-      opacity: 0.3;
-    }
-
-    footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 2.5rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      max-width: 1160px;
-      margin: 2rem auto 0;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--white);
-    }
-
-    .footer-logo span { color: var(--red); }
-
-    footer p {
-      font-size: 0.78rem;
-      color: var(--grey);
-      letter-spacing: 0.03em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-family: var(--font-display);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--red); }
-
-    @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 68px; left: 0; right: 0;
-        background: var(--dark);
-        padding: 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid rgba(192,57,43,0.2);
-      }
-
-      .grid2,
-      .grid3 { grid-template-columns: 1fr; }
-
-      .wrap { padding: 0 1rem; }
-      .divider { margin: 0 1.5rem; }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem 1.5rem;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-    }
-  </style>
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsClub",
+    "name": "Armwrestling Club Strassen",
+    "description": "Club de bras de fer à Strassen. Entraînement mardi 18h, première séance gratuite, tables de compétition homologuées WAF.",
+    "url": "https://armwrestlingclubstrassen.com/",
+    "telephone": "+352661495319",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "86 rue des Romains",
+      "postalCode": "L-8041",
+      "addressLocality": "Strassen",
+      "addressCountry": "LU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 49.61850, "longitude": 6.06274 },
+    "openingHours": "Tu 18:00-20:00"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Entraînement Strassen", "item": "https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html" }
+    ]
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -392,317 +55,243 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Peut-on commencer le bras de fer à Strassen sans expérience ?",
+        "name": "Quand et où a lieu l'entraînement de bras de fer à Strassen ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Oui. L'entraînement à Strassen est adapté aux débutants et la première séance est gratuite."
+          "text": "L'entraînement a lieu chaque mardi à 18h au 86 rue des Romains, L-8041 Strassen. La séance dure environ 2 heures."
         }
       },
       {
         "@type": "Question",
-        "name": "Quand a lieu l'entraînement de bras de fer à Strassen ?",
+        "name": "Faut-il apporter son équipement pour l'entraînement à Strassen ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "L'entraînement a lieu le mardi à 18h à Strassen."
+          "text": "Non. Le club dispose de tables de compétition homologuées, de sangles et de tout le matériel nécessaire. Une tenue de sport suffit."
         }
       },
       {
         "@type": "Question",
-        "name": "Pourquoi choisir Strassen pour découvrir le bras de fer au Luxembourg ?",
+        "name": "Comment se déroule un entraînement typique à Strassen ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Strassen est un point d'entrée simple, accessible et encadré pour découvrir le bras de fer au Luxembourg avec une première séance gratuite."
+          "text": "La séance commence par un échauffement spécifique, suivi de travail technique (prises, placement, angles), d'exercices de renforcement ciblés et de sparring sur table en fin de séance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on venir sans réservation à Strassen ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Vous pouvez venir directement le mardi à 18h. Il est toutefois conseillé de prévenir le club via WhatsApp pour la première venue."
         }
       }
     ]
   }
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="blog.css"/>
+
+  <style>
+    .sec{padding:3.5rem 0}
+    .sec-dark{background:var(--black)}
+    .sec-light{background:var(--dark2)}
+    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
+    .sec h2{font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
+    .sec h3{font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:1.5rem 0 .7rem}
+    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
+    .sec ul,.sec ol{margin:0 0 1.4rem 1.8rem}
+    .sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
+    .sec strong{color:var(--white);font-weight:600}
+    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0}
+    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
+    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem}
+    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
+    .session-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
+    .session-card{background:rgba(245,240,232,.03);border:1px solid rgba(245,240,232,.07);border-radius:8px;padding:1.8rem}
+    .session-card-num{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;margin-bottom:.5rem}
+    .session-card-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-bottom:.8rem}
+    .session-card-desc{font-size:.88rem;color:rgba(245,240,232,.62);line-height:1.65}
+    .schedule-row{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid rgba(245,240,232,.06);align-items:start}
+    .schedule-row:last-child{border-bottom:none}
+    .schedule-time{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.05em}
+    .schedule-activity{font-size:.95rem;color:rgba(245,240,232,.72);line-height:1.7}
+    .faq-list{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
+    .faq-item{border-bottom:1px solid rgba(245,240,232,.06);padding:1.4rem 0}
+    .faq-item:first-child{border-top:1px solid rgba(245,240,232,.06)}
+    .faq-q{font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.03em;margin-bottom:.5rem}
+    .faq-a{font-size:.95rem;color:rgba(245,240,232,.65);line-height:1.75}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.session-grid{grid-template-columns:1fr}}
+  </style>
 </head>
-
 <body>
-  <nav>
-    <a href="index.html#hero" class="logo-wrap">
-      <img src="logo.png" alt="Logo de l'Armwrestling Club Strassen" class="nav-logo-img" />
-      <span class="nav-logo">ACS <span>Luxembourg</span></span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#about">Le Club</a></li>
-      <li><a href="index.html#entrainement">Entraînements</a></li>
-      <li><a href="index.html#equipement">Équipement</a></li>
-      <li><a href="index.html#licence">Licence</a></li>
-      <li><a href="index.html#competition">Compétitions</a></li>
-      <li><a href="index.html#localisation">Accès</a></li>
-      <li><a href="index.html#resources">Ressources</a></li>
-      <li><a href="index.html#blog">Blog</a></li>
-      <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
-    </ul>
-    <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
+
+<nav>
+  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
+  </ul>
+</nav>
+
+<div class="local-hero">
+  <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Entraînement Strassen</div>
+    <div class="page-tag">Entraînement · Mardi 18h</div>
+    <div class="article-date">Mis à jour : mai 2026</div>
+    <h1 class="page-title">Entraînement bras de fer<br><span>à Strassen</span></h1>
+    <p style="font-size:1.1rem;color:rgba(245,240,232,.65);max-width:560px;line-height:1.8;">Chaque mardi à 18h au 86 rue des Romains. Tables de compétition WAF, encadrement technique, débutants bienvenus. Première séance gratuite.</p>
+    <div class="hero-stats-row">
+      <div class="hero-stat"><div class="hero-stat-num">18<span>h</span></div><div class="hero-stat-label">mardi soir · Strassen</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2<span>h</span></div><div class="hero-stat-label">durée de la séance</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1<span>ère</span></div><div class="hero-stat-label">séance gratuite</div></div>
     </div>
-  </nav>
+    <div style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap">
+      <a href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" class="btn-primary">WhatsApp — essai gratuit</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=86+rue+des+Romains+Strassen+Luxembourg" target="_blank" rel="noopener" class="btn-outline">Voir sur Google Maps</a>
+    </div>
+  </div>
+</div>
 
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Strassen · Entraînement · Essai gratuit</div>
-        <h1>Entraînement bras de fer à <span class="accent">Strassen</span></h1>
-        <p>
-          Tu cherches où faire du <strong>bras de fer à Strassen</strong> ou où commencer le
-          <strong>bras de fer au Luxembourg</strong> dans un cadre sérieux ? Cette page répond exactement à cette recherche.
-          L’Armwrestling Club Strassen est un point d’entrée clair pour découvrir l’armwrestling,
-          apprendre les bases techniques, comprendre la sécurité de table et progresser dans une vraie logique de club.
-          L’entraînement a lieu le <strong>mardi à 18h</strong> à <strong>Strassen</strong>, proche de Luxembourg-ville,
-          avec une <strong>première séance gratuite</strong>.
-        </p>
-        <div class="btn-row">
-          <a class="btn primary" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener">WhatsApp essai gratuit</a>
-          <a class="btn secondary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Ouvrir sur Google Maps</a>
-        </div>
-      </div>
-    </section>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<div class="article-photo" style="margin-bottom:2.5rem;">
+  <img src="2F3A1321.jpeg" alt="Entraînement bras de fer à Strassen — séance sur table officielle avec pratiquants" loading="lazy" />
+</div>
+<h2>Format d'une séance type à Strassen</h2>
+  <p>L'entraînement du mardi commence à 18h et dure environ 2 heures. Il est structuré pour convenir autant aux débutants qui découvrent la table pour la première fois qu'aux pratiquants réguliers qui travaillent leur technique et leur sparring.</p>
 
-    <div class="divider"></div>
+  <div style="margin:2rem 0;display:flex;flex-direction:column;gap:0">
+    <div class="schedule-row">
+      <div class="schedule-time">18h00</div>
+      <div class="schedule-activity"><strong>Arrivée et échauffement</strong> — mobilisation articulaire, rotation des poignets, échauffement des avant-bras et des épaules. Essentiel pour éviter les blessures.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">18h20</div>
+      <div class="schedule-activity"><strong>Travail technique</strong> — prises, angles d'attaque, placement du corps, hook/top roll/press selon le niveau. Les débutants commencent par les bases de sécurité.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">19h00</div>
+      <div class="schedule-activity"><strong>Renforcement spécifique</strong> — exercices ciblés avant-bras, poignet, prise, biceps et épaule selon le programme de la séance.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">19h30</div>
+      <div class="schedule-activity"><strong>Sparring sur table</strong> — matchs d'entraînement par niveau et catégorie. C'est ici que les acquis techniques sont testés dans des conditions proches de la compétition.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">20h00</div>
+      <div class="schedule-activity"><strong>Fin de séance</strong> — retour au calme, échanges, questions. Pas d'heure de sortie imposée.</div>
+    </div>
+  </div>
+</div>
 
-    <section id="overview">
-      <div class="wrap">
-        <h2>Le plus simple pour <span>commencer</span></h2>
-        <p class="section-intro">
-          L'entraînement bras de fer à Strassen.
-        </p>
+<div class="sec sec-light">
+<div class="sec-inner">
+<h2>L'équipement disponible à Strassen</h2>
+  <p>L'Armwrestling Club Strassen est équipé de matériel de compétition officiel. Vous n'avez rien à apporter pour votre première séance.</p>
 
-        <div class="grid2">
-          <div class="card">
-            <div class="mini">Infos clés</div>
-            <div class="list">
-              <p><strong>Adresse :</strong> 86 rue des Romains, L-8041 Strassen</p>
-              <p><strong>Horaire :</strong> mardi à 18h00</p>
-              <p><strong>Public :</strong> débutants, loisir, progression, compétition</p>
-              <p><strong>Essai :</strong> première séance gratuite</p>
-              <p><strong>Accès :</strong> proche Luxembourg-ville, pratique en transport et en voiture</p>
-            </div>
-          </div>
+  <div class="session-grid">
+    <div class="session-card">
+      <div class="session-card-num">2</div>
+      <div class="session-card-label">Tables de compétition</div>
+      <div class="session-card-desc">Tables homologuées WAF avec coussins de coude réglementés et poignées latérales. Les mêmes que lors des compétitions officielles.</div>
+    </div>
+    <div class="session-card">
+      <div class="session-card-num">∞</div>
+      <div class="session-card-label">Sangles & accessoires</div>
+      <div class="session-card-desc">Sangles de poignet, bandes, équipement de renforcement — tout le matériel nécessaire pour travailler les prises spécifiques.</div>
+    </div>
+    <div class="session-card">
+      <div class="session-card-num">+</div>
+      <div class="session-card-label">Matériel de renforcement</div>
+      <div class="session-card-desc">Équipement de conditionnement spécifique au bras de fer : rouleaux d'avant-bras, poids, élastiques de résistance.</div>
+    </div>
+  </div>
 
-          <div class="card">
-            <div class="mini">Pourquoi Strassen</div>
-            <p>
-              Strassen est le meilleur point d’entrée pour quelqu’un qui veut découvrir le bras de fer au Luxembourg sans se compliquer la vie.
-              Le lieu est accessible, l’horaire est clair, le cadre est structuré et la séance d’essai permet de venir tester sans engagement.
-              Pour un débutant, c’est souvent la meilleure combinaison entre simplicité, encadrement et progression.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="callout">
+    <p><strong>À apporter :</strong> une tenue de sport confortable. Rien d'autre. Le club fournit tout le matériel nécessaire, y compris pour la première séance.</p>
+  </div>
+</div>
 
-    <div class="divider"></div>
+<div class="sec sec-dark">
+<div class="sec-inner">
+<div class="article-photo" style="margin-bottom:2.5rem;">
+  <img src="2F3A1451.jpeg" alt="Entraînement technique bras de fer à Strassen — apprentissage sur table officielle" loading="lazy" />
+</div>
+<h2>Ce qu'on apprend dès la première séance</h2>
+  <p>Même si vous n'avez jamais fait de bras de fer, la première séance à Strassen vous donnera des bases solides et utilisables immédiatement.</p>
 
-    <section id="first-session">
-      <div class="wrap">
-        <h2>Comment se passe une <span>première séance</span></h2>
-        <p class="section-intro">
-          Beaucoup de personnes qui cherchent un club de bras de fer à Strassen se posent les mêmes questions :
-          est-ce qu’il faut déjà être fort, connaître la technique, avoir du matériel, ou venir accompagné ?
-          En réalité, la première séance sert surtout à découvrir le sport dans de bonnes conditions.
-        </p>
+  <ul>
+    <li><strong>Position de base</strong> : comment se placer à la table, où mettre l'épaule et le coude pour être stable et efficace</li>
+    <li><strong>Sécurité fondamentale</strong> : les positions à éviter absolument, pourquoi le bras ouvert est dangereux, comment ne pas se blesser</li>
+    <li><strong>Logique des prises</strong> : différence entre hook, top roll et press — comprendre son style naturel dès le départ</li>
+    <li><strong>Démarrage contrôlé</strong> : comment partir proprement au signal, sans forcer dans une mauvaise direction</li>
+    <li><strong>Premiers sparrings</strong> : matchs de découverte contre des partenaires adaptés à votre niveau</li>
+  </ul>
+</div>
 
-        <div class="grid3">
-          <div class="card">
-            <h3>Découverte de la table</h3>
-            <p>
-              La première étape consiste à comprendre la position de base, l’espace autour de la table,
-              la logique du placement et la façon correcte d’utiliser le corps sans se mettre en danger.
-            </p>
-          </div>
+<div class="sec sec-light">
+<div class="sec-inner">
+<h2>Questions fréquentes sur l'entraînement à Strassen</h2>
 
-          <div class="card">
-            <h3>Technique avant force</h3>
-            <p>
-              Le bras de fer n’est pas juste une question de force brute. On découvre d’abord la main, le poignet,
-              le tirage, la direction de pression et les bases techniques qui rendent le sport intéressant et accessible.
-            </p>
-          </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Faut-il réserver pour venir mardi ?</div>
+      <div class="faq-a">Pas obligatoire — venez directement à 18h. Pour la première séance, prévenez via WhatsApp ou email pour un accueil simplifié.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Peut-on commencer sans aucune expérience ?</div>
+      <div class="faq-a">Oui. La séance est structurée pour intégrer des débutants complets. Les bases de sécurité et de placement sont expliquées en début de séance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Y a-t-il un niveau minimum ?</div>
+      <div class="faq-a">Aucun niveau requis. Le sparring est organisé par niveau pour que tout le monde progresse à son rythme.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">La séance a-t-elle lieu toute l'année ?</div>
+      <div class="faq-a">L'entraînement est régulier tout au long de l'année, avec quelques interruptions sur les grandes semaines de compétition ou congés. Vérifiez via WhatsApp avant les jours fériés.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Après la première séance, comment continuer ?</div>
+      <div class="faq-a">Si le sport vous plaît, vous pouvez prendre votre licence LAF (150€/an) et revenir chaque mardi. La licence donne aussi accès au club de Munsbach le vendredi soir.</div>
+    </div>
+  </div>
+</div>
 
-          <div class="card">
-            <h3>Ambiance de club</h3>
-            <p>
-              Une première séance sert aussi à sentir l’atmosphère du groupe, voir comment s’entraînent les autres,
-              poser des questions et comprendre le fonctionnement du club avant de penser à la progression plus sérieuse.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="sec sec-dark">
+<div class="sec-inner">
+  <div class="cta-block">
+    <div>
+      <h3>Essai gratuit mardi 18h</h3>
+      <p>86 rue des Romains, Strassen — 8 min depuis Luxembourg-ville. Aucun équipement requis.</p>
+    </div>
+    <a href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" class="btn-primary">Contacter par WhatsApp</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <div class="divider"></div>
+<footer>
+  <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
+  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
+</footer>
 
-    <section id="acces">
-      <div class="wrap">
-        <h2>Accès rapide <span>à Strassen</span></h2>
-        <p class="section-intro">
-          Entraînement de bras de fer à Strassen - lieu est facile d’accès depuis Luxembourg-ville.
-        </p>
-
-        <div class="grid2">
-          <div class="card">
-            <h3>Adresse et itinéraire</h3>
-            <p>
-              Le club de bras de fer à Strassen se trouve au 86 rue des Romains.
-              C’est une adresse simple à rejoindre et un très bon point d’entrée pour découvrir l’armwrestling au Luxembourg.
-            </p>
-            <div class="btn-row">
-              <a class="btn primary" href="https://maps.google.com/?q=86+rue+des+Romains,+Strassen,+Luxembourg" target="_blank" rel="noopener">Voir l'adresse</a>
-              <a class="btn secondary" href="https://www.google.com/maps/dir/Luxembourg+Centre/86+rue+des+Romains,+Strassen,+Luxembourg/data=!4m2!4m1!3e3" target="_blank" rel="noopener">Itinéraire transport</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Stationnement</h3>
-            <p>La rue bénéficie de plusieurs parking gratuit, il est donc facile de se garer en toutes circonstances.              
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="progression">
-      <div class="wrap">
-        <h2>De l’essai gratuit à la <span>progression</span></h2>
-        <p class="section-intro">
-          Une bonne séance, et ensuite ? L’entraînement à Strassen peut être le début d’un vrai parcours dans le bras de fer au Luxembourg :
-          découverte, bases techniques, pratique régulière, confiance à la table, puis éventuellement compétition.
-        </p>
-
-        <div class="grid2">
-          <div class="card">
-            <h3>Débuter sans pression</h3>
-            <p>
-              La première séance gratuite enlève une grande partie du blocage.
-              On peut venir voir, comprendre, tester et échanger avec le club sans devoir déjà se considérer comme pratiquant confirmé.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Construire sur des bases solides</h3>
-            <p>
-              En partant d’un entraînement sérieux à Strassen, on apprend d’abord proprement,
-              ce qui rend la progression plus cohérente et plus sûre. C’est ce cadre qui permet de transformer une curiosité
-              en vraie pratique sportive au fil des semaines.
-            </p>
-          </div>
-        </div>
-
-        <div class="cta">
-          <p>
-            <strong>Le plus direct :</strong> viens essayer gratuitement le mardi à 18h à Strassen,
-            découvre l’ambiance du club et vois si cette discipline te correspond.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="faq">
-      <div class="wrap">
-        <h2>FAQ <span>Strassen</span></h2>
-        <div class="faq">
-          <div class="card">
-            <h3>Peut-on venir sans expérience ?</h3>
-            <p>
-              Oui. Cette séance est adaptée à une première découverte du bras de fer et les débutants sont bienvenus.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Faut-il réserver ?</h3>
-            <p>
-              Ce n’est pas obligatoire, mais prévenir le club est préférable pour faciliter un premier accueil.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Faut-il déjà être fort pour commencer ?</h3>
-            <p>
-              Non. Le bras de fer est aussi un sport technique. Le plus important au départ est d’apprendre le placement,
-              la sécurité et la logique de la table.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Pourquoi choisir Strassen plutôt qu’une autre entrée ?</h3>
-            <p>
-              Parce que Strassen réunit l’essentiel pour commencer : accessibilité, horaire fixe, séance d’essai gratuite
-              et cadre clair pour découvrir le bras de fer au Luxembourg.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Que faut-il apporter ?</h3>
-            <p>
-              Une tenue de sport simple suffit pour une première séance. Le plus important est de venir prêt à découvrir le sport.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Pourquoi cette page peut mieux ressortir sur Google ?</h3>
-            <p>
-              Parce qu’elle répond à une recherche locale précise avec des informations concrètes :
-              Strassen, horaire, accès, débutants, essai gratuit et logique d’entraînement.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="contact">
-      <div class="wrap">
-        <h2>Contact <span>direct</span></h2>
-        <div class="cta">
-          <p>
-            <strong>Essai gratuit mardi 18h :</strong> contacte Nils Davoine au
-            <a href="tel:+352661495319" style="color:var(--white); text-decoration:underline;">+352 661 495 319</a>
-            ou par
-            <a href="https://wa.me/352661495319" style="color:var(--white); text-decoration:underline;">WhatsApp</a>.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
-    <ul class="footer-links">
-      <li><a href="index.html#about">Le Club</a></li>
-      <li><a href="index.html#entrainement">Entraînements</a></li>
-      <li><a href="index.html#licence">Licence</a></li>
-      <li><a href="index.html#competition">Compétitions</a></li>
-      <li><a href="index.html#localisation">Accès</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <p>© 2026 Armwrestling Club Strassen · Luxembourg Armwrestling Federation</p>
-  </footer>
-
-  <script>
-    function toggleNav() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-
-    document.querySelectorAll('#navLinks a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
-    });
-
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nav.style.background = window.scrollY > 50
-        ? 'rgba(10,10,10,0.98)'
-        : 'rgba(10,10,10,0.92)';
-    });
-  </script>
 </body>
 </html>
