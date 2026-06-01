@@ -3,25 +3,18 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Blessures au bras de fer | Fracture humérus, sécurité et prévention — ACS Luxembourg</title>
-
-  <meta
-    name="description"
-    content="Guide complet sur les blessures au bras de fer : fracture de l’humérus, douleurs au poignet, sécurité débutant, échauffement et prévention."
-  />
-
+  <meta name="description" content="Guide complet sur les blessures au bras de fer : fracture de l'humérus, douleurs au poignet, sécurité débutant, échauffement et prévention."/>
   <meta name="robots" content="index, follow"/>
-
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html"/>
 
-  <meta property="og:title" content="Blessures au bras de fer | Fracture humérus, sécurité et prévention" />
-  <meta property="og:description" content="Guide complet sur les blessures au bras de fer : fracture de l'humérus, douleurs au poignet, sécurité débutant, échauffement et prévention." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html" />
-  <meta property="og:locale" content="fr_LU" />
-  <meta property="og:image" content="https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg" />
-  <meta property="og:image:alt" content="Guide sur les blessures au bras de fer et la sécurité en armwrestling au Luxembourg." />
+  <meta property="og:title" content="Blessures au bras de fer | Fracture humérus, sécurité et prévention"/>
+  <meta property="og:description" content="Guide complet sur les blessures au bras de fer : fracture de l'humérus, douleurs au poignet, sécurité débutant, échauffement et prévention."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html"/>
+  <meta property="og:locale" content="fr_LU"/>
+  <meta property="og:image" content="https://armwrestlingclubstrassen.com/entrainement-table-officielle-laf.png"/>
+  <meta property="og:image:alt" content="Guide sur les blessures au bras de fer et la sécurité en armwrestling au Luxembourg."/>
 
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
@@ -45,588 +38,432 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Blessures au bras de fer", "item": "https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html" }
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" },
+      { "@type": "ListItem", "position": 3, "name": "Blessures au bras de fer", "item": "https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html" }
     ]
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="blog.css"/>
 
   <style>
+    /* ── LAYOUT ── */
+    .sec { padding: 4rem 0; }
+    .sec-dark  { background: var(--black); }
+    .sec-light { background: var(--dark2); }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
 
-    .sec{
-      padding:3.5rem 0
+    /* ── EYEBROW ── */
+    .sec-eyebrow {
+      font-family: var(--font-display);
+      font-size: .64rem;
+      font-weight: 900;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(192,57,43,.6);
+      margin-bottom: .8rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .sec-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: rgba(192,57,43,.5);
     }
 
-    .sec-dark{
-      background:var(--black)
+    /* ── TYPOGRAPHY ── */
+    .sec h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 0 0 1.3rem;
+      line-height: 1.02;
+    }
+    .sec h2 span { color: var(--red); }
+    .sec h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 2rem 0 .6rem;
+      letter-spacing: .04em;
+    }
+    .sec h3:first-child { margin-top: 0; }
+    .sec p  { font-size: 1rem; color: rgba(245,240,232,.75); line-height: 1.95; margin-bottom: 1.3rem; }
+    .sec ul { margin: 0 0 1.3rem 1.8rem; }
+    .sec li { font-size: .97rem; color: rgba(245,240,232,.7); line-height: 1.85; margin-bottom: .35rem; }
+    .sec strong { color: var(--white); font-weight: 600; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.3);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: rgba(245,240,232,.3); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb span { margin: 0 .5rem; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: rgba(192,57,43,.07);
+      border-left: 3px solid var(--red);
+      padding: 1.3rem 1.8rem;
+      margin: 1.8rem 0;
+      border-radius: 0 3px 3px 0;
+    }
+    .callout p { margin: 0 !important; color: rgba(245,240,232,.88) !important; font-size: .96rem !important; }
+
+    /* ── SPLIT ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .split img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+    .img-caption {
+      font-family: var(--font-display);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.25);
+      margin-top: .5rem;
     }
 
-    .sec-light{
-      background:var(--dark2)
+    /* ── DANGER GRID ── */
+    .danger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(192,57,43,.15);
+      margin: 1.8rem 0;
+    }
+    .danger-card { background: #0a0a0a; padding: 2rem; }
+    .danger-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+      color: var(--red);
+      letter-spacing: .04em;
+    }
+    .danger-card p { margin: 0; font-size: .9rem; color: rgba(245,240,232,.6); line-height: 1.8; }
+
+    /* ── INJURY GRID ── */
+    .injury-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,.05);
+      margin: 1.8rem 0;
+    }
+    .injury-item { background: var(--black); padding: 1.6rem 1.8rem; }
+    .injury-name {
+      font-family: var(--font-display);
+      font-size: .85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: .5rem;
+      letter-spacing: .04em;
+    }
+    .injury-desc { font-size: .88rem; color: rgba(245,240,232,.55); line-height: 1.75; margin: 0; }
+
+    /* ── PREVENTION LIST ── */
+    .prevention-list { margin: 1.8rem 0; }
+    .prev-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      align-items: flex-start;
+    }
+    .prev-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .prev-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: rgba(192,57,43,.2);
+      line-height: 1;
+      min-width: 32px;
+      flex-shrink: 0;
+    }
+    .prev-text { font-size: .95rem; color: rgba(245,240,232,.68); line-height: 1.75; }
+    .prev-text strong { color: var(--white); }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 2.5rem;
+    }
+    .photo-strip-3 img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+      border: 1px solid rgba(255,255,255,.06);
     }
 
-    .sec-inner{
-      max-width:960px;
-      margin:0 auto;
-      padding:0 3rem
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(135deg, rgba(192,57,43,.12), rgba(5,2,2,.9));
+      border: 1px solid rgba(192,57,43,.28);
+      border-top: 2px solid var(--red);
+      padding: 2.2rem 2.5rem;
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
     }
-
-    .sec h2{
-      font-family:var(--font-display);
-      font-size:2rem;
-      font-weight:900;
-      text-transform:uppercase;
-      color:var(--white);
-      margin:0 0 1.2rem;
-      line-height:1.05
+    .cta-final-label {
+      font-family: var(--font-display);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(192,57,43,.7);
+      margin-bottom: .4rem;
     }
-
-    .sec p{
-      font-size:1.02rem;
-      color:rgba(245,240,232,.78);
-      line-height:1.95;
-      margin-bottom:1.4rem
+    .cta-final-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .4rem;
     }
+    .cta-final-desc { font-size: .88rem; color: rgba(245,240,232,.5); margin: 0; }
 
-    .sec ul{
-      margin:0 0 1.4rem 1.8rem
+    /* ── RESPONSIVE ── */
+    @media(max-width: 768px) {
+      .sec-inner    { padding: 0 1.5rem; }
+      .split        { grid-template-columns: 1fr; gap: 2rem; }
+      .danger-grid  { grid-template-columns: 1fr; }
+      .injury-grid  { grid-template-columns: 1fr; }
+      .photo-strip-3 { grid-template-columns: 1fr; }
+      .photo-strip-3 img { height: 200px; }
+      .cta-final    { grid-template-columns: 1fr; }
     }
-
-    .sec li{
-      font-size:.98rem;
-      color:rgba(245,240,232,.72);
-      line-height:1.85;
-      margin-bottom:.45rem
-    }
-
-    .sec strong{
-      color:var(--white);
-      font-weight:600
-    }
-
-    .callout{
-      background:rgba(192,57,43,.07);
-      border-left:3px solid var(--red);
-      padding:1.4rem 1.8rem;
-      margin:1.8rem 0
-    }
-
-    .callout p{
-      margin:0!important;
-      color:rgba(245,240,232,.88)!important;
-      font-size:.97rem!important
-    }
-
-    .danger-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:2px;
-      margin-top:2rem;
-      background:rgba(192,57,43,.15)
-    }
-
-    .danger-card{
-      background:rgba(10,10,10,.92);
-      padding:2rem
-    }
-
-    .danger-card h3{
-      font-family:var(--font-display);
-      font-size:1.05rem;
-      font-weight:800;
-      text-transform:uppercase;
-      margin-bottom:.9rem;
-      color:var(--white)
-    }
-
-    .danger-card p{
-      margin:0;
-      font-size:.92rem;
-      color:rgba(245,240,232,.65);
-      line-height:1.8
-    }
-
-    .cta-block{
-      background:
-        linear-gradient(
-          135deg,
-          rgba(192,57,43,.12),
-          rgba(10,10,10,.85)
-        );
-
-      border:1px solid rgba(192,57,43,.3);
-
-      padding:2.2rem 2.5rem;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:2rem;
-      flex-wrap:wrap;
-      margin-top:2rem
-    }
-
-    .cta-block h3{
-      font-family:var(--font-display);
-      font-size:1.6rem;
-      font-weight:900;
-      text-transform:uppercase;
-      color:var(--white);
-      margin:0 0 .4rem
-    }
-
-    .cta-block p{
-      margin:0;
-      font-size:.9rem;
-      color:rgba(245,240,232,.55)
-    }
-
-    .breadcrumb{
-      font-family:var(--font-display);
-      font-size:.75rem;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      color:rgba(245,240,232,.3);
-      margin-bottom:1.5rem
-    }
-
-    .breadcrumb a{
-      color:rgba(245,240,232,.3);
-      text-decoration:none
-    }
-
-    .breadcrumb a:hover{
-      color:var(--red)
-    }
-
-    .breadcrumb span{
-      margin:0 .5rem
-    }
-
-    .injury-list{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1px;
-      margin-top:2rem;
-      background:rgba(255,255,255,.05)
-    }
-
-    .injury-item{
-      background:var(--black);
-      padding:1.6rem
-    }
-
-    .injury-item h3{
-      font-family:var(--font-display);
-      font-size:1rem;
-      font-weight:800;
-      text-transform:uppercase;
-      margin-bottom:.6rem
-    }
-
-    .injury-item p{
-      margin:0;
-      font-size:.92rem;
-      color:rgba(245,240,232,.65);
-      line-height:1.8
-    }
-
-    @media(max-width:768px){
-
-      .sec-inner{
-        padding:0 1.5rem
-      }
-
-      .danger-grid,
-      .injury-list{
-        grid-template-columns:1fr
-      }
-
-    }
-
   </style>
 </head>
-
 <body>
 
 <nav>
-
-  <a href="index.html" class="logo-wrap">
-    <img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/>
-    <span class="nav-logo">ACS <span>Luxembourg</span></span>
-  </a>
-
-  <ul class="nav-links">
+  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
-    <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
-
+  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
-<div class="local-hero">
-
-  <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
-
+<!-- ── HERO ─────────────────────────────────────────────────────────── -->
+<div class="article-hero">
+  <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb">
-      <a href="index.html">Accueil</a>
-      <span>›</span>
-      Blessures au bras de fer
+      <a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Blessures au bras de fer
     </div>
-
-    <div class="page-tag">
-      Sécurité · Prévention · Débutants
-    </div>
+    <div class="article-tag">Sécurité · Prévention · Débutants</div>
     <div class="article-date">Mis à jour : mai 2026</div>
-
-    <h1 class="page-title">
-      Blessures<br>
-      <span>au bras de fer</span>
-    </h1>
-
-    <p style="
-      font-size:1.1rem;
-      color:rgba(245,240,232,.65);
-      max-width:640px;
-      line-height:1.8;
-    ">
-      Fracture de l’humérus, douleurs au poignet,
-      positions dangereuses et sécurité débutant :
-      tout ce qu’il faut savoir pour pratiquer
-      le bras de fer sportif en sécurité.
-    </p>
-
-    <div class="hero-stats-row">
-
-      <div class="hero-stat">
-        <div class="hero-stat-num">100<span>%</span></div>
-        <div class="hero-stat-label">des blessures évitables</div>
-      </div>
-
-      <div class="hero-stat">
-        <div class="hero-stat-num">1<span>ère</span></div>
-        <div class="hero-stat-label">séance encadrée</div>
-      </div>
-
-      <div class="hero-stat">
-        <div class="hero-stat-num">6</div>
-        <div class="hero-stat-label">Conseils de professionel</div>
-      </div>
-
-    </div>
-
-    <div style="
-      display:flex;
-      gap:1rem;
-      margin-top:2.5rem;
-      flex-wrap:wrap;
-    ">
-
-      <a href="index.html#contact" class="btn-primary">
-        Essayer gratuitement
-      </a>
-
-      <a href="index.html#entrainement" class="btn-outline">
-        Voir les entraînements
-      </a>
-
-    </div>
-
+    <h1 class="article-title">Blessures<br><span>au bras de fer</span></h1>
+    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Fracture de l'humérus, douleurs au poignet, positions dangereuses — tout ce qu'il faut savoir pour pratiquer le bras de fer sportif en sécurité.</p>
+    <div class="article-meta">ACS Luxembourg · Guide sécurité · Pratique encadrée</div>
   </div>
-
 </div>
 
+<!-- ── INTRO ──────────────────────────────────────────────────────────── -->
 <div class="sec sec-dark">
-
   <div class="sec-inner">
-  <div class="article-photo" style="margin-bottom:2.5rem;">
-    <img src="entrainement-table-officielle-laf.png" alt="Entraînement sur table officielle LAF à l'Armwrestling Club Strassen — position de sécurité" loading="lazy" />
-  </div>
-
-    <h2>
-      Le bras de fer est-il dangereux ?
-    </h2>
-
-    <p>
-      Le bras de fer sportif possède des risques réels,
-      comme tous les sports de force ou sports de combat.
-      Cependant, la majorité des blessures importantes surviennent
-      lors de matchs improvisés entre amis,
-      sans échauffement et sans connaissance technique.
-    </p>
-
-    <p>
-      En club, les débutants apprennent rapidement :
-    </p>
-
-    <ul>
-      <li>les positions dangereuses à éviter</li>
-      <li>le placement correct du bras et de l’épaule</li>
-      <li>comment relâcher lorsqu’une position devient mauvaise</li>
-      <li>les bases de l’échauffement spécifique</li>
-    </ul>
-
-    <div class="callout">
-
-      <p>
-        <strong>Important :</strong>
-        une pratique encadrée réduit énormément le risque de blessure.
-        La technique et le placement sont prioritaires sur la force brute.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div class="sec sec-light">
-
-  <div class="sec-inner">
-
-    <h2>
-      La fracture de l’humérus
-    </h2>
-
-    <p>
-      La blessure la plus connue au bras de fer est
-      la <strong>fracture spirale de l’humérus</strong>.
-      Elle apparaît généralement lorsqu’un débutant résiste
-      dans une mauvaise position avec le bras ouvert
-      et l’épaule désalignée.
-    </p>
-
-    <p>
-      Ce type de blessure est impressionnant et est typique d'un environnement non encadré: soirée en bar sans échauffement, positions dangereuses, manque de sérieux. Des études médicales (<a href="https://pubmed.ncbi.nlm.nih.gov/?term=arm+wrestling+humeral+fracture" target="_blank" rel="noopener noreferrer">PubMed — fractures humérus armwrestling</a>) confirment que la quasi-totalité de ces fractures surviennent hors cadre sportif encadré.
-    </p>
-
-    <div class="danger-grid">
-
-      <div class="danger-card">
-
-        <h3>Bras ouvert</h3>
-
-        <p>
-          Lorsque le bras s’éloigne du corps,
-          le stress mécanique sur l’humérus augmente fortement.
-        </p>
-
-      </div>
-
-      <div class="danger-card">
-
-        <h3>Résistance statique</h3>
-
-        <p>
-          Vouloir “tenir” à tout prix dans une mauvaise position
-          est une erreur classique chez les débutants.
-        </p>
-
-      </div>
-
-      <div class="danger-card">
-
-        <h3>Mauvaise rotation</h3>
-
-        <p>
-          Une rotation du corps sans alignement du bras
-          peut créer une forte torsion osseuse.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div class="sec sec-dark">
-
-  <div class="sec-inner">
-
-    <h2>
-      Comment éviter les blessures
-    </h2>
-
-    <p>
-      La prévention au bras de fer repose principalement
-      sur la technique, le contrôle et l’apprentissage progressif.
-    </p>
-
-    <ul>
-      <li>Apprendre le bon placement du corps</li>
-      <li>Échauffer poignets, doigts, coude, épaules et dos</li>
-      <li>Ne jamais mettre toute sa force, encore moins dans une position perdante</li>
-      <li>Commencer avec des partenaires expérimentés</li>
-      <li>Ne jamais bloquer une articulation</li>
-      <li>Travailler différentes positions</li>
-    </ul>
-
-    <div class="callout">
-
-      <p>
-        Les matchs improvisés “pour voir qui est le plus fort”
-        sans technique ni échauffement
-        sont DANGEUREUX, contrairement à
-        un entraînement structuré en club.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div class="sec sec-light">
-
-  <div class="sec-inner">
-
-    <h2>
-      Douleurs fréquentes chez les débutants
-    </h2>
-
-    <p>
-      Certaines douleurs sont fréquentes au début
-      lorsque les tendons et articulations s’adaptent
-      aux contraintes spécifiques du bras de fer.
-    </p>
-
-    <div class="injury-list">
-
-      <div class="injury-item">
-
-        <h3>Poignet</h3>
-
-        <p>
-          Fatigue des fléchisseurs et manque d’habitude
-          sur les positions de prise.
-        </p>
-
-      </div>
-
-      <div class="injury-item">
-
-        <h3>Coude</h3>
-
-        <p>
-          Tensions tendineuses dues aux premières séances
-          ou à un excès d’intensité.
-        </p>
-
-      </div>
-
-      <div class="injury-item">
-
-        <h3>Doigts</h3>
-
-        <p>
-          Sollicitation inhabituelle des tendons de prise
-          et de pronation via le pouce.
-        </p>
-
-      </div>
-
-      <div class="injury-item">
-
-        <h3>Avant-bras</h3>
-
-        <p>
-          Courbatures importantes liées au travail de traction
-          et de maintien.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div class="sec sec-dark">
-
-  <div class="sec-inner">
-  <div class="article-photo" style="margin-bottom:2.5rem;">
-    <img src="2F3A1449.jpeg" alt="Séance d'entraînement bras de fer en club — encadrement sécurisé à l'ACS Strassen" loading="lazy" />
-  </div>
-
-    <h2>
-      Pourquoi commencer en club
-    </h2>
-
-    <p>
-      Les clubs permettent d’apprendre rapidement
-      les bases de sécurité du bras de fer sportif :
-    </p>
-
-    <ul>
-      <li>placement correct</li>
-      <li>mouvements sûrs</li>
-      <li>échauffement spécifique</li>
-      <li>gestion de l’intensité</li>
-      <li>partenaires adaptés</li>
-    </ul>
-
-    <p>
-      À Strassen, les débutants sont intégrés progressivement
-      et encadrés dès la première séance.
-    </p>
-
-    <div class="cta-block">
+    <div class="split">
 
       <div>
-
-        <h3>
-          Première séance gratuite
-        </h3>
-
-        <p>
-          Mardi 18h · Strassen · Aucun niveau requis
-        </p>
-
+        <div class="sec-eyebrow">Mise au point</div>
+        <h2>Le bras de fer<br><span>est-il dangereux ?</span></h2>
+        <p>Le bras de fer sportif comporte des risques réels, comme tout sport de force ou de combat. Cependant, la <strong>quasi-totalité des blessures graves surviennent lors de matchs improvisés</strong> — soirées entre amis, sans échauffement, sans technique et sans encadrement.</p>
+        <p>En club, les débutants apprennent rapidement les positions dangereuses à éviter, le placement correct du bras et de l'épaule, et comment relâcher lorsqu'une position devient mauvaise. La pratique encadrée réduit le risque de façon radicale.</p>
       </div>
 
-      <a href="index.html#contact" class="btn-primary">
-        Essayer gratuitement
-      </a>
+      <div>
+        <img src="entrainement-table-officielle-laf.png" alt="Entraînement sur table officielle LAF — position de sécurité correcte à l'ACS Strassen" loading="lazy"/>
+        <div class="img-caption">Entraînement encadré · Table officielle LAF · ACS Strassen</div>
+      </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- ── FRACTURE HUMÉRUS ───────────────────────────────────────────────── -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Blessure principale</div>
+    <h2>La fracture<br><span>de l'humérus</span></h2>
+    <p>La blessure la plus connue au bras de fer est la <strong>fracture spirale de l'humérus</strong>. Elle survient lorsqu'un athlète résiste dans une mauvaise position — bras ouvert, épaule désalignée — en mettant toute sa force contre un adversaire qui l'emporte. Des études médicales (<a href="https://pubmed.ncbi.nlm.nih.gov/?term=arm+wrestling+humeral+fracture" target="_blank" rel="noopener noreferrer" style="color:var(--red);">PubMed — fractures humérus armwrestling</a>) confirment que la quasi-totalité de ces fractures surviennent hors cadre sportif encadré.</p>
+    <p>Les trois mécanismes qui déclenchent cette blessure :</p>
+
+    <div class="danger-grid">
+      <div class="danger-card">
+        <h3>Bras ouvert</h3>
+        <p>Lorsque le bras s'éloigne du corps, le stress mécanique sur l'humérus augmente fortement. Le bras doit rester aligné avec l'épaule.</p>
+      </div>
+      <div class="danger-card">
+        <h3>Résistance statique</h3>
+        <p>Vouloir "tenir" à tout prix dans une position perdante est l'erreur classique. Mieux vaut lâcher que risquer la fracture.</p>
+      </div>
+      <div class="danger-card">
+        <h3>Mauvaise rotation</h3>
+        <p>Une rotation du corps sans alignement du bras crée une torsion osseuse que l'humérus ne peut pas encaisser.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>Règle de base :</strong> si vous sentez que vous perdez la position et que votre bras commence à s'ouvrir, lâchez ou signalez à l'arbitre. Abandonner un match ne coûte rien — une fracture, plusieurs semaines.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── COMMENT ÉVITER ─────────────────────────────────────────────────── -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Prévention</div>
+    <h2>Comment éviter<br><span>les blessures</span></h2>
+    <p>La prévention repose sur six règles simples que tout pratiquant encadré apprend dès les premières séances.</p>
+
+    <div class="prevention-list">
+      <div class="prev-item">
+        <div class="prev-num">01</div>
+        <div class="prev-text"><strong>Maîtriser le placement du corps</strong> — coude sur le coussin, épaule dans l'axe, corps en appui. Un bon placement réduit les forces de torsion sur le bras.</div>
+      </div>
+      <div class="prev-item">
+        <div class="prev-num">02</div>
+        <div class="prev-text"><strong>S'échauffer sérieusement</strong> — poignets, doigts, coude, épaules et dos. Minimum 10 minutes avant tout effort sur table.</div>
+      </div>
+      <div class="prev-item">
+        <div class="prev-num">03</div>
+        <div class="prev-text"><strong>Ne jamais résister dans une mauvaise position</strong> — si vous perdez le placement, signalez ou lâchez. La fracture arrive en résistant "à l'aveugle".</div>
+      </div>
+      <div class="prev-item">
+        <div class="prev-num">04</div>
+        <div class="prev-text"><strong>Commencer avec des partenaires expérimentés</strong> — ils contrôlent l'intensité et savent reconnaître une position dangereuse pour vous.</div>
+      </div>
+      <div class="prev-item">
+        <div class="prev-num">05</div>
+        <div class="prev-text"><strong>Augmenter l'intensité progressivement</strong> — les tendons et articulations s'adaptent lentement. Ne jamais mettre 100% de sa force dès les premières séances.</div>
+      </div>
+      <div class="prev-item">
+        <div class="prev-num">06</div>
+        <div class="prev-text"><strong>Renforcer les extenseurs du poignet</strong> — le déséquilibre fléchisseurs/extenseurs est une cause fréquente de tendinites au coude.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── DOULEURS FRÉQUENTES ────────────────────────────────────────────── -->
+<div class="sec sec-light">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Douleurs courantes</div>
+    <h2>Ce que les débutants<br><span>ressentent souvent</span></h2>
+    <p>Ces douleurs sont normales en début de pratique — les tendons et articulations s'adaptent aux contraintes spécifiques du bras de fer. Elles disparaissent généralement après 4 à 8 semaines de pratique régulière.</p>
+
+    <div class="injury-grid">
+      <div class="injury-item">
+        <div class="injury-name">Poignet</div>
+        <div class="injury-desc">Fatigue des fléchisseurs et manque d'habituation aux positions de prise. Réduire l'intensité et échauffer plus longuement.</div>
+      </div>
+      <div class="injury-item">
+        <div class="injury-name">Coude</div>
+        <div class="injury-desc">Tensions tendineuses dues aux premières séances ou à un excès d'intensité. Signe classique de surcharge — repos relatif 2-3 jours.</div>
+      </div>
+      <div class="injury-item">
+        <div class="injury-name">Doigts</div>
+        <div class="injury-desc">Sollicitation inhabituelle des tendons de prise et de pronation via le pouce. Les fat grips à l'entraînement aident à renforcer progressivement.</div>
+      </div>
+      <div class="injury-item">
+        <div class="injury-name">Avant-bras</div>
+        <div class="injury-desc">Courbatures importantes liées au travail de traction et de maintien. Normal les deux premières semaines — signe d'adaptation musculaire.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRATIQUE EN CLUB ───────────────────────────────────────────────── -->
+<div class="sec sec-dark">
+  <div class="sec-inner">
+
+    <div class="photo-strip-3">
+      <img src="2F3A1449.jpeg" alt="Séance d'entraînement bras de fer en club — encadrement sécurisé à l'ACS Strassen" loading="lazy"/>
+      <img src="match-feminin-arbitre-laf.png" alt="Match de bras de fer avec arbitre officiel — sécurité et règles respectées" loading="lazy"/>
+      <img src="0413(9).png" alt="Détail de la table officielle de bras de fer — position correcte du coude" loading="lazy"/>
+    </div>
+
+    <div class="sec-eyebrow">Pourquoi commencer en club</div>
+    <h2>La pratique encadrée<br><span>change tout</span></h2>
+    <p>Un club de bras de fer vous apprend dès la première séance ce que les matchs de bar ne vous enseigneront jamais : le bon placement, les mouvements sûrs, l'échauffement spécifique et la gestion de l'intensité. Des débutants partent de zéro chaque semaine à Strassen — aucun ne s'est blessé en suivant les consignes.</p>
+
+    <div class="cta-final">
+      <div>
+        <div class="cta-final-label">Armwrestling Club Strassen · Mardi 18h · Première séance gratuite</div>
+        <div class="cta-final-title">Apprenez à pratiquer en sécurité</div>
+        <p class="cta-final-desc">Placement, positions dangereuses, échauffement — tout est expliqué dès la première séance. Aucun niveau requis.</p>
+      </div>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
 
   </div>
-
 </div>
 
 <footer>
-
-  <div class="footer-logo">
-    Armwrestling Club <span>Strassen</span>
-  </div>
-
+  <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
   <ul class="footer-links">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
-
-  <p>
-    © 2026 Armwrestling Club Strassen · Luxembourg
-  </p>
-
+  <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
+  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
 </body>
 </html>
