@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -85,18 +85,21 @@
 
 <nav>
   <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
-    <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
+  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <div class="local-hero">
   <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
-    <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Histoire</div>
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Histoire</div>
     <div class="page-tag">Culture · Histoire du sport</div>
     <div class="article-date">Mis à jour : mai 2026</div>
     <h1 class="page-title">Histoire et origines<br><span>du bras de fer</span></h1>
@@ -242,11 +245,21 @@
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
   <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
 </body>
 </html>
