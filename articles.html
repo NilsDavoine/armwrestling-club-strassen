@@ -7,29 +7,20 @@
   <meta name="description" content="Tous les articles et guides sur le bras de fer au Luxembourg : technique, entraînement, compétition, nutrition, histoire et champions. Par l'Armwrestling Club Strassen."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/articles.html"/>
+  <meta property="og:title" content="Articles & ressources bras de fer | ACS Luxembourg"/>
+  <meta property="og:description" content="Tous les guides et articles sur le bras de fer au Luxembourg : technique, entraînement, compétition, nutrition, histoire et champions."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://armwrestlingclubstrassen.com/articles.html"/>
+  <meta property="og:locale" content="fr_LU"/>
+  <meta property="og:image" content="https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg"/>
+  <meta property="og:image:alt" content="Articles et ressources sur le bras de fer par l'Armwrestling Club Strassen Luxembourg."/>
 
-  <meta property="og:title" content="Articles & ressources bras de fer | ACS Luxembourg" />
-  <meta property="og:description" content="Tous les guides et articles sur le bras de fer au Luxembourg : technique, entraînement, compétition, nutrition, histoire et champions." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://armwrestlingclubstrassen.com/articles.html" />
-  <meta property="og:locale" content="fr_LU" />
-  <meta property="og:image" content="https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg" />
-  <meta property="og:image:alt" content="Articles et ressources sur le bras de fer par l'Armwrestling Club Strassen Luxembourg." />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"}]}
+  </script>
 
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" }
-    ]
-  }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -37,279 +28,278 @@
   <link rel="stylesheet" href="blog.css"/>
 
   <style>
-    /* ===== HERO ===== */
+    /* ── SPOTLIGHT TRACKING ── */
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; }
+
+    /* ── HERO ── */
     .art-hero {
       background: var(--black);
       padding: 7rem 3rem 4.5rem;
       border-bottom: 1px solid rgba(255,255,255,.07);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .art-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 65% 70% at 0% 50%, rgba(192,57,43,.08) 0%, transparent 60%);
       pointer-events: none;
     }
     .art-hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
-
     .art-breadcrumb {
-      font-family: var(--font-display);
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.28);
-      margin-bottom: 1.6rem;
+      font-family: var(--font-display); font-size: .7rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(245,240,232,.28); margin-bottom: 1.6rem;
     }
     .art-breadcrumb a { color: rgba(245,240,232,.28); text-decoration: none; }
     .art-breadcrumb a:hover { color: var(--red); }
     .art-breadcrumb span { margin: 0 .5rem; }
-
     .art-hero-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: .95;
-      margin-bottom: 1.2rem;
-      letter-spacing: -.01em;
+      font-family: var(--font-display); font-size: clamp(3rem,6vw,5rem);
+      font-weight: 900; text-transform: uppercase; color: var(--white);
+      line-height: .95; margin-bottom: 1.2rem; letter-spacing: -.01em;
     }
     .art-hero-h1 span { color: var(--red); }
-
-    .art-hero-intro {
-      font-size: 1rem;
-      color: rgba(245,240,232,.55);
-      max-width: 520px;
-      line-height: 1.85;
-      margin-bottom: 2.5rem;
-    }
-
-    .art-hero-stats {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(245,240,232,.07);
-    }
-    .art-hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-    }
+    .art-hero-intro { font-size: 1rem; color: rgba(245,240,232,.55); max-width: 520px; line-height: 1.85; margin-bottom: 2.5rem; }
+    .art-hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; padding-top: 2.5rem; border-top: 1px solid rgba(245,240,232,.07); }
+    .art-hero-stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--white); line-height: 1; }
     .art-hero-stat-num span { color: var(--red); }
-    .art-hero-stat-label {
-      font-family: var(--font-display);
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.3);
-      margin-top: .3rem;
-    }
+    .art-hero-stat-label { font-family: var(--font-display); font-size: .62rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,240,232,.3); margin-top: .3rem; }
 
-    /* ===== BODY WRAPPER ===== */
-    .art-body { background: var(--black); }
+    /* ── SECTION WRAPPERS ── */
+    .art-section-wrap { background: var(--dark2); }
 
-    /* ===== SECTION BLOCK ===== */
-    .art-section {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 4rem 3rem;
-    }
+    /* Séparateur coloré par catégorie — barre en haut de chaque section */
+    .cat-tech    { border-top: 2px solid rgba(192,57,43,.45); }
+    .cat-comp    { border-top: 2px solid rgba(200,120,10,.42); }
+    .cat-culture { border-top: 2px solid rgba(74,104,133,.45); }
+    .cat-club    { border-top: 2px solid rgba(26,144,112,.45); }
+    .art-section { max-width: 960px; margin: 0 auto; padding: 4rem 3rem; }
 
+    /* ── SECTION HEADER (watermark dramatique) ── */
     .art-section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.2rem;
+      position: relative; overflow: visible;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
+      margin-bottom: 2rem; padding-bottom: 1.4rem;
       border-bottom: 1px solid rgba(245,240,232,.07);
     }
-    .art-section-header-left {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-    }
-    .art-section-num {
-      font-family: var(--font-display);
-      font-size: .68rem;
-      font-weight: 900;
-      letter-spacing: .22em;
-      color: rgba(192,57,43,.45);
-      line-height: 1;
-    }
+    .art-section-header-left { position: relative; z-index: 1; }
     .art-section-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--red);
-      line-height: 1;
-      letter-spacing: .02em;
+      font-family: var(--font-display); font-size: 1.7rem; font-weight: 900;
+      text-transform: uppercase; line-height: 1; letter-spacing: .02em;
     }
     .art-section-count {
-      font-family: var(--font-display);
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.22);
-      white-space: nowrap;
-      padding-bottom: .1rem;
+      font-family: var(--font-display); font-size: .65rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(245,240,232,.22); white-space: nowrap; flex-shrink: 0;
+      position: relative; z-index: 1;
     }
 
-    /* ===== GRID ===== */
-    .art-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .75rem;
-    }
+    /* ── COULEURS PAR CATÉGORIE ── */
+    .cat-tech .art-section-title    { color: #c0392b; }
+    .cat-comp .art-section-title    { color: #c8780a; }
+    .cat-culture .art-section-title { color: #7aadda; }
+    .cat-club .art-section-title    { color: #25c494; }
 
-    /* ===== CARD ===== */
-    .art-card {
-      background: #0f0f0f;
-      border: 1px solid rgba(245,240,232,.07);
-      border-radius: 3px;
-      padding: 1.6rem 1.8rem 1.5rem;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
+    /* Tag des cartes régulières — couleur de la catégorie */
+    .cat-tech .art-card-tag    { color: #c0392b; }
+    .cat-comp .art-card-tag    { color: #c8780a; }
+    .cat-culture .art-card-tag { color: #7aadda; }
+    .cat-club .art-card-tag    { color: #25c494; }
+
+    /* ── CARTE VEDETTE : spotlight + neon border ──
+       background-attachment:fixed → gradient en coords viewport.
+       ::before halo coloré · ::after éclat blanc — clippés au
+       filet de bordure via mask-composite:intersect.
+    ── */
+    .art-card-featured {
+      --hue: 5;
+      --border: 1.5;
+      --size: 340;
+      --border-size:    calc(var(--border) * 1px);
+      --spotlight-size: calc(var(--size)   * 1px);
+
+      background-image: radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at
+        calc(var(--x) * 1px) calc(var(--y) * 1px),
+        hsl(var(--hue) 80% 36% / 0.13), transparent
+      );
+      background-color: rgba(255,255,255,.025);
+      background-attachment: fixed;
+      border: var(--border-size) solid rgba(255,255,255,.07);
+      border-top: 2px solid rgba(255,255,255,.15);
+      border-radius: 4px;
       position: relative;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: space-between; gap: 2.5rem;
+      padding: 2rem 2.5rem; margin-bottom: .75rem;
+      text-decoration: none; transition: background-color .25s;
+    }
+    .art-card-featured:hover { background-color: rgba(255,255,255,.042); text-decoration: none; }
+
+    .art-card-featured::before,
+    .art-card-featured::after {
+      pointer-events: none; content: "";
+      position: absolute; inset: calc(var(--border-size) * -1);
+      border: var(--border-size) solid transparent;
+      border-radius: 4px; background-attachment: fixed;
+      mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      mask-clip: padding-box, border-box; mask-composite: intersect;
+      -webkit-mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      -webkit-mask-clip: padding-box, border-box; -webkit-mask-composite: destination-in;
+    }
+    .art-card-featured::before {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at
+        calc(var(--x)*1px) calc(var(--y)*1px),
+        hsl(var(--hue) 90% 42% / 1), transparent 100%
+      );
+      filter: brightness(2.5);
+    }
+    .art-card-featured::after {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at
+        calc(var(--x)*1px) calc(var(--y)*1px),
+        hsl(0 100% 100% / .55), transparent 100%
+      );
+    }
+
+    .art-card-featured-body { flex: 1; min-width: 0; }
+    .art-card-featured-tag {
+      font-family: var(--font-display); font-size: .62rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; opacity: .9; margin-bottom: .7rem;
+    }
+    .art-card-featured-title {
+      font-family: var(--font-display); font-size: 1.55rem; font-weight: 900;
+      text-transform: uppercase; color: var(--white);
+      line-height: 1.05; letter-spacing: .01em; margin-bottom: .6rem;
+    }
+    .art-card-featured-desc {
+      font-size: .88rem; color: rgba(245,240,232,.5); line-height: 1.72; max-width: 520px;
+    }
+    .art-card-featured-cta {
+      font-family: var(--font-display); font-size: .68rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(245,240,232,.22); flex-shrink: 0;
+      transition: color .22s, transform .22s; display: inline-block;
+    }
+    .art-card-featured:hover .art-card-featured-cta { transform: translateX(5px); }
+
+    /* Hue + couleur par catégorie */
+    .cat-tech .art-card-featured    { --hue:5;   border-top-color:rgba(192,57,43,.6); }
+    .cat-tech .art-card-featured-tag { color:#c0392b; }
+    .cat-tech .art-card-featured:hover .art-card-featured-cta { color:#c0392b; }
+
+    .cat-comp .art-card-featured    { --hue:35;  border-top-color:rgba(200,120,10,.6); }
+    .cat-comp .art-card-featured-tag { color:#c8780a; }
+    .cat-comp .art-card-featured:hover .art-card-featured-cta { color:#c8780a; }
+
+    .cat-culture .art-card-featured    { --hue:215; border-top-color:rgba(74,104,133,.6); }
+    .cat-culture .art-card-featured-tag { color:#7aadda; }
+    .cat-culture .art-card-featured:hover .art-card-featured-cta { color:#7aadda; }
+
+    .cat-club .art-card-featured    { --hue:162; border-top-color:rgba(26,144,112,.6); }
+    .cat-club .art-card-featured-tag { color:#25c494; }
+    .cat-club .art-card-featured:hover .art-card-featured-cta { color:#25c494; }
+
+    /* Culture : 2 cartes vedettes côte à côte */
+    .art-featured-duo {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+    }
+    .art-featured-duo .art-card-featured {
+      margin-bottom: 0; flex-direction: column; align-items: flex-start;
+    }
+
+    /* ── GRILLE RÉGULIÈRE ── */
+    .art-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; }
+
+    /* ── CARTE RÉGULIÈRE ── */
+    .art-card {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(245,240,232,.07); border-radius: 3px;
+      padding: 1.6rem 1.8rem 1.5rem;
+      text-decoration: none; display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
       transition: border-color .22s, background .22s, transform .22s;
     }
     .art-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0;
-      width: 2px;
-      height: 100%;
-      background: var(--red);
-      transform: scaleY(0);
-      transform-origin: bottom;
+      content: ''; position: absolute; left: 0; top: 0;
+      width: 2px; height: 100%;
+      transform: scaleY(0); transform-origin: bottom;
       transition: transform .28s cubic-bezier(.4,0,.2,1);
     }
-    .art-card:hover {
-      border-color: rgba(192,57,43,.22);
-      background: rgba(192,57,43,.04);
-      transform: translateY(-2px);
-    }
+    .art-card:hover { transform: translateY(-2px); text-decoration: none; }
     .art-card:hover::before { transform: scaleY(1); }
 
     .art-card-tag {
-      font-family: var(--font-display);
-      font-size: .6rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: .7rem;
-      opacity: .75;
+      font-family: var(--font-display); font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; margin-bottom: .7rem; opacity: .8;
     }
     .art-card-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: .6rem;
-      flex: 1;
-      letter-spacing: .01em;
+      font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+      text-transform: uppercase; color: var(--white);
+      line-height: 1.2; margin-bottom: .6rem; flex: 1; letter-spacing: .01em;
     }
-    .art-card-desc {
-      font-size: .82rem;
-      color: rgba(245,240,232,.45);
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-    }
+    .art-card-desc { font-size: .82rem; color: rgba(245,240,232,.45); line-height: 1.65; margin-bottom: 1.2rem; }
     .art-card-cta {
-      font-family: var(--font-display);
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.25);
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      margin-top: auto;
-      transition: color .2s;
+      font-family: var(--font-display); font-size: .68rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(245,240,232,.25); margin-top: auto; transition: color .2s;
     }
-    .art-card-cta::after { content: "→"; transition: transform .2s; }
-    .art-card:hover .art-card-cta { color: var(--red); }
-    .art-card:hover .art-card-cta::after { transform: translateX(5px); }
+    .art-card-cta::after { content: " →"; }
 
-    /* ===== SECTION DIVIDER ===== */
-    .art-divider {
-      max-width: 960px;
-      margin: 0 auto;
-      height: 1px;
-      background: rgba(245,240,232,.05);
-    }
+    /* Couleurs cartes régulières par catégorie */
+    .cat-tech .art-card::before             { background: #c0392b; }
+    .cat-tech .art-card:hover               { border-color:rgba(192,57,43,.22); background:rgba(192,57,43,.04); }
+    .cat-tech .art-card:hover .art-card-cta { color:#c0392b; }
 
-    /* ===== CTA FINALE ===== */
-    .art-cta-wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 3rem 5rem;
-    }
+    .cat-comp .art-card::before             { background: #c8780a; }
+    .cat-comp .art-card:hover               { border-color:rgba(200,120,10,.22); background:rgba(200,120,10,.04); }
+    .cat-comp .art-card:hover .art-card-cta { color:#c8780a; }
+
+    .cat-culture .art-card::before             { background: #4a6885; }
+    .cat-culture .art-card:hover               { border-color:rgba(74,104,133,.22); background:rgba(74,104,133,.04); }
+    .cat-culture .art-card:hover .art-card-cta { color:#7aadda; }
+
+    .cat-club .art-card::before             { background: #1a9070; }
+    .cat-club .art-card:hover               { border-color:rgba(26,144,112,.22); background:rgba(26,144,112,.04); }
+    .cat-club .art-card:hover .art-card-cta { color:#25c494; }
+
+    /* ── CTA FINALE ── */
+    .art-cta-wrap { max-width: 960px; margin: 0 auto; padding: 0 3rem 5rem; }
     .art-cta {
-      background: linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,5,5,.9));
-      border: 1px solid rgba(192,57,43,.2);
-      border-top: 2px solid var(--red);
-      padding: 2.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
+      background: linear-gradient(135deg,rgba(192,57,43,.1),rgba(5,5,5,.9));
+      border: 1px solid rgba(192,57,43,.2); border-top: 2px solid var(--red);
+      padding: 2.5rem 3rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
     }
-    .art-cta-title {
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: .4rem;
-    }
-    .art-cta-sub {
-      font-size: .88rem;
-      color: rgba(245,240,232,.45);
-      margin: 0;
-    }
+    .art-cta-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; margin-bottom: .4rem; }
+    .art-cta-sub { font-size: .88rem; color: rgba(245,240,232,.45); margin: 0; }
 
-    /* ===== RESPONSIVE ===== */
+    /* ── RESPONSIVE ── */
     @media(max-width: 768px) {
       .art-hero { padding: 6rem 1.5rem 3rem; }
       .art-section { padding: 2.5rem 1.5rem; }
-      .art-grid { grid-template-columns: 1fr; gap: .5rem; }
+      .art-grid { grid-template-columns: 1fr; }
+      .art-featured-duo { grid-template-columns: 1fr; }
+      .art-card-featured { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
       .art-cta-wrap { padding: 0 1.5rem 3rem; }
       .art-cta { padding: 1.8rem; flex-direction: column; align-items: flex-start; }
-      .art-section-header { flex-direction: column; align-items: flex-start; gap: .4rem; }
-      .art-hero-stats { gap: 2rem; }
     }
     @media(min-width: 769px) and (max-width: 1024px) {
-      .art-grid { grid-template-columns: repeat(2, 1fr); }
+      .art-grid { grid-template-columns: repeat(2,1fr); }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <a href="index.html" class="logo-wrap">
+    <img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/>
+    <span class="nav-logo">ACS <span>Luxembourg</span></span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
-    <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
@@ -317,13 +307,13 @@
   </div>
 </nav>
 
-<!-- HERO -->
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
 <div class="art-hero">
   <div class="art-hero-inner">
     <div class="art-breadcrumb"><a href="index.html">Accueil</a><span>›</span>Articles & ressources</div>
     <h1 class="art-hero-h1">Articles &<br><span>ressources</span></h1>
     <p class="art-hero-intro">Guides, techniques, compétition, nutrition et histoire du bras de fer — tout le contenu produit par l'Armwrestling Club Strassen Luxembourg.</p>
-
     <div class="art-hero-stats">
       <div>
         <div class="art-hero-stat-num">17<span>+</span></div>
@@ -341,233 +331,235 @@
   </div>
 </div>
 
-<div class="art-body">
 
-  <!-- ── 01 · TECHNIQUE & ENTRAÎNEMENT ────────────────────────────── -->
+<!-- ══ 01 · TECHNIQUE & ENTRAÎNEMENT — fond noir ══════════════ -->
+<div class="art-section-wrap cat-tech">
   <div class="art-section">
+
     <div class="art-section-header">
+
       <div class="art-section-header-left">
-        <div class="art-section-num">01</div>
         <div class="art-section-title">Technique & entraînement</div>
       </div>
       <div class="art-section-count">6 articles</div>
     </div>
 
-    <div class="art-grid">
+    <a href="guide-debutant-bras-de-fer.html" class="art-card-featured">
+      <div class="art-card-featured-body">
+        <div class="art-card-featured-tag">★ Guide essentiel · Débutant</div>
+        <div class="art-card-featured-title">Guide complet pour débuter le bras de fer</div>
+        <div class="art-card-featured-desc">Technique, sécurité, matériel, placement, erreurs à éviter et progression — tout ce qu'il faut savoir avant de venir pour la première fois à Strassen.</div>
+      </div>
+      <span class="art-card-featured-cta">Lire le guide →</span>
+    </a>
 
+    <div class="art-grid">
       <a href="technique-prise-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Guide technique</div>
         <div class="art-card-title">Technique de prise : hook, top roll et press</div>
-        <div class="art-card-desc">Les trois prises fondamentales du bras de fer expliquées pour les débutants et les pratiquants intermédiaires.</div>
+        <div class="art-card-desc">Les trois prises fondamentales expliquées pour débutants et pratiquants intermédiaires.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
       <a href="exercices-renforcement-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Programme</div>
         <div class="art-card-title">Exercices de renforcement</div>
         <div class="art-card-desc">Programme complet pour avant-bras, poignet, prise, biceps et épaule — spécifique au bras de fer.</div>
-        <div class="art-card-cta">Lire l'article</div>
+        <div class="art-card-cta">Voir le programme</div>
       </a>
-
       <a href="prevention-blessures-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Santé · Sécurité</div>
         <div class="art-card-title">Prévention des blessures</div>
         <div class="art-card-desc">Protocole d'échauffement, exercices préventifs et signaux d'alerte pour pratiquer sans risque.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
       <a href="blessures-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Sécurité</div>
         <div class="art-card-title">Blessures au bras de fer</div>
-        <div class="art-card-desc">Fracture de l'humérus, douleurs au poignet, positions dangereuses : tout comprendre pour éviter les accidents.</div>
+        <div class="art-card-desc">Fracture de l'humérus, douleurs au poignet, positions dangereuses : comprendre pour éviter.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
-      <a href="guide-debutant-bras-de-fer.html" class="art-card">
-        <div class="art-card-tag">Guide · Débutant</div>
-        <div class="art-card-title">Guide débutant complet</div>
-        <div class="art-card-desc">Tout ce qu'il faut savoir avant de commencer : technique, matériel, sécurité et premier essai.</div>
-        <div class="art-card-cta">Lire l'article</div>
-      </a>
-
       <a href="entrainement-bras-de-fer-maison.html" class="art-card">
         <div class="art-card-tag">Programme · Domicile</div>
         <div class="art-card-title">Entraînement à la maison</div>
-        <div class="art-card-desc">Exercices spécifiques pour la prise, le poignet et les avant-bras entre les séances — programme complet avec peu de matériel.</div>
+        <div class="art-card-desc">Exercices pour la prise, le poignet et les avant-bras entre les séances — avec peu de matériel.</div>
         <div class="art-card-cta">Voir le programme</div>
       </a>
-
     </div>
+
   </div>
+</div>
 
-  <div class="art-divider"></div>
 
-  <!-- ── 02 · COMPÉTITION ─────────────────────────────────────────── -->
+<!-- ══ 02 · COMPÉTITION — fond dark2 ══════════════════════════ -->
+<div class="art-section-wrap cat-comp">
   <div class="art-section">
+
     <div class="art-section-header">
+
       <div class="art-section-header-left">
-        <div class="art-section-num">02</div>
         <div class="art-section-title">Compétition</div>
       </div>
       <div class="art-section-count">5 articles</div>
     </div>
 
-    <div class="art-grid">
+    <a href="preparation-competition-bras-de-fer.html" class="art-card-featured">
+      <div class="art-card-featured-body">
+        <div class="art-card-featured-tag">★ Guide compétition</div>
+        <div class="art-card-featured-title">Préparer une compétition de bras de fer</div>
+        <div class="art-card-featured-desc">Bloc de 8 semaines, gestion du poids, tactique de match, échauffement sur place et gestion du stress le jour J — le guide complet pour performer en compétition.</div>
+      </div>
+      <span class="art-card-featured-cta">Lire le guide →</span>
+    </a>
 
+    <div class="art-grid">
       <a href="premier-tournoi-bras-de-fer.html" class="art-card">
-        <div class="art-card-tag">Guide · Tournoi</div>
+        <div class="art-card-tag">Guide · Premier tournoi</div>
         <div class="art-card-title">Préparer son premier tournoi</div>
         <div class="art-card-desc">Inscription, pesée, format des poules, échauffement sur place et déroulement des matchs.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
-      <a href="preparation-competition-bras-de-fer.html" class="art-card">
-        <div class="art-card-tag">Guide · Compétition</div>
-        <div class="art-card-title">Préparer une compétition</div>
-        <div class="art-card-desc">Entraînement, gestion du poids, tactique, échauffement le jour J et gestion du stress.</div>
-        <div class="art-card-cta">Lire l'article</div>
-      </a>
-
       <a href="regles-officielles-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Référence · Règlement</div>
         <div class="art-card-title">Règles officielles WAF</div>
         <div class="art-card-desc">Table, prise, fautes, arbitrage et format des matchs — le règlement WAF expliqué clairement.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
       <a href="nutrition-bras-de-fer.html" class="art-card">
         <div class="art-card-tag">Nutrition</div>
         <div class="art-card-title">Nutrition & gestion du poids</div>
-        <div class="art-card-desc">Catégories de poids WAF, macronutriments pour la force, gestion du poids avant compétition et timing des repas.</div>
+        <div class="art-card-desc">Catégories de poids WAF, macronutriments pour la force et gestion du poids avant compétition.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
       <a href="blog-premiere-competition.html" class="art-card">
-        <div class="art-card-tag">Blog · Récit</div>
+        <div class="art-card-tag">Récit</div>
         <div class="art-card-title">Ma première compétition</div>
-        <div class="art-card-desc">Préparation mentale, technique, règles et conseils pratiques avant de participer à sa première compétition de bras de fer.</div>
+        <div class="art-card-desc">Préparation mentale, technique, règles et conseils pratiques avant sa première compétition.</div>
         <div class="art-card-cta">Lire l'article</div>
       </a>
-
     </div>
+
   </div>
+</div>
 
-  <div class="art-divider"></div>
 
-  <!-- ── 03 · CULTURE & HISTOIRE ──────────────────────────────────── -->
+<!-- ══ 03 · CULTURE & HISTOIRE — fond noir ════════════════════ -->
+<div class="art-section-wrap cat-culture">
   <div class="art-section">
+
     <div class="art-section-header">
+
       <div class="art-section-header-left">
-        <div class="art-section-num">03</div>
         <div class="art-section-title">Culture & histoire</div>
       </div>
       <div class="art-section-count">2 articles</div>
     </div>
 
-    <div class="art-grid">
-
-      <a href="histoire-bras-de-fer.html" class="art-card">
-        <div class="art-card-tag">Histoire du sport</div>
-        <div class="art-card-title">Histoire et origines</div>
-        <div class="art-card-desc">Des origines médiévales au sport mondial — de Petaluma 1952 à la WAF et Levan Saginashvili.</div>
-        <div class="art-card-cta">Lire l'article</div>
+    <div class="art-featured-duo">
+      <a href="histoire-bras-de-fer.html" class="art-card-featured">
+        <div class="art-card-featured-body">
+          <div class="art-card-featured-tag">Histoire du sport</div>
+          <div class="art-card-featured-title">Histoire et origines du bras de fer</div>
+          <div class="art-card-featured-desc">Des origines médiévales au sport mondial — de Petaluma 1952 à la WAF et les champions modernes.</div>
+        </div>
+        <span class="art-card-featured-cta">Lire →</span>
       </a>
-
-      <a href="champions-bras-de-fer-monde.html" class="art-card">
-        <div class="art-card-tag">Champions</div>
-        <div class="art-card-title">Champions mondiaux</div>
-        <div class="art-card-desc">Devon Larratt, Denis Cyplenkov, Levan Saginashvili, John Brzenk — les plus grands noms du bras de fer mondial.</div>
-        <div class="art-card-cta">Lire l'article</div>
+      <a href="champions-bras-de-fer-monde.html" class="art-card-featured">
+        <div class="art-card-featured-body">
+          <div class="art-card-featured-tag">Champions</div>
+          <div class="art-card-featured-title">Champions mondiaux de bras de fer</div>
+          <div class="art-card-featured-desc">Devon Larratt, Denis Cyplenkov, Levan Saginashvili, John Brzenk — les plus grands noms du bras de fer mondial.</div>
+        </div>
+        <span class="art-card-featured-cta">Lire →</span>
       </a>
-
     </div>
+
   </div>
+</div>
 
-  <div class="art-divider"></div>
 
-  <!-- ── 04 · LE CLUB AU LUXEMBOURG ───────────────────────────────── -->
+<!-- ══ 04 · LE CLUB AU LUXEMBOURG — fond dark2 ════════════════ -->
+<div class="art-section-wrap cat-club">
   <div class="art-section">
+
     <div class="art-section-header">
+
       <div class="art-section-header-left">
-        <div class="art-section-num">04</div>
         <div class="art-section-title">Le club au Luxembourg</div>
       </div>
       <div class="art-section-count">8 articles</div>
     </div>
 
-    <div class="art-grid">
+    <a href="sport-de-force-luxembourg-comparatif.html" class="art-card-featured">
+      <div class="art-card-featured-body">
+        <div class="art-card-featured-tag">★ Guide sports de force</div>
+        <div class="art-card-featured-title">Sports de force au Luxembourg — guide complet</div>
+        <div class="art-card-featured-desc">Powerlifting, CrossFit, fitness, bras de fer — clubs actifs, adresses réelles et fourchettes de prix au Grand-Duché. Avec une section dédiée au bras de fer comme complément idéal.</div>
+      </div>
+      <span class="art-card-featured-cta">Voir le guide →</span>
+    </a>
 
+    <div class="art-grid">
       <a href="bras-de-fer-luxembourg-ville.html" class="art-card">
         <div class="art-card-tag">Page locale</div>
         <div class="art-card-title">Bras de fer Luxembourg-ville</div>
-        <div class="art-card-desc">Le club de bras de fer le plus proche du centre de Luxembourg-ville — 8 minutes en voiture.</div>
+        <div class="art-card-desc">Le club le plus proche du centre de Luxembourg-ville — 8 minutes en voiture.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
-
-      <a href="sport-force-luxembourg.html" class="art-card">
-        <div class="art-card-tag">Sport de force</div>
-        <div class="art-card-title">Sport de force au Luxembourg</div>
-        <div class="art-card-desc">Le bras de fer dans le paysage sportif luxembourgeois — clubs, fédération, compétitions internationales.</div>
-        <div class="art-card-cta">En savoir plus</div>
-      </a>
-
       <a href="club-bras-de-fer-debutant-luxembourg.html" class="art-card">
         <div class="art-card-tag">Débutants</div>
         <div class="art-card-title">Club pour débutants</div>
         <div class="art-card-desc">Pourquoi ACS Strassen est le meilleur point d'entrée pour commencer le bras de fer au Luxembourg.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
-
       <a href="bras-de-fer-luxembourg-comment-commencer.html" class="art-card">
         <div class="art-card-tag">Guide local</div>
         <div class="art-card-title">Comment commencer au Luxembourg</div>
         <div class="art-card-desc">Première séance, bases techniques, sécurité et progression — tout pour commencer sereinement.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
-
       <a href="entrainement-bras-de-fer-strassen.html" class="art-card">
         <div class="art-card-tag">Entraînement</div>
         <div class="art-card-title">Entraînement à Strassen</div>
         <div class="art-card-desc">Format, équipement et déroulement des séances du mardi à 18h — ce qui se passe concrètement.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
-
-      <a href="carte-clubs-bras-de-fer.html" class="art-card">
-        <div class="art-card-tag">Ressource · Carte</div>
-        <div class="art-card-title">Trouver un club près de vous</div>
-        <div class="art-card-desc">Clubs actifs, tournois à venir, partenaires de sparring — SidePressMap répertorie tous les clubs de bras de fer dans le monde.</div>
-        <div class="art-card-cta">Voir la carte</div>
-      </a>
-
-      <a href="sport-de-force-luxembourg-comparatif.html" class="art-card">
-        <div class="art-card-tag">Guide · Comparatif</div>
-        <div class="art-card-title">Sports de force au Luxembourg</div>
-        <div class="art-card-desc">Bras de fer, powerlifting, CrossFit, fitness — comparatif objectif pour choisir le sport de force qui correspond à vos objectifs.</div>
-        <div class="art-card-cta">Voir le comparatif</div>
-      </a>
-
       <a href="competition-bras-de-fer-luxembourg.html" class="art-card">
         <div class="art-card-tag">Événement · Luxembourg</div>
         <div class="art-card-title">Compétition au Luxembourg</div>
-        <div class="art-card-desc">Clubs officiels, ambiance, niveau compétitif et arbitrage — tout sur la scène compétitive du bras de fer au Luxembourg.</div>
+        <div class="art-card-desc">Clubs officiels, ambiance, niveau compétitif et arbitrage — tout sur la scène compétitive au Luxembourg.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
-
+      <a href="sport-force-luxembourg.html" class="art-card">
+        <div class="art-card-tag">Sport de force</div>
+        <div class="art-card-title">Sport de force au Luxembourg</div>
+        <div class="art-card-desc">Le bras de fer dans le paysage sportif luxembourgeois — clubs, fédération, compétitions internationales.</div>
+        <div class="art-card-cta">En savoir plus</div>
+      </a>
+      <a href="carte-clubs-bras-de-fer.html" class="art-card">
+        <div class="art-card-tag">Ressource · Carte</div>
+        <div class="art-card-title">Trouver un club près de vous</div>
+        <div class="art-card-desc">SidePressMap répertorie tous les clubs de bras de fer dans le monde — clubs actifs et tournois à venir.</div>
+        <div class="art-card-cta">Voir la carte</div>
+      </a>
     </div>
-  </div>
 
-  <!-- ── CTA ──────────────────────────────────────────────────────── -->
+  </div>
+</div>
+
+
+<!-- ══ CTA ══════════════════════════════════════════════════════ -->
+<div style="background:var(--black)">
   <div class="art-cta-wrap">
     <div class="art-cta">
       <div>
         <div class="art-cta-title">Essayez le bras de fer</div>
-        <p class="art-cta-sub">Première séance gratuite — mardi 18h à Strassen.</p>
+        <p class="art-cta-sub">Première séance gratuite — mardi 18h à Strassen. Aucun matériel requis.</p>
       </div>
       <a href="index.html#contact" class="btn-primary">Contacter le club</a>
     </div>
   </div>
+</div>
 
-</div><!-- /.art-body -->
 
 <footer>
   <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
@@ -575,6 +567,7 @@
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
     <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
@@ -586,10 +579,17 @@
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
-  document.querySelectorAll('#navLinks a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
-    });
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  /* Spotlight cursor tracking — cartes vedettes */
+  document.addEventListener('pointermove', (e) => {
+    const r = document.documentElement;
+    r.style.setProperty('--x',  e.clientX.toFixed(2));
+    r.style.setProperty('--y',  e.clientY.toFixed(2));
+    r.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(4));
+    r.style.setProperty('--yp', (e.clientY / window.innerHeight).toFixed(4));
   });
 </script>
 </body>
