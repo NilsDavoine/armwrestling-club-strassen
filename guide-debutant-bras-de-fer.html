@@ -119,35 +119,108 @@
     .breadcrumb a:hover { color: var(--red); }
     .breadcrumb span { margin: 0 .5rem; }
 
+    /* ── SPOTLIGHT ROOT VARS (cursor tracking) ── */
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; }
+
     /* ── STATS BAND ── */
     .stats-band {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: rgba(192,57,43,.2);
-      border: 1px solid rgba(192,57,43,.3);
+      gap: 4px;
     }
+
+    /* ── STAT CELL : glassmorphism + spotlight + neon border ──
+       background-attachment:fixed → gradient positionné en coords
+       viewport, même --x/--y valide pour toutes les cartes.
+       ::before = halo coloré sur la bordure
+       ::after  = éclat blanc sur la bordure
+       mask-composite:intersect → clip au seul filet de bordure.
+    ── */
     .stat-cell {
-      background: #080505;
-      padding: 1.6rem 1.4rem;
-      text-align: center;
+      --base:   352;
+      --spread:   0;
+      --radius:   6;
+      --border:   2;
+      --size:   280;
+      --border-size:    calc(var(--border) * 1px);
+      --spotlight-size: calc(var(--size) * 1px);
+      --hue: 5; /* rouge ACS exact — hue 5°, pas de rose */
+
+      /* Glassmorphism visible */
+      background-color: rgba(192,57,43,.07);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+
+      /* Spotlight fill rouge profond */
+      background-image: radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at
+        calc(var(--x) * 1px) calc(var(--y) * 1px),
+        hsl(5 90% 38% / 0.22), transparent
+      );
+      background-attachment: fixed;
+
+      /* Border */
+      border: var(--border-size) solid rgba(192,57,43,.18);
+      border-top: 2px solid rgba(192,57,43,.7);
+      border-radius: calc(var(--radius) * 1px);
+
+      box-shadow:
+        0 4px 32px rgba(0,0,0,.4),
+        0 0 0 1px rgba(192,57,43,.08) inset,
+        inset 0 1px 0 rgba(255,255,255,.07);
+      padding: 2.2rem 1.8rem 2rem;
+      text-align: left;
+      position: relative;
+      user-select: none;
+      overflow: visible;
     }
+
+    /* Neon glow border — colored hue */
+    .stat-cell::before,
+    .stat-cell::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      inset: calc(var(--border-size) * -1);
+      border: var(--border-size) solid transparent;
+      border-radius: calc(var(--radius) * 1px);
+      background-attachment: fixed;
+      mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+      mask-clip: padding-box, border-box;
+      mask-composite: intersect;
+      -webkit-mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+      -webkit-mask-clip: padding-box, border-box;
+      -webkit-mask-composite: destination-in;
+    }
+    .stat-cell::before {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+        calc(var(--x) * 1px) calc(var(--y) * 1px),
+        hsl(5 100% 42% / 1), transparent 100%
+      );
+      filter: brightness(2.8);
+    }
+    .stat-cell::after {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.45) calc(var(--spotlight-size) * 0.45) at
+        calc(var(--x) * 1px) calc(var(--y) * 1px),
+        hsl(0 100% 100% / 0.7), transparent 100%
+      );
+    }
+
     .stat-label {
       font-family: var(--font-display);
-      font-size: .63rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(192,57,43,.7);
-      margin-bottom: .5rem;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(245,240,232,.45);
+      margin-bottom: .65rem;
     }
     .stat-val {
       font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-weight: 900;
+      font-size: 2.1rem; font-weight: 900;
       color: var(--white);
       text-transform: uppercase;
-      line-height: 1.1;
+      line-height: 1;
     }
 
     /* ── VIDEO SECTION ── */
@@ -827,6 +900,15 @@
     });
     if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); }
   }
+
+  /* Spotlight cursor tracking for stat cards */
+  document.addEventListener('pointermove', (e) => {
+    const r = document.documentElement;
+    r.style.setProperty('--x',  e.clientX.toFixed(2));
+    r.style.setProperty('--y',  e.clientY.toFixed(2));
+    r.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(4));
+    r.style.setProperty('--yp', (e.clientY / window.innerHeight).toFixed(4));
+  });
 </script>
 </body>
 </html>
