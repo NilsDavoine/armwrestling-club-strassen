@@ -772,6 +772,68 @@
   text-align: right;
 }
 
+/* ═══════════════════════════════════════════
+   DYNAMIC SECTION BACKGROUNDS — utility classes
+   Apply to any section/div wrapper.
+═══════════════════════════════════════════ */
+.sec.bg-red-glow, .sec.bg-red-walls, .sec.bg-cinema,
+.sec.bg-inferno, .sec.bg-danger-x, .sec.bg-motion,
+.sec.bg-horizon { position: relative; overflow: hidden; }
+
+.sec.bg-red-glow {
+  background:
+    radial-gradient(ellipse 85% 55% at 50% -10%, rgba(192,57,43,.2) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%),
+    var(--black);
+}
+.sec.bg-red-walls {
+  background:
+    repeating-linear-gradient(rgba(192,57,43,.025) 1px, transparent 1px 50px),
+    repeating-linear-gradient(90deg, rgba(192,57,43,.025) 1px, transparent 1px 50px),
+    radial-gradient(ellipse 45% 80% at -8% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 80% at 108% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
+    #0d0508;
+}
+.sec.bg-cinema {
+  background:
+    repeating-linear-gradient(-55deg, transparent 0, transparent 44px, rgba(255,255,255,.007) 44px, rgba(255,255,255,.007) 45px),
+    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(192,57,43,.22) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 25% at 3% 95%, rgba(192,57,43,.07) 0%, transparent 55%),
+    #050304;
+}
+.sec.bg-inferno {
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 58px, rgba(255,80,0,.015) 58px, rgba(255,80,0,.015) 60px),
+    radial-gradient(ellipse 55% 45% at 10% 110%, rgba(200,50,0,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 90% 110%, rgba(200,50,0,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 140% 70% at 50% 140%, rgba(255,100,0,.4) 0%, rgba(200,30,0,.25) 22%, rgba(80,0,0,.15) 48%, transparent 68%),
+    #020000;
+}
+.sec.bg-danger-x {
+  background:
+    radial-gradient(ellipse 110% 110% at 50% 50%, transparent 28%, rgba(100,0,0,.38) 100%),
+    radial-gradient(ellipse 70% 40% at 50% 130%, rgba(150,0,0,.28) 0%, transparent 58%),
+    repeating-linear-gradient(-45deg, transparent 0, transparent 60px, rgba(192,57,43,.05) 60px, rgba(192,57,43,.05) 62px),
+    repeating-linear-gradient(45deg, transparent 0, transparent 60px, rgba(192,57,43,.05) 60px, rgba(192,57,43,.05) 62px),
+    #040203;
+}
+.sec.bg-motion {
+  background:
+    repeating-linear-gradient(135deg, transparent 0, transparent 50px, rgba(255,255,255,.008) 50px, rgba(255,255,255,.008) 51px),
+    linear-gradient(135deg, rgba(192,57,43,.07) 0%, transparent 45%, rgba(180,120,0,.05) 70%, transparent 100%),
+    radial-gradient(ellipse 90% 55% at -15% 100%, rgba(192,57,43,.18) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 55% at 115% 0%, rgba(150,100,30,.12) 0%, transparent 58%),
+    #050407;
+}
+.sec.bg-horizon {
+  background:
+    repeating-linear-gradient(0deg, transparent 0, transparent 22px, rgba(255,160,0,.01) 22px, rgba(255,160,0,.01) 23px),
+    radial-gradient(ellipse 50% 35% at 8% 100%, rgba(192,57,43,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 92% 100%, rgba(192,57,43,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 110% 55% at 50% 125%, rgba(212,160,23,.22) 0%, rgba(180,80,0,.13) 35%, transparent 60%),
+    linear-gradient(180deg, #050305 0%, #0a0806 100%);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .article-body, .page-body { padding: 3rem 1.5rem; }

@@ -107,6 +107,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #about {
+      background:
+        repeating-linear-gradient(-55deg, transparent 0, transparent 44px, rgba(255,255,255,.006) 44px, rgba(255,255,255,.006) 45px),
+        radial-gradient(ellipse 75% 55% at 50% 0%, rgba(192,57,43,.18) 0%, transparent 65%),
+        #050304;
+    }
+    #entrainement {
+      background:
+        repeating-linear-gradient(rgba(192,57,43,.022) 1px, transparent 1px 50px),
+        repeating-linear-gradient(90deg, rgba(192,57,43,.022) 1px, transparent 1px 50px),
+        radial-gradient(ellipse 45% 80% at -8% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 80% at 108% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
+        #0d0508;
+    }
+    #equipement {
+      background:
+        repeating-linear-gradient(135deg, transparent 0, transparent 50px, rgba(255,255,255,.007) 50px, rgba(255,255,255,.007) 51px),
+        radial-gradient(ellipse 90% 55% at -15% 100%, rgba(192,57,43,.16) 0%, transparent 58%),
+        radial-gradient(ellipse 90% 55% at 115% 0%, rgba(150,100,30,.1) 0%, transparent 58%),
+        #050407;
+    }
+    #licence {
+      background:
+        radial-gradient(ellipse 85% 55% at 50% -10%, rgba(192,57,43,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%),
+        var(--black);
+    }
+    #debuter {
+      background:
+        repeating-linear-gradient(90deg, transparent 0, transparent 58px, rgba(255,80,0,.013) 58px, rgba(255,80,0,.013) 60px),
+        radial-gradient(ellipse 55% 45% at 10% 110%, rgba(200,50,0,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 45% at 90% 110%, rgba(200,50,0,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 140% 70% at 50% 140%, rgba(255,100,0,.35) 0%, rgba(200,30,0,.2) 22%, rgba(80,0,0,.12) 48%, transparent 68%),
+        #020000;
+    }
+    #blog {
+      background:
+        repeating-linear-gradient(0deg, transparent 0, transparent 22px, rgba(255,160,0,.009) 22px, rgba(255,160,0,.009) 23px),
+        radial-gradient(ellipse 50% 35% at 8% 100%, rgba(192,57,43,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 35% at 92% 100%, rgba(192,57,43,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 110% 55% at 50% 125%, rgba(212,160,23,.2) 0%, rgba(180,80,0,.12) 35%, transparent 60%),
+        linear-gradient(180deg, #050305 0%, #0a0806 100%);
+    }
+    #faq {
+      background:
+        radial-gradient(ellipse 110% 110% at 50% 50%, transparent 28%, rgba(100,0,0,.35) 100%),
+        radial-gradient(ellipse 70% 40% at 50% 130%, rgba(150,0,0,.25) 0%, transparent 58%),
+        repeating-linear-gradient(-45deg, transparent 0, transparent 60px, rgba(192,57,43,.045) 60px, rgba(192,57,43,.045) 62px),
+        repeating-linear-gradient(45deg, transparent 0, transparent 60px, rgba(192,57,43,.045) 60px, rgba(192,57,43,.045) 62px),
+        #040203;
+    }
+  </style>
 </head>
 
 <body>
@@ -497,7 +550,7 @@
 
 <div class="divider"></div>
 
-<section id="debuter" style="background:var(--dark2);">
+<section id="debuter">
   <div class="fade-in">
     <div class="section-tag">Débuter</div>
     <h2>Commencer le bras de fer<br><span>sans stress</span></h2>
@@ -550,7 +603,7 @@
 
 <div class="divider"></div>
 
-<section id="blog" style="background:var(--black);">
+<section id="blog">
   <div class="fade-in">
     <div class="section-tag">Articles & Ressources</div>
     <h2>Apprends,<br><span>progresse</span></h2>
@@ -642,7 +695,7 @@
 
 <div class="divider"></div>
 
-<section id="faq" style="background:var(--dark2);">
+<section id="faq">
   <div class="fade-in">
     <div class="section-tag">FAQ</div>
     <h2>Questions fréquentes<br><span>avant de venir</span></h2>

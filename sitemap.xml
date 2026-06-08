@@ -68,13 +68,6 @@
   </url>
 
   <url>
-    <loc>https://armwrestlingclubstrassen.com/prevention-blessures-bras-de-fer.html</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -174,6 +167,29 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+
+  <!-- Page allemande -->
+  <url>
+    <loc>https://armwrestlingclubstrassen.com/armwrestling-luxemburg.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Articles SEO récents -->
+  <url>
+    <loc>https://armwrestlingclubstrassen.com/comment-gagner-bras-de-fer.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://armwrestlingclubstrassen.com/blog-app-bras-de-fer.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

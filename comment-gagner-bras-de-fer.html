@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comment gagner au bras de fer — techniques et conseils | ACS Luxembourg</title>
+  <meta name="description" content="Comment gagner au bras de fer : placement, prises, explosivité, erreurs à éviter. Les vraies clés pour gagner au-delà de la force brute. Guide par l'ACS Strassen."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://armwrestlingclubstrassen.com/comment-gagner-bras-de-fer.html"/>
+
+  <meta property="og:title" content="Comment gagner au bras de fer — techniques et conseils"/>
+  <meta property="og:description" content="Placement, prises, explosivité et erreurs à éviter — les vraies clés pour gagner au bras de fer, au-delà de la force brute."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://armwrestlingclubstrassen.com/comment-gagner-bras-de-fer.html"/>
+  <meta property="og:locale" content="fr_LU"/>
+  <meta property="og:image" content="https://armwrestlingclubstrassen.com/match-competition-grande-salle.png"/>
+  <meta property="og:image:alt" content="Match de bras de fer en compétition — technique et placement, ACS Luxembourg."/>
+
+  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Comment gagner au bras de fer — techniques et conseils","description":"Placement, prises, explosivité et erreurs à éviter — les vraies clés pour gagner au bras de fer.","image":"https://armwrestlingclubstrassen.com/match-competition-grande-salle.png","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/comment-gagner-bras-de-fer.html","datePublished":"2026-06-05","dateModified":"2026-06-05"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Comment gagner au bras de fer","item":"https://armwrestlingclubstrassen.com/comment-gagner-bras-de-fer.html"}]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="blog.css"/>
+
+  <style>
+    /* ── SPOTLIGHT TRACKING ── */
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; }
+
+    /* ── TIP / ERROR CARDS ──
+       Spotlight cursor-following + glassmorphisme + neon border.
+       Même technique que les pages sport-de-force et guide-debutant.
+    ── */
+    .tip-wrap { padding: 4rem 3rem; }
+    .tip-wrap-dark { background: var(--black); }
+    .tip-wrap-mid  { background: var(--dark2); }
+
+    .tip-eyebrow {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 2rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .tip-eyebrow::before { content:''; display:inline-block; width:28px; height:2px; background:rgba(192,57,43,.8); }
+
+    .tip-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 4px;
+      max-width: 900px; margin: 0 auto;
+    }
+
+    .tip-card {
+      --hue: 215;
+      --border: 1.5;
+      --size: 300;
+      --border-size:    calc(var(--border) * 1px);
+      --spotlight-size: calc(var(--size)   * 1px);
+
+      background-image: radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at
+        calc(var(--x)*1px) calc(var(--y)*1px),
+        hsl(var(--hue) 80% 36% / 0.12), transparent
+      );
+      background-color: rgba(255,255,255,.025);
+      background-attachment: fixed;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      border: var(--border-size) solid rgba(255,255,255,.07);
+      border-top: 2px solid rgba(255,255,255,.15);
+      border-radius: 5px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.04);
+
+      position: relative;
+      padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; gap: .9rem;
+      user-select: none;
+    }
+
+    .tip-card::before,
+    .tip-card::after {
+      pointer-events: none; content: "";
+      position: absolute; inset: calc(var(--border-size)*-1);
+      border: var(--border-size) solid transparent;
+      border-radius: 5px; background-attachment: fixed;
+      mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      mask-clip: padding-box, border-box; mask-composite: intersect;
+      -webkit-mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      -webkit-mask-clip: padding-box, border-box; -webkit-mask-composite: destination-in;
+    }
+    .tip-card::before {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at
+        calc(var(--x)*1px) calc(var(--y)*1px),
+        hsl(var(--hue) 90% 42%/1), transparent 100%
+      );
+      filter: brightness(2.5);
+    }
+    .tip-card::after {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at
+        calc(var(--x)*1px) calc(var(--y)*1px),
+        hsl(0 100% 100%/.55), transparent 100%
+      );
+    }
+
+    .tip-num {
+      font-family: var(--font-display); font-size: .82rem; font-weight: 900;
+      letter-spacing: .18em; text-transform: uppercase;
+    }
+    .tip-title {
+      font-family: var(--font-display); font-size: 1.75rem; font-weight: 900;
+      text-transform: uppercase; color: var(--white); letter-spacing: .01em; line-height: 1.05;
+    }
+    .tip-desc { font-size: .97rem; color: rgba(245,240,232,.78); line-height: 1.82; flex: 1; }
+
+    /* Couleurs par carte */
+    .c-blue  { --hue:215; border-top-color:rgba(74,104,133,.65); }
+    .c-blue .tip-num  { color:#7aadda; }
+    .c-green { --hue:162; border-top-color:rgba(26,144,112,.65); }
+    .c-green .tip-num { color:#25c494; }
+    .c-red   { --hue:5;   border-top-color:rgba(192,57,43,.7); }
+    .c-red .tip-num   { color:#c0392b; }
+    .c-warn  { --hue:5;   border-top-color:rgba(192,57,43,.55); background-color:rgba(192,57,43,.04); }
+    .c-warn .tip-num  { color:rgba(192,57,43,.75); }
+
+    /* ── RÉVÉLATION STRAP ── */
+    /* STRAP: Inferno — lave volcanique remontant depuis le bas */
+    .strap-block {
+      background: #020000;
+      padding: 5rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .strap-block::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 140% 70% at 50% 140%, rgba(255,100,0,.45) 0%, rgba(210,30,0,.28) 22%, rgba(80,0,0,.15) 48%, transparent 68%),
+        radial-gradient(ellipse 55% 45% at 10% 110%, rgba(200,50,0,.18) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 45% at 90% 110%, rgba(200,50,0,.18) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 20% at 50% 50%, rgba(255,180,0,.04) 0%, transparent 60%);
+    }
+    .strap-block::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent, transparent 58px,
+        rgba(255,80,0,.022) 58px, rgba(255,80,0,.022) 60px
+      );
+      -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 110%, black 0%, transparent 62%);
+      mask-image: radial-gradient(ellipse 95% 75% at 50% 110%, black 0%, transparent 62%);
+    }
+    .strap-block > * { position: relative; z-index: 1; }
+    .strap-inner { max-width: 960px; margin: 0 auto; }
+    .strap-statement {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; text-transform: uppercase;
+      color: var(--white); line-height: 1; margin-bottom: 1.8rem; letter-spacing: -.01em;
+    }
+    .strap-statement em { color: var(--red); font-style: normal; }
+    .strap-stat {
+      display: inline-flex; align-items: baseline; gap: .7rem;
+      background: rgba(192,57,43,.08); border: 1px solid rgba(192,57,43,.25);
+      padding: .65rem 1.5rem; margin-bottom: 2.2rem;
+    }
+    .strap-stat-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: var(--red); line-height: 1; }
+    .strap-stat-label { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,240,232,.75); }
+    .strap-text p { font-size: 1rem; color: rgba(245,240,232,.75); line-height: 1.95; margin-bottom: 1.2rem; }
+    .strap-text strong { color: var(--white); font-weight: 600; }
+
+    .sec { padding: 4.5rem 3rem; }
+    .sec-dark  { background: var(--black); }
+    .sec-light { background: var(--dark2); }
+    .sec-inner { max-width: 960px; margin: 0 auto; }
+
+    .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.4rem; line-height: 1; }
+    .sec h2 span { color: var(--red); }
+    .sec h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin: 2.5rem 0 .8rem; letter-spacing: .04em; }
+    .sec h3:first-child { margin-top: 0; }
+    .sec p { font-size: 1.02rem; color: rgba(245,240,232,.8); line-height: 1.95; margin-bottom: 1.3rem; }
+    .sec ul, .sec ol { margin: 0 0 1.3rem 1.8rem; }
+    .sec li { font-size: 1rem; color: rgba(245,240,232,.75); line-height: 1.9; margin-bottom: .5rem; }
+    .sec strong { color: var(--white); font-weight: 600; }
+    .sec a { color: var(--red); text-decoration: none; }
+    .sec a:hover { text-decoration: underline; }
+
+    /* ═══════════════════════════════════
+       BACKGROUNDS CRÉATIFS PAR SECTION
+    ═══════════════════════════════════ */
+
+    /* Cards conseils : glow rouge depuis le haut */
+    .tip-wrap-dark { position: relative; overflow: hidden; }
+    .tip-wrap-dark::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 85% 55% at 50% -15%, rgba(192,57,43,.2) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%);
+    }
+    .tip-wrap-dark > div { position: relative; z-index: 1; }
+
+    /* Cards erreurs : parois rouges + grille warning */
+    .tip-wrap-mid { position: relative; overflow: hidden; background: #0d0508; }
+    .tip-wrap-mid::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 45% 80% at -8% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 80% at 108% 50%, rgba(192,57,43,.12) 0%, transparent 60%);
+    }
+    .tip-wrap-mid::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(192,57,43,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(192,57,43,.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .tip-wrap-mid > div { position: relative; z-index: 1; }
+
+    /* TECHNIQUE : cinéma noir, spotlight rouge plongeant */
+    .sec-technique {
+      background: #050304;
+      position: relative; overflow: hidden;
+    }
+    .sec-technique::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 0%, rgba(192,57,43,.24) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 25% at 3% 95%, rgba(192,57,43,.07) 0%, transparent 55%);
+    }
+    .sec-technique::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        -55deg, transparent, transparent 44px,
+        rgba(255,255,255,.007) 44px, rgba(255,255,255,.007) 45px
+      );
+    }
+    .sec-technique .sec-inner { position: relative; z-index: 1; }
+
+    /* EXPLOSIVITÉ : Motion — diagonale lumineuse rouge-ambre */
+    .sec-explosion {
+      background: #050407;
+      position: relative; overflow: hidden;
+    }
+    .sec-explosion::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 90% 55% at -15% 100%, rgba(192,57,43,.18) 0%, transparent 58%),
+        radial-gradient(ellipse 90% 55% at 115% 0%, rgba(150,100,30,.12) 0%, transparent 58%),
+        linear-gradient(135deg, rgba(192,57,43,.07) 0%, transparent 45%, rgba(180,120,0,.05) 70%, transparent 100%);
+    }
+    .sec-explosion::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        135deg, transparent, transparent 50px,
+        rgba(255,255,255,.008) 50px, rgba(255,255,255,.008) 51px
+      );
+    }
+    .sec-explosion .sec-inner { position: relative; z-index: 1; }
+
+    /* ERREURS : croix danger — diagonales croisées + vignette agressive */
+    .sec-errors {
+      background: #040203;
+      position: relative; overflow: hidden;
+    }
+    .sec-errors::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(192,57,43,.055) 60px, rgba(192,57,43,.055) 62px),
+        repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(192,57,43,.055) 60px, rgba(192,57,43,.055) 62px),
+        radial-gradient(ellipse 70% 40% at 50% 130%, rgba(150,0,0,.32) 0%, transparent 58%);
+    }
+    .sec-errors::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 110% 110% at 50% 50%, transparent 28%, rgba(100,0,0,.45) 100%);
+    }
+    .sec-errors .sec-inner { position: relative; z-index: 1; }
+
+    /* PROGRESSER : Horizon — lueur dorée montant depuis le bas */
+    .sec-progress {
+      background: linear-gradient(180deg, #050305 0%, #0a0806 100%);
+      position: relative; overflow: hidden;
+    }
+    .sec-progress::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 110% 55% at 50% 125%, rgba(212,160,23,.22) 0%, rgba(180,80,0,.13) 35%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 8% 100%, rgba(192,57,43,.09) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 35% at 92% 100%, rgba(192,57,43,.09) 0%, transparent 55%);
+    }
+    .sec-progress::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 22px,
+        rgba(255,160,0,.01) 22px, rgba(255,160,0,.01) 23px
+      );
+      -webkit-mask-image: radial-gradient(ellipse 85% 60% at 50% 100%, black 0%, transparent 68%);
+      mask-image: radial-gradient(ellipse 85% 60% at 50% 100%, black 0%, transparent 68%);
+    }
+    .sec-progress .sec-inner { position: relative; z-index: 1; }
+
+    /* ── SÉPARATEUR DE SECTION ── */
+    .page-rule { background: var(--black); padding: 0 3rem; }
+    .page-rule-line { max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.1); }
+
+    .callout {
+      background: rgba(192,57,43,.07); border-left: 3px solid var(--red);
+      padding: 1.3rem 1.8rem; margin: 1.8rem 0; border-radius: 0 3px 3px 0;
+    }
+    .callout p { margin: 0 !important; color: rgba(245,240,232,.88) !important; font-size: .96rem !important; }
+
+    /* Technique cards */
+    .technique-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .75rem; margin: 1.8rem 0; }
+    .technique-card {
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+      border-top: 2px solid var(--red); border-radius: 3px;
+      padding: 1.4rem 1.4rem 1.2rem;
+    }
+    .technique-card-name { font-family: var(--font-display); font-size: 1rem; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin-bottom: .5rem; }
+    .technique-card-desc { font-size: .82rem; color: rgba(245,240,232,.5); line-height: 1.6; }
+
+    /* Steps */
+    .steps { display: flex; flex-direction: column; gap: 1.2rem; margin: 1.5rem 0; }
+    .step { display: flex; gap: 1.4rem; align-items: flex-start; }
+    .step-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; width: 2rem; text-align: right; }
+    .step-body h4 { font-family: var(--font-display); font-size: .9rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin: 0 0 .3rem; }
+    .step-body p { font-size: .88rem; color: rgba(245,240,232,.6); line-height: 1.7; margin: 0; }
+
+    /* Erreurs */
+    .errors-list { display: flex; flex-direction: column; gap: 2px; margin: 1.5rem 0; }
+    .error-item { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); padding: 1rem 1.4rem; }
+    .error-x { font-family: var(--font-display); font-size: 1rem; font-weight: 900; color: rgba(192,57,43,.6); flex-shrink: 0; }
+    .error-body strong { font-family: var(--font-display); font-size: .88rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .03em; display: block; margin-bottom: .2rem; }
+    .error-body span { font-size: .82rem; color: rgba(245,240,232,.45); line-height: 1.6; }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,2,2,.9));
+      border: 1px solid rgba(192,57,43,.22); border-top: 2px solid var(--red);
+      padding: 2.2rem 2.5rem; margin-top: 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .cta-label { font-family: var(--font-display); font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(192,57,43,.55); margin-bottom: .4rem; }
+    .cta-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; margin-bottom: .4rem; }
+    .cta-box p { font-size: .88rem; color: rgba(245,240,232,.48); margin: 0; line-height: 1.7; }
+
+    @media(max-width: 640px) {
+      .sec { padding: 3rem 1.5rem; }
+      .tip-wrap { padding: 2.5rem 1.5rem; }
+      .tip-grid { grid-template-columns: 1fr; }
+      .technique-grid { grid-template-columns: 1fr; }
+      .cta-box { flex-direction: column; }
+      .strap-block { padding: 3rem 1.5rem; }
+      .page-rule { padding: 0 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-wrap">
+    <img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/>
+    <span class="nav-logo">ACS <span>Luxembourg</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
+  </ul>
+  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<div class="article-hero">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span>›</span>
+      <a href="articles.html">Articles</a><span>›</span>
+      Comment gagner au bras de fer
+    </div>
+    <div class="article-tag">Guide · Technique</div>
+    <div class="article-date">Mis à jour : juin 2026</div>
+    <h1 class="article-title">Comment gagner<br><span>au bras de fer</span></h1>
+    <p style="font-size:1.05rem;color:rgba(245,240,232,.6);max-width:560px;line-height:1.8;margin-bottom:1.5rem;">Le bras de fer n'est pas qu'une question de force brute. Placement, timing, prise, angle — la technique fait souvent la différence entre deux adversaires de force égale.</p>
+    <div class="article-meta">ACS Luxembourg · Guide technique · Tous niveaux</div>
+  </div>
+</div>
+
+
+<!-- ── 3 CONSEILS FONDAMENTAUX ── -->
+<div class="tip-wrap tip-wrap-dark">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="tip-eyebrow">Les 3 clés absolues</div>
+    <div class="tip-grid">
+
+      <div class="tip-card c-blue">
+        <div class="tip-num">01 — Placement</div>
+        <div class="tip-title">Corps serré,<br>main proche</div>
+        <div class="tip-desc">Corps proche de la table, main le plus près possible de toi. Plus tu es compact, moins l'adversaire a de levier à exploiter. La distance, c'est son avantage — pas le tien.</div>
+      </div>
+
+      <div class="tip-card c-green">
+        <div class="tip-num">02 — Tirage</div>
+        <div class="tip-title">Tout vers toi,<br>tout le temps</div>
+        <div class="tip-desc">Flexion du poignet vers toi, coude tiré vers toi — avec tout ce que tu as. Pas juste le bras : le dos, les lombaires, le poids du corps. Tu tires, tu ne pousses pas.</div>
+      </div>
+
+      <div class="tip-card c-red">
+        <div class="tip-num">03 — Puissance</div>
+        <div class="tip-title">Les jambes<br>comme moteur</div>
+        <div class="tip-desc">Appuie sur tes jambes pour transférer la force de tout le corps dans ta main. Le sol est ton allié — utilise-le pour tirer la main adverse vers toi avec l'élan de tout ton corps.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ── ERREURS À ÉVITER ── -->
+<div class="tip-wrap tip-wrap-mid">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="tip-eyebrow">Ce qu'il ne faut surtout pas faire</div>
+    <div class="tip-grid">
+
+      <div class="tip-card c-warn">
+        <div class="tip-num">✕ Erreur 1</div>
+        <div class="tip-title">Tirer sur<br>le côté</div>
+        <div class="tip-desc">On ne tire pas vers le bas ou sur le côté — on tire vers soi. Changer d'axe te met immédiatement en position défavorable et tu perds toute la puissance du corps.</div>
+      </div>
+
+      <div class="tip-card c-warn">
+        <div class="tip-num">✕ Erreur 2</div>
+        <div class="tip-title">Se tenir loin<br>de la table</div>
+        <div class="tip-desc">La distance entre toi et la table, c'est de l'avantage offert à l'adversaire. Colle-toi. Corps proche, coude proche, bras court — tu contrôles le levier.</div>
+      </div>
+
+      <div class="tip-card c-warn">
+        <div class="tip-num">✕ Erreur 3</div>
+        <div class="tip-title">Main basse,<br>coude en retrait</div>
+        <div class="tip-desc">La main doit être aussi haute que possible dans la prise adverse, le coude aussi avancé que possible. Un coude en retrait et une main basse, c'est perdre avant même de commencer.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ── RÉVÉLATION STRAP ── -->
+<div class="strap-block">
+  <div class="strap-inner">
+    <div class="strap-statement">Lâcher prise ne veut<br>pas dire <em>perdre</em></div>
+    <div class="strap-stat">
+      <span class="strap-stat-num">90%</span>
+      <span class="strap-stat-label">des matchs vont au strap</span>
+    </div>
+    <div class="strap-text">
+      <p>Pour la technique détaillée, soyons honnêtes : si tu n'es pas entraîné, tu n'arriveras pas à tout retenir en un match. Alors voilà l'essentiel — <strong>place ta main le plus haut possible par rapport à la main adverse</strong>. C'est ton avantage numéro un, avant tout le reste.</p>
+      <p>Si tu te retrouves dans une position désavantageuse, il faut <strong>obligatoirement lâcher prise et glisser vers le strap</strong>. Lâcher prise au bras de fer ne veut pas dire perdre — ça veut dire aller au strap. La quasi-totalité des matchs finissent en strap.</p>
+      <p>Une fois au strap, concentre-toi à nouveau sur deux choses : <strong>placer ta main aussi haut que possible</strong> dans la prise et <strong>tirer avec tout ton corps</strong> vers toi, en utilisant tes jambes et ton poids. Le strap, c'est une chance de repartir sur de bonnes bases — pas une défaite.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-rule">
+  <div class="page-rule-line"></div>
+</div>
+
+
+<div class="sec sec-technique">
+  <div class="sec-inner">
+    <h2>La technique <span>avant la force</span></h2>
+    <p>C'est la première chose qu'on apprend en bras de fer : quelqu'un de moins fort mais mieux placé gagne presque toujours. Ce n'est pas un mythe — c'est la réalité de ce sport à tous les niveaux, du débutant au compétiteur international.</p>
+    <p>La force est utile. Elle devient décisive <strong>seulement si la technique est déjà bonne</strong>. Avant de chercher à développer ta force spécifique, comprendre les principes de base du placement et de la prise te donnera un avantage immédiat sur n'importe quel adversaire non entraîné.</p>
+    <div class="callout">
+      <p>Un débutant qui comprend le bon placement peut battre quelqu'un de bien plus fort qui force dans le mauvais angle. C'est ce qui rend le bras de fer aussi addictif : la technique se voit immédiatement.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="sec sec-explosion">
+  <div class="sec-inner">
+    <h2>L'explosivité <span>au départ</span></h2>
+    <p>Le bras de fer se joue en grande partie dans les <strong>premières fractions de seconde</strong>. Le départ est le moment où tu peux prendre un avantage décisif — ou te mettre dans une position défensive dont tu ne te relèveras pas.</p>
+    <p>L'explosivité ne signifie pas "tirer le plus fort possible dès le signal". Ça signifie <strong>partir dans le bon angle, avec toute ta force, immédiatement</strong>. Un départ précis et explosif dans la bonne direction vaut mieux qu'une force maximale dans le mauvais angle.</p>
+    <h3>Travailler l'explosivité</h3>
+    <ul>
+      <li>Départs répétés sur table avec partenaire — 3 à 5 secondes d'effort maximal, récupération complète</li>
+      <li>Élastiques et poulies dans l'angle exact de la prise choisie</li>
+      <li>Curl marteau et pronation pour développer la puissance des avant-bras</li>
+      <li>Attention à la récupération — le travail explosif est éprouvant pour les tendons</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="sec sec-errors">
+  <div class="sec-inner">
+    <h2>Les erreurs <span>qui font perdre</span></h2>
+    <p>La plupart des défaites chez les débutants viennent des mêmes erreurs. Les identifier et les corriger te fera gagner plus de matchs que n'importe quel programme d'entraînement physique.</p>
+    <div class="errors-list">
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Forcer avec le bras seul</strong>
+          <span>Le bras de fer est un sport de tout le corps. Ne pas engager l'épaule, le dos et le poids corporel te prive de la moitié de ta force disponible.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Laisser le coude décoller</strong>
+          <span>Coude qui part en dehors de l'axe = levier perdu immédiatement. Garde le coude dans la ligne de ton épaule pendant tout le match.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Résister passivement</strong>
+          <span>Quand tu recules, tu perds. Le bras de fer récompense l'attaque et la prise d'initiative — attendre que l'adversaire se fatigue fonctionne rarement.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Négliger l'échauffement</strong>
+          <span>Les tendons de l'avant-bras et du coude sont vulnérables. Sans échauffement progressif, une seule tentative à intensité maximale peut provoquer une blessure sérieuse.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Ouvrir la main</strong>
+          <span>Prise qui s'ouvre = match perdu. Travailler la force de fermeture de la main est aussi important que n'importe quel autre exercice spécifique.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sec sec-progress">
+  <div class="sec-inner">
+    <h2>Progresser <span>vraiment</span></h2>
+    <p>Lire ces conseils est utile. Les appliquer sur table avec des partenaires de niveaux variés, c'est ce qui fait vraiment progresser. Le bras de fer est un sport de sensation — tu dois ressentir les angles, les résistances et les ouvertures pour les comprendre et les utiliser.</p>
+    <p>La meilleure façon de progresser rapidement est de <strong>pratiquer régulièrement en club</strong>, avec un encadrement qui peut corriger ton placement en direct. Les erreurs de technique sont presque impossibles à identifier soi-même — un œil extérieur change tout.</p>
+    <h3>Pour aller plus loin</h3>
+    <ul>
+      <li><a href="guide-debutant-bras-de-fer.html">Guide complet pour débuter le bras de fer</a> — tout ce qu'il faut savoir avant la première séance</li>
+      <li><a href="regles-officielles-bras-de-fer.html">Règles officielles du bras de fer</a> — ce qui est autorisé, le strap, les fautes</li>
+      <li><a href="technique-prise-bras-de-fer.html">Technique de prise : hook, top roll et press</a> — les trois prises détaillées</li>
+      <li><a href="exercices-renforcement-bras-de-fer.html">Exercices de renforcement spécifiques</a> — programme complet</li>
+      <li><a href="blessures-bras-de-fer.html">Pratiquer sans risque de blessure</a> — sécurité et prévention</li>
+    </ul>
+    <div class="cta-box">
+      <div>
+        <div class="cta-label">Armwrestling Club Strassen · Mardi 18h · Strassen</div>
+        <div class="cta-title">Venez pratiquer</div>
+        <p>La technique s'apprend sur table, pas sur écran. Première séance gratuite, aucun niveau requis.</p>
+      </div>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;background:var(--white);color:#0a0807;">Contacter le club →</a>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html#entrainement">Accès</a></li>
+    <li><a href="index.html#licence">Licence</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
+  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+  document.addEventListener('pointermove', e => {
+    const r = document.documentElement;
+    r.style.setProperty('--x', e.clientX);
+    r.style.setProperty('--y', e.clientY);
+    r.style.setProperty('--xp', (e.clientX / innerWidth).toFixed(3));
+    r.style.setProperty('--yp', (e.clientY / innerHeight).toFixed(3));
+  });
+</script>
+</body>
+</html>
