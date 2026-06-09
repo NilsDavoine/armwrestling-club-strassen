@@ -60,7 +60,7 @@
     /* ── TYPOGRAPHY ── */
     .sec h2 {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size:clamp(1.9rem,3.5vw,2.6rem);
       font-weight: 900;
       text-transform: uppercase;
       color: var(--white);
@@ -279,7 +279,7 @@
 </div>
 
 <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<div class="sec sec-dark bg-red-glow">
   <div class="sec-inner">
     <p style="font-size:1.08rem;margin-bottom:2rem;">Votre première compétition de bras de fer approche. Peu importe votre niveau — préparer correctement les semaines qui précèdent fait une différence réelle. Voici l'approche qu'on enseigne à l'Armwrestling Club Strassen.</p>
     <div class="article-photo" style="margin:0;">
@@ -289,9 +289,9 @@
 </div>
 
 <!-- ── PLANIFIER 8 SEMAINES ──────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec sec-light bg-cinema">
   <div class="sec-inner">
-    <h2>Planifier la préparation sur 8 semaines</h2>
+    <h2>Planifier la préparation <span>sur 8 semaines</span></h2>
 
     <div class="timeline">
       <div class="timeline-item">
@@ -335,7 +335,7 @@
 </div>
 
 <!-- ── GESTION DU POIDS ──────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<div class="sec sec-dark bg-inferno">
   <div class="sec-inner">
     <h2>La gestion du poids</h2>
     <p>Le bras de fer se pratique par <strong>catégories de poids</strong> — généralement toutes les 10 kg. La pesée a lieu le matin de la compétition. Quelques points clés :</p>
@@ -348,7 +348,7 @@
 </div>
 
 <!-- ── ENTRAÎNEMENT SPÉCIFIQUE ──────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec sec-light bg-red-walls">
   <div class="sec-inner">
     <h2>L'entraînement spécifique</h2>
 
@@ -372,7 +372,7 @@
 </div>
 
 <!-- ── TACTIQUE ──────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<div class="sec sec-dark bg-motion">
   <div class="sec-inner">
     <h2>La tactique : construire votre jeu</h2>
 
@@ -388,47 +388,23 @@
 </div>
 
 <!-- ── JOURNÉE DE COMPÉTITION ─────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec sec-light bg-danger-x">
   <div class="sec-inner">
-    <h2>La journée de compétition</h2>
-
-    <h3>La veille</h3>
+    <h2>Le jour de compétition</h2>
+    <p>Le jour J suit une logique simple : pesée, récupération, échauffement, matchs. Les essentiels :</p>
     <ul>
-      <li>Dormez suffisamment — idéalement 8h</li>
-      <li>Mangez normalement, pas de régime ni d'excès</li>
-      <li>Préparez votre sac : tenue, magnésie, eau, snacks, carnet de notes</li>
-      <li>Vérifiez l'heure de pesée et l'adresse exacte de la salle</li>
+      <li><strong>La veille</strong> — dormez 8h, préparez votre sac (tenue, eau, snacks, magnésie), vérifiez l'heure et l'adresse de la pesée</li>
+      <li><strong>Après la pesée</strong> — mangez et réhydratez-vous immédiatement. Ne restez pas à jeun jusqu'au premier match</li>
+      <li><strong>L'échauffement</strong> — 20 min avant votre premier match, pas une heure avant. Mobilité articulaire d'abord, quelques séquences légères sur table ensuite</li>
     </ul>
-
-    <h3>La pesée</h3>
-    <p>La pesée a généralement lieu tôt le matin. Après la pesée, vous avez du temps pour manger et vous hydrater avant les matchs. Profitez-en — ne restez pas à jeun jusqu'à votre premier combat.</p>
-
-    <h3>L'échauffement</h3>
-    <p>L'échauffement compétition est différent de l'échauffement entraînement. Il doit être :</p>
-    <ul>
-      <li><strong>Progressif</strong> : commencez par de la mobilité articulaire (poignets, coudes, épaules)</li>
-      <li><strong>Spécifique</strong> : quelques séquences légères sur table avec un partenaire</li>
-      <li><strong>Court</strong> : 15-20 minutes suffisent — ne vous épuisez pas avant de commencer</li>
-      <li><strong>Proche du passage</strong> : échauffez-vous 20-30 min avant votre premier match, pas une heure avant</li>
-    </ul>
-
-    <div class="checklist">
-      <h4>Checklist jour J</h4>
-      <ul>
-        <li>Arriver 30 min avant la pesée</li>
-        <li>S'hydrater après la pesée</li>
-        <li>Manger léger 1h30 avant les matchs</li>
-        <li>S'échauffer 20 min avant le premier match</li>
-        <li>Appliquer de la magnésie sur les mains</li>
-        <li>Rester concentré, éviter les conversations épuisantes</li>
-        <li>Observer les adversaires entre les matchs</li>
-      </ul>
+    <div class="callout">
+      <p>Pour le guide opérationnel complet — inscription, format des matchs, fautes à éviter, checklist matérielle et gestion de l'attente entre les matchs : <a href="premier-tournoi-bras-de-fer.html" style="color:var(--white);font-weight:600;">Préparer son premier tournoi →</a></p>
     </div>
   </div>
 </div>
 
 <!-- ── GESTION DU STRESS ─────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<div class="sec sec-dark bg-cinema">
   <div class="sec-inner">
     <h2>La gestion du stress compétitif</h2>
     <p>Le stress avant la compétition est normal — c'est un mécanisme physiologique qui prépare le corps à l'effort. Quelques approches pour le canaliser :</p>

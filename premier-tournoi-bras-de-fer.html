@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Préparer son premier tournoi de bras de fer","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/premier-tournoi-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-02"}
+  {"@context":"https://schema.org","@type":"Article","headline":"Préparer son premier tournoi de bras de fer","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/premier-tournoi-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-08"}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Premier tournoi","item":"https://armwrestlingclubstrassen.com/premier-tournoi-bras-de-fer.html"}]}
@@ -29,11 +29,11 @@
   <style>
     .sec{padding:4rem 0}.sec-dark{background:var(--black)}.sec-light{background:var(--dark2)}
     .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
-    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
-    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.5)}
-    .sec h2{font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.3rem;line-height:1.02}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.76rem;font-weight:900;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:rgba(192,57,43,.75)}
+    .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.3rem;line-height:1.02}
     .sec h2 span{color:var(--red)}
-    .sec h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:2rem 0 .6rem;letter-spacing:.04em}
+    .sec h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:2.2rem 0 .8rem;letter-spacing:.04em}
     .sec h3:first-child{margin-top:0}
     .sec p{font-size:1rem;color:rgba(245,240,232,.75);line-height:1.95;margin-bottom:1.3rem}
     .sec ul{margin:0 0 1.3rem 1.8rem}.sec li{font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.85;margin-bottom:.35rem}
@@ -43,30 +43,135 @@
     .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}.breadcrumb a:hover{color:var(--red)}.breadcrumb span{margin:0 .5rem}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0}
     .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.96rem!important}
-    /* STEPS TIMELINE */
-    .steps-timeline{margin:1.8rem 0}
-    .step-row{display:flex;gap:1.8rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:flex-start}
-    .step-row:last-child{border-bottom:none;padding-bottom:0}
-    .step-tag{font-family:var(--font-display);font-size:.65rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.25);padding:.5rem .8rem;min-width:72px;text-align:center;flex-shrink:0;line-height:1.4}
-    .step-content h4{font-family:var(--font-display);font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.5rem}
-    .step-content p{font-size:.9rem;color:rgba(245,240,232,.58);line-height:1.85;margin:0}
-    /* CHECKLIST */
-    .checklist{list-style:none;margin:1.5rem 0;padding:0}
-    .checklist li{padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(245,240,232,.7);font-size:.95rem;display:flex;align-items:center;gap:.8rem}
-    .checklist li:last-child{border-bottom:none}
-    .checklist li::before{content:'';display:inline-block;width:10px;height:10px;border:2px solid rgba(192,57,43,.5);border-radius:2px;flex-shrink:0}
-    /* PHOTO STRIP */
     .photo-strip-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:2.5rem}
     .photo-strip-3 img{width:100%;height:190px;object-fit:cover;border-radius:3px;display:block;border:1px solid rgba(255,255,255,.06)}
-    /* CTA FINAL */
-    .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.28);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
+
+    /* ═══ STEPS PREMIUM ═══ */
+    .steps-v2{display:flex;flex-direction:column;gap:3px;margin:2rem 0}
+    .step-v2{
+      display:grid;grid-template-columns:96px 1fr;
+      background:rgba(255,255,255,.018);
+      border:1px solid rgba(255,255,255,.06);
+      border-left:3px solid rgba(192,57,43,.22);
+      overflow:hidden;position:relative;
+      opacity:0;transform:translateX(-16px);
+      transition:border-left-color .25s,background .25s,transform .3s,opacity .45s ease
+    }
+    .step-v2.is-visible{opacity:1;transform:translateX(0)}
+    .step-v2.is-visible:hover{border-left-color:var(--red);background:rgba(192,57,43,.045);transform:translateX(4px)}
+    .step-v2-left{
+      background:rgba(192,57,43,.1);border-right:1px solid rgba(255,255,255,.05);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:2rem .5rem;gap:.5rem
+    }
+    .step-v2-num{font-family:var(--font-display);font-size:3.6rem;font-weight:900;color:var(--red);line-height:1}
+    .step-v2-day{font-family:var(--font-display);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.85);text-align:center;line-height:1.4}
+    .step-v2-body{padding:1.7rem 2rem 1.7rem 1.8rem;position:relative;overflow:hidden}
+    .step-v2-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.55rem}
+    .step-v2-desc{font-size:.9rem;color:rgba(245,240,232,.65);line-height:1.85;margin:0}
+    .step-v2-wm{
+      position:absolute;right:.8rem;top:50%;transform:translateY(-50%);
+      font-family:var(--font-display);font-size:8rem;font-weight:900;
+      color:rgba(192,57,43,.04);line-height:1;pointer-events:none;user-select:none;transition:color .25s
+    }
+    .step-v2.is-visible:hover .step-v2-wm{color:rgba(192,57,43,.09)}
+
+    /* ═══ FORMAT TABS ═══ */
+    .format-tabs{display:flex;gap:2px;margin-bottom:2px}
+    .format-tab{
+      font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+      padding:.8rem 1.4rem;flex:1;text-align:center;white-space:nowrap;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+      color:rgba(245,240,232,.38);cursor:pointer;transition:all .2s
+    }
+    .format-tab:hover{background:rgba(255,255,255,.06);color:rgba(245,240,232,.7)}
+    .format-tab.active{background:rgba(192,57,43,.12);border-color:rgba(192,57,43,.45);color:var(--red)}
+    .format-panel{
+      display:none;padding:2.2rem 2.4rem;
+      background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06);border-top:2px solid rgba(192,57,43,.4);
+      animation:panelIn .28s ease
+    }
+    .format-panel.active{display:block}
+    @keyframes panelIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .format-note{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.5rem}
+    .format-panel h4{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin:0 0 .8rem}
+    .format-panel p{font-size:.96rem;color:rgba(245,240,232,.7);line-height:1.9;margin-bottom:.8rem}
+    .format-panel p:last-child{margin-bottom:0}
+    .format-panel ul{margin:.5rem 0 0 1.5rem}
+    .format-panel li{font-size:.92rem;color:rgba(245,240,232,.65);line-height:1.82;margin-bottom:.35rem}
+
+    /* ═══ WARMUP CARDS ═══ */
+    .warmup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.04);margin:1.5rem 0 2rem}
+    .warmup-card{background:#0c0c0c;padding:1.7rem 1.8rem;position:relative;overflow:hidden;border-top:2px solid transparent;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease,background .2s,border-top-color .2s}
+    .warmup-card.is-visible{opacity:1;transform:translateY(0)}
+    .warmup-card.is-visible:hover{background:rgba(192,57,43,.05);border-top-color:var(--red)}
+    .warmup-card::before{content:'';position:absolute;left:0;top:0;width:2px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .3s}
+    .warmup-card.is-visible:hover::before{transform:scaleY(1)}
+    .warmup-icon{font-family:var(--font-display);font-size:2rem;font-weight:900;color:rgba(192,57,43,.6);margin-bottom:.6rem;line-height:1}
+    .warmup-title{font-family:var(--font-display);font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.05em;margin-bottom:.45rem}
+    .warmup-desc{font-size:.87rem;color:rgba(245,240,232,.58);line-height:1.75;margin:0}
+
+    /* ═══ MENTAL RULES ═══ */
+    .mental-rules{display:flex;flex-direction:column;gap:2px;margin:1.5rem 0}
+    .mental-rule{
+      display:flex;gap:1.4rem;align-items:flex-start;
+      padding:1.1rem 1.4rem;
+      background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-left:2px solid rgba(192,57,43,.18);
+      opacity:0;transform:translateX(-12px);
+      transition:opacity .4s ease,transform .4s ease,background .2s,border-left-color .2s
+    }
+    .mental-rule.is-visible{opacity:1;transform:translateX(0)}
+    .mental-rule.is-visible:hover{background:rgba(192,57,43,.04);border-left-color:var(--red);transform:translateX(4px)}
+    .mental-rule-num{font-family:var(--font-display);font-size:.72rem;font-weight:900;letter-spacing:.14em;color:var(--red);background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.2);padding:.35rem .65rem;flex-shrink:0;line-height:1.2;margin-top:.1rem}
+    .mental-rule-text{font-size:.94rem;color:rgba(245,240,232,.72);line-height:1.8}
+    .mental-rule-text strong{color:var(--white)}
+
+    /* ═══ 6 CLÉS ═══ */
+    .keys-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.04);margin:1.8rem 0}
+    .key-card{background:#0c0c0c;padding:1.8rem;position:relative;overflow:hidden;border-top:2px solid transparent;opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease,background .25s,border-top-color .25s}
+    .key-card.is-visible{opacity:1;transform:translateY(0)}
+    .key-card.is-visible:hover{background:rgba(192,57,43,.07);border-top-color:var(--red);transform:translateY(-3px)}
+    .key-card::after{content:attr(data-num);position:absolute;right:.8rem;bottom:-.5rem;font-family:var(--font-display);font-size:5.5rem;font-weight:900;color:rgba(192,57,43,.07);line-height:1;pointer-events:none;user-select:none;transition:color .25s}
+    .key-card.is-visible:hover::after{color:rgba(192,57,43,.16)}
+    .key-tag{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+    .key-title{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.5rem;line-height:1.1}
+    .key-desc{font-size:.88rem;color:rgba(245,240,232,.62);line-height:1.75;margin:0}
+
+    /* ═══ GEAR GRID ═══ */
+    .gear-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.04);margin:1.8rem 0}
+    .gear-item{background:#0c0c0c;padding:1.1rem 1.4rem;display:flex;align-items:center;gap:1rem;opacity:0;transform:translateY(10px);transition:opacity .38s ease,transform .38s ease,background .2s}
+    .gear-item.is-visible{opacity:1;transform:translateY(0)}
+    .gear-item.is-visible:hover{background:rgba(192,57,43,.04)}
+    .gear-check{width:20px;height:20px;border:1.5px solid rgba(192,57,43,.35);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+    .gear-item.is-visible:hover .gear-check{border-color:var(--red);background:rgba(192,57,43,.1)}
+    .gear-check-icon{opacity:0;transition:opacity .15s}
+    .gear-item.is-visible:hover .gear-check-icon{opacity:1}
+    .gear-label{font-size:.92rem;color:rgba(245,240,232,.7);line-height:1.4}
+
+    /* ═══ CTA FINAL ═══ */
+    .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.1),rgba(5,2,2,.95));border:1px solid rgba(192,57,43,.25);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
     .cta-final-label{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-bottom:.4rem}
     .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
     .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.step-row{flex-direction:column;gap:.8rem}.photo-strip-3{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}}
+    .btn-white{background:var(--white);color:#0a0402;font-family:var(--font-display);font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2.2rem;text-decoration:none;display:inline-block;white-space:nowrap;flex-shrink:0;transition:opacity .2s}
+    .btn-white:hover{opacity:.85;text-decoration:none}
+
+    @media(max-width:768px){
+      .sec-inner{padding:0 1.5rem}
+      .step-v2{grid-template-columns:72px 1fr}
+      .step-v2-wm{display:none}
+      .format-tabs{flex-wrap:wrap}
+      .warmup-grid{grid-template-columns:1fr}
+      .keys-grid{grid-template-columns:1fr}
+      .gear-grid{grid-template-columns:1fr}
+      .photo-strip-3{grid-template-columns:1fr}
+      .photo-strip-3 img{height:200px}
+      .cta-final{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
   <ul class="nav-links" id="navLinks">
@@ -90,7 +195,8 @@
   </div>
 </div>
 
-<div class="sec sec-dark">
+<!-- ── INTRO ── -->
+<div class="sec sec-dark bg-cinema">
   <div class="sec-inner">
     <div class="sec-eyebrow">Idée reçue</div>
     <h2>La compétition n'est pas<br><span>réservée aux experts</span></h2>
@@ -100,55 +206,78 @@
     <div class="callout">
       <p>En bras de fer, il n'existe pas de "catégorie débutant" officielle — mais vous serez automatiquement classé dans votre catégorie de poids. Perdre face à un compétiteur expérimenté lors d'un premier tournoi est totalement normal et formateur.</p>
     </div>
+    <p style="font-size:.92rem;color:rgba(245,240,232,.5);margin-top:1.5rem;">Ce guide couvre la logistique et le déroulement du jour J. Pour la préparation physique sur les 8 semaines précédentes — entraînement, tactique et gestion du poids — consultez notre <a href="preparation-competition-bras-de-fer.html">guide de préparation à une compétition</a>.</p>
   </div>
 </div>
 
-<div class="sec sec-light">
+<!-- ── LES 5 ÉTAPES ── -->
+<div class="sec sec-dark bg-red-walls">
   <div class="sec-inner">
     <div class="sec-eyebrow">Étapes</div>
     <h2>De l'inscription au jour J<br><span>les cinq étapes</span></h2>
 
-    <div class="steps-timeline">
-      <div class="step-row">
-        <div class="step-tag">Étape 1<br>J-30</div>
-        <div class="step-content">
-          <h4>Choisir son tournoi et s'inscrire</h4>
-          <p>Les tournois sont annoncés sur les réseaux de la fédération nationale (LAF) et des clubs. Vérifiez la date, le lieu, le type de compétition et les catégories proposées. Vous devrez indiquer votre poids et votre bras (droit, gauche, ou les deux).</p>
+    <div class="steps-v2">
+      <div class="step-v2">
+        <div class="step-v2-left">
+          <div class="step-v2-num">01</div>
+          <div class="step-v2-day">J – 30</div>
+        </div>
+        <div class="step-v2-body">
+          <div class="step-v2-title">Choisir son tournoi et s'inscrire</div>
+          <p class="step-v2-desc">Les tournois sont annoncés sur les réseaux de la fédération nationale (LAF) et des clubs. Vérifiez la date, le lieu, le type de compétition et les catégories proposées. Vous devrez indiquer votre poids et votre bras (droit, gauche, ou les deux).</p>
+          <div class="step-v2-wm">01</div>
         </div>
       </div>
-      <div class="step-row">
-        <div class="step-tag">Étape 2<br>J-7</div>
-        <div class="step-content">
-          <h4>Affiner sa catégorie de poids</h4>
-          <p>Pesez-vous régulièrement la semaine précédant l'événement. Si vous êtes légèrement au-dessus de votre catégorie cible, une restriction légère des glucides et de l'eau dans les 48h peut suffire pour des cuts de 1 à 2 kg. Évitez toute coupe agressive pour un premier tournoi.</p>
+      <div class="step-v2">
+        <div class="step-v2-left">
+          <div class="step-v2-num">02</div>
+          <div class="step-v2-day">J – 7</div>
+        </div>
+        <div class="step-v2-body">
+          <div class="step-v2-title">Affiner sa catégorie de poids</div>
+          <p class="step-v2-desc">Pesez-vous régulièrement la semaine précédant l'événement. Si vous êtes légèrement au-dessus de votre catégorie cible, une restriction légère des glucides et de l'eau dans les 48h peut suffire pour des cuts de 1 à 2 kg. Évitez toute coupe agressive pour un premier tournoi.</p>
+          <div class="step-v2-wm">02</div>
         </div>
       </div>
-      <div class="step-row">
-        <div class="step-tag">Étape 3<br>Veille</div>
-        <div class="step-content">
-          <h4>La pesée officielle</h4>
-          <p>La pesée a lieu généralement la veille ou le matin même. Arrivez à jeun si vous avez besoin de couper un peu. Dès que vous êtes validé dans votre catégorie, commencez à vous réhydrater et à manger normalement.</p>
+      <div class="step-v2">
+        <div class="step-v2-left">
+          <div class="step-v2-num">03</div>
+          <div class="step-v2-day">VEILLE</div>
+        </div>
+        <div class="step-v2-body">
+          <div class="step-v2-title">La pesée officielle</div>
+          <p class="step-v2-desc">La pesée a lieu généralement la veille ou le matin même. Arrivez à jeun si vous avez besoin de couper un peu. Dès que vous êtes validé dans votre catégorie, commencez à vous réhydrater et à manger normalement.</p>
+          <div class="step-v2-wm">03</div>
         </div>
       </div>
-      <div class="step-row">
-        <div class="step-tag">Étape 4<br>Matin J</div>
-        <div class="step-content">
-          <h4>Petit-déjeuner et trajet</h4>
-          <p>Repas complet 3–4h avant vos premiers matchs. Glucides, protéines, peu de fibres. Prévoyez : tenue de sport, chaussures stables, eau, collation, et votre licence ou document d'identité. Arrivez sur place au moins 1h avant le début.</p>
+      <div class="step-v2">
+        <div class="step-v2-left">
+          <div class="step-v2-num">04</div>
+          <div class="step-v2-day">MATIN J</div>
+        </div>
+        <div class="step-v2-body">
+          <div class="step-v2-title">Petit-déjeuner et trajet</div>
+          <p class="step-v2-desc">Repas complet 3–4h avant vos premiers matchs. Glucides, protéines, peu de fibres. Prévoyez : tenue de sport, chaussures stables, eau, collation, et votre licence ou document d'identité. Arrivez sur place au moins 1h avant le début.</p>
+          <div class="step-v2-wm">04</div>
         </div>
       </div>
-      <div class="step-row">
-        <div class="step-tag">Étape 5<br>Sur place</div>
-        <div class="step-content">
-          <h4>Accueil, tirage au sort et organisation</h4>
-          <p>À votre arrivée : confirmation de votre inscription, remise d'un dossard ou d'une liste de matchs. Le tirage au sort de votre poule a lieu après la pesée. Vous recevrez votre tableau de matchs avec les numéros de vos adversaires.</p>
+      <div class="step-v2">
+        <div class="step-v2-left">
+          <div class="step-v2-num">05</div>
+          <div class="step-v2-day">SUR PLACE</div>
+        </div>
+        <div class="step-v2-body">
+          <div class="step-v2-title">Accueil, tirage au sort et organisation</div>
+          <p class="step-v2-desc">À votre arrivée : confirmation de votre inscription, remise d'un dossard ou d'une liste de matchs. Le tirage au sort de votre poule a lieu après la pesée. Vous recevrez votre tableau de matchs avec les numéros de vos adversaires.</p>
+          <div class="step-v2-wm">05</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="sec sec-dark">
+<!-- ── FORMAT DE COMPÉTITION — tabs interactifs ── -->
+<div class="sec sec-dark bg-inferno">
   <div class="sec-inner">
     <div class="photo-strip-3">
       <img src="2F3A1342.jpeg" alt="Match de bras de fer lors d'un tournoi officiel" loading="lazy"/>
@@ -159,79 +288,204 @@
     <div class="sec-eyebrow">Format</div>
     <h2>Le format de compétition<br><span>expliqué</span></h2>
 
-    <h3>Le système de poules (round-robin)</h3>
-    <p>Dans la plupart des tournois, chaque catégorie est organisée en <strong>poules de round-robin</strong> : chaque compétiteur affronte tous les autres dans sa catégorie. Le classement se fait au nombre de victoires. En cas d'égalité, un match de barrage détermine le classement final.</p>
-
-    <h3>Le format des matchs</h3>
-    <p>Chaque match se joue sur une table officielle avec deux arbitres. Le match commence par la prise de main en position neutre, les coudes dans les coussins, et se déclenche au signal de l'arbitre ("Go !"). Un match est gagné quand <strong>le dos de la main adverse touche le coussin</strong>.</p>
-
-    <h3>Les fautes courantes</h3>
-    <ul>
-      <li><strong>Faux départ :</strong> commencer avant le signal — avertissement, puis point adverse</li>
-      <li><strong>Glissade de prise :</strong> si votre prise se défait complètement, l'arbitre stoppe et replace</li>
-      <li><strong>Coude levé :</strong> décoller le coude du coussin est une faute</li>
-      <li><strong>Prise du poteau :</strong> attraper la table ou le poteau avec la main libre est interdit</li>
-    </ul>
-
-    <div class="callout">
-      <p>En tant que débutant, concentrez-vous sur la position du coude et le départ propre — ce sont les deux fautes les plus fréquentes les premiers tournois.</p>
+    <div class="format-tabs">
+      <button class="format-tab active" onclick="switchTab(this,'t-poules')">Système de poules</button>
+      <button class="format-tab" onclick="switchTab(this,'t-match')">Format des matchs</button>
+      <button class="format-tab" onclick="switchTab(this,'t-fautes')">Fautes courantes</button>
+    </div>
+    <div class="format-panels">
+      <div class="format-panel active" id="t-poules">
+        <div class="format-note">Organisation</div>
+        <h4>Le système de poules (round-robin)</h4>
+        <p>Dans la plupart des tournois, chaque catégorie est organisée en <strong>poules de round-robin</strong> : chaque compétiteur affronte tous les autres dans sa catégorie. Le classement se fait au nombre de victoires.</p>
+        <p>En cas d'égalité, un match de barrage détermine le classement final. Ce format garantit un minimum de matchs — vous ne serez pas éliminé dès le premier combat.</p>
+      </div>
+      <div class="format-panel" id="t-match">
+        <div class="format-note">Déroulement</div>
+        <h4>Le format des matchs</h4>
+        <p>Chaque match se joue sur une table officielle avec deux arbitres. Le match commence par la prise de main en position neutre, les coudes dans les coussins, et se déclenche au signal de l'arbitre <strong>"Go !"</strong>.</p>
+        <p>Un match est gagné quand <strong>le dos de la main adverse touche le coussin de pin</strong>. La durée va de quelques secondes à plusieurs minutes selon les forces en présence.</p>
+      </div>
+      <div class="format-panel" id="t-fautes">
+        <div class="format-note">Règlement</div>
+        <h4>Les fautes courantes à éviter</h4>
+        <ul>
+          <li><strong>Faux départ :</strong> commencer avant le signal — avertissement, puis point adverse</li>
+          <li><strong>Glissade de prise :</strong> si votre prise se défait complètement, l'arbitre stoppe et replace</li>
+          <li><strong>Coude levé :</strong> décoller le coude du coussin est une faute directe</li>
+          <li><strong>Prise du poteau :</strong> attraper la table ou le poteau avec la main libre est interdit</li>
+        </ul>
+        <p>En tant que débutant, concentrez-vous sur la position du coude et le départ propre — ce sont les deux fautes les plus fréquentes lors des premiers tournois.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="sec sec-light">
+<!-- ── ÉCHAUFFEMENT & GESTION DES MATCHS ── -->
+<div class="sec sec-light bg-motion">
   <div class="sec-inner">
     <div class="sec-eyebrow">Jour J</div>
     <h2>L'échauffement et la gestion<br><span>des matchs</span></h2>
 
     <h3>Protocole d'échauffement sur place</h3>
     <p>Commencez l'échauffement <strong>30 à 45 min avant votre premier match</strong>. L'objectif : élever la température des tendons et préparer les angles spécifiques du bras de fer, pas fatiguer les muscles.</p>
-    <ul>
-      <li>5 min de mobilisation légère : rotations des poignets, des coudes, des épaules</li>
-      <li>5 min de résistance progressive avec bande élastique</li>
-      <li>Quelques prises légères sur table avec un partenaire ou entraîneur (sans effort maximal)</li>
-      <li>1–2 min de visualisation : imaginez votre prise et votre départ</li>
-    </ul>
+
+    <div class="warmup-grid">
+      <div class="warmup-card">
+        <div class="warmup-icon">01</div>
+        <div class="warmup-title">Mobilisation légère</div>
+        <div class="warmup-desc">5 min de rotations des poignets, des coudes et des épaules. Activer la chaîne articulaire avant tout effort.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-icon">02</div>
+        <div class="warmup-title">Résistance progressive</div>
+        <div class="warmup-desc">5 min avec une bande élastique. Flexion, extension et rotations du poignet en montant progressivement l'intensité.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-icon">03</div>
+        <div class="warmup-title">Prises légères sur table</div>
+        <div class="warmup-desc">Quelques séquences légères avec un partenaire, sans effort maximal. Activer les patterns de mouvement spécifiques.</div>
+      </div>
+      <div class="warmup-card">
+        <div class="warmup-icon">04</div>
+        <div class="warmup-title">Visualisation</div>
+        <div class="warmup-desc">1–2 min : imaginez votre prise, votre départ et vos 3 premières secondes. Le cerveau s'active avant les muscles.</div>
+      </div>
+    </div>
 
     <h3>Gérer l'attente entre les matchs</h3>
     <p>Les tournois peuvent durer toute une journée. Entre vos matchs, <strong>restez actif légèrement</strong>, hydratez-vous régulièrement, et mangez des collations légères toutes les 90 min (fruits, barres de céréales, noix).</p>
 
-    <h3>Pendant le match : les 5 règles mentales</h3>
-    <ul>
-      <li><strong>Respirez avant le top :</strong> une inspiration profonde réduit le stress et augmente la stabilité</li>
-      <li><strong>Démarrez fort :</strong> les premières demi-secondes sont souvent décisives — explosion à la commande</li>
-      <li><strong>Ne regardez pas la main adverse :</strong> focalisez-vous sur votre propre effort et votre position</li>
-      <li><strong>Gardez votre technique :</strong> sous fatigue, fiez-vous à votre entraînement</li>
-      <li><strong>Respectez l'arrêt :</strong> dès que l'arbitre dit "Stop", relâchez immédiatement</li>
-    </ul>
+    <h3>Pendant le match — les 5 règles mentales</h3>
+    <div class="mental-rules">
+      <div class="mental-rule">
+        <div class="mental-rule-num">01</div>
+        <div class="mental-rule-text"><strong>Respirez avant le top :</strong> une inspiration profonde réduit le stress et augmente la stabilité du départ.</div>
+      </div>
+      <div class="mental-rule">
+        <div class="mental-rule-num">02</div>
+        <div class="mental-rule-text"><strong>Démarrez fort :</strong> les premières demi-secondes sont souvent décisives — explosion complète à la commande.</div>
+      </div>
+      <div class="mental-rule">
+        <div class="mental-rule-num">03</div>
+        <div class="mental-rule-text"><strong>Ne regardez pas la main adverse :</strong> focalisez-vous sur votre propre effort et votre position de corps.</div>
+      </div>
+      <div class="mental-rule">
+        <div class="mental-rule-num">04</div>
+        <div class="mental-rule-text"><strong>Gardez votre technique :</strong> sous fatigue, fiez-vous à votre entraînement — ne changez pas de plan en milieu de match.</div>
+      </div>
+      <div class="mental-rule">
+        <div class="mental-rule-num">05</div>
+        <div class="mental-rule-text"><strong>Respectez l'arrêt :</strong> dès que l'arbitre dit "Stop", relâchez immédiatement pour éviter toute blessure.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="sec sec-dark">
+<!-- ── LES 6 CLÉS ── -->
+<div class="sec sec-dark bg-danger-x">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Préparation mentale & technique</div>
+    <h2>Les 6 clés pour être<br><span>prêt le jour J</span></h2>
+
+    <div class="keys-grid">
+      <div class="key-card" data-num="01">
+        <div class="key-tag">Technique</div>
+        <div class="key-title">Position de départ</div>
+        <div class="key-desc">La prise, le coude, l'angle du poignet — tout se joue dans les premières secondes. Travaillez votre set-up jusqu'à ce que ce soit automatique.</div>
+      </div>
+      <div class="key-card" data-num="02">
+        <div class="key-tag">Règlement</div>
+        <div class="key-title">Connais les règles</div>
+        <div class="key-desc">Une faute peut coûter un match. Maîtrisez les bases officielles : prise, position du coude, départ propre et consignes d'arbitrage.</div>
+      </div>
+      <div class="key-card" data-num="03">
+        <div class="key-tag">Mental</div>
+        <div class="key-title">Gère ton stress</div>
+        <div class="key-desc">Le stress est normal. Concentrez-vous sur votre technique et votre propre exécution — vous êtes là pour apprendre, pas pour prouver quelque chose.</div>
+      </div>
+      <div class="key-card" data-num="04">
+        <div class="key-tag">Sécurité</div>
+        <div class="key-title">Échauffe-toi sérieusement</div>
+        <div class="key-desc">Poignet, coude, épaule doivent être activés avant de monter sur table. Un échauffement négligé expose directement aux blessures.</div>
+      </div>
+      <div class="key-card" data-num="05">
+        <div class="key-tag">Tactique</div>
+        <div class="key-title">Choisis ta stratégie</div>
+        <div class="key-desc">Top roll, hook ou press — construisez votre match autour de votre point fort. Tester quelque chose de mal maîtrisé en compétition ne fonctionne jamais.</div>
+      </div>
+      <div class="key-card" data-num="06">
+        <div class="key-tag">Récupération</div>
+        <div class="key-title">Gère ton énergie</div>
+        <div class="key-desc">Hydrate-toi, secoue le bras, reste chaud et calme entre les matchs. Une compétition peut durer plusieurs heures — gérez vos ressources intelligemment.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── À EMPORTER ── -->
+<div class="sec sec-light">
   <div class="sec-inner">
     <div class="sec-eyebrow">Check-list</div>
     <h2>À emporter<br><span>le jour J</span></h2>
+    <p>Passez cette liste en revue la veille de la compétition — survolez chaque item au hover pour le valider mentalement.</p>
 
-    <ul class="checklist">
-      <li>Licence fédérale ou document d'identité valide</li>
-      <li>Tenue de sport (short/pantalon, t-shirt)</li>
-      <li>Chaussures à semelle stable (pas de sandales)</li>
-      <li>Bouteille d'eau (minimum 1,5 L)</li>
-      <li>Collations pour la journée (fruits, noix, barres)</li>
-      <li>Bandes de poignet ou strapping si vous en utilisez à l'entraînement</li>
-      <li>Téléphone chargé</li>
-      <li>Au moins 7–8h de sommeil la nuit précédente</li>
-    </ul>
+    <div class="gear-grid">
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Licence fédérale ou document d'identité valide</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Tenue de sport (short/pantalon, t-shirt)</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Chaussures à semelle stable (pas de sandales)</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Bouteille d'eau (minimum 1,5 L)</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Collations pour la journée (fruits, noix, barres)</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Bandes de poignet ou strapping (si utilisés à l'entraînement)</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">Téléphone chargé</div>
+      </div>
+      <div class="gear-item">
+        <div class="gear-check"><svg class="gear-check-icon" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gear-label">7–8h de sommeil la nuit précédente</div>
+      </div>
+    </div>
 
-    <p>Pour comprendre les positions dangereuses à éviter, consultez notre guide sur les <a href="blessures-bras-de-fer.html">blessures au bras de fer</a>.</p>
+    <p style="font-size:.9rem;color:rgba(245,240,232,.45);margin-top:.5rem;">Pour les positions dangereuses à éviter, consultez notre guide sur les <a href="blessures-bras-de-fer.html">blessures au bras de fer</a>.</p>
+  </div>
+</div>
 
+<!-- ── RETOUR D'EXPÉRIENCE + CTA ── -->
+<div class="sec sec-dark bg-horizon">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Retour d'expérience</div>
+    <h2>Après la compétition —<br><span>ce qu'on apprend vraiment</span></h2>
+    <p>Gagner ou perdre importe moins que ce que vous allez comprendre sur vous-même. Une première compétition donne des informations très concrètes sur vos points faibles : départ, main, gestion de l'angle, stabilité, résistance sous pression.</p>
+    <p>Notez vos ressentis juste après : qu'est-ce qui a fonctionné ? Où avez-vous manqué de force ? Quelle technique vous a mis en difficulté ? Ces observations valent énormément pour orienter l'entraînement.</p>
+    <div class="callout">
+      <p><strong>L'objectif d'une première compétition n'est pas de gagner :</strong> c'est de découvrir votre niveau réel, tester votre technique sous pression et transformer l'expérience en progression utile.</p>
+    </div>
     <div class="cta-final">
       <div>
         <div class="cta-final-label">ACS Luxembourg · Compétition annuelle · Munsbach</div>
         <div class="cta-final-title">Rejoindre pour votre premier tournoi</div>
         <p class="cta-final-desc">L'ACS Luxembourg vous prépare à la compétition dès les premières semaines. Première séance gratuite, mardi 18h à Strassen.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Rejoindre le club →</a>
+      <a href="index.html#contact" class="btn-white">Rejoindre le club →</a>
     </div>
   </div>
 </div>
@@ -248,9 +502,47 @@
   <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
   <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
+
 <script>
-  function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
-  document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+  (function(){
+    function animateOnScroll(containerSel, itemSel, delay, threshold) {
+      var container = document.querySelector(containerSel);
+      if (!container) return;
+      var items = Array.prototype.slice.call(container.querySelectorAll(itemSel));
+      items.forEach(function(item, i){ item.style.transitionDelay = (i * (delay||70)) + 'ms'; });
+      var obs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) {
+          items.forEach(function(item){ item.classList.add('is-visible'); });
+          var last = items[items.length - 1];
+          if (last) last.addEventListener('transitionend', function reset(e){
+            if (e.propertyName === 'opacity') {
+              items.forEach(function(item){ item.style.transitionDelay = '0ms'; });
+              last.removeEventListener('transitionend', reset);
+            }
+          });
+          obs.disconnect();
+        }
+      }, { threshold: threshold || 0.1 });
+      obs.observe(container);
+    }
+    animateOnScroll('.steps-v2',    '.step-v2',      90);
+    animateOnScroll('.warmup-grid', '.warmup-card',  80);
+    animateOnScroll('.mental-rules','.mental-rule',  70);
+    animateOnScroll('.keys-grid',   '.key-card',     75);
+    animateOnScroll('.gear-grid',   '.gear-item',    50);
+  })();
+
+  function switchTab(btn, panelId) {
+    document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.format-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
 </script>
 </body>
 </html>

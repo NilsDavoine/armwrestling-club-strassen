@@ -81,7 +81,7 @@
     /* ── TYPOGRAPHY ── */
     .sec h2 {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size:clamp(1.9rem,3.5vw,2.6rem);
       font-weight: 900;
       text-transform: uppercase;
       color: var(--white);
@@ -156,11 +156,35 @@
     .danger-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(192,57,43,.15);
+      gap: 3px;
+      background: rgba(255,255,255,.03);
       margin: 1.8rem 0;
     }
-    .danger-card { background: #0a0a0a; padding: 2rem; }
+    .danger-card {
+      background: #0b0202;
+      padding: 2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      border-top: 2px solid rgba(192,57,43,.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease, background .25s, border-color .25s;
+    }
+    .danger-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -.3rem; right: 1rem;
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      font-weight: 900;
+      color: rgba(192,57,43,.07);
+      line-height: 1;
+      pointer-events: none;
+      transition: color .3s;
+    }
+    .danger-card.is-visible { opacity: 1; transform: translateY(0); }
+    .danger-card.is-visible:hover { background: #100303; border-top-color: var(--red); transform: translateY(-5px); }
+    .danger-card.is-visible:hover::before { color: rgba(192,57,43,.17); }
     .danger-card h3 {
       font-family: var(--font-display);
       font-size: 1rem;
@@ -176,11 +200,21 @@
     .injury-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: rgba(255,255,255,.05);
+      gap: 3px;
+      background: rgba(255,255,255,.04);
       margin: 1.8rem 0;
     }
-    .injury-item { background: var(--black); padding: 1.6rem 1.8rem; }
+    .injury-item {
+      background: #0c0c0c;
+      padding: 1.6rem 1.8rem;
+      border-top: 2px solid transparent;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .45s ease, transform .45s ease, background .25s, border-color .25s;
+    }
+    .injury-item.is-visible { opacity: 1; transform: translateY(0); }
+    .injury-item.is-visible:hover { background: #141414; border-top-color: var(--red); transform: translateY(-4px); }
+    .injury-item.is-visible:hover .injury-name { color: var(--red); }
     .injury-name {
       font-family: var(--font-display);
       font-size: .85rem;
@@ -189,6 +223,7 @@
       color: var(--white);
       margin-bottom: .5rem;
       letter-spacing: .04em;
+      transition: color .25s;
     }
     .injury-desc { font-size: .88rem; color: rgba(245,240,232,.55); line-height: 1.75; margin: 0; }
 
@@ -196,22 +231,31 @@
     .prevention-list { margin: 1.8rem 0; }
     .prev-item {
       display: flex;
-      gap: 1.2rem;
-      padding: 1.1rem 0;
+      gap: 1.5rem;
+      padding: 1.3rem 1rem;
       border-bottom: 1px solid rgba(255,255,255,.05);
+      border-left: 2px solid transparent;
       align-items: flex-start;
+      margin-left: -1rem;
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity .45s ease, transform .45s ease, border-color .25s, background .25s;
     }
     .prev-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .prev-item.is-visible { opacity: 1; transform: translateX(0); }
+    .prev-item.is-visible:hover { border-left-color: var(--red); background: rgba(192,57,43,.04); }
+    .prev-item.is-visible:hover .prev-num { color: var(--red); }
     .prev-num {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 2rem;
       font-weight: 900;
-      color: rgba(192,57,43,.2);
+      color: rgba(192,57,43,.25);
       line-height: 1;
-      min-width: 32px;
+      min-width: 44px;
       flex-shrink: 0;
+      transition: color .25s;
     }
-    .prev-text { font-size: .95rem; color: rgba(245,240,232,.68); line-height: 1.75; }
+    .prev-text { font-size: .95rem; color: rgba(245,240,232,.68); line-height: 1.75; padding-top: .25rem; }
     .prev-text strong { color: var(--white); }
 
     /* ── PHOTO STRIP ── */
@@ -334,15 +378,15 @@
     <p>Les trois mécanismes qui déclenchent cette blessure :</p>
 
     <div class="danger-grid">
-      <div class="danger-card">
+      <div class="danger-card" data-num="01">
         <h3>Bras ouvert</h3>
         <p>Lorsque le bras s'éloigne du corps, le stress mécanique sur l'humérus augmente fortement. Le bras doit rester aligné avec l'épaule.</p>
       </div>
-      <div class="danger-card">
+      <div class="danger-card" data-num="02">
         <h3>Résistance statique</h3>
         <p>Vouloir "tenir" à tout prix dans une position perdante est l'erreur classique. Mieux vaut lâcher que risquer la fracture.</p>
       </div>
-      <div class="danger-card">
+      <div class="danger-card" data-num="03">
         <h3>Mauvaise rotation</h3>
         <p>Une rotation du corps sans alignement du bras crée une torsion osseuse que l'humérus ne peut pas encaisser.</p>
       </div>
@@ -464,6 +508,32 @@
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
   });
+
+  (function(){
+    function animateOnScroll(containerSel, itemSel) {
+      var container = document.querySelector(containerSel);
+      if (!container) return;
+      var items = Array.prototype.slice.call(container.querySelectorAll(itemSel));
+      items.forEach(function(item, i){ item.style.transitionDelay = (i * 80) + 'ms'; });
+      var obs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) {
+          items.forEach(function(item){ item.classList.add('is-visible'); });
+          var last = items[items.length - 1];
+          if (last) last.addEventListener('transitionend', function reset(e){
+            if (e.propertyName === 'opacity') {
+              items.forEach(function(item){ item.style.transitionDelay = '0ms'; });
+              last.removeEventListener('transitionend', reset);
+            }
+          });
+          obs.disconnect();
+        }
+      }, { threshold: 0.12 });
+      obs.observe(container);
+    }
+    animateOnScroll('.danger-grid',      '.danger-card');
+    animateOnScroll('.injury-grid',      '.injury-item');
+    animateOnScroll('.prevention-list',  '.prev-item');
+  })();
 </script>
 </body>
 </html>

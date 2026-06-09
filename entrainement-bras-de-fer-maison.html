@@ -7,7 +7,6 @@
   <meta name="description" content="Programme d'entraînement bras de fer à domicile : exercices spécifiques pour la prise, le poignet et les avant-bras. Sans table, avec peu de matériel. Par l'ACS Strassen Luxembourg."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html"/>
-
   <meta property="og:title" content="Entraînement bras de fer à la maison : exercices et programme"/>
   <meta property="og:description" content="Programme d'entraînement bras de fer à domicile : exercices spécifiques pour la prise, le poignet et les avant-bras. Sans table, avec peu de matériel."/>
   <meta property="og:type" content="article"/>
@@ -15,35 +14,14 @@
   <meta property="og:locale" content="fr_LU"/>
   <meta property="og:image" content="https://armwrestlingclubstrassen.com/match-competition-grande-salle.png"/>
   <meta property="og:image:alt" content="Exercices d'entraînement bras de fer à la maison pour développer la prise et les avant-bras."/>
-
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
-
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Entraînement bras de fer à la maison : exercices et programme",
-    "description": "Programme d'entraînement bras de fer à domicile : exercices spécifiques pour la prise, le poignet et les avant-bras. Sans table, avec peu de matériel.",
-    "author": { "@type": "Organization", "name": "Armwrestling Club Strassen" },
-    "publisher": { "@type": "Organization", "name": "Armwrestling Club Strassen", "url": "https://armwrestlingclubstrassen.com/" },
-    "url": "https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html",
-    "datePublished": "2026-05-22",
-    "dateModified": "2026-05-22"
-  }
+  {"@context":"https://schema.org","@type":"Article","headline":"Entraînement bras de fer à la maison : exercices et programme","description":"Programme d'entraînement bras de fer à domicile : exercices spécifiques pour la prise, le poignet et les avant-bras.","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html","datePublished":"2026-05-22","dateModified":"2026-06-09"}
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" },
-      { "@type": "ListItem", "position": 3, "name": "Entraînement à la maison", "item": "https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html" }
-    ]
-  }
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Entraînement à la maison","item":"https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-maison.html"}]}
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -51,268 +29,172 @@
   <link rel="stylesheet" href="blog.css"/>
 
   <style>
-    /* ── LAYOUT ── */
-    .sec { padding: 4rem 0; }
-    .sec-dark  { background: var(--black); }
-    .sec-light { background: var(--dark2); }
-    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; }
 
-    /* ── EYEBROW ── */
-    .sec-eyebrow {
-      font-family: var(--font-display);
-      font-size: .64rem;
-      font-weight: 900;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      color: rgba(192,57,43,.6);
-      margin-bottom: .8rem;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
+    .tip-wrap { padding: 4rem 3rem; }
+    .tip-eyebrow {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--white);
+      margin-bottom: 2rem; display: flex; align-items: center; gap: .8rem;
     }
-    .sec-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 1px;
-      background: rgba(192,57,43,.5);
-    }
+    .tip-eyebrow::before { content:''; display:inline-block; width:28px; height:2px; background:rgba(192,57,43,.8); }
+    .tip-grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
 
-    /* ── TYPOGRAPHY ── */
-    .sec h2 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--white);
-      margin: 0 0 1.3rem;
-      line-height: 1.02;
+    .tip-card {
+      --hue: 215; --border: 1.5; --size: 300;
+      --border-size: calc(var(--border) * 1px); --spotlight-size: calc(var(--size) * 1px);
+      background-image: radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 80% 36% / 0.12), transparent);
+      background-color: rgba(255,255,255,.025); background-attachment: fixed;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: var(--border-size) solid rgba(255,255,255,.07); border-top: 2px solid rgba(255,255,255,.15);
+      border-radius: 5px; box-shadow: 0 4px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.04);
+      position: relative; padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: .9rem; user-select: none;
     }
+    .tip-card::before, .tip-card::after {
+      pointer-events: none; content: ""; position: absolute; inset: calc(var(--border-size)*-1);
+      border: var(--border-size) solid transparent; border-radius: 5px; background-attachment: fixed;
+      mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      mask-clip: padding-box, border-box; mask-composite: intersect;
+      -webkit-mask: linear-gradient(transparent,transparent), linear-gradient(white,white);
+      -webkit-mask-clip: padding-box, border-box; -webkit-mask-composite: destination-in;
+    }
+    .tip-card::before {
+      background-image: radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 90% 42%/1), transparent 100%);
+      filter: brightness(2.5);
+    }
+    .tip-card::after {
+      background-image: radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(0 100% 100%/.55), transparent 100%);
+    }
+    .tip-num { font-family: var(--font-display); font-size: .82rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    .tip-title { font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: .01em; line-height: 1.05; }
+    .tip-desc { font-size: .92rem; color: rgba(245,240,232,.78); line-height: 1.82; flex: 1; }
+    .c-blue  { --hue:215; border-top-color:rgba(74,104,133,.65);  } .c-blue .tip-num  { color:#7aadda; }
+    .c-green { --hue:162; border-top-color:rgba(26,144,112,.65);  } .c-green .tip-num { color:#25c494; }
+    .c-red   { --hue:5;   border-top-color:rgba(192,57,43,.7);   } .c-red .tip-num   { color:#c0392b; }
+    .c-amber { --hue:42;  border-top-color:rgba(211,84,0,.65);   } .c-amber .tip-num { color:#e67e22; }
+    .c-purple{ --hue:270; border-top-color:rgba(142,68,173,.65); } .c-purple .tip-num{ color:#bb8fce; }
+
+    .sec { padding: 4.5rem 3rem; }
+    .sec-inner { max-width: 960px; margin: 0 auto; }
+    .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.4rem; line-height: 1; }
     .sec h2 span { color: var(--red); }
-    .sec h3 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      margin: 2rem 0 .6rem;
-      letter-spacing: .04em;
-    }
-    .sec p  { font-size: 1rem; color: rgba(245,240,232,.75); line-height: 1.95; margin-bottom: 1.3rem; }
-    .sec ul { margin: 0 0 1.3rem 1.8rem; }
-    .sec li { font-size: .97rem; color: rgba(245,240,232,.7); line-height: 1.85; margin-bottom: .35rem; }
+    .sec p { font-size: 1.02rem; color: rgba(245,240,232,.8); line-height: 1.95; margin-bottom: 1.3rem; }
     .sec strong { color: var(--white); font-weight: 600; }
+    .sec a { color: var(--red); text-decoration: none; } .sec a:hover { text-decoration: underline; }
+    .sec-eyebrow { font-family: var(--font-display); font-size: .64rem; font-weight: 900; letter-spacing: .26em; text-transform: uppercase; color: rgba(192,57,43,.6); margin-bottom: .8rem; display: flex; align-items: center; gap: .6rem; }
+    .sec-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: rgba(192,57,43,.5); }
 
-    /* ── BREADCRUMB ── */
-    .breadcrumb {
-      font-family: var(--font-display);
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,.3);
-      margin-bottom: 1.5rem;
-    }
-    .breadcrumb a { color: rgba(245,240,232,.3); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--red); }
-    .breadcrumb span { margin: 0 .5rem; }
+    .sec-video { background: #050304; position: relative; overflow: hidden; }
+    .sec-video::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 75% 55% at 50% 0%, rgba(192,57,43,.22) 0%, transparent 65%), radial-gradient(ellipse 35% 25% at 3% 95%, rgba(192,57,43,.07) 0%, transparent 55%); }
+    .sec-video::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(-55deg, transparent, transparent 44px, rgba(255,255,255,.006) 44px, rgba(255,255,255,.006) 45px); }
+    .sec-video .sec-inner { position: relative; z-index: 1; }
 
-    /* ── CALLOUT ── */
-    .callout {
-      background: rgba(192,57,43,.07);
-      border-left: 3px solid var(--red);
-      padding: 1.3rem 1.8rem;
-      margin: 1.8rem 0;
-      border-radius: 0 3px 3px 0;
-    }
+    .sec-intro { background: #070505; position: relative; overflow: hidden; }
+    .sec-intro::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 45% at 50% 110%, rgba(192,57,43,.12) 0%, transparent 60%); }
+    .sec-intro .sec-inner { position: relative; z-index: 1; }
+
+    .sec-muscles { background: #0d0508; position: relative; overflow: hidden; }
+    .sec-muscles::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 45% 80% at -8% 50%, rgba(192,57,43,.12) 0%, transparent 60%), radial-gradient(ellipse 45% 80% at 108% 50%, rgba(192,57,43,.12) 0%, transparent 60%); }
+    .sec-muscles::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(192,57,43,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(192,57,43,.025) 1px, transparent 1px); background-size: 50px 50px; }
+    .sec-muscles .tip-wrap { position: relative; z-index: 1; }
+
+    .sec-materiel { background: #050407; position: relative; overflow: hidden; }
+    .sec-materiel::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 90% 55% at -15% 100%, rgba(192,57,43,.15) 0%, transparent 58%), radial-gradient(ellipse 90% 55% at 115% 0%, rgba(150,100,30,.1) 0%, transparent 58%), linear-gradient(135deg, rgba(192,57,43,.06) 0%, transparent 45%, rgba(180,120,0,.04) 70%, transparent 100%); }
+    .sec-materiel::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(135deg, transparent, transparent 50px, rgba(255,255,255,.007) 50px, rgba(255,255,255,.007) 51px); }
+    .sec-materiel .sec-inner { position: relative; z-index: 1; }
+
+    .sec-exercices { background: #040203; position: relative; overflow: hidden; }
+    .sec-exercices::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 55% at 50% -15%, rgba(192,57,43,.18) 0%, transparent 60%), radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%); }
+    .sec-exercices::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 110% 110% at 50% 50%, transparent 35%, rgba(0,0,0,.5) 100%); }
+    .sec-exercices .sec-inner { position: relative; z-index: 1; }
+
+    .sec-programme { background: linear-gradient(180deg, #050305 0%, #0a0806 100%); position: relative; overflow: hidden; }
+    .sec-programme::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 110% 55% at 50% 125%, rgba(212,160,23,.18) 0%, rgba(180,80,0,.1) 35%, transparent 60%), radial-gradient(ellipse 50% 35% at 8% 100%, rgba(192,57,43,.07) 0%, transparent 55%); }
+    .sec-programme::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(0deg, transparent, transparent 22px, rgba(255,160,0,.009) 22px, rgba(255,160,0,.009) 23px); -webkit-mask-image: radial-gradient(ellipse 85% 60% at 50% 100%, black 0%, transparent 68%); mask-image: radial-gradient(ellipse 85% 60% at 50% 100%, black 0%, transparent 68%); }
+    .sec-programme .sec-inner { position: relative; z-index: 1; }
+
+    .sec-errors { background: #040203; position: relative; overflow: hidden; }
+    .sec-errors::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(192,57,43,.05) 60px, rgba(192,57,43,.05) 62px), repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(192,57,43,.05) 60px, rgba(192,57,43,.05) 62px), radial-gradient(ellipse 70% 40% at 50% 130%, rgba(150,0,0,.28) 0%, transparent 58%); }
+    .sec-errors::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 110% 110% at 50% 50%, transparent 28%, rgba(100,0,0,.4) 100%); }
+    .sec-errors .sec-inner { position: relative; z-index: 1; }
+
+    .video-section-label { font-family: var(--font-display); font-size: .76rem; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; color: rgba(192,57,43,.9); margin: 0 0 1.4rem; display: flex; align-items: center; gap: .7rem; }
+    .video-section-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: rgba(192,57,43,.75); }
+    .video-split { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3.5rem; align-items: center; }
+    .vid-title-text { font-family: var(--font-display); font-size: 1.55rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin: 0 0 .9rem; letter-spacing: .03em; line-height: 1.1; }
+    .vid-link-side { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-display); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,240,232,.28); text-decoration: none; margin-top: 1.2rem; transition: color .2s; }
+    .vid-link-side:hover { color: rgba(245,240,232,.65); }
+    .vid-card { display: block; }
+    .vid-placeholder { position: relative; width: 100%; aspect-ratio: 9/16; background: #111; border: 1px solid rgba(255,255,255,.07); border-radius: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem; cursor: pointer; transition: background .2s, border-color .2s; }
+    .vid-placeholder:hover { background: #181818; border-color: rgba(192,57,43,.35); }
+    .vid-play-btn { width: 52px; height: 52px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .2s, background .2s; flex-shrink: 0; }
+    .vid-play-btn svg { width: 18px; height: 18px; fill: var(--white); margin-left: 3px; }
+    .vid-placeholder:hover .vid-play-btn { transform: scale(1.1); background: #d44; }
+    .vid-label { font-family: var(--font-display); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,240,232,.4); }
+    .vid-iframe-wrap { width: 100%; aspect-ratio: 9/16; border: 1px solid rgba(255,255,255,.07); border-radius: 3px; overflow: hidden; }
+    .vid-iframe-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    .callout { background: rgba(192,57,43,.07); border-left: 3px solid var(--red); padding: 1.3rem 1.8rem; margin: 1.8rem 0; border-radius: 0 3px 3px 0; }
     .callout p { margin: 0 !important; color: rgba(245,240,232,.88) !important; font-size: .96rem !important; }
 
-    /* ── MUSCLES GRID ── */
-    .muscles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: rgba(255,255,255,.04);
-      margin: 1.8rem 0;
-    }
-    .muscle-cell { background: #0c0c0c; padding: 1.4rem 1.2rem; }
-    .muscle-name {
-      font-family: var(--font-display);
-      font-size: .82rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: .4rem;
-      letter-spacing: .03em;
-    }
-    .muscle-role { font-size: .8rem; color: rgba(245,240,232,.45); line-height: 1.55; }
+    .materiel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 4px; margin: 1.8rem 0; }
+    .materiel-item { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-top: 2px solid rgba(255,255,255,.12); border-radius: 3px; padding: 1.5rem 1.6rem; }
+    .materiel-name { font-family: var(--font-display); font-size: .95rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin-bottom: .3rem; letter-spacing: .03em; }
+    .materiel-price { font-family: var(--font-display); font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: .5rem; }
+    .materiel-desc { font-size: .87rem; color: rgba(245,240,232,.55); line-height: 1.65; }
 
-    /* ── MATERIEL GRID ── */
-    .materiel-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: rgba(255,255,255,.04);
-      margin: 1.8rem 0;
-    }
-    .materiel-item { background: #0c0c0c; padding: 1.4rem 1.6rem; }
-    .materiel-name {
-      font-family: var(--font-display);
-      font-size: .9rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: .3rem;
-    }
-    .materiel-price {
-      font-family: var(--font-display);
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: .4rem;
-    }
-    .materiel-desc { font-size: .84rem; color: rgba(245,240,232,.5); line-height: 1.6; }
-
-    /* ── EXERCISE CARDS ── */
     .exercise-list { display: flex; flex-direction: column; gap: 2px; margin: 1.8rem 0; }
-    .exercise {
-      border: 1px solid rgba(255,255,255,.06);
-      background: rgba(245,240,232,.015);
-    }
-    .exercise-header {
-      padding: 1.1rem 1.8rem;
-      border-bottom: 1px solid rgba(255,255,255,.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .exercise-name {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      letter-spacing: .04em;
-    }
+    .exercise { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); border-radius: 2px; transition: border-color .2s, background .2s; }
+    .exercise:hover { background: rgba(255,255,255,.035); border-color: rgba(192,57,43,.22); }
+    .exercise-header { padding: 1.1rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,.05); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .exercise-name { font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .04em; }
     .exercise-badges { display: flex; gap: .35rem; flex-wrap: wrap; }
-    .exercise-badge {
-      font-family: var(--font-display);
-      font-size: .58rem;
-      font-weight: 700;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      padding: .2rem .6rem;
-      border: 1px solid rgba(192,57,43,.3);
-      color: var(--red);
-      background: rgba(192,57,43,.06);
-    }
-    .exercise-desc {
-      padding: 1rem 1.8rem;
-      font-size: .9rem;
-      color: rgba(245,240,232,.62);
-      line-height: 1.85;
-      border-bottom: 1px solid rgba(255,255,255,.04);
-    }
-    .exercise-sets {
-      padding: .65rem 1.8rem;
-      font-family: var(--font-display);
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(192,57,43,.55);
-    }
+    .exercise-badge { font-family: var(--font-display); font-size: .58rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; padding: .2rem .6rem; border: 1px solid rgba(192,57,43,.3); color: var(--red); background: rgba(192,57,43,.06); border-radius: 2px; }
+    .exercise-desc { padding: 1rem 1.8rem; font-size: .9rem; color: rgba(245,240,232,.62); line-height: 1.85; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .exercise-sets { padding: .65rem 1.8rem; font-family: var(--font-display); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(192,57,43,.6); }
 
-    /* ── PROGRAMME SEMAINE ── */
     .program-week-list { display: flex; flex-direction: column; gap: 2px; margin: 1.8rem 0; }
-    .program-week {
-      border: 1px solid rgba(255,255,255,.05);
-      background: rgba(245,240,232,.015);
-    }
-    .program-week-header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: .9rem 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,.04);
-    }
-    .program-week.club .program-week-header {
-      background: rgba(192,57,43,.06);
-      border-bottom-color: rgba(192,57,43,.15);
-    }
-    .program-day {
-      font-family: var(--font-display);
-      font-size: .75rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--red);
-      min-width: 80px;
-      flex-shrink: 0;
-    }
-    .program-focus {
-      font-family: var(--font-display);
-      font-size: .88rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--white);
-      letter-spacing: .03em;
-    }
-    .program-exercises {
-      padding: .7rem 1.5rem;
-      font-size: .87rem;
-      color: rgba(245,240,232,.5);
-      line-height: 1.7;
-    }
+    .program-week { border: 1px solid rgba(255,255,255,.05); background: rgba(245,240,232,.015); border-radius: 2px; transition: border-color .2s; }
+    .program-week:hover { border-color: rgba(255,255,255,.1); }
+    .program-week-header { display: flex; align-items: center; gap: 1.5rem; padding: .9rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .program-week.club .program-week-header { background: rgba(192,57,43,.06); border-bottom-color: rgba(192,57,43,.15); }
+    .program-day { font-family: var(--font-display); font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; color: var(--red); min-width: 80px; flex-shrink: 0; }
+    .program-focus { font-family: var(--font-display); font-size: .88rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: .03em; }
+    .program-exercises { padding: .7rem 1.5rem; font-size: .87rem; color: rgba(245,240,232,.5); line-height: 1.7; }
 
-    /* ── CTA FINAL ── */
-    .cta-final {
-      background: linear-gradient(135deg, rgba(192,57,43,.12), rgba(5,2,2,.9));
-      border: 1px solid rgba(192,57,43,.28);
-      border-top: 2px solid var(--red);
-      padding: 2.2rem 2.5rem;
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-    }
-    .cta-final-label {
-      font-family: var(--font-display);
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: rgba(192,57,43,.7);
-      margin-bottom: .4rem;
-    }
-    .cta-final-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: .4rem;
-    }
-    .cta-final-desc { font-size: .88rem; color: rgba(245,240,232,.5); margin: 0; }
+    .errors-list { display: flex; flex-direction: column; gap: 2px; margin: 1.5rem 0; }
+    .error-item { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); padding: 1rem 1.4rem; }
+    .error-x { font-family: var(--font-display); font-size: 1rem; font-weight: 900; color: rgba(192,57,43,.6); flex-shrink: 0; }
+    .error-body strong { font-family: var(--font-display); font-size: .88rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .03em; display: block; margin-bottom: .2rem; }
+    .error-body span { font-size: .82rem; color: rgba(245,240,232,.45); line-height: 1.6; }
 
-    /* ── RESPONSIVE ── */
+    .cta-box { background: linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,2,2,.9)); border: 1px solid rgba(192,57,43,.22); border-top: 2px solid var(--red); padding: 2.2rem 2.5rem; margin-top: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .cta-label { font-family: var(--font-display); font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(192,57,43,.55); margin-bottom: .4rem; }
+    .cta-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; margin-bottom: .4rem; }
+    .cta-box p { font-size: .88rem; color: rgba(245,240,232,.48); margin: 0; line-height: 1.7; }
+
+    .page-rule { background: var(--black); padding: 0 3rem; }
+    .page-rule-line { max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.1); }
+
     @media(max-width: 768px) {
-      .sec-inner      { padding: 0 1.5rem; }
-      .muscles-grid   { grid-template-columns: repeat(2, 1fr); }
-      .materiel-grid  { grid-template-columns: 1fr; }
-      .cta-final      { grid-template-columns: 1fr; }
+      .sec { padding: 3rem 1.5rem; }
+      .tip-wrap { padding: 2.5rem 1.5rem; }
+      .tip-grid-4 { grid-template-columns: repeat(2,1fr); }
+      .materiel-grid { grid-template-columns: 1fr; }
+      .video-split { grid-template-columns: 1fr; gap: 1.5rem; }
+      .page-rule { padding: 0 1.5rem; }
+      .cta-box { flex-direction: column; }
     }
+    @media(max-width: 480px) { .tip-grid-4 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo-wrap"><img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
+  <a href="index.html" class="logo-wrap">
+    <img src="logo.png" alt="Logo ACS Luxembourg" class="nav-logo-img"/>
+    <span class="nav-logo">ACS <span>Luxembourg</span></span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html#about">Le Club</a></li>
     <li><a href="index.html#entrainement">Accès</a></li>
@@ -325,84 +207,123 @@
   </div>
 </nav>
 
-<!-- ── HERO ─────────────────────────────────────────────────────────── -->
+
 <div class="article-hero">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb">
       <a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Entraînement à la maison
     </div>
     <div class="article-tag">Entraînement · Programme domicile</div>
-    <div class="article-date">Mis à jour : mai 2026</div>
+    <div class="article-date">Mis à jour : juin 2026</div>
     <h1 class="article-title">Entraînement bras de fer<br><span>à la maison</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Exercices spécifiques pour développer la prise, le poignet et la force d'avant-bras entre les séances sur table. Programme complet avec peu de matériel.</p>
+    <p style="font-size:1.05rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Exercices spécifiques pour développer la prise, le poignet et la force d'avant-bras entre les séances sur table. Programme complet avec peu de matériel.</p>
     <div class="article-meta">ACS Luxembourg · Programme domicile · Complément aux séances en club</div>
   </div>
 </div>
 
-<!-- ── INTRO ──────────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+
+<!-- VIDÉO -->
+<div class="sec sec-video">
+  <div class="sec-inner">
+    <div class="video-section-label">Démonstration vidéo</div>
+    <div class="video-split">
+      <div>
+        <div class="sec-eyebrow">Préparation physique</div>
+        <div class="vid-title-text">Conditionner muscles<br>& tendons</div>
+        <p>Avant d'augmenter les charges, les muscles et tendons de l'avant-bras ont besoin d'une base solide. Cette vidéo présente les exercices de préparation essentiels pour conditionner progressivement les structures — le travail préalable que la plupart des pratiquants négligent et qui détermine pourtant la résistance aux blessures sur le long terme.</p>
+        <p>Ces mouvements ciblent la flexion, la pronation et la force de prise dans une logique d'adaptation progressive — exactement ce qu'il faut avant de charger.</p>
+        <a href="https://www.tiktok.com/@armwrestlingclubstrassen/video/7546999325168028950" class="vid-link-side" target="_blank" rel="noopener">Voir sur TikTok →</a>
+      </div>
+      <div class="vid-card" data-id="7546999325168028950">
+        <div class="vid-placeholder">
+          <div class="vid-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vid-label">Conditionnement avant-bras</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- INTRO -->
+<div class="sec sec-intro">
   <div class="sec-inner">
     <div class="sec-eyebrow">Contexte</div>
     <h2>Un complément<br><span>aux séances sur table</span></h2>
     <p>L'entraînement sur table reste irremplaçable — le sparring, le placement et la lecture du jeu adverse ne se travaillent qu'en club. Mais entre les séances, un travail ciblé à domicile sur les groupes musculaires spécifiques au bras de fer peut faire une vraie différence sur la progression.</p>
-
     <div class="callout">
       <p><strong>Important :</strong> ce programme est un complément aux séances en club, pas un substitut. Le bras de fer se gagne sur table, avec des partenaires. L'objectif ici est de renforcer les structures musculaires et tendineuses entre les entraînements.</p>
     </div>
   </div>
 </div>
 
-<!-- ── MUSCLES À CIBLER ───────────────────────────────────────────────── -->
-<div class="sec sec-light">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Anatomie</div>
-    <h2>Les muscles<br><span>à cibler</span></h2>
-    <p>Le bras de fer sollicite une chaîne musculaire complète du poignet jusqu'au grand dorsal. Ces sept groupes sont prioritaires.</p>
 
-    <div class="muscles-grid">
-      <div class="muscle-cell">
-        <div class="muscle-name">Fléchisseurs des doigts</div>
-        <div class="muscle-role">Prise de main — le premier limitant en bras de fer</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Fléchisseurs du poignet</div>
-        <div class="muscle-role">Hook et résistance latérale</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Extenseurs du poignet</div>
-        <div class="muscle-role">Top roll — et équilibre musculaire essentiel</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Brachioradial</div>
-        <div class="muscle-role">Muscle clé de l'avant-bras, souvent sous-développé</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Biceps</div>
-        <div class="muscle-role">Force de traction principale</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Deltoïde antérieur</div>
-        <div class="muscle-role">Attaque latérale et placement épaule</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Grand dorsal</div>
-        <div class="muscle-role">Transmission de force du corps au bras</div>
-      </div>
-      <div class="muscle-cell">
-        <div class="muscle-name">Pronateur rond</div>
-        <div class="muscle-role">Rotation du poignet — crucial pour le hook</div>
+<div class="page-rule"><div class="page-rule-line"></div></div>
+
+
+<!-- MUSCLES — spotlight cards -->
+<div class="sec-muscles">
+  <div class="tip-wrap">
+    <div style="max-width:960px;margin:0 auto;">
+      <div class="sec-eyebrow" style="margin-bottom:.6rem;">Anatomie</div>
+      <div class="tip-eyebrow">Les muscles à cibler</div>
+      <p style="font-size:1rem;color:rgba(245,240,232,.7);line-height:1.85;max-width:700px;margin-bottom:2rem;">Le bras de fer sollicite une chaîne musculaire complète du poignet jusqu'au grand dorsal. Ces huit groupes sont prioritaires dans le programme domicile.</p>
+      <div class="tip-grid-4">
+        <div class="tip-card c-red">
+          <div class="tip-num">Prise</div>
+          <div class="tip-title">Fléchisseurs des doigts</div>
+          <div class="tip-desc">Le premier limitant en bras de fer. Une prise qui s'ouvre, c'est un match perdu. Priorité absolue dans ce programme.</div>
+        </div>
+        <div class="tip-card c-blue">
+          <div class="tip-num">Poignet</div>
+          <div class="tip-title">Fléchisseurs du poignet</div>
+          <div class="tip-desc">Hook et résistance latérale. Les moteurs du mouvement de fermeture vers soi — le geste central du bras de fer.</div>
+        </div>
+        <div class="tip-card c-green">
+          <div class="tip-num">Équilibre</div>
+          <div class="tip-title">Extenseurs du poignet</div>
+          <div class="tip-desc">Essentiels pour le top roll et pour équilibrer les fléchisseurs. Leur absence cause les tendinites — ne pas négliger.</div>
+        </div>
+        <div class="tip-card c-amber">
+          <div class="tip-num">Avant-bras</div>
+          <div class="tip-title">Brachioradial</div>
+          <div class="tip-desc">Muscle clé de l'avant-bras, souvent sous-développé. Répond parfaitement au curl marteau avec fat grip.</div>
+        </div>
+        <div class="tip-card c-blue">
+          <div class="tip-num">Traction</div>
+          <div class="tip-title">Biceps</div>
+          <div class="tip-desc">Force de traction principale. L'angle de travail en bras de fer diffère du curl classique — à entraîner spécifiquement.</div>
+        </div>
+        <div class="tip-card c-purple">
+          <div class="tip-num">Placement</div>
+          <div class="tip-title">Deltoïde antérieur</div>
+          <div class="tip-desc">Attaque latérale et placement de l'épaule. Intervient dans tous les départs explosifs — souvent ignoré en home training.</div>
+        </div>
+        <div class="tip-card c-green">
+          <div class="tip-num">Transmission</div>
+          <div class="tip-title">Grand dorsal</div>
+          <div class="tip-desc">Transmission de la force du corps au bras. Le moteur caché du bras de fer — souvent la vraie différence entre deux niveaux.</div>
+        </div>
+        <div class="tip-card c-red">
+          <div class="tip-num">Hook</div>
+          <div class="tip-title">Pronateur rond</div>
+          <div class="tip-desc">Rotation du poignet paume vers le bas — crucial pour le hook. Le mouvement le plus spécifique au bras de fer.</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── MATÉRIEL ───────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+
+<div class="page-rule"><div class="page-rule-line"></div></div>
+
+
+<!-- MATÉRIEL -->
+<div class="sec sec-materiel">
   <div class="sec-inner">
     <div class="sec-eyebrow">Équipement</div>
     <h2>Matériel recommandé<br><span>budget minimal</span></h2>
     <p>Avec juste des élastiques, vous pouvez réaliser 70% de ce programme. Voici le matériel idéal, par ordre de priorité.</p>
-
     <div class="materiel-grid">
       <div class="materiel-item">
         <div class="materiel-name">Élastiques de résistance</div>
@@ -428,13 +349,13 @@
   </div>
 </div>
 
-<!-- ── EXERCICES ──────────────────────────────────────────────────────── -->
-<div class="sec sec-light">
+
+<!-- EXERCICES -->
+<div class="sec sec-exercices">
   <div class="sec-inner">
     <div class="sec-eyebrow">Programme</div>
     <h2>Les exercices<br><span>fondamentaux</span></h2>
     <p>Ces sept exercices couvrent tous les groupes musculaires prioritaires. Ils ne nécessitent que peu de matériel.</p>
-
     <div class="exercise-list">
       <div class="exercise">
         <div class="exercise-header">
@@ -444,7 +365,6 @@
         <div class="exercise-desc">Assis, avant-bras posé sur la cuisse, main dépassant du genou. Fléchissez le poignet vers le haut (supination) puis vers le bas (pronation) avec une haltère légère. Mouvement lent et contrôlé — jamais de charge lourde sur les poignets.</div>
         <div class="exercise-sets">3 séries × 15–20 reps · Pause 60s · Charge légère</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Farmer's carry fat grip</div>
@@ -453,7 +373,6 @@
         <div class="exercise-desc">Tenez une haltère ou kettlebell avec un fat grip (ou une serviette enroulée autour), marchez sur 20–30m. Excellent pour l'endurance de prise et le renforcement des fléchisseurs des doigts.</div>
         <div class="exercise-sets">4 séries × 30m · Pause 90s</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Tirage élastique en position de table</div>
@@ -462,7 +381,6 @@
         <div class="exercise-desc">Fixez un élastique à hauteur de table. Adoptez la position de combat — coude posé, prise de l'élastique. Simulez le mouvement de hook ou de top roll contre la résistance. L'exercice le plus spécifique au bras de fer sans table.</div>
         <div class="exercise-sets">4 séries × 10–12 reps par mouvement · Pause 90s</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Pinch grip</div>
@@ -471,7 +389,6 @@
         <div class="exercise-desc">Tenez une haltère (ou une assiette de fonte) par la tranche, uniquement avec le pouce et les doigts en pince. Restez statique 20–30 secondes ou marchez avec. Développe la force des doigts essentielle au top roll.</div>
         <div class="exercise-sets">3 séries × 20–30s · Pause 60s</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Curl marteau fat grip</div>
@@ -480,7 +397,6 @@
         <div class="exercise-desc">Curl marteau classique (pouce vers le plafond) avec fat grip ou serviette enroulée autour de la barre. Le grip épaissi active massivement le brachioradial — muscle clé en bras de fer souvent négligé.</div>
         <div class="exercise-sets">4 séries × 8–10 reps · Pause 90s</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Extension de poignet</div>
@@ -489,7 +405,6 @@
         <div class="exercise-desc">Souvent négligé mais crucial pour l'équilibre musculaire et la prévention des tendinites. Même position que le curl de poignet mais en extension — dos de la main vers le haut. Charge très légère, volume élevé.</div>
         <div class="exercise-sets">3 séries × 20 reps · Pause 60s · Charge très légère</div>
       </div>
-
       <div class="exercise">
         <div class="exercise-header">
           <div class="exercise-name">Squeeze de balle</div>
@@ -502,95 +417,99 @@
   </div>
 </div>
 
-<!-- ── PROGRAMME HEBDOMADAIRE ─────────────────────────────────────────── -->
-<div class="sec sec-dark">
+
+<!-- PROGRAMME HEBDOMADAIRE -->
+<div class="sec sec-programme">
   <div class="sec-inner">
     <div class="sec-eyebrow">Organisation</div>
     <h2>Programme hebdomadaire<br><span>type</span></h2>
     <p>Ce programme est conçu pour complémenter 2 séances en club — Strassen le mardi et Munsbach le vendredi. Les séances maison se placent les autres jours.</p>
-
     <div class="program-week-list">
       <div class="program-week">
-        <div class="program-week-header">
-          <div class="program-day">Lundi</div>
-          <div class="program-focus">Prise & Poignet</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Lundi</div><div class="program-focus">Prise & Poignet</div></div>
         <div class="program-exercises">Curl de poignet × 3 · Extension de poignet × 3 · Pinch grip × 3 · Squeeze de balle × 100 — Durée : 25 min</div>
       </div>
       <div class="program-week club">
-        <div class="program-week-header">
-          <div class="program-day">Mardi</div>
-          <div class="program-focus">Séance club — Strassen 18h</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Mardi</div><div class="program-focus">Séance club — Strassen 18h</div></div>
         <div class="program-exercises">Entraînement sur table · Technique · Sparring encadré</div>
       </div>
       <div class="program-week">
-        <div class="program-week-header">
-          <div class="program-day">Mercredi</div>
-          <div class="program-focus">Force spécifique</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Mercredi</div><div class="program-focus">Force spécifique</div></div>
         <div class="program-exercises">Tirage élastique position table × 4 · Curl marteau fat grip × 4 · Farmer's carry × 4 — Durée : 35 min</div>
       </div>
       <div class="program-week">
-        <div class="program-week-header">
-          <div class="program-day">Jeudi</div>
-          <div class="program-focus">Récupération active</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Jeudi</div><div class="program-focus">Récupération active</div></div>
         <div class="program-exercises">Mobilité poignets et coudes × 10 min · Squeeze de balle léger · Étirements avant-bras — Durée : 15 min</div>
       </div>
       <div class="program-week club">
-        <div class="program-week-header">
-          <div class="program-day">Vendredi</div>
-          <div class="program-focus">Séance club — Munsbach 18h</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Vendredi</div><div class="program-focus">Séance club — Munsbach 18h</div></div>
         <div class="program-exercises">Sparring · Match practice · Athlètes niveau international</div>
       </div>
       <div class="program-week">
-        <div class="program-week-header">
-          <div class="program-day">Samedi</div>
-          <div class="program-focus">Optionnel — Renforcement général</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Samedi</div><div class="program-focus">Optionnel — Renforcement général</div></div>
         <div class="program-exercises">Musculation générale (dos, épaules, biceps) avec fat grips · Pas de travail spécifique poignet</div>
       </div>
       <div class="program-week">
-        <div class="program-week-header">
-          <div class="program-day">Dimanche</div>
-          <div class="program-focus">Repos complet</div>
-        </div>
+        <div class="program-week-header"><div class="program-day">Dimanche</div><div class="program-focus">Repos complet</div></div>
         <div class="program-exercises">Les tendons ont besoin de repos pour se renforcer — récupération indispensable</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── ERREURS À ÉVITER ───────────────────────────────────────────────── -->
-<div class="sec sec-light">
+
+<div class="page-rule"><div class="page-rule-line"></div></div>
+
+
+<!-- ERREURS -->
+<div class="sec sec-errors">
   <div class="sec-inner">
     <div class="sec-eyebrow">Erreurs à éviter</div>
     <h2>Les pièges classiques<br><span>du travail domicile</span></h2>
-
-    <ul>
-      <li><strong>Trop de volume sur les poignets</strong> — les tendons s'enflamment facilement si on surcharge. Mieux vaut moins mais régulier.</li>
-      <li><strong>Oublier les extenseurs</strong> — ne travailler que les fléchisseurs crée un déséquilibre qui favorise les tendinites au coude.</li>
-      <li><strong>Utiliser des charges trop lourdes</strong> — pour les poignets et avant-bras, c'est le volume et la régularité qui comptent, pas la charge maximale.</li>
-      <li><strong>Ne pas s'échauffer</strong> — même pour une courte séance maison, 5 minutes de rotation des poignets et coudes sont indispensables.</li>
-    </ul>
-
+    <div class="errors-list">
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Trop de volume sur les poignets</strong>
+          <span>Les tendons s'enflamment facilement si on surcharge. Mieux vaut moins mais régulier — la progression en endurance tendineuse est lente et linéaire.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Oublier les extenseurs</strong>
+          <span>Ne travailler que les fléchisseurs crée un déséquilibre qui favorise les tendinites au coude. L'extension de poignet est l'assurance vie de l'avant-bras.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Charges trop lourdes</strong>
+          <span>Pour les poignets et avant-bras, c'est le volume et la régularité qui comptent, pas la charge maximale. Le risque de blessure augmente exponentiellement avec la surcharge.</span>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-x">✕</div>
+        <div class="error-body">
+          <strong>Pas d'échauffement</strong>
+          <span>Même pour une courte séance maison, 5 minutes de rotation des poignets et coudes sont indispensables. Une tendinite peut immobiliser un bras pendant des semaines.</span>
+        </div>
+      </div>
+    </div>
     <div class="callout">
       <p><strong>Le sparring reste irremplaçable.</strong> Un programme maison aussi structuré soit-il ne peut pas remplacer les séances en club. La mécanique du bras de fer — lecture de l'adversaire, timing, placement — ne s'apprend que sur table.</p>
     </div>
-
-    <div class="cta-final">
+    <div class="cta-box">
       <div>
-        <div class="cta-final-label">ACS Strassen · Mardi 18h · Munsbach Vendredi 18h</div>
-        <div class="cta-final-title">Venez pratiquer sur table</div>
-        <p class="cta-final-desc">Première séance gratuite, sans inscription préalable. Le programme maison prend tout son sens combiné aux séances en club.</p>
+        <div class="cta-label">ACS Strassen · Mardi 18h · Munsbach Vendredi 18h</div>
+        <div class="cta-title">Venez pratiquer sur table</div>
+        <p>Première séance gratuite, sans inscription préalable. Le programme maison prend tout son sens combiné aux séances en club.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Rejoindre le club →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;background:var(--white);color:#0a0807;">Rejoindre le club →</a>
     </div>
-
   </div>
 </div>
+
 
 <footer>
   <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
@@ -609,8 +528,29 @@
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
-  document.querySelectorAll('#navLinks a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+  document.addEventListener('pointermove', e => {
+    const r = document.documentElement;
+    r.style.setProperty('--x', e.clientX);
+    r.style.setProperty('--y', e.clientY);
+    r.style.setProperty('--xp', (e.clientX / innerWidth).toFixed(3));
+    r.style.setProperty('--yp', (e.clientY / innerHeight).toFixed(3));
+  });
+  document.querySelectorAll('.vid-placeholder').forEach(function(p) {
+    p.addEventListener('click', function() {
+      var card = p.closest('.vid-card');
+      var wrap = document.createElement('div');
+      wrap.className = 'vid-iframe-wrap';
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.tiktok.com/embed/v2/' + card.dataset.id;
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('allow', 'encrypted-media;');
+      wrap.appendChild(iframe);
+      p.replaceWith(wrap);
+    });
   });
 </script>
 </body>
