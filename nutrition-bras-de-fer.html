@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Nutrition et gestion du poids pour le bras de fer","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/nutrition-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-02"}
+  {"@context":"https://schema.org","@type":"Article","headline":"Nutrition et gestion du poids pour le bras de fer","description":"Catégories de poids, alimentation pour la force et gestion du poids avant compétition — tout ce qu'il faut savoir sur la nutrition en bras de fer.","image":"https://armwrestlingclubstrassen.com/athletes-apres-match-laf.png","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/nutrition-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-09"}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Nutrition & poids","item":"https://armwrestlingclubstrassen.com/nutrition-bras-de-fer.html"}]}
@@ -66,6 +66,24 @@
     .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
     .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
     @media(max-width:768px){.sec-inner{padding:0 1.5rem}.macro-grid{grid-template-columns:1fr}.split{grid-template-columns:1fr;gap:2rem}.weight-table td,.weight-table th{padding:.6rem .8rem}.cta-final{grid-template-columns:1fr}}
+
+    /* ── SPOTLIGHT CARDS ── */
+    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
+    .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
+    .tip-eyebrow{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
+    .tip-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:rgba(192,57,43,.8)}
+    .tip-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:960px;margin:0 auto}
+    .tip-card{--hue:215;--border:1.5;--size:300;--border-size:calc(var(--border)*1px);--spotlight-size:calc(var(--size)*1px);background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.12),transparent);background-color:rgba(255,255,255,.025);background-attachment:fixed;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:var(--border-size) solid rgba(255,255,255,.07);border-top:2px solid rgba(255,255,255,.15);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;user-select:none}
+    .tip-card::before,.tip-card::after{pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size)*-1);border:var(--border-size) solid transparent;border-radius:5px;background-attachment:fixed;mask:linear-gradient(transparent,transparent),linear-gradient(white,white);mask-clip:padding-box,border-box;mask-composite:intersect;-webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);-webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in}
+    .tip-card::before{background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);filter:brightness(2.5)}
+    .tip-card::after{background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%)}
+    .tip-num{font-family:var(--font-display);font-size:.82rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .tip-title{font-family:var(--font-display);font-size:1.2rem;font-weight:900;text-transform:uppercase;color:var(--white);letter-spacing:.01em;line-height:1.05}
+    .tip-desc{font-size:.88rem;color:rgba(245,240,232,.78);line-height:1.82;flex:1}
+    .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}.c-blue .tip-num{color:#7aadda}
+    .c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}.c-green .tip-num{color:#25c494}
+    .c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}.c-red .tip-num{color:#c0392b}
+    @media(max-width:640px){.tip-grid-3{grid-template-columns:1fr}.tip-wrap{padding:2.5rem 1.5rem}}
   </style>
 </head>
 <body>
@@ -89,6 +107,31 @@
     <h1 class="article-title">Nutrition et gestion<br><span>du poids au bras de fer</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Catégories de poids, alimentation pour la force, couper ou monter avant une compétition — la nutrition est le facteur le plus sous-estimé de la progression en bras de fer.</p>
     <div class="article-meta">ACS Luxembourg · Nutrition · Macronutriments · Gestion du poids</div>
+  </div>
+</div>
+
+<!-- ── SPOTLIGHT : 3 PRIORITÉS ────────────────────────────────── -->
+<div class="tip-wrap" style="background:#050304;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.18) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
+  <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
+    <div class="tip-eyebrow">Les 3 priorités nutritionnelles</div>
+    <div class="tip-grid-3">
+      <div class="tip-card c-red">
+        <div class="tip-num">Muscle</div>
+        <div class="tip-title">1,8–2,2 g / kg</div>
+        <div class="tip-desc">Apport en protéines journalier pour soutenir la synthèse musculaire en période d'entraînement intensif. Viande, poisson, œufs, légumineuses.</div>
+      </div>
+      <div class="tip-card c-blue">
+        <div class="tip-num">Tendons</div>
+        <div class="tip-title">Vitamine C + Collagène</div>
+        <div class="tip-desc">Les tendons sont la structure la plus vulnérable du bras de fer. Collagène hydrolysé 30 min avant la séance, vitamine C quotidienne, oméga-3 anti-inflammatoires.</div>
+      </div>
+      <div class="tip-card c-green">
+        <div class="tip-num">Catégorie</div>
+        <div class="tip-title">Max – 5% du poids</div>
+        <div class="tip-desc">Ne jamais couper plus de 5% du poids corporel. Être le plus lourd dans sa catégorie est un avantage — mais pas au prix d'une coupe épuisante avant la compétition.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -264,6 +307,7 @@
 <script>
   function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+  document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
 </script>
 </body>
 </html>

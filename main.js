@@ -55,3 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.querySelectorAll('.blog-card-v2').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--x', e.clientX - rect.left);
+    card.style.setProperty('--y', e.clientY - rect.top);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--x', -9999);
+    card.style.setProperty('--y', -9999);
+  });
+});

@@ -65,6 +65,25 @@
     .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
     .sec .btn-primary{color:var(--white)}
     @media(max-width:768px){.sec-inner{padding:0 1.5rem}.scene-grid{grid-template-columns:1fr}.stats-band{grid-template-columns:1fr 1fr}.hero-photo{height:240px}.cta-final{grid-template-columns:1fr}}
+
+    /* ── SPOTLIGHT CARDS ── */
+    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
+    .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
+    .tip-eyebrow{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
+    .tip-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:rgba(192,57,43,.8)}
+    .tip-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:960px;margin:0 auto}
+    .tip-card{--hue:215;--border:1.5;--size:300;--border-size:calc(var(--border)*1px);--spotlight-size:calc(var(--size)*1px);background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.12),transparent);background-color:rgba(255,255,255,.025);background-attachment:fixed;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:var(--border-size) solid rgba(255,255,255,.07);border-top:2px solid rgba(255,255,255,.15);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;user-select:none}
+    .tip-card::before,.tip-card::after{pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size)*-1);border:var(--border-size) solid transparent;border-radius:5px;background-attachment:fixed;mask:linear-gradient(transparent,transparent),linear-gradient(white,white);mask-clip:padding-box,border-box;mask-composite:intersect;-webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);-webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in}
+    .tip-card::before{background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);filter:brightness(2.5)}
+    .tip-card::after{background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%)}
+    .tip-num{font-family:var(--font-display);font-size:.82rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .tip-title{font-family:var(--font-display);font-size:1.2rem;font-weight:900;text-transform:uppercase;color:var(--white);letter-spacing:.01em;line-height:1.05}
+    .tip-desc{font-size:.88rem;color:rgba(245,240,232,.78);line-height:1.82;flex:1}
+    .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}.c-blue .tip-num{color:#7aadda}
+    .c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}.c-green .tip-num{color:#25c494}
+    .c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}.c-red .tip-num{color:#c0392b}
+    .c-amber{--hue:42;border-top-color:rgba(211,84,0,.65)}.c-amber .tip-num{color:#e67e22}
+    @media(max-width:640px){.tip-grid-3{grid-template-columns:1fr}.tip-wrap{padding:2.5rem 1.5rem}}
   </style>
 </head>
 <body>
@@ -89,6 +108,31 @@
     <h1 class="article-title">Compétition de bras de fer<br><span>au Luxembourg</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Une vraie scène compétitive — clubs officiels, arbitres, athlètes et événements. Tout sur le bras de fer de compétition au Grand-Duché.</p>
     <div class="article-meta">ACS Luxembourg · Scène compétitive · Luxembourg Armwrestling Federation</div>
+  </div>
+</div>
+
+<!-- ── SPOTLIGHT : LA SCÈNE EN CHIFFRES ──────────────────────── -->
+<div class="tip-wrap" style="background:#050304;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.18) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
+  <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
+    <div class="tip-eyebrow">La scène luxembourgeoise</div>
+    <div class="tip-grid-3">
+      <div class="tip-card c-red">
+        <div class="tip-num">Organisation</div>
+        <div class="tip-title">2 clubs officiels LAF</div>
+        <div class="tip-desc">ACS Strassen (mardi 18h) et Grizzly of Luxembourg (vendredi 18h) — les deux seuls clubs officiels au Grand-Duché, supervisés par la Luxembourg Armwrestling Federation.</div>
+      </div>
+      <div class="tip-card c-blue">
+        <div class="tip-num">Événement annuel</div>
+        <div class="tip-title">100+ athlètes · 14 pays</div>
+        <div class="tip-desc">La Luxembourg Armwrestling Competition à Munsbach réunit plus de 100 athlètes de 14 pays. Niveau international, toutes catégories de poids, bras droit et gauche.</div>
+      </div>
+      <div class="tip-card c-green">
+        <div class="tip-num">Format</div>
+        <div class="tip-title">Double élimination</div>
+        <div class="tip-desc">Deux défaites entraînent l'élimination — pas une seule. Chaque athlète dispute au minimum deux matchs, ce qui en fait un format particulièrement accueillant pour les débutants.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -187,6 +231,7 @@
     document.getElementById('navLinks').classList.toggle('open');
   }
   document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+  document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
 </script>
 </body>
 </html>

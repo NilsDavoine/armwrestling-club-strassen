@@ -29,8 +29,8 @@
   <style>
     .sec{padding:4rem 0}.sec-dark{background:var(--black)}.sec-light{background:var(--dark2)}
     .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
-    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
-    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.5)}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(231,76,60,.9);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(231,76,60,.8)}
     .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.3rem;line-height:1.02}
     .sec h2 span{color:var(--red)}
     .sec h3{font-family:var(--font-display);font-size:1.05rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:2rem 0 .6rem;letter-spacing:.04em}
@@ -39,6 +39,7 @@
     .sec ul{margin:0 0 1.3rem 1.8rem}.sec li{font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.85;margin-bottom:.35rem}
     .sec strong{color:var(--white);font-weight:600}
     .sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .breadcrumb{font-family:var(--font-display);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
     .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}.breadcrumb a:hover{color:var(--red)}.breadcrumb span{margin:0 .5rem}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0}
@@ -52,7 +53,7 @@
     /* LEGEND STRIP */
     .legend-strip{display:flex;gap:1.8rem;padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:flex-start}
     .legend-strip:last-child{border-bottom:none;padding-bottom:0}
-    .legend-flag{font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(192,57,43,.6);min-width:90px;flex-shrink:0;padding-top:.15rem}
+    .legend-flag{font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(231,76,60,.9);min-width:90px;flex-shrink:0;padding-top:.15rem}
     .legend-name{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.5rem}
     .legend-strip p{font-size:.92rem;color:rgba(245,240,232,.62);line-height:1.85;margin-bottom:.7rem}
     .legend-strip p:last-child{margin-bottom:0}
@@ -65,6 +66,25 @@
     .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
     .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
     @media(max-width:768px){.sec-inner{padding:0 1.5rem}.era-grid{grid-template-columns:1fr}.legend-strip{flex-direction:column;gap:.8rem}.photo-strip-2{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}}
+
+    /* ── SPOTLIGHT CARDS ── */
+    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
+    .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
+    .tip-eyebrow{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
+    .tip-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:rgba(192,57,43,.8)}
+    .tip-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:960px;margin:0 auto}
+    .tip-card{--hue:215;--border:1.5;--size:300;--border-size:calc(var(--border)*1px);--spotlight-size:calc(var(--size)*1px);background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.12),transparent);background-color:rgba(255,255,255,.025);background-attachment:fixed;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:var(--border-size) solid rgba(255,255,255,.07);border-top:2px solid rgba(255,255,255,.15);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;user-select:none}
+    .tip-card::before,.tip-card::after{pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size)*-1);border:var(--border-size) solid transparent;border-radius:5px;background-attachment:fixed;mask:linear-gradient(transparent,transparent),linear-gradient(white,white);mask-clip:padding-box,border-box;mask-composite:intersect;-webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);-webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in}
+    .tip-card::before{background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);filter:brightness(2.5)}
+    .tip-card::after{background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%)}
+    .tip-era-year{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--red);line-height:1}
+    .tip-era-title{font-family:var(--font-display);font-size:.9rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin:.4rem 0 .3rem}
+    .tip-era-desc{font-size:.85rem;color:rgba(245,240,232,.55);line-height:1.75;flex:1}
+    .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}
+    .c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}
+    .c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}
+    .c-amber{--hue:42;border-top-color:rgba(211,84,0,.65)}
+    @media(max-width:640px){.tip-grid-4{grid-template-columns:1fr 1fr}.tip-wrap{padding:2.5rem 1.5rem}}
   </style>
 </head>
 <body>
@@ -88,6 +108,36 @@
     <h1 class="article-title">Histoire et origines<br><span>du bras de fer</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Des joutes de taverne à la scène mondiale — comment un jeu populaire universel est devenu un sport structuré avec des champions reconnus dans le monde entier.</p>
     <div class="article-meta">ACS Luxembourg · Culture & Histoire</div>
+  </div>
+</div>
+
+<!-- ── SPOTLIGHT : 4 DATES CLÉS ────────────────────────────────── -->
+<div class="tip-wrap" style="background:#050304;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.18) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
+  <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
+    <div class="tip-eyebrow">L'histoire en 4 dates</div>
+    <div class="tip-grid-4">
+      <div class="tip-card c-red">
+        <div class="tip-era-year">1952</div>
+        <div class="tip-era-title">Premier championnat mondial</div>
+        <div class="tip-era-desc">Petaluma, Californie. Bill Soberanes formalise le premier tournoi avec règles et catégories — le modèle qui inspirera toutes les fédérations.</div>
+      </div>
+      <div class="tip-card c-blue">
+        <div class="tip-era-year">1977</div>
+        <div class="tip-era-title">Création de la WAF</div>
+        <div class="tip-era-desc">World Armwrestling Federation fondée. Règlement unifié, catégories de poids standardisées, arbitrage codifié — le bras de fer devient un sport international structuré.</div>
+      </div>
+      <div class="tip-card c-amber">
+        <div class="tip-era-year">1987</div>
+        <div class="tip-era-title">Over The Top</div>
+        <div class="tip-era-desc">Le film de Stallone expose le bras de fer à des centaines de millions de spectateurs. Le sport connaît un pic de popularité sans précédent et entre dans la culture populaire.</div>
+      </div>
+      <div class="tip-card c-green">
+        <div class="tip-era-year">2020s</div>
+        <div class="tip-era-title">Renaissance YouTube</div>
+        <div class="tip-era-desc">Devon Larratt vs Levan Saginashvili accumulent 50 millions de vues. Le bras de fer devient viral et touche une génération qui ne l'avait jamais découvert.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -197,7 +247,7 @@
     </div>
 
     <div class="sec-eyebrow">Aujourd'hui</div>
-    <h2>L'armwrestling aujourd'hui<br><span>et au Luxembourg</span></h2>
+    <h2>Le bras de fer aujourd'hui<br><span>et au Luxembourg</span></h2>
     <p>Depuis les années 2010, le bras de fer connaît une <strong>renaissance mondiale</strong> portée par deux phénomènes : la montée en puissance des compétitions professionnelles (notamment le circuit WAL — World Armwrestling League) et l'explosion des vues sur YouTube. Des matchs entre Devon Larratt et Levan Saginashvili attirent plus de 50 millions de spectateurs.</p>
     <p>En Europe, le niveau progresse rapidement. Des pays comme la Géorgie, l'Ukraine, la Russie, la Turquie et la Pologne ont des équipes nationales très compétitives au niveau mondial. La France, la Belgique et le Luxembourg voient émerger des clubs structurés et des compétiteurs de plus en plus sérieux.</p>
 
@@ -236,6 +286,7 @@
 <script>
   function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+  document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
 </script>
 </body>
 </html>

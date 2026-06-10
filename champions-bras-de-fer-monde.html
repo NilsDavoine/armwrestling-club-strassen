@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Champions mondiaux du bras de fer","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/champions-bras-de-fer-monde.html","datePublished":"2026-05-22","dateModified":"2026-06-02"}
+  {"@context":"https://schema.org","@type":"Article","headline":"Champions mondiaux du bras de fer","description":"Devon Larratt, Denis Cyplenkov, Levan Saginashvili, John Brzenk — les noms qui définissent la scène mondiale du bras de fer et ce qui fait leur domination.","image":"https://armwrestlingclubstrassen.com/podium-roman-luxembourg-champion.png","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/champions-bras-de-fer-monde.html","datePublished":"2026-05-22","dateModified":"2026-06-09"}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Champions mondiaux","item":"https://armwrestlingclubstrassen.com/champions-bras-de-fer-monde.html"}]}
@@ -27,47 +27,102 @@
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="blog.css"/>
   <style>
+    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
     .sec{padding:4rem 0}.sec-dark{background:var(--black)}.sec-light{background:var(--dark2)}
+    /* section bg overrides — must come after .sec-dark/.sec-light */
+    .sec.bg-danger-x{background:radial-gradient(ellipse 110% 110% at 50% 50%,transparent 28%,rgba(100,0,0,.38) 100%),radial-gradient(ellipse 70% 40% at 50% 130%,rgba(150,0,0,.28) 0%,transparent 58%),repeating-linear-gradient(-45deg,transparent 0,transparent 60px,rgba(192,57,43,.05) 60px,rgba(192,57,43,.05) 62px),repeating-linear-gradient(45deg,transparent 0,transparent 60px,rgba(192,57,43,.05) 60px,rgba(192,57,43,.05) 62px),#040203;position:relative;overflow:hidden}
+    .sec.bg-inferno{background:repeating-linear-gradient(90deg,transparent 0,transparent 58px,rgba(255,80,0,.015) 58px,rgba(255,80,0,.015) 60px),radial-gradient(ellipse 55% 45% at 10% 110%,rgba(200,50,0,.18) 0%,transparent 55%),radial-gradient(ellipse 55% 45% at 90% 110%,rgba(200,50,0,.18) 0%,transparent 55%),radial-gradient(ellipse 140% 70% at 50% 140%,rgba(255,100,0,.4) 0%,rgba(200,30,0,.25) 22%,rgba(80,0,0,.15) 48%,transparent 68%),#020000;position:relative;overflow:hidden}
+    .sec.bg-horizon{background:repeating-linear-gradient(0deg,transparent 0,transparent 22px,rgba(255,160,0,.01) 22px,rgba(255,160,0,.01) 23px),radial-gradient(ellipse 50% 35% at 8% 100%,rgba(192,57,43,.09) 0%,transparent 55%),radial-gradient(ellipse 50% 35% at 92% 100%,rgba(192,57,43,.09) 0%,transparent 55%),radial-gradient(ellipse 110% 55% at 50% 125%,rgba(212,160,23,.22) 0%,rgba(180,80,0,.13) 35%,transparent 60%),linear-gradient(180deg,#050305 0%,#0a0806 100%);position:relative;overflow:hidden}
     .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
-    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
-    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.5)}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(231,76,60,.9);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(231,76,60,.8)}
     .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.3rem;line-height:1.02}
     .sec h2 span{color:var(--red)}
     .sec p{font-size:1rem;color:rgba(245,240,232,.75);line-height:1.95;margin-bottom:1.3rem}
     .sec ul{margin:0 0 1.3rem 1.8rem}.sec li{font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.85;margin-bottom:.35rem}
     .sec strong{color:var(--white);font-weight:600}
     .sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .breadcrumb{font-family:var(--font-display);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
     .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}.breadcrumb a:hover{color:var(--red)}.breadcrumb span{margin:0 .5rem}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0}
     .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.96rem!important}
-    /* CHAMPION CARDS */
-    .champion-card{border:1px solid rgba(255,255,255,.06);background:rgba(245,240,232,.015);margin-bottom:2px}
-    .champion-card.gold{border-color:rgba(212,160,23,.3);background:rgba(212,160,23,.04)}
-    .champion-header{padding:1.4rem 1.8rem;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-    .champion-name{font-family:var(--font-display);font-size:1.4rem;font-weight:900;text-transform:uppercase;color:var(--white);letter-spacing:.03em}
-    .champion-card.gold .champion-name{color:var(--gold)}
-    .champion-country{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:rgba(245,240,232,.4);margin-top:.3rem}
-    .champion-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
-    .champion-badge{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid rgba(255,255,255,.1);color:rgba(245,240,232,.5)}
-    .badge-gold{border-color:rgba(212,160,23,.4);color:var(--gold);background:rgba(212,160,23,.06)}
-    .badge-red{border-color:rgba(192,57,43,.4);color:var(--red);background:rgba(192,57,43,.06)}
-    .badge-gray{border-color:rgba(255,255,255,.1);color:rgba(245,240,232,.45)}
+
+    /* ── CHAMPION CARDS — spotlight neon border ── */
+    .champion-card{
+      --hue:5;--border:1.5;--size:320;
+      --border-size:calc(var(--border)*1px);
+      --spotlight-size:calc(var(--size)*1px);
+      background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.13),transparent);
+      background-color:rgba(255,255,255,.025);
+      background-attachment:fixed;
+      border:var(--border-size) solid rgba(255,255,255,.07);
+      border-top:2px solid rgba(192,57,43,.55);
+      border-radius:4px;
+      position:relative;
+      margin-bottom:8px;
+      transition:background-color .25s;
+    }
+    .champion-card:hover{background-color:rgba(255,255,255,.038)}
+    .champion-card::before,.champion-card::after{
+      pointer-events:none;content:"";
+      position:absolute;inset:calc(var(--border-size)*-1);
+      border:var(--border-size) solid transparent;
+      border-radius:4px;background-attachment:fixed;
+      mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      mask-clip:padding-box,border-box;mask-composite:intersect;
+      -webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      -webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in;
+    }
+    .champion-card::before{
+      background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);
+      filter:brightness(2.5);
+    }
+    .champion-card::after{
+      background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%);
+    }
+    .champion-header{padding:1.2rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .champion-header-left{flex:1;min-width:0}
+    .champion-name{font-family:var(--font-display);font-size:1.25rem;font-weight:900;text-transform:uppercase;color:var(--white);letter-spacing:.03em}
+    .champion-country{font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.1em;color:rgba(245,240,232,.58);margin-top:.25rem;text-transform:uppercase}
+    .champion-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.35rem;align-items:center}
+    .champion-badge{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid rgba(255,255,255,.1);color:rgba(245,240,232,.65)}
+    .badge-red{border-color:rgba(192,57,43,.4);color:rgba(231,76,60,.85);background:rgba(192,57,43,.06)}
+    .badge-gray{border-color:rgba(255,255,255,.1);color:rgba(245,240,232,.4)}
+    .champion-toggle{background:none;border:1px solid rgba(255,255,255,.1);border-radius:3px;cursor:pointer;color:rgba(245,240,232,.35);font-size:1.1rem;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .2s,border-color .2s,transform .3s;line-height:1}
+    .champion-toggle:hover{color:rgba(231,76,60,.9);border-color:rgba(192,57,43,.4)}
+    .champion-toggle.open{transform:rotate(90deg);color:rgba(231,76,60,.9);border-color:rgba(192,57,43,.4)}
     .stat-row{display:flex;gap:2px;background:rgba(255,255,255,.04)}
-    .stat-item{background:#0c0c0c;padding:1rem 1.4rem;flex:1}
-    .stat-val{font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:.3rem}
-    .stat-lbl{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.35)}
-    .champion-card>p{padding:.6rem 1.8rem;font-size:.92rem;color:rgba(245,240,232,.62);line-height:1.85;margin-bottom:0}
-    .champion-card>p:last-child{padding-bottom:1.4rem}
-    /* PHOTO STRIP */
-    .photo-strip-2{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:2.5rem}
-    .photo-strip-2 img{width:100%;height:220px;object-fit:cover;border-radius:3px;display:block;border:1px solid rgba(255,255,255,.06)}
+    .stat-item{background:#0c0c0c;padding:.85rem 1.4rem;flex:1}
+    .stat-val{font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:.25rem}
+    .stat-lbl{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3)}
+    .champion-summary{padding:.75rem 1.6rem;font-size:.88rem;color:rgba(245,240,232,.5);line-height:1.7;border-top:1px solid rgba(255,255,255,.04)}
+    .champion-details{padding:1rem 1.6rem 1.4rem;border-top:1px solid rgba(255,255,255,.06);display:none}
+    .champion-details.open{display:block}
+    .champion-details p{font-size:.92rem;color:rgba(245,240,232,.62);line-height:1.85;margin-bottom:.8rem}
+    .champion-details p:last-child{margin-bottom:0}
+
+    /* ── SCÈNE EUROPÉENNE ── */
+    .euro-img{width:100%;height:320px;object-fit:cover;border-radius:3px;border:1px solid rgba(255,255,255,.07);margin-bottom:2.5rem;display:block}
+    .euro-stats{display:flex;gap:2px;background:rgba(255,255,255,.04);margin:1.5rem 0}
+    .euro-stat{background:#0c0c0c;padding:1rem 1.6rem;flex:1;text-align:center}
+    .euro-stat-val{font-family:var(--font-display);font-size:1.7rem;font-weight:900;color:var(--white);line-height:1}
+    .euro-stat-val span{color:var(--red)}
+    .euro-stat-lbl{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-top:.3rem}
+
+    /* ── FACTEURS ── */
+    .factors-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:1.8rem 0}
+    .factor-card{background:rgba(245,240,232,.025);border:1px solid rgba(255,255,255,.06);border-left:3px solid rgba(192,57,43,.5);padding:1.2rem 1.5rem}
+    .factor-num{font-family:var(--font-display);font-size:.58rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:rgba(231,76,60,.7);margin-bottom:.3rem}
+    .factor-title{font-family:var(--font-display);font-size:.92rem;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:.4rem;letter-spacing:.03em}
+    .factor-card p{font-size:.84rem;color:rgba(245,240,232,.52);line-height:1.7;margin:0}
+
     /* CTA FINAL */
     .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.28);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
     .cta-final-label{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-bottom:.4rem}
     .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
     .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.stat-row{flex-direction:column}.photo-strip-2{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.stat-row{flex-wrap:wrap}.euro-stats{flex-wrap:wrap}.factors-grid{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -104,105 +159,125 @@
   </div>
 </div>
 
-<div class="sec sec-light">
+<div class="sec sec-light bg-danger-x">
   <div class="sec-inner">
     <div class="sec-eyebrow">Les légendes</div>
     <h2>Les légendes<br><span>de la discipline</span></h2>
 
-    <div class="champion-card gold">
+    <div class="champion-card">
       <div class="champion-header">
-        <div>
+        <div class="champion-header-left">
           <div class="champion-name">Devon Larratt</div>
           <div class="champion-country">Canada · Né en 1975</div>
+          <div class="champion-badges">
+            <span class="champion-badge badge-red">Champion WAF multiple</span>
+            <span class="champion-badge badge-gray">Superpoids</span>
+          </div>
         </div>
-        <div class="champion-badges">
-          <span class="champion-badge badge-gold">Légende</span>
-          <span class="champion-badge badge-red">Main droite · Gauche</span>
-          <span class="champion-badge badge-gray">Superpoids</span>
-        </div>
+        <button class="champion-toggle" onclick="toggleChampion(this)" aria-label="Voir le profil">›</button>
       </div>
       <div class="stat-row">
         <div class="stat-item"><div class="stat-val">120 kg</div><div class="stat-lbl">Poids de compétition</div></div>
         <div class="stat-item"><div class="stat-val">20+</div><div class="stat-lbl">Ans de carrière</div></div>
         <div class="stat-item"><div class="stat-val">Top Roll</div><div class="stat-lbl">Style dominant</div></div>
       </div>
-      <p>Devon Larratt est probablement le nom le plus connu du bras de fer mondial au grand public. Militaire canadien de carrière, il a développé l'un des top rolls les plus perfectionnés de l'histoire de la discipline — une capacité à remonter sur n'importe quelle main en quelques dixièmes de seconde.</p>
-      <p>Ce qui rend Larratt exceptionnel, ce n'est pas sa force brute, mais sa <strong>vitesse de démarrage, sa lecture de l'adversaire et sa polyvalence tactique</strong>. Il est capable de passer du top roll au hook en cours de match — une rareté à son niveau.</p>
-      <p>Sa présence sur YouTube et ses documentaires ont rendu le bras de fer viral. Il continue de se battre au plus haut niveau à près de 50 ans.</p>
+      <div class="champion-summary">Militaire canadien reconverti champion du monde — le visage le plus connu du bras de fer mondial grâce à YouTube.</div>
+      <div class="champion-details">
+        <p>Devon Larratt est probablement le nom le plus connu du bras de fer mondial au grand public. Il a développé l'un des top rolls les plus perfectionnés de l'histoire de la discipline — une capacité à remonter sur n'importe quelle main en quelques dixièmes de seconde.</p>
+        <p>Ce qui rend Larratt exceptionnel, ce n'est pas sa force brute, mais sa <strong>vitesse de démarrage, sa lecture de l'adversaire et sa polyvalence tactique</strong>. Il est capable de passer du top roll au hook en cours de match — une rareté à son niveau.</p>
+        <p>Sa présence sur YouTube et ses documentaires ont rendu le bras de fer viral. Il continue de se battre au plus haut niveau à près de 50 ans.</p>
+      </div>
     </div>
 
-    <div class="champion-card" style="margin-top:2px">
+    <div class="champion-card">
       <div class="champion-header">
-        <div>
+        <div class="champion-header-left">
           <div class="champion-name">Levan Saginashvili</div>
           <div class="champion-country">Géorgie · Né en 1991</div>
+          <div class="champion-badges">
+            <span class="champion-badge badge-red">Champion actuel main droite</span>
+            <span class="champion-badge badge-gray">Superpoids +110 kg</span>
+          </div>
         </div>
-        <div class="champion-badges">
-          <span class="champion-badge badge-red">Champion actuel main droite</span>
-          <span class="champion-badge badge-gray">Superpoids +110kg</span>
-        </div>
+        <button class="champion-toggle" onclick="toggleChampion(this)" aria-label="Voir le profil">›</button>
       </div>
       <div class="stat-row">
         <div class="stat-item"><div class="stat-val">170 kg</div><div class="stat-lbl">Poids de compétition</div></div>
-        <div class="stat-item"><div class="stat-val">Dominant</div><div class="stat-lbl">Bras droit 2019–2024</div></div>
+        <div class="stat-item"><div class="stat-val">Dominant</div><div class="stat-lbl">Bras droit 2019–</div></div>
         <div class="stat-item"><div class="stat-val">Top Roll</div><div class="stat-lbl">Style dominant</div></div>
       </div>
-      <p>Levan Saginashvili est considéré par beaucoup comme le bras de fer le plus fort qui ait jamais existé. Ses dimensions physiques (170 kg pour 1m83, un avant-bras de 50 cm de circumférence) lui donnent une force de top roll littéralement hors catégorie.</p>
-      <p>Ce qui distingue Levan : il n'est pas seulement fort, il est <strong>techniquement irréprochable sur le top roll</strong>. La combinaison d'une masse musculaire extrême, d'une technique parfaite et d'une explosion de démarrage électrique en fait un adversaire pratiquement injouable en main droite dans sa catégorie.</p>
-      <p>Il a battu Devon Larratt plusieurs fois et détient une série de victoires record en WAF et A1. Sa dominance sur la main droite reste incontestée depuis 2019.</p>
+      <div class="champion-summary">L'athlète le plus fort de l'histoire selon beaucoup — domination absolue en main droite depuis 2019.</div>
+      <div class="champion-details">
+        <p>Levan Saginashvili est considéré par beaucoup comme le bras de fer le plus fort qui ait jamais existé. Ses dimensions physiques (170 kg pour 1m83, un avant-bras de 50 cm de circumférence) lui donnent une force de top roll littéralement hors catégorie.</p>
+        <p>Ce qui distingue Levan : il n'est pas seulement fort, il est <strong>techniquement irréprochable sur le top roll</strong>. La combinaison d'une masse musculaire extrême, d'une technique parfaite et d'une explosion de démarrage électrique en fait un adversaire pratiquement injouable en main droite dans sa catégorie.</p>
+        <p>Il a battu Devon Larratt plusieurs fois et détient une série de victoires record en WAF et A1. Sa dominance sur la main droite reste incontestée depuis 2019.</p>
+      </div>
     </div>
 
-    <div class="champion-card" style="margin-top:2px">
+    <div class="champion-card">
       <div class="champion-header">
-        <div>
+        <div class="champion-header-left">
           <div class="champion-name">Denis Cyplenkov</div>
           <div class="champion-country">Ukraine · Né en 1981</div>
+          <div class="champion-badges">
+            <span class="champion-badge badge-red">Champion WAF multiple</span>
+            <span class="champion-badge badge-gray">Superpoids</span>
+          </div>
         </div>
-        <div class="champion-badges">
-          <span class="champion-badge badge-red">Champion WAF multiple</span>
-          <span class="champion-badge badge-gray">Superpoids</span>
-        </div>
+        <button class="champion-toggle" onclick="toggleChampion(this)" aria-label="Voir le profil">›</button>
       </div>
       <div class="stat-row">
         <div class="stat-item"><div class="stat-val">145 kg</div><div class="stat-lbl">Poids de compétition</div></div>
         <div class="stat-item"><div class="stat-val">Hook</div><div class="stat-lbl">Style dominant</div></div>
+        <div class="stat-item"><div class="stat-val">2010–18</div><div class="stat-lbl">Période de domination</div></div>
       </div>
-      <p>Denis Cyplenkov est souvent cité comme le bras de fer le plus fort de sa génération (2010–2018). Connu pour ses mains d'une taille exceptionnelle et sa force de prise légendaire, il a dominé les championnats WAF pendant plusieurs années.</p>
-      <p>Ce qui rend Cyplenkov unique : une <strong>force de grip absolue combinée à un hook dévastateur</strong> — sa prise de main seule est décrite par ses adversaires comme une contrainte difficile à gérer avant même le démarrage.</p>
+      <div class="champion-summary">Prise légendaire, hook dévastateur — l'athlète le plus fort de sa génération pendant près d'une décennie.</div>
+      <div class="champion-details">
+        <p>Denis Cyplenkov est souvent cité comme le bras de fer le plus fort de sa génération (2010–2018). Connu pour ses mains d'une taille exceptionnelle et sa force de prise légendaire, il a dominé les championnats WAF pendant plusieurs années.</p>
+        <p>Ce qui rend Cyplenkov unique : une <strong>force de grip absolue combinée à un hook dévastateur</strong> — sa prise de main seule est décrite par ses adversaires comme une contrainte difficile à gérer avant même le démarrage.</p>
+      </div>
     </div>
 
-    <div class="champion-card" style="margin-top:2px">
+    <div class="champion-card">
       <div class="champion-header">
-        <div>
+        <div class="champion-header-left">
           <div class="champion-name">John Brzenk</div>
           <div class="champion-country">États-Unis · Né en 1964</div>
+          <div class="champion-badges">
+            <span class="champion-badge badge-red">GOAT · Tous poids confondus</span>
+            <span class="champion-badge badge-gray">Poids moyen 90 kg</span>
+          </div>
         </div>
-        <div class="champion-badges">
-          <span class="champion-badge badge-gold">GOAT · Tous poids confondus</span>
-          <span class="champion-badge badge-gray">Poids moyen</span>
-        </div>
+        <button class="champion-toggle" onclick="toggleChampion(this)" aria-label="Voir le profil">›</button>
       </div>
       <div class="stat-row">
         <div class="stat-item"><div class="stat-val">90 kg</div><div class="stat-lbl">Poids de compétition</div></div>
         <div class="stat-item"><div class="stat-val">30+</div><div class="stat-lbl">Ans de carrière</div></div>
         <div class="stat-item"><div class="stat-val">Hook</div><div class="stat-lbl">Style légendaire</div></div>
       </div>
-      <p>John Brzenk est le "GOAT" du bras de fer selon une majorité de spécialistes. Pesant environ 90 kg, il a régulièrement battu des adversaires de 130, 140 et même 150 kg pendant plus de 30 ans de compétition, ce qui le place dans une catégorie historique à part.</p>
-      <p>Son hook est décrit comme le mouvement le plus dévastateur jamais vu sur une table à ce poids : une capacité à fermer la prise et à neutraliser des adversaires bien plus lourds grâce à un timing, une vitesse d'exécution et une puissance de poignet inégalés.</p>
+      <div class="champion-summary">Le GOAT unanime — 90 kg qui ont battu des adversaires de 150 kg pendant 30 ans de carrière.</div>
+      <div class="champion-details">
+        <p>John Brzenk est le "GOAT" du bras de fer selon une majorité de spécialistes. Pesant environ 90 kg, il a régulièrement battu des adversaires de 130, 140 et même 150 kg pendant plus de 30 ans de compétition, ce qui le place dans une catégorie historique à part.</p>
+        <p>Son hook est décrit comme le mouvement le plus dévastateur jamais vu sur une table à ce poids : une capacité à fermer la prise et à neutraliser des adversaires bien plus lourds grâce à un timing, une vitesse d'exécution et une puissance de poignet inégalés.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="sec sec-dark">
+<div class="sec sec-dark bg-inferno">
   <div class="sec-inner">
-    <div class="photo-strip-2">
-      <img src="laureats-federation-armwrestling-luxembourg.png" alt="Lauréats de la Luxembourg Armwrestling Federation" loading="lazy"/>
-      <img src="athletes-apres-match-laf.png" alt="Athlètes après un match LAF Luxembourg" loading="lazy"/>
-    </div>
-
     <div class="sec-eyebrow">Scène européenne</div>
     <h2>La scène européenne<br><span>et francophone</span></h2>
+
+    <img src="competition_internationnale.jpeg" alt="Compétition internationale de bras de fer" loading="lazy" class="euro-img"/>
     <p>Au-delà des superpoids américains, canadiens et de l'Europe de l'Est, la scène européenne compte des athlètes de haut niveau dans toutes les catégories de poids. <strong>La France, la Belgique et la Suisse</strong> disposent de fédérations actives avec des représentants aux championnats WAF.</p>
+
+    <div class="euro-stats">
+      <div class="euro-stat"><div class="euro-stat-val">80<span>+</span></div><div class="euro-stat-lbl">Pays membres WAF</div></div>
+      <div class="euro-stat"><div class="euro-stat-val">14</div><div class="euro-stat-lbl">Pays à Munsbach</div></div>
+      <div class="euro-stat"><div class="euro-stat-val">2</div><div class="euro-stat-lbl">Clubs officiels au Luxembourg</div></div>
+    </div>
+
     <p>Au Luxembourg, la <strong>Luxembourg Armwrestling Federation</strong> envoie des représentants aux championnats européens et mondiaux WAF chaque année, avec des athlètes comme <strong>Roman Bogdan</strong> (président du Grizzly of Luxembourg) qui ont démontré leur niveau sur scène internationale.</p>
 
     <div class="callout">
@@ -211,18 +286,44 @@
   </div>
 </div>
 
-<div class="sec sec-light">
+<div class="sec sec-light bg-horizon">
   <div class="sec-inner">
     <div class="sec-eyebrow">Analyse technique</div>
     <h2>Ce qui fait<br><span>un champion</span></h2>
-    <p>En regardant les champions cités ci-dessus, plusieurs constantes émergent qui définissent ce qui sépare le haut niveau du reste :</p>
-    <ul>
-      <li><strong>L'explosion de démarrage :</strong> tous les grands champions ont une vitesse de démarrage exceptionnelle. La première demi-seconde d'un match détermine souvent l'issue.</li>
-      <li><strong>La maîtrise d'au moins deux prises :</strong> aucun champion n'est à une seule prise. La polyvalence force l'adversaire à ne pas savoir quoi attendre.</li>
-      <li><strong>La force de prise comme base :</strong> sans grip, aucune technique ne peut s'exprimer. Tous les champions ont travaillé leur force de main pendant des années.</li>
-      <li><strong>La lecture de l'adversaire :</strong> les champions préparent un plan de match. Ce niveau de lecture tactique se développe avec l'expérience de table.</li>
-      <li><strong>La longévité :</strong> le bras de fer est un sport où l'expérience compense largement le déclin physique lié à l'âge — à condition de s'entraîner intelligemment.</li>
-    </ul>
+    <p>En regardant ces champions, plusieurs constantes définissent ce qui sépare le haut niveau du reste :</p>
+
+    <div class="factors-grid">
+      <div class="factor-card">
+        <div class="factor-num">01</div>
+        <div class="factor-title">Explosion de démarrage</div>
+        <p>La première demi-seconde détermine souvent l'issue. C'est la qualité la plus difficile à compenser par la force seule.</p>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">02</div>
+        <div class="factor-title">Deux prises maîtrisées</div>
+        <p>Aucun champion n'est à une seule prise. La polyvalence force l'adversaire à ne pas savoir quoi attendre.</p>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">03</div>
+        <div class="factor-title">Force de prise comme base</div>
+        <p>Sans grip, aucune technique ne peut s'exprimer. Tous les champions ont travaillé leur force de main pendant des années.</p>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">04</div>
+        <div class="factor-title">Lecture de l'adversaire</div>
+        <p>Les champions préparent un plan de match. Ce niveau de lecture tactique se développe uniquement avec l'expérience de table.</p>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">05</div>
+        <div class="factor-title">Longévité</div>
+        <p>L'expérience compense largement le déclin physique lié à l'âge — à condition de s'entraîner intelligemment.</p>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">06</div>
+        <div class="factor-title">Récupération active</div>
+        <p>Les blessures au coude et au poignet éliminent des carrières. La gestion de la charge et la prévention définissent qui dure.</p>
+      </div>
+    </div>
 
     <div class="cta-final">
       <div>
@@ -250,6 +351,14 @@
 <script>
   function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+  document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
+
+  function toggleChampion(btn) {
+    const details = btn.closest('.champion-card').querySelector('.champion-details');
+    const isOpen = details.classList.contains('open');
+    details.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
 </script>
 </body>
 </html>
