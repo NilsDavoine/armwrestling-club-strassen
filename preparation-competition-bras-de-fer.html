@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Préparer une compétition de bras de fer | ACS Luxembourg</title>
+  <title>Préparer sa première compétition de bras de fer | ACS</title>
   <meta name="description" content="Préparation compétition bras de fer : entraînement, poids, tactique, échauffement et gestion du stress. Guide par l'Armwrestling Club Strassen." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/preparation-competition-bras-de-fer.html" />
@@ -28,8 +28,9 @@
     "author": { "@type": "Organization", "name": "Armwrestling Club Strassen" },
     "publisher": { "@type": "Organization", "name": "Armwrestling Club Strassen", "url": "https://armwrestlingclubstrassen.com/" },
     "url": "https://armwrestlingclubstrassen.com/preparation-competition-bras-de-fer.html",
+    "image": "https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.jpeg",
     "datePublished": "2026-05-22",
-    "dateModified": "2026-05-22"
+    "dateModified": "2026-06-11"
   }
   </script>
   <script type="application/ld+json">
@@ -40,6 +41,40 @@
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
       { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" },
       { "@type": "ListItem", "position": 3, "name": "Préparation compétition bras de fer", "item": "https://armwrestlingclubstrassen.com/preparation-competition-bras-de-fer.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Combien de semaines faut-il pour se préparer à une compétition de bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Un cycle de préparation de 8 semaines est idéal pour une première compétition. Les 2 premières semaines servent à identifier les forces et faiblesses, les semaines 3 à 5 au pic de charge physique, la semaine 6 à l'affinage tactique, et la semaine 7–8 à la récupération et l'activation légère avant le jour J." }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il couper du poids avant une compétition de bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Non — surtout pour une première compétition. Les risques d'une coupure de poids (déshydratation, perte de force, fatigue tendineuse) l'emportent largement sur les bénéfices. Compétissez dans votre catégorie naturelle. Si vous visez une catégorie inférieure à terme, faites-le progressivement sur plusieurs mois, jamais dans les semaines précédant le tournoi." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment gérer le stress avant un match de bras de fer en compétition ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Concentrez-vous sur l'exécution technique de votre mouvement préféré, pas sur le résultat. Quelques respirations profondes dans les minutes précédant le match régulent le système nerveux. Faites confiance à votre entraînement : si vous avez travaillé régulièrement, votre corps sait quoi faire. Accepter la possibilité d'une défaite à l'avance libère la pression et améliore souvent les performances." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quoi manger le jour d'une compétition de bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mangez immédiatement après la pesée pour éviter de rester à jeun jusqu'au premier match. Privilégiez des aliments digestes riches en glucides complexes et protéines (riz, pâtes, œufs). Évitez les repas lourds en graisses dans les 2 heures avant de monter sur table. Restez hydraté tout au long de la journée — la déshydratation réduit la force de prise de 10 à 20%." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle technique choisir pour sa première compétition de bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Choisissez un seul mouvement — hook ou top roll — et maîtrisez-le à fond. Il vaut mieux un mouvement exécuté à 90% de perfection que deux mouvements maîtrisés à 50%. En compétition, la pression réduit la complexité exécutable : travaillez votre technique principale jusqu'à ce qu'elle soit automatique, puis restez sur cette stratégie dans 80% de vos matchs." }
+      }
     ]
   }
   </script>
@@ -247,6 +282,58 @@
       .timeline-item::before { left: calc(1.5rem + 1rem / 2); }
     }
 
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
+    .toc-label {
+      font-family: var(--font-display);
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(192,57,43,.9);
+      padding-top: .15rem; flex-shrink: 0; min-width: 80px;
+    }
+    .toc-list { margin:0; padding:0; list-style:none; columns:2; column-gap:2.5rem; flex:1; }
+    .toc-list li { margin-bottom:.45rem; break-inside:avoid; color:rgba(245,240,232,.7); }
+    .toc-list a {
+      font-family: var(--font-display);
+      font-size: .86rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(245,240,232,.75); text-decoration: none; transition: color .2s;
+    }
+    .toc-list a:hover { color: var(--red); }
+    .toc-num { color: rgba(192,57,43,.8); margin-right: .4rem; }
+    @media(max-width: 600px) {
+      .toc-list { columns: 1; }
+      .toc-wrap { flex-direction: column; gap: 1rem; }
+    }
+
+    /* ── SECTION EYEBROW ── */
+    .sec-eyebrow {
+      font-family: var(--font-display);
+      font-size: .64rem; font-weight: 900;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: rgba(192,57,43,.6);
+      margin-bottom: .8rem; display: flex; align-items: center; gap: .6rem;
+    }
+    .sec-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: rgba(192,57,43,.5); }
+
+    /* ── ACCORDION ── */
+    .accordion { margin: 1.5rem 0; border: 1px solid rgba(255,255,255,.07); }
+    .accordion-item { border-bottom: 1px solid rgba(255,255,255,.05); }
+    .accordion-item:last-child { border-bottom: none; }
+    .acc-btn {
+      width: 100%; background: transparent; border: none; padding: 1.3rem 1.8rem;
+      display: flex; align-items: center; gap: 1rem; cursor: pointer;
+      text-align: left; transition: background .2s;
+    }
+    .acc-btn:hover { background: rgba(255,255,255,.03); }
+    .acc-btn.open { background: rgba(192,57,43,.08); border-left: 3px solid var(--red); }
+    .acc-num { font-family: var(--font-display); font-size: .68rem; font-weight: 900; letter-spacing: .18em; color: rgba(192,57,43,.55); min-width: 26px; }
+    .acc-label { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: .04em; flex: 1; }
+    .acc-icon { font-family: var(--font-display); font-size: 1.3rem; font-weight: 300; color: rgba(192,57,43,.7); transition: transform .25s; flex-shrink: 0; line-height: 1; }
+    .acc-btn.open .acc-icon { transform: rotate(45deg); }
+    .acc-body { display: none; padding: 1.3rem 1.8rem 1.5rem; background: rgba(5,2,2,.6); font-size: .97rem; color: rgba(245,240,232,.7); line-height: 1.88; border-top: 1px solid rgba(255,255,255,.04); }
+    .acc-body.open { display: block; }
+
     /* ── SPOTLIGHT CARDS ── */
     :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
     .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
@@ -327,6 +414,25 @@
   </div>
 </div>
 
+<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Dans ce guide</div>
+      <ol class="toc-list">
+        <li><a href="#planification-8-semaines"><span class="toc-num">01 ·</span>Planifier sur 8 semaines</a></li>
+        <li><a href="#gestion-du-poids"><span class="toc-num">02 ·</span>Gestion du poids</a></li>
+        <li><a href="#entrainement-specifique"><span class="toc-num">03 ·</span>Entraînement spécifique</a></li>
+        <li><a href="#tactique"><span class="toc-num">04 ·</span>Tactique &amp; jeu</a></li>
+        <li><a href="#jour-de-competition"><span class="toc-num">05 ·</span>Jour de compétition</a></li>
+        <li><a href="#gestion-du-stress"><span class="toc-num">06 ·</span>Gestion du stress</a></li>
+        <li><a href="#competition-luxembourg"><span class="toc-num">07 ·</span>Compétition au Luxembourg</a></li>
+        <li><a href="#faq"><span class="toc-num">08 ·</span>Questions fréquentes</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
 <div class="sec sec-dark bg-red-glow">
   <div class="sec-inner">
@@ -338,7 +444,7 @@
 </div>
 
 <!-- ── PLANIFIER 8 SEMAINES ──────────────────────────────────────────── -->
-<div class="sec sec-light bg-cinema">
+<div class="sec sec-light bg-cinema" id="planification-8-semaines">
   <div class="sec-inner">
     <h2>Planifier la préparation <span>sur 8 semaines</span></h2>
 
@@ -384,7 +490,7 @@
 </div>
 
 <!-- ── GESTION DU POIDS ──────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-inferno">
+<div class="sec sec-dark bg-inferno" id="gestion-du-poids">
   <div class="sec-inner">
     <h2>La gestion du poids</h2>
     <p>Le bras de fer se pratique par <strong>catégories de poids</strong> — généralement toutes les 10 kg. La pesée a lieu le matin de la compétition. Quelques points clés :</p>
@@ -397,7 +503,7 @@
 </div>
 
 <!-- ── ENTRAÎNEMENT SPÉCIFIQUE ──────────────────────────────────────── -->
-<div class="sec sec-light bg-red-walls">
+<div class="sec sec-light bg-red-walls" id="entrainement-specifique">
   <div class="sec-inner">
     <h2>L'entraînement spécifique</h2>
 
@@ -421,7 +527,7 @@
 </div>
 
 <!-- ── TACTIQUE ──────────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-motion">
+<div class="sec sec-dark bg-motion" id="tactique">
   <div class="sec-inner">
     <h2>La tactique : construire votre jeu</h2>
 
@@ -437,7 +543,7 @@
 </div>
 
 <!-- ── JOURNÉE DE COMPÉTITION ─────────────────────────────────────────── -->
-<div class="sec sec-light bg-danger-x">
+<div class="sec sec-light bg-danger-x" id="jour-de-competition">
   <div class="sec-inner">
     <h2>Le jour de compétition</h2>
     <p>Le jour J suit une logique simple : pesée, récupération, échauffement, matchs. Les essentiels :</p>
@@ -453,7 +559,7 @@
 </div>
 
 <!-- ── GESTION DU STRESS ─────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-cinema">
+<div class="sec sec-dark bg-cinema" id="gestion-du-stress">
   <div class="sec-inner">
     <h2>La gestion du stress compétitif</h2>
     <p>Le stress avant la compétition est normal — c'est un mécanisme physiologique qui prépare le corps à l'effort. Quelques approches pour le canaliser :</p>
@@ -467,7 +573,7 @@
 </div>
 
 <!-- ── COMPÉTITION LUXEMBOURG ────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec bg-cinema" id="competition-luxembourg">
   <div class="sec-inner">
     <div class="photo-grid-3">
       <img src="2F3A1360.jpeg" alt="Compétition de bras de fer au Luxembourg — match officiel LAF" loading="lazy" />
@@ -543,6 +649,15 @@
       document.getElementById('navLinks').classList.remove('open');
     });
   });
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); }
+  }
   document.addEventListener('pointermove', e => {
     const r = document.documentElement;
     r.style.setProperty('--x', e.clientX);

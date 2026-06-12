@@ -22,56 +22,198 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Entraînement Strassen","item":"https://armwrestlingclubstrassen.com/entrainement-bras-de-fer-strassen.html"}]}
   </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quand et où a lieu l'entraînement de bras de fer à Strassen ?","acceptedAnswer":{"@type":"Answer","text":"L'entraînement a lieu chaque mardi à 18h au 86 rue des Romains, L-8041 Strassen. La séance dure environ 2 heures."}},{"@type":"Question","name":"Faut-il apporter son équipement ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le club dispose de tables de compétition homologuées, de sangles et de tout le matériel nécessaire. Une tenue de sport suffit."}},{"@type":"Question","name":"Comment se déroule un entraînement typique à Strassen ?","acceptedAnswer":{"@type":"Answer","text":"La séance commence par un échauffement spécifique, suivi de travail technique, d'exercices de renforcement ciblés et de sparring sur table en fin de séance."}},{"@type":"Question","name":"Peut-on venir sans réservation à Strassen ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous pouvez venir directement le mardi à 18h. Il est toutefois conseillé de prévenir le club via WhatsApp pour la première venue."}}]}
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="blog.css"/>
+
   <style>
-    .sec{padding:3.5rem 0}.sec-dark{background:var(--black)}.sec-light{background:var(--dark2)}
-    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
-    .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
-    .sec h3{font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:1.5rem 0 .7rem}
-    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
-    .sec ul{margin:0 0 1.4rem 1.8rem}.sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
-    .sec strong{color:var(--white);font-weight:600}.sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
-    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0;border-radius:0 3px 3px 0}
-    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
-    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);border-top:2px solid var(--red);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
-    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem!important;border:none!important;padding:0!important}
-    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
-    .session-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
-    .session-card{background:rgba(245,240,232,.03);border:1px solid rgba(245,240,232,.07);border-radius:8px;padding:1.8rem}
-    .session-card-num{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--red);line-height:1;margin-bottom:.5rem}
-    .session-card-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.35);margin-bottom:.8rem}
-    .session-card-desc{font-size:.88rem;color:rgba(245,240,232,.62);line-height:1.65}
-    .schedule-row{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid rgba(245,240,232,.06);align-items:start}
-    .schedule-row:last-child{border-bottom:none}
-    .schedule-time{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.05em}
-    .schedule-activity{font-size:.95rem;color:rgba(245,240,232,.72);line-height:1.7}
-    .faq-list{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
-    .faq-item{border-bottom:1px solid rgba(245,240,232,.06);padding:1.4rem 0}
-    .faq-item:first-child{border-top:1px solid rgba(245,240,232,.06)}
-    .faq-q{font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.03em;margin-bottom:.5rem}
-    .faq-a{font-size:.95rem;color:rgba(245,240,232,.65);line-height:1.75}
-    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
-    .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
-    .tip-eyebrow{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
-    .tip-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:rgba(192,57,43,.8)}
-    .tip-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:960px;margin:0 auto}
-    .tip-card{--hue:215;--border:1.5;--size:300;--border-size:calc(var(--border)*1px);--spotlight-size:calc(var(--size)*1px);background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.12),transparent);background-color:rgba(255,255,255,.025);background-attachment:fixed;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:var(--border-size) solid rgba(255,255,255,.07);border-top:2px solid rgba(255,255,255,.15);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;user-select:none}
-    .tip-card::before,.tip-card::after{pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size)*-1);border:var(--border-size) solid transparent;border-radius:5px;background-attachment:fixed;mask:linear-gradient(transparent,transparent),linear-gradient(white,white);mask-clip:padding-box,border-box;mask-composite:intersect;-webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);-webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in}
-    .tip-card::before{background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);filter:brightness(2.5)}
-    .tip-card::after{background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%)}
-    .tip-time{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:var(--red);line-height:1}
-    .tip-phase{font-family:var(--font-display);font-size:.9rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin:.4rem 0 .3rem}
-    .tip-phase-desc{font-size:.85rem;color:rgba(245,240,232,.62);line-height:1.72;flex:1}
-    .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}.c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}.c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}.c-amber{--hue:42;border-top-color:rgba(211,84,0,.65)}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.session-grid{grid-template-columns:1fr}.tip-grid-4{grid-template-columns:1fr 1fr}.tip-wrap{padding:2.5rem 1.5rem}.cta-block{flex-direction:column;align-items:flex-start}}
-    @media(max-width:480px){.tip-grid-4{grid-template-columns:1fr}}
+    /* ════════════════════════════════════════════════════════════
+       RECETTE 2 · « BRAISE » — rouge + orange braise + ambre
+       Palette 3 couleurs : ROUGE #c0392b · BRAISE #e8702a · AMBRE #d98f1e  (+ blanc = texte)
+       Fonds = dégradés profonds + quadrillage plein-section.
+    ════════════════════════════════════════════════════════════ */
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; }
+
+    /* ── LAYOUT ── */
+    .sec { padding: 4.2rem 0; }
+    .sec-dark  { background: var(--black); }
+    .sec-light { background: var(--dark2); }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; position: relative; z-index: 1; }
+
+    /* ── EYEBROW ── */
+    .sec-eyebrow {
+      font-family: var(--font-display); font-size: .68rem; font-weight: 900;
+      letter-spacing: .24em; text-transform: uppercase; color: var(--accent,var(--red));
+      margin-bottom: .85rem; display: flex; align-items: center; gap: .6rem;
+    }
+    .sec-eyebrow::before { content:''; display:inline-block; width:20px; height:2px; background:currentColor; opacity:.75; }
+
+    /* ── TYPO — lisibilité renforcée ── */
+    .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.3rem; line-height: 1.04; }
+    .sec h2 span { color: var(--accent,var(--red)); }
+    .sec h3 { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin: 2rem 0 .7rem; letter-spacing: .04em; }
+    .sec p  { font-size: 1.05rem; color: rgba(245,240,232,.84); line-height: 1.9; margin-bottom: 1.4rem; }
+    .sec ul { margin: 0 0 1.4rem 1.7rem; }
+    .sec li { font-size: 1rem; color: rgba(245,240,232,.8); line-height: 1.85; margin-bottom: .5rem; }
+    .sec strong { color: var(--white); font-weight: 600; }
+    .sec a { color: var(--red); text-decoration: none; }
+    .sec a:hover { text-decoration: underline; }
+
+    /* ── TABLE DES MATIÈRES ── */
+    .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
+    .toc-label { font-family: var(--font-display); font-size: .74rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red); padding-top: .15rem; flex-shrink: 0; min-width: 90px; }
+    .toc-list { margin:0; padding:0; list-style:none; columns:2; column-gap:2.5rem; flex:1; }
+    .toc-list li { margin-bottom:.55rem; break-inside:avoid; }
+    .toc-list a { font-family: var(--font-display); font-size: .92rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: rgba(245,240,232,.8); text-decoration: none; transition: color .2s; }
+    .toc-list a:hover { color: var(--red); }
+    .toc-num { color: rgba(192,57,43,.85); margin-right: .4rem; }
+
+    /* ── CARTES SPOTLIGHT (le « cadre » signature, rouge brasier) ── */
+    .tip-wrap { padding: 4rem 3rem; position: relative; overflow: hidden; }
+    .tip-eyebrow { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--white); margin-bottom: 2rem; display: flex; align-items: center; gap: .8rem; }
+    .tip-eyebrow::before { content:''; display:inline-block; width:28px; height:2px; background:rgba(192,57,43,.85); }
+    .tip-grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; max-width:960px; margin:0 auto; }
+    .tip-card {
+      --hue:5; --border:1.5; --size:300;
+      --border-size:calc(var(--border)*1px); --spotlight-size:calc(var(--size)*1px);
+      background-image: radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 80% 36%/.13), transparent);
+      background-color: rgba(255,255,255,.025); background-attachment: fixed;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: var(--border-size) solid rgba(255,255,255,.07); border-top: 2px solid rgba(192,57,43,.7);
+      border-radius: 5px; box-shadow: 0 4px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.04);
+      position: relative; padding: 1.9rem 1.6rem; display: flex; flex-direction: column; gap: .8rem; user-select: none;
+    }
+    .tip-card::before, .tip-card::after {
+      pointer-events:none; content:""; position:absolute; inset:calc(var(--border-size)*-1);
+      border:var(--border-size) solid transparent; border-radius:5px; background-attachment:fixed;
+      mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      mask-clip:padding-box,border-box; mask-composite:intersect;
+      -webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      -webkit-mask-clip:padding-box,border-box; -webkit-mask-composite:destination-in;
+    }
+    .tip-card::before { background-image: radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 90% 42%/1), transparent 100%); filter:brightness(2.5); }
+    .tip-card::after  { background-image: radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(0 100% 100%/.55), transparent 100%); }
+    .tip-num   { font-family: var(--font-display); font-size: .72rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: #d6553f; }
+    .tip-title { font-family: var(--font-display); font-size: 1.32rem; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: .01em; line-height: 1.05; }
+    .tip-desc  { font-size: .94rem; color: rgba(245,240,232,.82); line-height: 1.74; flex: 1; }
+
+    /* ── FRISE CHRONOLOGIQUE VERTICALE ── */
+    .timeline-v { position: relative; margin: 2.2rem 0 .5rem; padding-left: 2.3rem; }
+    .timeline-v::before { content:''; position:absolute; left:.55rem; top:.5rem; bottom:.5rem; width:2px; background:linear-gradient(to bottom, rgba(192,57,43,.75), rgba(192,57,43,.12)); }
+    .tl-item { position: relative; padding: 0 0 1.7rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before { content:''; position:absolute; left:-1.8rem; top:.3rem; width:11px; height:11px; border-radius:50%; background:var(--red); box-shadow:0 0 0 4px rgba(192,57,43,.18); }
+    .tl-time { font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem; }
+    .tl-text { font-size: 1rem; color: rgba(245,240,232,.8); line-height: 1.75; }
+    .tl-text strong { color: var(--white); font-weight: 600; }
+
+    /* ── BANDE « STATEMENT » (inferno, césure dramatique) ── */
+    .strap-block { background:#020000; padding:5rem 3rem; position:relative; overflow:hidden; }
+    .strap-block::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(ellipse 140% 70% at 50% 140%, rgba(255,100,0,.45) 0%, rgba(210,30,0,.28) 22%, rgba(80,0,0,.15) 48%, transparent 68%),
+        radial-gradient(ellipse 55% 45% at 10% 110%, rgba(200,50,0,.18) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 45% at 90% 110%, rgba(200,50,0,.18) 0%, transparent 55%);
+    }
+    .strap-block::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image: repeating-linear-gradient(90deg, transparent, transparent 58px, rgba(255,80,0,.022) 58px, rgba(255,80,0,.022) 60px);
+      -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 110%, black 0%, transparent 62%);
+      mask-image: radial-gradient(ellipse 95% 75% at 50% 110%, black 0%, transparent 62%);
+    }
+    .strap-inner { max-width:960px; margin:0 auto; position:relative; z-index:1; }
+    .strap-statement { font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:900; text-transform:uppercase; color:var(--white); line-height:1.02; margin-bottom:1.8rem; letter-spacing:-.01em; }
+    .strap-statement em { color:var(--red); font-style:normal; }
+    .strap-stat { display:inline-flex; align-items:baseline; gap:.7rem; background:rgba(192,57,43,.08); border:1px solid rgba(192,57,43,.25); padding:.65rem 1.5rem; margin-bottom:2rem; }
+    .strap-stat-num { font-family:var(--font-display); font-size:2.5rem; font-weight:900; color:var(--red); line-height:1; }
+    .strap-stat-label { font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(245,240,232,.82); }
+    .strap-text p { font-size:1.02rem; color:rgba(245,240,232,.82); line-height:1.9; margin-bottom:1.1rem; }
+    .strap-text strong { color:var(--white); font-weight:600; }
+
+    /* ── CARTES ÉQUIPEMENT ── */
+    .session-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin:2.2rem 0; }
+    .session-card { background:linear-gradient(150deg, rgba(192,57,43,.1) 0%, rgba(8,4,4,.55) 100%); border:1px solid rgba(192,57,43,.18); border-top:2px solid rgba(192,57,43,.65); border-radius:6px; padding:1.8rem 1.6rem; box-shadow:0 4px 22px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.05); transition:transform .22s, box-shadow .22s; }
+    .session-card:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.52); }
+    .session-card-num { font-family:var(--font-display); font-size:2.6rem; font-weight:900; color:var(--red); line-height:1; margin-bottom:.5rem; }
+    .session-card-label { font-family:var(--font-display); font-size:.74rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(192,57,43,.95); margin-bottom:.7rem; }
+    .session-card-desc { font-size:.96rem; color:rgba(245,240,232,.78); line-height:1.72; }
+
+    /* ── ACCORDÉON FAQ ── */
+    .accordion { margin:1.6rem 0 0; border:1px solid rgba(255,255,255,.08); }
+    .accordion-item { border-bottom:1px solid rgba(255,255,255,.06); }
+    .accordion-item:last-child { border-bottom:none; }
+    .acc-btn { width:100%; background:transparent; border:none; padding:1.3rem 1.7rem; display:flex; align-items:center; gap:1rem; cursor:pointer; text-align:left; transition:background .2s; }
+    .acc-btn:hover { background:rgba(255,255,255,.03); }
+    .acc-btn.open { background:rgba(192,57,43,.08); border-left:3px solid var(--red); }
+    .acc-num { font-family:var(--font-display); font-size:.7rem; font-weight:900; letter-spacing:.18em; color:rgba(192,57,43,.9); min-width:26px; }
+    .acc-label { font-family:var(--font-display); font-size:1.02rem; font-weight:700; text-transform:uppercase; color:var(--white); letter-spacing:.03em; flex:1; }
+    .acc-icon { font-family:var(--font-display); font-size:1.4rem; font-weight:300; color:var(--red); transition:transform .25s; flex-shrink:0; line-height:1; }
+    .acc-btn.open .acc-icon { transform:rotate(45deg); }
+    .acc-body { display:none; padding:1.2rem 1.7rem 1.5rem; background:rgba(5,2,2,.5); font-size:1rem; color:rgba(245,240,232,.8); line-height:1.85; border-top:1px solid rgba(255,255,255,.04); }
+    .acc-body.open { display:block; }
+
+    /* ── CALLOUT ── */
+    .callout { background:rgba(192,57,43,.08); border-left:3px solid var(--red); padding:1.4rem 1.8rem; margin:1.8rem 0; border-radius:0 4px 4px 0; }
+    .callout p { margin:0!important; color:rgba(245,240,232,.9)!important; font-size:1rem!important; line-height:1.8!important; }
+
+    /* ── CTA FINAL HARMONISÉ ── */
+    .cta-final { background:linear-gradient(135deg, rgba(192,57,43,.16), rgba(5,2,2,.92)); border:1px solid rgba(192,57,43,.32); border-top:2px solid var(--red); padding:2.4rem 2.8rem; margin-top:2.5rem; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2.5rem; }
+    .cta-final-label { font-family:var(--font-display); font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(192,57,43,.9); margin-bottom:.5rem; }
+    .cta-final-title { font-family:var(--font-display); font-size:1.7rem; font-weight:900; text-transform:uppercase; color:var(--white); line-height:1; margin-bottom:.5rem; }
+    .cta-final-desc { font-size:.95rem; color:rgba(245,240,232,.65); line-height:1.7; margin:0; }
+
+    /* ── SÉPARATEUR (bande + losange lumineux) ── */
+    .band-sep { background: var(--black); padding: 1.7rem 0; display: flex; align-items: center; justify-content: center; gap: 1.1rem; }
+    .band-sep span { height: 1px; width: 130px; display: block; }
+    .band-sep span:first-child { background: linear-gradient(90deg, transparent, rgba(245,240,232,.22)); }
+    .band-sep span:last-child  { background: linear-gradient(270deg, transparent, rgba(245,240,232,.22)); }
+    .band-sep i { width: 9px; height: 9px; transform: rotate(45deg); background: var(--sepc,#c0392b); box-shadow: 0 0 14px var(--sepc,#c0392b); border-radius: 1px; display: block; flex-shrink: 0; }
+
+    /* ── ACCENTS CARTES (rouge / braise / ambre) ── */
+    .a-red   { --hue:5;  border-top-color:rgba(192,57,43,.72)!important; }  .a-red .tip-num,.a-red .session-card-num,.a-red .session-card-label { color:#d6553f; }
+    .a-ember { --hue:215; border-top-color:rgba(74,104,133,.74)!important; } .a-ember .tip-num,.a-ember .session-card-num,.a-ember .session-card-label { color:#7aadda; }
+    .a-amber { --hue:162; border-top-color:rgba(26,144,112,.74)!important; } .a-amber .tip-num,.a-amber .session-card-num,.a-amber .session-card-label { color:#25c494; }
+
+    /* ── FONDS « BRAISE » — dégradés + quadrillage plein-section ── */
+    .bg-forge {
+      background:
+        radial-gradient(ellipse 88% 55% at 50% -12%, rgba(192,57,43,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 42% 32% at 0% 108%, rgba(192,57,43,.09) 0%, transparent 58%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(214,85,63,.045) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(214,85,63,.045) 43px 44px),
+        linear-gradient(180deg, #0c0605 0%, #080403 100%);
+    }
+    .bg-ember {
+      background:
+        radial-gradient(ellipse 90% 56% at 50% -12%, rgba(232,112,42,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 42% 32% at 100% 108%, rgba(232,112,42,.07) 0%, transparent 58%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(240,140,70,.05) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(240,140,70,.05) 43px 44px),
+        linear-gradient(180deg, #0d0904 0%, #080502 100%);
+    }
+    .bg-coal {
+      background:
+        radial-gradient(ellipse 56% 44% at 0% -10%, rgba(192,57,43,.14) 0%, transparent 55%),
+        radial-gradient(ellipse 56% 44% at 100% -10%, rgba(217,143,30,.13) 0%, transparent 55%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(230,168,46,.042) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(230,168,46,.042) 43px 44px),
+        linear-gradient(180deg, #0b0703 0%, #070402 100%);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .sec-inner { padding:0 1.5rem; }
+      .tip-grid-4 { grid-template-columns:1fr 1fr; }
+      .tip-wrap { padding:2.5rem 1.5rem; }
+      .session-grid { grid-template-columns:1fr; }
+      .strap-block { padding:3rem 1.5rem; }
+      .cta-final { grid-template-columns:1fr; gap:1.5rem; }
+    }
+    @media(max-width:600px){ .toc-list { columns:1; } .toc-wrap { flex-direction:column; gap:1rem; } }
+    @media(max-width:480px){ .tip-grid-4 { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -90,13 +232,14 @@
   </div>
 </nav>
 
+<!-- ── HERO ──────────────────────────────────────────────────────────── -->
 <div class="local-hero">
   <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Entraînement Strassen</div>
     <div class="page-tag">Entraînement · Mardi 18h</div>
     <div class="article-date">Mis à jour : mai 2026</div>
     <h1 class="page-title">Entraînement bras de fer<br><span>à Strassen</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.65);max-width:560px;line-height:1.8;">Chaque mardi à 18h au 86 rue des Romains. Tables de compétition WAF, encadrement technique, débutants bienvenus. Première séance gratuite.</p>
+    <p style="font-size:1.12rem;color:rgba(245,240,232,.74);max-width:560px;line-height:1.8;">Chaque mardi à 18h au 86 rue des Romains. Tables de compétition WAF, encadrement technique, débutants bienvenus. Première séance gratuite.</p>
     <div class="hero-stats-row">
       <div class="hero-stat"><div class="hero-stat-num">18<span>h</span></div><div class="hero-stat-label">mardi soir · Strassen</div></div>
       <div class="hero-stat"><div class="hero-stat-num">2<span>h</span></div><div class="hero-stat-label">durée de la séance</div></div>
@@ -109,89 +252,118 @@
   </div>
 </div>
 
+<!-- ── TABLE DES MATIÈRES ────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Sur cette page</div>
+      <ol class="toc-list">
+        <li><a href="#format"><span class="toc-num">01 ·</span>Le format d'une séance</a></li>
+        <li><a href="#deroule"><span class="toc-num">02 ·</span>Le déroulé minute par minute</a></li>
+        <li><a href="#equipement"><span class="toc-num">03 ·</span>L'équipement disponible</a></li>
+        <li><a href="#apprend"><span class="toc-num">04 ·</span>Ce qu'on apprend</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
 
-<!-- ── SPOTLIGHT : FORMAT DE SÉANCE ──────────────────────────────── -->
-<div class="tip-wrap" style="background:#050304;">
-  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.2) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
+<!-- ── SPOTLIGHT : 4 TEMPS DE LA SÉANCE ──────────────────────────────── -->
+<div class="tip-wrap" id="format" style="background:#050304;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.22) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
   <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
-    <div class="tip-eyebrow">Format d'une séance type</div>
+    <div class="tip-eyebrow">Les 4 temps d'une séance</div>
     <div class="tip-grid-4">
-      <div class="tip-card c-blue">
-        <div class="tip-time">18h00</div>
-        <div class="tip-phase">Échauffement</div>
-        <div class="tip-phase-desc">Mobilisation articulaire, rotation des poignets, avant-bras et épaules. Base indispensable pour éviter les blessures.</div>
+      <div class="tip-card a-red">
+        <div class="tip-num">01 — Préparer</div>
+        <div class="tip-title">Échauffement</div>
+        <div class="tip-desc">Mobilisation articulaire, rotation des poignets, avant-bras et épaules. La base indispensable pour s'entraîner dur sans se blesser.</div>
       </div>
-      <div class="tip-card c-amber">
-        <div class="tip-time">18h20</div>
-        <div class="tip-phase">Technique</div>
-        <div class="tip-phase-desc">Prises, angles d'attaque, placement du corps. Hook, top roll, press selon le niveau. Débutants : bases de sécurité d'abord.</div>
+      <div class="tip-card a-ember">
+        <div class="tip-num">02 — Construire</div>
+        <div class="tip-title">Technique</div>
+        <div class="tip-desc">Prises, angles d'attaque, placement du corps. Hook, top roll, press selon le niveau. Pour les débutants : les bases de sécurité d'abord.</div>
       </div>
-      <div class="tip-card c-green">
-        <div class="tip-time">19h00</div>
-        <div class="tip-phase">Renforcement</div>
-        <div class="tip-phase-desc">Exercices ciblés avant-bras, poignet, prise, biceps et épaule. Travail spécifique adapté au programme de la séance.</div>
+      <div class="tip-card a-amber">
+        <div class="tip-num">03 — Développer</div>
+        <div class="tip-title">Renforcement</div>
+        <div class="tip-desc">Exercices ciblés avant-bras, poignet, prise, biceps et épaule. Le travail spécifique qui fait la différence entre deux séances.</div>
       </div>
-      <div class="tip-card c-red">
-        <div class="tip-time">19h30</div>
-        <div class="tip-phase">Sparring</div>
-        <div class="tip-phase-desc">Matchs d'entraînement par niveau et catégorie. Les acquis techniques testés dans des conditions proches de la compétition.</div>
+      <div class="tip-card a-red">
+        <div class="tip-num">04 — Tester</div>
+        <div class="tip-title">Sparring</div>
+        <div class="tip-desc">Matchs d'entraînement par niveau et catégorie. Les acquis techniques mis à l'épreuve dans des conditions proches de la compétition.</div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#d6553f;"><span></span><i></i><span></span></div>
 
-<!-- ── DÉTAIL DE LA SÉANCE ────────────────────────────────────────── -->
-<div class="sec sec-dark bg-cinema">
+<!-- ── DÉROULÉ MINUTE PAR MINUTE (frise)─────────────────────────────── -->
+<div class="sec bg-cinema" id="deroule">
   <div class="sec-inner">
-    <div class="article-photo" style="margin-bottom:2.5rem;">
+    <div class="sec-eyebrow">Le déroulé</div>
+    <h2>Une séance type, <span>minute par minute</span></h2>
+    <div class="article-photo" style="margin:1.5rem 0 2.5rem;">
       <img src="2F3A1321.jpeg" alt="Entraînement bras de fer à Strassen — séance sur table officielle avec pratiquants" loading="lazy"/>
     </div>
-    <h2>Format d'une séance type à Strassen</h2>
     <p>L'entraînement du mardi commence à 18h et dure environ 2 heures. Structuré pour convenir autant aux débutants qu'aux pratiquants réguliers qui travaillent leur technique et leur sparring.</p>
-    <div style="margin:2rem 0;display:flex;flex-direction:column;gap:0">
-      <div class="schedule-row">
-        <div class="schedule-time">18h00</div>
-        <div class="schedule-activity"><strong>Arrivée et échauffement</strong> — mobilisation articulaire, rotation des poignets, échauffement des avant-bras et des épaules. Essentiel pour éviter les blessures.</div>
+    <div class="timeline-v">
+      <div class="tl-item">
+        <div class="tl-time">18h00</div>
+        <div class="tl-text"><strong>Arrivée et échauffement</strong> — mobilisation articulaire, rotation des poignets, échauffement des avant-bras et des épaules. Essentiel pour éviter les blessures.</div>
       </div>
-      <div class="schedule-row">
-        <div class="schedule-time">18h20</div>
-        <div class="schedule-activity"><strong>Travail technique</strong> — prises, angles d'attaque, placement du corps, hook/top roll/press selon le niveau. Les débutants commencent par les bases de sécurité.</div>
+      <div class="tl-item">
+        <div class="tl-time">18h20</div>
+        <div class="tl-text"><strong>Travail technique</strong> — prises, angles d'attaque, placement du corps, hook / top roll / press selon le niveau. Les débutants commencent par les bases de sécurité.</div>
       </div>
-      <div class="schedule-row">
-        <div class="schedule-time">19h00</div>
-        <div class="schedule-activity"><strong>Renforcement spécifique</strong> — exercices ciblés avant-bras, poignet, prise, biceps et épaule selon le programme de la séance.</div>
+      <div class="tl-item">
+        <div class="tl-time">18h40</div>
+        <div class="tl-text"><strong>Sparring sur table</strong> — matchs d'entraînement par niveau et catégorie. C'est ici que les acquis techniques sont testés dans des conditions proches de la compétition.</div>
       </div>
-      <div class="schedule-row">
-        <div class="schedule-time">19h30</div>
-        <div class="schedule-activity"><strong>Sparring sur table</strong> — matchs d'entraînement par niveau et catégorie. C'est ici que les acquis techniques sont testés dans des conditions proches de la compétition.</div>
-      </div>
-      <div class="schedule-row">
-        <div class="schedule-time">20h00</div>
-        <div class="schedule-activity"><strong>Fin de séance</strong> — retour au calme, échanges, questions. Pas d'heure de sortie imposée.</div>
+      <div class="tl-item">
+        <div class="tl-time">20h00</div>
+        <div class="tl-text"><strong>Fin de séance</strong> — retour au calme, échanges, questions. Pas d'heure de sortie imposée.</div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ── BANDE STATEMENT ───────────────────────────────────────────────── -->
+<div class="strap-block">
+  <div class="strap-inner">
+    <div class="strap-statement">Le mardi soir,<br>tout se joue <em>sur la table</em></div>
+    <div class="strap-stat">
+      <span class="strap-stat-num">2h</span>
+      <span class="strap-stat-label">chaque mardi · Strassen</span>
+    </div>
+    <div class="strap-text">
+      <p>Deux heures structurées : échauffement, technique, renforcement, sparring. Chaque mardi, dans le même ordre, pour que le corps et les réflexes s'installent durablement.</p>
+      <p>Pas besoin de venir tous les jours. <strong>Une séance régulière par semaine</strong> suffit pour progresser nettement les premiers mois — la constance bat l'intensité dispersée.</p>
+    </div>
+  </div>
+</div>
 
-<!-- ── ÉQUIPEMENT ─────────────────────────────────────────────────── -->
-<div class="sec sec-light bg-red-walls">
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
+
+<!-- ── ÉQUIPEMENT────────────────────────────────────────────────────── -->
+<div class="sec bg-red-walls" id="equipement">
   <div class="sec-inner">
-    <h2>L'équipement disponible à Strassen</h2>
+    <div class="sec-eyebrow">Matériel</div>
+    <h2>L'équipement <span>disponible à Strassen</span></h2>
     <p>L'Armwrestling Club Strassen est équipé de matériel de compétition officiel. Vous n'avez rien à apporter pour votre première séance.</p>
     <div class="session-grid">
-      <div class="session-card">
+      <div class="session-card a-red">
         <div class="session-card-num">2</div>
         <div class="session-card-label">Tables de compétition</div>
         <div class="session-card-desc">Tables homologuées WAF avec coussins de coude réglementés et poignées latérales. Les mêmes que lors des compétitions officielles.</div>
       </div>
-      <div class="session-card">
+      <div class="session-card a-ember">
         <div class="session-card-num">∞</div>
-        <div class="session-card-label">Sangles & accessoires</div>
+        <div class="session-card-label">Sangles &amp; accessoires</div>
         <div class="session-card-desc">Sangles de poignet, bandes, équipement de renforcement — tout le matériel nécessaire pour travailler les prises spécifiques.</div>
       </div>
-      <div class="session-card">
+      <div class="session-card a-amber">
         <div class="session-card-num">+</div>
         <div class="session-card-label">Matériel de renforcement</div>
         <div class="session-card-desc">Équipement de conditionnement spécifique au bras de fer : rouleaux d'avant-bras, poids, élastiques de résistance.</div>
@@ -203,14 +375,16 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── CE QU'ON APPREND ───────────────────────────────────────────── -->
-<div class="sec sec-dark bg-red-glow">
+<!-- ── CE QU'ON APPREND──────────────────────────────────────────────── -->
+<div class="sec bg-motion" id="apprend">
   <div class="sec-inner">
-    <div class="article-photo" style="margin-bottom:2.5rem;">
+    <div class="sec-eyebrow">Première séance</div>
+    <h2>Ce qu'on apprend <span>dès la première séance</span></h2>
+    <div class="article-photo" style="margin:1.5rem 0 2.5rem;">
       <img src="2F3A1451.jpeg" alt="Entraînement technique bras de fer à Strassen — apprentissage sur table officielle" loading="lazy"/>
     </div>
-    <h2>Ce qu'on apprend dès la première séance</h2>
     <p>Même si vous n'avez jamais fait de bras de fer, la première séance à Strassen vous donnera des bases solides et utilisables immédiatement.</p>
     <ul>
       <li><strong>Position de base</strong> : comment se placer à la table, où mettre l'épaule et le coude pour être stable et efficace</li>
@@ -222,50 +396,22 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── FAQ ────────────────────────────────────────────────────────── -->
-<div class="sec sec-light bg-motion">
+<!-- ── ESSAI GRATUIT / CTA ───────────────────────────────────────────── -->
+<div class="sec bg-cinema" id="essai">
   <div class="sec-inner">
-    <h2>Questions fréquentes sur l'entraînement à Strassen</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">Faut-il réserver pour venir mardi ?</div>
-        <div class="faq-a">Pas obligatoire — venez directement à 18h. Pour la première séance, prévenez via WhatsApp ou email pour un accueil simplifié.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Peut-on commencer sans aucune expérience ?</div>
-        <div class="faq-a">Oui. La séance est structurée pour intégrer des débutants complets. Les bases de sécurité et de placement sont expliquées en début de séance.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Y a-t-il un niveau minimum ?</div>
-        <div class="faq-a">Aucun niveau requis. Le sparring est organisé par niveau pour que tout le monde progresse à son rythme.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">La séance a-t-elle lieu toute l'année ?</div>
-        <div class="faq-a">L'entraînement est régulier tout au long de l'année, avec quelques interruptions sur les grandes semaines de compétition ou congés. Vérifiez via WhatsApp avant les jours fériés.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Après la première séance, comment continuer ?</div>
-        <div class="faq-a">Si le sport vous plaît, vous pouvez prendre votre licence LAF (150€/an) et revenir chaque mardi. La licence donne aussi accès au club de Munsbach le vendredi soir.</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-
-<!-- ── CTA ────────────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-inferno">
-  <div class="sec-inner">
-    <div class="cta-block">
+    <div class="cta-final">
       <div>
-        <h3>Essai gratuit mardi 18h</h3>
-        <p>86 rue des Romains, Strassen — 8 min depuis Luxembourg-ville. Aucun équipement requis.</p>
+        <div class="cta-final-label">Armwrestling Club Strassen · Mardi 18h</div>
+        <div class="cta-final-title">Essai gratuit mardi 18h</div>
+        <p class="cta-final-desc">86 rue des Romains, Strassen — 8 min depuis Luxembourg-ville. Aucun équipement requis, tous niveaux bienvenus.</p>
       </div>
-      <a href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" class="btn-primary">Contacter par WhatsApp</a>
+      <a href="https://wa.me/352661495319?text=Bonjour%2C%20je%20veux%20venir%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Contacter par WhatsApp →</a>
     </div>
   </div>
 </div>
-
 
 <!-- ── ARTICLES LIÉS ── -->
 <div style="background:var(--dark2);padding:4rem 3rem;border-top:1px solid rgba(255,255,255,.07);">
@@ -273,7 +419,7 @@
     <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:2.5rem;">
       <div style="width:3px;height:2.4rem;background:var(--red);flex-shrink:0;border-radius:2px;"></div>
       <div>
-        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:.25rem;">Continuer la lecture</div>
+        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-bottom:.25rem;">Continuer la lecture</div>
         <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;letter-spacing:.01em;">Articles <span style="color:var(--red);">liés</span></div>
       </div>
     </div>
@@ -310,7 +456,7 @@
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
-  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
+  <p style="font-size:.78rem;opacity:.5;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
 <script>
@@ -320,6 +466,15 @@
   document.querySelectorAll('#navLinks a').forEach(a =>
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
   );
+  function toggleAcc(btn){
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if(!isOpen){ btn.classList.add('open'); body.classList.add('open'); }
+  }
   document.addEventListener('pointermove', e => {
     const r = document.documentElement;
     r.style.setProperty('--x', e.clientX);

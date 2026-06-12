@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Débuter le bras de fer — guide complet | ACS Luxembourg</title>
+  <title>Débuter le bras de fer sans la force brute | ACS</title>
   <meta name="description" content="Guide complet pour débuter le bras de fer : technique, matériel, entraînement et sécurité. Premier essai gratuit à Strassen."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/guide-debutant-bras-de-fer.html"/>
@@ -28,8 +28,9 @@
     "author": { "@type": "Organization", "name": "Armwrestling Club Strassen" },
     "publisher": { "@type": "Organization", "name": "Armwrestling Club Strassen", "url": "https://armwrestlingclubstrassen.com/" },
     "url": "https://armwrestlingclubstrassen.com/guide-debutant-bras-de-fer.html",
+    "image": "https://armwrestlingclubstrassen.com/match-competition-grande-salle.png",
     "datePublished": "2026-05-22",
-    "dateModified": "2026-05-22"
+    "dateModified": "2026-06-11"
   }
   </script>
   <script type="application/ld+json">
@@ -40,6 +41,40 @@
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
       { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" },
       { "@type": "ListItem", "position": 3, "name": "Guide débutant bras de fer", "item": "https://armwrestlingclubstrassen.com/guide-debutant-bras-de-fer.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "À quel âge peut-on commencer le bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il n'y a pas d'âge minimum pour s'entraîner en club. À l'ACS Strassen, nous accueillons des pratiquants de 15 à 60 ans. Les catégories compétition de la LAF débutent à 18 ans pour les seniors." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de fois par semaine s'entraîner pour progresser en bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Deux séances hebdomadaires sont idéales : une à Strassen le mardi (18h) pour les fondamentaux, une à Munsbach le vendredi pour le sparring. Une seule séance par semaine permet déjà une progression régulière." }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce que le bras de fer est dangereux pour un débutant ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Le bras de fer comporte un risque de fracture de l'humérus si un débutant résiste dans un mauvais angle. Ce risque est quasi nul avec un encadrement adapté : les coachs expliquent les gestes de sécurité avant tout sparring." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps avant de participer à une compétition de bras de fer ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Avec 2 séances par semaine, la plupart des débutants sont prêts pour leur premier tournoi en 6 à 12 mois. La Luxembourg Armwrestling Competition accueille des débutants chaque année à Munsbach." }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il une licence pour pratiquer le bras de fer au Luxembourg ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Une licence fédérale est nécessaire pour les compétitions officielles de la Luxembourg Armwrestling Federation. Pour l'entraînement en club, une cotisation annuelle suffit. La première séance à l'ACS Strassen est gratuite et sans inscription préalable." }
+      }
     ]
   }
   </script>
@@ -299,6 +334,88 @@
     }
     .callout p { margin: 0 !important; color: rgba(245,240,232,.88) !important; font-size: .96rem !important; }
 
+    /* ── TECH CARDS ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin: 2rem 0;
+    }
+    .tech-card {
+      background: linear-gradient(145deg, rgba(192,57,43,.11) 0%, rgba(8,4,4,.6) 100%);
+      border: 1px solid rgba(192,57,43,.18);
+      border-top: 2px solid rgba(192,57,43,.6);
+      border-radius: 6px;
+      padding: 2rem 1.8rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.07);
+      transition: transform .22s, box-shadow .22s, border-top-color .22s;
+    }
+    .tech-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.52), 0 0 0 1px rgba(192,57,43,.3), inset 0 1px 0 rgba(255,255,255,.07);
+      border-top-color: var(--red);
+    }
+    .tech-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -.4rem;
+      right: .8rem;
+      font-family: var(--font-display);
+      font-size: 7.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(192,57,43,.07);
+      pointer-events: none;
+      user-select: none;
+    }
+    .tech-card-num {
+      font-family: var(--font-display);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(192,57,43,.65);
+      margin-bottom: .8rem;
+    }
+    .tech-card-title {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--white);
+      margin-bottom: .9rem;
+      line-height: 1.1;
+    }
+    .tech-card-body {
+      font-size: .92rem;
+      color: rgba(245,240,232,.65);
+      line-height: 1.85;
+      position: relative;
+    }
+    .tech-card-body strong { color: var(--white); }
+    .tech-card-body a { color: var(--red); }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: 1.1rem;
+    }
+    .tech-tag {
+      font-family: var(--font-display);
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(192,57,43,.9);
+      background: rgba(192,57,43,.12);
+      border: 1px solid rgba(192,57,43,.28);
+      border-radius: 2px;
+      padding: .3rem .7rem;
+    }
+
     /* ── ACCORDION ── */
     .accordion { margin: 1.5rem 0; border: 1px solid rgba(255,255,255,.07); }
     .accordion-item { border-bottom: 1px solid rgba(255,255,255,.05); }
@@ -359,18 +476,34 @@
     .step-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(255,255,255,.05);
+      gap: 1.4rem;
+      background: transparent;
       margin: 1.8rem 0;
     }
-    .step-card { background: #0c0c0c; padding: 2rem 1.8rem; }
+    .step-card {
+      background: linear-gradient(145deg, rgba(192,57,43,.09) 0%, rgba(8,4,4,.55) 100%);
+      border: 1px solid rgba(192,57,43,.16);
+      border-top: 2px solid rgba(192,57,43,.55);
+      border-radius: 6px;
+      padding: 2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.06);
+      transition: transform .22s, box-shadow .22s, border-top-color .22s;
+    }
+    .step-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(192,57,43,.28), inset 0 1px 0 rgba(255,255,255,.06);
+      border-top-color: var(--red);
+    }
     .step-num {
       font-family: var(--font-display);
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 900;
-      letter-spacing: .04em;
+      letter-spacing: -.01em;
       color: rgba(192,57,43,.8);
-      margin-bottom: .9rem;
+      margin-bottom: .7rem;
+      line-height: 1;
     }
     .step-title {
       font-family: var(--font-display);
@@ -381,7 +514,15 @@
       margin-bottom: .6rem;
       letter-spacing: .04em;
     }
-    .step-desc { font-size: .86rem; color: rgba(245,240,232,.52); line-height: 1.75; }
+    .step-desc { font-size: .86rem; color: rgba(245,240,232,.6); line-height: 1.78; }
+
+    /* ── SECTION ACCENT BACKGROUNDS ── */
+    #bases-techniques {
+      background-image: radial-gradient(ellipse 75% 60% at 50% 0%, rgba(192,57,43,.12) 0%, transparent 70%);
+    }
+    #progresser {
+      background-image: radial-gradient(ellipse 75% 60% at 50% 0%, rgba(192,57,43,.1) 0%, transparent 70%);
+    }
 
     /* ── ERRORS LIST ── */
     .errors-list { margin: 1.8rem 0; }
@@ -518,12 +659,37 @@
       .video-frame   { max-width: 240px; }
       .split         { grid-template-columns: 1fr; gap: 2rem; }
       .stats-band    { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid     { grid-template-columns: 1fr; }
       .step-grid     { grid-template-columns: 1fr; }
       .photo-strip-3 { grid-template-columns: 1fr; }
       .photo-strip-3 img { height: 220px; }
       .cta-mid       { flex-direction: column; align-items: flex-start; }
       .cta-final     { grid-template-columns: 1fr; }
       .lu-highlight  { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
+    .toc-label {
+      font-family: var(--font-display);
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(192,57,43,.9);
+      padding-top: .15rem; flex-shrink: 0; min-width: 80px;
+    }
+    .toc-list { margin:0; padding:0; list-style:none; columns:2; column-gap:2.5rem; flex:1; }
+    .toc-list li { margin-bottom:.5rem; break-inside:avoid; }
+    .toc-list a {
+      font-family: var(--font-display);
+      font-size: .86rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(245,240,232,.75); text-decoration: none; transition: color .2s;
+    }
+    .toc-list a:hover { color: var(--red); }
+    .toc-num { color: rgba(192,57,43,.8); margin-right: .4rem; }
+    @media(max-width: 600px) {
+      .toc-list { columns: 1; }
+      .toc-wrap { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
@@ -553,7 +719,7 @@
     <div class="article-date">Mis à jour : mai 2026</div>
     <h1 class="article-title">Guide débutant<br><span>bras de fer</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Tout ce qu'il faut savoir avant de venir pour la première fois : technique, sécurité, matériel, niveau requis et comment progresser.</p>
-    <p style="font-size:.88rem;color:rgba(245,240,232,.35);max-width:520px;line-height:1.7;margin-bottom:1.5rem;">Ce guide s'arrête à la porte de ta première séance. Une fois lancé, consulte <a href="comment-gagner-bras-de-fer.html" style="color:rgba(192,57,43,.65);">Comment gagner au bras de fer →</a> pour la tactique.</p>
+
     <div class="article-meta">ACS Luxembourg · Guide complet · Première séance gratuite</div>
   </div>
 </div>
@@ -578,6 +744,25 @@
         <div class="stat-label">Horaire</div>
         <div class="stat-val">Mardi 18h</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Dans ce guide</div>
+      <ol class="toc-list">
+        <li><a href="#quest-ce-que"><span class="toc-num">01 ·</span>Qu'est-ce que le bras de fer ?</a></li>
+        <li><a href="#faut-il-etre-fort"><span class="toc-num">02 ·</span>Faut-il être fort ?</a></li>
+        <li><a href="#bases-techniques"><span class="toc-num">03 ·</span>Les bases techniques</a></li>
+        <li><a href="#securite"><span class="toc-num">04 ·</span>Sécurité &amp; équipement</a></li>
+        <li><a href="#progresser"><span class="toc-num">05 ·</span>Comment progresser</a></li>
+        <li><a href="#erreurs"><span class="toc-num">06 ·</span>Les erreurs courantes</a></li>
+        <li><a href="#luxembourg"><span class="toc-num">07 ·</span>Bras de fer au Luxembourg</a></li>
+        <li><a href="#faq"><span class="toc-num">08 ·</span>Questions fréquentes</a></li>
+      </ol>
     </div>
   </div>
 </div>
@@ -615,7 +800,7 @@
 </div>
 
 <!-- ── QU'EST-CE QUE LE BRAS DE FER ──────────────────────────────────── -->
-<div class="sec sec-light bg-red-glow">
+<div class="sec sec-light bg-red-glow" id="quest-ce-que">
   <div class="sec-inner">
     <div class="split">
 
@@ -636,7 +821,7 @@
 </div>
 
 <!-- ── FAUT-IL ÊTRE FORT ──────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-red-walls">
+<div class="sec sec-dark bg-red-walls" id="faut-il-etre-fort">
   <div class="sec-inner">
     <div class="split">
 
@@ -664,48 +849,36 @@
 </div>
 
 <!-- ── BASES TECHNIQUES ───────────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec bg-cinema" id="bases-techniques">
   <div class="sec-inner">
     <div class="sec-eyebrow">Technique</div>
     <h2>Les bases techniques<br><span>à connaître</span></h2>
-    <p>Ces quatre éléments constituent le socle de toute pratique. Cliquez sur chaque point pour en découvrir le détail.</p>
+    <p>Ces quatre éléments constituent le socle de toute pratique.</p>
 
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">
-          <span class="acc-num">01</span>
-          <span class="acc-label">La prise de main</span>
-          <span class="acc-icon">+</span>
-        </button>
-        <div class="acc-body">La prise est fondamentale. Pouce contre pouce, les deux athlètes saisissent la main adverse. Le placement des doigts, la position du poignet et l'angle de la main avant le signal conditionnent déjà une grande partie du résultat. Une prise haute favorise le top roll ; une prise basse et serrée prépare le hook.</div>
+    <div class="tech-grid">
+      <div class="tech-card" data-num="01">
+        <div class="tech-card-num">01 · Fondamental</div>
+        <div class="tech-card-title">La prise de main</div>
+        <div class="tech-card-body">Pouce contre pouce, le placement des doigts, la position du poignet et l'angle de la main avant le signal conditionnent déjà une grande partie du résultat. Une prise haute favorise le top roll ; une prise basse et serrée prépare le hook.</div>
       </div>
-      <div class="accordion-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">
-          <span class="acc-num">02</span>
-          <span class="acc-label">Le placement du corps</span>
-          <span class="acc-icon">+</span>
-        </button>
-        <div class="acc-body">Le bras de fer n'engage pas que le bras. L'épaule, le dos, les hanches et les jambes interviennent dans la transmission de force. Un bon placement permet de mettre tout le poids du corps derrière le mouvement — c'est ce qu'on travaille en priorité lors des premières séances à l'ACS Strassen.</div>
+      <div class="tech-card" data-num="02">
+        <div class="tech-card-num">02 · Transmission</div>
+        <div class="tech-card-title">Le placement du corps</div>
+        <div class="tech-card-body">Le bras de fer n'engage pas que le bras. L'épaule, le dos, les hanches et les jambes interviennent dans la transmission de force. Un bon placement permet de mettre tout le poids du corps derrière le mouvement.</div>
       </div>
-      <div class="accordion-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">
-          <span class="acc-num">03</span>
-          <span class="acc-label">Le démarrage</span>
-          <span class="acc-icon">+</span>
-        </button>
-        <div class="acc-body">Le match démarre au signal "Ready — Go !" de l'arbitre. La première fraction de seconde est souvent décisive. C'est un effort <strong>anaérobie alactique</strong> — explosif, très court, maximal. La préparation mentale au départ est aussi importante que la force physique. Travailler son démarrage jusqu'à ce qu'il soit automatique est l'un des secrets des bons compétiteurs.</div>
+      <div class="tech-card" data-num="03">
+        <div class="tech-card-num">03 · Explosivité</div>
+        <div class="tech-card-title">Le démarrage</div>
+        <div class="tech-card-body">La première fraction de seconde est souvent décisive. C'est un effort <strong>anaérobie alactique</strong> — explosif, très court, maximal. La préparation mentale au départ est aussi importante que la force physique.</div>
       </div>
-      <div class="accordion-item">
-        <button class="acc-btn" onclick="toggleAcc(this)">
-          <span class="acc-num">04</span>
-          <span class="acc-label">Les trois mouvements principaux</span>
-          <span class="acc-icon">+</span>
-        </button>
-        <div class="acc-body">
-          <strong>Top roll</strong> — rouler sur le dessus de la main adverse pour gagner en levier.<br><br>
-          <strong>Hook</strong> — tirer vers soi en fléchissant le poignet pour plaquer latéralement.<br><br>
-          <strong>Press</strong> — écraser vers le bas avec l'épaule et le poids du corps.<br><br>
-          En début de pratique, l'objectif est simplement de reconnaître ces trois mouvements. La mécanique complète de chacun est détaillée dans notre <a href="technique-prise-bras-de-fer.html" style="color:var(--red);">guide technique des prises →</a>
+      <div class="tech-card" data-num="04">
+        <div class="tech-card-num">04 · Arsenal</div>
+        <div class="tech-card-title">Les trois mouvements</div>
+        <div class="tech-card-body">En début de pratique, l'objectif est de reconnaître ces trois mouvements. La mécanique complète est dans notre <a href="technique-prise-bras-de-fer.html">guide des prises →</a></div>
+        <div class="tech-tags">
+          <span class="tech-tag">Top roll</span>
+          <span class="tech-tag">Hook</span>
+          <span class="tech-tag">Press</span>
         </div>
       </div>
     </div>
@@ -713,7 +886,7 @@
 </div>
 
 <!-- ── SÉCURITÉ & ÉQUIPEMENT ─────────────────────────────────────────── -->
-<div class="sec sec-dark bg-danger-x">
+<div class="sec sec-dark bg-danger-x" id="securite">
   <div class="sec-inner">
     <div class="split">
 
@@ -748,7 +921,7 @@
 </div>
 
 <!-- ── COMMENT PROGRESSER ─────────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec bg-cinema" id="progresser">
   <div class="sec-inner">
     <div class="sec-eyebrow">Progression</div>
     <h2>Comment progresser<br><span>après la première séance</span></h2>
@@ -783,7 +956,7 @@
 </div>
 
 <!-- ── ERREURS COURANTES ───────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-inferno">
+<div class="sec sec-dark bg-inferno" id="erreurs">
   <div class="sec-inner">
     <div class="sec-eyebrow">Erreurs à éviter</div>
     <h2>Les erreurs courantes<br><span>des débutants</span></h2>
@@ -817,7 +990,7 @@
 </div>
 
 <!-- ── LE BRAS DE FER AU LUXEMBOURG ──────────────────────────────────── -->
-<div class="sec sec-light bg-horizon">
+<div class="sec sec-light bg-horizon" id="luxembourg">
   <div class="sec-inner">
 
     <div class="photo-strip-3">

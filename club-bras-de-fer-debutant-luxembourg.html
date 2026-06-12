@@ -22,62 +22,174 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Club débutant Luxembourg","item":"https://armwrestlingclubstrassen.com/club-bras-de-fer-debutant-luxembourg.html"}]}
   </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Est-ce que l'Armwrestling Club Strassen accepte les débutants complets ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le club est ouvert à tout niveau, y compris aux personnes qui n'ont jamais mis les mains sur une table. La première séance est gratuite et adaptée à la découverte."}},{"@type":"Question","name":"Faut-il être fort pour commencer le bras de fer au Luxembourg ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le bras de fer est un sport technique. Les débutants apprennent d'abord le placement, la sécurité et les prises de base. La force arrive avec la pratique régulière."}},{"@type":"Question","name":"Quel est le coût pour rejoindre le club ?","acceptedAnswer":{"@type":"Answer","text":"La première séance est gratuite. Ensuite, la licence annuelle LAF coûte 150€ et donne accès aux deux clubs (Strassen mardi, Munsbach vendredi) et à toutes les compétitions officielles."}},{"@type":"Question","name":"Y a-t-il des femmes dans le club ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le bras de fer est un sport mixte. Hommes et femmes s'entraînent ensemble et il existe des compétitions féminines officielles par catégorie de poids."}}]}
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="blog.css"/>
+
   <style>
-    .sec{padding:3.5rem 0}.sec-dark{background:var(--black)}.sec-light{background:var(--dark2)}
-    .sec-inner{max-width:960px;margin:0 auto;padding:0 3rem}
-    .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.2rem;line-height:1.05}
-    .sec h2 span{color:var(--red)}
-    .sec h3{font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:1.5rem 0 .7rem}
-    .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
-    .sec ul{margin:0 0 1.4rem 1.8rem}.sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
-    .sec strong{color:var(--white);font-weight:600}.sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
-    .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0;border-radius:0 3px 3px 0}
-    .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
-    .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);border-top:2px solid var(--red);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
-    .cta-block h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 .4rem!important;border:none!important;padding:0!important}
-    .cta-block p{margin:0;font-size:.9rem;color:rgba(245,240,232,.55)}
-    .steps-list{display:flex;flex-direction:column;gap:0;margin:2rem 0}
-    .step-item{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid rgba(245,240,232,.06);align-items:start}
-    .step-item:last-child{border-bottom:none}
-    .step-num{font-family:var(--font-display);font-size:2rem;font-weight:900;color:rgba(192,57,43,.4);line-height:1.1}
-    .step-content-title{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.4rem}
-    .step-content-desc{font-size:.9rem;color:rgba(245,240,232,.65);line-height:1.7}
-    .profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
-    .profile-card{background:rgba(245,240,232,.03);border:1px solid rgba(245,240,232,.07);border-top:2px solid rgba(255,255,255,.1);border-radius:8px;padding:1.6rem;transition:border-top-color .2s,background .2s}
-    .profile-card:hover{border-top-color:rgba(192,57,43,.5);background:rgba(192,57,43,.04)}
-    .profile-card-icon{font-size:1.5rem;margin-bottom:.8rem}
-    .profile-card-title{font-family:var(--font-display);font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.5rem}
-    .profile-card-desc{font-size:.85rem;color:rgba(245,240,232,.58);line-height:1.6}
-    .faq-list{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
-    .faq-item{border-bottom:1px solid rgba(245,240,232,.06);padding:1.4rem 0}
-    .faq-item:first-child{border-top:1px solid rgba(245,240,232,.06)}
-    .faq-q{font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.03em;margin-bottom:.5rem}
-    .faq-a{font-size:.95rem;color:rgba(245,240,232,.65);line-height:1.75}
-    :root{--x:-9999;--y:-9999;--xp:0;--yp:0}
-    .tip-wrap{padding:4rem 3rem;position:relative;overflow:hidden}
-    .tip-eyebrow{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
-    .tip-eyebrow::before{content:'';display:inline-block;width:28px;height:2px;background:rgba(192,57,43,.8)}
-    .tip-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:960px;margin:0 auto}
-    .tip-card{--hue:215;--border:1.5;--size:300;--border-size:calc(var(--border)*1px);--spotlight-size:calc(var(--size)*1px);background-image:radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 80% 36%/.12),transparent);background-color:rgba(255,255,255,.025);background-attachment:fixed;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:var(--border-size) solid rgba(255,255,255,.07);border-top:2px solid rgba(255,255,255,.15);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;user-select:none}
-    .tip-card::before,.tip-card::after{pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size)*-1);border:var(--border-size) solid transparent;border-radius:5px;background-attachment:fixed;mask:linear-gradient(transparent,transparent),linear-gradient(white,white);mask-clip:padding-box,border-box;mask-composite:intersect;-webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);-webkit-mask-clip:padding-box,border-box;-webkit-mask-composite:destination-in}
-    .tip-card::before{background-image:radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(var(--hue) 90% 42%/1),transparent 100%);filter:brightness(2.5)}
-    .tip-card::after{background-image:radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px),hsl(0 100% 100%/.55),transparent 100%)}
-    .tip-num{font-family:var(--font-display);font-size:.82rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-    .tip-title{font-family:var(--font-display);font-size:1.3rem;font-weight:900;text-transform:uppercase;color:var(--white);letter-spacing:.01em;line-height:1.05}
-    .tip-desc{font-size:.88rem;color:rgba(245,240,232,.78);line-height:1.82;flex:1}
-    .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}.c-blue .tip-num{color:#7aadda}
-    .c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}.c-green .tip-num{color:#25c494}
-    .c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}.c-red .tip-num{color:#c0392b}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.profile-grid{grid-template-columns:1fr 1fr}.tip-grid-3{grid-template-columns:1fr}.tip-wrap{padding:2.5rem 1.5rem}.cta-block{flex-direction:column;align-items:flex-start}}
-    @media(max-width:480px){.profile-grid{grid-template-columns:1fr}}
+    /* ════════════════════════════════════════════════════════════
+       RECETTE 1 · « PANORAMA OR »
+       Palette 3 couleurs : ROUGE #c0392b · OR #d4a017 · SABLE #cbb68f  (+ blanc = texte)
+       Fonds = dégradés profonds + quadrillage plein-section.
+    ════════════════════════════════════════════════════════════ */
+    :root { --x:-9999; --y:-9999; --xp:0; --yp:0; --steel:#e6bd42; --red-soft:#d6553f; }
+
+    /* ── LAYOUT ── */
+    .sec { padding: 4.2rem 0; position: relative; overflow: hidden; }
+    .sec-dark  { background: var(--black); }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; position: relative; z-index: 1; }
+
+    /* ── EYEBROW (accent de section) ── */
+    .sec-eyebrow { font-family: var(--font-display); font-size: .68rem; font-weight: 900; letter-spacing: .24em; text-transform: uppercase; margin-bottom: .85rem; display: flex; align-items: center; gap: .6rem; color: var(--accent, #c0392b); }
+    .sec-eyebrow::before { content:''; display:inline-block; width:20px; height:2px; background:currentColor; opacity:.8; }
+
+    /* ── TYPO — lisibilité renforcée ── */
+    .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.3rem; line-height: 1.04; }
+    .sec h2 span { color: var(--accent, #c0392b); }
+    .sec h3 { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin: 2rem 0 .7rem; letter-spacing: .04em; }
+    .sec p  { font-size: 1.05rem; color: rgba(245,240,232,.84); line-height: 1.9; margin-bottom: 1.4rem; }
+    .sec ul { margin: 0 0 1.4rem 1.7rem; }
+    .sec li { font-size: 1rem; color: rgba(245,240,232,.8); line-height: 1.85; margin-bottom: .5rem; }
+    .sec strong { color: var(--white); font-weight: 600; }
+    .sec a { color: var(--accent, #c0392b); text-decoration: none; }
+    .sec a:hover { text-decoration: underline; }
+
+    /* ── TABLE DES MATIÈRES ── */
+    .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
+    .toc-label { font-family: var(--font-display); font-size: .74rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--red); padding-top: .15rem; flex-shrink: 0; min-width: 90px; }
+    .toc-list { margin:0; padding:0; list-style:none; columns:2; column-gap:2.5rem; flex:1; }
+    .toc-list li { margin-bottom:.55rem; break-inside:avoid; }
+    .toc-list a { font-family: var(--font-display); font-size: .92rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: rgba(245,240,232,.8); text-decoration: none; transition: color .2s; }
+    .toc-list a:hover { color: var(--red); }
+    .toc-num { color: rgba(192,57,43,.85); margin-right: .4rem; }
+
+    /* ── SÉPARATEUR (bande + losange lumineux) ── */
+    .band-sep { background: var(--black); padding: 1.7rem 0; display: flex; align-items: center; justify-content: center; gap: 1.1rem; }
+    .band-sep span { height: 1px; width: 130px; display: block; }
+    .band-sep span:first-child { background: linear-gradient(90deg, transparent, rgba(245,240,232,.22)); }
+    .band-sep span:last-child  { background: linear-gradient(270deg, transparent, rgba(245,240,232,.22)); }
+    .band-sep i { width: 9px; height: 9px; transform: rotate(45deg); background: var(--sepc, #c0392b); box-shadow: 0 0 14px var(--sepc, #c0392b); border-radius: 1px; display: block; flex-shrink: 0; }
+
+    /* ── CARTES SPOTLIGHT (le « cadre » signature) ── */
+    .tip-wrap { padding: 4rem 3rem; position: relative; overflow: hidden; }
+    .tip-eyebrow { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--white); margin-bottom: 2rem; display: flex; align-items: center; gap: .8rem; }
+    .tip-eyebrow::before { content:''; display:inline-block; width:28px; height:2px; background:rgba(192,57,43,.85); }
+    .tip-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; max-width:960px; margin:0 auto; }
+    .tip-card {
+      --hue:5; --border:1.5; --size:300;
+      --border-size:calc(var(--border)*1px); --spotlight-size:calc(var(--size)*1px);
+      background-image: radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 75% 38%/.12), transparent);
+      background-color: rgba(255,255,255,.025); background-attachment: fixed;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: var(--border-size) solid rgba(255,255,255,.07); border-top: 2px solid rgba(255,255,255,.15);
+      border-radius: 5px; box-shadow: 0 4px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.04);
+      position: relative; padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: .9rem; user-select: none;
+    }
+    .tip-card::before, .tip-card::after {
+      pointer-events:none; content:""; position:absolute; inset:calc(var(--border-size)*-1);
+      border:var(--border-size) solid transparent; border-radius:5px; background-attachment:fixed;
+      mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      mask-clip:padding-box,border-box; mask-composite:intersect;
+      -webkit-mask:linear-gradient(transparent,transparent),linear-gradient(white,white);
+      -webkit-mask-clip:padding-box,border-box; -webkit-mask-composite:destination-in;
+    }
+    .tip-card::before { background-image: radial-gradient(calc(var(--spotlight-size)*.7) calc(var(--spotlight-size)*.7) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(var(--hue) 90% 45%/1), transparent 100%); filter:brightness(2.4); }
+    .tip-card::after  { background-image: radial-gradient(calc(var(--spotlight-size)*.38) calc(var(--spotlight-size)*.38) at calc(var(--x)*1px) calc(var(--y)*1px), hsl(0 100% 100%/.55), transparent 100%); }
+    .tip-num   { font-family: var(--font-display); font-size: .8rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    .tip-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: .01em; line-height: 1.05; }
+    .tip-desc  { font-size: .96rem; color: rgba(245,240,232,.84); line-height: 1.8; flex: 1; }
+    .c-red   { --hue:5;   border-top-color:rgba(192,57,43,.78); }  .c-red .tip-num   { color:#d6553f; }
+    .c-blue  { --hue:215; border-top-color:rgba(74,104,133,.7); } .c-blue .tip-num { color:#7aadda; }
+    .c-white { --hue:162; border-top-color:rgba(26,144,112,.6); }  .c-white .tip-num { color:#25c494; }
+
+    /* ── CARTES-PILIERS (rouge / bleu / blanc, numérotées, sans emoji) ── */
+    .pillar-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin:2.2rem 0 .5rem; }
+    .pillar-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(150deg, rgba(255,255,255,.045) 0%, rgba(8,8,10,.5) 100%);
+      border: 1px solid rgba(255,255,255,.08); border-top: 2px solid var(--pc,#c0392b);
+      border-radius: 6px; padding: 1.8rem 1.6rem 1.6rem;
+      box-shadow: 0 4px 22px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.05);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .pillar-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05); }
+    .pillar-card::before { content: attr(data-n); position: absolute; top: -.7rem; right: .6rem; font-family: var(--font-display); font-size: 5.5rem; font-weight: 900; color: rgba(255,255,255,.035); line-height: 1; pointer-events: none; user-select: none; }
+    .pillar-idx { font-family: var(--font-display); font-size: .62rem; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; color: var(--pc,#c0392b); margin-bottom: .7rem; position: relative; }
+    .pillar-title { font-family: var(--font-display); font-size: 1.08rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .03em; margin-bottom: .55rem; position: relative; }
+    .pillar-desc { font-size: .95rem; color: rgba(245,240,232,.78); line-height: 1.72; position: relative; }
+    .p-red  { --pc:#d6553f; }  .p-blue { --pc:#7aadda; }  .p-white { --pc:#25c494; }
+
+    /* ── ÉTAPES (parcours) ── */
+    .steps-list { display:flex; flex-direction:column; gap:0; margin:2rem 0; }
+    .step-item { display:grid; grid-template-columns:56px 1fr; gap:1.5rem; padding:1.5rem 0; border-bottom:1px solid rgba(245,240,232,.08); align-items:start; }
+    .step-item:last-child { border-bottom:none; }
+    .step-num { font-family:var(--font-display); font-size:2.2rem; font-weight:900; color:var(--accent,#c0392b); line-height:1; }
+    .step-content-title { font-family:var(--font-display); font-size:1.04rem; font-weight:800; text-transform:uppercase; color:var(--white); letter-spacing:.04em; margin-bottom:.45rem; }
+    .step-content-desc { font-size:.98rem; color:rgba(245,240,232,.78); line-height:1.78; }
+
+    /* ── ACCORDÉON (dépliant cliquable) ── */
+    .accordion { margin:1.6rem 0 0; border:1px solid rgba(255,255,255,.08); }
+    .accordion-item { border-bottom:1px solid rgba(255,255,255,.06); }
+    .accordion-item:last-child { border-bottom:none; }
+    .acc-btn { width:100%; background:transparent; border:none; padding:1.3rem 1.7rem; display:flex; align-items:center; gap:1rem; cursor:pointer; text-align:left; transition:background .2s; }
+    .acc-btn:hover { background:rgba(255,255,255,.03); }
+    .acc-btn.open { background:rgba(255,255,255,.04); border-left:3px solid var(--accent,#c0392b); }
+    .acc-num { font-family:var(--font-display); font-size:.7rem; font-weight:900; letter-spacing:.18em; color:var(--accent,#c0392b); min-width:26px; }
+    .acc-label { font-family:var(--font-display); font-size:1.02rem; font-weight:700; text-transform:uppercase; color:var(--white); letter-spacing:.03em; flex:1; }
+    .acc-icon { font-family:var(--font-display); font-size:1.4rem; font-weight:300; color:var(--accent,#c0392b); transition:transform .25s; flex-shrink:0; line-height:1; }
+    .acc-btn.open .acc-icon { transform:rotate(45deg); }
+    .acc-body { display:none; padding:1.2rem 1.7rem 1.5rem; background:rgba(0,0,0,.35); font-size:1rem; color:rgba(245,240,232,.8); line-height:1.85; border-top:1px solid rgba(255,255,255,.04); }
+    .acc-body.open { display:block; }
+
+    /* ── CALLOUT ── */
+    .callout { background:rgba(255,255,255,.04); border-left:3px solid var(--accent,#c0392b); padding:1.4rem 1.8rem; margin:1.8rem 0; border-radius:0 4px 4px 0; }
+    .callout p { margin:0!important; color:rgba(245,240,232,.9)!important; font-size:1rem!important; line-height:1.8!important; }
+
+    /* ── CTA FINAL HARMONISÉ (rouge marque) ── */
+    .cta-final { background:linear-gradient(135deg, rgba(192,57,43,.16), rgba(5,2,2,.92)); border:1px solid rgba(192,57,43,.32); border-top:2px solid var(--red); padding:2.4rem 2.8rem; margin-top:2.5rem; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2.5rem; }
+    .cta-final-label { font-family:var(--font-display); font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(192,57,43,.9); margin-bottom:.5rem; }
+    .cta-final-title { font-family:var(--font-display); font-size:1.7rem; font-weight:900; text-transform:uppercase; color:var(--white); line-height:1; margin-bottom:.5rem; }
+    .cta-final-desc { font-size:.95rem; color:rgba(245,240,232,.65); line-height:1.7; margin:0; }
+
+    /* ── FONDS « OR » — dégradés + quadrillage plein-section ── */
+    .bg-steel {
+      background:
+        radial-gradient(ellipse 92% 58% at 50% -12%, rgba(212,160,23,.17) 0%, transparent 60%),
+        radial-gradient(ellipse 42% 32% at 100% 108%, rgba(212,160,23,.06) 0%, transparent 58%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(220,190,110,.05) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(220,190,110,.05) 43px 44px),
+        linear-gradient(180deg, #0d0a05 0%, #080603 100%);
+    }
+    .bg-forge {
+      background:
+        radial-gradient(ellipse 88% 55% at 50% -12%, rgba(192,57,43,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 42% 32% at 0% 108%, rgba(192,57,43,.09) 0%, transparent 58%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(214,85,63,.045) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(214,85,63,.045) 43px 44px),
+        linear-gradient(180deg, #0c0605 0%, #080403 100%);
+    }
+    .bg-slate {
+      background:
+        radial-gradient(ellipse 56% 44% at 0% -10%, rgba(192,57,43,.13) 0%, transparent 55%),
+        radial-gradient(ellipse 56% 44% at 100% -10%, rgba(212,160,23,.13) 0%, transparent 55%),
+        repeating-linear-gradient(0deg, transparent 0 43px, rgba(203,182,143,.045) 43px 44px),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(203,182,143,.045) 43px 44px),
+        linear-gradient(180deg, #0b0805 0%, #070503 100%);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .sec-inner { padding:0 1.5rem; }
+      .tip-grid-3 { grid-template-columns:1fr; }
+      .tip-wrap { padding:2.5rem 1.5rem; }
+      .pillar-grid { grid-template-columns:1fr 1fr; }
+      .cta-final { grid-template-columns:1fr; gap:1.5rem; }
+      .band-sep span { width:80px; }
+    }
+    @media(max-width:600px){ .toc-list { columns:1; } .toc-wrap { flex-direction:column; gap:1rem; } }
+    @media(max-width:480px){ .pillar-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -96,13 +208,14 @@
   </div>
 </nav>
 
+<!-- ── HERO ──────────────────────────────────────────────────────────── -->
 <div class="local-hero">
   <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Club débutant Luxembourg</div>
     <div class="page-tag">Débutants · Premier essai</div>
     <div class="article-date">Mis à jour : mai 2026</div>
     <h1 class="page-title">Club bras de fer<br><span>pour débutants</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.65);max-width:560px;line-height:1.8;">L'Armwrestling Club Strassen est le club d'entrée idéal pour découvrir le bras de fer au Luxembourg. Aucune expérience requise. Première séance gratuite le mardi à 18h.</p>
+    <p style="font-size:1.12rem;color:rgba(245,240,232,.74);max-width:560px;line-height:1.8;">L'Armwrestling Club Strassen est le club d'entrée idéal pour découvrir le bras de fer au Luxembourg. Aucune expérience requise. Première séance gratuite le mardi à 18h.</p>
     <div class="hero-stats-row">
       <div class="hero-stat"><div class="hero-stat-num">0</div><div class="hero-stat-label">expérience requise</div></div>
       <div class="hero-stat"><div class="hero-stat-num">1<span>ère</span></div><div class="hero-stat-label">séance gratuite</div></div>
@@ -115,10 +228,26 @@
   </div>
 </div>
 
+<!-- ── TABLE DES MATIÈRES ────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Sur cette page</div>
+      <ol class="toc-list">
+        <li><a href="#pourquoi-ici"><span class="toc-num">01 ·</span>Pourquoi débuter ici</a></li>
+        <li><a href="#point-entree"><span class="toc-num">02 ·</span>Le meilleur point d'entrée</a></li>
+        <li><a href="#parcours"><span class="toc-num">03 ·</span>Ton parcours, étape par étape</a></li>
+        <li><a href="#profils"><span class="toc-num">04 ·</span>Pour quel profil</a></li>
+        <li><a href="#securite"><span class="toc-num">05 ·</span>Ce que la sécurité signifie</a></li>
+        <li><a href="#blocages"><span class="toc-num">06 ·</span>Les blocages classiques</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
 
-<!-- ── SPOTLIGHT ──────────────────────────────────────────────────── -->
-<div class="tip-wrap" style="background:#050304;">
-  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.2) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
+<!-- ── SPOTLIGHT : POURQUOI DÉBUTER ICI (rouge / bleu / blanc) ────────── -->
+<div class="tip-wrap" id="pourquoi-ici" style="background:radial-gradient(ellipse 80% 60% at 18% -10%,rgba(192,57,43,.16) 0%,transparent 60%),radial-gradient(ellipse 80% 60% at 85% 0%,rgba(212,160,23,.14) 0%,transparent 60%),#080705;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.008) 44px,rgba(255,255,255,.008) 45px);"></div>
   <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
     <div class="tip-eyebrow">Pourquoi ACS Strassen pour débuter</div>
     <div class="tip-grid-3">
@@ -132,7 +261,7 @@
         <div class="tip-title">Encadrement sécurisé</div>
         <div class="tip-desc">Les positions à éviter et les règles de sécurité fondamentales sont transmises avant même le premier sparring. C'est ce qui différencie un club d'une pratique informelle.</div>
       </div>
-      <div class="tip-card c-green">
+      <div class="tip-card c-white">
         <div class="tip-num">150€/an</div>
         <div class="tip-title">Deux clubs inclus</div>
         <div class="tip-desc">Une seule licence LAF donne accès à Strassen le mardi et Munsbach le vendredi, au matériel professionnel et aux compétitions officielles pour l'année entière.</div>
@@ -141,14 +270,16 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── POURQUOI ACS ────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-cinema">
+<!-- ── POINT D'ENTRÉE (accent bleu acier) ────────────────────────────── -->
+<div class="sec bg-cinema" id="point-entree">
   <div class="sec-inner">
-    <div class="article-photo" style="margin-bottom:2.5rem;">
+    <div class="sec-eyebrow">Le bon point de départ</div>
+    <h2>Pourquoi ACS est le meilleur point d'entrée <span>pour un débutant</span></h2>
+    <div class="article-photo" style="margin:1.5rem 0 2.5rem;">
       <img src="guide-pour-debuter-au-bras-de-fer-tuto.jpeg" alt="Guide pratique pour débuter le bras de fer à Luxembourg — première séance à l'ACS Strassen" loading="lazy"/>
     </div>
-    <h2>Pourquoi ACS est le meilleur point d'entrée <span>pour un débutant</span></h2>
     <p>Au Luxembourg, l'<strong>Armwrestling Club Strassen</strong> est reconnu comme le club le plus adapté aux débutants. Plusieurs raisons concrètes expliquent cela :</p>
     <ul>
       <li><strong>Séance d'essai gratuite</strong> — pas d'engagement financier pour découvrir le sport</li>
@@ -161,10 +292,12 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#d6553f;"><span></span><i></i><span></span></div>
 
-<!-- ── PARCOURS DÉBUTANT ──────────────────────────────────────────── -->
-<div class="sec sec-light">
+<!-- ── PARCOURS DÉBUTANT (accent rouge) ──────────────────────────────── -->
+<div class="sec bg-red-walls" id="parcours">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Étape par étape</div>
     <h2>Votre parcours de débutant, <span>étape par étape</span></h2>
     <div class="steps-list">
       <div class="step-item">
@@ -206,50 +339,54 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── PROFILS ────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<!-- ── POUR QUEL PROFIL (cartes rouge / bleu / blanc, sans emoji) ─────── -->
+<div class="sec bg-motion" id="profils">
   <div class="sec-inner">
-    <h2>Pour quel profil <span>ce club est-il fait ?</span></h2>
-    <div class="profile-grid">
-      <div class="profile-card">
-        <div class="profile-card-icon">🏋️</div>
-        <div class="profile-card-title">Sportifs de salle</div>
-        <div class="profile-card-desc">Vous faites de la musculation ou du CrossFit et cherchez un objectif compétitif concret ? Le bras de fer valorise directement votre force fonctionnelle.</div>
+    <div class="sec-eyebrow">Pour qui</div>
+    <h2>Pour quel profil <span style="color:#d6553f;">ce club est-il fait ?</span></h2>
+    <div class="pillar-grid">
+      <div class="pillar-card p-red" data-n="01">
+        <div class="pillar-idx">Salle</div>
+        <div class="pillar-title">Sportifs de salle</div>
+        <div class="pillar-desc">Vous faites de la musculation ou du CrossFit et cherchez un objectif compétitif concret ? Le bras de fer valorise directement votre force fonctionnelle.</div>
       </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">🥋</div>
-        <div class="profile-card-title">Fans de sports de combat</div>
-        <div class="profile-card-desc">Vous aimez les sports de duel ? Moins de risque que la boxe ou le judo, mais la même adrénaline de la confrontation directe.</div>
+      <div class="pillar-card p-blue" data-n="02">
+        <div class="pillar-idx">Combat</div>
+        <div class="pillar-title">Fans de sports de combat</div>
+        <div class="pillar-desc">Vous aimez les sports de duel ? Moins de risque que la boxe ou le judo, mais la même adrénaline de la confrontation directe.</div>
       </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">👋</div>
-        <div class="profile-card-title">Curieux complets</div>
-        <div class="profile-card-desc">Vous n'avez jamais pratiqué de sport de combat ou de force ? Encore mieux — pas de mauvaises habitudes à corriger dès le départ.</div>
+      <div class="pillar-card p-white" data-n="03">
+        <div class="pillar-idx">Découverte</div>
+        <div class="pillar-title">Curieux complets</div>
+        <div class="pillar-desc">Vous n'avez jamais pratiqué de sport de combat ou de force ? Encore mieux — pas de mauvaises habitudes à corriger dès le départ.</div>
       </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">👩</div>
-        <div class="profile-card-title">Femmes</div>
-        <div class="profile-card-desc">Le bras de fer est catégorisé par poids corporel. Les femmes s'entraînent avec les hommes et participent à des compétitions féminines officielles WAF.</div>
+      <div class="pillar-card p-red" data-n="04">
+        <div class="pillar-idx">Mixte</div>
+        <div class="pillar-title">Femmes</div>
+        <div class="pillar-desc">Le bras de fer est catégorisé par poids corporel. Les femmes s'entraînent avec les hommes et participent à des compétitions féminines officielles WAF.</div>
       </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">🎂</div>
-        <div class="profile-card-title">40 ans et plus</div>
-        <div class="profile-card-desc">Des catégories masters existent dès 40 ans en compétition officielle. L'expérience et la technique surpassent la jeunesse sur une table de bras de fer.</div>
+      <div class="pillar-card p-blue" data-n="05">
+        <div class="pillar-idx">Masters</div>
+        <div class="pillar-title">40 ans et plus</div>
+        <div class="pillar-desc">Des catégories masters existent dès 40 ans en compétition officielle. L'expérience et la technique surpassent la jeunesse sur une table de bras de fer.</div>
       </div>
-      <div class="profile-card">
-        <div class="profile-card-icon">🌍</div>
-        <div class="profile-card-title">Expatriés et frontaliers</div>
-        <div class="profile-card-desc">Club international par nature — plusieurs langues parlées à l'entraînement. Idéal pour s'intégrer via le sport dans la communauté luxembourgeoise.</div>
+      <div class="pillar-card p-white" data-n="06">
+        <div class="pillar-idx">International</div>
+        <div class="pillar-title">Expatriés et frontaliers</div>
+        <div class="pillar-desc">Club international par nature — plusieurs langues parlées à l'entraînement. Idéal pour s'intégrer via le sport dans la communauté luxembourgeoise.</div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#d6553f;"><span></span><i></i><span></span></div>
 
-<!-- ── SÉCURITÉ ───────────────────────────────────────────────────── -->
-<div class="sec sec-light bg-danger-x">
+<!-- ── SÉCURITÉ (accent rouge) ───────────────────────────────────────── -->
+<div class="sec bg-red-glow" id="securite">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Sécurité</div>
     <h2>Ce que la sécurité <span>signifie concrètement</span></h2>
     <p>La blessure la plus connue du bras de fer — la fracture de l'humérus — se produit <strong>presque exclusivement hors contexte encadré</strong> : soirées en bar, matchs informels, absence d'échauffement. Dans un club avec encadrement sérieux, ces blessures sont extrêmement rares.</p>
     <div class="callout">
@@ -265,65 +402,51 @@
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── LES BLOCAGES ───────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-red-walls">
+<!-- ── LES BLOCAGES (accent bleu acier, accordéon) ───────────────────── -->
+<div class="sec bg-red-walls" id="blocages">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Idées reçues</div>
     <h2>Les blocages classiques <span>des débutants</span></h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">"Je ne suis pas assez fort"</div>
-        <div class="faq-a">C'est l'objection la plus fréquente — et la plus fausse. Le bras de fer ne récompense pas seulement la force brute. La technique, l'angle et le placement changent tout.</div>
+    <p>Quatre objections reviennent sans cesse avant une première séance. Voici pourquoi aucune ne tient.</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-num">01</span><span class="acc-label">« Je ne suis pas assez fort »</span><span class="acc-icon">+</span></button>
+        <div class="acc-body">C'est l'objection la plus fréquente — et la plus fausse. Le bras de fer ne récompense pas seulement la force brute. La technique, l'angle et le placement changent tout, surtout en dessous du niveau compétiteur avancé.</div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">"Je n'y connais rien"</div>
-        <div class="faq-a">Justement, un club est fait pour ça. Commencer dans un cadre encadré permet d'apprendre correctement dès le départ, sans mauvaises habitudes.</div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-num">02</span><span class="acc-label">« Je n'y connais rien »</span><span class="acc-icon">+</span></button>
+        <div class="acc-body">Justement, un club est fait pour ça. Commencer dans un cadre encadré permet d'apprendre correctement dès le départ, sans prendre de mauvaises habitudes difficiles à corriger ensuite.</div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">"C'est dangereux"</div>
-        <div class="faq-a">Dans un club encadré, le risque est très faible. Les coaches expliquent les règles de sécurité et les positions à éviter dès la première séance — avant même le premier sparring.</div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-num">03</span><span class="acc-label">« C'est dangereux »</span><span class="acc-icon">+</span></button>
+        <div class="acc-body">Dans un club encadré, le risque est très faible. Les coaches expliquent les règles de sécurité et les positions à éviter dès la première séance — avant même le premier sparring.</div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">"Il faut venir accompagné"</div>
-        <div class="faq-a">Non. Beaucoup de personnes découvrent le club seules. La première séance sert justement à rencontrer le groupe avant tout engagement.</div>
+      <div class="accordion-item">
+        <button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-num">04</span><span class="acc-label">« Il faut venir accompagné »</span><span class="acc-icon">+</span></button>
+        <div class="acc-body">Non. Beaucoup de personnes découvrent le club seules. La première séance sert justement à rencontrer le groupe avant tout engagement.</div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="band-sep" style="--sepc:#c0392b;"><span></span><i></i><span></span></div>
 
-<!-- ── FAQ ────────────────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<!-- ── ESSAI GRATUIT / CTA ───────────────────────────────────────────── -->
+<div class="sec bg-cinema">
   <div class="sec-inner">
-    <h2>Questions fréquentes — débutants</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">Combien de temps avant de pouvoir participer à une compétition ?</div>
-        <div class="faq-a">La plupart des débutants réguliers participent à leur première compétition après 3 à 6 mois de pratique. Il n'y a pas de niveau minimum imposé pour s'inscrire.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Est-ce que la force naturelle est importante pour commencer ?</div>
-        <div class="faq-a">Non. Beaucoup de débutants sans force particulière progressent rapidement grâce à la technique. La force spécifique au bras de fer se développe avec la pratique régulière.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Quel âge minimum pour rejoindre le club ?</div>
-        <div class="faq-a">Le club accueille les adultes à partir de 16 ans. Pour les plus jeunes, contactez-nous directement pour discuter des conditions d'accueil.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">La licence inclut-elle une assurance ?</div>
-        <div class="faq-a">Oui. La licence LAF inclut une couverture sport pour les activités officielles du club et les compétitions reconnues par la fédération.</div>
-      </div>
-    </div>
-    <div class="cta-block">
+
+    <div class="cta-final">
       <div>
-        <h3>Première séance gratuite</h3>
-        <p>Mardi 18h · 86 rue des Romains, Strassen · Aucun équipement requis</p>
+        <div class="cta-final-label">Armwrestling Club Strassen · Luxembourg</div>
+        <div class="cta-final-title">Prêt à essayer ?</div>
+        <p class="cta-final-desc">Première séance gratuite, sans inscription préalable. Mardi à 18h au 86 rue des Romains, Strassen. Aucun équipement requis, tous niveaux bienvenus.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary">Contacter le club</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Contacter le club →</a>
     </div>
   </div>
 </div>
-
 
 <!-- ── ARTICLES LIÉS ── -->
 <div style="background:var(--dark2);padding:4rem 3rem;border-top:1px solid rgba(255,255,255,.07);">
@@ -331,7 +454,7 @@
     <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:2.5rem;">
       <div style="width:3px;height:2.4rem;background:var(--red);flex-shrink:0;border-radius:2px;"></div>
       <div>
-        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:.25rem;">Continuer la lecture</div>
+        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.45);margin-bottom:.25rem;">Continuer la lecture</div>
         <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;letter-spacing:.01em;">Articles <span style="color:var(--red);">liés</span></div>
       </div>
     </div>
@@ -342,7 +465,7 @@
         <p class="blog-card-v2-desc">Tout ce qu'il faut savoir avant ta première séance : technique, sécurité et premiers pas.</p>
         <span class="blog-card-v2-cta">Lire l'article →</span>
       </a>
-      <a href="premier-tournoi-bras-de-fer.html" class="blog-card-v2 c-amber">
+      <a href="premier-tournoi-bras-de-fer.html" class="blog-card-v2 c-red">
         <div class="blog-card-v2-category">Compétition</div>
         <div class="blog-card-v2-title">Préparer son premier tournoi de bras de fer</div>
         <p class="blog-card-v2-desc">Une fois les bases acquises — comment participer à ton premier tournoi de bras de fer au Luxembourg.</p>
@@ -368,7 +491,7 @@
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <p>© 2026 Armwrestling Club Strassen · Luxembourg</p>
-  <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
+  <p style="font-size:.78rem;opacity:.5;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 
 <script>
@@ -378,6 +501,15 @@
   document.querySelectorAll('#navLinks a').forEach(a =>
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
   );
+  function toggleAcc(btn){
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if(!isOpen){ btn.classList.add('open'); body.classList.add('open'); }
+  }
   document.addEventListener('pointermove', e => {
     const r = document.documentElement;
     r.style.setProperty('--x', e.clientX);

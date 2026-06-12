@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blessures & prévention au bras de fer | ACS Luxembourg</title>
+  <title>Fracture humérus bras de fer : risques et prévention | ACS</title>
   <meta name="description" content="Guide complet sur les blessures au bras de fer : fracture de l'humérus, douleurs au poignet, sécurité débutant, échauffement et prévention."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html"/>
@@ -28,8 +28,9 @@
     "author": { "@type": "Organization", "name": "Armwrestling Club Strassen" },
     "publisher": { "@type": "Organization", "name": "Armwrestling Club Strassen", "url": "https://armwrestlingclubstrassen.com/" },
     "url": "https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html",
+    "image": "https://armwrestlingclubstrassen.com/entrainement-table-officielle-laf.png",
     "datePublished": "2026-05-22",
-    "dateModified": "2026-05-22"
+    "dateModified": "2026-06-11"
   }
   </script>
   <script type="application/ld+json">
@@ -40,6 +41,40 @@
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://armwrestlingclubstrassen.com/" },
       { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://armwrestlingclubstrassen.com/articles.html" },
       { "@type": "ListItem", "position": 3, "name": "Blessures au bras de fer", "item": "https://armwrestlingclubstrassen.com/blessures-bras-de-fer.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Pourquoi le bras de fer provoque-t-il des fractures de l'humérus ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La fracture spirale de l'humérus survient quand un athlète résiste dans une mauvaise position — bras ouvert, épaule désalignée — en mettant toute sa force contre un adversaire qui l'emporte. La torsion créée dépasse la résistance de l'os. Ce risque est quasi nul en pratique encadrée : les coachs apprennent dès la première séance à reconnaître et éviter ces positions." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la blessure la plus fréquente au bras de fer pour un débutant ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Les débutants ressentent surtout des douleurs aux poignets, aux coudes (tensions tendineuses) et aux avant-bras (courbatures de surcharge). Ces inconforts sont normaux les 4 à 8 premières semaines — les tendons s'adaptent lentement. La fracture de l'humérus est la blessure grave la plus connue, mais elle survient presque exclusivement hors cadre encadré, lors de matchs improvisés." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment éviter de se blesser au bras de fer quand on débute ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Six règles simples : maîtriser le placement du corps, s'échauffer sérieusement (minimum 10 minutes), ne jamais résister dans une mauvaise position, commencer avec des partenaires expérimentés, augmenter l'intensité progressivement, et renforcer les extenseurs du poignet pour équilibrer la chaîne musculaire. La pratique en club encadré réduit drastiquement les risques." }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on faire du bras de fer avec une tendinite au coude ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Non — une tendinite active nécessite un repos relatif de 2 à 3 jours minimum, parfois plus. Continuer à forcer sur une tendinite la transforme en lésion chronique. En revanche, certains exercices de récupération (étirements légers, renforcement excentrique des extenseurs) accélèrent la guérison. Consultez notre article sur la récupération et les tendinites pour le protocole complet." }
+      },
+      {
+        "@type": "Question",
+        "name": "Le bras de fer est-il plus dangereux que d'autres sports de combat ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En club encadré, le bras de fer n'est pas plus dangereux que le judo ou la lutte. Des études médicales (PubMed) confirment que la quasi-totalité des fractures de l'humérus surviennent hors cadre sportif — soirées, bars, sans échauffement ni technique. La pratique encadrée à l'ACS Strassen intègre la sécurité dès la première séance." }
+      }
     ]
   }
   </script>
@@ -316,6 +351,86 @@
       .photo-strip-3 img { height: 200px; }
       .cta-final    { grid-template-columns: 1fr; }
     }
+
+    /* ── ACCORDION ── */
+    .accordion { margin: 1.5rem 0; border: 1px solid rgba(255,255,255,.07); }
+    .accordion-item { border-bottom: 1px solid rgba(255,255,255,.05); }
+    .accordion-item:last-child { border-bottom: none; }
+    .acc-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 1.3rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background .2s;
+    }
+    .acc-btn:hover { background: rgba(255,255,255,.03); }
+    .acc-btn.open { background: rgba(192,57,43,.08); border-left: 3px solid var(--red); }
+    .acc-num {
+      font-family: var(--font-display);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      color: rgba(192,57,43,.55);
+      min-width: 26px;
+    }
+    .acc-label {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: .04em;
+      flex: 1;
+    }
+    .acc-icon {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: rgba(192,57,43,.7);
+      transition: transform .25s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .acc-btn.open .acc-icon { transform: rotate(45deg); }
+    .acc-body {
+      display: none;
+      padding: 1.3rem 1.8rem 1.5rem;
+      background: rgba(5,2,2,.6);
+      font-size: .97rem;
+      color: rgba(245,240,232,.7);
+      line-height: 1.88;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+    .acc-body.open { display: block; }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
+    .toc-label {
+      font-family: var(--font-display);
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(192,57,43,.9);
+      padding-top: .15rem; flex-shrink: 0; min-width: 80px;
+    }
+    .toc-list { margin:0; padding:0; list-style:none; columns:2; column-gap:2.5rem; flex:1; }
+    .toc-list li { margin-bottom:.45rem; break-inside:avoid; color:rgba(245,240,232,.7); }
+    .toc-list a {
+      font-family: var(--font-display);
+      font-size: .86rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(245,240,232,.75); text-decoration: none; transition: color .2s;
+    }
+    .toc-list a:hover { color: var(--red); }
+    .toc-num { color: rgba(192,57,43,.8); margin-right: .4rem; }
+    @media(max-width: 600px) {
+      .toc-list { columns: 1; }
+      .toc-wrap { flex-direction: column; gap: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -348,8 +463,25 @@
   </div>
 </div>
 
+<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Dans ce guide</div>
+      <ol class="toc-list">
+        <li><a href="#bras-de-fer-dangereux"><span class="toc-num">01 ·</span>Est-ce dangereux ?</a></li>
+        <li><a href="#fracture-humerus"><span class="toc-num">02 ·</span>Fracture de l'humérus</a></li>
+        <li><a href="#prevention-blessures"><span class="toc-num">03 ·</span>Prévention</a></li>
+        <li><a href="#douleurs-courantes"><span class="toc-num">04 ·</span>Douleurs courantes</a></li>
+        <li><a href="#pratique-encadree"><span class="toc-num">05 ·</span>Pratique en club</a></li>
+        <li><a href="#faq"><span class="toc-num">06 ·</span>Questions fréquentes</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 <!-- ── INTRO ──────────────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-red-glow">
+<div class="sec sec-dark bg-red-glow" id="bras-de-fer-dangereux">
   <div class="sec-inner">
     <div class="split">
 
@@ -370,7 +502,7 @@
 </div>
 
 <!-- ── FRACTURE HUMÉRUS ───────────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec bg-cinema" id="fracture-humerus">
   <div class="sec-inner">
     <div class="sec-eyebrow">Blessure principale</div>
     <h2>La fracture<br><span>de l'humérus</span></h2>
@@ -399,7 +531,7 @@
 </div>
 
 <!-- ── COMMENT ÉVITER ─────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-red-walls">
+<div class="sec sec-dark bg-red-walls" id="prevention-blessures">
   <div class="sec-inner">
     <div class="sec-eyebrow">Prévention</div>
     <h2>Comment éviter<br><span>les blessures</span></h2>
@@ -435,7 +567,7 @@
 </div>
 
 <!-- ── DOULEURS FRÉQUENTES ────────────────────────────────────────────── -->
-<div class="sec sec-light">
+<div class="sec bg-cinema" id="douleurs-courantes">
   <div class="sec-inner">
     <div class="sec-eyebrow">Douleurs courantes</div>
     <h2>Ce que les débutants<br><span>ressentent souvent</span></h2>
@@ -463,7 +595,7 @@
 </div>
 
 <!-- ── PRATIQUE EN CLUB ───────────────────────────────────────────────── -->
-<div class="sec sec-dark">
+<div class="sec sec-dark" id="pratique-encadree">
   <div class="sec-inner">
 
     <div class="photo-strip-3">
@@ -488,6 +620,39 @@
   </div>
 </div>
 
+<!-- ── ARTICLES LIÉS ── -->
+<div style="background:var(--dark2);padding:4rem 3rem;border-top:1px solid rgba(255,255,255,.07);">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:2.5rem;">
+      <div style="width:3px;height:2.4rem;background:var(--red);flex-shrink:0;border-radius:2px;"></div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:.25rem;">Continuer la lecture</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;letter-spacing:.01em;">Articles <span style="color:var(--red);">liés</span></div>
+      </div>
+    </div>
+    <div class="blog-grid-v2" style="max-width:none;">
+      <a href="recuperation-tendinites-bras-de-fer.html" class="blog-card-v2 c-amber">
+        <div class="blog-card-v2-category">Santé · Récupération</div>
+        <div class="blog-card-v2-title">Récupération et tendinites au bras de fer</div>
+        <p class="blog-card-v2-desc">Protocole de récupération, charge progressive et prévention des tendinites — pour durer sans se blesser.</p>
+        <span class="blog-card-v2-cta">Lire l'article →</span>
+      </a>
+      <a href="guide-debutant-bras-de-fer.html" class="blog-card-v2 c-blue">
+        <div class="blog-card-v2-category">Guide · Débutant</div>
+        <div class="blog-card-v2-title">Guide complet pour débuter le bras de fer</div>
+        <p class="blog-card-v2-desc">Placement, sécurité et premiers pas — les bases qui évitent la grande majorité des blessures.</p>
+        <span class="blog-card-v2-cta">Lire l'article →</span>
+      </a>
+      <a href="exercices-renforcement-bras-de-fer.html" class="blog-card-v2 c-green">
+        <div class="blog-card-v2-category">Entraînement</div>
+        <div class="blog-card-v2-title">Exercices avant-bras & poignet — programme complet</div>
+        <p class="blog-card-v2-desc">Renforcer les extenseurs et les tendons pour prévenir les blessures de surcharge.</p>
+        <span class="blog-card-v2-cta">Voir le programme →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
   <ul class="footer-links">
@@ -508,6 +673,16 @@
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
   });
+
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); }
+  }
 
   (function(){
     function animateOnScroll(containerSel, itemSel) {
