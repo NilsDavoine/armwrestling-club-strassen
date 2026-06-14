@@ -178,7 +178,7 @@ nav {
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.72) 38%, rgba(0, 0, 0, 0.36) 68%, rgba(0, 0, 0, 0.18) 100%),
     radial-gradient(ellipse 80% 60% at 72% 50%, rgba(192, 57, 43, 0.16) 0%, transparent 72%),
-    url("hero-armwrestling.png") center right / cover no-repeat,
+    url("hero-armwrestling.webp") center right / cover no-repeat,
     linear-gradient(135deg, #0a0a0a 0%, #111 100%);
 }
 
