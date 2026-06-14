@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exercices avant-bras & poignet — renforcement | ACS Luxembourg</title>
+  <title>Exercices avant-bras & poignet — renforcement | ACS</title>
   <meta name="description" content="Les meilleurs exercices pour renforcer l'avant-bras et le poignet : wrist curl, hammer rotation, pinch grip, wrist roller. Programme hebdomadaire inclus."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html"/>
@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="android-chrome-512x512.png">
   <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Exercices avant-bras et poignet — renforcement complet","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-08"}
+  {"@context":"https://schema.org","@type":"Article","headline":"Exercices avant-bras et poignet — renforcement complet","image":"https://armwrestlingclubstrassen.com/exercice_bras_de_fer_avant_bras.png","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-12"}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"},{"@type":"ListItem","position":3,"name":"Exercices avant-bras & poignet","item":"https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html"}]}
@@ -39,6 +39,7 @@
     .sec ul{margin:0 0 1.4rem 1.8rem}.sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
     .sec strong{color:var(--white);font-weight:600}
     .sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .breadcrumb{font-family:var(--font-display);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
     .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}.breadcrumb a:hover{color:var(--red)}.breadcrumb span{margin:0 .5rem}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0}
@@ -50,51 +51,72 @@
     .muscle-cell.is-visible:hover{background:#151515;border-top-color:var(--red);transform:translateY(-4px)}
     .muscle-cell.is-visible:hover .muscle-name{color:var(--red);transition:color .2s}
     .muscle-name{font-family:var(--font-display);font-size:.9rem;font-weight:900;text-transform:uppercase;color:var(--white);margin-bottom:.4rem;letter-spacing:.03em;transition:color .25s}
-    .muscle-role{font-size:.86rem;color:rgba(245,240,232,.52);line-height:1.65;margin:0}
-    /* EXERCISE LIST */
-    .exercise-list{margin:1.8rem 0}
-    .exercise-item{display:flex;gap:1.8rem;padding:1.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:flex-start}
-    .exercise-item:last-child{border-bottom:none;padding-bottom:0}
-    .exercise-num{font-family:var(--font-display);font-size:4.5rem;font-weight:900;color:var(--red);line-height:1;min-width:72px;flex-shrink:0;opacity:.9}
-    .exercise-name{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.5rem}
-    .exercise-desc{font-size:.9rem;color:rgba(245,240,232,.65);line-height:1.85;margin-bottom:0}
-    .exercise-sets{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-left:auto;flex-shrink:0;padding-top:.2rem;white-space:nowrap}
+    .muscle-role{font-size:.9rem;color:rgba(245,240,232,.72);line-height:1.7;margin:0}
+    /* EXERCISE PHOTO + COMPACT CARDS */
+    .exo-figure{margin:1.8rem 0 0}
+    .exo-figure img{width:100%;height:auto;border-radius:6px;border:1px solid rgba(255,255,255,.08);display:block}
+    .exo-figure figcaption{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.42);margin-top:.7rem;text-align:center}
+    .exo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:1.6rem 0 0}
+    .exo-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-top:2px solid rgba(192,57,43,.55);border-radius:3px}
+    .exo-card[open]{background:rgba(192,57,43,.07);border-top-color:var(--red)}
+    .exo-card summary{list-style:none;cursor:pointer;padding:1rem .9rem 1.1rem;display:flex;flex-direction:column;gap:.55rem;position:relative}
+    .exo-card summary::-webkit-details-marker{display:none}
+    .exo-card summary::marker{content:''}
+    .exo-num{font-family:var(--font-display);font-size:.9rem;font-weight:900;color:var(--white);background:var(--red);align-self:flex-start;padding:.02rem .5rem;border-radius:2px;letter-spacing:.04em}
+    .exo-name{font-family:var(--font-display);font-size:.88rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.02em;line-height:1.14;min-height:2.4em}
+    .exo-sets{font-family:var(--font-display);font-size:.82rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#e6705c}
+    .exo-toggle{position:absolute;top:.8rem;right:.8rem;font-family:var(--font-display);font-size:1.25rem;font-weight:300;line-height:1;color:rgba(192,57,43,.85);transition:transform .25s}
+    .exo-card[open] .exo-toggle{transform:rotate(45deg)}
+    .exo-detail{padding:.8rem .9rem 1.1rem;font-size:.85rem;color:rgba(245,240,232,.74);line-height:1.7;border-top:1px solid rgba(255,255,255,.06)}
+    /* MUSCLE FIGURE (sections vidéo) */
+    .muscle-figure{margin:0}
+    .muscle-figure img{width:100%;height:auto;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:#000;display:block}
+    .muscle-figure figcaption{font-size:.85rem;color:rgba(245,240,232,.65);line-height:1.6;margin-top:.7rem;text-align:center}
+    .muscle-figure figcaption strong{color:var(--red);font-weight:700}
     /* PROGRAM TABLE */
     .program-table{width:100%;border-collapse:collapse;margin:1.8rem 0;font-size:.9rem}
     .program-table th{font-family:var(--font-display);font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:.8rem 1.2rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.07);color:rgba(245,240,232,.4);background:rgba(5,2,2,.4)}
     .program-table td{padding:.75rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(245,240,232,.65);vertical-align:middle}
     .program-table tr:last-child td{border-bottom:none}
     .day-tag{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);white-space:nowrap}
-    /* PHOTO STRIP */
-    .photo-strip-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:2.5rem}
-    .photo-strip-3 img{width:100%;height:190px;object-fit:cover;border-radius:3px;display:block;border:1px solid rgba(255,255,255,.06)}
-    /* CTA FINAL */
-    .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.28);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
-    .cta-final-label{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-bottom:.4rem}
-    .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
-    .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
-    .cta-btn-white{background:var(--white);color:#0a0402;font-family:var(--font-display);font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;display:inline-block;white-space:nowrap;flex-shrink:0;transition:opacity .2s}
-    .cta-btn-white:hover{opacity:.85;text-decoration:none}
-    /* VIDEO DEMOS */
-    .video-section-label{font-family:var(--font-display);font-size:.76rem;font-weight:900;letter-spacing:.28em;text-transform:uppercase;color:rgba(192,57,43,.9);margin:2.8rem 0 1.2rem;display:flex;align-items:center;gap:.7rem}
-    .video-section-label::before{content:'';display:inline-block;width:28px;height:1px;background:rgba(192,57,43,.75)}
+    /* CTA BOX */
+    .cta-box{background:linear-gradient(135deg,rgba(192,57,43,.1),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.22);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .cta-label{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.55);margin-bottom:.4rem}
+    .cta-title{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
+    .cta-box p{font-size:.88rem;color:rgba(245,240,232,.48);margin:0;line-height:1.7}
+    /* VIDEO */
     .video-split{display:grid;grid-template-columns:1.5fr 1fr;gap:3.5rem;align-items:center}
-    .video-split+.video-split{border-top:1px solid rgba(255,255,255,.05);padding-top:2.5rem;margin-top:2.5rem}
-    .vid-title-text{font-family:var(--font-display);font-size:1.3rem;font-weight:800;text-transform:uppercase;color:var(--white);margin:0 0 .9rem;letter-spacing:.03em;line-height:1.1}
-    .vid-link-side{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.28);text-decoration:none;margin-top:1.2rem;transition:color .2s}
-    .vid-link-side:hover{color:rgba(245,240,232,.65)}
-    .vid-card{display:block}
-    .vid-placeholder{position:relative;width:100%;aspect-ratio:9/16;background:#111;border:1px solid rgba(255,255,255,.07);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;cursor:pointer;transition:background .2s,border-color .2s}
-    .vid-placeholder:hover{background:#181818;border-color:rgba(192,57,43,.35)}
-    .vid-play-btn{width:52px;height:52px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;flex-shrink:0}
-    .vid-play-btn svg{width:18px;height:18px;fill:var(--white);margin-left:3px}
-    .vid-placeholder:hover .vid-play-btn{transform:scale(1.1);background:#d44}
-    .vid-label{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4)}
-    .vid-iframe-wrap{width:100%;aspect-ratio:9/16;border:1px solid rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
-    .vid-iframe-wrap iframe{width:100%;height:100%;border:0;display:block}
-    .vid-tiktok-link{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.28);text-decoration:none;text-align:center;display:block;transition:color .2s;padding:.2rem 0}
-    .vid-tiktok-link:hover{color:rgba(245,240,232,.6)}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.muscle-grid{grid-template-columns:repeat(2,1fr)}.exercise-item{flex-wrap:wrap}.exercise-sets{margin-left:0}.photo-strip-3{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}.video-split{grid-template-columns:1fr;gap:1.5rem}}
+    .vid-link-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;aspect-ratio:9/16;max-width:240px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;text-decoration:none;transition:background .25s,border-color .25s;padding:2rem}
+    .vid-link-card:hover{background:rgba(192,57,43,.07);border-color:rgba(192,57,43,.4)}
+    .vid-link-icon{width:56px;height:56px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s,background .2s}
+    .vid-link-card:hover .vid-link-icon{transform:scale(1.1);background:#d44}
+    .vid-link-icon svg{width:20px;height:20px;fill:var(--white);margin-left:4px}
+    .vid-link-title{font-family:var(--font-display);font-size:.92rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.03em;text-align:center;line-height:1.2}
+    .vid-link-source{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.3);text-align:center}
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap{display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap}
+    .toc-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.9);padding-top:.15rem;flex-shrink:0;min-width:80px}
+    .toc-list{margin:0;padding:0;list-style:none;columns:2;column-gap:2.5rem;flex:1}
+    .toc-list li{margin-bottom:.45rem;break-inside:avoid;color:rgba(245,240,232,.7)}
+    .toc-list a{font-family:var(--font-display);font-size:.86rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(245,240,232,.75);text-decoration:none;transition:color .2s}
+    .toc-list a:hover{color:var(--red)}
+    .toc-num{color:rgba(192,57,43,.8);margin-right:.4rem}
+    /* ── ACCORDION ── */
+    .accordion{margin:1.5rem 0;border:1px solid rgba(255,255,255,.07)}
+    .accordion-item{border-bottom:1px solid rgba(255,255,255,.05)}
+    .accordion-item:last-child{border-bottom:none}
+    .acc-btn{width:100%;background:transparent;border:none;padding:1.3rem 1.8rem;display:flex;align-items:center;gap:1rem;cursor:pointer;text-align:left;transition:background .2s}
+    .acc-btn:hover{background:rgba(255,255,255,.03)}
+    .acc-btn.open{background:rgba(192,57,43,.08);border-left:3px solid var(--red)}
+    .acc-num{font-family:var(--font-display);font-size:.68rem;font-weight:900;letter-spacing:.18em;color:rgba(192,57,43,.55);min-width:26px}
+    .acc-label{font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.04em;flex:1}
+    .acc-icon{font-family:var(--font-display);font-size:1.3rem;font-weight:300;color:rgba(192,57,43,.7);transition:transform .25s;flex-shrink:0;line-height:1}
+    .acc-btn.open .acc-icon{transform:rotate(45deg)}
+    .acc-body{display:none;padding:1.3rem 1.8rem 1.5rem;background:rgba(5,2,2,.6);font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.88;border-top:1px solid rgba(255,255,255,.04)}
+    .acc-body.open{display:block}
+    @media(max-width:600px){.toc-list{columns:1}.toc-wrap{flex-direction:column;gap:1rem}}
+
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.muscle-grid{grid-template-columns:repeat(2,1fr)}.exo-grid{grid-template-columns:repeat(2,1fr)}.cta-box{flex-direction:column}.video-split{grid-template-columns:1fr;gap:2rem}}
   </style>
 </head>
 <body>
@@ -110,44 +132,68 @@
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('armwrestling_home_training.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Avant-bras & poignet</div>
     <div class="article-tag">Exercices · Renforcement</div>
     <div class="article-date">Mis à jour : juin 2026</div>
     <h1 class="article-title">Exercices avant-bras<br><span>& poignet</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Force de grip, flexion du poignet, rotation de l'avant-bras — les muscles les plus fonctionnels du corps humain, et pourtant les plus négligés en salle. Ce guide couvre 10 exercices ciblés et un programme hebdomadaire.</p>
-    <p style="font-size:.88rem;color:rgba(245,240,232,.35);max-width:520px;line-height:1.7;margin-bottom:1.5rem;">Pas de salle ou peu de matériel ? Voir le <a href="entrainement-bras-de-fer-maison.html" style="color:rgba(192,57,43,.65);">programme à la maison →</a></p>
+    <p style="font-size:.95rem;color:rgba(245,240,232,.58);max-width:520px;line-height:1.7;margin-bottom:1.5rem;">Pas de salle ou peu de matériel ? Voir le <a href="entrainement-bras-de-fer-maison.html" style="color:var(--red);">programme à la maison →</a></p>
     <div class="article-meta">Guide complet · 10 exercices · Programme hebdomadaire</div>
   </div>
 </div>
 
-<!-- VIDÉO 1 — Pronation, en ouverture directe -->
-<div class="sec sec-dark">
+<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
   <div class="sec-inner">
-    <div class="video-section-label">Démonstration vidéo</div>
+    <div class="toc-wrap">
+      <div class="toc-label">Dans ce guide</div>
+      <ol class="toc-list">
+        <li><a href="#oublies"><span class="toc-num">01 ·</span>L'avant-bras oublié</a></li>
+        <li><a href="#anatomie"><span class="toc-num">02 ·</span>Anatomie des muscles</a></li>
+        <li><a href="#exercices"><span class="toc-num">03 ·</span>10 exercices ciblés</a></li>
+        <li><a href="#programme"><span class="toc-num">04 ·</span>Programme hebdomadaire</a></li>
+        <li><a href="#bras-de-fer"><span class="toc-num">05 ·</span>Aller plus loin</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- VIDÉO 1 — Pronation -->
+<div class="sec sec-dark bg-red-walls">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Démonstration vidéo · Pronation</div>
+    <h2>Le <span>pronateur</span></h2>
     <div class="video-split">
       <div>
-        <div class="sec-eyebrow">Pronation</div>
-        <div class="vid-title-text">Le pronateur</div>
         <p>La rotation de l'avant-bras paume vers le bas (pronation) est le mouvement central du press au bras de fer. Souvent absent des programmes classiques, c'est l'un des gains les plus rapides à construire. L'exercice se réalise au marteau, lentement, sur une plage de rotation complète.</p>
-        <a href="https://www.tiktok.com/@ferronilso/video/7545891074531659030" class="vid-link-side" target="_blank" rel="noopener">Voir sur TikTok →</a>
+        <div style="margin-top:1.5rem;">
+          <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,rgba(238,29,82,.18) 0%,rgba(0,0,0,.12) 50%,rgba(105,201,208,.1) 100%);border:1px solid rgba(238,29,82,.3);border-radius:10px;padding:.9rem 1.8rem;color:rgba(245,240,232,.9);text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase;">
+            <span style="font-size:1.1rem;line-height:1;">▶</span>
+            Le pronateur · TikTok →
+          </a>
+        </div>
       </div>
-      <div class="vid-card" data-id="7545891074531659030">
-        <div class="vid-placeholder"><div class="vid-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="vid-label">Le pronateur</div></div>
-      </div>
+      <figure class="muscle-figure">
+        <img src="Muscle_Pronateur.png" alt="Le rond pronateur mis en évidence en rouge sur l'avant-bras" loading="lazy"/>
+        <figcaption>Le <strong>rond pronateur</strong>, moteur de la pronation, est mis en évidence en rouge.</figcaption>
+      </figure>
     </div>
   </div>
 </div>
 
 <!-- SECTION 1 — Général, aucune mention bras de fer -->
-<div class="sec sec-dark bg-cinema">
+<div class="sec sec-dark bg-cinema" id="oublies">
   <div class="sec-inner">
     <div class="sec-eyebrow">Pourquoi c'est essentiel</div>
     <h2>L'avant-bras et le poignet :<br><span>les oubliés de l'entraînement</span></h2>
-    <img src="exercice_bras_de_fer_avant_bras.png" alt="Exercice de renforcement avant-bras — flexion du poignet avec haltère" loading="lazy" style="width:100%;height:300px;object-fit:cover;border-radius:3px;border:1px solid rgba(255,255,255,.07);margin-bottom:2rem;display:block;"/>
     <p>La plupart des programmes de musculation ont un point commun : ils négligent presque totalement l'avant-bras et le poignet. Développés couchés, squats, tractions — ces exercices sollicitent indirectement la prise, mais ne développent pas la <strong>force de flexion du poignet, la rotation de l'avant-bras ni la force des doigts</strong>.</p>
     <p>Pourtant, l'avant-bras est l'une des zones les plus sollicitées dans la vie quotidienne et dans la quasi-totalité des sports de contact, de combat, et de préhension. Une prise faible ou un poignet non renforcé devient rapidement le maillon limitant : en escalade, en judo, en tennis, ou dès que l'on cherche à soulever ou contrôler quelque chose avec les mains.</p>
+    <figure class="exo-figure">
+      <img src="exercice_bras_de_fer_avant_bras.png" alt="Exercice de renforcement avant-bras — flexion du poignet avec haltère" loading="lazy"/>
+      <figcaption>Renforcement de l'avant-bras — flexion du poignet avec haltère</figcaption>
+    </figure>
     <p>Les exercices de renforcement spécifiques de l'avant-bras et du poignet permettent de combler ce manque en ciblant directement les fléchisseurs et extenseurs du poignet, les supinateurs, les pronateurs, et les fléchisseurs des doigts — des muscles rarement isolés dans un programme classique.</p>
     <div class="callout">
       <p>Les blessures de coude et de poignet (épicondylite, tendinite du carpe) sont souvent dues à un déséquilibre entre fléchisseurs et extenseurs. Un programme équilibré les prévient efficacement.</p>
@@ -155,26 +201,31 @@
   </div>
 </div>
 
-<!-- VIDÉO 2 — Supination, entre "Pourquoi" et "Anatomie" -->
-<div class="sec sec-dark">
+<!-- VIDÉO 2 — Supination -->
+<div class="sec sec-dark bg-motion">
   <div class="sec-inner">
-    <div class="video-section-label">Démonstration vidéo</div>
+    <div class="sec-eyebrow">Démonstration vidéo · Supination</div>
+    <h2>La <span>supination</span></h2>
     <div class="video-split">
       <div>
-        <div class="sec-eyebrow">Supination</div>
-        <div class="vid-title-text">La supination</div>
         <p>La supination (rotation paume vers le haut) est le mouvement de base du top roll — la technique la plus utilisée en compétition. Cet exercice développe le supinateur et le chef court du biceps dans leur angle fonctionnel exact, absent du curl classique.</p>
-        <a href="https://www.tiktok.com/@ferronilso/video/7546257996309892374" class="vid-link-side" target="_blank" rel="noopener">Voir sur TikTok →</a>
+        <div style="margin-top:1.5rem;">
+          <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,rgba(238,29,82,.18) 0%,rgba(0,0,0,.12) 50%,rgba(105,201,208,.1) 100%);border:1px solid rgba(238,29,82,.3);border-radius:10px;padding:.9rem 1.8rem;color:rgba(245,240,232,.9);text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase;">
+            <span style="font-size:1.1rem;line-height:1;">▶</span>
+            La supination · TikTok →
+          </a>
+        </div>
       </div>
-      <div class="vid-card" data-id="7546257996309892374">
-        <div class="vid-placeholder"><div class="vid-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="vid-label">La supination</div></div>
-      </div>
+      <figure class="muscle-figure">
+        <img src="Muscle_Supinateur.png" alt="Le supinateur mis en évidence en rouge sur l'avant-bras" loading="lazy"/>
+        <figcaption>Le <strong>supinateur</strong>, moteur de la supination, est mis en évidence en rouge.</figcaption>
+      </figure>
     </div>
   </div>
 </div>
 
 <!-- SECTION 2 — Anatomie, neutre -->
-<div class="sec sec-light">
+<div class="sec sec-dark bg-cinema" id="anatomie">
   <div class="sec-inner">
     <div class="sec-eyebrow">Anatomie</div>
     <h2>Les muscles à cibler<br><span>avant-bras & poignet</span></h2>
@@ -209,112 +260,82 @@
   </div>
 </div>
 
-<!-- VIDÉO 3 — Cupping, entre "Anatomie" et "10 exercices" -->
-<div class="sec sec-dark">
+<!-- VIDÉO 3 — Cupping -->
+<div class="sec sec-dark bg-horizon">
   <div class="sec-inner">
-    <div class="video-section-label">Démonstration vidéo</div>
+    <div class="sec-eyebrow">Démonstration vidéo · Position de hook</div>
+    <h2>Le <span>cupping</span></h2>
     <div class="video-split">
       <div>
-        <div class="sec-eyebrow">Position de hook</div>
-        <div class="vid-title-text">Le cupping</div>
         <p>Le cupping est la position de poignet fondamentale du hook : flexion combinée vers l'intérieur et vers soi. C'est la posture à tenir sous pression maximale à la table. Cet exercice isométrique développe la force de maintien dans cette position spécifique au bras de fer.</p>
-        <a href="https://www.tiktok.com/@ferronilso/video/7554165380609068310" class="vid-link-side" target="_blank" rel="noopener">Voir sur TikTok →</a>
+        <div style="margin-top:1.5rem;">
+          <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,rgba(238,29,82,.18) 0%,rgba(0,0,0,.12) 50%,rgba(105,201,208,.1) 100%);border:1px solid rgba(238,29,82,.3);border-radius:10px;padding:.9rem 1.8rem;color:rgba(245,240,232,.9);text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase;">
+            <span style="font-size:1.1rem;line-height:1;">▶</span>
+            Le cupping · TikTok →
+          </a>
+        </div>
       </div>
-      <div class="vid-card" data-id="7554165380609068310">
-        <div class="vid-placeholder"><div class="vid-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="vid-label">Le cupping</div></div>
-      </div>
+      <figure class="muscle-figure">
+        <img src="Muscles_flexeurs.png" alt="Les muscles fléchisseurs du poignet et des doigts mis en évidence en rouge sur l'avant-bras" loading="lazy"/>
+        <figcaption>Les <strong>fléchisseurs du poignet et des doigts</strong>, moteurs du cupping, sont mis en évidence en rouge.</figcaption>
+      </figure>
     </div>
   </div>
 </div>
 
 <!-- SECTION 3 — Exercices, mention sport de préhension + bras de fer apparaît -->
-<div class="sec sec-dark bg-danger-x">
+<div class="sec sec-dark bg-danger-x" id="exercices">
   <div class="sec-inner">
     <div class="sec-eyebrow">Programme</div>
     <h2>10 exercices pour l'avant-bras<br><span>& le poignet</span></h2>
     <p>Ces exercices couvrent l'ensemble des chaînes musculaires de l'avant-bras et du poignet. Ils sont utilisés aussi bien par des pratiquants de musculation générale que par des athlètes spécialisés dans les sports de force et de préhension.</p>
 
-    <div class="exercise-list">
-      <div class="exercise-item">
-        <div class="exercise-num">01</div>
-        <div style="flex:1">
-          <div class="exercise-name">Wrist curl en supination</div>
-          <p class="exercise-desc">Assis, avant-bras posé sur la cuisse, haltère ou barre en prise supinée (paume vers le haut). Fléchissez le poignet lentement jusqu'à la position basse, remontez en pleine contraction. L'exercice de base pour développer les fléchisseurs palmaires.</p>
-        </div>
-        <div class="exercise-sets">4×15</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">02</div>
-        <div style="flex:1">
-          <div class="exercise-name">Wrist extension (extenseurs)</div>
-          <p class="exercise-desc">Même position, prise pronée (paume vers le bas). Extension du poignet contre résistance. Incontournable pour équilibrer les fléchisseurs et prévenir l'épicondylite latérale — le "tennis elbow" est souvent causé par l'absence de cet exercice.</p>
-        </div>
-        <div class="exercise-sets">3×15</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">03</div>
-        <div style="flex:1">
-          <div class="exercise-name">Hammer rotation (supination / pronation)</div>
-          <p class="exercise-desc">Tenez un marteau ou un haltère par l'extrémité. Faites une rotation complète de l'avant-bras de la pronation maximale à la supination maximale, lentement. Développe les supinateurs et pronateurs sur une plage de mouvement complète — muscles rarement ciblés en salle.</p>
-        </div>
-        <div class="exercise-sets">4×12</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">04</div>
-        <div style="flex:1">
-          <div class="exercise-name">Wrist roller</div>
-          <p class="exercise-desc">Un bâton avec un poids suspendu par une corde. Enroulez et déroulez lentement en alternant prise supinée et pronée. Excellent pour l'endurance musculaire de tout l'avant-bras. Utilisé dans de nombreux sports de force pour ses résultats rapides et visibles.</p>
-        </div>
-        <div class="exercise-sets">3×2 min</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">05</div>
-        <div style="flex:1">
-          <div class="exercise-name">Pinch grip (prise en pince)</div>
-          <p class="exercise-desc">Saisissez une plaque de poids à plat entre le pouce et les quatre doigts. Maintenez 20–30 secondes par set. Cible les insertions tendineuses des fléchisseurs et la force des bouts de doigts — un facteur clé dans l'escalade, le judo, et les sports de combat et de préhension.</p>
-        </div>
-        <div class="exercise-sets">4×25 s</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">06</div>
-        <div style="flex:1">
-          <div class="exercise-name">Wrist curl en déviation ulnaire</div>
-          <p class="exercise-desc">Avant-bras en position neutre, fléchissez le poignet vers le bas (déviation ulnaire) contre résistance. Ce vecteur de force, souvent ignoré des programmes généraux, est l'un des plus utiles dans les sports de préhension comme le bras de fer.</p>
-        </div>
-        <div class="exercise-sets">3×15</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">07</div>
-        <div style="flex:1">
-          <div class="exercise-name">Curl brachial en supination forcée</div>
-          <p class="exercise-desc">Curl standard avec haltère, en forçant la supination maximale en haut du mouvement. Ce détail active le chef court du biceps en collaboration avec les supinateurs dans un angle fonctionnel — absent du curl standard.</p>
-        </div>
-        <div class="exercise-sets">4×10</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">08</div>
-        <div style="flex:1">
-          <div class="exercise-name">Traction en prise neutre ou serviette</div>
-          <p class="exercise-desc">Tractions en prise marteau ou avec une serviette enroulée autour de la barre pour simuler une prise de doigts. Développe les fléchisseurs des doigts en isométrie pendant le mouvement de traction — doublement efficace.</p>
-        </div>
-        <div class="exercise-sets">4×max</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">09</div>
-        <div style="flex:1">
-          <div class="exercise-name">Extensions des doigts avec élastique</div>
-          <p class="exercise-desc">Placez un élastique épais autour des doigts fermés. Ouvrez la main lentement contre la résistance. Simple et efficace pour équilibrer la chaîne fléchisseur/extenseur des doigts. Recommandé par les kinésithérapeutes pour prévenir les tendinites de surcharge.</p>
-        </div>
-        <div class="exercise-sets">3×20</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-num">10</div>
-        <div style="flex:1">
-          <div class="exercise-name">Isométrie de poignet en charge</div>
-          <p class="exercise-desc">Tenez un haltère en position de flexion de poignet (paume vers le haut, poignet plié). Maintenez la position 5–8 secondes, relâchez 3–5 s. L'isométrie développe la force de maintien positionnelle — très sollicitée dans les sports de combat et de lutte de bras.</p>
-        </div>
-        <div class="exercise-sets">5×6 s</div>
-      </div>
+    <figure class="exo-figure">
+      <img src="meilleurs_exercices_avant_bras.jpg" alt="Les 10 meilleurs exercices pour renforcer l'avant-bras et le poignet : wrist curl, wrist extension, hammer rotation, wrist roller, pinch grip, déviation ulnaire, curl supination, traction serviette, extensions élastique, isométrie" loading="lazy"/>
+      <figcaption>Les 10 exercices en un coup d'œil — cliquez une carte pour le détail</figcaption>
+    </figure>
+
+    <div class="exo-grid">
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">01</span><span class="exo-name">Wrist curl en supination</span><span class="exo-sets">4×15</span></summary>
+        <div class="exo-detail">Assis, avant-bras posé sur la cuisse, haltère ou barre en prise supinée (paume vers le haut). Fléchissez le poignet lentement jusqu'à la position basse, remontez en pleine contraction. L'exercice de base pour développer les fléchisseurs palmaires.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">02</span><span class="exo-name">Wrist extension (extenseurs)</span><span class="exo-sets">3×15</span></summary>
+        <div class="exo-detail">Même position, prise pronée (paume vers le bas). Extension du poignet contre résistance. Incontournable pour équilibrer les fléchisseurs et prévenir l'épicondylite latérale — le « tennis elbow » est souvent causé par l'absence de cet exercice.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">03</span><span class="exo-name">Hammer rotation (supination / pronation)</span><span class="exo-sets">4×12</span></summary>
+        <div class="exo-detail">Tenez un marteau ou un haltère par l'extrémité. Faites une rotation complète de l'avant-bras de la pronation maximale à la supination maximale, lentement. Développe les supinateurs et pronateurs sur une plage de mouvement complète — muscles rarement ciblés en salle.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">04</span><span class="exo-name">Wrist roller</span><span class="exo-sets">3×2 min</span></summary>
+        <div class="exo-detail">Un bâton avec un poids suspendu par une corde. Enroulez et déroulez lentement en alternant prise supinée et pronée. Excellent pour l'endurance musculaire de tout l'avant-bras. Utilisé dans de nombreux sports de force pour ses résultats rapides et visibles.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">05</span><span class="exo-name">Pinch grip (prise en pince)</span><span class="exo-sets">4×25 s</span></summary>
+        <div class="exo-detail">Saisissez une plaque de poids à plat entre le pouce et les quatre doigts. Maintenez 20–30 secondes par set. Cible les insertions tendineuses des fléchisseurs et la force des bouts de doigts — un facteur clé dans l'escalade, le judo, et les sports de combat et de préhension.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">06</span><span class="exo-name">Wrist curl en déviation ulnaire</span><span class="exo-sets">3×15</span></summary>
+        <div class="exo-detail">Avant-bras en position neutre, fléchissez le poignet vers le bas (déviation ulnaire) contre résistance. Ce vecteur de force, souvent ignoré des programmes généraux, est l'un des plus utiles dans les sports de préhension comme le bras de fer.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">07</span><span class="exo-name">Curl brachial en supination forcée</span><span class="exo-sets">4×10</span></summary>
+        <div class="exo-detail">Curl standard avec haltère, en forçant la supination maximale en haut du mouvement. Ce détail active le chef court du biceps en collaboration avec les supinateurs dans un angle fonctionnel — absent du curl standard.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">08</span><span class="exo-name">Traction en prise neutre ou serviette</span><span class="exo-sets">4×max</span></summary>
+        <div class="exo-detail">Tractions en prise marteau ou avec une serviette enroulée autour de la barre pour simuler une prise de doigts. Développe les fléchisseurs des doigts en isométrie pendant le mouvement de traction — doublement efficace.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">09</span><span class="exo-name">Extensions des doigts avec élastique</span><span class="exo-sets">3×20</span></summary>
+        <div class="exo-detail">Placez un élastique épais autour des doigts fermés. Ouvrez la main lentement contre la résistance. Simple et efficace pour équilibrer la chaîne fléchisseur/extenseur des doigts. Recommandé par les kinésithérapeutes pour prévenir les tendinites de surcharge.</div>
+      </details>
+      <details class="exo-card">
+        <summary><span class="exo-toggle">+</span><span class="exo-num">10</span><span class="exo-name">Isométrie de poignet en charge</span><span class="exo-sets">5–8 s</span></summary>
+        <div class="exo-detail">Tenez un haltère en position de flexion de poignet (paume vers le haut, poignet plié). Maintenez la position 5 à 8 secondes, relâchez 3 à 5 s. L'isométrie développe la force de maintien positionnelle — très sollicitée dans les sports de combat et de lutte de bras.</div>
+      </details>
     </div>
 
     <div class="callout">
@@ -324,7 +345,7 @@
 </div>
 
 <!-- SECTION 4 — Programme, neutre avec note bras de fer -->
-<div class="sec sec-dark bg-inferno">
+<div class="sec sec-dark bg-inferno" id="programme">
   <div class="sec-inner">
     <div class="sec-eyebrow">Organisation</div>
     <h2>Programme hebdomadaire<br><span>suggéré</span></h2>
@@ -352,14 +373,8 @@
 </div>
 
 <!-- SECTION 5 — Le bras de fer révélé + CTA club -->
-<div class="sec sec-dark bg-red-glow">
+<div class="sec sec-dark bg-red-glow" id="bras-de-fer">
   <div class="sec-inner">
-
-    <div class="photo-strip-3">
-      <img src="exercice_bras_de_fer_avant_bras.png" alt="Exercice avant-bras — flexion du poignet" loading="lazy"/>
-      <img src="exercice_bras_de_fer_poignet.png" alt="Exercice poignet — wrist curl et isométrie" loading="lazy"/>
-      <img src="exercice_bras_de_fer_pronation.png" alt="Exercice pronation avant-bras" loading="lazy"/>
-    </div>
 
     <div class="sec-eyebrow">Aller plus loin</div>
     <h2>Le bras de fer :<br><span>le sport de l'avant-bras</span></h2>
@@ -367,13 +382,13 @@
     <p>Le bras de fer est pratiqué à toutes les catégories de poids, par des hommes et des femmes, avec ou sans passé sportif. La force spécifique s'acquiert rapidement quand elle est soutenue par un renforcement ciblé comme celui présenté ici. Beaucoup de pratiquants découvrent qu'avec 2 à 3 mois de travail sérieux d'avant-bras, leur progression à la table est spectaculaire.</p>
     <p>L'<strong>Armwrestling Club Strassen</strong> regroupe les pratiquants du Grand-Duché de Luxembourg. Les séances ont lieu à Strassen le mardi soir et à Munsbach le vendredi soir. Débutants bienvenus — la première séance est gratuite.</p>
 
-    <div class="cta-final">
+    <div class="cta-box">
       <div>
-        <div class="cta-final-label">ACS Strassen · Mardi 18h · Munsbach Vendredi</div>
-        <div class="cta-final-title">Tester le bras de fer en club</div>
-        <p class="cta-final-desc">Appliquez ces exercices dans un sport concret. Première séance gratuite, aucun niveau requis.</p>
+        <div class="cta-label">ACS Strassen · Mardi 18h · Munsbach Vendredi</div>
+        <div class="cta-title">Tester le bras de fer en club</div>
+        <p>Appliquez ces exercices dans un sport concret. Première séance gratuite, aucun niveau requis.</p>
       </div>
-      <a href="index.html#contact" class="cta-btn-white">Planifier mon essai →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>
@@ -425,25 +440,10 @@
 </footer>
 <script>
   function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+  function toggleAcc(btn){const body=btn.nextElementSibling;const isOpen=btn.classList.contains('open');btn.closest('.accordion').querySelectorAll('.acc-btn').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});if(!isOpen){btn.classList.add('open');body.classList.add('open')}}
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 
-  // Vidéos click-to-play
-  document.querySelectorAll('.vid-placeholder').forEach(function(p){
-    p.addEventListener('click', function(){
-      var card = p.closest('.vid-card');
-      var wrap = document.createElement('div');
-      wrap.className = 'vid-iframe-wrap';
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.tiktok.com/embed/v2/' + card.dataset.id;
-      iframe.setAttribute('allowfullscreen','');
-      iframe.setAttribute('scrolling','no');
-      iframe.setAttribute('allow','encrypted-media;');
-      wrap.appendChild(iframe);
-      p.replaceWith(wrap);
-    });
-  });
-
-  (function(){
+(function(){
     var grid = document.querySelector('.muscle-grid');
     if(!grid) return;
     var cells = Array.prototype.slice.call(grid.querySelectorAll('.muscle-cell'));

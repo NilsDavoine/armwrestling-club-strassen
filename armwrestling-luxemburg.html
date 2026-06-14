@@ -136,9 +136,28 @@
     .step-content-desc{font-size:.9rem;color:rgba(245,240,232,.65);line-height:1.7}
 
     /* ── SEC-EYEBROW ── */
-    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
-    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.5)}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,.88);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:rgba(192,57,43,.7)}
 
+    .toc-wrap{display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap}
+    .toc-label{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.9);padding-top:.15rem;flex-shrink:0;min-width:80px}
+    .toc-list{margin:0;padding:0;list-style:none;columns:2;column-gap:2.5rem;flex:1}
+    .toc-list li{margin-bottom:.45rem;break-inside:avoid;color:rgba(245,240,232,.7)}
+    .toc-list a{font-family:var(--font-display);font-size:.86rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(245,240,232,.75);text-decoration:none;transition:color .2s}
+    .toc-list a:hover{color:var(--red)}
+    .toc-num{color:rgba(192,57,43,.8);margin-right:.4rem}
+    .blog-grid-v2{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:2rem}
+    .blog-card-v2{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-top:2px solid rgba(255,255,255,.14);border-radius:4px;padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;text-decoration:none;transition:background .2s,border-top-color .2s}
+    .blog-card-v2:hover{background:rgba(255,255,255,.042)}
+    .blog-card-v2.c-blue{border-top-color:rgba(74,104,133,.65)}.blog-card-v2.c-blue:hover{border-top-color:rgba(74,104,133,.9)}
+    .blog-card-v2.c-green{border-top-color:rgba(26,144,112,.65)}.blog-card-v2.c-green:hover{border-top-color:rgba(26,144,112,.9)}
+    .blog-card-v2.c-red{border-top-color:rgba(192,57,43,.65)}.blog-card-v2.c-red:hover{border-top-color:var(--red)}
+    .blog-card-v2.c-amber{border-top-color:rgba(211,84,0,.65)}.blog-card-v2.c-amber:hover{border-top-color:rgba(211,84,0,.9)}
+    .blog-card-v2-category{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.35)}
+    .blog-card-v2-title{font-family:var(--font-display);font-size:1.05rem;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.15;letter-spacing:.02em}
+    .blog-card-v2-desc{font-size:.88rem;color:rgba(245,240,232,.62);line-height:1.72;flex:1;margin:0}
+    .blog-card-v2-cta{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(192,57,43,.75);margin-top:.25rem}
+    @media(max-width:600px){.toc-list{columns:1}.toc-wrap{flex-direction:column;gap:1rem}.blog-grid-v2{grid-template-columns:1fr}}
     @media(max-width:768px){
       .sec-inner{padding:0 1.5rem}
       .tip-grid-3{grid-template-columns:1fr}
@@ -146,6 +165,47 @@
       .facts-band{grid-template-columns:1fr 1fr}
       .cta-block{flex-direction:column;align-items:flex-start;padding:1.8rem}
     }
+
+    /* ── HERO PHOTO (même image que l'index) ── */
+    .local-hero{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.45) 72%,rgba(0,0,0,.28) 100%),
+        radial-gradient(ellipse 80% 60% at 72% 50%,rgba(192,57,43,.18) 0%,transparent 72%),
+        url("hero-armwrestling.png") center right / cover no-repeat,
+        linear-gradient(135deg,#0a0a0a 0%,#111 100%);
+    }
+    .local-hero::before{display:none}
+    @media(max-width:768px){
+      .local-hero{background:linear-gradient(180deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.82) 100%),url("hero-armwrestling.png") center / cover no-repeat,#0a0a0a}
+    }
+
+    /* ── ROUTE MAP — Lage & Anfahrt ── */
+    .route-map{margin:2.5rem 0 0}
+    .route-map-svg{display:block;width:100%;height:auto;max-width:780px;margin:0 auto;background:#06040a;border:1px solid rgba(255,255,255,.07);border-radius:8px;box-shadow:0 22px 55px -28px rgba(192,57,43,.45)}
+    .route-map-svg .lbl{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;fill:#f5f0e8;paint-order:stroke;stroke:#06040a;stroke-width:5px;stroke-linejoin:round}
+    .route-map-svg .hub-name{font-weight:900;fill:#fff}
+    .route-map-svg .lbl-time{font-family:var(--font-display);font-weight:700;letter-spacing:.02em;fill:#e74c3c;paint-order:stroke;stroke:#06040a;stroke-width:4px;stroke-linejoin:round}
+    .route-map-svg .hub-tag{font-family:var(--font-display);font-weight:700;letter-spacing:.24em;text-transform:uppercase;fill:#e74c3c;paint-order:stroke;stroke:#06040a;stroke-width:4px;stroke-linejoin:round}
+    .route-map-svg .region{font-family:var(--font-display);font-weight:700;letter-spacing:.32em;text-transform:uppercase;fill:rgba(245,240,232,.18)}
+    .route-flux{stroke-dasharray:5 19;animation:rmFlux 1.6s linear infinite}
+    .route-flux:nth-child(2n){animation-duration:2.1s}
+    .route-flux:nth-child(3n){animation-duration:2.5s}
+    @keyframes rmFlux{to{stroke-dashoffset:-48}}
+    .hub-pulse{transform-box:fill-box;transform-origin:center;animation:rmPulse 2.6s ease-out infinite}
+    @keyframes rmPulse{0%{transform:scale(.45);opacity:.6}70%{opacity:0}100%{transform:scale(2.6);opacity:0}}
+    .route-map-cap{margin:1.1rem 0 0;text-align:center;font-size:.8rem;color:rgba(245,240,232,.4)}
+    .route-map-list{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
+    @media(max-width:720px){
+      .route-map-svg{display:none}
+      .route-map-list{position:static;width:auto;height:auto;margin:1.5rem 0 0;padding:0;overflow:visible;clip:auto;white-space:normal;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07)}
+      .route-map-list li{background:#0d0508;padding:1rem 1.1rem;margin:0;display:flex;flex-direction:column;gap:.25rem}
+      .route-map-list .rl-name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;color:var(--white);font-size:.92rem;letter-spacing:.02em;line-height:1.1}
+      .route-map-list .rl-time{font-family:var(--font-display);font-weight:700;color:var(--red);font-size:.8rem}
+      .route-map-list .rl-hub{grid-column:1/-1;background:linear-gradient(135deg,rgba(192,57,43,.25),#0d0508);border-bottom:2px solid var(--red)}
+      .route-map-list .rl-hub .rl-name{color:#fff;font-size:1.05rem}
+      .route-map-list .rl-hub .rl-time{color:rgba(245,240,232,.65);font-weight:600}
+    }
+    @media(prefers-reduced-motion:reduce){.route-flux{animation:none}.hub-pulse{display:none}}
   </style>
 </head>
 <body>
@@ -186,6 +246,23 @@
 </div>
 
 
+<!-- ── INHALTSVERZEICHNIS ─────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Auf dieser Seite</div>
+      <ol class="toc-list">
+        <li><a href="#verein"><span class="toc-num">01 ·</span>Der Verein</a></li>
+        <li><a href="#anfahrt"><span class="toc-num">02 ·</span>Lage &amp; Anfahrt</a></li>
+        <li><a href="#armwrestling"><span class="toc-num">03 ·</span>Was ist Armwrestling?</a></li>
+        <li><a href="#einsteiger"><span class="toc-num">04 ·</span>Erster Besuch</a></li>
+        <li><a href="#zweiter"><span class="toc-num">05 ·</span>Zweiter Verein</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+
 <!-- ── SPOTLIGHT : 3 SCHLÜSSELFAKTEN ─────────────────────────────── -->
 <div class="tip-wrap" style="background:#050304;">
   <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.2) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
@@ -213,14 +290,14 @@
 
 
 <!-- ── DER VEREIN ─────────────────────────────────────────────────── -->
-<div class="sec sec-verein">
+<div class="sec sec-verein" id="verein">
   <div class="sec-inner">
     <div class="article-photo" style="margin-bottom:2.5rem;">
       <img src="match-competition-public-luxembourg.png" alt="Armwrestling-Wettkampf in Luxemburg — offizielles Turnier des Armwrestling Club Strassen" loading="lazy"/>
     </div>
     <div class="sec-eyebrow">Der Verein</div>
-    <h2>Der einzige Armwrestling-Verein <span>in Luxemburg</span></h2>
-    <p>Der <strong>Armwrestling Club Strassen</strong> ist Luxemburgs aktiver Armwrestling-Verein mit regelmäßigem Training. Angesiedelt an der <strong>86 rue des Romains in Strassen</strong>, direkt vor den Toren von Luxemburg-Stadt, ist der Verein Mitglied der <strong>Luxembourg Armwrestling Federation (LAF)</strong> — dem offiziellen nationalen Verband.</p>
+    <h2>Armwrestling in Luxemburg <span>— zwei Vereine, eine Lizenz</span></h2>
+    <p>Der <strong>Armwrestling Club Strassen</strong> ist einer der beiden offiziellen Armwrestling-Vereine in Luxemburg. Er befindet sich an der <strong>86 rue des Romains in Strassen</strong>, direkt vor den Toren von Luxemburg-Stadt, und ist Mitglied der <strong>Luxembourg Armwrestling Federation (LAF)</strong> — dem offiziellen nationalen Verband. Mit einer einzigen LAF-Lizenz hast du Zugang zu beiden Vereinen.</p>
     <p>Das Training findet jeden <strong>Dienstag ab 18 Uhr</strong> statt und ist offen für alle Niveaus — vom kompletten Einsteiger bis zum erfahrenen Athleten. Keine Voranmeldung nötig für den ersten Besuch.</p>
     <div class="facts-band">
       <div class="fact-cell">
@@ -241,25 +318,154 @@
 
 
 <!-- ── ANFAHRT ────────────────────────────────────────────────────── -->
-<div class="sec sec-anfahrt">
+<div class="sec sec-anfahrt" id="anfahrt">
   <div class="sec-inner">
-    <div class="sec-eyebrow">Anfahrt</div>
-    <h2>Lage und <span>Anfahrt</span></h2>
+    <div class="sec-eyebrow">Lage &amp; Anfahrt</div>
+    <h2>Mitten in der <span>Grenzregion</span></h2>
+    <p>Strassen liegt im Westen von Luxemburg-Stadt, direkt an den großen Verkehrsachsen — schnell erreichbar aus ganz Luxemburg und der deutschsprachigen Grenzregion (Trier, Saarland, Eifel, Moselgebiet). Hier die wichtigsten Auto-Fahrzeiten und alle Infos für deine Anfahrt nach Strassen:</p>
+
+    <figure class="route-map">
+      <svg class="route-map-svg" viewBox="0 0 920 580" role="img" aria-label="Stilisierte Anfahrtskarte mit Strassen als Ziel und den Auto-Fahrzeiten aus den umliegenden Städten in Luxemburg und der deutschen Grenzregion">
+        <defs>
+          <radialGradient id="rmGlow" cx="34%" cy="52%" r="62%">
+            <stop offset="0%" stop-color="#c0392b" stop-opacity=".24"/>
+            <stop offset="45%" stop-color="#c0392b" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#c0392b" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="rmNeon" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3.2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="rmNeonHot" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5.5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <rect width="920" height="580" fill="#06040a"/>
+        <rect width="920" height="580" fill="url(#rmGlow)"/>
+
+        <!-- Regionen + Grenze -->
+        <text class="region" x="40" y="56" font-size="15">Luxemburg</text>
+        <text class="region" x="880" y="56" font-size="15" text-anchor="end">Deutschland</text>
+        <path d="M 672 38 C 642 180 690 360 650 544" fill="none" stroke="#f5f0e8" stroke-opacity=".16" stroke-width="1.2" stroke-dasharray="2 9"/>
+
+        <!-- Sekundäres Straßennetz (weiß, dezent) -->
+        <g stroke="#f5f0e8" stroke-opacity=".08" stroke-width="1" fill="none" stroke-linecap="round">
+          <line x1="430" y1="110" x2="600" y2="235"/>
+          <line x1="600" y1="235" x2="545" y2="430"/>
+          <line x1="545" y1="430" x2="730" y2="470"/>
+          <line x1="600" y1="235" x2="760" y2="330"/>
+          <line x1="760" y1="330" x2="720" y2="150"/>
+          <line x1="720" y1="150" x2="600" y2="235"/>
+          <line x1="235" y1="390" x2="445" y2="345"/>
+          <line x1="445" y1="345" x2="545" y2="430"/>
+        </g>
+
+        <!-- Hauptachsen (rot, Glow) -->
+        <g filter="url(#rmNeon)" stroke="#c0392b" stroke-width="2.3" stroke-linecap="round" stroke-opacity=".92">
+          <line x1="235" y1="390" x2="315" y2="300"/>
+          <line x1="430" y1="110" x2="315" y2="300"/>
+          <line x1="600" y1="235" x2="315" y2="300"/>
+          <line x1="545" y1="430" x2="315" y2="300"/>
+          <line x1="760" y1="330" x2="315" y2="300"/>
+          <line x1="730" y1="470" x2="315" y2="300"/>
+        </g>
+        <g filter="url(#rmNeonHot)" stroke="#e74c3c" stroke-width="3.1" stroke-linecap="round">
+          <line x1="445" y1="345" x2="315" y2="300"/>
+          <line x1="720" y1="150" x2="315" y2="300"/>
+        </g>
+
+        <!-- Verkehrsfluss (animiert) -->
+        <g stroke="#ffe2db" stroke-width="1.7" stroke-linecap="round" fill="none">
+          <line class="route-flux" x1="235" y1="390" x2="315" y2="300"/>
+          <line class="route-flux" x1="445" y1="345" x2="315" y2="300"/>
+          <line class="route-flux" x1="430" y1="110" x2="315" y2="300"/>
+          <line class="route-flux" x1="600" y1="235" x2="315" y2="300"/>
+          <line class="route-flux" x1="545" y1="430" x2="315" y2="300"/>
+          <line class="route-flux" x1="760" y1="330" x2="315" y2="300"/>
+          <line class="route-flux" x1="720" y1="150" x2="315" y2="300"/>
+          <line class="route-flux" x1="730" y1="470" x2="315" y2="300"/>
+        </g>
+
+        <!-- Städte -->
+        <g>
+          <circle cx="235" cy="390" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="445" cy="345" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="430" cy="110" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="600" cy="235" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="545" cy="430" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="760" cy="330" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="720" cy="150" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="730" cy="470" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+        </g>
+
+        <!-- Ziel: Strassen -->
+        <circle class="hub-pulse" cx="315" cy="300" r="13" fill="none" stroke="#e74c3c" stroke-width="2"/>
+        <circle class="hub-pulse" cx="315" cy="300" r="13" fill="none" stroke="#e74c3c" stroke-width="2" style="animation-delay:1.3s"/>
+        <circle cx="315" cy="300" r="11" fill="#c0392b" filter="url(#rmNeonHot)"/>
+        <circle cx="315" cy="300" r="6" fill="#fff"/>
+
+        <!-- Beschriftungen -->
+        <text class="hub-tag" x="296" y="282" font-size="12" text-anchor="end">Ziel</text>
+        <text class="lbl hub-name" x="296" y="308" font-size="25" text-anchor="end">Strassen</text>
+
+        <text class="lbl" x="215" y="388" font-size="16.5" text-anchor="end">Bertrange</text>
+        <text class="lbl-time" x="215" y="405" font-size="12.5" text-anchor="end">~5 min</text>
+
+        <text class="lbl" x="462" y="343" font-size="16.5">Luxemburg-Stadt</text>
+        <text class="lbl-time" x="462" y="360" font-size="12.5">~8 min</text>
+
+        <text class="lbl" x="430" y="80" font-size="16.5" text-anchor="middle">Echternach</text>
+        <text class="lbl-time" x="430" y="97" font-size="12.5" text-anchor="middle">~30 min</text>
+
+        <text class="lbl" x="616" y="230" font-size="16.5">Grevenmacher</text>
+        <text class="lbl-time" x="616" y="247" font-size="12.5">~25 min</text>
+
+        <text class="lbl" x="562" y="432" font-size="16.5">Remich</text>
+        <text class="lbl-time" x="562" y="449" font-size="12.5">~25 min</text>
+
+        <text class="lbl" x="776" y="326" font-size="16.5">Saarburg</text>
+        <text class="lbl-time" x="776" y="343" font-size="12.5">~40 min</text>
+
+        <text class="lbl" x="736" y="148" font-size="16.5">Trier</text>
+        <text class="lbl-time" x="736" y="165" font-size="12.5">~45 min</text>
+
+        <text class="lbl" x="746" y="468" font-size="16.5">Merzig</text>
+        <text class="lbl-time" x="746" y="485" font-size="12.5">~55 min</text>
+      </svg>
+
+      <ul class="route-map-list">
+        <li class="rl-hub"><span class="rl-name">Strassen</span><span class="rl-time">Ziel · 86 rue des Romains</span></li>
+        <li><span class="rl-name">Bertrange</span><span class="rl-time">~5 min Auto</span></li>
+        <li><span class="rl-name">Luxemburg-Stadt</span><span class="rl-time">~8 min Auto</span></li>
+        <li><span class="rl-name">Grevenmacher</span><span class="rl-time">~25 min Auto</span></li>
+        <li><span class="rl-name">Remich</span><span class="rl-time">~25 min Auto</span></li>
+        <li><span class="rl-name">Echternach</span><span class="rl-time">~30 min Auto</span></li>
+        <li><span class="rl-name">Saarburg</span><span class="rl-time">~40 min Auto</span></li>
+        <li><span class="rl-name">Trier</span><span class="rl-time">~45 min Auto</span></li>
+        <li><span class="rl-name">Merzig</span><span class="rl-time">~55 min Auto</span></li>
+      </ul>
+
+      <figcaption class="route-map-cap">Ungefähre Auto-Fahrzeiten nach Strassen · 86 rue des Romains, L-8041</figcaption>
+    </figure>
+
+    <h3 style="margin:2.5rem 0 .2rem;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.08em;">Anfahrt im Detail</h3>
     <div class="access-grid">
       <div class="access-cell">
-        <div class="access-cell-label">🚗 Aus Deutschland</div>
+        <div class="access-cell-label">Aus Deutschland</div>
         <div class="access-cell-val"><strong>~45 Min.</strong> von Trier · <strong>~80 Min.</strong> von Saarbrücken. Über die A64/A1 Richtung Luxemburg-Stadt, Ausfahrt Strassen.</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">🚗 Aus Luxemburg-Stadt</div>
+        <div class="access-cell-label">Aus Luxemburg-Stadt</div>
         <div class="access-cell-val"><strong>~8 Minuten</strong> mit dem Auto vom Stadtzentrum. Parkplatz vor dem Gebäude und in der Straße verfügbar.</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">📍 Genaue Adresse</div>
+        <div class="access-cell-label">Genaue Adresse</div>
         <div class="access-cell-val"><strong>86 rue des Romains</strong><br>L-8041 Strassen, Luxemburg</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">🔔 Eingang</div>
+        <div class="access-cell-label">Eingang</div>
         <div class="access-cell-val">Weißes Gebäude, leicht erkennbar. Klingeln Sie an der Eingangstür neben dem Garagentor.</div>
       </div>
     </div>
@@ -267,31 +473,8 @@
 </div>
 
 
-<!-- ── GRENZREGION ────────────────────────────────────────────────── -->
-<div class="sec sec-grenzregion">
-  <div class="sec-inner">
-    <div class="sec-eyebrow">Grenzregion</div>
-    <h2>Erreichbar aus der <span>gesamten Grenzregion</span></h2>
-    <p>Strassen liegt im Westen von Luxemburg-Stadt — gut erreichbar aus den deutschsprachigen Gemeinden Luxemburgs und aus der deutschen Grenzregion:</p>
-    <div class="nearby-section">
-      <h3 style="margin:0 0 .5rem;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.08em;">Fahrzeiten ab ausgewählten Orten</h3>
-      <div class="nearby-grid">
-        <div class="nearby-item"><div class="nearby-name">Luxemburg-Stadt</div><div class="nearby-dist">~8 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Trier</div><div class="nearby-dist">~45 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Echternach</div><div class="nearby-dist">~30 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Grevenmacher</div><div class="nearby-dist">~25 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Remich</div><div class="nearby-dist">~25 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Merzig</div><div class="nearby-dist">~55 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Saarburg</div><div class="nearby-dist">~40 min Auto</div></div>
-        <div class="nearby-item"><div class="nearby-name">Bertrange</div><div class="nearby-dist">~5 min Auto</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <!-- ── WAS IST ARMWRESTLING? ─────────────────────────────────────── -->
-<div class="sec sec-armwrestling">
+<div class="sec sec-armwrestling" id="armwrestling">
   <div class="sec-inner">
     <div class="sec-eyebrow">Der Sport</div>
     <h2>Was ist <span>Armwrestling?</span></h2>
@@ -323,7 +506,7 @@
 
 
 <!-- ── FÜR EINSTEIGER ─────────────────────────────────────────────── -->
-<div class="sec sec-einsteiger">
+<div class="sec sec-einsteiger" id="einsteiger">
   <div class="sec-inner">
     <div class="sec-eyebrow">Einsteiger</div>
     <h2>So funktioniert <span>der erste Besuch</span></h2>
@@ -365,7 +548,7 @@
 
 
 <!-- ── ZWEITER VEREIN + CTA ───────────────────────────────────────── -->
-<div class="sec sec-zweiter">
+<div class="sec sec-zweiter" id="zweiter">
   <div class="sec-inner">
     <div class="sec-eyebrow">Zweiter Verein</div>
     <h2>Grizzly of Luxembourg <span>· Munsbach</span></h2>
@@ -376,6 +559,40 @@
         <p>86 rue des Romains, Strassen — 8 Min. von Luxemburg-Stadt, 45 Min. von Trier.</p>
       </div>
       <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;color:var(--white)!important">Jetzt Kontakt aufnehmen →</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── VERWANDTE ARTIKEL ───────────────────────────────────────────── -->
+<div style="background:var(--dark2);padding:4rem 3rem;border-top:1px solid rgba(255,255,255,.07);">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:2.5rem;">
+      <div style="width:3px;height:2.4rem;background:var(--red);flex-shrink:0;border-radius:2px;"></div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:.25rem;">Weiterlesen</div>
+        <div style="font-family:var(--font-display);font-size:1.9rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;letter-spacing:.01em;">Verwandte <span style="color:var(--red);">Artikel</span></div>
+      </div>
+    </div>
+    <div class="blog-grid-v2" style="max-width:none;">
+      <a href="guide-debutant-bras-de-fer.html" class="blog-card-v2 c-blue">
+        <div class="blog-card-v2-category">Einsteiger · Technik</div>
+        <div class="blog-card-v2-title">Armwrestling für Einsteiger — der vollständige Leitfaden</div>
+        <p class="blog-card-v2-desc">Placement, Griff, Sicherheit und erste Techniken — alles was du für die ersten Trainingseinheiten wissen musst.</p>
+        <span class="blog-card-v2-cta">Artikel lesen →</span>
+      </a>
+      <a href="technique-prise-bras-de-fer.html" class="blog-card-v2 c-amber">
+        <div class="blog-card-v2-category">Technik</div>
+        <div class="blog-card-v2-title">Hook, Top Roll & Press — die 3 Techniken erklärt</div>
+        <p class="blog-card-v2-desc">Die Mechanik jeder Technik, ihre Stärken und wie man die richtige für sein Profil auswählt.</p>
+        <span class="blog-card-v2-cta">Artikel lesen →</span>
+      </a>
+      <a href="premier-tournoi-bras-de-fer.html" class="blog-card-v2 c-green">
+        <div class="blog-card-v2-category">Wettkampf</div>
+        <div class="blog-card-v2-title">Erstes Turnier — von der Anmeldung bis zum Wettkampftag</div>
+        <p class="blog-card-v2-desc">Wie ein Armwrestling-Turnier abläuft, was du mitbringen musst und was dich am ersten Tag erwartet.</p>
+        <span class="blog-card-v2-cta">Artikel lesen →</span>
+      </a>
     </div>
   </div>
 </div>

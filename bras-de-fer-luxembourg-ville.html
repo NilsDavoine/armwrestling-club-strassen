@@ -35,6 +35,7 @@
     .sec p{font-size:1.02rem;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:1.4rem}
     .sec ul{margin:0 0 1.4rem 1.8rem}.sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
     .sec strong{color:var(--white);font-weight:600}.sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.4rem 1.8rem;margin:1.5rem 0;border-radius:0 3px 3px 0}
     .callout p{margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.97rem!important}
     .cta-block{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(10,10,10,.85));border:1px solid rgba(192,57,43,.3);border-top:2px solid var(--red);padding:2.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:2rem}
@@ -54,7 +55,50 @@
     .tip-stat-label{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.38);margin:.3rem 0 .5rem}
     .tip-stat-desc{font-size:.86rem;color:rgba(245,240,232,.6);line-height:1.72;flex:1}
     .c-blue{--hue:215;border-top-color:rgba(74,104,133,.65)}.c-green{--hue:162;border-top-color:rgba(26,144,112,.65)}.c-red{--hue:5;border-top-color:rgba(192,57,43,.7)}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.tip-grid-3{grid-template-columns:1fr}.tip-wrap{padding:2.5rem 1.5rem}.cta-block{flex-direction:column;align-items:flex-start}}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.8)}
+    .sec h2 span{color:var(--red)}
+    /* ── ACCESS GRID ── */
+    .access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;background:rgba(255,255,255,.04);margin:1.5rem 0}
+    .access-cell{background:rgba(255,255,255,.018);border-top:2px solid rgba(192,57,43,.28);padding:1.4rem 1.6rem;transition:background .2s,border-top-color .2s}
+    .access-cell:hover{background:rgba(192,57,43,.05);border-top-color:var(--red)}
+    .access-cell-label{font-family:var(--font-display);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.55rem}
+    .access-cell-val{font-size:.96rem;color:rgba(245,240,232,.75);line-height:1.7}
+    /* ── NEARBY ROAD-NETWORK GRID ── */
+    .nearby-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(255,255,255,.04);margin:1.5rem 0}
+    .nearby-item{background:rgba(8,2,4,.92);border-top:2px solid rgba(192,57,43,.2);padding:1.2rem 1.4rem;transition:background .2s,border-top-color .2s}
+    .nearby-item:hover{background:rgba(192,57,43,.08);border-top-color:var(--red)}
+    .nearby-name{font-family:var(--font-display);font-size:.96rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.04em;margin-bottom:.3rem}
+    .nearby-dist{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:rgba(192,57,43,.75)}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.tip-grid-3{grid-template-columns:1fr}.tip-wrap{padding:2.5rem 1.5rem}.cta-block{flex-direction:column;align-items:flex-start}.access-grid{grid-template-columns:1fr}.nearby-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* ── ROUTE MAP — Accès & Proximité ── */
+    .route-map{margin:2.5rem 0 0}
+    .route-map-svg{display:block;width:100%;height:auto;max-width:780px;margin:0 auto;background:#06040a;border:1px solid rgba(255,255,255,.07);border-radius:8px;box-shadow:0 22px 55px -28px rgba(192,57,43,.45)}
+    .route-map-svg .lbl{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;fill:#f5f0e8;paint-order:stroke;stroke:#06040a;stroke-width:5px;stroke-linejoin:round}
+    .route-map-svg .hub-name{font-weight:900;fill:#fff}
+    .route-map-svg .lbl-time{font-family:var(--font-display);font-weight:700;letter-spacing:.02em;fill:#e74c3c;paint-order:stroke;stroke:#06040a;stroke-width:4px;stroke-linejoin:round}
+    .route-map-svg .hub-tag{font-family:var(--font-display);font-weight:700;letter-spacing:.24em;text-transform:uppercase;fill:#e74c3c;paint-order:stroke;stroke:#06040a;stroke-width:4px;stroke-linejoin:round}
+    .route-map-svg .region{font-family:var(--font-display);font-weight:700;letter-spacing:.32em;text-transform:uppercase;fill:rgba(245,240,232,.18)}
+    .route-flux{stroke-dasharray:5 19;animation:rmFlux 1.6s linear infinite}
+    .route-flux:nth-child(2n){animation-duration:2.1s}
+    .route-flux:nth-child(3n){animation-duration:2.5s}
+    @keyframes rmFlux{to{stroke-dashoffset:-48}}
+    .hub-pulse{transform-box:fill-box;transform-origin:center;animation:rmPulse 2.6s ease-out infinite}
+    @keyframes rmPulse{0%{transform:scale(.45);opacity:.6}70%{opacity:0}100%{transform:scale(2.6);opacity:0}}
+    .route-map-cap{margin:1.1rem 0 0;text-align:center;font-size:.8rem;color:rgba(245,240,232,.4)}
+    .route-map-list{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;list-style:none}
+    @media(max-width:720px){
+      .route-map-svg{display:none}
+      .route-map-list{position:static;width:auto;height:auto;margin:1.5rem 0 0;padding:0;overflow:visible;clip:auto;white-space:normal;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07)}
+      .route-map-list li{background:#0d0508;padding:1rem 1.1rem;margin:0;display:flex;flex-direction:column;gap:.25rem}
+      .route-map-list .rl-name{font-family:var(--font-display);font-weight:700;text-transform:uppercase;color:var(--white);font-size:.92rem;letter-spacing:.02em;line-height:1.1}
+      .route-map-list .rl-time{font-family:var(--font-display);font-weight:700;color:var(--red);font-size:.8rem}
+      .route-map-list .rl-hub{grid-column:1/-1;background:linear-gradient(135deg,rgba(192,57,43,.25),#0d0508);border-bottom:2px solid var(--red)}
+      .route-map-list .rl-hub .rl-name{color:#fff;font-size:1.05rem}
+      .route-map-list .rl-hub .rl-time{color:rgba(245,240,232,.65);font-weight:600}
+    }
+    @media(prefers-reduced-motion:reduce){.route-flux{animation:none}.hub-pulse{display:none}}
   </style>
 </head>
 <body>
@@ -73,13 +117,13 @@
   </div>
 </nav>
 
-<div class="local-hero">
+<div class="local-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('armwrestling_luxembourg.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Bras de fer Luxembourg-ville</div>
     <div class="page-tag">Page locale · Luxembourg-ville</div>
     <div class="article-date">Mis à jour : mai 2026</div>
     <h1 class="page-title">Bras de fer<br><span>Luxembourg-ville</span></h1>
-    <p style="font-size:1.1rem;color:rgba(245,240,232,.65);max-width:560px;line-height:1.8;">Le club de bras de fer le plus proche de Luxembourg-ville. Entraînement mardi 18h à Strassen — 8 minutes en voiture, 12 minutes en transport.</p>
+    <p style="font-size:1.1rem;color:rgba(245,240,232,.65);max-width:560px;line-height:1.8;">L'Armwrestling Club Strassen, à 8 minutes de Luxembourg-ville. Débutants bienvenus — première séance gratuite, aucune réservation nécessaire.</p>
     <div class="hero-stats-row">
       <div class="hero-stat"><div class="hero-stat-num">8<span>min</span></div><div class="hero-stat-label">depuis Lux centre-ville</div></div>
       <div class="hero-stat"><div class="hero-stat-num">18<span>h</span></div><div class="hero-stat-label">mardi soir · Strassen</div></div>
@@ -97,7 +141,7 @@
 <div class="tip-wrap" style="background:#050304;">
   <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 55% at 50% -15%,rgba(192,57,43,.2) 0%,transparent 65%),repeating-linear-gradient(-55deg,transparent 0,transparent 44px,rgba(255,255,255,.007) 44px,rgba(255,255,255,.007) 45px);"></div>
   <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;">
-    <div class="tip-eyebrow">Le club le plus proche de Luxembourg-ville</div>
+    <div class="tip-eyebrow">Armwrestling Club Strassen</div>
     <div class="tip-grid-3">
       <div class="tip-card c-red">
         <div class="tip-stat-num">8<span>min</span></div>
@@ -119,38 +163,175 @@
 </div>
 
 
-<!-- ── LE CLUB ────────────────────────────────────────────────────── -->
+<!-- ── CE QUI SE PASSE LE MARDI ──────────────────────────────────── -->
 <div class="sec sec-dark bg-red-glow">
   <div class="sec-inner">
-    <div class="article-photo" style="margin-bottom:2.5rem;">
-      <img src="match-competition-public-luxembourg.png" alt="Match de bras de fer devant public au Luxembourg — compétition officielle LAF à Strassen" loading="lazy"/>
+    <div class="sec-eyebrow">Mardi 18h</div>
+    <h2>Ce qui se passe<br>quand vous <span>arrivez</span></h2>
+    <p>La plupart des gens ont déjà fait du bras de fer entre amis. Mais personne n'a appris comment ça marche vraiment. C'est exactement ce qu'on fait le mardi à 18h.</p>
+    <p>Vous arrivez, on vous accueille, on vous explique les bases de sécurité. Ensuite vous essayez sur table — contre des gens de niveaux variés, dans une ambiance détendue.</p>
+    <p>Le bras de fer est beaucoup plus technique que ce que la plupart imaginent. C'est ce qui rend la première séance intéressante : vous repartez avec des choses à comprendre, pas juste un souvenir de muscles.</p>
+    <div class="article-photo" style="margin:1.5rem 0 0;">
+      <img src="training_strassen.jpg" alt="Entraînement bras de fer le mardi soir à Strassen — Armwrestling Club Strassen" loading="lazy"/>
     </div>
-    <h2>Le seul club de bras de fer proche de Luxembourg-ville</h2>
-    <p>L'<strong>Armwrestling Club Strassen</strong> est implanté au 86 rue des Romains à Strassen, à seulement 8 minutes en voiture de Luxembourg-ville et 12 minutes en transport en commun. C'est le club de bras de fer le plus accessible depuis le centre de la capitale luxembourgeoise.</p>
-    <p>Membre de la <strong>Luxembourg Armwrestling Federation (LAF)</strong>, le club propose des entraînements le mardi soir à partir de 18h, ouverts à tous les niveaux — y compris aux personnes qui n'ont jamais pratiqué le bras de fer.</p>
   </div>
 </div>
 
 
 <!-- ── COMMENT VENIR ──────────────────────────────────────────────── -->
-<div class="sec sec-light">
-  <div class="sec-inner">
-    <h2>Comment venir depuis Luxembourg-ville</h2>
+<div class="sec sec-dark" style="background:#050205;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.06);">
+  <div style="position:absolute;inset:0;pointer-events:none;
+    background:
+      repeating-linear-gradient(0deg,transparent 0,transparent 24px,rgba(192,57,43,.07) 24px,rgba(192,57,43,.07) 25px),
+      repeating-linear-gradient(90deg,transparent 0,transparent 24px,rgba(192,57,43,.07) 24px,rgba(192,57,43,.07) 25px);
+    -webkit-mask:radial-gradient(ellipse 95% 70% at 50% 32%,black 8%,transparent 80%);
+    mask:radial-gradient(ellipse 95% 70% at 50% 32%,black 8%,transparent 80%);"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 48% at 50% 30%,rgba(192,57,43,.1) 0%,transparent 62%);"></div>
+  <div class="sec-inner" style="position:relative;z-index:1;">
+    <div class="sec-eyebrow">Accès &amp; Proximité</div>
+    <h2>Comment venir depuis <span>Luxembourg-ville</span></h2>
+    <p>Le club se trouve à Strassen, juste à l'ouest de Luxembourg-ville — accessible en quelques minutes depuis la plupart des quartiers de la capitale et des communes voisines. Voici les temps de trajet en voiture et toutes les infos pratiques pour venir :</p>
+
+    <figure class="route-map">
+      <svg class="route-map-svg" viewBox="0 0 920 580" role="img" aria-label="Carte stylisée des accès au club de bras de fer à Strassen avec les temps de trajet en voiture depuis les quartiers de Luxembourg-ville et les communes voisines">
+        <defs>
+          <radialGradient id="rmGlow" cx="33%" cy="52%" r="62%">
+            <stop offset="0%" stop-color="#c0392b" stop-opacity=".24"/>
+            <stop offset="45%" stop-color="#c0392b" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#c0392b" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="rmNeon" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3.2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="rmNeonHot" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5.5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <rect width="920" height="580" fill="#06040a"/>
+        <rect width="920" height="580" fill="url(#rmGlow)"/>
+
+        <!-- Région -->
+        <text class="region" x="880" y="56" font-size="15" text-anchor="end">Luxembourg-Stadt</text>
+
+        <!-- Réseau secondaire (blanc, discret) -->
+        <g stroke="#f5f0e8" stroke-opacity=".08" stroke-width="1" fill="none" stroke-linecap="round">
+          <line x1="430" y1="285" x2="575" y2="250"/>
+          <line x1="575" y1="250" x2="560" y2="130"/>
+          <line x1="575" y1="250" x2="660" y2="355"/>
+          <line x1="660" y1="355" x2="520" y2="450"/>
+          <line x1="520" y1="450" x2="470" y2="375"/>
+          <line x1="470" y1="375" x2="430" y2="285"/>
+          <line x1="200" y1="385" x2="345" y2="490"/>
+          <line x1="345" y1="490" x2="520" y2="450"/>
+        </g>
+
+        <!-- Axes principaux (rouge, glow) -->
+        <g filter="url(#rmNeon)" stroke="#c0392b" stroke-width="2.3" stroke-linecap="round" stroke-opacity=".92">
+          <line x1="200" y1="385" x2="300" y2="300"/>
+          <line x1="470" y1="375" x2="300" y2="300"/>
+          <line x1="520" y1="450" x2="300" y2="300"/>
+          <line x1="660" y1="355" x2="300" y2="300"/>
+          <line x1="560" y1="130" x2="300" y2="300"/>
+          <line x1="345" y1="490" x2="300" y2="300"/>
+        </g>
+        <g filter="url(#rmNeonHot)" stroke="#e74c3c" stroke-width="3.1" stroke-linecap="round">
+          <line x1="430" y1="285" x2="300" y2="300"/>
+          <line x1="575" y1="250" x2="300" y2="300"/>
+        </g>
+
+        <!-- Flux (animé) -->
+        <g stroke="#ffe2db" stroke-width="1.7" stroke-linecap="round" fill="none">
+          <line class="route-flux" x1="200" y1="385" x2="300" y2="300"/>
+          <line class="route-flux" x1="430" y1="285" x2="300" y2="300"/>
+          <line class="route-flux" x1="470" y1="375" x2="300" y2="300"/>
+          <line class="route-flux" x1="575" y1="250" x2="300" y2="300"/>
+          <line class="route-flux" x1="520" y1="450" x2="300" y2="300"/>
+          <line class="route-flux" x1="660" y1="355" x2="300" y2="300"/>
+          <line class="route-flux" x1="560" y1="130" x2="300" y2="300"/>
+          <line class="route-flux" x1="345" y1="490" x2="300" y2="300"/>
+        </g>
+
+        <!-- Quartiers -->
+        <g>
+          <circle cx="200" cy="385" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="430" cy="285" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="470" cy="375" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="575" cy="250" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="520" cy="450" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="660" cy="355" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="560" cy="130" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="345" cy="490" r="4.5" fill="#f5f0e8" stroke="#c0392b" stroke-width="2"/>
+        </g>
+
+        <!-- Destination : Strassen -->
+        <circle class="hub-pulse" cx="300" cy="300" r="13" fill="none" stroke="#e74c3c" stroke-width="2"/>
+        <circle class="hub-pulse" cx="300" cy="300" r="13" fill="none" stroke="#e74c3c" stroke-width="2" style="animation-delay:1.3s"/>
+        <circle cx="300" cy="300" r="11" fill="#c0392b" filter="url(#rmNeonHot)"/>
+        <circle cx="300" cy="300" r="6" fill="#fff"/>
+
+        <!-- Libellés -->
+        <text class="hub-tag" x="278" y="287" font-size="12" text-anchor="end">Le club</text>
+        <text class="lbl hub-name" x="278" y="312" font-size="25" text-anchor="end">Strassen</text>
+
+        <text class="lbl" x="182" y="383" font-size="16.5" text-anchor="end">Bertrange</text>
+        <text class="lbl-time" x="182" y="400" font-size="12.5" text-anchor="end">~5 min</text>
+
+        <text class="lbl" x="446" y="283" font-size="16.5">Belair</text>
+        <text class="lbl-time" x="446" y="300" font-size="12.5">~7 min</text>
+
+        <text class="lbl" x="486" y="378" font-size="16.5">Hollerich</text>
+        <text class="lbl-time" x="486" y="395" font-size="12.5">~8 min</text>
+
+        <text class="lbl" x="591" y="248" font-size="16.5">Luxembourg Centre</text>
+        <text class="lbl-time" x="591" y="265" font-size="12.5">~8 min</text>
+
+        <text class="lbl" x="536" y="448" font-size="16.5">Gasperich</text>
+        <text class="lbl-time" x="536" y="465" font-size="12.5">~10 min</text>
+
+        <text class="lbl" x="676" y="353" font-size="16.5">Bonnevoie</text>
+        <text class="lbl-time" x="676" y="370" font-size="12.5">~10 min</text>
+
+        <text class="lbl" x="576" y="128" font-size="16.5">Kirchberg</text>
+        <text class="lbl-time" x="576" y="145" font-size="12.5">~12 min</text>
+
+        <text class="lbl" x="361" y="490" font-size="16.5">Leudelange</text>
+        <text class="lbl-time" x="361" y="507" font-size="12.5">~12 min</text>
+      </svg>
+
+      <ul class="route-map-list">
+        <li class="rl-hub"><span class="rl-name">Strassen</span><span class="rl-time">Le club · 86 rue des Romains</span></li>
+        <li><span class="rl-name">Bertrange</span><span class="rl-time">~5 min voiture</span></li>
+        <li><span class="rl-name">Belair</span><span class="rl-time">~7 min voiture</span></li>
+        <li><span class="rl-name">Luxembourg Centre</span><span class="rl-time">~8 min voiture</span></li>
+        <li><span class="rl-name">Hollerich</span><span class="rl-time">~8 min voiture</span></li>
+        <li><span class="rl-name">Bonnevoie</span><span class="rl-time">~10 min voiture</span></li>
+        <li><span class="rl-name">Gasperich</span><span class="rl-time">~10 min voiture</span></li>
+        <li><span class="rl-name">Kirchberg</span><span class="rl-time">~12 min voiture</span></li>
+        <li><span class="rl-name">Leudelange</span><span class="rl-time">~12 min voiture</span></li>
+      </ul>
+
+      <figcaption class="route-map-cap">Temps de trajet en voiture (approx.) jusqu'à Strassen · 86 rue des Romains, L-8041</figcaption>
+    </figure>
+
+    <h3 style="margin:2.5rem 0 .2rem;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.08em;">L'accès en détail</h3>
     <div class="access-grid">
       <div class="access-cell">
-        <div class="access-cell-label">🚗 En voiture</div>
+        <div class="access-cell-label">En voiture</div>
         <div class="access-cell-val">Environ <strong>8 minutes</strong> depuis Luxembourg centre-ville. Parking disponible devant le garage et dans la rue autour.</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">🚌 En transport</div>
+        <div class="access-cell-label">En transport</div>
         <div class="access-cell-val">Environ <strong>12 minutes</strong> depuis le centre. Lignes de bus desservant Strassen depuis la gare centrale.</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">📍 Adresse exacte</div>
+        <div class="access-cell-label">Adresse exacte</div>
         <div class="access-cell-val"><strong>86 rue des Romains</strong><br>L-8041 Strassen, Luxembourg</div>
       </div>
       <div class="access-cell">
-        <div class="access-cell-label">🔔 Comment entrer</div>
+        <div class="access-cell-label">Comment entrer</div>
         <div class="access-cell-val">Garage blanc facilement identifiable. Sonnez à la porte d'entrée à côté de la porte de garage.</div>
       </div>
     </div>
@@ -158,69 +339,33 @@
 </div>
 
 
-<!-- ── QUARTIERS PROCHES ──────────────────────────────────────────── -->
-<div class="sec sec-dark bg-motion">
+<!-- ── UN CLUB POUR COMMENCER ─────────────────────────────────────── -->
+<div class="sec sec-dark" style="background:linear-gradient(180deg,#060305 0%,#050203 100%);border-top:1px solid rgba(255,255,255,.06);">
   <div class="sec-inner">
-    <h2>Les quartiers et communes proches</h2>
-    <p>Le club est facilement accessible depuis de nombreux quartiers de Luxembourg-ville et communes alentour :</p>
-    <div class="nearby-section">
-      <h3 style="margin:0 0 .5rem;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);letter-spacing:.08em;">Depuis ces zones, le club est accessible en moins de 15 min</h3>
-      <div class="nearby-grid">
-        <div class="nearby-item"><div class="nearby-name">Luxembourg Centre</div><div class="nearby-dist">~8 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Kirchberg</div><div class="nearby-dist">~12 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Bonnevoie</div><div class="nearby-dist">~10 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Gasperich</div><div class="nearby-dist">~10 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Hollerich</div><div class="nearby-dist">~8 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Belair</div><div class="nearby-dist">~7 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Bertrange</div><div class="nearby-dist">~5 min voiture</div></div>
-        <div class="nearby-item"><div class="nearby-name">Leudelange</div><div class="nearby-dist">~12 min voiture</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ── POURQUOI PRATIQUER ─────────────────────────────────────────── -->
-<div class="sec sec-light">
-  <div class="sec-inner">
-    <h2>Pourquoi pratiquer le bras de fer à Luxembourg</h2>
-    <p>Le bras de fer est l'un des sports de force les plus accessibles et les moins coûteux disponibles au Luxembourg. Une seule licence annuelle à 150€ donne accès à deux clubs (Strassen et Munsbach), au matériel professionnel, et aux compétitions officielles.</p>
-    <p>C'est aussi le seul sport de combat individuel au Luxembourg où vous pouvez passer de <strong>débutant complet à compétiteur international</strong> en moins d'un an, avec des événements organisés chaque année à Munsbach sous l'égide de la <strong>Luxembourg Armwrestling Federation</strong>.</p>
-    <h3>Pour les habitants de Luxembourg-ville</h3>
-    <ul>
-      <li>Proximité : le trajet depuis le centre est court, faisable en semaine après le travail</li>
-      <li>Horaire adapté : mardi 18h, heure de sortie de bureau standard</li>
-      <li>Pas de réservation obligatoire pour le premier essai</li>
-      <li>Parking toujours disponible</li>
-      <li>Transport en commun possible depuis la gare centrale</li>
-    </ul>
-  </div>
-</div>
-
-
-<!-- ── SPORT OUVERT À TOUS ────────────────────────────────────────── -->
-<div class="sec sec-dark">
-  <div class="sec-inner">
-    <h2>Un sport ouvert à tous les profils</h2>
-    <p>Le bras de fer est catégorisé par <strong>poids corporel</strong> — vous ne serez jamais opposé à quelqu'un de beaucoup plus lourd que vous. C'est un sport mixte, hommes et femmes pratiquent ensemble dans une ambiance inclusive.</p>
+    <div class="sec-eyebrow">Le club</div>
+    <h2>Un club fait<br>pour <span>commencer</span></h2>
+    <p>L'Armwrestling Club Strassen est un club récent. La grande majorité des membres a commencé il y a moins d'un an. C'est voulu : ici on apprend la technique, les règles, les positions de sécurité — dans une dynamique sans pression.</p>
+    <p>Le bras de fer est aussi catégorisé par <strong>poids corporel</strong> — vous n'affronterez jamais quelqu'un de beaucoup plus lourd que vous. C'est un sport mixte, hommes et femmes pratiquent ensemble. Le niveau de la salle ne vous écrasera pas : vous venez apprendre, pas faire vos preuves.</p>
     <div class="callout">
-      <p><strong>Première séance :</strong> Venez directement le mardi à 18h au 86 rue des Romains. Présentez-vous comme débutant. On vous explique les bases de sécurité et vous essayez sur table immédiatement. Aucun équipement à apporter.</p>
+      <p><strong>Première séance :</strong> Venez directement le mardi à 18h au 86 rue des Romains. Présentez-vous comme débutant. On vous explique les bases et vous essayez sur table immédiatement. Aucun équipement à apporter.</p>
     </div>
   </div>
 </div>
 
 
 <!-- ── MUNSBACH ───────────────────────────────────────────────────── -->
-<div class="sec sec-dark bg-horizon">
+<div class="sec sec-dark bg-motion">
   <div class="sec-inner">
-    <h2>Le deuxième club : Munsbach (vendredi soir)</h2>
-    <p>Une fois licencié, vous avez également accès au <strong>Grizzly of Luxembourg</strong> à Munsbach, le vendredi à 18h. À 17 minutes en train ou 13 minutes en voiture depuis Luxembourg-ville, c'est le complément idéal pour plus de sparring.</p>
+    <div class="sec-eyebrow">Munsbach</div>
+    <h2>Un deuxième club<br>en <span>complément</span></h2>
+    <p>Une fois licencié, vous avez également accès au <strong>Grizzly of Luxembourg</strong> à Munsbach, le vendredi à 18h. Des profils plus variés, plus de sparring, une ambiance différente — de quoi diversifier votre entraînement sans changer de club.</p>
+    <p>Avoir deux clubs aussi proches l'un de l'autre au Luxembourg, c'est rare. Beaucoup de pratiquants alternent les deux pour progresser plus vite et voir autre chose chaque semaine.</p>
     <div class="cta-block">
       <div>
         <h3>Essai gratuit mardi 18h</h3>
         <p>86 rue des Romains, Strassen — 8 min depuis Luxembourg-ville.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary">Réserver mon essai</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>
