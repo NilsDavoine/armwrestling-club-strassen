@@ -162,14 +162,6 @@
         radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%),
         var(--black);
     }
-    #debuter {
-      background:
-        repeating-linear-gradient(90deg, transparent 0, transparent 58px, rgba(255,80,0,.013) 58px, rgba(255,80,0,.013) 60px),
-        radial-gradient(ellipse 55% 45% at 10% 110%, rgba(200,50,0,.16) 0%, transparent 55%),
-        radial-gradient(ellipse 55% 45% at 90% 110%, rgba(200,50,0,.16) 0%, transparent 55%),
-        radial-gradient(ellipse 140% 70% at 50% 140%, rgba(255,100,0,.35) 0%, rgba(200,30,0,.2) 22%, rgba(80,0,0,.12) 48%, transparent 68%),
-        #020000;
-    }
     #blog {
       background:
         repeating-linear-gradient(0deg, transparent 0, transparent 22px, rgba(255,160,0,.009) 22px, rgba(255,160,0,.009) 23px),
@@ -274,78 +266,57 @@
 <div class="divider"></div>
 
 <section id="about">
-  <div class="fade-in">
-    <div class="section-tag">À propos</div>
-    <h2>Le bras de fer<br><span>officiel au Luxembourg</span></h2>
-    <p class="section-intro">
-      Armwrestling Club Strassen et Grizzly of Luxembourg sont les deux clubs officiels de bras de fer au Luxembourg,
-      tous deux membres de la <strong>Luxembourg Armwrestling Federation</strong> — la fédération nationale qui structure et représente le sport dans le pays.
-    </p>
+  <div class="about-laf-head fade-in">
+    <div class="about-laf-text">
+      <div class="section-tag">À propos</div>
+      <h2>Le bras de fer<br><span>officiel au Luxembourg</span></h2>
+      <p class="section-intro">
+        La <strong>Luxembourg Armwrestling Federation (LAF)</strong> est la fédération nationale
+        qui structure, encadre et représente le bras de fer au Grand-Duché — des premiers
+        entraînements jusqu'aux compétitions internationales.
+      </p>
+
+      <div class="laf-stats">
+        <div class="laf-stat">
+          <strong>Fédération</strong>
+          <span>nationale officielle</span>
+        </div>
+        <div class="laf-stat">
+          <strong>International</strong>
+          <span>compétitions & podiums</span>
+        </div>
+        <div class="laf-stat">
+          <strong>2 clubs</strong>
+          <span>affiliés à la LAF</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-laf-logo">
+      <div class="laf-logo-wrap">
+        <img
+          src="logo_laf.png"
+          alt="Logo officiel de la Luxembourg Armwrestling Federation (LAF)"
+          width="141" height="200"
+          loading="lazy"
+        />
+      </div>
+      <p class="laf-logo-caption">
+        <strong>Luxembourg Armwrestling Federation</strong>
+        Fédération nationale officielle du Grand-Duché
+      </p>
+    </div>
   </div>
 
-  <div class="about-grid fade-in">
-    <div class="about-text">
-      <div class="about-text-top">
-        <p>
-          Fondé en 2026, l'Armwrestling Club Strassen a pour mission de développer et promouvoir
-          le bras de fer au Luxembourg — en tant que sport de compétition structuré et discipline
-          de force technique.
-        </p>
-
-        <div class="federation-badge">
-          <div class="badge-dot"></div>
-          Membre — Luxembourg Armwrestling Federation
-        </div>
-      </div>
-
-      <div class="about-text-bottom">
-        <p>
-          Les deux clubs opèrent sous la <strong>Luxembourg Armwrestling Federation (LAF)</strong> —
-          la fédération nationale officielle — et collaborent étroitement : partage des entraînements,
-          du matériel, et organisation conjointe des compétitions et événements publics.
-        </p>
-
-        <p>
-          Cette synergie, encadrée par la LAF, permet aux athlètes de bénéficier d'environnements
-          d'entraînement variés tout en restant membres d'une seule communauté unie.
-        </p>
-      </div>
-    </div>
-
-    <div class="about-visual">
-      <div class="about-cards">
-        <div class="about-card">
-          <span class="tag">Strassen</span>
-          <h3>Armwrestling Club Strassen</h3>
-          <p>
-            Focus technique, développement progressif, équipement professionnel et accès facile
-            depuis Luxembourg-ville. Entraînements le mardi à 18h00 à Strassen.
-          </p>
-        </div>
-
-        <div class="about-card">
-          <span class="tag">Munsbach</span>
-          <h3>Grizzly of Luxembourg</h3>
-          <p>
-            Accent sur le sparring, la pratique en match réel et l'expérience de table.
-            Tous niveaux bienvenus. Entraînements le vendredi à 18h00 à Munsbach.
-          </p>
-        </div>
-      </div>
-
-      <div class="competition-photo-wrap">
-        <img
-          src="competition-bras-de-fer-luxembourg.webp"
-          alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de l'Armwrestling Club Strassen et de la fédération luxembourgeoise."
-          loading="lazy"
-          width="720" height="280"
-          style="height:280px;object-fit:cover;"
-        />
-        <div class="photo-caption">
-          Compétition officielle · Luxembourg Armwrestling Federation · Munsbach
-        </div>
-      </div>
-    </div>
+  <!-- Photo compétition pleine largeur -->
+  <div class="laf-banner fade-in">
+    <img
+      src="competition-bras-de-fer-luxembourg.webp"
+      alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de la fédération luxembourgeoise."
+      loading="lazy"
+      width="1100" height="360"
+    />
+    <div class="photo-caption">Compétition officielle · Luxembourg Armwrestling Federation</div>
   </div>
 </section>
 
@@ -364,97 +335,113 @@
     </p>
   </div>
 
-  <!-- Résultats & Médias -->
-  <div class="equip-grid fade-in" style="margin-bottom:3rem;">
-    <div class="equip-card">
-      <div class="equip-card-badge" style="background:rgba(212,175,55,.12);color:#d4af37;border:1px solid rgba(212,175,55,.3);">Europe 2025</div>
-      <div class="equip-card-name">Champions d'Europe LAF</div>
-      <div class="equip-card-spec">Luxembourg Armwrestling Federation · 2025</div>
-      <p class="equip-card-desc">Titre européen remporté sous les couleurs de la fédération luxembourgeoise — l'une des compétitions les plus exigeantes du calendrier continental.</p>
+  <!-- Palmarès + Encadrement + Témoignages — une seule ligne -->
+  <div class="recognition-grid fade-in">
+
+    <!-- Palmarès -->
+    <div class="palmares-stack">
+      <div class="palmares-row">
+        <div class="palmares-row-head">
+          <div class="equip-card-badge" style="color:#d4af37;">Europe 2025</div>
+          <div class="equip-card-name">Champions d'Europe</div>
+          <div class="equip-card-spec">LAF · 2025</div>
+        </div>
+        <p class="palmares-row-desc">Titre européen remporté sous les couleurs de la fédération luxembourgeoise — l'une des compétitions les plus exigeantes du calendrier continental.</p>
+      </div>
+      <div class="palmares-row">
+        <div class="palmares-row-head">
+          <div class="equip-card-badge">Médias</div>
+          <div class="equip-card-name">RTL Luxembourg Essentiel Radio</div>
+          <div class="equip-card-spec">Interviews radio</div>
+        </div>
+        <p class="palmares-row-desc">RTL Luxembourg et Essentiel Radio ont interviewé la fédération et ses clubs sur le développement du bras de fer au Grand-Duché.</p>
+      </div>
+      <div class="palmares-row">
+        <div class="palmares-row-head">
+          <div class="equip-card-badge">Compétition</div>
+          <div class="equip-card-name">Podiums chaque année</div>
+          <div class="equip-card-spec">Compétition internationale</div>
+        </div>
+        <p class="palmares-row-desc">Médailles remportées à chaque édition de la compétition internationale de bras de fer du Luxembourg — l'événement phare du pays, aujourd'hui à sa 7ème édition.</p>
+      </div>
     </div>
-    <div class="equip-card">
-      <div class="equip-card-badge" style="background:rgba(37,150,200,.1);color:rgba(100,190,240,.9);border:1px solid rgba(37,150,200,.25);">Médias</div>
-      <div class="equip-card-name">RTL Luxembourg · Essentiel Radio</div>
-      <div class="equip-card-spec">Interviews radio & presse nationale</div>
-      <p class="equip-card-desc">RTL Luxembourg et Essentiel Radio ont interviewé la fédération et ses clubs sur le développement du bras de fer au Grand-Duché.</p>
+
+    <!-- Encadrement -->
+    <div>
+      <h3 class="block-title">Encadrement<br><span>technique</span></h3>
+      <div class="staff-list">
+        <div class="staff-card">
+          <div>
+            <div class="staff-card-name">Bogdan Roman</div>
+            <div class="staff-card-role">Grizzly of Luxembourg</div>
+          </div>
+          <span class="staff-card-badge">Président</span>
+        </div>
+        <div class="staff-card">
+          <div>
+            <div class="staff-card-name">Pascal Kramp</div>
+            <div class="staff-card-role">Club Strassen</div>
+          </div>
+          <span class="staff-card-badge">Entraîneur</span>
+        </div>
+        <div class="staff-card">
+          <div>
+            <div class="staff-card-name">Adrian Simion</div>
+            <div class="staff-card-role">Club Strassen</div>
+          </div>
+          <span class="staff-card-badge">Entraîneur</span>
+        </div>
+        <div class="staff-card">
+          <div>
+            <div class="staff-card-name">Nils Davoine</div>
+            <div class="staff-card-role">Arbitre national luxembourgeois</div>
+          </div>
+          <span class="staff-card-badge">Président ACS</span>
+        </div>
+      </div>
     </div>
-    <div class="equip-card">
-      <div class="equip-card-badge" style="background:rgba(192,57,43,.12);color:rgba(240,120,100,.9);border:1px solid rgba(192,57,43,.3);">Compétition</div>
-      <div class="equip-card-name">Podiums chaque année</div>
-      <div class="equip-card-spec">Compétition internationale du Luxembourg · Chaque édition</div>
-      <p class="equip-card-desc">Médailles remportées à chaque édition de la compétition internationale de bras de fer du Luxembourg — l'événement phare du pays, aujourd'hui à sa 7ème édition.</p>
+
+    <!-- Témoignages -->
+    <div>
+      <h3 class="block-title">Ils ont<br><span>essayé</span></h3>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <p>« Super entraînement, vraiment fun, merci les gars ! Et merci pour ce club ! »</p>
+          <span>— Hugo</span>
+        </div>
+        <div class="testimonial">
+          <p>« J'apprécie vraiment l'effort que vous y mettez ! »</p>
+          <span>— Julian</span>
+        </div>
+        <div class="testimonial">
+          <p>« Merci pour la séance gratuite, j'ai adoré ! À la semaine prochaine, bien remis ! »</p>
+          <span>— Leonard</span>
+        </div>
+      </div>
     </div>
+
   </div>
 
-  <!-- Photos entraînement -->
-  <div class="fade-in" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:3rem;">
-    <div>
+  <!-- Photos -->
+  <div class="palmares-photos fade-in">
+    <figure class="palmares-photo-card">
       <img
-        src="training_strassen.webp"
+        src="training_strassen.JPG"
         alt="Entraînement de bras de fer au club de Strassen — séance encadrée sur table WAF officielle, Luxembourg"
         loading="lazy"
-        width="720" height="480"
-        style="width:100%;height:280px;object-fit:cover;border-radius:8px;display:block;"
+        width="720" height="540"
       />
-      <div class="photo-caption">Séance d'entraînement · Club Strassen · Mardi 18h</div>
-    </div>
-    <div>
+      <figcaption class="photo-caption">Séance d'entraînement · Club Strassen · Mardi 18h</figcaption>
+    </figure>
+    <figure class="palmares-photo-card">
       <img
-        src="garage_strassen_training.webp"
+        src="garage_strassen_training.JPG"
         alt="Salle d'entraînement de l'Armwrestling Club Strassen à Luxembourg — équipement professionnel bras de fer, tables WAF et système à poulies"
         loading="lazy"
-        width="720" height="480"
-        style="width:100%;height:280px;object-fit:cover;border-radius:8px;display:block;"
+        width="720" height="540"
       />
-      <div class="photo-caption">Équipement professionnel · Armwrestling Club Strassen · Strassen</div>
-    </div>
-  </div>
-
-  <!-- Encadrement + Témoignages côte à côte -->
-  <div class="fade-in" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;max-width:960px;margin:0 auto 3rem;align-items:start;">
-
-    <!-- Colonne gauche : Encadrement -->
-    <div>
-      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin:0 0 1.5rem;line-height:1.05;">Encadrement<br><span style="color:var(--red);">technique</span></h3>
-      <div>
-        <div style="padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.07);">
-          <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase;">Bogdan Roman</div>
-          <div style="font-size:.82rem;color:rgba(245,240,232,.45);margin-top:.2rem;">Président · Grizzly of Luxembourg</div>
-        </div>
-        <div style="padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.07);">
-          <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase;">Pascal Kramp</div>
-          <div style="font-size:.82rem;color:rgba(245,240,232,.45);margin-top:.2rem;">Entraîneur · Club Strassen</div>
-        </div>
-        <div style="padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.07);">
-          <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase;">Adrian Simion</div>
-          <div style="font-size:.82rem;color:rgba(245,240,232,.45);margin-top:.2rem;">Entraîneur · Club Strassen</div>
-        </div>
-        <div style="padding:.9rem 0;">
-          <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase;">Nils Davoine</div>
-          <div style="font-size:.82rem;color:rgba(245,240,232,.45);margin-top:.2rem;">Président ACS · Arbitre national luxembourgeois</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Colonne droite : Témoignages -->
-    <div>
-      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin:0 0 1.5rem;line-height:1.05;">Ils ont<br><span style="color:var(--red);">essayé</span></h3>
-      <div style="display:flex;flex-direction:column;gap:1.1rem;">
-        <div style="padding-left:1.1rem;border-left:3px solid var(--red);">
-          <p style="font-size:.93rem;color:rgba(245,240,232,.82);font-style:italic;margin:0 0 .3rem;line-height:1.55;">"Great and fun training, thanks guys! And thanks for this club!"</p>
-          <span style="font-size:.75rem;color:rgba(245,240,232,.28);">— Membre</span>
-        </div>
-        <div style="padding-left:1.1rem;border-left:3px solid var(--red);">
-          <p style="font-size:.93rem;color:rgba(245,240,232,.82);font-style:italic;margin:0 0 .3rem;line-height:1.55;">"Appreciate the effort you put into this!"</p>
-          <span style="font-size:.75rem;color:rgba(245,240,232,.28);">— Membre</span>
-        </div>
-        <div style="padding-left:1.1rem;border-left:3px solid var(--red);">
-          <p style="font-size:.93rem;color:rgba(245,240,232,.82);font-style:italic;margin:0 0 .3rem;line-height:1.55;">"Thank you for the free session, I liked it a lot! see you next week all recovered!"</p>
-          <span style="font-size:.75rem;color:rgba(245,240,232,.28);">— Membre</span>
-        </div>
-      </div>
-    </div>
-
+      <figcaption class="photo-caption">Équipement professionnel · Armwrestling Club Strassen · Strassen</figcaption>
+    </figure>
   </div>
 
   <!-- Récap vidéo Instagram -->
@@ -609,12 +596,22 @@
       <p class="equip-card-desc">Dimensions et hauteur réglementaires — s'entraîner dans les mêmes conditions qu'une compétition officielle dès la première séance.</p>
     </div>
 
+    <figure class="equip-photo">
+      <img src="tables_bras_de_fer_club_strassen.webp" alt="Tables officielles de bras de fer au club de Strassen" width="1672" height="941" loading="lazy" />
+      <figcaption>Tables officielles · Norme WAF</figcaption>
+    </figure>
+
     <div class="equip-card">
       <div class="equip-card-badge">Force spécifique</div>
       <div class="equip-card-name">Système à poulies</div>
       <div class="equip-card-spec">Résistance réglable · Angles multiples</div>
       <p class="equip-card-desc">Travail technique ciblé en supination, pronation et déviation ulnaire — les mouvements spécifiques que la table seule ne permet pas.</p>
     </div>
+
+    <figure class="equip-photo">
+      <img src="warm_up_armwrestling.webp" alt="Échauffement avant l'entraînement de bras de fer" width="1100" height="619" loading="lazy" />
+      <figcaption>Échauffement · Prévention des blessures</figcaption>
+    </figure>
 
     <div class="equip-card">
       <div class="equip-card-badge">Prise & poignet</div>
@@ -623,12 +620,10 @@
       <p class="equip-card-desc">Équipement conçu exclusivement pour le bras de fer : développement de la prise, du poignet et des avant-bras dans les angles du sport.</p>
     </div>
 
-    <div class="equip-card">
-      <div class="equip-card-badge">Renforcement</div>
-      <div class="equip-card-name">Barres libres</div>
-      <div class="equip-card-spec">Plusieurs diamètres · Toutes morphologies</div>
-      <p class="equip-card-desc">Barres de traction et de tirage à différents diamètres pour solliciter les mêmes unités motrices que lors du match sur table.</p>
-    </div>
+    <figure class="equip-photo">
+      <img src="pulley_armwrestling_training.webp" alt="Entraînement sur système à poulies pour le bras de fer" width="1100" height="619" loading="lazy" />
+      <figcaption>Système à poulies · Travail technique</figcaption>
+    </figure>
 
     <div class="equip-card">
       <div class="equip-card-badge">Mobilité · Récupération</div>
@@ -636,6 +631,11 @@
       <div class="equip-card-spec">Résistances progressives · Théraband</div>
       <p class="equip-card-desc">Échauffement articulaire, rééducation des tendons et renforcement en décharge — indispensables pour prévenir les blessures chroniques.</p>
     </div>
+
+    <figure class="equip-photo">
+      <img src="armwrestling_luxembourg.webp" alt="Entraînement de bras de fer au Luxembourg" width="1535" height="1024" loading="lazy" />
+      <figcaption>Club de bras de fer · Luxembourg</figcaption>
+    </figure>
 
     <div class="equip-card">
       <div class="equip-card-badge">Conditionnement</div>
@@ -697,59 +697,6 @@
   </div>
 </section>
 
-
-<div class="divider"></div>
-
-<section id="debuter">
-  <div class="fade-in">
-    <div class="section-tag">Débuter</div>
-    <h2>Commencer le bras de fer<br><span>sans stress</span></h2>
-    <p class="section-intro">
-      Vous voulez découvrir le bras de fer sportif sans déjà connaître le sport ? Cette section répond exactement à ce que cherchent la plupart des nouveaux : où venir, comment ça se passe et s'il faut déjà être fort.
-    </p>
-  </div>
-
-  <div class="steps-grid fade-in">
-
-    <div class="step-card">
-      <span class="step-num-bg">01</span>
-      <div class="step-label">Étape 01</div>
-      <div class="step-title">Aucune expérience requise</div>
-      <p class="step-desc">Première séance orientée découverte : table, posture de sécurité et bases techniques. Encadrement inclus dès le premier contact avec la table.</p>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num-bg">02</span>
-      <div class="step-label">Étape 02</div>
-      <div class="step-title">Venez le mardi à 18h</div>
-      <p class="step-desc">Présentez-vous directement au 86 rue des Romains à Strassen. Aucune réservation obligatoire — prévenez par WhatsApp si vous voulez être attendu.</p>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num-bg">03</span>
-      <div class="step-label">Étape 03</div>
-      <div class="step-title">La technique avant la force</div>
-      <p class="step-desc">Placement, prise, angle de poignet — le bras de fer s'apprend. La force brute vient après avoir maîtrisé la forme. Un débutant technique bat un fort sans technique.</p>
-    </div>
-
-    <div class="step-card">
-      <span class="step-num-bg">04</span>
-      <div class="step-label">Étape 04</div>
-      <div class="step-title">Deux clubs, une communauté</div>
-      <p class="step-desc">Une licence LAF ouvre les portes des deux clubs — Strassen le mardi, Munsbach le vendredi. Progressez dans les deux ambiances selon vos objectifs.</p>
-    </div>
-
-  </div>
-
-  <div class="competition-photo-wrap fade-in" style="max-width:900px;margin:2.5rem auto 0;">
-    <img src="match-competition-grande-salle.webp" alt="Ambiance d'une compétition officielle de bras de fer au Luxembourg, grande salle avec public" loading="lazy" width="900" height="400" style="width:100%;height:260px;object-fit:cover;border-radius:8px;display:block;" />
-  </div>
-
-  <div class="cta-strip fade-in">
-    <p><strong>Le plus direct :</strong> venez essayer gratuitement mardi 18h à Strassen, puis contactez-nous si vous souhaitez rejoindre les deux clubs.</p>
-    <a href="#contact" class="btn-primary">Planifier mon essai</a>
-  </div>
-</section>
 
 <div class="divider"></div>
 
