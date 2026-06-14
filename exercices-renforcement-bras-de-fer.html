@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exercices avant-bras & poignet — renforcement | ACS Luxembourg</title>
+  <title>Exercices avant-bras & poignet — renforcement | ACS</title>
   <meta name="description" content="Les meilleurs exercices pour renforcer l'avant-bras et le poignet : wrist curl, hammer rotation, pinch grip, wrist roller. Programme hebdomadaire inclus."/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/exercices-renforcement-bras-de-fer.html"/>
@@ -39,6 +39,7 @@
     .sec ul{margin:0 0 1.4rem 1.8rem}.sec li{font-size:.98rem;color:rgba(245,240,232,.72);line-height:1.85;margin-bottom:.4rem}
     .sec strong{color:var(--white);font-weight:600}
     .sec a{color:var(--red);text-decoration:none}.sec a:hover{text-decoration:underline}
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .breadcrumb{font-family:var(--font-display);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:1.5rem}
     .breadcrumb a{color:rgba(245,240,232,.3);text-decoration:none}.breadcrumb a:hover{color:var(--red)}.breadcrumb span{margin:0 .5rem}
     .callout{background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0}
@@ -78,11 +79,11 @@
     .program-table td{padding:.75rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(245,240,232,.65);vertical-align:middle}
     .program-table tr:last-child td{border-bottom:none}
     .day-tag{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);white-space:nowrap}
-    /* CTA FINAL */
-    .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.28);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
-    .cta-final-label{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-bottom:.4rem}
-    .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
-    .cta-final-desc{font-size:.92rem;color:rgba(245,240,232,.62);margin:0}
+    /* CTA BOX */
+    .cta-box{background:linear-gradient(135deg,rgba(192,57,43,.1),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.22);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .cta-label{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.55);margin-bottom:.4rem}
+    .cta-title{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
+    .cta-box p{font-size:.88rem;color:rgba(245,240,232,.48);margin:0;line-height:1.7}
     /* VIDEO */
     .video-split{display:grid;grid-template-columns:1.5fr 1fr;gap:3.5rem;align-items:center}
     .vid-link-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;aspect-ratio:9/16;max-width:240px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;text-decoration:none;transition:background .25s,border-color .25s;padding:2rem}
@@ -115,7 +116,7 @@
     .acc-body.open{display:block}
     @media(max-width:600px){.toc-list{columns:1}.toc-wrap{flex-direction:column;gap:1rem}}
 
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.muscle-grid{grid-template-columns:repeat(2,1fr)}.exo-grid{grid-template-columns:repeat(2,1fr)}.cta-final{grid-template-columns:1fr}.video-split{grid-template-columns:1fr;gap:2rem}}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.muscle-grid{grid-template-columns:repeat(2,1fr)}.exo-grid{grid-template-columns:repeat(2,1fr)}.cta-box{flex-direction:column}.video-split{grid-template-columns:1fr;gap:2rem}}
   </style>
 </head>
 <body>
@@ -131,7 +132,7 @@
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('armwrestling_home_training.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Avant-bras & poignet</div>
     <div class="article-tag">Exercices · Renforcement</div>
@@ -187,9 +188,12 @@
   <div class="sec-inner">
     <div class="sec-eyebrow">Pourquoi c'est essentiel</div>
     <h2>L'avant-bras et le poignet :<br><span>les oubliés de l'entraînement</span></h2>
-    <img src="exercice_bras_de_fer_avant_bras.png" alt="Exercice de renforcement avant-bras — flexion du poignet avec haltère" loading="lazy" style="width:100%;height:300px;object-fit:cover;border-radius:3px;border:1px solid rgba(255,255,255,.07);margin-bottom:2rem;display:block;"/>
     <p>La plupart des programmes de musculation ont un point commun : ils négligent presque totalement l'avant-bras et le poignet. Développés couchés, squats, tractions — ces exercices sollicitent indirectement la prise, mais ne développent pas la <strong>force de flexion du poignet, la rotation de l'avant-bras ni la force des doigts</strong>.</p>
     <p>Pourtant, l'avant-bras est l'une des zones les plus sollicitées dans la vie quotidienne et dans la quasi-totalité des sports de contact, de combat, et de préhension. Une prise faible ou un poignet non renforcé devient rapidement le maillon limitant : en escalade, en judo, en tennis, ou dès que l'on cherche à soulever ou contrôler quelque chose avec les mains.</p>
+    <figure class="exo-figure">
+      <img src="exercice_bras_de_fer_avant_bras.png" alt="Exercice de renforcement avant-bras — flexion du poignet avec haltère" loading="lazy"/>
+      <figcaption>Renforcement de l'avant-bras — flexion du poignet avec haltère</figcaption>
+    </figure>
     <p>Les exercices de renforcement spécifiques de l'avant-bras et du poignet permettent de combler ce manque en ciblant directement les fléchisseurs et extenseurs du poignet, les supinateurs, les pronateurs, et les fléchisseurs des doigts — des muscles rarement isolés dans un programme classique.</p>
     <div class="callout">
       <p>Les blessures de coude et de poignet (épicondylite, tendinite du carpe) sont souvent dues à un déséquilibre entre fléchisseurs et extenseurs. Un programme équilibré les prévient efficacement.</p>
@@ -378,13 +382,13 @@
     <p>Le bras de fer est pratiqué à toutes les catégories de poids, par des hommes et des femmes, avec ou sans passé sportif. La force spécifique s'acquiert rapidement quand elle est soutenue par un renforcement ciblé comme celui présenté ici. Beaucoup de pratiquants découvrent qu'avec 2 à 3 mois de travail sérieux d'avant-bras, leur progression à la table est spectaculaire.</p>
     <p>L'<strong>Armwrestling Club Strassen</strong> regroupe les pratiquants du Grand-Duché de Luxembourg. Les séances ont lieu à Strassen le mardi soir et à Munsbach le vendredi soir. Débutants bienvenus — la première séance est gratuite.</p>
 
-    <div class="cta-final">
+    <div class="cta-box">
       <div>
-        <div class="cta-final-label">ACS Strassen · Mardi 18h · Munsbach Vendredi</div>
-        <div class="cta-final-title">Tester le bras de fer en club</div>
-        <p class="cta-final-desc">Appliquez ces exercices dans un sport concret. Première séance gratuite, aucun niveau requis.</p>
+        <div class="cta-label">ACS Strassen · Mardi 18h · Munsbach Vendredi</div>
+        <div class="cta-title">Tester le bras de fer en club</div>
+        <p>Appliquez ces exercices dans un sport concret. Première séance gratuite, aucun niveau requis.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;">Planifier mon essai →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>

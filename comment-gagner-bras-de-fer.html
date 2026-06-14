@@ -182,7 +182,7 @@
     .sec { padding: 4.5rem 3rem; }
     .sec-dark  { background: var(--black); }
     .sec-light { background: var(--dark2); }
-    .sec-inner { max-width: 960px; margin: 0 auto; }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
 
     .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.4rem; line-height: 1; }
     .sec h2 span { color: var(--red); }
@@ -194,6 +194,7 @@
     .sec strong { color: var(--white); font-weight: 600; }
     .sec a { color: var(--red); text-decoration: none; }
     .sec a:hover { text-decoration: underline; }
+    .sec .btn-primary{color:var(--white);text-decoration:none}
 
     /* ═══════════════════════════════════
        BACKGROUNDS CRÉATIFS PAR SECTION
@@ -326,21 +327,21 @@
       padding: 1.4rem 1.4rem 1.2rem;
     }
     .technique-card-name { font-family: var(--font-display); font-size: 1rem; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin-bottom: .5rem; }
-    .technique-card-desc { font-size: .82rem; color: rgba(245,240,232,.5); line-height: 1.6; }
+    .technique-card-desc { font-size: .93rem; color: rgba(245,240,232,.78); line-height: 1.72; }
 
     /* Steps */
     .steps { display: flex; flex-direction: column; gap: 1.2rem; margin: 1.5rem 0; }
     .step { display: flex; gap: 1.4rem; align-items: flex-start; }
     .step-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--red); line-height: 1; flex-shrink: 0; width: 2rem; text-align: right; }
     .step-body h4 { font-family: var(--font-display); font-size: .9rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .04em; margin: 0 0 .3rem; }
-    .step-body p { font-size: .88rem; color: rgba(245,240,232,.6); line-height: 1.7; margin: 0; }
+    .step-body p { font-size: .96rem; color: rgba(245,240,232,.75); line-height: 1.8; margin: 0; }
 
     /* Erreurs */
     .errors-list { display: flex; flex-direction: column; gap: 2px; margin: 1.5rem 0; }
     .error-item { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); padding: 1rem 1.4rem; }
     .error-x { font-family: var(--font-display); font-size: 1rem; font-weight: 900; color: rgba(192,57,43,.6); flex-shrink: 0; }
     .error-body strong { font-family: var(--font-display); font-size: .88rem; font-weight: 800; text-transform: uppercase; color: var(--white); letter-spacing: .03em; display: block; margin-bottom: .2rem; }
-    .error-body span { font-size: .82rem; color: rgba(245,240,232,.45); line-height: 1.6; }
+    .error-body span { font-size: .93rem; color: rgba(245,240,232,.72); line-height: 1.72; }
 
     /* CTA */
     .cta-box {
@@ -381,6 +382,8 @@
     .acc-btn.open .acc-icon{transform:rotate(45deg)}
     .acc-body{display:none;padding:1.3rem 1.8rem 1.5rem;background:rgba(5,2,2,.6);font-size:.97rem;color:rgba(245,240,232,.7);line-height:1.88;border-top:1px solid rgba(255,255,255,.04)}
     .acc-body.open{display:block}
+    .sec-eyebrow{font-family:var(--font-display);font-size:.75rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,.9);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:rgba(192,57,43,.7)}
     @media(max-width:600px){.toc-list{columns:1}.toc-wrap{flex-direction:column;gap:1rem}}
   </style>
 </head>
@@ -404,19 +407,24 @@
 </nav>
 
 
-<div class="article-hero">
-  <div style="max-width:960px;margin:0 auto;">
-    <div class="breadcrumb">
-      <a href="index.html">Accueil</a><span>›</span>
-      <a href="articles.html">Articles</a><span>›</span>
-      Comment gagner au bras de fer
+<div class="article-hero" style="padding:0;overflow:hidden;">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:stretch;">
+    <div style="padding:7rem 3rem 4.5rem;flex:1;min-width:0;">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a><span>›</span>
+        <a href="articles.html">Articles</a><span>›</span>
+        Comment gagner au bras de fer
+      </div>
+      <div class="article-tag">Guide · Technique</div>
+      <div class="article-date">Mis à jour : juin 2026</div>
+      <h1 class="article-title">Comment gagner<br><span>au bras de fer</span></h1>
+      <p style="font-size:1.05rem;color:rgba(245,240,232,.6);max-width:560px;line-height:1.8;margin-bottom:1.5rem;">Tu connais les bases ? Ce guide passe à la tactique — placement, explosivité, lecture de l'adversaire. La technique fait souvent la différence entre deux adversaires de force égale.</p>
+      <p style="font-size:.88rem;color:rgba(245,240,232,.35);max-width:520px;line-height:1.7;margin-bottom:1.5rem;">Pas encore les bases ? Commence par le <a href="guide-debutant-bras-de-fer.html" style="color:rgba(192,57,43,.65);">guide débutant →</a></p>
+      <div class="article-meta">ACS Luxembourg · Guide technique · Tous niveaux</div>
     </div>
-    <div class="article-tag">Guide · Technique</div>
-    <div class="article-date">Mis à jour : juin 2026</div>
-    <h1 class="article-title">Comment gagner<br><span>au bras de fer</span></h1>
-    <p style="font-size:1.05rem;color:rgba(245,240,232,.6);max-width:560px;line-height:1.8;margin-bottom:1.5rem;">Tu connais les bases ? Ce guide passe à la tactique — placement, explosivité, lecture de l'adversaire. La technique fait souvent la différence entre deux adversaires de force égale.</p>
-    <p style="font-size:.88rem;color:rgba(245,240,232,.35);max-width:520px;line-height:1.7;margin-bottom:1.5rem;">Pas encore les bases ? Commence par le <a href="guide-debutant-bras-de-fer.html" style="color:rgba(192,57,43,.65);">guide débutant →</a></p>
-    <div class="article-meta">ACS Luxembourg · Guide technique · Tous niveaux</div>
+    <div style="width:380px;flex-shrink:0;display:flex;align-items:center;">
+      <img src="comment_gagner_au_bras_de_fer.png" alt="Comment gagner au bras de fer" style="width:100%;height:auto;display:block;">
+    </div>
   </div>
 </div>
 
@@ -520,11 +528,27 @@
 
 <div class="sec sec-technique" id="technique">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Fondamentaux</div>
     <h2>La technique <span>avant la force</span></h2>
     <p>C'est la première chose qu'on apprend en bras de fer : quelqu'un de moins fort mais mieux placé gagne presque toujours. Ce n'est pas un mythe — c'est la réalité de ce sport à tous les niveaux, du débutant au compétiteur international.</p>
     <p>La force est utile. Elle devient décisive <strong>seulement si la technique est déjà bonne</strong>. Avant de chercher à développer ta force spécifique, comprendre les principes de base du placement et de la prise te donnera un avantage immédiat sur n'importe quel adversaire non entraîné.</p>
     <div class="callout">
       <p>Un débutant qui comprend le bon placement peut battre quelqu'un de bien plus fort qui force dans le mauvais angle. C'est ce qui rend le bras de fer aussi addictif : la technique se voit immédiatement.</p>
+    </div>
+    <h3>Les 3 prises fondamentales</h3>
+    <div class="technique-grid">
+      <div class="technique-card">
+        <div class="technique-card-name">Hook</div>
+        <div class="technique-card-desc">Poignet fléchi vers toi en pronation, doigts fermés comme un crochet. Priorité à la puissance des fléchisseurs — la prise naturelle des profils musclés.</div>
+      </div>
+      <div class="technique-card">
+        <div class="technique-card-name">Top Roll</div>
+        <div class="technique-card-desc">Montée progressive sur la main adverse en supination pour réduire son levier. Plus de technique que de force — redoutable sur le long terme et face aux hookers.</div>
+      </div>
+      <div class="technique-card">
+        <div class="technique-card-name">Press</div>
+        <div class="technique-card-desc">Pression vers le bas avec l'épaule en rotation externe, bras tendu. Exploite les épaules puissantes et les bras longs — moins courant mais très efficace sur profil adapté.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -534,6 +558,7 @@
 
 <div class="sec sec-explosion" id="explosivite">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Compétition</div>
     <h2>L'explosivité <span>au départ</span></h2>
     <p>Le bras de fer se joue en grande partie dans les <strong>premières fractions de seconde</strong>. Le départ est le moment où tu peux prendre un avantage décisif — ou te mettre dans une position défensive dont tu ne te relèveras pas.</p>
     <p>L'explosivité ne signifie pas "tirer le plus fort possible dès le signal". Ça signifie <strong>partir dans le bon angle, avec toute ta force, immédiatement</strong>. Un départ précis et explosif dans la bonne direction vaut mieux qu'une force maximale dans le mauvais angle.</p>
@@ -550,6 +575,7 @@
 
 <div class="sec sec-errors" id="erreurs">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Analyse</div>
     <h2>Les erreurs <span>qui font perdre</span></h2>
     <p>La plupart des défaites chez les débutants viennent des mêmes erreurs. Les identifier et les corriger te fera gagner plus de matchs que n'importe quel programme d'entraînement physique.</p>
     <div class="errors-list">
@@ -595,6 +621,7 @@
 
 <div class="sec sec-explosion" id="lire-adversaire">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Tactique</div>
     <h2>Lire <span>son adversaire</span></h2>
     <p>La tactique commence avant de poser le coude. Observer tes adversaires pendant leurs matchs précédents te donne des informations concrètes avant même de te lever.</p>
     <div class="steps">
@@ -626,16 +653,46 @@
 
 <div class="sec sec-progress" id="progresser">
   <div class="sec-inner">
+    <div class="sec-eyebrow">À l'entraînement</div>
     <h2>Progresser <span>vraiment</span></h2>
     <p>Lire ces conseils est utile. Les appliquer sur table avec des partenaires de niveaux variés, c'est ce qui fait vraiment progresser. Le bras de fer est un sport de sensation — tu dois ressentir les angles, les résistances et les ouvertures pour les comprendre et les utiliser.</p>
     <p>La meilleure façon de progresser rapidement est de <strong>pratiquer régulièrement en club</strong>, avec un encadrement qui peut corriger ton placement en direct. Les erreurs de technique sont presque impossibles à identifier soi-même — un œil extérieur change tout.</p>
+    <div class="errors-list" style="margin-top:1.8rem;">
+      <div class="error-item" style="border-left:2px solid rgba(192,57,43,.35);">
+        <div class="error-x" style="color:rgba(192,57,43,.5);font-size:.88rem;">01</div>
+        <div class="error-body">
+          <strong>Pratiquer avec des partenaires de niveau différent</strong>
+          <span>Affronter quelqu'un de plus fort te met en difficulté réelle — tu apprends à te défendre. Quelqu'un de plus faible te permet de travailler tes attaques. Les deux sont nécessaires.</span>
+        </div>
+      </div>
+      <div class="error-item" style="border-left:2px solid rgba(192,57,43,.35);">
+        <div class="error-x" style="color:rgba(192,57,43,.5);font-size:.88rem;">02</div>
+        <div class="error-body">
+          <strong>Choisir une technique et la creuser</strong>
+          <span>Mieux vaut maîtriser un hook solide que d'avoir trois prises médiocres. Identifie la technique qui correspond à ta morphologie et travaille-la jusqu'à ce qu'elle devienne un réflexe.</span>
+        </div>
+      </div>
+      <div class="error-item" style="border-left:2px solid rgba(192,57,43,.35);">
+        <div class="error-x" style="color:rgba(192,57,43,.5);font-size:.88rem;">03</div>
+        <div class="error-body">
+          <strong>Participer à un tournoi dès que possible</strong>
+          <span>La pression du match réel est irremplaçable. Même une compétition locale te fera progresser plus vite que des mois de pratique informelle — les sensations sont différentes.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-rule"><div class="page-rule-line"></div></div>
+<div class="sec" style="background:var(--black);">
+  <div class="sec-inner">
     <div class="cta-box">
       <div>
         <div class="cta-label">Armwrestling Club Strassen · Mardi 18h · Strassen</div>
         <div class="cta-title">Venez pratiquer</div>
         <p>La technique s'apprend sur table, pas sur écran. Première séance gratuite, aucun niveau requis.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Contacter le club →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Planifier mon essai →</a>
     </div>
   </div>
 </div>

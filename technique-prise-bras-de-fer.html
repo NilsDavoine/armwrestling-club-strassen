@@ -98,7 +98,7 @@
     .c-green { --hue:162; border-top-color:rgba(26,144,112,.65);} .c-green .tip-num { color:#25c494; } .c-green .tip-sub { color:rgba(37,196,148,.55); }
 
     .sec { padding: 4.5rem 3rem; }
-    .sec-inner { max-width: 960px; margin: 0 auto; }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
     .sec h2 { font-family: var(--font-display); font-size: clamp(1.9rem,3.5vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--white); margin: 0 0 1.4rem; line-height: 1; }
     .sec h2 span { color: var(--red); }
     .sec h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; text-transform: uppercase; color: var(--white); margin: 2.5rem 0 .8rem; letter-spacing: .04em; }
@@ -108,6 +108,7 @@
     .sec li { font-size: 1rem; color: rgba(245,240,232,.75); line-height: 1.9; margin-bottom: .5rem; }
     .sec strong { color: var(--white); font-weight: 600; }
     .sec a { color: var(--red); text-decoration: none; } .sec a:hover { text-decoration: underline; }
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .sec-eyebrow { font-family: var(--font-display); font-size: .64rem; font-weight: 900; letter-spacing: .26em; text-transform: uppercase; color: rgba(192,57,43,.6); margin-bottom: .8rem; display: flex; align-items: center; gap: .6rem; }
     .sec-eyebrow::before { content: ''; display: inline-block; width: 18px; height: 1px; background: rgba(192,57,43,.5); }
 
@@ -303,7 +304,7 @@
 </nav>
 
 
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('techniques_bras_de_fer.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb">
       <a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Les 3 techniques du bras de fer
@@ -664,16 +665,23 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <p style="margin-top:1.5rem;">Pour aller plus loin sur la prévention, consultez notre guide sur les <a href="blessures-bras-de-fer.html">blessures au bras de fer</a>.</p>
-
+<!-- CTA FINAL -->
+<div class="page-rule"><div class="page-rule-line"></div></div>
+<div class="sec" style="background:var(--black);">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Aller plus loin</div>
+    <h2>Pratiquer <span>en sécurité</span></h2>
+    <p>Pour aller plus loin sur la prévention, consultez notre guide sur les <a href="blessures-bras-de-fer.html">blessures au bras de fer</a>.</p>
     <div class="cta-box">
       <div>
         <div class="cta-label">ACS Strassen · Mardi 18h · Strassen</div>
         <div class="cta-title">Apprenez avec encadrement</div>
         <p>Les bonnes habitudes techniques s'acquièrent dès le départ. Première séance gratuite, débutants bienvenus.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Planifier mon essai →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>

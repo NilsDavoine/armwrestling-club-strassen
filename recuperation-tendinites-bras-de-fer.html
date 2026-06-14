@@ -35,7 +35,7 @@
     .sec { padding: 4.5rem 3rem; }
     .sec-dark  { background: var(--black); }
     .sec-light { background: var(--dark2); }
-    .sec-inner { max-width: 960px; margin: 0 auto; }
+    .sec-inner { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
 
     .sec h2 { font-family:var(--font-display);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;text-transform:uppercase;color:var(--white);margin:0 0 1.4rem;line-height:1; }
     .sec h2 span { color:var(--red); }
@@ -47,9 +47,12 @@
     .sec strong { color:var(--white);font-weight:600; }
     .sec a { color:var(--red);text-decoration:none; }
     .sec a:hover { text-decoration:underline; }
+    .sec .btn-primary{color:var(--white);text-decoration:none}
 
     .callout { background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0; }
     .callout p { margin:0!important;color:rgba(245,240,232,.88)!important;font-size:.96rem!important; }
+    .sec-eyebrow{font-family:var(--font-display);font-size:.72rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.75);margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem}
+    .sec-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:rgba(192,57,43,.65)}
 
     /* ═══ SECTION BACKGROUNDS ═══ */
     .sec-blessures { background:#050304;position:relative;overflow:hidden; }
@@ -225,7 +228,7 @@
 </nav>
 
 
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('Eviter_tendinite_bras_de_fer.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Récupération & tendinites</div>
     <div class="article-tag">Sécurité · Récupération · Prévention</div>
@@ -298,6 +301,7 @@
 <!-- 4 BLESSURES -->
 <div class="sec sec-blessures" id="blessures">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Diagnostic</div>
     <h2>Les 4 blessures <span>les plus fréquentes</span></h2>
     <p>Ces pathologies représentent la quasi-totalité des arrêts de pratique au bras de fer. Les reconnaître tôt réduit le temps de récupération de façon significative.</p>
 
@@ -362,6 +366,7 @@
 <!-- QUOI FAIRE -->
 <div class="sec sec-protocole" id="quoi-faire">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Première réaction</div>
     <h2>Quand ça fait mal —<br><span>quoi faire et ne pas faire</span></h2>
     <p>La première réaction face à une douleur tendineuse détermine souvent si vous êtes hors jeu 2 semaines ou 3 mois.</p>
 
@@ -428,6 +433,7 @@
 <!-- PROTOCOLE 4 PHASES -->
 <div class="sec bg-red-walls" id="protocole-phases">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Récupération</div>
     <h2>Protocole de récupération<br><span>en 4 phases</span></h2>
     <p>Ce protocole s'applique aux tendinites de surcharge du poignet et du coude — les plus fréquentes au bras de fer.</p>
 
@@ -472,6 +478,7 @@
 <!-- CE QUE DIT LA RECHERCHE -->
 <div class="sec bg-cinema" id="recherche">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Recherche scientifique</div>
     <h2>Ce que dit <span>la recherche</span></h2>
     <p>Les recommandations de ce guide ne sortent pas de nulle part : elles s'appuient sur la littérature scientifique récente consacrée à la rééducation des tendons. Voici trois résultats clés — et leurs sources.</p>
 
@@ -501,6 +508,7 @@
 <!-- 5 RÈGLES PRÉVENTION -->
 <div class="sec sec-prevention" id="prevention">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Prévention</div>
     <h2>5 règles de prévention<br><span>à appliquer à vie</span></h2>
     <p>La prévention des tendinites n'est pas une phase — c'est une façon permanente de s'entraîner.</p>
 
@@ -538,15 +546,22 @@
 <!-- CTA + LIENS -->
 <div class="sec sec-horizon" id="progresser">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Aller plus loin</div>
     <h2>Progresser <span>durablement</span></h2>
     <p>Les tendons forts se construisent sur des mois, pas sur des semaines. La régularité sans blessure surpasse toujours les cycles intenses suivis d'arrêts forcés. Les meilleurs pratiquants ne sont pas ceux qui s'entraînent le plus fort — ce sont ceux qui s'entraînent le plus longtemps sans se blesser.</p>
+  </div>
+</div>
+
+<div class="page-rule"><div class="page-rule-line"></div></div>
+<div class="sec" style="background:var(--black);">
+  <div class="sec-inner">
     <div class="cta-box">
       <div>
         <div class="cta-label">Armwrestling Club Strassen · Mardi 18h · Strassen</div>
         <div class="cta-title">Un encadrement qui protège</div>
         <p>Les coaches expliquent la gestion de la charge et les gestes préventifs dès la première séance. Première séance gratuite, aucun niveau requis.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Contacter le club →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>

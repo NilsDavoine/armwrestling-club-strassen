@@ -133,58 +133,18 @@
     .breadcrumb a:hover { color: var(--red); }
     .breadcrumb span { margin: 0 .5rem; }
 
-    /* ── TIMELINE ── */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 1.4rem; }
-    .timeline-item {
-      display: flex;
-      gap: 1.6rem;
-      align-items: stretch;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: calc(2.4rem + 1.6rem / 2);
-      top: 2.8rem;
-      bottom: -1.2rem;
-      width: 1px;
-      background: rgba(192,57,43,.2);
-    }
-    .timeline-item:last-child::before { display: none; }
-    .timeline-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .6rem;
-      flex-shrink: 0;
-      padding: 1.2rem 0;
-    }
-    .timeline-week {
-      font-family: var(--font-display);
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .14em;
-      color: var(--red);
-      background: rgba(192,57,43,.1);
-      border: 1px solid rgba(192,57,43,.28);
-      padding: .4rem .7rem;
-      width: 3rem;
-      text-align: center;
-    }
-    .timeline-content {
-      padding: 1.2rem 0 1.8rem;
-      flex: 1;
-    }
-    .timeline-content h4 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      margin: 0 0 .5rem;
-      letter-spacing: .03em;
-    }
-    .timeline-content p { margin: 0 !important; font-size: .96rem !important; }
+    /* ── FRIZE HORIZONTALE ── */
+    .frize-wrap{position:relative;margin:2.5rem 0}
+    .frize-line{position:absolute;left:5%;right:5%;top:.78rem;height:1px;background:linear-gradient(90deg,transparent,rgba(192,57,43,.35) 5%,rgba(192,57,43,.35) 95%,transparent);pointer-events:none;z-index:0}
+    .frize{display:grid;gap:4px;position:relative}
+    .frize-step{display:flex;flex-direction:column}
+    .frize-badge{font-family:var(--font-display);font-size:.72rem;font-weight:900;letter-spacing:.1em;color:var(--red);background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);padding:.4rem .6rem;text-align:center;margin-bottom:4px;white-space:nowrap;position:relative;z-index:1}
+    .frize-card{background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06);border-top:2px solid rgba(192,57,43,.38);padding:1.3rem;flex:1}
+    .frize-num{font-family:var(--font-display);font-size:2rem;font-weight:900;color:rgba(192,57,43,.18);line-height:1;margin-bottom:.2rem}
+    .frize-title{font-family:var(--font-display);font-size:.92rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.03em;margin-bottom:.5rem;line-height:1.15}
+    .frize-desc{font-size:.85rem;color:rgba(245,240,232,.62);line-height:1.75;margin:0}
+    @media(max-width:768px){.frize{grid-template-columns:1fr 1fr!important}.frize-line{display:none}}
+    @media(max-width:480px){.frize{grid-template-columns:1fr!important}}
 
     /* ── CALLOUT ── */
     .callout {
@@ -248,9 +208,9 @@
     }
 
     /* ── CTA BLOCK ── */
-    .cta-block {
-      background: linear-gradient(135deg, rgba(192,57,43,.12), rgba(10,10,10,.85));
-      border: 1px solid rgba(192,57,43,.25);
+    .cta-box {
+      background: linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,2,2,.9));
+      border: 1px solid rgba(192,57,43,.22);
       border-top: 2px solid var(--red);
       padding: 2.2rem 2.5rem;
       display: flex;
@@ -260,25 +220,24 @@
       flex-wrap: wrap;
       margin-top: 2.5rem;
     }
-    .cta-block h3 {
+    .cta-label { font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.55);margin-bottom:.4rem; }
+    .cta-title {
       font-family: var(--font-display);
       font-size: 1.6rem;
       font-weight: 900;
       text-transform: uppercase;
       color: var(--white);
-      margin: 0 0 .4rem;
-      padding: 0;
-      border: none;
-      letter-spacing: normal;
+      line-height: 1;
+      margin-bottom: .4rem;
     }
-    .cta-block p { margin: 0; font-size: .9rem; color: rgba(245,240,232,.55); }
+    .cta-box p { margin: 0; font-size: .88rem; color: rgba(245,240,232,.48); line-height: 1.7; }
 
     /* ── RESPONSIVE ── */
     @media(max-width: 768px) {
       .sec-inner { padding: 0 1.5rem; }
       .photo-grid-3 { grid-template-columns: 1fr; }
       .photo-grid-3 img { height: 220px; }
-      .cta-block { flex-direction: column; align-items: flex-start; padding: 1.8rem; }
+      .cta-box { flex-direction: column; }
       .timeline-item::before { left: calc(1.5rem + 1rem / 2); }
     }
 
@@ -371,7 +330,7 @@
 </nav>
 
 <!-- ── HERO ─────────────────────────────────────────────────────────── -->
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('Preparation_Competition_Bras_de_fer.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb">
       <a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Préparation compétition
@@ -381,6 +340,25 @@
     <h1 class="article-title">Se préparer pour<br><span>une compétition</span></h1>
     <p style="font-size:1.1rem;color:rgba(245,240,232,.6);max-width:580px;line-height:1.8;margin-bottom:1.5rem;">Entraînement, gestion du poids, stratégie tactique, échauffement le jour J et gestion du stress. Tout ce qu'il faut savoir avant votre première compétition de bras de fer.</p>
     <div class="article-meta">Armwrestling Club Strassen · Luxembourg · Guide compétition</div>
+  </div>
+</div>
+
+<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
+<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
+  <div class="sec-inner">
+    <div class="toc-wrap">
+      <div class="toc-label">Dans ce guide</div>
+      <ol class="toc-list">
+        <li><a href="#planification-8-semaines"><span class="toc-num">01 ·</span>Planifier sur 8 semaines</a></li>
+        <li><a href="#gestion-du-poids"><span class="toc-num">02 ·</span>Gestion du poids</a></li>
+        <li><a href="#entrainement-specifique"><span class="toc-num">03 ·</span>Entraînement spécifique</a></li>
+        <li><a href="#tactique"><span class="toc-num">04 ·</span>Tactique &amp; jeu</a></li>
+        <li><a href="#jour-de-competition"><span class="toc-num">05 ·</span>Jour de compétition</a></li>
+        <li><a href="#gestion-du-stress"><span class="toc-num">06 ·</span>Gestion du stress</a></li>
+        <li><a href="#competition-luxembourg"><span class="toc-num">07 ·</span>Compétition au Luxembourg</a></li>
+        <li><a href="#faq"><span class="toc-num">08 ·</span>Questions fréquentes</a></li>
+      </ol>
+    </div>
   </div>
 </div>
 
@@ -414,25 +392,6 @@
   </div>
 </div>
 
-<!-- ── TABLE OF CONTENTS ─────────────────────────────────────────────── -->
-<div class="sec sec-dark" style="padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);">
-  <div class="sec-inner">
-    <div class="toc-wrap">
-      <div class="toc-label">Dans ce guide</div>
-      <ol class="toc-list">
-        <li><a href="#planification-8-semaines"><span class="toc-num">01 ·</span>Planifier sur 8 semaines</a></li>
-        <li><a href="#gestion-du-poids"><span class="toc-num">02 ·</span>Gestion du poids</a></li>
-        <li><a href="#entrainement-specifique"><span class="toc-num">03 ·</span>Entraînement spécifique</a></li>
-        <li><a href="#tactique"><span class="toc-num">04 ·</span>Tactique &amp; jeu</a></li>
-        <li><a href="#jour-de-competition"><span class="toc-num">05 ·</span>Jour de compétition</a></li>
-        <li><a href="#gestion-du-stress"><span class="toc-num">06 ·</span>Gestion du stress</a></li>
-        <li><a href="#competition-luxembourg"><span class="toc-num">07 ·</span>Compétition au Luxembourg</a></li>
-        <li><a href="#faq"><span class="toc-num">08 ·</span>Questions fréquentes</a></li>
-      </ol>
-    </div>
-  </div>
-</div>
-
 <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
 <div class="sec sec-dark bg-red-glow">
   <div class="sec-inner">
@@ -446,43 +405,43 @@
 <!-- ── PLANIFIER 8 SEMAINES ──────────────────────────────────────────── -->
 <div class="sec sec-light bg-cinema" id="planification-8-semaines">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Planification</div>
     <h2>Planifier la préparation <span>sur 8 semaines</span></h2>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-week">S-8</div>
+    <div class="frize-wrap">
+      <div class="frize-line"></div>
+      <div class="frize" style="grid-template-columns:repeat(4,1fr)">
+        <div class="frize-step">
+          <div class="frize-badge">S – 8</div>
+          <div class="frize-card">
+            <div class="frize-num">01</div>
+            <div class="frize-title">Forces & faiblesses</div>
+            <p class="frize-desc">Analysez votre jeu avec un coach ou partenaire. Top roll ou hook ? Démarrage explosif ou match long ? Cette analyse oriente toute la préparation.</p>
+          </div>
         </div>
-        <div class="timeline-content">
-          <h4>Identifier vos forces et faiblesses</h4>
-          <p>Analysez votre jeu avec un coach ou un partenaire de sparring. Top roll ou hook ? Démarrage explosif ou match long ? Bras droit ou gauche préféré ? Cette analyse oriente toute la préparation.</p>
+        <div class="frize-step">
+          <div class="frize-badge">S – 6</div>
+          <div class="frize-card">
+            <div class="frize-num">02</div>
+            <div class="frize-title">Pic de charge</div>
+            <p class="frize-desc">Augmentez le volume : sparring intensif, travail sur table et appareils. C'est la phase de construction de la base physique.</p>
+          </div>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-week">S-6</div>
+        <div class="frize-step">
+          <div class="frize-badge">S – 3</div>
+          <div class="frize-card">
+            <div class="frize-num">03</div>
+            <div class="frize-title">Tactique</div>
+            <p class="frize-desc">Réduisez le volume, augmentez l'intensité sur des séquences courtes. Travaillez le démarrage — votre tactique doit se solidifier maintenant.</p>
+          </div>
         </div>
-        <div class="timeline-content">
-          <h4>Pic de charge physique</h4>
-          <p>Augmentez le volume d'entraînement : plus de séances de sparring, plus de travail spécifique sur table et aux appareils. C'est la phase où on construit la base physique.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-week">S-3</div>
-        </div>
-        <div class="timeline-content">
-          <h4>Affiner la tactique</h4>
-          <p>Réduisez le volume, augmentez l'intensité sur des séquences courtes et explosives. Travaillez votre démarrage et vos positions préférées. C'est là que la tactique se solidifie.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-week">S-1</div>
-        </div>
-        <div class="timeline-content">
-          <h4>Récupération et activation</h4>
-          <p>Réduisez fortement l'intensité. Deux ou trois séances légères maximum. Focalisez sur la récupération des tendons, qui ne s'adaptent pas aussi vite que les muscles.</p>
+        <div class="frize-step">
+          <div class="frize-badge">S – 1</div>
+          <div class="frize-card">
+            <div class="frize-num">04</div>
+            <div class="frize-title">Récupération</div>
+            <p class="frize-desc">Deux ou trois séances légères maximum. Les tendons ne s'adaptent pas aussi vite que les muscles — les préserver avant la compétition est non-négociable.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -492,7 +451,8 @@
 <!-- ── GESTION DU POIDS ──────────────────────────────────────────────── -->
 <div class="sec sec-dark bg-inferno" id="gestion-du-poids">
   <div class="sec-inner">
-    <h2>La gestion du poids</h2>
+    <div class="sec-eyebrow">Catégories</div>
+    <h2>La gestion <span>du poids</span></h2>
     <p>Le bras de fer se pratique par <strong>catégories de poids</strong> — généralement toutes les 10 kg. La pesée a lieu le matin de la compétition. Quelques points clés :</p>
     <ul>
       <li>Ne pas chercher à "couper" (perdre du poids artificiellement) pour votre première compétition — les risques l'emportent largement sur les bénéfices</li>
@@ -505,7 +465,8 @@
 <!-- ── ENTRAÎNEMENT SPÉCIFIQUE ──────────────────────────────────────── -->
 <div class="sec sec-light bg-red-walls" id="entrainement-specifique">
   <div class="sec-inner">
-    <h2>L'entraînement spécifique</h2>
+    <div class="sec-eyebrow">Préparation physique</div>
+    <h2>L'entraînement <span>spécifique</span></h2>
 
     <h3>Le travail sur table</h3>
     <p>Le sparring régulier est irremplaçable. Pour la compétition, cherchez à vous frotter à des athlètes <strong>plus forts que vous</strong> — c'est inconfortable mais c'est ce qui force à progresser techniquement. Le club Grizzly de Munsbach, le vendredi soir, est particulièrement adapté pour ce type de sparring intensif.</p>
@@ -529,7 +490,8 @@
 <!-- ── TACTIQUE ──────────────────────────────────────────────────────── -->
 <div class="sec sec-dark bg-motion" id="tactique">
   <div class="sec-inner">
-    <h2>La tactique : construire votre jeu</h2>
+    <div class="sec-eyebrow">Stratégie</div>
+    <h2>La tactique : <span>construire votre jeu</span></h2>
 
     <h3>Choisissez un mouvement principal</h3>
     <p>Il vaut mieux maîtriser un seul mouvement à la perfection que d'en connaître cinq à moitié. Pour la première compétition, choisissez soit le <strong>top roll</strong>, soit le <strong>hook</strong>, travaillez-le intensément, et utilisez-le dans 80% de vos matchs.</p>
@@ -545,7 +507,8 @@
 <!-- ── JOURNÉE DE COMPÉTITION ─────────────────────────────────────────── -->
 <div class="sec sec-light bg-danger-x" id="jour-de-competition">
   <div class="sec-inner">
-    <h2>Le jour de compétition</h2>
+    <div class="sec-eyebrow">Jour J</div>
+    <h2>Le jour <span>de compétition</span></h2>
     <p>Le jour J suit une logique simple : pesée, récupération, échauffement, matchs. Les essentiels :</p>
     <ul>
       <li><strong>La veille</strong> — dormez 8h, préparez votre sac (tenue, eau, snacks, magnésie), vérifiez l'heure et l'adresse de la pesée</li>
@@ -561,7 +524,8 @@
 <!-- ── GESTION DU STRESS ─────────────────────────────────────────────── -->
 <div class="sec sec-dark bg-cinema" id="gestion-du-stress">
   <div class="sec-inner">
-    <h2>La gestion du stress compétitif</h2>
+    <div class="sec-eyebrow">Mental</div>
+    <h2>La gestion <span>du stress compétitif</span></h2>
     <p>Le stress avant la compétition est normal — c'est un mécanisme physiologique qui prépare le corps à l'effort. Quelques approches pour le canaliser :</p>
     <ul>
       <li><strong>Concentrez-vous sur le processus</strong>, pas sur le résultat. Votre objectif n'est pas forcément de gagner, mais d'exécuter correctement votre technique préférée</li>
@@ -575,21 +539,23 @@
 <!-- ── COMPÉTITION LUXEMBOURG ────────────────────────────────────────── -->
 <div class="sec bg-cinema" id="competition-luxembourg">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Luxembourg</div>
+    <h2>La compétition annuelle <span>au Luxembourg</span></h2>
+
     <div class="photo-grid-3">
       <img src="2F3A1360.jpeg" alt="Compétition de bras de fer au Luxembourg — match officiel LAF" loading="lazy" />
       <img src="2F3A1361.jpeg" alt="Athlètes en compétition de bras de fer — Luxembourg Armwrestling Competition" loading="lazy" />
       <img src="2F3A1366.jpeg" alt="Moment intense lors d'un match de bras de fer officiel au Luxembourg" loading="lazy" />
     </div>
-
-    <h2>La compétition annuelle au Luxembourg</h2>
     <p>La <strong>Luxembourg Armwrestling Competition</strong>, organisée chaque année à Munsbach sous l'égide de la <strong>Luxembourg Armwrestling Federation</strong>, est l'événement phare pour débuter en compétition officielle. Niveau international, athlètes de toute l'Europe, catégories bras droit et bras gauche, toutes catégories de poids. C'est un format idéal pour une première expérience compétitive encadrée.</p>
 
-    <div class="cta-block">
+    <div class="cta-box">
       <div>
-        <h3>Préparez votre première compétition</h3>
+        <div class="cta-label">Armwrestling Club Strassen · Mardi 18h · Strassen</div>
+        <div class="cta-title">Préparez votre première compétition</div>
         <p>Rejoignez l'ACS Strassen — coaching technique, sparring régulier et accès aux deux clubs de la LAF.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary">Nous contacter</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Planifier mon essai →</a>
     </div>
   </div>
 </div>

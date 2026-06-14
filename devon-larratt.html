@@ -75,6 +75,7 @@
     .sec strong { color:var(--white);font-weight:600; }
     .sec a { color:var(--red);text-decoration:none; }
     .sec a:hover { text-decoration:underline; }
+    .sec .btn-primary{color:var(--white);text-decoration:none}
     .sec-eyebrow { font-family:var(--font-display);font-size:.64rem;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:rgba(192,57,43,.6);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem; }
     .sec-eyebrow::before { content:'';display:inline-block;width:18px;height:1px;background:rgba(192,57,43,.5); }
     .callout { background:rgba(192,57,43,.07);border-left:3px solid var(--red);padding:1.3rem 1.8rem;margin:1.8rem 0;border-radius:0 3px 3px 0; }
@@ -495,9 +496,7 @@
     .cta-label { font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.55);margin-bottom:.4rem; }
     .cta-title { font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem; }
     .cta-box p { font-size:.88rem;color:rgba(245,240,232,.48);margin:0;line-height:1.7; }
-    /* Fix: bouton blanc dans contexte rouge */
-    .cta-box .btn-primary { background:var(--white);color:#0a0a0a;border-color:transparent; }
-    .cta-box .btn-primary:hover { background:rgba(245,240,232,.88); }
+
 
     @media(max-width:768px) {
       .sec { padding:3rem 1.5rem; }
@@ -974,7 +973,7 @@
         <div class="cta-title">Venir essayer gratuitement</div>
         <p>Première séance gratuite, aucun niveau requis. On commence par les fondamentaux — les mêmes que Larratt enseigne.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary">Réserver un essai</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
 
     <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.07);">

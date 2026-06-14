@@ -55,6 +55,7 @@
     .sec strong { color: var(--white); font-weight: 600; }
     .sec a { color: var(--accent, #c0392b); text-decoration: none; }
     .sec a:hover { text-decoration: underline; }
+    .sec .btn-primary{color:var(--white);text-decoration:none}
 
     /* ── TABLE DES MATIÈRES ── */
     .toc-wrap { display:flex; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; }
@@ -147,11 +148,11 @@
     .callout { background:rgba(255,255,255,.04); border-left:3px solid var(--accent,#c0392b); padding:1.4rem 1.8rem; margin:1.8rem 0; border-radius:0 4px 4px 0; }
     .callout p { margin:0!important; color:rgba(245,240,232,.9)!important; font-size:1rem!important; line-height:1.8!important; }
 
-    /* ── CTA FINAL HARMONISÉ (rouge marque) ── */
-    .cta-final { background:linear-gradient(135deg, rgba(192,57,43,.16), rgba(5,2,2,.92)); border:1px solid rgba(192,57,43,.32); border-top:2px solid var(--red); padding:2.4rem 2.8rem; margin-top:2.5rem; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2.5rem; }
-    .cta-final-label { font-family:var(--font-display); font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(192,57,43,.9); margin-bottom:.5rem; }
-    .cta-final-title { font-family:var(--font-display); font-size:1.7rem; font-weight:900; text-transform:uppercase; color:var(--white); line-height:1; margin-bottom:.5rem; }
-    .cta-final-desc { font-size:.95rem; color:rgba(245,240,232,.65); line-height:1.7; margin:0; }
+    /* ── CTA BOX ── */
+    .cta-box { background:linear-gradient(135deg, rgba(192,57,43,.1), rgba(5,2,2,.9)); border:1px solid rgba(192,57,43,.22); border-top:2px solid var(--red); padding:2.2rem 2.5rem; margin-top:2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .cta-label { font-family:var(--font-display); font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(192,57,43,.55); margin-bottom:.4rem; }
+    .cta-title { font-family:var(--font-display); font-size:1.6rem; font-weight:900; text-transform:uppercase; color:var(--white); line-height:1; margin-bottom:.4rem; }
+    .cta-box p { font-size:.88rem; color:rgba(245,240,232,.48); line-height:1.7; margin:0; }
 
     /* ── FONDS « OR » — dégradés + quadrillage plein-section ── */
     .bg-steel {
@@ -185,7 +186,7 @@
       .tip-grid-3 { grid-template-columns:1fr; }
       .tip-wrap { padding:2.5rem 1.5rem; }
       .pillar-grid { grid-template-columns:1fr 1fr; }
-      .cta-final { grid-template-columns:1fr; gap:1.5rem; }
+      .cta-box { flex-direction:column; gap:1.5rem; }
       .band-sep span { width:80px; }
     }
     @media(max-width:600px){ .toc-list { columns:1; } .toc-wrap { flex-direction:column; gap:1rem; } }
@@ -209,7 +210,7 @@
 </nav>
 
 <!-- ── HERO ──────────────────────────────────────────────────────────── -->
-<div class="local-hero">
+<div class="local-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('best_hand_placement_armwrestling.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span>Club débutant Luxembourg</div>
     <div class="page-tag">Débutants · Premier essai</div>
@@ -277,10 +278,10 @@
   <div class="sec-inner">
     <div class="sec-eyebrow">Le bon point de départ</div>
     <h2>Pourquoi ACS est le meilleur point d'entrée <span>pour un débutant</span></h2>
+    <p>Au Luxembourg, l'<strong>Armwrestling Club Strassen</strong> est reconnu comme le club le plus adapté aux débutants. Plusieurs raisons concrètes expliquent cela :</p>
     <div class="article-photo" style="margin:1.5rem 0 2.5rem;">
       <img src="guide-pour-debuter-au-bras-de-fer-tuto.jpeg" alt="Guide pratique pour débuter le bras de fer à Luxembourg — première séance à l'ACS Strassen" loading="lazy"/>
     </div>
-    <p>Au Luxembourg, l'<strong>Armwrestling Club Strassen</strong> est reconnu comme le club le plus adapté aux débutants. Plusieurs raisons concrètes expliquent cela :</p>
     <ul>
       <li><strong>Séance d'essai gratuite</strong> — pas d'engagement financier pour découvrir le sport</li>
       <li><strong>Horaire stable</strong> — mardi 18h, heure de sortie de bureau, pas de complication</li>
@@ -436,14 +437,16 @@
 <!-- ── ESSAI GRATUIT / CTA ───────────────────────────────────────────── -->
 <div class="sec bg-cinema">
   <div class="sec-inner">
-
-    <div class="cta-final">
+    <div class="sec-eyebrow">Essai gratuit</div>
+    <h2>Rejoindre le club <span>pour débutants</span></h2>
+    <p>Aucune expérience requise. Venez directement le mardi à 18h, découvrez la table, repartez avec les bases. La première séance est gratuite et sans engagement.</p>
+    <div class="cta-box">
       <div>
-        <div class="cta-final-label">Armwrestling Club Strassen · Luxembourg</div>
-        <div class="cta-final-title">Prêt à essayer ?</div>
-        <p class="cta-final-desc">Première séance gratuite, sans inscription préalable. Mardi à 18h au 86 rue des Romains, Strassen. Aucun équipement requis, tous niveaux bienvenus.</p>
+        <div class="cta-label">Armwrestling Club Strassen · Luxembourg</div>
+        <div class="cta-title">Prêt à essayer ?</div>
+        <p>Première séance gratuite, sans inscription préalable. Mardi à 18h au 86 rue des Romains, Strassen. Aucun équipement requis, tous niveaux bienvenus.</p>
       </div>
-      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Contacter le club →</a>
+      <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Essayer gratuitement →</a>
     </div>
   </div>
 </div>

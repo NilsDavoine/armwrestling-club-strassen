@@ -95,11 +95,11 @@
     .photo-strip-2{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:2.5rem}
     .photo-strip-2 img{width:100%;height:220px;object-fit:cover;border-radius:3px;display:block;border:1px solid rgba(255,255,255,.06)}
     /* CTA FINAL */
-    .cta-final{background:linear-gradient(135deg,rgba(192,57,43,.12),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.28);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
-    .cta-final-label{font-family:var(--font-display);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.7);margin-bottom:.4rem}
-    .cta-final-title{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
-    .cta-final-desc{font-size:.88rem;color:rgba(245,240,232,.5);margin:0}
-    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.era-grid{grid-template-columns:1fr}.legend-strip{flex-direction:column;gap:.8rem}.photo-strip-2{grid-template-columns:1fr}.cta-final{grid-template-columns:1fr}}
+    .cta-box{background:linear-gradient(135deg,rgba(192,57,43,.1),rgba(5,2,2,.9));border:1px solid rgba(192,57,43,.22);border-top:2px solid var(--red);padding:2.2rem 2.5rem;margin-top:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .cta-label{font-family:var(--font-display);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.55);margin-bottom:.4rem}
+    .cta-title{font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:.4rem}
+    .cta-box p{font-size:.88rem;color:rgba(245,240,232,.48);margin:0;line-height:1.7}
+    @media(max-width:768px){.sec-inner{padding:0 1.5rem}.era-grid{grid-template-columns:1fr}.legend-strip{flex-direction:column;gap:.8rem}.photo-strip-2{grid-template-columns:1fr}.cta-box{flex-direction:column}}
 
     /* ── ACCORDION ── */
     .accordion { margin: 1.5rem 0; border: 1px solid rgba(255,255,255,.07); }
@@ -214,7 +214,7 @@
   <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="article-hero">
+<div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('oldest_armwrestling_match.png') center right/cover no-repeat,var(--black);">
   <div style="max-width:960px;margin:0 auto;">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>›</span><a href="articles.html">Articles</a><span>›</span>Histoire</div>
     <div class="article-tag">Culture · Histoire du sport</div>
@@ -318,7 +318,7 @@
   </div>
 </div>
 
-<div class="sec sec-dark" id="waf-structuration">
+<div class="sec sec-dark bg-motion" id="waf-structuration">
   <div class="sec-inner">
     <div class="sec-eyebrow">Organisation mondiale</div>
     <h2>La WAF et la structuration<br><span>internationale</span></h2>
@@ -370,26 +370,26 @@
   </div>
 </div>
 
-<div class="sec sec-dark" id="bras-de-fer-aujourd-hui">
+<div class="sec sec-dark bg-red-glow" id="bras-de-fer-aujourd-hui">
   <div class="sec-inner">
+    <div class="sec-eyebrow">Aujourd'hui</div>
+    <h2>Le bras de fer aujourd'hui<br><span>et au Luxembourg</span></h2>
+
     <div class="photo-strip-2">
       <img src="2F3A1332.jpeg" alt="Compétition officielle de bras de fer au Luxembourg — Luxembourg Armwrestling Competition" loading="lazy"/>
       <img src="match-competition-grande-salle.png" alt="Salle de compétition bras de fer Luxembourg" loading="lazy"/>
     </div>
-
-    <div class="sec-eyebrow">Aujourd'hui</div>
-    <h2>Le bras de fer aujourd'hui<br><span>et au Luxembourg</span></h2>
     <p>Depuis les années 2010, le bras de fer connaît une <strong>renaissance mondiale</strong> portée par deux phénomènes : la montée en puissance des compétitions professionnelles (notamment le circuit WAL — World Armwrestling League) et l'explosion des vues sur YouTube. Des matchs entre Devon Larratt et Levan Saginashvili attirent plus de 50 millions de spectateurs.</p>
     <p>En Europe, le niveau progresse rapidement. Des pays comme la Géorgie, l'Ukraine, la Russie, la Turquie et la Pologne ont des équipes nationales très compétitives au niveau mondial. La France, la Belgique et le Luxembourg voient émerger des clubs structurés et des compétiteurs de plus en plus sérieux.</p>
 
     <h3>Le bras de fer au Luxembourg</h3>
     <p>La <strong>Luxembourg Armwrestling Federation (LAF)</strong> est la fédération nationale qui structure le sport au Grand-Duché. Elle supervise l'Armwrestling Club Strassen et le Grizzly of Luxembourg, les deux clubs officiels. Le Luxembourg participe aux championnats européens et mondiaux WAF, avec une communauté en croissance rapide portée par la mixité internationale du pays.</p>
 
-    <div class="cta-final">
+    <div class="cta-box">
       <div>
-        <div class="cta-final-label">Armwrestling Club Strassen · Luxembourg</div>
-        <div class="cta-final-title">Rejoindre cette histoire</div>
-        <p class="cta-final-desc">L'ACS Luxembourg vous ouvre les portes du bras de fer officiel. Première séance gratuite, débutants bienvenus.</p>
+        <div class="cta-label">Armwrestling Club Strassen · Luxembourg</div>
+        <div class="cta-title">Rejoindre cette histoire</div>
+        <p>L'ACS Luxembourg vous ouvre les portes du bras de fer officiel. Première séance gratuite, débutants bienvenus.</p>
       </div>
       <a href="index.html#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Planifier mon essai →</a>
     </div>
