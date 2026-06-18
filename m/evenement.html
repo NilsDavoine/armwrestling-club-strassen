@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Événement POWER ARM — 1st Edition</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-light: #e74c3c;
+      --black: #050304;
+      --white: #f0ede8;
+      --grey: #9a9090;
+      --gold: #d4a827;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -5%, rgba(192,57,43,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 45% at 50% 110%, rgba(212,160,23,.10) 0%, transparent 55%),
+        var(--black);
+      min-height: 100dvh;
+    }
+
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 1.6rem 1.4rem calc(1.6rem + env(safe-area-inset-bottom));
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen { display: none; flex: 1; flex-direction: column; }
+    .screen.active { display: flex; animation: fade .25s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red-light);
+      margin-bottom: 0.7rem;
+    }
+
+    h1, h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; line-height: 0.95; text-transform: uppercase;
+      color: var(--white);
+    }
+    h1 { font-size: clamp(2.7rem, 13vw, 4rem); letter-spacing: 0.02em; }
+    h2 { font-size: clamp(1.7rem, 7vw, 2.3rem); margin-bottom: 0.3rem; }
+    em { color: var(--red); font-style: normal; }
+
+    .line { width: 36px; height: 2px; background: var(--red); margin: 1rem 0; }
+
+    .sub { font-size: 0.92rem; font-weight: 300; color: var(--grey); line-height: 1.6; }
+
+    .logo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-bottom: 1.2rem; }
+
+    /* Form fields */
+    .field { margin-top: 1.05rem; }
+    .field label {
+      display: block; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--grey); margin-bottom: 0.4rem;
+    }
+    .field input, .field select {
+      width: 100%; padding: 0.85rem 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 9px; color: var(--white);
+      font-family: 'Barlow', sans-serif; font-size: 1rem;
+      transition: border-color .15s, background .15s;
+    }
+    .field input:focus, .field select:focus {
+      outline: none; border-color: var(--red); background: rgba(192,57,43,.08);
+    }
+    .field input::placeholder { color: rgba(154,144,144,.55); }
+    .field.invalid input, .field.invalid select { border-color: var(--red-light); background: rgba(231,76,60,.07); }
+    select { appearance: none; -webkit-appearance: none; }
+    /* Liste déroulante lisible (sinon blanc sur blanc selon le navigateur) */
+    select option { color: #141414; background: #ffffff; }
+
+    /* Exercise cards */
+    .exo {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(192,57,43,.22);
+      border-radius: 12px; overflow: hidden; margin-top: 1rem;
+    }
+    .exo-photo {
+      width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+      display: block; background: #0d0508;
+    }
+    .exo-photo-ph {
+      width: 100%; aspect-ratio: 16 / 10;
+      display: flex; align-items: center; justify-content: center;
+      background: repeating-linear-gradient(135deg, #0d0508 0 12px, #110609 12px 24px);
+      color: rgba(192,57,43,.5);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .exo-body { padding: 0.9rem 1.1rem 1.1rem; }
+    .exo-num {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red-light);
+    }
+    .exo-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem;
+      font-weight: 800; text-transform: uppercase; color: var(--white);
+      line-height: 1.05; margin: 0.1rem 0 0.7rem;
+    }
+    .exo-input { display: flex; align-items: center; gap: 0.6rem; }
+    .exo-input input {
+      flex: 1; padding: 0.8rem 1rem;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 9px; color: var(--white); font-size: 1.1rem; font-weight: 600;
+    }
+    .exo-input input:focus { outline: none; border-color: var(--red); background: rgba(192,57,43,.08); }
+    .exo-unit {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: 1.05rem; color: var(--grey); min-width: 30px;
+    }
+
+    /* Recap */
+    .recap-block {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 11px; padding: 1rem 1.2rem; margin-top: 1rem;
+    }
+    .recap-line {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: 0.95rem;
+    }
+    .recap-line:last-child { border-bottom: none; }
+    .recap-line .k { color: var(--grey); }
+    .recap-line .v { color: var(--white); font-weight: 600; }
+
+    /* Consentement */
+    .consent {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      margin-top: 1.1rem; padding: 0.9rem 1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(192,57,43,.28);
+      border-radius: 10px; cursor: pointer;
+      font-size: 0.85rem; line-height: 1.42; color: var(--white);
+    }
+    .consent input {
+      width: 22px; height: 22px; accent-color: var(--red);
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 0.95rem 1.25rem; border-radius: 9px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem;
+      font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      text-decoration: none; border: none; cursor: pointer; transition: opacity .15s;
+    }
+    .btn:active { opacity: 0.65; }
+    .btn:disabled { opacity: 0.4; cursor: default; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-ghost { background: rgba(255,255,255,.07); color: var(--white); border: 1px solid rgba(255,255,255,.14); }
+
+    .actions { margin-top: auto; padding-top: 1.4rem; display: flex; flex-direction: column; gap: 0.65rem; }
+
+    .err {
+      color: var(--red-light); font-size: 0.82rem; margin-top: 0.7rem;
+      min-height: 1.1rem; text-align: center;
+    }
+
+    .progress {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey);
+      margin-bottom: 0.9rem;
+    }
+
+    /* Confirmation */
+    .check {
+      width: 78px; height: 78px; border-radius: 50%;
+      background: rgba(192,57,43,.12); border: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; margin: 0 auto 1.3rem;
+    }
+    .center { text-align: center; align-items: center; justify-content: center; }
+
+    /* Accueil — mise en forme du texte de présentation */
+    .matchup { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin: 0.6rem 0 1.3rem; flex-wrap: wrap; }
+    .camp {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.04em;
+      padding: 0.42rem 0.85rem; border-radius: 7px; line-height: 1; color: var(--white);
+    }
+    .camp-arm { background: rgba(192,57,43,.16); border: 1px solid rgba(192,57,43,.45); }
+    .camp-pl  { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); }
+    .vs { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.05rem; font-style: italic; color: var(--red-light); }
+
+    .intro { max-width: 372px; text-align: left; }
+    .intro p { font-size: 0.9rem; font-weight: 300; color: #c7c0bb; line-height: 1.62; margin-bottom: 0.85rem; }
+    .intro p:last-child { margin-bottom: 0; }
+    .intro strong { color: var(--white); font-weight: 600; }
+    .intro .lead { font-size: 1rem; font-weight: 400; color: var(--white); }
+
+    .podiums-note {
+      max-width: 372px; margin-top: 1.15rem;
+      font-size: 0.9rem; color: #c7c0bb; line-height: 1.55; text-align: center;
+    }
+    .podiums-note strong { color: var(--red-light); font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ÉCRAN 1 · Accueil -->
+  <section class="screen active center" id="screen-accueil">
+    <img src="../logo.webp" alt="Logo" class="logo" onerror="this.style.display='none'">
+    <div class="tag" id="ac-tag">Événement · 1st Edition</div>
+    <h1 id="ac-titre">POWER <em>ARM</em></h1>
+    <div class="matchup">
+      <span class="camp camp-arm">Bras de Fer</span>
+      <span class="vs">VS</span>
+      <span class="camp camp-pl">Powerlifting</span>
+    </div>
+    <div class="intro">
+      <p class="lead">S'affronteront tous les participants volontaires des clubs de la <strong>Fédération Luxembourgeoise de Bras de Fer</strong> et du club de powerlifting <strong>ATCSport</strong> dans une série de <strong>7 exercices</strong>.</p>
+      <p>Des épreuves choisies de manière à faire découvrir certains exercices typiques du bras de fer, mais plus généralement des exercices focalisés sur les <strong>bras et avant-bras</strong>, d'une manière équilibrée pour ne pas désavantager les powerlifteurs dans le tournoi.</p>
+    </div>
+    <p class="podiums-note">Deux classements à la clé : un <strong>podium global</strong> et un <strong>podium relatif au poids de corps</strong>.</p>
+    <div class="actions">
+      <button class="btn btn-red" onclick="show('identite')">Commencer →</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 2 · Identité -->
+  <section class="screen" id="screen-identite">
+    <div class="progress">Étape 1 / 3 · Toi</div>
+    <h2>Qui es-<em>tu</em> ?</h2>
+    <p class="sub">Le poids de corps sert à calculer le classement relatif.</p>
+
+    <div class="field" id="f-prenom">
+      <label>Prénom</label>
+      <input type="text" id="i-prenom" autocomplete="given-name" placeholder="Ton prénom">
+    </div>
+    <div class="field" id="f-nom">
+      <label>Nom</label>
+      <input type="text" id="i-nom" autocomplete="family-name" placeholder="Ton nom">
+    </div>
+    <div class="field" id="f-club">
+      <label>Ton camp</label>
+      <select id="i-club">
+        <option value="">— Choisir —</option>
+        <option value="Luxembourg Armwrestling Federation">Luxembourg Armwrestling Federation</option>
+        <option value="ATCSport">ATCSport (Powerlifting)</option>
+        <option value="Autre">Autre / invité</option>
+      </select>
+    </div>
+    <div class="field" id="f-poids">
+      <label>Poids de corps (kg)</label>
+      <input type="number" id="i-poids" inputmode="decimal" min="30" max="250" step="0.1" placeholder="ex. 82.5">
+    </div>
+
+    <div class="err" id="err-identite"></div>
+    <div class="actions">
+      <button class="btn btn-red" onclick="validerIdentite()">Continuer →</button>
+      <button class="btn btn-ghost" onclick="show('accueil')">← Retour</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 3 · Exercices -->
+  <section class="screen" id="screen-exos">
+    <div class="progress">Étape 2 / 3 · Tes performances</div>
+    <h2>Tes <em>lifts</em></h2>
+    <p class="sub">Indique le poids max réussi à chaque exercice. Laisse vide un exo non tenté.</p>
+    <div id="exos-list"></div>
+    <div class="err" id="err-exos"></div>
+    <div class="actions">
+      <button class="btn btn-red" onclick="allerRecap()">Voir le récap →</button>
+      <button class="btn btn-ghost" onclick="show('identite')">← Retour</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 4 · Récap -->
+  <section class="screen" id="screen-recap">
+    <div class="progress">Étape 3 / 3 · Vérification</div>
+    <h2>On <em>vérifie</em> ?</h2>
+    <p class="sub">Relis tes chiffres avant l'envoi.</p>
+    <div class="recap-block" id="recap-content"></div>
+
+    <label class="consent" for="i-consent">
+      <input type="checkbox" id="i-consent">
+      <span>Je coche cette case une fois tous mes résultats renseignés, pour pouvoir les envoyer, et je certifie l'exactitude des valeurs rentrées.</span>
+    </label>
+
+    <div class="err" id="err-recap"></div>
+    <div class="actions">
+      <button class="btn btn-red" id="btn-envoyer" onclick="envoyer()" disabled>Coche la case pour envoyer</button>
+      <button class="btn btn-ghost" onclick="show('exos')">← Modifier</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 5 · Confirmation -->
+  <section class="screen center" id="screen-ok">
+    <div class="check">✓</div>
+    <h2>C'est <em>envoyé</em> !</h2>
+    <p class="sub" style="max-width:300px;">Merci <span id="ok-prenom"></span>. Tes performances sont enregistrées. Rendez-vous au classement final !</p>
+
+    <div style="max-width:330px; margin:1.4rem auto 0;">
+      <div style="color:#d4a827; letter-spacing:4px; font-size:1.15rem; margin-bottom:.55rem;">★★★★★</div>
+      <p class="sub" style="max-width:330px; margin:0;">Tu as aimé l'événement ? Laisse-nous un avis Google : ça soutient le club et nous encourage à organiser d'autres rencontres comme celle‑ci.</p>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="https://g.page/r/CbqxlJydLo54EBM/review" target="_blank" rel="noopener" style="background:#d4a827; border-color:#d4a827; color:#141414; font-weight:700;">Laisser un avis Google</a>
+      <a class="btn btn-ghost" href="index.html">← Retour à l'accueil</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  /* ===================== CONFIG ÉVÉNEMENT ===================== */
+  /* Un seul endroit à éditer : titre, endpoint, exos. */
+  const EVENT = {
+    tag:   "Événement · 1st Edition",
+    titre: 'POWER <em>ARM</em>',
+    // ⚠️ Coller ici l'URL du Web App Apps Script (se termine par /exec)
+    endpoint: "https://script.google.com/macros/s/AKfycbwPgNGYTv9Xt6d_IvJqF2Q-jwsmWus0ladU9qYYQIYnpTBArb5Fl0khY2sq0U_A9JrM/exec",
+    exos: [
+      { id: "exo1", nom: "Back Pressure",  photo: "../picture_event_clubs/BACKPRESSURE.png",   unite: "kg" },
+      { id: "exo2", nom: "Side Pressure",  photo: "../picture_event_clubs/SIDE_PRESSURE.png",  unite: "kg" },
+      { id: "exo3", nom: "Pinch Strength", photo: "../picture_event_clubs/PINCH_STRENGTH.png", unite: "kg" },
+      { id: "exo4", nom: "Wrist Curl",     photo: "../picture_event_clubs/WRIST_CURL.png",     unite: "kg" },
+      { id: "exo5", nom: "Grip Strength",  photo: "../picture_event_clubs/GRIP_STRENGTH.png",  unite: "kg" },
+      { id: "exo6", nom: "Grip Roll",      photo: "../picture_event_clubs/GRIP_ROLL.png",      unite: "kg" },
+      { id: "exo7", nom: "Rise",           photo: "../picture_event_clubs/RISE.png",           unite: "kg" }
+    ]
+  };
+  /* =========================================================== */
+
+  const STORE = "event_atc_v1";
+  const SEND_LABEL = "Envoyer mes résultats ✓";
+  const $ = id => document.getElementById(id);
+
+  // --- Appliquer la config aux textes
+  $("ac-tag").textContent = EVENT.tag;
+  $("ac-titre").innerHTML = EVENT.titre;
+  document.title = "Événement — POWER ARM";
+
+  // --- Naviguer entre écrans
+  function show(name) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    $("screen-" + name).classList.add("active");
+    window.scrollTo(0, 0);
+  }
+
+  // --- Construire la liste d'exercices
+  function buildExos() {
+    const c = $("exos-list");
+    c.innerHTML = "";
+    EVENT.exos.forEach((ex, i) => {
+      const card = document.createElement("div");
+      card.className = "exo";
+      card.innerHTML =
+        '<img class="exo-photo" src="' + ex.photo + '" alt="' + ex.nom + '"' +
+        ' onerror="this.outerHTML=\'<div class=&quot;exo-photo-ph&quot;>Photo à venir</div>\'">' +
+        '<div class="exo-body">' +
+          '<div class="exo-num">Épreuve ' + (i + 1) + '</div>' +
+          '<div class="exo-name">' + ex.nom + '</div>' +
+          '<div class="exo-input">' +
+            '<input type="number" inputmode="decimal" min="0" step="0.5" id="in-' + ex.id + '" placeholder="0">' +
+            '<span class="exo-unit">' + ex.unite + '</span>' +
+          '</div>' +
+        '</div>';
+      c.appendChild(card);
+    });
+  }
+
+  // --- Persistance locale
+  function saveLocal() {
+    localStorage.setItem(STORE, JSON.stringify(collect()));
+  }
+  function loadLocal() {
+    try {
+      const d = JSON.parse(localStorage.getItem(STORE) || "{}");
+      if (d.prenom) $("i-prenom").value = d.prenom;
+      if (d.nom) $("i-nom").value = d.nom;
+      if (d.club) $("i-club").value = d.club;
+      if (d.poids) $("i-poids").value = d.poids;
+      EVENT.exos.forEach(ex => { if (d[ex.id]) $("in-" + ex.id).value = d[ex.id]; });
+    } catch (e) {}
+  }
+
+  function collect() {
+    const d = {
+      prenom: $("i-prenom").value.trim(),
+      nom:    $("i-nom").value.trim(),
+      club:   $("i-club").value,
+      poids:  parseFloat($("i-poids").value) || ""
+    };
+    EVENT.exos.forEach(ex => {
+      const v = $("in-" + ex.id).value;
+      d[ex.id] = v === "" ? 0 : parseFloat(v);
+    });
+    return d;
+  }
+
+  // --- Validation identité
+  function validerIdentite() {
+    const err = $("err-identite");
+    err.textContent = "";
+    ["f-prenom", "f-nom", "f-club", "f-poids"].forEach(f => $(f).classList.remove("invalid"));
+
+    const prenom = $("i-prenom").value.trim();
+    const nom    = $("i-nom").value.trim();
+    const club   = $("i-club").value;
+    const poids  = parseFloat($("i-poids").value);
+
+    if (!prenom) { $("f-prenom").classList.add("invalid"); err.textContent = "Indique ton prénom."; return; }
+    if (!nom)    { $("f-nom").classList.add("invalid");    err.textContent = "Indique ton nom."; return; }
+    if (!club)   { $("f-club").classList.add("invalid");   err.textContent = "Choisis ton camp."; return; }
+    if (!poids || poids < 30 || poids > 250) {
+      $("f-poids").classList.add("invalid");
+      err.textContent = "Entre un poids de corps valide (kg).";
+      return;
+    }
+    saveLocal();
+    show("exos");
+  }
+
+  // --- Vers récap
+  function allerRecap() {
+    const err = $("err-exos");
+    err.textContent = "";
+    const d = collect();
+    const total = EVENT.exos.reduce((s, ex) => s + (d[ex.id] || 0), 0);
+    if (total <= 0) { err.textContent = "Renseigne au moins une performance."; return; }
+    saveLocal();
+    renderRecap(d);
+    resetConsent();
+    show("recap");
+  }
+
+  function renderRecap(d) {
+    let html =
+      '<div class="recap-line"><span class="k">Athlète</span><span class="v">' + d.prenom + " " + d.nom + '</span></div>' +
+      '<div class="recap-line"><span class="k">Camp</span><span class="v">' + d.club + '</span></div>' +
+      '<div class="recap-line"><span class="k">Poids de corps</span><span class="v">' + d.poids + ' kg</span></div>';
+    EVENT.exos.forEach(ex => {
+      const v = d[ex.id];
+      html += '<div class="recap-line"><span class="k">' + ex.nom + '</span><span class="v">' +
+              (v ? v + " " + ex.unite : "—") + '</span></div>';
+    });
+    $("recap-content").innerHTML = html;
+  }
+
+  // --- Case à cocher + compteur 5 s avant l'envoi
+  let countdownTimer = null;
+  function resetConsent() {
+    clearInterval(countdownTimer);
+    $("i-consent").checked = false;
+    const btn = $("btn-envoyer");
+    btn.disabled = true;
+    btn.textContent = "Coche la case pour envoyer";
+  }
+  $("i-consent").addEventListener("change", () => {
+    const btn = $("btn-envoyer");
+    clearInterval(countdownTimer);
+    if (!$("i-consent").checked) {
+      btn.disabled = true;
+      btn.textContent = "Coche la case pour envoyer";
+      return;
+    }
+    let s = 5;
+    btn.disabled = true;
+    btn.textContent = "Patiente " + s + " s…";
+    countdownTimer = setInterval(() => {
+      s--;
+      if (s > 0) {
+        btn.textContent = "Patiente " + s + " s…";
+      } else {
+        clearInterval(countdownTimer);
+        btn.disabled = false;
+        btn.textContent = SEND_LABEL;
+      }
+    }, 1000);
+  });
+
+  // --- Envoi
+  async function envoyer() {
+    const err = $("err-recap");
+    const btn = $("btn-envoyer");
+    err.textContent = "";
+
+    if (!$("i-consent").checked) { err.textContent = "Coche d'abord la case de certification."; return; }
+
+    if (EVENT.endpoint.includes("XXXX")) {
+      err.textContent = "Formulaire pas encore activé (endpoint à configurer).";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Envoi…";
+    const payload = collect();
+
+    // Apps Script ne renvoie pas d'en-tête CORS : on poste en "no-cors".
+    // La réponse est opaque (illisible) mais le doPost s'exécute et écrit la ligne.
+    // Content-Type text/plain = pas de requête preflight OPTIONS.
+    try {
+      await fetch(EVENT.endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      localStorage.setItem(STORE + "_sent", "1");
+      $("ok-prenom").textContent = payload.prenom;
+      show("ok");
+    } catch (e) {
+      err.textContent = "Échec de l'envoi. Vérifie ta connexion et réessaie.";
+      btn.disabled = false;
+      btn.textContent = SEND_LABEL;
+    }
+  }
+
+  // --- Init
+  buildExos();
+  loadLocal();
+</script>
+</body>
+</html>
