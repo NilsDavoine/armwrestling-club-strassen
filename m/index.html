@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Armwrestling Club Strassen</title>
-  <meta name="robots" content="noindex, nofollow">
+  <title>Armwrestling Luxembourg | Club à Strassen – Essai gratuit</title>
+  <meta name="description" content="Essai gratuit mardi 18h à Strassen. Club de bras de fer LAF — deux sites (Strassen &amp; Munsbach), débutants bienvenus, compétitions officielles." />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://armwrestlingclubstrassen.com/">
+  <link rel="alternate" hreflang="fr-LU" href="https://armwrestlingclubstrassen.com/"/>
+  <link rel="alternate" hreflang="de" href="https://armwrestlingclubstrassen.com/armwrestling-luxemburg.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://armwrestlingclubstrassen.com/"/>
   <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,11 +58,13 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: safe center;
       align-items: center;
       padding: 2rem 2rem 88px;
       text-align: center;
       position: relative;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     /* Slide backgrounds */
@@ -337,6 +344,27 @@
       letter-spacing: 0.04em;
       font-family: 'Barlow', sans-serif;
     }
+
+    .doc-links {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.9rem;
+      justify-content: center;
+      align-items: center;
+      max-width: 330px;
+    }
+
+    .doc-link {
+      display: inline-block;
+      font-size: 0.72rem;
+      color: rgba(240,237,232,.5);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      font-family: 'Barlow', sans-serif;
+      border-bottom: 1px solid rgba(192,57,43,.35);
+      padding-bottom: 1px;
+    }
     .maps-link:active { opacity: 0.55; }
 
     /* Tournament slide */
@@ -455,6 +483,9 @@
       <div class="line"></div>
       <p class="sub">Bras de fer au Luxembourg — sport de force, technique et compétition.</p>
       <div class="badge">Membre · Luxembourg Armwrestling Federation</div>
+      <div class="doc-links" style="margin-top:.55rem">
+        <a href="../armwrestling-luxemburg.html" class="doc-link" hreflang="de">Auf Deutsch — Armdrücken Verein</a>
+      </div>
       <div class="ctas" style="margin-top:1.4rem;">
         <button onclick="go(5)" class="btn btn-red">Réserver un essai</button>
         <button onclick="go(6)" class="btn btn-ghost">Inscription compétition</button>
@@ -471,6 +502,10 @@
       <div class="line"></div>
       <p class="sub">Aucun équipement requis. Venez comme vous êtes. Les entraîneurs vous accueillent et vous montrent les bases.</p>
       <div class="pill">Mardi 18h · Strassen</div>
+      <div class="doc-links">
+        <a href="../club-bras-de-fer-debutant-luxembourg.html" class="doc-link">Club de bras de fer pour débutants au Luxembourg</a>
+        <a href="../guide-debutant-bras-de-fer.html" class="doc-link">Guide complet pour débuter le bras de fer</a>
+      </div>
     </div>
 
     <!-- 3 · Entraînements -->
@@ -490,6 +525,10 @@
           <div class="card-addr">185 rue Principale · L-5366 Munsbach</div>
           <a href="https://maps.google.com/?q=185+rue+Principale+L-5366+Munsbach+Luxembourg" target="_blank" rel="noopener" class="maps-link">📍 Ouvrir dans Maps</a>
         </div>
+      </div>
+      <div class="doc-links">
+        <a href="../entrainement-bras-de-fer-strassen.html" class="doc-link">Entraînement de bras de fer à Strassen</a>
+        <a href="../bras-de-fer-luxembourg-ville.html" class="doc-link">Bras de fer à Luxembourg-Ville</a>
       </div>
     </div>
 
@@ -529,6 +568,10 @@
         <li>Hommes et femmes, tous âges</li>
         <li>Encadrement par des entraîneurs certifiés</li>
       </ul>
+      <div class="doc-links">
+        <a href="../technique-prise-bras-de-fer.html" class="doc-link">Technique et prise au bras de fer</a>
+        <a href="../blessures-bras-de-fer.html" class="doc-link">Pratiquer sans se blesser</a>
+      </div>
     </div>
 
     <!-- 6 · Rejoindre -->
@@ -541,6 +584,10 @@
         <a href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp — Essai gratuit</a>
         <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61583958687728" target="_blank" rel="noopener" class="btn btn-ghost">Facebook</a>
+      </div>
+      <div class="doc-links">
+        <a href="../articles.html" class="doc-link">Tous nos articles &amp; ressources →</a>
+        <a href="../sport-de-force-luxembourg-comparatif.html" class="doc-link">Les sports de force au Luxembourg</a>
       </div>
     </div>
 
