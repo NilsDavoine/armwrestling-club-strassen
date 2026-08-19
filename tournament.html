@@ -10,9 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0c10;--bg2:#13161e;--bg3:#1c2030;--border:#2a2f42;
-  --accent:#e8c840;--a2:#3a8cff;--red:#e84040;--green:#30c060;
-  --text:#e8eaf0;--muted:#8890a8;
+  /* Palette monochrome — blanc / noir. Les deux seules teintes conservees
+     viennent du site (rouge #c0392b, or #d4a017) : le rouge sert uniquement
+     aux actions destructives, l'or a un liseré discret. */
+  --bg:#000000;--bg2:#0c0c0c;--bg3:#161616;--border:#2e2e2e;
+  --accent:#ffffff;--a2:#c8c8c8;--red:#c0392b;--green:#ffffff;
+  --gold:#d4a017;
+  --text:#ffffff;--muted:#9a9a9a;
   --fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
   --hp:48px;
 }
@@ -20,30 +24,30 @@
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px;min-height:100vh}
 .btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-family:var(--fb);font-size:13px;font-weight:600;transition:all .15s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
 .btn:disabled{opacity:.35;cursor:not-allowed}
-.btn-y{background:var(--accent);color:#000}.btn-y:hover:not(:disabled){background:#f0d060}
-.btn-r{background:var(--red);color:#fff}.btn-r:hover:not(:disabled){background:#ff5555}
-.btn-n{background:var(--bg3);color:var(--text);border:1px solid var(--border)}.btn-n:hover:not(:disabled){background:var(--border)}
-.btn-g{background:var(--green);color:#000}.btn-g:hover:not(:disabled){background:#40d070}
-.btn-b{background:#1a3a5c;color:var(--a2);border:1px solid #2a4a7c}.btn-b:hover:not(:disabled){background:#2a4a7c}
+.btn-y{background:#fff;color:#000;border:1px solid #fff}.btn-y:hover:not(:disabled){background:#d6d6d6;border-color:#d6d6d6}
+.btn-r{background:transparent;color:var(--red);border:1px solid var(--red)}.btn-r:hover:not(:disabled){background:var(--red);color:#fff}
+.btn-n{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-n:hover:not(:disabled){background:#1b1b1b;border-color:#555}
+.btn-g{background:#fff;color:#000;border:1px solid #fff}.btn-g:hover:not(:disabled){background:#d6d6d6;border-color:#d6d6d6}
+.btn-b{background:transparent;color:var(--text);border:1px solid #4a4a4a}.btn-b:hover:not(:disabled){background:#1b1b1b}
 .sm{padding:5px 10px;font-size:12px}
 input,select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 10px;border-radius:6px;font-family:var(--fb);font-size:13px;width:100%;outline:none;transition:border .15s}
-input:focus,select:focus{border-color:var(--a2)}
+input:focus,select:focus{border-color:#fff}
 select option{background:var(--bg2)}
 lbl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:4px}
 .tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
-.tl{background:#1a3a5c;color:var(--a2)}.tr{background:#3a1a1a;color:#ff7070}
+.tl{background:#191919;color:#fff;border:1px solid #4a4a4a}.tr{background:#fff;color:#000;border:1px solid #fff}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .modal{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;width:580px;max-width:96vw;max-height:92vh;overflow-y:auto}
-.modal h2{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:20px;color:var(--accent)}
+.modal h2{font-family:var(--fd);font-size:22px;font-weight:600;margin-bottom:20px;color:var(--text)}
 .fg{margin-bottom:12px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gf{grid-column:1/-1}
 
 /* ── ADMIN ── */
 #A{display:flex;flex-direction:column;height:100vh}
 .ah{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px var(--hp);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ah h1{font-family:var(--fd);font-size:30px;font-weight:900;color:var(--accent);letter-spacing:1px;flex:1}
+.ah h1{font-family:var(--fd);font-size:30px;font-weight:600;color:var(--text);letter-spacing:1px;flex:1}
 .tabs{display:flex;background:var(--bg);padding:12px var(--hp) 0;border-bottom:1px solid var(--border)}
-.tab{padding:8px 20px;cursor:pointer;font-family:var(--fd);font-size:16px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.5px;transition:all .15s}
-.tab.on{color:var(--accent);border-bottom-color:var(--accent)}.tab:hover{color:var(--text)}
+.tab{padding:8px 20px;cursor:pointer;font-family:var(--fd);font-size:16px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.5px;transition:all .15s}
+.tab.on{color:#fff;border-bottom-color:#fff}.tab:hover{color:var(--text)}
 .ab{flex:1;overflow:auto;padding:20px var(--hp)}
 
 /* ── TABLE ── */
@@ -56,7 +60,7 @@ td{padding:8px 12px;border-top:1px solid var(--border);vertical-align:middle}
 tr:hover td{background:rgba(255,255,255,.02)}
 .th{width:36px;height:36px;border-radius:6px;object-fit:cover}
 .thp{width:36px;height:36px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px}
-.bc{font-family:monospace;background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:4px;font-size:13px;font-weight:700;color:var(--a2)}
+.bc{font-family:monospace;background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:4px;font-size:13px;font-weight:600;color:#fff}
 .fi{width:22px;height:15px;object-fit:cover;border-radius:2px;vertical-align:middle}
 
 /* ── CATS ── */
@@ -69,93 +73,111 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .kbox{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px}
 .kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
 .kcard{background:var(--bg3);border-radius:8px;padding:14px;text-align:center}
-.knum{font-family:var(--fd);font-size:38px;font-weight:900;color:var(--accent)}
+.knum{font-family:var(--fd);font-size:38px;font-weight:600;color:#fff}
 .klbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
 .s3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
 .sc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px}
-.sc h4{font-family:var(--fd);font-size:16px;font-weight:700;margin-bottom:10px;color:var(--a2)}
+.sc h4{font-family:var(--fd);font-size:16px;font-weight:600;margin-bottom:10px;color:#fff;text-transform:uppercase;letter-spacing:1px}
 .shint{background:var(--bg3);border:1px dashed var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin-top:14px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.5s infinite;flex-shrink:0}
+.dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.log-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;max-height:200px;overflow-y:auto;font-size:12px;font-family:monospace;color:var(--muted);margin-top:16px}
+.log-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;max-height:200px;overflow-y:auto;font-size:12px;font-family:monospace;color:#d0d0d0;margin-top:16px}
 .log-box p{padding:2px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .log-box p:last-child{border:none}
 
 /* ── DISPLAY ── */
 #D{display:none;flex-direction:column;height:100vh;overflow:hidden;background:#000}
-.dh{background:#0a0c10;border-bottom:3px solid var(--accent);padding:0;display:flex;align-items:center;height:60px;flex-shrink:0}
-.dh h1{font-family:var(--fd);font-size:34px;font-weight:900;color:var(--accent);letter-spacing:2px}
-.arm-b{font-family:var(--fd);font-size:18px;font-weight:700;padding:4px 16px;border-radius:4px;text-transform:uppercase;letter-spacing:2px}
-.abl{background:#1a3a5c;color:var(--a2)}.abr{background:#3a1a1a;color:#ff8888}
-.db{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);overflow:hidden}
-.ds{background:#0d0f15;display:flex;flex-direction:column;overflow:hidden}
-.dsh{background:#13161e;padding:10px 16px;border-bottom:1px solid var(--border);flex-shrink:0;text-align:center}
-.dshn{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--accent);text-transform:uppercase;letter-spacing:1px;text-align:center}
-.dshs{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;text-align:center}
-.dsm{flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:16px 10px}
-.dsp{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0;padding:0 4px}
-.dspho{width:88px;height:100px;object-fit:cover;border-radius:8px;border:2px solid var(--border)}
-.dsphp{width:88px;height:100px;border-radius:8px;background:var(--bg3);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--border)}
-.dsfl{width:36px;height:24px;object-fit:cover;border-radius:3px;border:1px solid var(--border)}
-.dsnm{font-family:var(--fd);font-size:16px;font-weight:700;text-align:center;line-height:1.1;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
-.dsnm span{font-weight:400;font-size:12px;display:block}
-.dsls{display:flex;gap:4px;margin-top:2px}
-.dsl{width:11px;height:11px;border-radius:50%;background:var(--border)}.dsl.h{background:var(--red)}
-.dsvs{font-family:var(--fd);font-size:32px;font-weight:900;color:rgba(255,255,255,.12);letter-spacing:3px;flex-shrink:0;margin:0 4px}
-.dup{padding:6px 12px;border-top:1px solid var(--border);flex-shrink:0}
-.dupt{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.dupi{font-size:12px;color:var(--muted);padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.drk{border-top:1px solid var(--border);padding:8px 12px;flex-shrink:0}
-.drkt{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
-.drkr{display:flex;align-items:center;gap:7px;padding:3px 0;border-top:1px solid rgba(255,255,255,.04);font-size:12px}
-.drkp{font-family:var(--fd);font-size:15px;font-weight:700;width:20px;color:var(--muted);flex-shrink:0;text-align:center}
-.drkp.r1{color:var(--accent)}.drkp.r2{color:#aaa}.drkp.r3{color:#cd7f32}
-.drkn{font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.drke{color:rgba(255,255,255,.12);font-style:italic;font-size:11px}
+.dh{background:#000;border-bottom:1px solid #333;padding:0;display:flex;align-items:center;height:60px;flex-shrink:0}
+.dh h1{font-family:var(--fd);font-size:34px;font-weight:600;color:#fff;letter-spacing:2px}
+.arm-b{font-family:var(--fd);font-size:20px;font-weight:600;padding:4px 18px;border-radius:3px;text-transform:uppercase;letter-spacing:2px}
+.abl{background:transparent;color:#fff;border:1px solid #555}.abr{background:#fff;color:#000;border:1px solid #fff}
+.db{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#333;overflow:hidden}
+.ds{background:#000;display:flex;flex-direction:column;overflow:hidden}
+.dsh{background:#0c0c0c;padding:12px 16px;border-bottom:1px solid var(--border);flex-shrink:0;text-align:center}
+.dshn{font-family:var(--fd);font-size:30px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:1px;text-align:center;line-height:1.1}
+.dshs{font-size:14px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;text-align:center}
+.dsm{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:20px 10px}
+.dsp{display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;min-width:0;padding:0 4px}
+.dspho{width:118px;height:140px;object-fit:cover;border-radius:4px;border:1px solid #4a4a4a}
+.dsphp{width:118px;height:140px;border-radius:4px;background:#101010;border:1px solid #4a4a4a;display:flex;align-items:center;justify-content:center;font-size:46px;color:#3a3a3a}
+.dsfl{width:44px;height:29px;object-fit:cover;border-radius:2px;border:1px solid #4a4a4a}
+.dsnm{font-family:var(--fd);font-size:27px;font-weight:600;color:#fff;text-align:center;line-height:1.05;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.dsnm span{font-weight:400;font-size:18px;color:var(--muted);display:block;letter-spacing:.5px}
+.dsls{display:flex;gap:6px;margin-top:4px}
+.dsl{width:14px;height:14px;border-radius:50%;background:transparent;border:1px solid #555}.dsl.h{background:#fff;border-color:#fff}
+.dsvs{font-family:var(--fd);font-size:34px;font-weight:400;color:rgba(255,255,255,.3);letter-spacing:3px;flex-shrink:0;margin:0 6px}
+.dup{padding:8px 14px;border-top:1px solid var(--border);flex-shrink:0}
+.dupt{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px}
+.dupi{font-size:17px;font-weight:400;color:#ddd;padding:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drk{border-top:1px solid var(--border);padding:10px 14px;flex-shrink:0}
+.drkt{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.drkr{display:flex;align-items:center;gap:10px;padding:4px 0;border-top:1px solid rgba(255,255,255,.07);font-size:17px}
+.drkp{font-family:var(--fd);font-size:21px;font-weight:600;width:26px;color:var(--muted);flex-shrink:0;text-align:center}
+.drkp.r1,.drkp.r2,.drkp.r3{color:#fff}
+.drkn{font-weight:400;color:#fff;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drke{color:rgba(255,255,255,.22);font-style:italic;font-size:15px}
 .done{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:10px;padding:24px}
 .done-ic{font-size:52px}
-.done-tx{font-family:var(--fd);font-size:26px;font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:2px;text-align:center}
-.done-wn{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:1px}
-.wait{display:flex;align-items:center;justify-content:center;flex:1;color:rgba(255,255,255,.1);font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
-.sfx{position:fixed;inset:0;background:rgba(56,200,255,.15);pointer-events:none;z-index:9999;opacity:0;transition:opacity .08s}
+.done-tx{font-family:var(--fd);font-size:28px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:2px;text-align:center}
+.done-wn{font-family:var(--fd);font-size:20px;font-weight:600;color:#fff;text-align:center;text-transform:uppercase;letter-spacing:1px}
+.wait{display:flex;align-items:center;justify-content:center;flex:1;color:rgba(255,255,255,.22);font-family:var(--fd);font-size:22px;font-weight:400;letter-spacing:4px;text-transform:uppercase}
+.sfx{position:fixed;inset:0;background:rgba(255,255,255,.13);pointer-events:none;z-index:9999;opacity:0;transition:opacity .08s}
 .sfx.on{opacity:1}
 /* Full tournament done overlay on display */
-.td-over{position:absolute;inset:0;background:#0a0c10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:50}
-.td-over h2{font-family:var(--fd);font-size:64px;font-weight:900;color:var(--accent);text-transform:uppercase;letter-spacing:4px}
-.td-over p{font-family:var(--fd);font-size:22px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.td-over{position:absolute;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:50}
+.td-over h2{font-family:var(--fd);font-size:70px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:5px}
+.td-over p{font-family:var(--fd);font-size:24px;font-weight:400;color:var(--muted);letter-spacing:3px;text-transform:uppercase}
 
 #webcam-video{width:100%;border-radius:8px;background:#000}
 #webcam-canvas{display:none}
 
-/* ── PODIUM ── */
+/* ── PODIUM DE SECTION — rectangles sobres, chiffres en grand ── */
 .podium-outer{display:flex;flex-direction:column;overflow:hidden;flex:1}
-/* TOP THIRD: title + podium stage */
-.podium-top{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:8px 6px 4px;min-height:0}
-.podium-title{font-family:var(--fd);font-size:18px;font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;text-align:center}
-.podium-stage{display:flex;align-items:flex-end;justify-content:center;gap:4px;width:100%}
-.podium-slot{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;min-width:0}
-.podium-medal{font-size:24px;line-height:1}
-.podium-photo{width:58px;height:66px;object-fit:cover;border-radius:6px}
-.podium-photo-ph{width:58px;height:66px;border-radius:6px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--border)}
-.podium-flag{width:30px;height:20px;object-fit:cover;border-radius:2px;border:1px solid var(--border)}
-.podium-pname{font-family:var(--fd);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;line-height:1.1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px}
-.podium-pfname{font-family:var(--fd);font-size:10px;font-weight:400;color:var(--muted);text-align:center}
-.podium-block{display:flex;align-items:center;justify-content:center;border:2px solid;border-bottom:none;font-family:var(--fd);font-weight:900;width:100%;max-width:90px}
-.podium-block.p1{height:72px;font-size:30px;border-color:var(--accent);color:var(--accent);background:rgba(232,200,64,.1)}
-.podium-block.p2{height:52px;font-size:26px;border-color:#aaa;color:#aaa;background:rgba(255,255,255,.04)}
-.podium-block.p3{height:38px;font-size:22px;border-color:#cd7f32;color:#cd7f32;background:rgba(205,127,50,.05)}
-/* MIDDLE: next category banner */
-.podium-next-banner{background:rgba(232,200,64,.08);border-top:2px solid rgba(232,200,64,.3);border-bottom:2px solid rgba(232,200,64,.3);padding:10px 12px;text-align:center;flex-shrink:0}
-.podium-next-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:2px}
-.podium-next-name{font-family:var(--fd);font-size:20px;font-weight:900;color:var(--accent);text-transform:uppercase;letter-spacing:1px;line-height:1.1}
-/* BOTTOM THIRD: ranking */
-.podium-rank-section{border-top:1px solid var(--border);padding:6px 10px;flex-shrink:0}
-.podium-rank-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.podium-rank-row{display:flex;align-items:center;gap:6px;padding:2px 0;border-top:1px solid rgba(255,255,255,.04);font-size:11px}
-.podium-rank-pos{font-family:var(--fd);font-size:14px;font-weight:700;width:18px;color:var(--muted);flex-shrink:0;text-align:center}
-.podium-rank-pos.r1{color:var(--accent)}.podium-rank-pos.r2{color:#aaa}.podium-rank-pos.r3{color:#cd7f32}
-.podium-rank-name{font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.podium-rank-empty{color:rgba(255,255,255,.12);font-style:italic;font-size:10px}
+.podium-top{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1;padding:14px 8px 0;min-height:0}
+.podium-title{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:4px;margin-bottom:16px;text-align:center}
+.podium-stage{display:flex;align-items:flex-end;justify-content:center;gap:8px;width:100%}
+.podium-slot{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;flex:1;min-width:0}
+.podium-photo{width:66px;height:78px;object-fit:cover;border-radius:3px;border:1px solid #4a4a4a}
+.podium-photo-ph{width:66px;height:78px;border-radius:3px;background:#101010;border:1px solid #4a4a4a;display:flex;align-items:center;justify-content:center;font-size:26px;color:#3a3a3a}
+.podium-flag{width:34px;height:22px;object-fit:cover;border-radius:2px;border:1px solid #4a4a4a}
+.podium-pname{font-family:var(--fd);font-size:20px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.05;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.podium-pfname{font-family:var(--fd);font-size:15px;font-weight:400;color:var(--muted);text-align:center;line-height:1.1}
+.podium-block{display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:600;line-height:1;width:100%;max-width:104px;border:2px solid #fff;margin-top:4px}
+.podium-block.p1{height:96px;font-size:58px;background:#fff;color:#000}
+.podium-block.p2{height:70px;font-size:46px;background:transparent;color:#fff}
+.podium-block.p3{height:52px;font-size:38px;background:transparent;color:#fff}
+/* Bandeau categorie suivante */
+.podium-next-banner{background:#0c0c0c;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 12px;text-align:center;flex-shrink:0;margin-top:12px}
+.podium-next-lbl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:3px}
+.podium-next-name{font-family:var(--fd);font-size:24px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:1px;line-height:1.1}
+/* Classement complet */
+.podium-rank-section{border-top:1px solid var(--border);padding:10px 14px;flex-shrink:0}
+.podium-rank-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.podium-rank-row{display:flex;align-items:center;gap:10px;padding:4px 0;border-top:1px solid rgba(255,255,255,.07);font-size:17px}
+.podium-rank-pos{font-family:var(--fd);font-size:21px;font-weight:600;width:26px;color:var(--muted);flex-shrink:0;text-align:center}
+.podium-rank-pos.r1,.podium-rank-pos.r2,.podium-rank-pos.r3{color:#fff}
+.podium-rank-name{font-weight:400;color:#fff;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.podium-rank-empty{color:rgba(255,255,255,.22);font-style:italic;font-size:15px}
+
+/* ── RECAP FINAL — podiums plein ecran, un par clic ── */
+.recap{position:fixed;inset:0;background:#000;z-index:200;display:flex;flex-direction:column;cursor:pointer;user-select:none}
+.recap-head{padding:30px 48px 0;text-align:center;flex-shrink:0}
+.recap-kicker{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:8px}
+.recap-cat{font-family:var(--fd);font-size:60px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:2px;line-height:1.05;margin-top:8px}
+.recap-arm{font-family:var(--fd);font-size:22px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:5px;margin-top:6px}
+.recap-stage{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:32px;padding:12px 48px 64px;min-height:0}
+.recap-slot{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:0 1 360px;min-width:0}
+.recap-name{font-family:var(--fd);font-size:42px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:1px;text-align:center;line-height:1.03;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.recap-first{font-family:var(--fd);font-size:26px;font-weight:400;color:var(--muted);text-align:center;line-height:1.2;margin-top:2px}
+.recap-flag{width:56px;height:37px;object-fit:cover;border-radius:2px;border:1px solid #4a4a4a;margin:12px 0 4px}
+.recap-block{width:100%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:600;line-height:1;border:3px solid #fff;margin-top:14px}
+.recap-block.r1{height:41vh;font-size:26vh;background:#fff;color:#000}
+.recap-block.r2{height:30vh;font-size:19vh;background:transparent;color:#fff}
+.recap-block.r3{height:22vh;font-size:15vh;background:transparent;color:#fff}
+.recap-foot{position:absolute;left:0;right:0;bottom:22px;display:flex;align-items:center;justify-content:center;gap:20px;font-family:var(--fd);font-size:18px;font-weight:400;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:4px}
+.recap-end{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.recap-end h2{font-family:var(--fd);font-size:88px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:8px;text-align:center;line-height:1.05}
+.recap-end p{font-family:var(--fd);font-size:26px;font-weight:400;color:var(--muted);text-transform:uppercase;letter-spacing:5px;text-align:center}
 
 /* ── SCHEDULE TAB ── */
 .sched-layout{display:grid;grid-template-columns:220px 1fr;gap:14px;align-items:start}
@@ -167,11 +189,11 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .sched-pool-item:active{cursor:grabbing}
 .sched-pool-item.dragging{opacity:.35}
 .sched-pool-drop{border:2px dashed var(--border);border-radius:6px;min-height:40px;margin-top:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;transition:all .15s}
-.sched-pool-drop.drag-over{border-color:var(--a2);background:rgba(58,140,255,.05)}
+.sched-pool-drop.drag-over{border-color:#fff;background:rgba(255,255,255,.06)}
 .sched-sections{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .sched-col{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px;min-height:280px;display:flex;flex-direction:column}
 .sched-col-head{margin-bottom:10px}
-.sched-col-title{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--a2);text-transform:uppercase;letter-spacing:.5px}
+.sched-col-title{font-family:var(--fd);font-size:15px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:1px}
 .sched-col-sub{font-size:10px;color:var(--muted);margin-top:1px}
 .sched-col-body{flex:1;min-height:80px}
 .sched-item{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 8px;margin-bottom:5px;user-select:none;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;transition:background .12s;cursor:grab}
@@ -183,14 +205,14 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .sched-item-rm{background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:0 2px;line-height:1;flex-shrink:0;opacity:.6;transition:opacity .1s}
 .sched-item-rm:hover{opacity:1;color:var(--red)}
 .sched-drop-zone{border:2px dashed var(--border);border-radius:6px;min-height:50px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px;transition:all .15s;margin-top:4px}
-.sched-drop-zone.drag-over{border-color:var(--accent);background:rgba(232,200,64,.04)}
-.sched-count{font-family:var(--fd);font-size:16px;font-weight:900;color:var(--accent);min-width:20px;text-align:right;margin-left:auto}
+.sched-drop-zone.drag-over{border-color:#fff;background:rgba(255,255,255,.06)}
+.sched-count{font-family:var(--fd);font-size:16px;font-weight:600;color:#fff;min-width:20px;text-align:right;margin-left:auto}
 .ccr{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin-bottom:6px}
 .ccl{flex:1;cursor:pointer;margin:0;font-size:13px;font-weight:600;color:var(--text);text-transform:none;letter-spacing:0}
 .cca{display:none;gap:10px}.cca.on{display:flex}
 .cca label{display:flex;align-items:center;gap:3px;cursor:pointer;margin:0;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
 @media(max-width:900px){.cgrid,.s3,.kgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.cgrid,.s3,.kgrid{grid-column:1}}
+@media(max-width:600px){.cgrid,.s3,.kgrid{grid-template-columns:1fr}}
 
 /* ── PRINT ── */
 @media print{
@@ -206,20 +228,20 @@ tr:hover td{background:rgba(255,255,255,.02)}
 <div id="A">
   <div class="ah" style="justify-content:center;padding:10px var(--hp)">
     <div style="display:flex;align-items:center;gap:16px;justify-content:center;flex:1">
-      <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px">TOURNAMENT MANAGER</span>
+      <span style="font-family:var(--fd);font-size:28px;font-weight:600;color:var(--text);letter-spacing:1px">TOURNAMENT MANAGER</span>
       <span style="color:var(--border);font-size:20px">—</span>
-      <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:8px">
+      <span style="font-family:var(--fd);font-size:28px;font-weight:600;color:var(--text);letter-spacing:1px;display:flex;align-items:center;gap:8px">
         ARMWRESTLING CLUB STRASSEN &nbsp;<img src="https://flagcdn.com/w40/lu.webp" style="width:28px;height:19px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;margin:0 2px">&nbsp; LUXEMBOURG
       </span>
       <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener"
         style="display:flex;align-items:center;text-decoration:none;opacity:.8;transition:opacity .15s;margin-left:4px"
         onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADwklEQVR4nO2dQZIUOwwFGYIVwYIzcAIOwbE5BCfgLGxrMY6QkF71ZHfmsn99t5kMtcKWrXr7+u37J2Hy+dETkP9HeWCUB0Z5YJQHRnlglAfmy+k//P39c/3Lfvz68+74188rc+g+n5jP1hwqnL7LyAOjPDDKA3PMeVdOv7kVunlr8r2nHFZ5pvL5ZD5dKrnTyAOjPDDKA1PKeVcqv8Xd3/qtNV9lnMr/2/3eCom/m5EHRnlglAemnfO2qKyxrty531jJPd38msDIA6M8MMoD87Ccd6WS/xJ1ssl8HpXnrhh5YJQHRnlg2jkv8Vs/Weed2KrnbeW/xN/NyAOjPDDKA1PKeXeusa5MzptsjTP5t6f/bkYeGOWBUR6Yt0fdSZ/kg0lO6tbqtsZMYOSBUR4Y5YEp3c+bnOnYOq842fPsnsk8kag1Ts7mGHlglAdGeWCO67xJrkrky8k+5KQO96gxKxh5YJQHRnlgRmdYKne37+xLciLdP2WytznJnUYeGOWBUR6Ydj1va/13er47fmJPdStHJs6aXjHywCgPjPLArNXzuuMk6nOVcbp1uK2en1v7mVeMPDDKA6M8MO163laPkkSdbDKHxDwT+f6KkQdGeWCUB6bdY3pr3ZPuN5amsp6b9Py0nvfkKA+M8sBEeo919xW31kyTczTpvdbu3fkKRh4Y5YFRHphRzkvsc6Z7pkzqcHf2bXGd9+QoD4zywIz6sGzdS+uylWPS52W6Y7rOeyGUB0Z5YNrvSa+8QzVdw5v03kzcF5zkRet5L4rywCgPzDHndftsdWtU3fe1TupzlTrfJHdOcv8EIw+M8sAoD0xpbzNxXv80/tYd8MSaL9F31H6bL4rywCgPTOl+3kfudVlhq5d0dw5bZ3NOGHlglAdGeWBKe5sTEvuQW/cWJudIK8+nMfLAKA+M8sBEzm0m+pt0n0lwZ93Ovc0nR3lglAcmcm6zO86d9w0Sd8y7z2zVF408MMoDozwwH+I96YlzK5Vn7rxXl+i9aeSBUR4Y5YFpr/MmdHPMnWdnts7sJOqFJ4w8MMoDozww7R7TXdLvJUic4ZyM3+0rffrcet6TozwwygPT7re51YsrUcPb6jddGfP0zGRM13kvhPLAKA9M5L0KFRK9wRLvqLuSqEFWPj9h5IFRHhjlgXlYzquQ2Oe8850MaYw8MMoDozww7ZyXvnPdzWeTfp6T+VSeT2PkgVEeGOWBKfUe2yJxlzz9TrutOXTxDMuTozwwygPzsPt5MsfIA6M8MMoDozwwygOjPDDKA/MPQrnadQNN5fcAAAAASUVORK5CYII=" alt="Instagram" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(232,200,64,.3)">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADwklEQVR4nO2dQZIUOwwFGYIVwYIzcAIOwbE5BCfgLGxrMY6QkF71ZHfmsn99t5kMtcKWrXr7+u37J2Hy+dETkP9HeWCUB0Z5YJQHRnlglAfmy+k//P39c/3Lfvz68+74188rc+g+n5jP1hwqnL7LyAOjPDDKA3PMeVdOv7kVunlr8r2nHFZ5pvL5ZD5dKrnTyAOjPDDKA1PKeVcqv8Xd3/qtNV9lnMr/2/3eCom/m5EHRnlglAemnfO2qKyxrty531jJPd38msDIA6M8MMoD87Ccd6WS/xJ1ssl8HpXnrhh5YJQHRnlg2jkv8Vs/Weed2KrnbeW/xN/NyAOjPDDKA1PKeXeusa5MzptsjTP5t6f/bkYeGOWBUR6Yt0fdSZ/kg0lO6tbqtsZMYOSBUR4Y5YEp3c+bnOnYOq842fPsnsk8kag1Ts7mGHlglAdGeWCO67xJrkrky8k+5KQO96gxKxh5YJQHRnlgRmdYKne37+xLciLdP2WytznJnUYeGOWBUR6Ydj1va/13er47fmJPdStHJs6aXjHywCgPjPLArNXzuuMk6nOVcbp1uK2en1v7mVeMPDDKA6M8MO163laPkkSdbDKHxDwT+f6KkQdGeWCUB6bdY3pr3ZPuN5amsp6b9Py0nvfkKA+M8sBEeo919xW31kyTczTpvdbu3fkKRh4Y5YFRHphRzkvsc6Z7pkzqcHf2bXGd9+QoD4zywIz6sGzdS+uylWPS52W6Y7rOeyGUB0Z5YNrvSa+8QzVdw5v03kzcF5zkRet5L4rywCgPzDHndftsdWtU3fe1TupzlTrfJHdOcv8EIw+M8sAoD0xpbzNxXv80/tYd8MSaL9F31H6bL4rywCgPTOl+3kfudVlhq5d0dw5bZ3NOGHlglAdGeWBKe5sTEvuQW/cWJudIK8+nMfLAKA+M8sBEzm0m+pt0n0lwZ93Ovc0nR3lglAcmcm6zO86d9w0Sd8y7z2zVF408MMoDozwwH+I96YlzK5Vn7rxXl+i9aeSBUR4Y5YFpr/MmdHPMnWdnts7sJOqFJ4w8MMoDozww7R7TXdLvJUic4ZyM3+0rffrcet6TozwwygPT7re51YsrUcPb6jddGfP0zGRM13kvhPLAKA9M5L0KFRK9wRLvqLuSqEFWPj9h5IFRHhjlgXlYzquQ2Oe8850MaYw8MMoDozww7ZyXvnPdzWeTfp6T+VSeT2PkgVEeGOWBKfUe2yJxlzz9TrutOXTxDMuTozwwygPzsPt5MsfIA6M8MMoDozwwygOjPDDKA/MPQrnadQNN5fcAAAAASUVORK5CYII=" alt="Instagram" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(255,255,255,.25);filter:grayscale(1) brightness(1.4)">
       </a>
       <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener"
         style="display:flex;align-items:center;text-decoration:none;opacity:.8;transition:opacity .15s;margin-left:4px"
         onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(232,200,64,.3);padding:5px;background:rgba(0,0,0,.3)"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.06a8.17 8.17 0 0 0 4.78 1.52V7.15a4.85 4.85 0 0 1-1.01-.46z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(255,255,255,.25);padding:5px;background:transparent"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.06a8.17 8.17 0 0 0 4.78 1.52V7.15a4.85 4.85 0 0 1-1.01-.46z"/></svg>
       </a>
     </div>
     <div style="display:flex;gap:8px;margin-left:16px;flex-shrink:0">
@@ -244,17 +266,17 @@ tr:hover td{background:rgba(255,255,255,.02)}
         <h4 style="font-family:var(--fd);font-size:15px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Players per category</h4>
         <div class="cgrid" style="gap:12px">
           <div class="cbox" style="padding:12px">
-            <div style="font-family:var(--fd);font-size:13px;font-weight:700;color:var(--a2);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Left Arm</div>
+            <div style="font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Left Arm</div>
             <div id="ccl"></div>
           </div>
           <div class="cbox" style="padding:12px">
-            <div style="font-family:var(--fd);font-size:13px;font-weight:700;color:#ff8888;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Right Arm</div>
+            <div style="font-family:var(--fd);font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Right Arm</div>
             <div id="ccr"></div>
           </div>
         </div>
       </div>
       <!-- Filter bar — shown when a category filter is active -->
-      <div id="filter-bar" style="display:none;align-items:center;gap:10px;background:rgba(232,200,64,.07);border:1px solid rgba(232,200,64,.25);border-radius:6px;padding:8px 12px;margin-bottom:10px"></div>
+      <div id="filter-bar" style="display:none;align-items:center;gap:10px;background:#111;border:1px solid #3a3a3a;border-radius:6px;padding:8px 12px;margin-bottom:10px"></div>
 
       <div class="tbar">
         <button class="btn btn-y" onclick="openAdd()">+ Add Player</button>
@@ -280,14 +302,14 @@ tr:hover td{background:rgba(255,255,255,.02)}
       <div class="cgrid">
         <div class="cbox">
           <div style="display:flex;align-items:center;margin-bottom:14px">
-            <h3 style="font-family:var(--fd);font-size:18px;font-weight:700;color:var(--a2);flex:1">Left Arm</h3>
+            <h3 style="font-family:var(--fd);font-size:18px;font-weight:600;color:var(--text);flex:1">Left Arm</h3>
             <button class="btn btn-n sm" id="addL" onclick="addCat('left')">+ Add</button>
           </div>
           <div id="cl"></div>
         </div>
         <div class="cbox">
           <div style="display:flex;align-items:center;margin-bottom:14px">
-            <h3 style="font-family:var(--fd);font-size:18px;font-weight:700;color:#ff8888;flex:1">Right Arm</h3>
+            <h3 style="font-family:var(--fd);font-size:18px;font-weight:600;color:var(--text);flex:1">Right Arm</h3>
             <button class="btn btn-n sm" id="addR" onclick="addCat('right')">+ Add</button>
           </div>
           <div id="cr"></div>
@@ -357,7 +379,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
       <div class="kbox">
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
           <h3 style="font-family:var(--fd);font-size:20px;font-weight:700">Tournament Status</h3>
-          <span id="pbadge" class="tag" style="background:#1a2a1a;color:var(--green)">SETUP</span>
+          <span id="pbadge" class="tag" style="background:#191919;color:#fff;border:1px solid #4a4a4a">SETUP</span>
           <span id="abadge" class="tag tl" style="display:none">LEFT ARM</span>
         </div>
         <div class="kgrid">
@@ -369,6 +391,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
         <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
           <button class="btn btn-g" id="btn-start" onclick="startTournament()">▶ Start Tournament</button>
           <button class="btn btn-y" id="btn-switch" style="display:none" onclick="switchArm()">→ Switch to Right Arm</button>
+          <button class="btn btn-n" id="btn-recap" style="display:none" onclick="toggleRecap()">🏁 Podium recap</button>
           <button class="btn btn-r" id="btn-reset" style="display:none" onclick="resetTournament()">↺ Full Reset</button>
         </div>
         <div class="shint">
@@ -394,15 +417,15 @@ tr:hover td{background:rgba(255,255,255,.02)}
 <!-- ══════════ DISPLAY ══════════ -->
 <div id="D">
   <div class="dh" style="display:flex;align-items:center;justify-content:center;gap:16px;padding:0 var(--hp);position:relative">
-    <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px">TOURNAMENT MANAGER</span>
+    <span style="font-family:var(--fd);font-size:28px;font-weight:600;color:var(--text);letter-spacing:1px">TOURNAMENT MANAGER</span>
     <span style="color:var(--border);font-size:20px">—</span>
-    <span style="font-family:var(--fd);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:1px;display:flex;align-items:center;gap:8px">
+    <span style="font-family:var(--fd);font-size:28px;font-weight:600;color:var(--text);letter-spacing:1px;display:flex;align-items:center;gap:8px">
       ARMWRESTLING CLUB STRASSEN &nbsp;<img src="https://flagcdn.com/w40/lu.webp" style="width:28px;height:19px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;margin:0 2px">&nbsp; LUXEMBOURG
     </span>
     <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener"
       style="display:flex;align-items:center;text-decoration:none;opacity:.8;transition:opacity .15s"
       onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADwklEQVR4nO2dQZIUOwwFGYIVwYIzcAIOwbE5BCfgLGxrMY6QkF71ZHfmsn99t5kMtcKWrXr7+u37J2Hy+dETkP9HeWCUB0Z5YJQHRnlglAfmy+k//P39c/3Lfvz68+74188rc+g+n5jP1hwqnL7LyAOjPDDKA3PMeVdOv7kVunlr8r2nHFZ5pvL5ZD5dKrnTyAOjPDDKA1PKeVcqv8Xd3/qtNV9lnMr/2/3eCom/m5EHRnlglAemnfO2qKyxrty531jJPd38msDIA6M8MMoD87Ccd6WS/xJ1ssl8HpXnrhh5YJQHRnlg2jkv8Vs/Weed2KrnbeW/xN/NyAOjPDDKA1PKeXeusa5MzptsjTP5t6f/bkYeGOWBUR6Yt0fdSZ/kg0lO6tbqtsZMYOSBUR4Y5YEp3c+bnOnYOq842fPsnsk8kag1Ts7mGHlglAdGeWCO67xJrkrky8k+5KQO96gxKxh5YJQHRnlgRmdYKne37+xLciLdP2WytznJnUYeGOWBUR6Ydj1va/13er47fmJPdStHJs6aXjHywCgPjPLArNXzuuMk6nOVcbp1uK2en1v7mVeMPDDKA6M8MO163laPkkSdbDKHxDwT+f6KkQdGeWCUB6bdY3pr3ZPuN5amsp6b9Py0nvfkKA+M8sBEeo919xW31kyTczTpvdbu3fkKRh4Y5YFRHphRzkvsc6Z7pkzqcHf2bXGd9+QoD4zywIz6sGzdS+uylWPS52W6Y7rOeyGUB0Z5YNrvSa+8QzVdw5v03kzcF5zkRet5L4rywCgPzDHndftsdWtU3fe1TupzlTrfJHdOcv8EIw+M8sAoD0xpbzNxXv80/tYd8MSaL9F31H6bL4rywCgPTOl+3kfudVlhq5d0dw5bZ3NOGHlglAdGeWBKe5sTEvuQW/cWJudIK8+nMfLAKA+M8sBEzm0m+pt0n0lwZ93Ovc0nR3lglAcmcm6zO86d9w0Sd8y7z2zVF408MMoDozwwH+I96YlzK5Vn7rxXl+i9aeSBUR4Y5YFpr/MmdHPMnWdnts7sJOqFJ4w8MMoDozww7R7TXdLvJUic4ZyM3+0rffrcet6TozwwygPT7re51YsrUcPb6jddGfP0zGRM13kvhPLAKA9M5L0KFRK9wRLvqLuSqEFWPj9h5IFRHhjlgXlYzquQ2Oe8850MaYw8MMoDozww7ZyXvnPdzWeTfp6T+VSeT2PkgVEeGOWBKfUe2yJxlzz9TrutOXTxDMuTozwwygPzsPt5MsfIA6M8MMoDozwwygOjPDDKA/MPQrnadQNN5fcAAAAASUVORK5CYII=" alt="Instagram" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(232,200,64,.3)">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADwklEQVR4nO2dQZIUOwwFGYIVwYIzcAIOwbE5BCfgLGxrMY6QkF71ZHfmsn99t5kMtcKWrXr7+u37J2Hy+dETkP9HeWCUB0Z5YJQHRnlglAfmy+k//P39c/3Lfvz68+74188rc+g+n5jP1hwqnL7LyAOjPDDKA3PMeVdOv7kVunlr8r2nHFZ5pvL5ZD5dKrnTyAOjPDDKA1PKeVcqv8Xd3/qtNV9lnMr/2/3eCom/m5EHRnlglAemnfO2qKyxrty531jJPd38msDIA6M8MMoD87Ccd6WS/xJ1ssl8HpXnrhh5YJQHRnlg2jkv8Vs/Weed2KrnbeW/xN/NyAOjPDDKA1PKeXeusa5MzptsjTP5t6f/bkYeGOWBUR6Yt0fdSZ/kg0lO6tbqtsZMYOSBUR4Y5YEp3c+bnOnYOq842fPsnsk8kag1Ts7mGHlglAdGeWCO67xJrkrky8k+5KQO96gxKxh5YJQHRnlgRmdYKne37+xLciLdP2WytznJnUYeGOWBUR6Ydj1va/13er47fmJPdStHJs6aXjHywCgPjPLArNXzuuMk6nOVcbp1uK2en1v7mVeMPDDKA6M8MO163laPkkSdbDKHxDwT+f6KkQdGeWCUB6bdY3pr3ZPuN5amsp6b9Py0nvfkKA+M8sBEeo919xW31kyTczTpvdbu3fkKRh4Y5YFRHphRzkvsc6Z7pkzqcHf2bXGd9+QoD4zywIz6sGzdS+uylWPS52W6Y7rOeyGUB0Z5YNrvSa+8QzVdw5v03kzcF5zkRet5L4rywCgPzDHndftsdWtU3fe1TupzlTrfJHdOcv8EIw+M8sAoD0xpbzNxXv80/tYd8MSaL9F31H6bL4rywCgPTOl+3kfudVlhq5d0dw5bZ3NOGHlglAdGeWBKe5sTEvuQW/cWJudIK8+nMfLAKA+M8sBEzm0m+pt0n0lwZ93Ovc0nR3lglAcmcm6zO86d9w0Sd8y7z2zVF408MMoDozwwH+I96YlzK5Vn7rxXl+i9aeSBUR4Y5YFpr/MmdHPMnWdnts7sJOqFJ4w8MMoDozww7R7TXdLvJUic4ZyM3+0rffrcet6TozwwygPT7re51YsrUcPb6jddGfP0zGRM13kvhPLAKA9M5L0KFRK9wRLvqLuSqEFWPj9h5IFRHhjlgXlYzquQ2Oe8850MaYw8MMoDozww7ZyXvnPdzWeTfp6T+VSeT2PkgVEeGOWBKfUe2yJxlzz9TrutOXTxDMuTozwwygPzsPt5MsfIA6M8MMoDozwwygOjPDDKA/MPQrnadQNN5fcAAAAASUVORK5CYII=" alt="Instagram" style="width:34px;height:34px;border-radius:4px;border:1px solid rgba(255,255,255,.25);filter:grayscale(1) brightness(1.4)">
     </a>
     <div style="position:absolute;right:var(--hp);display:flex;align-items:center;gap:16px">
       <span id="darm" class="arm-b abl">LEFT ARM</span>
@@ -424,10 +447,12 @@ tr:hover td{background:rgba(255,255,255,.02)}
           <div style="font-family:var(--fd);font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.5px">ACS LUXEMBOURG</div>
           <div style="font-size:9px;color:var(--muted)">Tournament Manager</div>
         </div>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADvklEQVR4nO2dwZEUMQwAOYoXxYMYiIAgCJsgiIBY+PqjKglJnu277u95Zue2S6vyWLLfvn77/kmYfH76AeT/UR4Y5YFRHhjlgVEeGOWB+RL94e/vn+Mf9uPXn9L9z/EnU9dWx1SvnSL6LCMPjPLAKA9MmPNOot/cDFEOqOa/ap6r3vO8NpPnMvlv43s7MfLAKA+M8sCkct5JZ46VGZ/JkZnn2cipnTncxvdm5IFRHhjlgSnnvCk6uSqak0X3n5q3ZcbcxMgDozwwygPzWM47qeakKp33kBvrc1MYeWCUB0Z5YMo5b3t+08lznRqTjTW5jfucGHlglAdGeWBSOe/mXKc6z5uqMdl+F7qBkQdGeWCUBybMeU+tV23Mqzo1n9X5383vzcgDozwwygOT6s/L/I531uE6tSFTc7vqs03N4Tr1MkYeGOWBUR6Yt2jvse2+743Pql6boVpf2vl/7VX4QCgPjPLApN5tVuc6nX676hpexFSei56nur4Y0cmdRh4Y5YFRHpixXoVOD0AnP1VzUodXq+E08sAoD4zywIzlvOrcqzoHmqL6jnSqnrPTXx9h5IFRHhjlgQnX8zJs70uysTdK55lv5r8MRh4Y5YFRHphUDcvUGl7EVL7czjEbtZqdZzPywCgPjPLAlHvSN3oJNvJop97y1XJbhJEHRnlglAcm9W5z+6yDqXeM1fGd3NbZ2zq6j3WbHwjlgVEemPJ63lN9AlPPs3Guws1+xBMjD4zywCgPTOuc9I3f96l7dsZXr93uR4ww8sAoD4zywLTOSd/Yx3KjDmUjR97sx3fvsXeI8sAoD0x577GNPcCm5lKZ8ds9Bp2a1ep3buSBUR4Y5YFpzfOqYzq5aiovbvQUbpw35HreO0d5YJQHpnyW0Hb/9XbN5/b+LzfP1TPywCgPjPLAtPZhidh+Z7jR29DJzZ33rpl7Rhh5YJQHRnlgWnWbJ519LDts17bcnLdVMfLAKA+M8sCsnJM+te9lZszGnmed84AiNtYXjTwwygOjPDBj87wMU2tvN/vHq9x8NiMPjPLAKA/MWN1mxM19LzM1nxv7akbP0BmTwcgDozwwygMzdq7CyUZvXPRs0eduj3+FfaiNPDDKA6M8MGNnxla5ec7cVK7aPv/B9bwPhPLAKA/MYzkvolNL2Zmb3qy99N2mKI+M8sCUc95G3Ufn3eZG3141d26cjZfByAOjPDDKA1Peb7PD1Lrd1Gc9VcMy1adh5IFRHhjlgVnZh0XuYOSBUR4Y5YFRHhjlgVEeGOWB+Qeycshg4FUW3gAAAABJRU5ErkJggg==" alt="QR" style="width:36px;height:36px;border-radius:3px">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAIAAAD6XpeDAAADvklEQVR4nO2dwZEUMQwAOYoXxYMYiIAgCJsgiIBY+PqjKglJnu277u95Zue2S6vyWLLfvn77/kmYfH76AeT/UR4Y5YFRHhjlgVEeGOWB+RL94e/vn+Mf9uPXn9L9z/EnU9dWx1SvnSL6LCMPjPLAKA9MmPNOot/cDFEOqOa/ap6r3vO8NpPnMvlv43s7MfLAKA+M8sCkct5JZ46VGZ/JkZnn2cipnTncxvdm5IFRHhjlgSnnvCk6uSqak0X3n5q3ZcbcxMgDozwwygPzWM47qeakKp33kBvrc1MYeWCUB0Z5YMo5b3t+08lznRqTjTW5jfucGHlglAdGeWBSOe/mXKc6z5uqMdl+F7qBkQdGeWCUBybMeU+tV23Mqzo1n9X5383vzcgDozwwygOT6s/L/I531uE6tSFTc7vqs03N4Tr1MkYeGOWBUR6Yt2jvse2+743Pql6boVpf2vl/7VX4QCgPjPLApN5tVuc6nX676hpexFSei56nur4Y0cmdRh4Y5YFRHpixXoVOD0AnP1VzUodXq+E08sAoD4zywIzlvOrcqzoHmqL6jnSqnrPTXx9h5IFRHhjlgQnX8zJs70uysTdK55lv5r8MRh4Y5YFRHphUDcvUGl7EVL7czjEbtZqdZzPywCgPjPLAlHvSN3oJNvJop97y1XJbhJEHRnlglAcm9W5z+6yDqXeM1fGd3NbZ2zq6j3WbHwjlgVEemPJ63lN9AlPPs3Guws1+xBMjD4zywCgPTOuc9I3f96l7dsZXr93uR4ww8sAoD4zywLTOSd/Yx3KjDmUjR97sx3fvsXeI8sAoD0x577GNPcCm5lKZ8ds9Bp2a1ep3buSBUR4Y5YFpzfOqYzq5aiovbvQUbpw35HreO0d5YJQHpnyW0Hb/9XbN5/b+LzfP1TPywCgPjPLAtPZhidh+Z7jR29DJzZ33rpl7Rhh5YJQHRnlgWnWbJ519LDts17bcnLdVMfLAKA+M8sCsnJM+te9lZszGnmed84AiNtYXjTwwygOjPDBj87wMU2tvN/vHq9x8NiMPjPLAKA/MWN1mxM19LzM1nxv7akbP0BmTwcgDozwwygMzdq7CyUZvXPRs0eduj3+FfaiNPDDKA6M8MGNnxla5ec7cVK7aPv/B9bwPhPLAKA/MYzkvolNL2Zmb3qy99N2mKI+M8sCUc95G3Ufn3eZG3141d26cjZfByAOjPDDKA1Peb7PD1Lrd1Gc9VcMy1adh5IFRHhjlgVnZh0XuYOSBUR4Y5YFRHhjlgVEeGOWB+Qeycshg4FUW3gAAAABJRU5ErkJggg==" alt="QR" style="width:36px;height:36px;border-radius:3px;filter:grayscale(1) brightness(1.4)">
       </div>
     </div>
   </div>
+  <!-- Recap final : un podium plein ecran par categorie, clic = suivant -->
+  <div class="recap" id="recap" style="display:none" onclick="recapNext()"></div>
   <div id="sfx" class="sfx"></div>
 </div>
 
@@ -597,10 +622,15 @@ function def(){return{
     {id:34,arm:'right',name:'Senior Pro -105kg'},
     {id:35,arm:'right',name:'Senior Pro +105kg'},
   ],
-  T:{phase:'setup',curArm:'left',locked:false,queue:[],secs:[null,null,null],done:[]},
+  T:{phase:'setup',curArm:'left',locked:false,queue:[],secs:[null,null,null],done:[],undo:[[],[],[]],recap:false},
   CS:{},
+  // results[] — palmares conserve de TOUTES les categories terminees, les deux
+  // bras confondus. Survit au passage bras gauche -> bras droit (qui vide S.CS)
+  // et alimente le recapitulatif final.
+  // {cid, arm, name, order:[idJoueur du 1er au dernier]}
+  results:[],
   pid:1,bid:1001,cid:36,
-  log:[],
+  log:[],logSeq:0,
   _rlist:null
 };}
 
@@ -608,12 +638,24 @@ function save(){
   try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}
   if(ch)ch.postMessage({t:'sync',d:JSON.stringify(S)});
 }
-function load(){try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}}
+function load(){
+  try{const r=localStorage.getItem(SK);if(r)S=JSON.parse(r);}catch(e){}
+  migrate();
+}
+
+// Complete un etat sauvegarde avant l'ajout de l'annulation et du recapitulatif.
+function migrate(){
+  if(!S.T)S.T={phase:'setup',curArm:'left',locked:false,queue:[],secs:[null,null,null],done:[]};
+  if(!Array.isArray(S.results))S.results=[];
+  if(!Array.isArray(S.T.undo)||S.T.undo.length!==3)S.T.undo=[[],[],[]];
+  if(typeof S.T.recap!=='boolean')S.T.recap=false;
+  if(typeof S.logSeq!=='number')S.logSeq=0;
+}
 
 const ch=typeof BroadcastChannel!=='undefined'?new BroadcastChannel('atm5'):null;
 if(ch)ch.onmessage=e=>{
   if(e.data.t!=='sync')return;
-  try{S=JSON.parse(e.data.d);}catch(x){}
+  try{S=JSON.parse(e.data.d);migrate();}catch(x){}
   isDsp()?renderDsp():renderAdm();
 };
 
@@ -624,7 +666,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(isDsp()){
     document.getElementById('A').style.display='none';
     document.getElementById('D').style.display='flex';
-    renderDsp();tick();initScan();
+    renderDsp();tick();initScan();initRecapKeys();
     // No polling — BroadcastChannel handles live updates instantly.
     // One-time retry after 2s handles the case where the window opened
     // before the admin had saved state (BroadcastChannel not yet ready).
@@ -683,12 +725,12 @@ function buildCatCBs(ex){
       <div style="display:flex;gap:12px;flex-shrink:0">
         ${lc?`<label style="display:flex;align-items:center;gap:5px;cursor:pointer;margin:0;user-select:none">
           <input type="checkbox" id="cbl${lc.id}"
-            style="width:15px;height:15px;cursor:pointer;accent-color:var(--a2)" ${lChecked?'checked':''}>
+            style="width:15px;height:15px;cursor:pointer;accent-color:#fff" ${lChecked?'checked':''}>
           <span class="tag tl" style="font-size:10px">L</span>
         </label>`:'<div style="width:52px"></div>'}
         ${rc?`<label style="display:flex;align-items:center;gap:5px;cursor:pointer;margin:0;user-select:none">
           <input type="checkbox" id="cbr${rc.id}"
-            style="width:15px;height:15px;cursor:pointer;accent-color:#ff7070" ${rChecked?'checked':''}>
+            style="width:15px;height:15px;cursor:pointer;accent-color:#fff" ${rChecked?'checked':''}>
           <span class="tag tr" style="font-size:10px">R</span>
         </label>`:'<div style="width:52px"></div>'}
       </div>`;
@@ -882,7 +924,7 @@ function renderCats(){
     list.forEach((c,i)=>{
       const inUse=S.players.some(p=>(p.entries||[]).some(e=>e.cid===c.id));
       const hidden=!!c.hidden;
-      const ns=c.arm==='left'?'background:#1a3a5c;color:var(--a2)':'background:#3a1a1a;color:#ff8888';
+      const ns=c.arm==='left'?'background:#191919;color:#fff;border:1px solid #4a4a4a':'background:#fff;color:#000';
       const numStyle=hidden?'background:var(--bg3);color:var(--muted);opacity:.5':ns;
       const div=document.createElement('div');
       div.className='crow';
@@ -973,6 +1015,10 @@ function doWin(wid){
   }
   if(si===-1)return -1;
 
+  // Instantane complet de la categorie AVANT toute modification.
+  // C'est ce qui permet d'annuler un mauvais gagnant (voir undoWin).
+  pushUndo(si,cs);
+
   const lid=cs.cur.p1===wid?cs.cur.p2:cs.cur.p1;
   const ts=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   const cat=S.cats.find(c=>c.id===cs.cid)||{name:'?'};
@@ -980,7 +1026,7 @@ function doWin(wid){
   const wname=wp?wp.lastName:'?', lname=lp_?lp_.lastName:'?';
 
   cs.hist.push({p1:cs.cur.p1,p2:cs.cur.p2,w:wid});
-  addLog(`[${ts}] Sec ${si+1} · ${cat.name} [${cs.arm.toUpperCase()}] — ${wname} beat ${lname}`);
+  addLog(`[${ts}] Sec ${si+1} · ${cat.name} [${cs.arm.toUpperCase()}] — ${wname} beat ${lname}`,si);
 
   const wpp=cs.players.find(x=>x.id===wid),lpp=cs.players.find(x=>x.id===lid);
   if(wpp)wpp.w++;if(lpp)lpp.l++;
@@ -994,7 +1040,8 @@ function doWin(wid){
     cs.cur=null;cs.done=true;
     S.T.secs[si].done=true;
     S.T.done.push(csk(cs.cid,cs.arm));
-    addLog(`[${ts}] 🏆 ${cat.name} [${cs.arm.toUpperCase()}] WINNER: ${wname}`);
+    recordResult(cs);
+    addLog(`[${ts}] 🏆 ${cat.name} [${cs.arm.toUpperCase()}] WINNER: ${wname}`,si);
     // Mark section as waiting for manual "Next Category" press — display keeps showing winner/ranking
     S.T.secs[si].waitingAdvance=true;
     save();
@@ -1007,10 +1054,94 @@ function doWin(wid){
   return si;
 }
 
-function addLog(txt){
+function addLog(txt,si){
   if(!S.log)S.log=[];
-  S.log.unshift({ts:Date.now(),txt});
+  S.logSeq=(S.logSeq||0)+1;
+  S.log.unshift({id:S.logSeq,ts:Date.now(),txt,si});
   if(S.log.length>100)S.log.pop();
+}
+
+// Enregistre le classement definitif d'une categorie dans S.results.
+// elim[0] = premier elimine = dernier ; elim[n-1] = champion.
+function recordResult(cs){
+  if(!Array.isArray(S.results))S.results=[];
+  const cat=S.cats.find(c=>c.id===cs.cid)||{name:'?'};
+  const n=cs.players.length;
+  const order=[];
+  for(let r=1;r<=n;r++){const pid=cs.elim[n-r];if(pid!=null)order.push(pid);}
+  S.results.push({cid:cs.cid,arm:cs.arm,name:cat.name,order});
+}
+
+// ════════════════════════════════════════════
+// ANNULATION DU DERNIER MATCH
+// ════════════════════════════════════════════
+// Avant CHAQUE victoire validee, doWin empile un instantane complet de la
+// categorie (etat Swiss, section, palmares, journal, phase). La pile est
+// propre a une section ET videe des qu'une nouvelle categorie y demarre
+// (fillSec / advSec) : il est donc impossible de remonter au-dela de la
+// categorie en cours, exactement comme demande.
+function undoStack(si){
+  if(!Array.isArray(S.T.undo)||S.T.undo.length!==3)S.T.undo=[[],[],[]];
+  if(!Array.isArray(S.T.undo[si]))S.T.undo[si]=[];
+  return S.T.undo[si];
+}
+
+function pushUndo(si,cs){
+  const st=undoStack(si);
+  const key=csk(cs.cid,cs.arm);
+  st.push({
+    key,
+    cs:JSON.stringify(cs),
+    sec:JSON.stringify(S.T.secs[si]),
+    // Bornes propres a CETTE categorie et a CETTE section. Les 3 sections
+    // avancent en parallele : annuler dans l'une ne doit jamais defaire
+    // le palmares, le compteur ou le journal d'une autre.
+    doneCount:(S.T.done||[]).filter(k=>k===key).length,
+    resCount:(S.results||[]).filter(r=>r.cid===cs.cid&&r.arm===cs.arm).length,
+    logSeq:S.logSeq||0,
+    phase:S.T.phase
+  });
+  if(st.length>300)st.shift();
+}
+
+// Garde les `keep` premieres occurrences qui verifient match(), jette les suivantes.
+function keepFirst(arr,match,keep){
+  let seen=0;
+  return arr.filter(it=>{ if(!match(it))return true; seen++; return seen<=keep; });
+}
+
+function clearUndo(si){ undoStack(si).length=0; }
+
+function canUndo(si){ return undoStack(si).length>0; }
+
+function undoWin(si){
+  const st=undoStack(si);
+  const snap=st.pop();
+  if(!snap)return false;
+  const cs=JSON.parse(snap.cs);
+  S.CS[snap.key]=cs;
+  S.T.secs[si]=JSON.parse(snap.sec);
+  S.T.done=keepFirst(S.T.done||[],k=>k===snap.key,snap.doneCount);
+  S.results=keepFirst(S.results||[],r=>r.cid===cs.cid&&r.arm===cs.arm,snap.resCount);
+  S.log=(S.log||[]).filter(e=>!(e.si===si&&(e.id||0)>snap.logSeq));
+  S.T.phase=snap.phase;
+  S.T.recap=false;
+  save();
+  if(ch)ch.postMessage({t:'sync',d:JSON.stringify(S)});
+  return true;
+}
+
+// Bouton "Undo last match" de l'onglet Tournament Control
+function undoBtn(si){
+  if(!undoWin(si)){alert('Nothing to undo in this section.');return;}
+  renderAdm();
+}
+
+// Affiche / masque le recapitulatif final sur l'ecran spectateur
+function toggleRecap(){
+  S.T.recap=!S.T.recap;
+  save();renderAdm();
+  if(ch)ch.postMessage({t:'sync',d:JSON.stringify(S)});
 }
 
 // Called from admin ctrl tab — launches next category in a section that is done
@@ -1024,6 +1155,8 @@ function launchNext(si){
 function advSec(si){
   // Clear waitingAdvance flag on current section before moving on
   if(S.T.secs[si]) S.T.secs[si].waitingAdvance=false;
+  // On quitte la categorie : plus aucun retour en arriere possible dessus.
+  clearUndo(si);
 
   // Pull next item from this section's own queue
   if(!S.T.secQueues) S.T.secQueues=[[],[],[]];
@@ -1100,14 +1233,18 @@ function buildSectionQueues(arm){
 }
 
 function fillSec(si,item){
+  clearUndo(si);
   const key=csk(item.cid,item.arm);
   S.CS[key]=initCS(item.cid,item.arm);
   const cs=S.CS[key];
   const cat=S.cats.find(c=>c.id===item.cid)||{name:'?'};
-  addLog(`Section ${si+1}: starting ${cat.name} [${item.arm.toUpperCase()}] — ${cs.players.length} players`);
+  addLog(`Section ${si+1}: starting ${cat.name} [${item.arm.toUpperCase()}] — ${cs.players.length} players`,si);
   if(cs.players.length<2){
+    // 0 ou 1 inscrit : victoire d'office, on garde un podium coherent.
+    if(cs.players.length===1)cs.elim.push(cs.players[0].id);
     cs.done=true;
     S.T.secs[si]={cid:item.cid,arm:item.arm,key,done:true,waitingAdvance:true};
+    if(cs.players.length===1){S.T.done.push(key);recordResult(cs);}
   } else {
     cs.cur=nxtM(cs);
     S.T.secs[si]={cid:item.cid,arm:item.arm,key,done:false,waitingAdvance:false};
@@ -1148,6 +1285,7 @@ function startTournament(){
   ask('Start Tournament?','Registrations will be locked. This cannot be undone.',()=>{
     S.T.phase='running';S.T.locked=true;S.T.curArm='left';
     S.T.done=[];S.CS={};S.log=[];
+    S.results=[];S.T.undo=[[],[],[]];S.T.recap=false;
     launchArm('left');
     save();renderAdm();
     if(ch)ch.postMessage({t:'sync',d:JSON.stringify(S)});
@@ -1159,6 +1297,9 @@ function switchArm(){
     S.T.curArm='right';
     S.T.done=[];
     S.CS={};
+    // S.results est volontairement conserve : le recapitulatif final doit
+    // pouvoir rejouer les podiums des DEUX bras.
+    S.T.undo=[[],[],[]];S.T.recap=false;
     launchArm('right');
     save();renderAdm();
     if(ch)ch.postMessage({t:'sync',d:JSON.stringify(S)});
@@ -1167,8 +1308,8 @@ function switchArm(){
 
 function resetTournament(){
   ask('Full Reset?','All match data will be erased. Registrations stay intact.',()=>{
-    S.T={phase:'setup',curArm:'left',locked:false,queue:[],secs:[null,null,null],done:[]};
-    S.CS={};S._rlist=null;S.log=[];
+    S.T={phase:'setup',curArm:'left',locked:false,queue:[],secs:[null,null,null],done:[],undo:[[],[],[]],recap:false};
+    S.CS={};S._rlist=null;S.log=[];S.results=[];
     save();renderAdm();
   });
 }
@@ -1181,6 +1322,7 @@ function factoryReset(){
       try{ localStorage.removeItem(SK); }catch(e){}
       S=def();
       activeFilter=null;
+      recapIdx=0;
       save();
       // Re-init UI fully
       buildCountrySel();
@@ -1194,7 +1336,7 @@ function factoryReset(){
   // Make the confirm button red to signal danger
   setTimeout(()=>{
     const ok=$('cfok');
-    if(ok) ok.style.background='var(--red)';
+    if(ok){ok.style.background='var(--red)';ok.style.borderColor='var(--red)';ok.style.color='#fff';}
   },10);
 }
 
@@ -1227,7 +1369,7 @@ function renderCatCounts(){
       const btnStyle=isActive
         ?'background:var(--accent);color:#000;border-color:var(--accent)'
         :'color:var(--muted)';
-      return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);${isActive?'background:rgba(232,200,64,.05);margin:0 -4px;padding:4px 4px;border-radius:4px':''}">
+      return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);${isActive?'background:rgba(255,255,255,.06);margin:0 -4px;padding:4px 4px;border-radius:4px':''}">
         <div style="flex:1;font-size:12px;color:${count>0?'var(--text)':'var(--muted)'}">${cat.name}</div>
         <div style="font-family:var(--fd);font-size:16px;font-weight:700;color:${count>0?'var(--accent)':'var(--muted)'};min-width:22px;text-align:right">${count}</div>
         <button onclick="setFilter(${cat.id},'${arm}')" title="${isActive?'Clear filter':'Show only these players'}"
@@ -1266,6 +1408,12 @@ function renderCtrl(){
   sd('btn-switch',leftDone);
   sd('btn-reset',T.phase!=='setup');
 
+  // Recapitulatif final — disponible des qu'une categorie est terminee
+  const nres=(S.results||[]).length;
+  sd('btn-recap',nres>0);
+  const brc=$('btn-recap');
+  if(brc)brc.textContent=S.T.recap?'✕ Close recap':'🏁 Podium recap ('+nres+')';
+
   let tm=0;Object.values(S.CS).forEach(cs=>tm+=cs.hist.length);
   tx('stp',S.players.length);tx('stm',tm);
   tx('std',(T.done||[]).length);
@@ -1287,12 +1435,12 @@ function renderCtrl(){
         const wid=cs?cs.elim[cs.elim.length-1]:null;
         const wp=wid!=null?S.players.find(x=>x.id===wid):null;
         h+=`<div style="color:var(--green);font-weight:700;margin-bottom:6px">✓ Complete</div>`;
-        if(wp)h+=`<div style="font-size:13px;color:var(--accent);margin-bottom:10px">🏆 Winner: <b>${wp.lastName} ${wp.firstName}</b></div>`;
+        if(wp)h+=`<div style="font-size:13px;color:#fff;margin-bottom:10px">Winner: <b>${wp.lastName} ${wp.firstName}</b></div>`;
         // Show launch button only if waitingAdvance and there is a next cat in queue (or queue could be empty)
         if(sec.waitingAdvance){
           const hasNext=S.T.secQueues&&S.T.secQueues[i]&&S.T.secQueues[i].length>0;
           h+=`<button class="btn btn-y" style="width:100%;justify-content:center;margin-top:4px" onclick="launchNext(${i})">
-            ${hasNext?'▶ Launch next category':'⏹ End recap'}</button>`;
+            ${hasNext?'▶ Launch next category':'⏹ Close podium'}</button>`;
         }
       } else if(cs&&cs.cur){
         const p1=S.players.find(x=>x.id===cs.cur.p1),p2=S.players.find(x=>x.id===cs.cur.p2);
@@ -1305,11 +1453,18 @@ function renderCtrl(){
           <span style="color:var(--muted)"> (${sp2?sp2.l:0}L)</span>
         </div>`;
         h+=`<div style="display:flex;gap:6px;margin-bottom:8px">
-          <button class="btn btn-g sm" style="flex:1;justify-content:center" onclick="manualWin(${cs.cur.p1})">🏆 ${p1?p1.lastName:'?'}</button>
-          <button class="btn btn-g sm" style="flex:1;justify-content:center" onclick="manualWin(${cs.cur.p2})">🏆 ${p2?p2.lastName:'?'}</button>
+          <button class="btn btn-g sm" style="flex:1;justify-content:center" onclick="manualWin(${cs.cur.p1})">✓ ${p1?p1.lastName:'?'}</button>
+          <button class="btn btn-g sm" style="flex:1;justify-content:center" onclick="manualWin(${cs.cur.p2})">✓ ${p2?p2.lastName:'?'}</button>
         </div>`;
         h+=`<div style="font-size:11px;color:var(--muted)">${active(cs).length} active · ${cs.hist.length} played · ${cs.players.length} total</div>`;
       } else {h+='<span style="color:var(--muted);font-size:12px">No active match</span>';}
+
+      // Retour en arriere — possible tant que la categorie suivante n'a pas ete lancee
+      if(canUndo(i)){
+        h+=`<button class="btn btn-n sm" style="width:100%;justify-content:center;margin-top:8px"
+          onclick="undoBtn(${i})" title="Cancel the last winner recorded in this section">
+          ↩ Undo last match (${undoStack(i).length})</button>`;
+      }
     }
     card.innerHTML=h;s3.appendChild(card);
   }
@@ -1331,9 +1486,19 @@ function renderDsp(){
   da.textContent=arm.toUpperCase()+' ARM';
   da.className='arm-b '+(arm==='left'?'abl':'abr');
 
-  // Tournament done overlay
+  // Recapitulatif final plein ecran — automatique en fin de tournoi, ou
+  // declenche a la main depuis l'admin (bouton "Podium recap").
+  const nres=(S.results||[]).length;
+  const showRecap=(S.T.recap||S.T.phase==='done')&&nres>0;
+  const rec=$('recap');
+  if(rec){
+    rec.style.display=showRecap?'flex':'none';
+    if(showRecap)renderRecap();
+  }
+
+  // Ancien ecran "Tournament Complete" : uniquement s'il n'y a aucun podium a montrer
   const over=$('td-over');
-  if(over)over.style.display=S.T.phase==='done'?'flex':'none';
+  if(over)over.style.display=(S.T.phase==='done'&&!showRecap)?'flex':'none';
 
   for(let i=0;i<3;i++)renderSec(i);
 }
@@ -1611,20 +1776,20 @@ function code128svg(text, barW=1.5, barH=50){
 function makeBadgeHTML(p){
   const cats=(p.entries||[]).map(e=>{
     const cat=S.cats.find(c=>c.id===e.cid)||{name:'?'};
-    return `<span style="display:inline-block;background:${e.arm==='left'?'#1a3a5c':'#3a1a1a'};color:${e.arm==='left'?'#3a8cff':'#ff7070'};border-radius:3px;padding:1px 5px;font-size:7px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin:1px">${cat.name} [${e.arm==='left'?'L':'R'}]</span>`;
+    return `<span style="display:inline-block;background:${e.arm==='left'?'transparent':'#fff'};color:${e.arm==='left'?'#fff':'#000'};border:1px solid #fff;border-radius:3px;padding:1px 5px;font-size:7px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin:1px">${cat.name} [${e.arm==='left'?'L':'R'}]</span>`;
   }).join('');
   const flagHtml=p.country
     ?`<img src="https://flagcdn.com/w40/${p.country.toLowerCase()}.webp" style="width:18px;height:12px;object-fit:cover;border-radius:1px;vertical-align:middle;margin-right:4px">`:'';
   const photoHtml=p.photo
-    ?`<img src="${p.photo}" style="width:54px;height:62px;object-fit:cover;border-radius:4px;border:2px solid #e8c840">`
-    :`<div style="width:54px;height:62px;border-radius:4px;border:2px solid #ccc;background:#eee;display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>`;
+    ?`<img src="${p.photo}" style="width:54px;height:62px;object-fit:cover;border-radius:4px;border:1px solid #fff">`
+    :`<div style="width:54px;height:62px;border-radius:4px;border:1px solid #666;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>`;
   const bc = code128svg(p.bc, 1.2, 36);
   const countryName = (CC.find(x=>x.c===p.country)||{n:''}).n;
 
   return `
   <div style="
-    background:#0d0f15;
-    border:1.5px solid #e8c840;
+    background:#000;
+    border:1px solid #fff;
     border-radius:8px;
     width:185px;height:110px;
     display:flex;flex-direction:column;
@@ -1633,8 +1798,8 @@ function makeBadgeHTML(p){
     page-break-inside:avoid;
   ">
     <!-- TOP: header bar -->
-    <div style="background:#e8c840;padding:3px 8px;display:flex;align-items:center;gap:6px">
-      <span style="font-size:9px;font-weight:900;letter-spacing:1px;color:#000;text-transform:uppercase;flex:1">ARMWRESTLING</span>
+    <div style="background:#fff;padding:3px 8px;display:flex;align-items:center;gap:6px">
+      <span style="font-size:9px;font-weight:700;letter-spacing:1px;color:#000;text-transform:uppercase;flex:1">ARMWRESTLING</span>
       <span style="font-size:8px;font-weight:700;color:#000;letter-spacing:.5px">ACS LU</span>
     </div>
     <!-- MIDDLE: photo + info -->
@@ -1642,8 +1807,8 @@ function makeBadgeHTML(p){
       ${photoHtml}
       <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-size:13px;font-weight:900;color:#fff;letter-spacing:.5px;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.lastName}</div>
-          <div style="font-size:10px;font-weight:600;color:#aaa;line-height:1.2">${p.firstName}</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;letter-spacing:.5px;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.lastName}</div>
+          <div style="font-size:10px;font-weight:400;color:#bbb;line-height:1.2">${p.firstName}</div>
           <div style="margin-top:3px">${flagHtml}<span style="font-size:8px;color:#888">${countryName}</span></div>
         </div>
         <div style="margin-top:3px;line-height:1.4">${cats}</div>
@@ -1705,11 +1870,76 @@ function tick(){
 }
 
 // ════════════════════════════════════════════
+// RECAPITULATIF FINAL — un podium plein ecran par categorie
+// ════════════════════════════════════════════
+// recapIdx vit dans la fenetre de l'afficheur (pas dans S) : le clic ne doit
+// pas repartir a zero a chaque synchronisation BroadcastChannel.
+// Index 0..n-1 = les podiums, index n = la diapo de cloture, puis on reboucle.
+let recapIdx=0;
+
+function renderRecap(){
+  const el=$('recap');if(!el)return;
+  const res=S.results||[];
+  if(!res.length){el.innerHTML='';return;}
+  if(recapIdx>res.length)recapIdx=0;
+  if(recapIdx<0)recapIdx=res.length;
+
+  if(recapIdx===res.length){
+    el.innerHTML=`<div class="recap-end">
+      <h2>Tournament complete</h2>
+      <p>${res.length} categor${res.length>1?'ies':'y'} · ${S.players.length} athletes</p>
+      <div class="recap-foot">Click to replay the podiums</div>
+    </div>`;
+    return;
+  }
+
+  const r=res[recapIdx];
+  const slot=(rank)=>{
+    const pid=r.order[rank-1];
+    const p=pid!=null?S.players.find(x=>x.id===pid):null;
+    if(!p)return`<div class="recap-slot"></div>`;
+    const fl=p.country
+      ?`<img class="recap-flag" src="${furl(p.country)}" onerror="this.style.display='none'">`
+      :'';
+    return `<div class="recap-slot">
+      <div class="recap-name">${esc(p.lastName)}</div>
+      <div class="recap-first">${esc(p.firstName)}</div>
+      ${fl}
+      <div class="recap-block r${rank}">${rank}</div>
+    </div>`;
+  };
+
+  el.innerHTML=`
+    <div class="recap-head">
+      <div class="recap-kicker">Podium</div>
+      <div class="recap-cat">${esc(r.name)}</div>
+      <div class="recap-arm">${r.arm==='left'?'Left arm':'Right arm'}</div>
+    </div>
+    <div class="recap-stage">${slot(2)}${slot(1)}${slot(3)}</div>
+    <div class="recap-foot">
+      <span>${recapIdx+1} / ${res.length}</span><span>·</span><span>Click to continue</span>
+    </div>`;
+}
+
+function recapNext(){recapIdx++;renderRecap();}
+function recapPrev(){recapIdx--;renderRecap();}
+
+// Fleches gauche/droite en plus du clic — pratique avec une telecommande
+function initRecapKeys(){
+  document.addEventListener('keydown',e=>{
+    const el=$('recap');
+    if(!el||el.style.display==='none')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();recapNext();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();recapPrev();}
+  });
+}
+
+// ════════════════════════════════════════════
 // PODIUM DISPLAY
 // ════════════════════════════════════════════
 function podiumHtml(cs, sec){
   const n=cs?cs.players.length:0;
-  // elim[0]=last place, elim[n-1]=1st place
+  // elim[0]=dernier, elim[n-1]=1er
   const get=(rank)=>{
     if(!cs)return null;
     const pid=cs.elim[n-rank];
@@ -1717,27 +1947,21 @@ function podiumHtml(cs, sec){
   };
   const p1=get(1),p2=get(2),p3=get(3);
 
-  // Medal text only — no emoji (avoids rendering issues across screens)
-  const medalColors={1:'var(--accent)',2:'#aaa',3:'#cd7f32'};
-  const medalSymbols={1:'★',2:'②',3:'③'};
-
+  // Podium sobre : trois rectangles blancs, le chiffre en grand. Aucune couleur,
+  // aucune medaille — la hauteur et le rectangle plein portent la hierarchie.
   const pSlot=(p,rank)=>{
-    if(!p)return`<div class="podium-slot" style="flex:1"></div>`;
-    const bcolor=medalColors[rank];
+    if(!p)return`<div class="podium-slot"></div>`;
     const photoEl=p.photo
-      ?`<img class="podium-photo" style="border:2px solid ${bcolor}" src="${p.photo}">`
-      :`<div class="podium-photo-ph" style="border:2px solid ${bcolor}">👤</div>`;
+      ?`<img class="podium-photo" src="${p.photo}">`
+      :`<div class="podium-photo-ph">👤</div>`;
     const flagEl=p.country
       ?`<img class="podium-flag" src="${furl(p.country)}" onerror="this.style.display='none'">`
       :'';
     return `<div class="podium-slot">
-      <div class="podium-medal" style="color:${bcolor};font-size:22px;font-weight:900;font-family:var(--fd)">
-        ${rank===1?'🏆':rank===2?'🥈':'🥉'}
-      </div>
       ${photoEl}
       ${flagEl}
-      <div class="podium-pname" style="color:${bcolor}">${p.lastName}</div>
-      <div class="podium-pfname">${p.firstName}</div>
+      <div class="podium-pname">${esc(p.lastName)}</div>
+      <div class="podium-pfname">${esc(p.firstName)}</div>
       <div class="podium-block p${rank}">${rank}</div>
     </div>`;
   };
@@ -1753,7 +1977,7 @@ function podiumHtml(cs, sec){
 
   // ── TOP: title + podium stage
   h+=`<div class="podium-top">
-    <div class="podium-title">Category Complete</div>
+    <div class="podium-title">Final podium</div>
     <div class="podium-stage">
       ${pSlot(p2,2)}
       ${pSlot(p1,1)}
@@ -1773,12 +1997,12 @@ function podiumHtml(cs, sec){
   h+=`<div class="podium-rank-section">
     <div class="podium-rank-title">Ranking</div>`;
   for(let r=1;r<=Math.min(n,10);r++){
-    const pid=cs.elim[n-r];
-    const rp=S.players.find(x=>x.id===pid);
+    const pid=cs?cs.elim[n-r]:null;
+    const rp=pid!=null?S.players.find(x=>x.id===pid):null;
     const rc=r===1?'r1':r===2?'r2':r===3?'r3':'';
     h+=`<div class="podium-rank-row">
       <span class="podium-rank-pos ${rc}">${r}</span>
-      ${rp?`<span class="podium-rank-name">${rp.lastName} ${rp.firstName}</span>`
+      ${rp?`<span class="podium-rank-name">${esc(rp.lastName)} ${esc(rp.firstName)}</span>`
           :`<span class="podium-rank-name podium-rank-empty">—</span>`}
     </div>`;
   }
@@ -1999,6 +2223,7 @@ function resetSched(){
 // UTILS
 // ════════════════════════════════════════════
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 const $=id=>document.getElementById(id);
 function tx(id,v){const e=$(id);if(e)e.textContent=v;}
 function sd(id,show){const e=$(id);if(e)e.style.display=show?'':'none';}
