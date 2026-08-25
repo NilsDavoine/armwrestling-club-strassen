@@ -2582,6 +2582,20 @@ footer p {
   transform: translateY(-2px);
 }
 
+/* Variante secondaire — second outil de la section tournoi. Contour plutot
+   qu'aplat, pour que les deux boutons ne se disputent pas le regard. */
+.btn-tournament.alt {
+  background: transparent;
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: calc(.85rem - 2px) calc(1.75rem - 2px);
+}
+
+.btn-tournament.alt:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
 .btn-tournament-note {
   font-size: .75rem;
   color: rgba(245,240,232,.3);
