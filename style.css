@@ -2292,7 +2292,7 @@ footer p {
   pointer-events: none;
   background:
     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180,0,0,.18) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 40% at 15% 100%, rgba(212,160,23,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 15% 100%, rgba(192,57,43,.07) 0%, transparent 55%),
     radial-gradient(ellipse 30% 40% at 85% 100%, rgba(180,0,0,.07) 0%, transparent 55%);
 }
 
@@ -2306,143 +2306,176 @@ footer p {
   background-size: 60px 60px;
 }
 
-.inscriptions-header {
+/* Bandeau de note sous une intro de section — meme traitement que le
+   bandeau federation de #entrainement, mais en classe reutilisable. */
+.section-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  margin: 1.5rem auto 3rem;
+  padding: .9rem 1.5rem;
+  background: rgba(192, 57, 43, .08);
+  border: 1px solid rgba(192, 57, 43, .2);
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.section-note-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Enfant direct uniquement : sans le >, la regle ecraserait la couleur
+   de .section-note-strong imbrique a l'interieur. */
+.section-note > span:not(.section-note-dot) {
+  font-family: var(--font-display);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, .75);
+}
+
+.section-note-strong { color: var(--white); }
+
+/* ===== CARTES D'EVENEMENT ===== */
+/* Une carte par inscription ouverte. Structure calquee sur .training-card :
+   meme fond, meme bordure, meme soulignement rouge au survol. La grille en
+   auto-fit absorbe l'ajout d'un 3e evenement sans toucher au CSS. */
+.event-grid {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto 3.5rem;
-}
-
-.inscriptions-title {
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  margin-bottom: 0.75rem;
-}
-
-.inscriptions-subtitle {
-  font-size: 1rem;
-  color: rgba(245,240,232,.6);
-  max-width: 540px;
-  line-height: 1.8;
-}
-
-.inscriptions-stats {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto 4rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(192,57,43,.2);
-  border: 1px solid rgba(192,57,43,.25);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.inscriptions-stat-cell {
-  background: rgba(10,5,5,.92);
-  padding: 2rem 1.5rem;
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 240, 232, .07);
+  border-radius: 10px;
+  transition: background .3s, border-color .3s;
+}
+
+.event-card:hover {
+  background: var(--dark2);
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s;
+}
+
+.event-card:hover::after {
+  transform: scaleX(1);
+}
+
+.event-status {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .7rem;
+  margin-bottom: 1rem;
+  background: rgba(192, 57, 43, .08);
+  border: 1px solid rgba(192, 57, 43, .35);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.event-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  line-height: 1;
+  margin-bottom: .35rem;
+}
+
+.event-when {
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.6rem;
+}
+
+.event-figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 1.5rem;
+  background: rgba(192, 57, 43, .18);
+  border: 1px solid rgba(192, 57, 43, .22);
+}
+
+.event-figure {
+  background: var(--black);
+  padding: 1.1rem .6rem;
   text-align: center;
 }
 
-.inscriptions-stat-num {
+.event-figure-num {
   font-family: var(--font-display);
-  font-size: 3.2rem;
+  font-size: 1.9rem;
   font-weight: 900;
   color: var(--white);
   line-height: 1;
 }
 
-.inscriptions-stat-num .red { color: var(--red); }
-.inscriptions-stat-num .gold { color: var(--gold); }
+.event-figure-num .red { color: var(--red); }
 
-.inscriptions-stat-label {
+.event-figure-label {
   font-family: var(--font-display);
-  font-size: .7rem;
+  font-size: .65rem;
   font-weight: 700;
-  letter-spacing: .2em;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(245,240,232,.45);
-  margin-top: .5rem;
+  color: rgba(245, 240, 232, .45);
+  margin-top: .45rem;
 }
 
-.inscriptions-info-grid {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  margin-bottom: 3.5rem;
+/* margin-top:auto colle le bouton en bas : les cartes alignent leur CTA
+   meme quand leurs contenus n'ont pas la meme hauteur. */
+.event-actions {
+  margin-top: auto;
+  padding-top: 2rem;
 }
 
-.inscriptions-info-cell {
-  background: rgba(14,7,7,.95);
-  padding: 2rem 1.8rem;
+/* Le bouton occupe deja toute la largeur de la carte : le padding lateral
+   de 3rem de .btn-register ne sert plus qu'a forcer le libelle a la ligne. */
+.event-actions .btn-register {
+  width: 100%;
+  justify-content: center;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
-
-.inscriptions-info-label {
-  font-family: var(--font-display);
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: .7rem;
-}
-
-.inscriptions-info-value {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: .5rem;
-}
-
-.inscriptions-info-detail {
-  font-size: .82rem;
-  color: rgba(245,240,232,.4);
-  line-height: 1.6;
-}
-
-.inscriptions-cta-block {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-  background: linear-gradient(135deg, rgba(180,0,0,.14) 0%, rgba(10,5,5,.7) 60%, rgba(212,160,23,.05) 100%);
-  border: 1px solid rgba(180,0,0,.35);
-  padding: 2.5rem;
-}
-
-.inscriptions-cta-tag {
-  font-family: var(--font-display);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: .6rem;
-}
-
-.inscriptions-cta-title {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--white);
-  line-height: 1.05;
-}
-
-.inscriptions-cta-title .gold { color: var(--gold); }
 
 .btn-register {
   display: inline-flex;
@@ -2466,6 +2499,7 @@ footer p {
   background: #e53020;
   transform: translateY(-2px);
 }
+
 
 /* ===== TOURNAMENT SECTION ===== */
 #tournoi {
@@ -2789,17 +2823,8 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .inscriptions-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .inscriptions-info-grid {
+  .event-grid {
     grid-template-columns: 1fr;
-  }
-
-  .inscriptions-cta-block {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .tournoi-cta-card {
@@ -2831,8 +2856,26 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .inscriptions-stats {
-    grid-template-columns: 1fr;
+  /* On garde les 3 chiffres sur une ligne — les empiler allongeait la carte
+     pour rien. Seul le libelle est resserre pour tenir dans la colonne. */
+  .event-figure {
+    padding: 1rem .3rem;
+  }
+
+  .event-figure-num {
+    font-size: 1.6rem;
+  }
+
+  .event-figure-label {
+    font-size: .58rem;
+    letter-spacing: .08em;
+  }
+
+  /* Sur une carte etroite, l'interlettrage de .btn-register faisait passer
+     le libelle sur deux lignes. */
+  .event-actions .btn-register {
+    font-size: .95rem;
+    letter-spacing: .08em;
   }
 }
 

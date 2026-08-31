@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Armwrestling Luxembourg | Club à Strassen – Essai gratuit</title>
   <meta name="description" content="Essai gratuit mardi 18h à Strassen. Club de bras de fer LAF — deux sites (Strassen &amp; Munsbach), débutants bienvenus, compétitions officielles." />
   <meta name="robots" content="index, follow">
@@ -10,6 +10,110 @@
   <link rel="alternate" hreflang="fr-LU" href="https://armwrestlingclubstrassen.com/"/>
   <link rel="alternate" hreflang="de" href="https://armwrestlingclubstrassen.com/armwrestling-luxemburg.html"/>
   <link rel="alternate" hreflang="x-default" href="https://armwrestlingclubstrassen.com/"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SportsClub",
+        "@id": "https://armwrestlingclubstrassen.com/#club",
+        "name": "Armwrestling Club Strassen",
+        "description": "Club de bras de fer à Strassen, proche Luxembourg-ville, avec entraînement le mardi à 18h et première séance d'essai gratuite.",
+        "url": "https://armwrestlingclubstrassen.com/",
+        "telephone": "+352661495319",
+        "sport": "Armwrestling",
+        "foundingDate": "2026",
+        "image": "https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.webp",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "86 rue des Romains",
+          "postalCode": "L-8041",
+          "addressLocality": "Strassen",
+          "addressCountry": "LU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.61850,
+          "longitude": 6.06274
+        },
+        "sameAs": [
+          "https://www.instagram.com/armwrestlingclubstrassen",
+          "https://www.tiktok.com/@armwrestlingclubstrassen",
+          "https://www.facebook.com/profile.php?id=61583958687728",
+          "https://share.google/ILHoQ0ByytjKJSuRy"
+        ],
+        "employee": [
+          {
+            "@type": "Person",
+            "name": "Nils Davoine",
+            "jobTitle": "Président, Armwrestling Club Strassen — Arbitre national luxembourgeois"
+          },
+          {
+            "@type": "Person",
+            "name": "Bogdan Roman",
+            "jobTitle": "Président, Grizzly of Luxembourg"
+          },
+          {
+            "@type": "Person",
+            "name": "Pascal Kramp",
+            "jobTitle": "Entraîneur"
+          },
+          {
+            "@type": "Person",
+            "name": "Adrian Simion",
+            "jobTitle": "Entraîneur"
+          }
+        ]
+      },
+      {
+        "@type": "SportsActivityLocation",
+        "name": "Grizzly of Luxembourg — Munsbach",
+        "sport": "Armwrestling",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "185 rue Principale",
+          "postalCode": "L-5366",
+          "addressLocality": "Munsbach",
+          "addressCountry": "LU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.63094,
+          "longitude": 6.26763
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Peut-on venir si on débute totalement au bras de fer ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Le club accueille les débutants et la première séance est gratuite, avec un encadrement sur les bases techniques et la sécurité."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quand ont lieu les entraînements ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "L'entraînement à Strassen a lieu le mardi à 18h00 et l'entraînement à Munsbach le vendredi à 18h00."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Où se trouve le club ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le site principal de l'Armwrestling Club Strassen se trouve au 86 rue des Romains, L-8041 Strassen, proche Luxembourg-ville."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/png" href="../android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -488,7 +592,10 @@
       </div>
       <div class="ctas" style="margin-top:1.4rem;">
         <button onclick="go(5)" class="btn btn-red">Réserver un essai</button>
-        <button onclick="go(6)" class="btn btn-ghost">Inscription compétition</button>
+        <!-- Temporaire : remplace "Inscription competition" (onclick="go(6)")
+             le temps de l'appel a candidatures Vendetta 2026. Pour revenir en
+             arriere, restaurer le bouton go(6) ci-dessous. -->
+        <a href="../vendetta.html" class="btn btn-ghost">Inscription Vendetta 2026</a>
         <a href="evenement.html" class="btn btn-ghost" style="border-color:rgba(192,57,43,.6); box-shadow:inset 0 0 0 1px rgba(192,57,43,.18);">Événement POWER ARM 1st Edition</a>
       </div>
       <div class="hint">← glisser pour naviguer →</div>
@@ -554,6 +661,9 @@
         </div>
       </div>
       <div class="badge">Luxembourg Armwrestling Federation</div>
+      <div class="doc-links">
+        <a href="../vendetta.html" class="doc-link">Vendetta 2026 — candidater comme adversaire</a>
+      </div>
     </div>
 
     <!-- 5 · Pour qui -->

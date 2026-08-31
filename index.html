@@ -967,61 +967,121 @@
   <div class="inscriptions-bg" aria-hidden="true"></div>
   <div class="inscriptions-grid-bg" aria-hidden="true"></div>
 
-  <div class="inscriptions-header fade-in">
-    <div class="section-tag">Luxembourg Armwrestling Federation · Compétition Officielle</div>
-    <h2 class="inscriptions-title">7ème Édition<br><span>Printemps 2027</span></h2>
-    <p class="inscriptions-subtitle">
-      Le plus grand événement de bras de fer du Luxembourg, organisé sous l'égide de la
-      <strong>Luxembourg Armwrestling Federation</strong>.
-      Athlètes venus des quatre coins du monde, ambiance de scène internationale.
+  <div class="fade-in" style="position:relative;z-index:1">
+    <div class="section-tag">Inscriptions</div>
+    <h2>Inscriptions aux<br><span>événements</span></h2>
+    <p class="section-intro">
+      Toutes les inscriptions et candidatures ouvertes, réunies au même endroit.
+      Chaque événement a son format, ses conditions et son propre mode d'inscription —
+      lisez le détail avant de vous engager.
     </p>
-  </div>
-
-  <div class="inscriptions-stats fade-in">
-    <div class="inscriptions-stat-cell">
-      <div class="inscriptions-stat-num">100<span class="red">+</span></div>
-      <div class="inscriptions-stat-label">Athlètes</div>
-    </div>
-    <div class="inscriptions-stat-cell">
-      <div class="inscriptions-stat-num">300<span class="red">+</span></div>
-      <div class="inscriptions-stat-label">Spectateurs</div>
-    </div>
-    <div class="inscriptions-stat-cell">
-      <div class="inscriptions-stat-num"><span class="red">#</span>7</div>
-      <div class="inscriptions-stat-label">Édition 2027</div>
-    </div>
-    <div class="inscriptions-stat-cell">
-      <div class="inscriptions-stat-num gold">WORLD</div>
-      <div class="inscriptions-stat-label">Niveau international</div>
+    <div class="section-note">
+      <span class="section-note-dot"></span>
+      <span>Événements organisés sous l'égide de la <span class="section-note-strong">Luxembourg Armwrestling Federation</span></span>
     </div>
   </div>
 
-  <div class="inscriptions-info-grid fade-in">
-    <div class="inscriptions-info-cell">
-      <div class="inscriptions-info-label">📅 Date</div>
-      <div class="inscriptions-info-value">Printemps 2027</div>
-      <div class="inscriptions-info-detail">Date exacte annoncée prochainement sur nos réseaux.</div>
-    </div>
-    <div class="inscriptions-info-cell">
-      <div class="inscriptions-info-label">📍 Lieu</div>
-      <div class="inscriptions-info-value">Munsbach</div>
-      <div class="inscriptions-info-detail">185 rue Principale, L-5366 Munsbach — Luxembourg</div>
-    </div>
-    <div class="inscriptions-info-cell">
-      <div class="inscriptions-info-label">🏆 Catégories</div>
-      <div class="inscriptions-info-value">Toutes classes</div>
-      <div class="inscriptions-info-detail">Bras gauche & droit, toutes catégories de poids, hommes et femmes.</div>
-    </div>
-  </div>
+  <!-- Une carte par evenement ouvert. Pour en ajouter un, dupliquer un bloc
+       <article class="event-card"> : la grille se reorganise seule. -->
+  <div class="event-grid fade-in">
 
-  <div class="inscriptions-cta-block fade-in">
-    <div>
-      <div class="inscriptions-cta-tag">Inscriptions ouvertes</div>
-      <div class="inscriptions-cta-title">Participez à la 7ème édition<br><span class="gold">Luxembourg · 2027</span></div>
-    </div>
-    <a href="https://nilsdavoine.github.io/tournament_registration/" target="_blank" rel="noopener" class="btn-register">
-      S'inscrire maintenant →
-    </a>
+    <article class="event-card">
+      <div class="event-status">Inscriptions ouvertes</div>
+      <h3 class="event-name">7ème Édition</h3>
+      <div class="event-when">Compétition annuelle · Printemps 2027</div>
+
+      <div class="card-detail">
+        <div class="card-detail-icon">📅</div>
+        <div>
+          <div class="card-detail-label">Date</div>
+          <div class="card-detail-value">Printemps 2027 — date exacte à venir</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-icon">📍</div>
+        <div>
+          <div class="card-detail-label">Lieu</div>
+          <div class="card-detail-value">185 rue Principale, Munsbach</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-icon">🏆</div>
+        <div>
+          <div class="card-detail-label">Catégories</div>
+          <div class="card-detail-value">Bras gauche &amp; droit · Toutes catégories de poids · Hommes et femmes</div>
+        </div>
+      </div>
+
+      <p class="card-focus">
+        Le plus grand événement de bras de fer du Luxembourg, organisé sous l'égide de la
+        Luxembourg Armwrestling Federation. Athlètes venus des quatre coins du monde,
+        ambiance de scène internationale. Ouvert aux compétiteurs licenciés comme aux
+        débutants qui veulent une première expérience de table.
+      </p>
+
+      <div class="event-figures">
+        <div class="event-figure">
+          <div class="event-figure-num">100<span class="red">+</span></div>
+          <div class="event-figure-label">Athlètes</div>
+        </div>
+        <div class="event-figure">
+          <div class="event-figure-num">300<span class="red">+</span></div>
+          <div class="event-figure-label">Spectateurs</div>
+        </div>
+        <div class="event-figure">
+          <div class="event-figure-num"><span class="red">#</span>7</div>
+          <div class="event-figure-label">Édition</div>
+        </div>
+      </div>
+
+      <div class="event-actions">
+        <a href="https://nilsdavoine.github.io/tournament_registration/" target="_blank" rel="noopener" class="btn-register">
+          S'inscrire maintenant →
+        </a>
+      </div>
+    </article>
+
+    <article class="event-card">
+      <div class="event-status">Candidatures ouvertes</div>
+      <h3 class="event-name">Vendetta 2026</h3>
+      <div class="event-when">Journée de duels · Sur sélection</div>
+
+      <div class="card-detail">
+        <div class="card-detail-icon">📅</div>
+        <div>
+          <div class="card-detail-label">Date</div>
+          <div class="card-detail-value">Samedi 7 novembre 2026 — à confirmer</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-icon">⚔️</div>
+        <div>
+          <div class="card-detail-label">Format</div>
+          <div class="card-detail-value">Duels sur une journée · Fédération contre adversaires invités</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-icon">👥</div>
+        <div>
+          <div class="card-detail-label">Conditions</div>
+          <div class="card-detail-value">Licencié d'un club · Tous niveaux · Hommes et femmes · Dès 14 ans</div>
+        </div>
+      </div>
+
+      <p class="card-focus">
+        Ce n'est pas un tournoi ouvert : la carte des duels est construite à partir des
+        candidatures reçues. Vous déposez votre profil — club, mesures, palmarès — et une
+        sélection est ensuite opérée pour former des affrontements équilibrés. Candidater
+        n'engage à rien tant que la date n'est pas confirmée.
+      </p>
+
+      <div class="event-actions">
+        <a href="vendetta.html" class="btn-register">
+          Déposer ma candidature →
+        </a>
+      </div>
+    </article>
+
   </div>
 
 </section>
@@ -1067,7 +1127,7 @@
 
   <div class="tournoi-cta-card fade-in">
     <div style="flex:1;min-width:240px">
-      <div class="tournoi-cta-title">Gérez votre tournoi<br><span class="gold">d'armwrestling</span></div>
+      <div class="tournoi-cta-title">Gérez votre tournoi<br>d'armwrestling</div>
       <p class="tournoi-cta-desc">Outil complet pour organiser les compétitions ACS Luxembourg — bras gauche et droit, toutes catégories, planning des sections configurable, 100% local, sans installation.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-end;flex-shrink:0">
