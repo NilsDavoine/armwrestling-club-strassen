@@ -14,8 +14,9 @@
   <meta property="og:locale" content="fr_LU"/>
   <meta property="og:image" content="https://armwrestlingclubstrassen.com/podium-roman-luxembourg-champion.webp"/>
   <meta property="og:image:alt" content="Champions mondiaux du bras de fer — ACS Luxembourg."/>
-  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
-  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="android-chrome-512x512.png">
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"Champions du bras de fer : qui domine la table en 2026","description":"Larratt, Saginashvili, Laletin, Gasparini : les athlètes qui dominent le bras de fer mondial, les femmes de la discipline, et ce qui fait un champion.","image":"https://armwrestlingclubstrassen.com/podium-roman-luxembourg-champion.webp","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/champions-bras-de-fer-monde.html","datePublished":"2026-05-22","dateModified":"2026-06-14"}
@@ -205,7 +206,7 @@
     <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
-  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></div>
+  <button class="nav-burger" id="burger" type="button" onclick="toggleNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('podium-roman-luxembourg-champion.webp') center right/cover no-repeat,var(--black);">
@@ -626,7 +627,18 @@
 </footer>
 
 <script>
-  function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+  function toggleNav() {
+    var n = document.getElementById('navLinks');
+    var b = document.getElementById('burger');
+    var open = n.classList.toggle('open');
+    if (b) b.setAttribute('aria-expanded', String(open));
+  }
+  document.querySelectorAll('#navLinks a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var b = document.getElementById('burger');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
   document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
   function toggleAcc(btn) {
@@ -643,5 +655,8 @@
   }
 </script>
 <a class="whatsapp-float" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" aria-label="Contacter le club sur WhatsApp">WhatsApp · Essai gratuit</a>
+<!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
+     A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
+<script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

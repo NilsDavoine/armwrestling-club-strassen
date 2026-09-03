@@ -19,8 +19,9 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://armwrestlingclubstrassen.com/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://armwrestlingclubstrassen.com/articles.html"}]}
   </script>
 
-  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
-  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -334,9 +335,9 @@
     <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
-  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+  <button class="nav-burger" id="burger" type="button" onclick="toggleNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 
@@ -569,6 +570,12 @@
         <div class="art-card-desc">Clubs officiels, ambiance, niveau compétitif et arbitrage — tout sur la scène compétitive au Luxembourg.</div>
         <div class="art-card-cta">En savoir plus</div>
       </a>
+      <a href="armwrestling-luxemburg.html" class="art-card" hreflang="de" lang="de">
+        <div class="art-card-tag">Deutsch</div>
+        <div class="art-card-title">Armdrücken in Luxemburg</div>
+        <div class="art-card-desc">Der Armdrücken-Verein in Strassen auf Deutsch — Training, Probetraining und Wettkämpfe im Großherzogtum.</div>
+        <div class="art-card-cta">Mehr erfahren</div>
+      </a>
     </div>
 
   </div>
@@ -605,8 +612,17 @@
 
 <script>
   function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
+    var n = document.getElementById('navLinks');
+    var b = document.getElementById('burger');
+    var open = n.classList.toggle('open');
+    if (b) b.setAttribute('aria-expanded', String(open));
   }
+  document.querySelectorAll('#navLinks a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var b = document.getElementById('burger');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
   document.querySelectorAll('#navLinks a').forEach(a =>
     a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
   );
@@ -621,5 +637,8 @@
   });
 </script>
 <a class="whatsapp-float" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" aria-label="Contacter le club sur WhatsApp">WhatsApp · Essai gratuit</a>
+<!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
+     A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
+<script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

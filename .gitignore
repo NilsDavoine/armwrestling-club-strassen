@@ -1,14 +1,20 @@
 .claude/
 node_modules/
 
+# Traces d'outillage local
+.playwright-mcp/
+.vscode/
+
 # Images originales (conservées localement, remplacées par WebP sur le site)
 *.png
 *.jpg
 *.jpeg
+*.JPG
 
 # Favicons gardés en PNG (navigateurs en ont besoin)
-!favicon-16.png
 !favicon-16x16.png
-!favicon-32.png
 !favicon-32x32.png
 !android-chrome-512x512.png
+
+# Images archivees (non utilisees sur le site, non deployees)
+_archive/

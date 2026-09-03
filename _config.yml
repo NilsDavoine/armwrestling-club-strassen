@@ -1,0 +1,34 @@
+# Configuration Jekyll — GitHub Pages
+#
+# Seul le champ "exclude" est utilise : il retire du site publie les fichiers
+# qui n'ont rien a y faire (documentation projet, brouillons, outils de build).
+# Les pages .html a la racine n'ont pas de front matter : Jekyll les copie
+# telles quelles, sans traitement Liquid. Aucun impact sur le rendu.
+#
+# ATTENTION : declarer "exclude" remplace la liste par defaut de Jekyll.
+# Les entrees par defaut sont donc reprises ci-dessous.
+
+exclude:
+  # Valeurs par defaut de Jekyll (a conserver)
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  # Documentation projet — ne doit pas etre servie publiquement
+  - CLAUDE.md
+  - docs/
+
+  # Brouillons d'articles deja publies en .html (evite le contenu duplique)
+  - drafts/
+
+  # Outillage
+  - package.json
+  - package-lock.json
+  - .playwright-mcp/
+  - .vscode/

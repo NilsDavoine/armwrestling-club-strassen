@@ -13,8 +13,9 @@
   <meta property="og:url" content="https://armwrestlingclubstrassen.com/histoire-bras-de-fer.html"/>
   <meta property="og:locale" content="fr_LU"/>
   <meta property="og:image" content="https://armwrestlingclubstrassen.com/public-competition-internationale.webp"/>
-  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
-  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="android-chrome-512x512.png">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"Histoire et origines du bras de fer","image":"https://armwrestlingclubstrassen.com/public-competition-internationale.webp","author":{"@type":"Organization","name":"Armwrestling Club Strassen"},"publisher":{"@type":"Organization","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"},"url":"https://armwrestlingclubstrassen.com/histoire-bras-de-fer.html","datePublished":"2026-05-22","dateModified":"2026-06-11"}
   </script>
@@ -213,7 +214,7 @@
     <li><a href="index.html#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
     <li><a href="index.html#contact" class="nav-cta">Rejoindre</a></li>
   </ul>
-  <div class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></div>
+  <button class="nav-burger" id="burger" type="button" onclick="toggleNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="article-hero" style="background:linear-gradient(to right,rgba(0,0,0,.97) 0%,rgba(0,0,0,.92) 35%,rgba(0,0,0,.55) 60%,transparent 100%),url('oldest_armwrestling_match.webp') center right/cover no-repeat,var(--black);">
@@ -378,7 +379,7 @@
     <h2>Le bras de fer aujourd'hui<br><span>et au Luxembourg</span></h2>
 
     <div class="photo-strip-2">
-      <img src="2F3A1332.webp" alt="Compétition officielle de bras de fer au Luxembourg — Luxembourg Armwrestling Competition" loading="lazy"/>
+      <img src="competition-officielle-bras-de-fer-luxembourg.webp" alt="Compétition officielle de bras de fer au Luxembourg — Luxembourg Armwrestling Competition" loading="lazy"/>
       <img src="match-competition-grande-salle.webp" alt="Salle de compétition bras de fer Luxembourg" loading="lazy"/>
     </div>
     <p>Depuis les années 2010, le bras de fer connaît une <strong>renaissance mondiale</strong> portée par deux phénomènes : la montée en puissance des compétitions professionnelles (notamment le circuit WAL — World Armwrestling League) et l'explosion des vues sur YouTube. Des matchs entre Devon Larratt et Levan Saginashvili attirent plus de 50 millions de spectateurs.</p>
@@ -444,7 +445,18 @@
   <p style="font-size:.78rem;opacity:.45;font-family:var(--font-display);letter-spacing:.05em;text-transform:uppercase;">Membre officiel · Luxembourg Armwrestling Federation</p>
 </footer>
 <script>
-  function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+  function toggleNav() {
+    var n = document.getElementById('navLinks');
+    var b = document.getElementById('burger');
+    var open = n.classList.toggle('open');
+    if (b) b.setAttribute('aria-expanded', String(open));
+  }
+  document.querySelectorAll('#navLinks a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var b = document.getElementById('burger');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
   document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
   document.addEventListener('pointermove',e=>{const r=document.documentElement;r.style.setProperty('--x',e.clientX);r.style.setProperty('--y',e.clientY);r.style.setProperty('--xp',(e.clientX/innerWidth).toFixed(3));r.style.setProperty('--yp',(e.clientY/innerHeight).toFixed(3));});
   function toggleAcc(btn) {
@@ -458,5 +470,8 @@
   }
 </script>
 <a class="whatsapp-float" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2018h%20%C3%A0%20Strassen." target="_blank" rel="noopener" aria-label="Contacter le club sur WhatsApp">WhatsApp · Essai gratuit</a>
+<!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
+     A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
+<script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

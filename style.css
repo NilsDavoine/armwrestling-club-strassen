@@ -3446,3 +3446,23 @@ footer p {
 .articles-section.cat-club .article-card-tag,
 .articles-section.cat-club .article-card-link       { color: var(--cat-club); }
 .articles-section.cat-club .article-card:hover      { border-color: rgba(46,204,113,.3); }
+
+/* ===== ACCESSIBILITE — MOUVEMENT REDUIT =====
+   Respecte le reglage systeme "reduire les animations" (troubles vestibulaires).
+   N'affecte que les visiteurs ayant active ce reglage : aucun changement par defaut. */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

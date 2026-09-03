@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Armwrestling Luxembourg | Club à Strassen – Essai gratuit</title>
   <meta name="description" content="Essai gratuit mardi 18h à Strassen. Club de bras de fer LAF — deux sites (Strassen & Munsbach), débutants bienvenus, compétitions officielles." />
-  <meta name="keywords" content="bras de fer Luxembourg, club de bras de fer à Strassen, armwrestling Luxembourg, entraînement de bras de fer au Luxembourg, initiation bras de fer Luxembourg, sport de force Luxembourg, compétition bras de fer Luxembourg" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/" />
   <link rel="alternate" media="only screen and (max-width: 640px)" href="https://armwrestlingclubstrassen.com/m/" />
   <link rel="alternate" hreflang="fr-LU" href="https://armwrestlingclubstrassen.com/"/>
   <link rel="alternate" hreflang="de" href="https://armwrestlingclubstrassen.com/armwrestling-luxemburg.html"/>
   <link rel="alternate" hreflang="x-default" href="https://armwrestlingclubstrassen.com/"/>
-  <link rel="icon" type="image/png" href="android-chrome-512x512.png">
-  <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="android-chrome-512x512.png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Essai Gratuit Mardi 18h à Strassen | Armwrestling Club Strassen" />
@@ -135,6 +135,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Filet de securite : si le JS est desactive, le contenu reste visible. -->
+  <noscript><style>.fade-in{opacity:1;transform:none;transition:none}</style></noscript>
   <style>
     #about {
       background:
@@ -427,7 +429,7 @@
   <div class="palmares-photos fade-in">
     <figure class="palmares-photo-card">
       <img
-        src="training_strassen.JPG"
+        src="entrainement-club-strassen.webp"
         alt="Entraînement de bras de fer au club de Strassen — séance encadrée sur table WAF officielle, Luxembourg"
         loading="lazy"
         width="720" height="540"
@@ -436,7 +438,7 @@
     </figure>
     <figure class="palmares-photo-card">
       <img
-        src="garage_strassen_training.JPG"
+        src="salle-entrainement-club-strassen.webp"
         alt="Salle d'entraînement de l'Armwrestling Club Strassen à Luxembourg — équipement professionnel bras de fer, tables WAF et système à poulies"
         loading="lazy"
         width="720" height="540"
@@ -1171,6 +1173,9 @@
   </div>
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js" onerror="document.querySelectorAll('.fade-in').forEach(function(e){e.classList.add('visible')})"></script>
+<!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
+     A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
+<script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
