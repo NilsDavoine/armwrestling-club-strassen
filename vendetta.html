@@ -135,9 +135,12 @@ h1 span{color:var(--muted)}
 .fg.full{grid-column:1/-1}
 label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
 label .req{color:#8a8a8a}
-input,textarea{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:0;font-family:var(--fb);font-size:15px;width:100%;outline:none;transition:border-color .15s}
-input:focus,textarea:focus{border-color:#fff}
+input,textarea,select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:0;font-family:var(--fb);font-size:15px;width:100%;outline:none;transition:border-color .15s}
+input:focus,textarea:focus,select:focus{border-color:#fff}
 input::placeholder,textarea::placeholder{color:#5c5c5c}
+/* Chevron dessine en CSS : la fleche native de Windows casse le style plat. */
+select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:34px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239a9a9a' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+select option{background:var(--bg3);color:var(--text)}
 input[type=number]{-moz-appearance:textfield}
 input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 textarea{min-height:110px;resize:vertical;line-height:1.5}
@@ -152,7 +155,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.5}
 .btn:hover:not(:disabled){background:#d6d6d6;border-color:#d6d6d6}
 .btn:disabled{opacity:.35;cursor:not-allowed}
 .err{color:var(--red);font-size:14px;font-weight:600;min-height:20px}
-input.bad,textarea.bad{border-color:var(--red)}
+input.bad,textarea.bad,select.bad{border-color:var(--red)}
 
 /* ── CONFIRMATION ── */
 .done{text-align:center;padding:80px 0}
@@ -343,6 +346,19 @@ footer a:hover{color:#fff}
         </div>
 
         <div class="fg">
+          <label for="i-arm">Arm <span class="req">*</span></label>
+          <select id="i-arm">
+            <option value="">Choisir…</option>
+            <option value="Droit">Bras droit</option>
+            <option value="Gauche">Bras gauche</option>
+            <option value="Les deux">Les deux</option>
+          </select>
+          <div class="sub">Le bras sur lequel vous souhaitez tirer.</div>
+        </div>
+
+        <!-- Pleine largeur : sans ca, l'ajout de ARM decale les paires de la
+             grille et laisse une case vide en bout de ligne. -->
+        <div class="fg full">
           <label for="i-email">Email <span class="req">*</span></label>
           <input type="email" id="i-email" autocomplete="email" placeholder="pour vous recontacter" maxlength="120">
           <div class="sub">Utilisé uniquement pour la sélection.</div>
@@ -401,9 +417,12 @@ footer a:hover{color:#fff}
 
   var STORE = "vendetta_2026_v1";
 
-  /* Cle = en-tete exact de la feuille. L'ordre de ce tableau est l'ordre des
-     colonnes de l'Excel : NAME .. PALMARES. EMAIL est volontairement place
-     apres PALMARES pour ne pas decaler l'import des 10 colonnes d'origine. */
+  /* Cle = en-tete exact de la feuille, dans l'ordre des colonnes A..M :
+     NAME .. BICEPS (cm), puis ARM, PALMARES, EMAIL, SUBMITTED_AT.
+     ATTENTION : le script Apps Script associe chaque valeur par NOM d'en-tete,
+     jamais par position. Ajouter une cle ici impose donc de creer la colonne
+     dans la feuille AVANT de publier la page — sinon la valeur est perdue sans
+     erreur visible, la reponse etant opaque (no-cors). Detail : docs/VENDETTA.md */
   var FIELDS = [
     { key:"NAME",        el:"i-name",     type:"text" },
     { key:"SURNAME",     el:"i-surname",  type:"text" },
@@ -414,6 +433,7 @@ footer a:hover{color:#fff}
     { key:"EXPERIENCE",  el:"i-exp",      type:"num", min:0,   max:60  },
     { key:"HEIGHT (cm)", el:"i-height",   type:"num", min:120, max:230 },
     { key:"BICEPS (cm)", el:"i-biceps",   type:"num", min:20,  max:70  },
+    { key:"ARM",         el:"i-arm",      type:"text" },
     { key:"PALMARES",    el:"i-palmares", type:"text", optional:true },
     { key:"EMAIL",       el:"i-email",    type:"email" }
   ];

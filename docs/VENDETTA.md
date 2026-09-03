@@ -13,13 +13,17 @@ seul composant à héberger quoi que ce soit.
 
 La feuille doit avoir cette **ligne 1**, cellule par cellule, en majuscules :
 
-| A | B | C | D | E | F | G | H | I | J | K | L |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `NAME` | `SURNAME` | `CLUB` | `COUNTRY` | `WEIGHT (kg)` | `AGE (years)` | `EXPERIENCE` | `HEIGHT (cm)` | `BICEPS (cm)` | `PALMARES` | `EMAIL` | `SUBMITTED_AT` |
+| A | B | C | D | E | F | G | H | I | J | K | L | M |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `NAME` | `SURNAME` | `CLUB` | `COUNTRY` | `WEIGHT (kg)` | `AGE (years)` | `EXPERIENCE` | `HEIGHT (cm)` | `BICEPS (cm)` | `ARM` | `PALMARES` | `EMAIL` | `SUBMITTED_AT` |
 
-Les colonnes **A à J** sont exactement le format d'import existant — ne pas les
-déplacer. `EMAIL` et `SUBMITTED_AT` sont volontairement placées **après**
-`PALMARES` : un import qui ne lit que A:J les ignore sans rien décaler.
+> **La plage d'import a changé.** `ARM` est insérée en **J**, ce qui décale
+> `PALMARES` en **K**. La plage **A:J** ne correspond donc plus au format
+> d'origine : elle se termine maintenant par `ARM`, et un import figé sur A:J
+> récupère le bras à la place du palmarès. **Étendre la plage à A:K.**
+
+`EMAIL` et `SUBMITTED_AT` restent volontairement en fin de ligne : ce sont des
+données de gestion, jamais reprises dans l'import sportif.
 
 Le script associe chaque valeur à sa colonne **par le nom de l'en-tête**, pas par la
 position. Réordonner les colonnes ou en ajouter une ne casse donc rien — mais
@@ -27,11 +31,26 @@ renommer un en-tête vide la colonne correspondante.
 
 `EXPERIENCE` contient un **nombre d'années de pratique** (`0` pour un débutant).
 
+`ARM` contient le bras choisi par le candidat : `Droit`, `Gauche` ou `Les deux`.
+C'est du texte — rien à ajouter au tableau `NUMERIC` du script.
+
 Exemple de ligne (valeurs synthétiques) :
 
 ```
-Jean | Dupont | AC Exemple | Belgique | 82.5 | 24 | 3 | 178 | 38 | Aucun | exemple@exemple.com | 2026-08-31T14:32:07.145Z
+Jean | Dupont | AC Exemple | Belgique | 82.5 | 24 | 3 | 178 | 38 | Droit | Aucun | exemple@exemple.com | 2026-08-31T14:32:07.145Z
 ```
+
+### Ajouter un champ au formulaire
+
+Créer **d'abord** l'en-tête dans la feuille, **ensuite** publier la page.
+
+Dans l'ordre inverse, toute candidature reçue entre les deux perd la valeur sans
+le moindre message d'erreur : le script ignore une clé absente de la ligne 1, et
+la page poste en `no-cors` — elle reçoit une réponse opaque qu'elle ne peut pas
+lire, donc elle affiche « envoyé » quoi qu'il arrive.
+
+Le script lui-même n'a pas à être modifié ni redéployé : il relit la ligne
+d'en-tête à chaque appel.
 
 ---
 
