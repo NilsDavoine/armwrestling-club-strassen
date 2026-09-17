@@ -25,6 +25,51 @@ La feuille doit avoir cette **ligne 1**, cellule par cellule, en majuscules :
 `EMAIL` et `SUBMITTED_AT` restent volontairement en fin de ligne : ce sont des
 données de gestion, jamais reprises dans l'import sportif.
 
+### Colonnes d'inscription (septembre 2026)
+
+La page n'est plus une simple candidature d'athlète : elle inscrit aussi les
+spectateurs. Cinq colonnes de gestion s'ajoutent **à la suite**, pour ne pas
+décaler la plage d'import A:K :
+
+| N | O | P | Q | R |
+|---|---|---|---|---|
+| `TYPE` | `PHONE` | `IF_NOT_SELECTED` | `WAITLIST` | `PAID` |
+
+- `WAITLIST` : `Oui` pour une inscription reçue après la clôture du 20 octobre
+  2026 à 23 h 59 (heure de Luxembourg), vide sinon. La bascule est automatique :
+  constante `CLOSE_AT` du bloc `CONFIG`. Une personne en liste d'attente ne voit
+  aucune instruction de paiement.
+- `TYPE` : `Spectateur` ou `Athlète`.
+- `PHONE` : téléphone, texte libre.
+- `IF_NOT_SELECTED` : rempli pour un athlète seulement. `Vient quand même`
+  (il paie tout de suite et vient de toute façon) ou `Seulement si match`
+  (il ne paie qu'une fois retenu — l'écran de confirmation ne lui affiche pas
+  les instructions de paiement).
+- `PAID` : **jamais envoyée par la page.** Colonne remplie à la main à
+  réception du paiement. Le script laisse la cellule vide.
+
+**Un spectateur laisse vides toutes les colonnes sportives** (`CLUB`,
+`WEIGHT (kg)`, `EXPERIENCE`, `HEIGHT (cm)`, `BICEPS (cm)`, `ARM`, `PALMARES`).
+L'import sportif doit donc filtrer sur `TYPE` = `Athlète`, sinon il récupère
+des lignes sans mesures. Les lignes antérieures à ce changement ont un `TYPE`
+vide : ce sont toutes des athlètes.
+
+La communication de virement affichée au payeur est `VENDETTA NOM PRENOM`,
+construite à partir de `SURNAME` et `NAME` — c'est la clé de rapprochement avec
+la feuille. Paiement par virement uniquement : IBAN, BIC et bénéficiaire se règlent dans le bloc `CONFIG`
+de [`vendetta.html`](../vendetta.html).
+
+Le formulaire est en étapes (choix, coordonnées, profil d'athlète). Les nombres
+saisis avec une virgule (`82,5`) sont envoyés avec un point (`82.5`).
+
+### Vidéo d'introduction
+
+Le cadre vidéo existe sous le compte à rebours mais reste masqué tant que la
+constante `VIDEO_SRC` du bloc `CONFIG` est vide. Pour l'activer : déposer le
+fichier à la racine du dépôt (par exemple `vendetta-intro.mp4`, format 16:9),
+renseigner `VIDEO_SRC`, et si possible `VIDEO_POSTER` (image affichée avant
+lecture).
+
 Le script associe chaque valeur à sa colonne **par le nom de l'en-tête**, pas par la
 position. Réordonner les colonnes ou en ajouter une ne casse donc rien — mais
 renommer un en-tête vide la colonne correspondante.
@@ -170,6 +215,6 @@ mineurs à partir de 14 ans. Garder le partage du document restreint aux personn
 qui font la sélection, et supprimer les candidatures non retenues une fois
 l'événement passé.
 
-La case de certification de la page couvre l'usage « sélection des participants à
-la Vendetta 2026 » — ces adresses ne peuvent pas servir à autre chose sans un
-nouveau consentement.
+La case de consentement de la page couvre l'usage « organisation de la Vendetta
+2026 et sélection des participants » — ces adresses et numéros de téléphone ne
+peuvent pas servir à autre chose sans un nouveau consentement.

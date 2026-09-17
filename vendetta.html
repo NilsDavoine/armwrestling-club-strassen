@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="robots" content="index, follow"/>
-<title>VENDETTA 2026 | Candidature bras de fer Luxembourg</title>
-<meta name="description" content="Candidatez à la Vendetta 2026 : une journée de duels face aux membres de la Fédération Luxembourgeoise de Bras de Fer. Tous niveaux, hommes et femmes, dès 14 ans." />
+<title>VENDETTA 2026 | Inscription bras de fer Luxembourg</title>
+<meta name="description" content="Vendetta 2026, samedi 7 novembre : 20 duels de bras de fer dans un chalet privatisé au Glacis, Luxembourg. Inscription spectateur ou candidature athlète, 50 € buffet et deux boissons compris." />
 <link rel="canonical" href="https://armwrestlingclubstrassen.com/vendetta.html" />
 <link rel="alternate" hreflang="fr-LU" href="https://armwrestlingclubstrassen.com/vendetta.html"/>
 <link rel="alternate" hreflang="x-default" href="https://armwrestlingclubstrassen.com/vendetta.html"/>
@@ -13,8 +13,8 @@
 <link rel="shortcut icon" type="image/png" href="android-chrome-512x512.png">
 
 <!-- Open Graph -->
-<meta property="og:title" content="VENDETTA 2026 — Candidature | Armwrestling Club Strassen" />
-<meta property="og:description" content="Une journée de duels entre les membres de la Fédération Luxembourgeoise de Bras de Fer et leurs adversaires. Déposez votre candidature." />
+<meta property="og:title" content="VENDETTA 2026 — Inscription | Armwrestling Club Strassen" />
+<meta property="og:description" content="20 duels de bras de fer, buffet et deux boissons compris, samedi 7 novembre 2026 au Glacis, Luxembourg. Inscrivez-vous comme spectateur ou candidatez pour un match." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://armwrestlingclubstrassen.com/vendetta.html" />
 <meta property="og:locale" content="fr_LU" />
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="Compétition de bras de fer au Luxembourg organisée par l'Armwrestling Club Strassen" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://armwrestlingclubstrassen.com/sitemap.xml" />
 
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -32,16 +32,24 @@
       "@type": "SportsEvent",
       "@id": "https://armwrestlingclubstrassen.com/vendetta.html#event",
       "name": "Vendetta 2026",
-      "description": "Journée de duels de bras de fer opposant les membres de la Fédération Luxembourgeoise de Bras de Fer à des adversaires venus de clubs affiliés. Date probable au samedi 7 novembre 2026, à confirmer.",
+      "description": "Soirée de 20 duels de bras de fer opposant les membres de la Fédération Luxembourgeoise de Bras de Fer à des adversaires venus d'autres clubs, dans un chalet privatisé. Buffet et deux boissons compris.",
       "url": "https://armwrestlingclubstrassen.com/vendetta.html",
       "sport": "Armwrestling",
       "startDate": "2026-11-07",
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "image": "https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "50",
+        "priceCurrency": "EUR",
+        "url": "https://armwrestlingclubstrassen.com/vendetta.html",
+        "availability": "https://schema.org/InStock",
+        "validThrough": "2026-10-20T23:59:59+02:00"
+      },
       "location": {
         "@type": "Place",
-        "name": "Luxembourg",
+        "name": "Glacis",
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "LU",
@@ -66,118 +74,158 @@
 </script>
 
 <style>
+/* Identite propre a la Vendetta, distincte du reste du site : affiche claire,
+   encre noire, un seul rouge. Maquettes validees :
+   haut de page   https://claude.ai/artifact/97Ei34vk8UCfAdT3f3yxAK  (proposition A)
+   tuiles         https://claude.ai/artifact/Qx7Mz6AZEMuYEnfhTD4L7M  (proposition 2)
+   formulaire     https://claude.ai/artifact/F2wtyB1jHu8vJbe6CBEN1h */
 :root{
-  /* Palette reprise de tournament.html — monochrome noir/blanc.
-     Le rouge sert uniquement aux erreurs de validation. */
-  --bg:#000000;--bg2:#0c0c0c;--bg3:#161616;--border:#2e2e2e;
-  --red:#c0392b;
-  --text:#ffffff;--muted:#9a9a9a;
-  --fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --bg:#f4f5f3;--ink:#0c0c0c;--soft:#55595c;--line:#c9ccc8;--field:#ffffff;--hover:#e9eae7;
+  --accent:#e3241b;
+  --font:'Archivo','Helvetica Neue',Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+/* .btn et .cta posent un display explicite, qui l'emporterait sur l'attribut hidden. */
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+a{color:inherit}
 
-.wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(20px,4vw,48px) clamp(16px,4vw,48px) 72px;display:flex;flex-direction:column;gap:clamp(48px,7vw,88px)}
+.h2{font-stretch:125%;font-weight:900;font-size:clamp(28px,4.4vw,48px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
 
-/* ── HEADER ── */
-.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--border)}
-.back{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;transition:color .15s}
-.back:hover{color:#fff}
-.top .flag{width:26px;height:18px;object-fit:cover;border-radius:2px;vertical-align:middle}
-.fed{font-family:var(--fd);font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+/* ── HAUT DE PAGE ── */
+.hero{display:flex;flex-direction:column;gap:clamp(20px,3vw,36px)}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.top .back{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--soft);margin-left:auto}
+.top .back:hover{color:var(--ink)}
+.logos{display:flex;gap:10px}
+.logos img{width:46px;height:46px;object-fit:contain;display:block}
+.fed{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.eyebrow{font-weight:800;font-stretch:125%;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+h1{font-stretch:125%;font-weight:900;font-size:clamp(46px,11.5vw,168px);line-height:.86;letter-spacing:-.045em;text-transform:uppercase}
+h1 span{color:transparent;-webkit-text-stroke:2px var(--accent);letter-spacing:-.02em}
+.concept{max-width:56ch;font-size:clamp(16px,1.6vw,19px)}
+/* Best of 5 : trois manches gagnantes sur cinq. */
+.pips{display:inline-flex;gap:5px;vertical-align:middle;margin-left:8px}
+.pips i{width:11px;height:11px;border-radius:50%;border:2px solid var(--accent)}
+.pips i.on{background:var(--accent)}
+.facts{display:flex;flex-wrap:wrap;gap:18px clamp(24px,4vw,56px);border-top:6px solid var(--ink);padding-top:18px}
+.facts div{display:flex;flex-direction:column;gap:4px}
+.facts dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.facts dd{font-weight:800;font-stretch:110%;font-size:clamp(18px,2vw,25px);letter-spacing:-.02em}
+.incl{font-size:15px;color:var(--soft)}
+.incl strong{color:var(--ink);font-weight:600}
+.act{display:flex;flex-wrap:wrap;align-items:center;gap:20px 40px}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 34px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;transition:transform .15s,background .15s}
+.cta:hover{transform:translateY(-2px);background:var(--accent)}
+.cdw{display:flex;flex-direction:column;gap:8px}
+.cd{display:flex;flex-wrap:wrap;gap:10px;font-variant-numeric:tabular-nums}
+.cd span{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.cd b{font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1;color:var(--ink);letter-spacing:0}
+.cd-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.cd-closed{font-stretch:115%;font-weight:800;font-size:clamp(18px,2.2vw,24px);letter-spacing:-.02em}
+/* Emplacement de la video d'introduction : masque tant que VIDEO_SRC est vide. */
+.video{width:100%;max-width:760px;aspect-ratio:16/9;background:var(--ink)}
+.video video{width:100%;height:100%;display:block;object-fit:cover;background:var(--ink)}
 
-/* ── HERO ── */
-.hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
-h1{font-family:var(--fd);font-size:clamp(48px,11vw,88px);font-weight:900;line-height:.92;text-transform:uppercase;letter-spacing:1px}
-h1 span{color:var(--muted)}
-.lead{margin-top:18px;font-size:17px;color:#d4d4d4;max-width:62ch}
+/* ── TUILES « TOUT SAVOIR » ── */
+.savoir{display:flex;flex-direction:column;gap:28px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tile{min-height:112px;padding:16px;border:2px solid var(--ink);background:transparent;cursor:pointer;text-align:left;display:flex;flex-direction:column;justify-content:space-between;gap:14px;transition:background .15s,color .15s}
+.tile .t{font-stretch:115%;font-weight:800;font-size:clamp(16px,1.7vw,21px);line-height:1.1;letter-spacing:-.02em}
+.tile .h{font-size:13px;color:var(--soft)}
+.tile:hover{background:var(--hover)}
+.tile[aria-expanded="true"]{background:var(--ink);color:#fff}
+.tile[aria-expanded="true"] .h{color:var(--line)}
+.tpanel{border-left:6px solid var(--accent);padding:6px 0 6px clamp(16px,3vw,32px)}
+.body{display:flex;flex-direction:column;gap:12px;max-width:66ch;color:#2a2c2d}
+.body ul{padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.body dl{margin-top:4px;display:grid;grid-template-columns:auto 1fr;gap:6px 20px;font-variant-numeric:tabular-nums}
+.body dt{color:var(--soft)}
+.body dd{font-weight:700;overflow-wrap:anywhere}
+.soon{font-size:14px;color:var(--soft)}
 
-/* ── BRIEF ── */
-.brief{padding:34px 0;border-bottom:1px solid var(--border)}
-.brief h2{font-family:var(--fd);font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
-.brief p{color:#c4c4c4;margin-bottom:14px;max-width:70ch}
-.brief strong{color:#fff;font-weight:600}
-/* ── FAITS CLES ── */
-/* Bande placee juste sous le titre : ce sont les 4 questions qu'on se pose
-   en arrivant, repondues avant toute explication. Les separateurs de 1px en
-   font un bloc unique — quatre cartes autonomes se disputeraient l'attention.
-   La hierarchie vient de l'echelle (valeur 2x le libelle), pas du gras. */
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)}
-.fact{background:var(--bg);padding:26px 20px 30px}
-.fact .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#6d6d6d;margin-bottom:12px}
-.fact .v{font-family:var(--fd);font-size:clamp(21px,2.4vw,28px);font-weight:600;text-transform:uppercase;letter-spacing:.5px;line-height:1.05;color:#fff}
-.fact .d{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.45}
-
-/* ── ETAPES ── */
-/* Le parcours du candidat. La numerotation porte la hierarchie : l'oeil
-   accroche sur les chiffres et suit la colonne, sans un seul mot en gras. */
-.steps{padding:34px 0;border-bottom:1px solid var(--border)}
-.steps h2{font-family:var(--fd);font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
-.steplist{list-style:none;margin-top:14px}
-.steplist li{display:flex;gap:22px;padding:20px 0;border-top:1px solid var(--border)}
-.steplist li:first-child{border-top:none}
-.steplist .n{font-family:var(--fd);font-size:34px;font-weight:900;color:#3d3d3d;line-height:.9;flex-shrink:0;width:52px}
-.steplist h3{font-family:var(--fd);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:6px}
-.steplist p{color:#c4c4c4;font-size:14.5px;line-height:1.65;max-width:62ch}
-
-/* ── NOTE ── */
-/* Le libelle en capitales porte l'alerte a la place d'un <strong>. */
-.note{margin-top:26px;background:var(--bg2);border-left:2px solid #4a4a4a;padding:16px 20px}
-.note-k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#8a8a8a;margin-bottom:7px}
-.note p{font-size:14px;color:#c4c4c4;line-height:1.6}
-
-/* ── FORM ── */
-.formsec{padding:38px 0 0}
-.formsec h2{font-family:var(--fd);font-size:26px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
-.formsec .hint{color:var(--muted);font-size:14px;margin-bottom:26px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fg{display:flex;flex-direction:column}
-.fg.full{grid-column:1/-1}
-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-label .req{color:#8a8a8a}
-input,textarea,select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:11px 13px;border-radius:0;font-family:var(--fb);font-size:15px;width:100%;outline:none;transition:border-color .15s}
-input:focus,textarea:focus,select:focus{border-color:#fff}
-input::placeholder,textarea::placeholder{color:#5c5c5c}
-/* Chevron dessine en CSS : la fleche native de Windows casse le style plat. */
-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:34px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239a9a9a' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
-select option{background:var(--bg3);color:var(--text)}
-input[type=number]{-moz-appearance:textfield}
-input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-textarea{min-height:110px;resize:vertical;line-height:1.5}
-.sub{font-size:12px;color:#6d6d6d;margin-top:5px}
-
-.consent{display:flex;align-items:flex-start;gap:11px;margin-top:26px;background:var(--bg2);border:1px solid var(--border);border-radius:0;padding:15px 17px}
-.consent input{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:#fff}
-.consent label{font-size:13px;font-weight:400;color:#c4c4c4;text-transform:none;letter-spacing:0;margin:0;line-height:1.5;cursor:pointer}
-
-.actions{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#000;border:1px solid #fff;padding:13px 30px;border-radius:0;cursor:pointer;font-family:var(--fb);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:background .15s,border-color .15s}
-.btn:hover:not(:disabled){background:#d6d6d6;border-color:#d6d6d6}
-.btn:disabled{opacity:.35;cursor:not-allowed}
-.err{color:var(--red);font-size:14px;font-weight:600;min-height:20px}
-input.bad,textarea.bad,select.bad{border-color:var(--red)}
+/* ── FORMULAIRE EN ETAPES ── */
+.form,.fin,.finwrap{display:flex;flex-direction:column;max-width:760px}
+.form{gap:22px}
+.alerte{background:var(--ink);color:#fff;padding:14px 18px;display:flex;flex-direction:column;gap:2px}
+.alerte b{font-stretch:115%;font-weight:800;font-size:17px;letter-spacing:-.01em}
+.alerte span{font-size:14px;color:#d8dad6}
+.prog{display:flex;flex-direction:column;gap:8px}
+.prog__txt{display:flex;justify-content:space-between;gap:12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-variant-numeric:tabular-nums}
+.prog__txt span:last-child{color:var(--soft);font-weight:500}
+.prog__rail{height:8px;background:var(--line)}
+.prog__barre{height:100%;background:var(--ink);transition:width .35s ease}
+.choix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.case{min-height:132px;padding:18px;border:2px solid var(--ink);background:transparent;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:16px;transition:background .15s,color .15s}
+.case b{font-stretch:115%;font-weight:800;font-size:clamp(19px,2.4vw,25px);line-height:1.05;letter-spacing:-.025em}
+.case span{font-size:14px;color:var(--soft)}
+.case:hover{background:var(--hover)}
+.case[aria-pressed="true"]{background:var(--ink);color:#fff}
+.case[aria-pressed="true"] span{color:#d8dad6}
+.aide{font-size:14px;color:var(--soft)}
+.grille{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.champ{display:flex;flex-direction:column;gap:6px}
+.champ.large{grid-column:1 / -1}
+.champ label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.champ label i{font-style:normal;color:var(--soft);font-weight:500;letter-spacing:.04em;text-transform:none}
+.champ input,.champ select,.champ textarea{min-height:48px;padding:10px 12px;background:var(--field);border:2px solid var(--ink);border-radius:0;width:100%}
+.champ textarea{min-height:92px;resize:vertical}
+.champ small{font-size:13px;color:var(--soft)}
+.champ.err input,.champ.err select{border-color:var(--accent)}
+.champ .msg{font-size:13.5px;font-weight:700;color:var(--accent);display:flex;gap:6px;align-items:flex-start}
+.resume{border:2px solid var(--accent);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.resume b{color:var(--accent);font-weight:800}
+.resume ul{padding-left:1.1em;font-size:14.5px}
+.rappel{border-left:6px solid var(--accent);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:4px}
+.rappel b{font-stretch:115%;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.rappel span{font-size:14.5px;color:#2a2c2d}
+.coche{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;cursor:pointer}
+.coche input{width:22px;height:22px;flex-shrink:0;margin-top:1px;accent-color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 30px;border:2px solid var(--ink);background:var(--ink);color:#fff;font-weight:700;font-size:14.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}
+.btn:hover:not(:disabled){background:var(--accent);border-color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.contour{background:transparent;color:var(--ink)}
+.btn.contour:hover:not(:disabled){background:var(--hover);border-color:var(--ink)}
+.btn.petit{min-height:44px;padding:0 16px;font-size:12.5px}
 
 /* ── CONFIRMATION ── */
-.done{text-align:center;padding:80px 0}
-.done .mark{font-family:var(--fd);font-size:64px;font-weight:900;color:#ffffff;line-height:1}
-.done h2{font-family:var(--fd);font-size:34px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin:14px 0 12px}
-.done p{color:#c4c4c4;max-width:52ch;margin:0 auto 10px}
+.finwrap{gap:22px}
+.fin{gap:20px}
+.fin .h2 em{font-style:normal;color:var(--accent)}
+.fin p{max-width:62ch}
+.fiche{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 20px;font-size:15px;border-top:2px solid var(--ink);padding-top:12px}
+.fiche dt{color:var(--soft)}
+.fiche dd{font-weight:700;overflow-wrap:anywhere}
+.virement{border:2px solid var(--ink);display:flex;flex-direction:column}
+.virement h3{padding:12px 16px;background:var(--ink);color:#fff;font-stretch:115%;font-weight:800;font-size:17px}
+.ligne{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ligne span:first-child{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.ligne b{overflow-wrap:anywhere}
+.virement p{padding:12px 16px;border-top:1px solid var(--line);font-size:14px;color:#2a2c2d;max-width:none}
+.petit-mot{font-size:14px;color:var(--soft)}
 
-footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);font-size:13px;color:#6d6d6d;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-footer a{color:var(--muted);text-decoration:none}
-footer a:hover{color:#fff}
+footer{padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--soft);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
 
-@media(max-width:640px){
-  .grid{grid-template-columns:1fr}
-  /* 2x2 plutot que 4 colonnes de 80px : les valeurs restent lisibles. */
-  .facts{grid-template-columns:1fr 1fr}
-  .fact{padding:20px 16px 24px}
-  .steplist li{gap:14px}
-  .steplist .n{font-size:26px;width:36px}
-  .hero{padding:36px 0 26px}
-  .wrap{padding:0 16px 60px}
-  .top{justify-content:center;text-align:center}
-  footer{justify-content:center;text-align:center}
+@media (max-width:760px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .choix,.grille{grid-template-columns:minmax(0,1fr)}
+  .ligne{grid-template-columns:minmax(0,1fr) auto}
+  .ligne span:first-child{grid-column:1 / -1}
+  .top .back{margin-left:0;flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cta,.tile,.case,.btn,.prog__barre{transition:none}
+  .cta:hover{transform:none}
 }
 </style>
 </head>
@@ -185,216 +233,96 @@ footer a:hover{color:#fff}
 
 <div class="wrap">
 
-  <div class="top">
-    <a class="back" href="/">← Armwrestling Club Strassen</a>
-    <span class="fed">
-      <img class="flag" src="https://flagcdn.com/w40/lu.webp" alt="" width="26" height="18">
-      Fédération Luxembourgeoise de Bras de Fer
-    </span>
-  </div>
-
-  <div class="hero">
+  <header class="hero">
+    <div class="top">
+      <div class="logos">
+        <!-- Version detouree : logo.webp a un fond noir carre, visible sur fond clair. -->
+        <img src="logo-acs-transparent.webp" alt="Armwrestling Club Strassen" width="46" height="46">
+        <img src="logo_laf.webp" alt="Luxembourg Armwrestling Federation" width="46" height="46">
+      </div>
+      <span class="fed">Fédération Luxembourgeoise de Bras de Fer</span>
+      <a class="back" href="/">← Site du club</a>
+    </div>
+    <p class="eyebrow">Ready — Go</p>
     <h1>Vendetta <span>2026</span></h1>
-    <p class="lead">
-      Une journée entière de duels entre les membres de la Fédération Luxembourgeoise
-      de Bras de Fer et leurs adversaires. Les adversaires, c'est vous — et c'est ici
-      que vous posez votre candidature.
+    <p class="concept">
+      Vingt duels en trois manches gagnantes
+      <span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><br>
+      La Fédération luxembourgeoise face à ses adversaires invités.
     </p>
-  </div>
-
-  <div class="facts">
-    <div class="fact">
-      <div class="k">Date</div>
-      <div class="v">Sam.<br>7 nov.</div>
-      <div class="d">2026 — à confirmer</div>
-    </div>
-    <div class="fact">
-      <div class="k">Format</div>
-      <div class="v">Duels<br>1 journée</div>
-      <div class="d">Fédération contre adversaires invités</div>
-    </div>
-    <div class="fact">
-      <div class="k">Ouvert à</div>
-      <div class="v">Tous<br>niveaux</div>
-      <div class="d">Hommes et femmes · dès 14 ans</div>
-    </div>
-    <div class="fact">
-      <div class="k">Accès</div>
-      <div class="v">Sur<br>sélection</div>
-      <div class="d">Parmi les candidatures reçues</div>
-    </div>
-  </div>
-
-  <div class="brief">
-    <h2>Ce qu'il faut savoir</h2>
-    <p>
-      La Vendetta 2026 oppose, sur une seule journée, les membres de la Fédération
-      Luxembourgeoise de Bras de Fer à des adversaires venus d'ailleurs. Chaque
-      affrontement est monté à l'avance : ce n'est pas un tournoi ouvert, c'est une
-      carte de duels construite à partir des candidatures reçues.
-    </p>
-    <p>
-      Toute personne affiliée à un club de bras de fer peut candidater, en renseignant
-      les informations demandées en bas de page. La sélection sert à composer la journée
-      et à former des duels équilibrés — c'est pour cela que les mesures et le palmarès
-      sont demandés.
-    </p>
-  </div>
-
-  <div class="steps">
-    <h2>Comment ça se passe</h2>
-    <ol class="steplist">
-      <li>
-        <span class="n">01</span>
-        <div>
-          <h3>Vous candidatez</h3>
-          <p>
-            Le formulaire en bas de cette page. Club, mesures, années de pratique,
-            palmarès — de quoi situer précisément votre niveau.
-          </p>
+    <dl class="facts">
+      <div><dt>Date</dt><dd>Sam. 7 novembre 2026</dd></div>
+      <div><dt>Lieu</dt><dd>Glacis · Luxembourg-Ville</dd></div>
+      <div><dt>Prix</dt><dd>50 € tout compris</dd></div>
+    </dl>
+    <p class="incl"><strong>Compris :</strong> buffet d'hiver · deux boissons · accès aux vingt duels · tables en libre accès</p>
+    <div class="act">
+      <a class="cta" id="cta" href="#inscription">S'inscrire</a>
+      <div class="cdw" id="cdw">
+        <div class="cd" id="cd" role="timer" aria-label="Temps restant avant la clôture des inscriptions">
+          <span><b data-u="d">--</b>jours</span><span><b data-u="h">--</b>heures</span><span><b data-u="m">--</b>min</span><span><b data-u="s">--</b>sec</span>
         </div>
-      </li>
-      <li>
-        <span class="n">02</span>
-        <div>
-          <h3>Vous êtes contacté</h3>
-          <p>
-            Les candidats sélectionnés sont contactés directement par email, à l'adresse
-            renseignée dans le formulaire.
-          </p>
-        </div>
-      </li>
-      <li>
-        <span class="n">03</span>
-        <div>
-          <h3>On vous propose un adversaire</h3>
-          <p>
-            Une ou plusieurs propositions d'adversaire vous sont faites pour votre match
-            de vendetta. Vous savez donc contre qui vous vous alignez avant de confirmer
-            votre venue.
-          </p>
-        </div>
-      </li>
-    </ol>
-
-    <div class="note">
-      <div class="note-k">Date non confirmée</div>
-      <p>
-        Elle sera très probablement le samedi 7 novembre 2026, sinon le week-end qui
-        précède ou celui qui suit. La confirmation arrivera prochainement — candidater
-        maintenant ne vous engage à rien.
-      </p>
-    </div>
-  </div>
-
-  <div class="formsec" id="formsec">
-    <h2>Déposer sa candidature</h2>
-    <p class="hint">
-      Les champs marqués <span style="color:#8a8a8a">*</span> sont obligatoires.
-      Renseignez des mesures honnêtes : elles servent à composer des duels équilibrés.
-    </p>
-
-    <form id="f" novalidate>
-      <div class="grid">
-
-        <div class="fg">
-          <label for="i-name">Name <span class="req">*</span></label>
-          <input type="text" id="i-name" autocomplete="given-name" placeholder="Prénom" maxlength="60">
-        </div>
-
-        <div class="fg">
-          <label for="i-surname">Surname <span class="req">*</span></label>
-          <input type="text" id="i-surname" autocomplete="family-name" placeholder="Nom de famille" maxlength="60">
-        </div>
-
-        <div class="fg">
-          <label for="i-club">Club <span class="req">*</span></label>
-          <input type="text" id="i-club" autocomplete="organization" placeholder="Nom de votre club" maxlength="80">
-        </div>
-
-        <div class="fg">
-          <label for="i-country">Country <span class="req">*</span></label>
-          <input type="text" id="i-country" autocomplete="country-name" placeholder="Luxembourg, France, Belgique…" maxlength="60">
-        </div>
-
-        <div class="fg">
-          <label for="i-weight">Weight (kg) <span class="req">*</span></label>
-          <input type="number" id="i-weight" inputmode="decimal" step="0.1" min="30" max="250" placeholder="82.5">
-        </div>
-
-        <div class="fg">
-          <label for="i-age">Age (years) <span class="req">*</span></label>
-          <input type="number" id="i-age" inputmode="numeric" step="1" min="14" max="99" placeholder="24">
-          <div class="sub">14 ans minimum.</div>
-        </div>
-
-        <div class="fg">
-          <label for="i-exp">Experience <span class="req">*</span></label>
-          <input type="number" id="i-exp" inputmode="decimal" step="0.5" min="0" max="60" placeholder="3">
-          <div class="sub">Années de pratique du bras de fer. 0 si vous débutez.</div>
-        </div>
-
-        <div class="fg">
-          <label for="i-height">Height (cm) <span class="req">*</span></label>
-          <input type="number" id="i-height" inputmode="numeric" step="1" min="120" max="230" placeholder="178">
-        </div>
-
-        <div class="fg">
-          <label for="i-biceps">Biceps (cm) <span class="req">*</span></label>
-          <input type="number" id="i-biceps" inputmode="decimal" step="0.5" min="20" max="70" placeholder="38">
-          <div class="sub">Tour de bras contracté.</div>
-        </div>
-
-        <div class="fg">
-          <label for="i-arm">Arm <span class="req">*</span></label>
-          <select id="i-arm">
-            <option value="">Choisir…</option>
-            <option value="Droit">Bras droit</option>
-            <option value="Gauche">Bras gauche</option>
-            <option value="Les deux">Les deux</option>
-          </select>
-          <div class="sub">Le bras sur lequel vous souhaitez tirer.</div>
-        </div>
-
-        <!-- Pleine largeur : sans ca, l'ajout de ARM decale les paires de la
-             grille et laisse une case vide en bout de ligne. -->
-        <div class="fg full">
-          <label for="i-email">Email <span class="req">*</span></label>
-          <input type="email" id="i-email" autocomplete="email" placeholder="pour vous recontacter" maxlength="120">
-          <div class="sub">Utilisé uniquement pour la sélection.</div>
-        </div>
-
-        <div class="fg full">
-          <label for="i-palmares">Palmarès</label>
-          <textarea id="i-palmares" placeholder="Titres, podiums, compétitions disputées, catégories… Écrivez « Aucun » si vous débutez." maxlength="1200"></textarea>
-        </div>
-
+        <p class="cd-closed" id="cd-closed" hidden>Inscriptions closes — liste d'attente ouverte</p>
+        <p class="cd-label">Clôture des inscriptions le 20 octobre</p>
       </div>
+    </div>
+    <div class="video" id="video" hidden></div>
+  </header>
 
-      <div class="consent">
-        <input type="checkbox" id="i-consent">
-        <label for="i-consent">
-          Je certifie être affilié·e à un club de bras de fer, avoir 14 ans ou plus,
-          et que les informations renseignées ci-dessus sont exactes. J'accepte que
-          l'Armwrestling Club Strassen les utilise pour la sélection des participants
-          à la Vendetta 2026.
-        </label>
-      </div>
+  <section class="savoir" aria-labelledby="savoir-t">
+    <h2 class="h2" id="savoir-t">Tout savoir</h2>
+    <div class="tiles" id="tiles">
+      <button type="button" class="tile" aria-expanded="false" aria-controls="tp-0"><span class="t">Déroulement de la soirée</span><span class="h">Duels, buffet, tables libres</span></button>
+      <button type="button" class="tile" aria-expanded="false" aria-controls="tp-1"><span class="t">Athlètes : la sélection</span><span class="h">Qui peut candidater, comment</span></button>
+      <button type="button" class="tile" aria-expanded="false" aria-controls="tp-2"><span class="t">Paiement et conditions</span><span class="h">50 €, virement uniquement</span></button>
+      <button type="button" class="tile" aria-expanded="false" aria-controls="tp-3"><span class="t">Accès et pratique</span><span class="h">Glacis, plan, calendrier</span></button>
+    </div>
 
-      <div class="actions">
-        <button type="submit" class="btn" id="btn-send">Envoyer ma candidature</button>
-        <div class="err" id="err" role="alert" aria-live="polite"></div>
-      </div>
-    </form>
-  </div>
+    <div class="tpanel" id="tp-0" role="region" aria-label="Déroulement de la soirée" hidden><div class="body">
+      <p>Les vingt duels se jouent au centre de la salle, le public tout autour. Chaque duel se dispute en trois manches gagnantes.</p>
+      <ul>
+        <li>Le buffet d'hiver — raclette, fondue, tarte flambée — reste ouvert pendant toute la soirée.</li>
+        <li>Deux boissons sont comprises dans le prix.</li>
+        <li>Derrière la zone des duels, des tables de bras de fer sont en libre accès : les athlètes s'y échauffent, les curieux s'y essaient.</li>
+      </ul>
+      <p class="soon">Les horaires précis seront communiqués prochainement.</p>
+    </div></div>
 
-  <div class="done" id="ok" hidden>
-    <div class="mark">✓</div>
-    <h2>Candidature reçue</h2>
-    <p>Merci <span id="ok-name"></span>. Votre candidature à la Vendetta 2026 est enregistrée.</p>
-    <p>La sélection sera communiquée une fois la date confirmée. Si vous êtes retenu·e, vous serez contacté·e directement par email.</p>
-    <p style="margin-top:26px"><a class="back" href="/">← Retour au site du club</a></p>
-  </div>
+    <div class="tpanel" id="tp-1" role="region" aria-label="Athlètes : la sélection" hidden><div class="body">
+      <p>Tout licencié d'un club de bras de fer peut candidater : tous niveaux, hommes et femmes, à partir de 14 ans.</p>
+      <ul>
+        <li>Il y aura plus de candidats que de duels. La sélection sert à former des affrontements équilibrés, d'où les mesures et le palmarès demandés.</li>
+        <li>Les candidats retenus reçoivent par email une ou plusieurs propositions d'adversaire avant de confirmer.</li>
+        <li>Vous ne venez que si vous avez un match ? Indiquez-le dans le formulaire : vous ne payez qu'une fois retenu.</li>
+      </ul>
+    </div></div>
+
+    <div class="tpanel" id="tp-2" role="region" aria-label="Paiement et conditions" hidden><div class="body">
+      <p>Le prix est le même pour tous, spectateur ou athlète. La place est valide à réception du virement. Ni espèces, ni paiement sur place.</p>
+      <dl>
+        <dt>Bénéficiaire</dt><dd>Luxembourg Grizzly Club Asbl</dd>
+        <dt>IBAN</dt><dd>IE95 SUMU 9903 6512 7760 47</dd>
+        <dt>BIC</dt><dd>SUMUIE22XXX</dd>
+        <dt>Communication</dt><dd>VENDETTA + nom et prénom</dd>
+      </dl>
+      <p>Inscription et paiement avant le 20 octobre. Après cette date, les inscriptions passent en liste d'attente. Une place payée est remboursable jusqu'au 20 octobre.</p>
+    </div></div>
+
+    <div class="tpanel" id="tp-3" role="region" aria-label="Accès et pratique" hidden><div class="body">
+      <p>Chalet privatisé au Glacis, Luxembourg-Ville.</p>
+      <ul>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Glacis+Luxembourg" target="_blank" rel="noopener">Ouvrir le plan d'accès</a></li>
+        <li><a id="ics" href="#" download="vendetta-2026.ics">Ajouter la date à mon calendrier</a></li>
+        <li>Une question : <a href="https://wa.me/352661495319" target="_blank" rel="noopener">écrivez au club sur WhatsApp</a>.</li>
+      </ul>
+      <p class="soon">L'adresse exacte et les informations de stationnement seront communiquées prochainement.</p>
+    </div></div>
+  </section>
+
+  <section id="inscription" aria-label="Inscription">
+    <div id="app"></div>
+    <noscript><p>Le formulaire d'inscription a besoin de JavaScript. Vous pouvez aussi écrire au club sur WhatsApp : +352 661 495 319.</p></noscript>
+  </section>
 
   <footer>
     <span>Armwrestling Club Strassen · Luxembourg</span>
@@ -409,108 +337,225 @@ footer a:hover{color:#fff}
 
   /* ===================== CONFIG ===================== */
   /* Un seul endroit a editer.
-     Coller ici l'URL du Web App Apps Script (se termine par /exec).
+     ENDPOINT : URL du Web App Apps Script (se termine par /exec).
      Procedure complete : docs/VENDETTA.md
      Tant que la valeur est vide, le formulaire refuse d'envoyer. */
   var ENDPOINT = "https://script.google.com/macros/s/AKfycbxpVTXQVXZqI1IGU92j-k8kioDrJPqo2e06es19N7L-RFupfjxX_J2PK-AexLiilJfjvg/exec";
+
+  /* Video d'introduction : chemin du fichier (ex. "vendetta-intro.mp4") et de
+     son image d'attente. Vide = le cadre reste masque, la page est complete sans. */
+  var VIDEO_SRC    = "";
+  var VIDEO_POSTER = "";
+
+  /* Cloture des inscriptions : 20 octobre 2026, 23 h 59 a Luxembourg (UTC+2,
+     l'heure d'hiver ne commence que le 25). Ensuite : liste d'attente. */
+  var CLOSE_AT = Date.UTC(2026, 9, 20, 21, 59, 59);
+
+  /* Paiement par virement uniquement, affiche apres l'envoi. */
+  var IBAN        = "IE95 SUMU 9903 6512 7760 47";
+  var BIC         = "SUMUIE22XXX";
+  var BENEFICIARY = "Luxembourg Grizzly Club Asbl";
+  var PRICE       = "50 €";
+
+  var PAGE_URL = "https://armwrestlingclubstrassen.com/vendetta.html";
+  var WHATSAPP = "https://wa.me/352661495319";
   /* ================================================== */
 
-  var STORE = "vendetta_2026_v1";
+  /* v3 : formulaire en etapes, une saisie v1 ou v2 ne se restaure plus. */
+  var STORE = "vendetta_2026_v3";
 
-  /* Cle = en-tete exact de la feuille, dans l'ordre des colonnes A..M :
-     NAME .. BICEPS (cm), puis ARM, PALMARES, EMAIL, SUBMITTED_AT.
-     ATTENTION : le script Apps Script associe chaque valeur par NOM d'en-tete,
-     jamais par position. Ajouter une cle ici impose donc de creer la colonne
-     dans la feuille AVANT de publier la page — sinon la valeur est perdue sans
-     erreur visible, la reponse etant opaque (no-cors). Detail : docs/VENDETTA.md */
-  var FIELDS = [
-    { key:"NAME",        el:"i-name",     type:"text" },
-    { key:"SURNAME",     el:"i-surname",  type:"text" },
-    { key:"CLUB",        el:"i-club",     type:"text" },
-    { key:"COUNTRY",     el:"i-country",  type:"text" },
-    { key:"WEIGHT (kg)", el:"i-weight",   type:"num", min:30,  max:250 },
-    { key:"AGE (years)", el:"i-age",      type:"num", min:14,  max:99  },
-    { key:"EXPERIENCE",  el:"i-exp",      type:"num", min:0,   max:60  },
-    { key:"HEIGHT (cm)", el:"i-height",   type:"num", min:120, max:230 },
-    { key:"BICEPS (cm)", el:"i-biceps",   type:"num", min:20,  max:70  },
-    { key:"ARM",         el:"i-arm",      type:"text" },
-    { key:"PALMARES",    el:"i-palmares", type:"text", optional:true },
-    { key:"EMAIL",       el:"i-email",    type:"email" }
+  /* Valeurs ecrites dans la feuille. */
+  var ATHLETE = "Athlète", SPECTATOR = "Spectateur", ONLY_IF_MATCH = "Seulement si match";
+
+  /* key = en-tete exact de la feuille Google Sheets. Le script Apps Script
+     associe chaque valeur par NOM d'en-tete, jamais par position.
+     ATTENTION : toute nouvelle cle impose de creer la colonne dans la feuille
+     AVANT de publier — sinon la valeur est perdue sans erreur visible, la
+     reponse etant opaque (no-cors). Detail : docs/VENDETTA.md */
+  var F2 = [
+    { key:"NAME",        l:"Prénom",    t:"text",  ac:"given-name" },
+    { key:"SURNAME",     l:"Nom",       t:"text",  ac:"family-name" },
+    { key:"COUNTRY",     l:"Pays",      t:"text",  ac:"country-name" },
+    { key:"AGE (years)", l:"Âge",       t:"num",   min:1, max:99, h:"14 ans minimum pour disputer un match." },
+    { key:"EMAIL",       l:"Email",     t:"email", ac:"email", h:"Pour la confirmation." },
+    { key:"PHONE",       l:"Téléphone", t:"tel",   ac:"tel" }
   ];
+  var F3 = [
+    { key:"CLUB",            l:"Club", t:"text", ac:"organization", large:true },
+    { key:"WEIGHT (kg)",     l:"Poids (kg)",  t:"num", min:30,  max:250 },
+    { key:"HEIGHT (cm)",     l:"Taille (cm)", t:"num", min:120, max:230 },
+    { key:"EXPERIENCE",      l:"Années de pratique", t:"num", min:0, max:60, h:"0 si vous débutez." },
+    { key:"BICEPS (cm)",     l:"Tour de bras contracté (cm)", t:"num", min:20, max:70 },
+    { key:"ARM",             l:"Bras", t:"select", o:[["Droit","Bras droit"],["Gauche","Bras gauche"],["Les deux","Les deux"]] },
+    { key:"IF_NOT_SELECTED", l:"Si je ne suis pas retenu·e", t:"select", o:[["Vient quand même","Je viens quand même, comme spectateur"],[ONLY_IF_MATCH,"Je ne viens que si j'ai un match"]], h:"Il y aura plus de candidats que de duels." },
+    { key:"PALMARES",        l:"Palmarès", t:"textarea", opt:true, large:true }
+  ];
+  var ALL = F2.concat(F3);
+  var STEP_NAMES = ["", "Vous venez comme…", "Vos coordonnées", "Votre profil d'athlète"];
 
-  var SEND_LABEL = "Envoyer ma candidature";
   function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function closed(){ return Date.now() > CLOSE_AT; }
+  function fid(f){ return "i-" + f.key.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, ""); }
 
-  function collect(){
-    var out = {};
-    FIELDS.forEach(function(f){ out[f.key] = $(f.el).value.trim(); });
-    return out;
-  }
+  /* ── Etat ── */
+  var S = { type:"", step:1, d:{}, err:{}, c:{}, resume:false, sending:false, fail:"" };
 
-  // --- Sauvegarde locale : une saisie interrompue n'est pas perdue.
   function save(){
-    try { localStorage.setItem(STORE, JSON.stringify(collect())); } catch(e){}
+    try { localStorage.setItem(STORE, JSON.stringify({ type:S.type, step:S.step, d:S.d })); } catch(e){}
   }
   function restore(){
     try {
-      var d = JSON.parse(localStorage.getItem(STORE) || "{}");
-      FIELDS.forEach(function(f){ if (d[f.key]) $(f.el).value = d[f.key]; });
+      var o = JSON.parse(localStorage.getItem(STORE) || "null");
+      if (!o) return;
+      S.type = o.type === ATHLETE || o.type === SPECTATOR ? o.type : "";
+      S.d = o.d || {};
+      S.step = S.type ? Math.min(o.step || 1, steps()) : 1;
     } catch(e){}
   }
+  function steps(){ return S.type === ATHLETE ? 3 : 2; }
+  function fieldsOf(step){ return step === 2 ? F2 : step === 3 ? F3 : []; }
 
-  // --- Validation
-  function validate(){
-    var data = collect(), bad = null, msg = "";
-
-    Array.prototype.forEach.call(document.querySelectorAll(".bad"), function(n){
-      n.classList.remove("bad");
-    });
-
-    for (var i = 0; i < FIELDS.length; i++){
-      var f = FIELDS[i], v = data[f.key];
-
-      if (!v){
-        if (f.optional) continue;
-        bad = f; msg = "Renseignez le champ « " + f.key + " »."; break;
-      }
-      if (f.type === "num"){
-        var n = parseFloat(v.replace(",", "."));
-        if (isNaN(n) || n < f.min || n > f.max){
-          bad = f;
-          msg = "« " + f.key + " » doit être un nombre entre " + f.min + " et " + f.max + ".";
-          break;
-        }
-      }
-      if (f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
-        bad = f; msg = "Adresse email invalide."; break;
-      }
+  /* ── Validation ── */
+  function check(f){
+    var v = (S.d[f.key] || "").trim();
+    if (!v) return f.opt ? "" : "Renseignez ce champ.";
+    if (f.t === "num"){
+      var n = parseFloat(v.replace(",", "."));
+      if (isNaN(n) || n < f.min || n > f.max) return "Indiquez un nombre entre " + f.min + " et " + f.max + ".";
+      if (f.key === "AGE (years)" && S.type === ATHLETE && n < 14) return "Il faut avoir 14 ans ou plus pour disputer un match.";
     }
-
-    if (!bad && !$("i-consent").checked) msg = "Cochez la case de certification pour envoyer.";
-
-    if (bad){ $(bad.el).classList.add("bad"); $(bad.el).focus(); }
-    return msg;
+    if (f.t === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return "Adresse email incomplète : il manque la fin (par exemple « .com »).";
+    if (f.t === "tel" && v.replace(/\D/g, "").length < 6) return "Numéro de téléphone trop court.";
+    return "";
   }
 
-  // --- Envoi
-  function send(e){
-    e.preventDefault();
-    var err = $("err"), btn = $("btn-send");
-    err.textContent = "";
+  /* ── Rendu ── */
+  function field(f){
+    var id = fid(f), v = S.d[f.key] || "", e = S.err[f.key], ctl;
+    var aria = e ? ' aria-invalid="true" aria-describedby="' + id + '-m"' : "";
+    if (f.t === "select"){
+      ctl = '<select id="' + id + '" data-k="' + esc(f.key) + '"' + aria + '><option value="">Choisir…</option>' +
+        f.o.map(function(o){ return '<option value="' + esc(o[0]) + '"' + (o[0] === v ? " selected" : "") + '>' + esc(o[1]) + '</option>'; }).join("") + '</select>';
+    } else if (f.t === "textarea"){
+      ctl = '<textarea id="' + id + '" data-k="' + esc(f.key) + '" maxlength="1200" placeholder="Titres, podiums, compétitions… « Aucun » si vous débutez.">' + esc(v) + '</textarea>';
+    } else {
+      var type = f.t === "num" ? 'text" inputmode="decimal' : f.t;
+      ctl = '<input id="' + id + '" data-k="' + esc(f.key) + '" type="' + type + '" maxlength="120" value="' + esc(v) + '"' + (f.ac ? ' autocomplete="' + f.ac + '"' : "") + aria + '>';
+    }
+    return '<div class="champ' + (f.large ? " large" : "") + (e ? " err" : "") + '"><label for="' + id + '">' + f.l + (f.opt ? " <i>(facultatif)</i>" : "") + '</label>' + ctl +
+      (e ? '<div class="msg" id="' + id + '-m"><span aria-hidden="true">✕</span>' + esc(e) + '</div>' : (f.h ? '<small>' + f.h + '</small>' : "")) + '</div>';
+  }
 
-    var msg = validate();
-    if (msg){ err.textContent = msg; return; }
+  function tick(id, label){
+    return '<label class="coche" for="' + id + '"><input type="checkbox" id="' + id + '" data-c="' + id + '"' + (S.c[id] ? " checked" : "") + '><span>' + label + '</span></label>';
+  }
 
-    if (!ENDPOINT){
-      err.textContent = "Formulaire pas encore activé (endpoint à configurer).";
-      return;
+  function view(){
+    var att = closed(), n = steps(), h = "";
+    if (att) h += '<div class="alerte"><b>Inscriptions closes depuis le 20 octobre</b><span>La liste d\'attente est ouverte : nous vous contactons si une place se libère. Rien à payer pour l\'instant.</span></div>';
+    if (S.step === "fin") return '<div class="finwrap">' + h + done(att) + '</div>';
+
+    h += '<h2 class="h2">' + (att ? "Liste d'attente" : "S'inscrire") + '</h2>';
+    h += '<div class="prog"><div class="prog__txt"><span>Étape ' + S.step + ' sur ' + n + '</span><span>' + STEP_NAMES[S.step] + '</span></div>' +
+         '<div class="prog__rail" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + S.step + '" aria-label="Progression"><div class="prog__barre" style="width:' + Math.round(S.step / n * 100) + '%"></div></div></div>';
+
+    if (S.resume){
+      var items = fieldsOf(S.step).filter(function(f){ return S.err[f.key]; }).map(function(f){ return '<li><a href="#' + fid(f) + '">' + f.l + '</a> — ' + esc(S.err[f.key]) + '</li>'; });
+      if (S.err._type) items.push('<li>' + esc(S.err._type) + '</li>');
+      if (S.err._c) items.push('<li>' + esc(S.err._c) + '</li>');
+      if (items.length) h += '<div class="resume" tabindex="-1" id="resume" role="alert"><b>' + items.length + (items.length > 1 ? " points à corriger" : " point à corriger") + '</b><ul>' + items.join("") + '</ul></div>';
     }
 
-    btn.disabled = true;
-    btn.textContent = "Envoi…";
-    var payload = collect();
-    payload.SUBMITTED_AT = new Date().toISOString();
+    if (S.step === 1){
+      h += '<div class="choix">' +
+        '<button type="button" class="case" data-type="' + SPECTATOR + '" aria-pressed="' + (S.type === SPECTATOR) + '"><b>Je viens regarder</b><span>Spectateur. Deux étapes, une minute.</span></button>' +
+        '<button type="button" class="case" data-type="' + ATHLETE + '" aria-pressed="' + (S.type === ATHLETE) + '"><b>Je veux un match</b><span>Athlète. Une étape de plus : club, mesures, palmarès. Sur sélection.</span></button>' +
+        '</div><p class="aide">Même prix dans les deux cas : ' + PRICE + ', buffet et deux boissons compris.</p>';
+    } else {
+      h += '<div class="grille">' + fieldsOf(S.step).map(field).join("") + '</div>';
+    }
 
+    if (S.step === n){
+      if (!att) h += '<div class="rappel"><b>' + PRICE + ' par virement, avant le 20 octobre</b><span>Pas d\'espèces, pas de paiement sur place. Les coordonnées bancaires s\'affichent juste après l\'envoi. Remboursable jusqu\'au 20 octobre.</span></div>' +
+        tick("c-pay", "J'ai compris que ma place n'est valide qu'à réception du virement.");
+      if (S.type === ATHLETE) h += tick("c-ath", "Je certifie être affilié·e à un club de bras de fer, avoir 14 ans ou plus, et que mon profil est exact.");
+      h += tick("c-ok", "J'accepte que l'Armwrestling Club Strassen utilise ces informations pour organiser la Vendetta 2026 et sélectionner les participants.");
+    }
+
+    if (S.fail) h += '<div class="resume" role="alert"><b>' + esc(S.fail) + '</b></div>';
+
+    h += '<div class="actions">' + (S.step > 1 ? '<button type="button" class="btn contour" data-go="-1"' + (S.sending ? " disabled" : "") + '>Retour</button>' : "") +
+      '<button type="button" class="btn" data-go="1"' + (S.sending ? " disabled" : "") + '>' + (S.sending ? "Envoi…" : S.step === n ? (att ? "Rejoindre la liste d'attente" : "Envoyer mon inscription") : "Continuer") + '</button></div>';
+    return '<div class="form">' + h + '</div>';
+  }
+
+  // Ecran apres l'envoi. Trois cas : payer maintenant, rien a regler pour
+  // l'instant (athlete qui ne vient que s'il a un match), liste d'attente.
+  function done(att){
+    var ath = S.type === ATHLETE, later = ath && S.d.IF_NOT_SELECTED === ONLY_IF_MATCH, name = esc(S.d.NAME);
+    var h = '<div class="fin">';
+    if (att) h += '<h2 class="h2">Vous êtes sur <em>la liste d\'attente</em></h2><p>Merci ' + name + '. Rien à payer. Si une place se libère, nous vous écrivons à l\'adresse ci-dessous avec les instructions.</p>';
+    else if (later) h += '<h2 class="h2">Candidature <em>enregistrée</em></h2><p>Merci ' + name + '. Rien à régler pour l\'instant. Si vous êtes retenu·e, vous recevez par email une proposition d\'adversaire ; votre place de ' + PRICE + ' sera alors à régler pour valider votre venue.</p>';
+    else h += '<h2 class="h2">Inscription <em>enregistrée</em></h2><p>Merci ' + name + '. Elle devient valide à réception de votre virement de ' + PRICE + '. Une confirmation vous est ensuite envoyée par email.' + (ath ? " Si vous êtes retenu·e pour un match, vous recevez une proposition d'adversaire." : "") + '</p>';
+
+    if (!att && !later){
+      var ref = ("VENDETTA " + S.d.SURNAME + " " + S.d.NAME).toUpperCase();
+      var rows = [["Bénéficiaire", BENEFICIARY, 1], ["IBAN", IBAN, 1], ["BIC", BIC, 1], ["Montant", PRICE, 0], ["Communication", ref, 1]];
+      h += '<div class="virement"><h3>Votre virement</h3>' + rows.map(function(r){
+        return '<div class="ligne"><span>' + r[0] + '</span><b>' + esc(r[1]) + '</b>' + (r[2] ? '<button type="button" class="btn contour petit" data-copy="' + esc(r[1]) + '">Copier</button>' : "<span></span>") + '</div>';
+      }).join("") + '<p>N\'oubliez pas la communication, avec votre nom et votre prénom : c\'est elle qui relie le virement à votre inscription. Remboursable jusqu\'au 20 octobre.</p></div>';
+    }
+
+    h += '<dl class="fiche"><dt>Nom</dt><dd>' + esc(S.d.NAME + " " + S.d.SURNAME) + '</dd>' +
+      '<dt>Inscription</dt><dd>' + (ath ? "Athlète — bras : " + esc((S.d.ARM || "").toLowerCase()) + ", " + esc(S.d["WEIGHT (kg)"]) + " kg" : "Spectateur") + '</dd>' +
+      '<dt>Email</dt><dd>' + esc(S.d.EMAIL) + '</dd><dt>Téléphone</dt><dd>' + esc(S.d.PHONE) + '</dd></dl>' +
+      '<p class="petit-mot">Une erreur ? <a href="' + WHATSAPP + '" target="_blank" rel="noopener">Écrivez au club sur WhatsApp</a>, nous corrigeons.</p>' +
+      '<div class="actions"><a class="btn petit" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent("Vendetta 2026 — 20 duels de bras de fer, samedi 7 novembre au Glacis, Luxembourg. Inscription : " + PAGE_URL) + '">Partager sur WhatsApp</a>' +
+      '<button type="button" class="btn contour petit" data-copy="' + PAGE_URL + '">Copier le lien</button></div></div>';
+    return h;
+  }
+
+  var app = $("app");
+  function draw(){ app.innerHTML = view(); }
+
+  /* ── Parcours ── */
+  function go(dir){
+    if (S.sending) return;
+    S.fail = "";
+    if (dir < 0){ S.step = Math.max(1, S.step - 1); S.resume = false; S.err = {}; save(); draw(); return; }
+
+    var bad = false, n = steps();
+    S.err = {};
+    if (S.step === 1 && !S.type){ S.err._type = "Choisissez : spectateur ou athlète."; bad = true; }
+    fieldsOf(S.step).forEach(function(f){ var m = check(f); if (m){ S.err[f.key] = m; bad = true; } });
+    if (S.step === n && S.step > 1){
+      var need = (closed() ? [] : ["c-pay"]).concat(S.type === ATHLETE ? ["c-ath"] : [], ["c-ok"]);
+      if (need.some(function(id){ return !S.c[id]; })){ S.err._c = "Cochez les cases en bas du formulaire."; bad = true; }
+    }
+    if (bad){ S.resume = true; draw(); var r = $("resume"); if (r) r.focus(); return; }
+
+    S.resume = false;
+    if (S.step === n) return send();
+    S.step += 1; save(); draw();
+    $("inscription").scrollIntoView();
+  }
+
+  function payload(){
+    var ath = S.type === ATHLETE, out = { TYPE: S.type };
+    // "82,5" devient "82.5" : la feuille doit recevoir des nombres triables.
+    function val(f){ var v = (S.d[f.key] || "").trim(); return f.t === "num" ? v.replace(",", ".") : v; }
+    F2.forEach(function(f){ out[f.key] = val(f); });
+    // Un spectateur qui aurait rempli le profil athlete avant de changer d'avis n'envoie pas ces valeurs.
+    F3.forEach(function(f){ out[f.key] = ath ? val(f) : ""; });
+    out.WAITLIST = closed() ? "Oui" : "";
+    out.SUBMITTED_AT = new Date().toISOString();
+    return out;
+  }
+
+  function send(){
+    if (!ENDPOINT){ S.fail = "Formulaire pas encore activé (endpoint à configurer)."; draw(); return; }
+    S.sending = true; draw();
     // Apps Script ne renvoie pas d'en-tete CORS : on poste en "no-cors".
     // La reponse est opaque mais le doPost s'execute et ecrit la ligne.
     // Content-Type text/plain = pas de requete preflight OPTIONS.
@@ -518,24 +563,87 @@ footer a:hover{color:#fff}
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload())
     }).then(function(){
       try { localStorage.removeItem(STORE); } catch(e){}
-      $("ok-name").textContent = payload.NAME;
-      $("formsec").hidden = true;
-      $("ok").hidden = false;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      S.sending = false; S.step = "fin"; draw();
+      // Vers le bloc de confirmation : les instructions de paiement doivent etre vues.
+      $("inscription").scrollIntoView();
     })["catch"](function(){
-      err.textContent = "Échec de l'envoi. Vérifiez votre connexion et réessayez.";
-      btn.disabled = false;
-      btn.textContent = SEND_LABEL;
+      S.sending = false; S.fail = "Échec de l'envoi. Vérifiez votre connexion et réessayez."; draw();
     });
   }
 
-  // --- Init
+  function copy(btn){
+    try { navigator.clipboard.writeText(btn.getAttribute("data-copy"))["catch"](function(){}); } catch(e){}
+    var t = btn.textContent; btn.textContent = "Copié"; setTimeout(function(){ btn.textContent = t; }, 1600);
+  }
+
+  app.addEventListener("click", function(e){
+    var c = e.target.closest(".case"), g = e.target.closest("[data-go]"), k = e.target.closest("[data-copy]");
+    if (c){ S.type = c.getAttribute("data-type"); delete S.err._type; save(); draw(); var again = app.querySelector('.case[aria-pressed="true"]'); if (again) again.focus(); }
+    else if (g) go(+g.getAttribute("data-go"));
+    else if (k) copy(k);
+  });
+  // La saisie est gardee sans redessiner ; la verification se fait en quittant le champ.
+  app.addEventListener("input", function(e){ var k = e.target.getAttribute("data-k"); if (k){ S.d[k] = e.target.value; save(); } });
+  app.addEventListener("change", function(e){ var c = e.target.getAttribute("data-c"); if (c) S.c[c] = e.target.checked; });
+  app.addEventListener("focusout", function(e){
+    var k = e.target.getAttribute && e.target.getAttribute("data-k"); if (!k) return;
+    var f = ALL.filter(function(x){ return x.key === k; })[0], m = check(f), before = S.err[k] || "";
+    // Un champ vide qu'on quitte sans l'avoir touche n'est signale qu'au clic sur Continuer.
+    if (m === "Renseignez ce champ." && !before) m = "";
+    if (m) S.err[k] = m; else delete S.err[k];
+    if (m !== before){
+      var next = e.relatedTarget && e.relatedTarget.id;
+      draw();
+      if (next && $(next)) $(next).focus();
+    }
+  });
+
+  /* ── Tuiles : un seul sujet ouvert, tout ferme a l'arrivee ── */
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".tile"));
+  $("tiles").addEventListener("click", function(e){
+    var b = e.target.closest(".tile"); if (!b) return;
+    var open = b.getAttribute("aria-expanded") === "true";
+    tiles.forEach(function(t){ t.setAttribute("aria-expanded", "false"); $(t.getAttribute("aria-controls")).hidden = true; });
+    if (!open){ b.setAttribute("aria-expanded", "true"); $(b.getAttribute("aria-controls")).hidden = false; }
+  });
+
+  /* ── Compte a rebours ── */
+  var units = document.querySelectorAll("#cd b"), timer;
+  function pad(n){ return (n < 10 ? "0" : "") + n; }
+  function count(){
+    var s = Math.floor((CLOSE_AT - Date.now()) / 1000);
+    if (s <= 0){
+      clearInterval(timer);
+      $("cd").hidden = true; $("cd-closed").hidden = false;
+      $("cta").textContent = "Liste d'attente";
+      if (S.step !== "fin") draw();
+      return;
+    }
+    var v = { d: Math.floor(s / 86400), h: pad(Math.floor(s % 86400 / 3600)), m: pad(Math.floor(s % 3600 / 60)), s: pad(s % 60) };
+    Array.prototype.forEach.call(units, function(n){ n.textContent = v[n.getAttribute("data-u")]; });
+  }
+
+  /* ── Video d'introduction ── */
+  if (VIDEO_SRC){
+    $("video").innerHTML = '<video src="' + esc(VIDEO_SRC) + '"' + (VIDEO_POSTER ? ' poster="' + esc(VIDEO_POSTER) + '"' : "") + ' controls playsinline preload="metadata"></video>';
+    $("video").hidden = false;
+  }
+
+  /* ── Fichier calendrier : journee du 7 novembre 2026 ── */
+  $("ics").href = "data:text/calendar;charset=utf-8," + encodeURIComponent([
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Armwrestling Club Strassen//Vendetta 2026//FR", "BEGIN:VEVENT",
+    "UID:vendetta-2026@armwrestlingclubstrassen.com", "DTSTAMP:20260917T000000Z",
+    "DTSTART;VALUE=DATE:20261107", "DTEND;VALUE=DATE:20261108",
+    "SUMMARY:Vendetta 2026 — bras de fer", "LOCATION:Glacis\\, Luxembourg-Ville", "URL:" + PAGE_URL,
+    "END:VEVENT", "END:VCALENDAR"].join("\r\n"));
+
+  /* ── Init ── */
   restore();
-  FIELDS.forEach(function(f){ $(f.el).addEventListener("input", save); });
-  $("f").addEventListener("submit", send);
+  draw();
+  count(); timer = setInterval(count, 1000);
 })();
 </script>
 
