@@ -178,6 +178,8 @@ h1 span{color:transparent;-webkit-text-stroke:2px var(--accent);letter-spacing:-
 .champ label i{font-style:normal;color:var(--soft);font-weight:500;letter-spacing:.04em;text-transform:none}
 .champ input,.champ select,.champ textarea{min-height:48px;padding:10px 12px;background:var(--field);border:2px solid var(--ink);border-radius:0;width:100%}
 .champ textarea{min-height:92px;resize:vertical}
+/* Telephone : indicatif du pays devant le numero. */
+.tel{display:grid;grid-template-columns:minmax(0,168px) minmax(0,1fr);gap:8px}
 .champ small{font-size:13px;color:var(--soft)}
 .champ.err input,.champ.err select{border-color:var(--accent)}
 .champ .msg{font-size:13.5px;font-weight:700;color:var(--accent);display:flex;gap:6px;align-items:flex-start}
@@ -296,7 +298,8 @@ footer a:hover{color:var(--ink)}
       <p>Tout licencié d'un club de bras de fer peut candidater : tous niveaux, hommes et femmes, à partir de 14 ans.</p>
       <ul>
         <li>Il y aura plus de candidats que de duels. La sélection sert à former des affrontements équilibrés, d'où les mesures et le palmarès demandés.</li>
-        <li>Les candidats retenus reçoivent par email une ou plusieurs propositions d'adversaire avant de confirmer.</li>
+        <li>Les candidats retenus sont recontactés avant le 20 octobre : ils reçoivent par email une ou plusieurs propositions d'adversaire avant de confirmer.</li>
+        <li>Après le 20 octobre, la carte des matchs est présentée officiellement.</li>
         <li>Vous ne venez que si vous avez un match ? Indiquez-le dans le formulaire : vous ne payez qu'une fois retenu.</li>
       </ul>
     </div></div>
@@ -395,6 +398,22 @@ footer a:hover{color:var(--ink)}
     { key:"PALMARES",        l:"Palmarès", t:"textarea", opt:true, large:true }
   ];
   var ALL = F2.concat(F3);
+
+  /* Indicatifs proposes devant le telephone. Le choix n'a pas de colonne a lui :
+     il est colle au numero dans PHONE ("+352 661 495 319"). "" = autre pays,
+     la personne tape alors l'indicatif elle-meme. */
+  var DIALS = [["+352","Luxembourg"],["+33","France"],["+32","Belgique"],["+49","Allemagne"],["+31","Pays-Bas"],["+41","Suisse"],
+    ["+39","Italie"],["+34","Espagne"],["+351","Portugal"],["+44","Royaume-Uni"],["+353","Irlande"],["+43","Autriche"],
+    ["+48","Pologne"],["+420","Tchéquie"],["+421","Slovaquie"],["+36","Hongrie"],["+40","Roumanie"],["+359","Bulgarie"],
+    ["+30","Grèce"],["+385","Croatie"],["+381","Serbie"],["+380","Ukraine"],["+370","Lituanie"],["+371","Lettonie"],
+    ["+46","Suède"],["+47","Norvège"],["+45","Danemark"],["+358","Finlande"],["+90","Turquie"],["+995","Géorgie"],
+    ["+7","Kazakhstan / Russie"],["+1","États-Unis / Canada"],["","Autre pays"]];
+  function dial(){ return S.d._DIAL == null ? "+352" : S.d._DIAL; }
+  // Numero complet : tel que tape s'il porte deja un indicatif, sinon indicatif choisi + numero.
+  function phone(){
+    var v = (S.d.PHONE || "").trim();
+    return !v || /^(\+|00)/.test(v) || !dial() ? v : dial() + " " + v;
+  }
   var STEP_NAMES = ["", "Vous venez comme…", "Vos coordonnées", "Votre profil d'athlète"];
 
   function $(id){ return document.getElementById(id); }
@@ -430,7 +449,10 @@ footer a:hover{color:var(--ink)}
       if (f.key === "AGE (years)" && S.type === ATHLETE && n < 14) return "Il faut avoir 14 ans ou plus pour disputer un match.";
     }
     if (f.t === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return "Adresse email incomplète : il manque la fin (par exemple « .com »).";
-    if (f.t === "tel" && v.replace(/\D/g, "").length < 6) return "Numéro de téléphone trop court.";
+    if (f.t === "tel"){
+      if (v.replace(/\D/g, "").length < 6) return "Numéro de téléphone trop court.";
+      if (!dial() && !/^(\+|00)/.test(v)) return "Commencez par l'indicatif du pays, par exemple +352.";
+    }
     return "";
   }
 
@@ -446,6 +468,8 @@ footer a:hover{color:var(--ink)}
     } else {
       var type = f.t === "num" ? 'text" inputmode="decimal' : f.t;
       ctl = '<input id="' + id + '" data-k="' + esc(f.key) + '" type="' + type + '" maxlength="120" value="' + esc(v) + '"' + (f.ac ? ' autocomplete="' + f.ac + '"' : "") + aria + '>';
+      if (f.t === "tel") ctl = '<div class="tel"><select id="i-dial" data-k="_DIAL" aria-label="Indicatif du pays">' +
+        DIALS.map(function(o){ return '<option value="' + o[0] + '"' + (o[0] === dial() ? " selected" : "") + '>' + esc((o[0] ? o[0] + " " : "") + o[1]) + '</option>'; }).join("") + '</select>' + ctl + '</div>';
     }
     return '<div class="champ' + (f.large ? " large" : "") + (e ? " err" : "") + '"><label for="' + id + '">' + f.l + (f.opt ? " <i>(facultatif)</i>" : "") + '</label>' + ctl +
       (e ? '<div class="msg" id="' + id + '-m"><span aria-hidden="true">✕</span>' + esc(e) + '</div>' : (f.h ? '<small>' + f.h + '</small>' : "")) + '</div>';
@@ -500,8 +524,8 @@ footer a:hover{color:var(--ink)}
     var ath = S.type === ATHLETE, later = ath && S.d.IF_NOT_SELECTED === ONLY_IF_MATCH, name = esc(S.d.NAME);
     var h = '<div class="fin">';
     if (att) h += '<h2 class="h2">Vous êtes sur <em>la liste d\'attente</em></h2><p>Merci ' + name + '. Rien à payer. Si une place se libère, nous vous écrivons à l\'adresse ci-dessous avec les instructions.</p>';
-    else if (later) h += '<h2 class="h2">Candidature <em>enregistrée</em></h2><p>Merci ' + name + '. Rien à régler pour l\'instant. Si vous êtes retenu·e, vous recevez par email une proposition d\'adversaire ; votre place de ' + PRICE + ' sera alors à régler pour valider votre venue.</p>';
-    else h += '<h2 class="h2">Inscription <em>enregistrée</em></h2><p>Merci ' + name + '. Elle devient valide à réception de votre virement de ' + PRICE + '. Une confirmation vous est ensuite envoyée par email.' + (ath ? " Si vous êtes retenu·e pour un match, vous recevez une proposition d'adversaire." : "") + '</p>';
+    else if (later) h += '<h2 class="h2">Candidature <em>enregistrée</em></h2><p>Merci ' + name + '. Rien à régler pour l\'instant. Si vous êtes retenu·e, vous recevez par email, avant le 20 octobre, une proposition d\'adversaire ; votre place de ' + PRICE + ' sera alors à régler pour valider votre venue.</p>';
+    else h += '<h2 class="h2">Inscription <em>enregistrée</em></h2><p>Merci ' + name + '. Elle devient valide à réception de votre virement de ' + PRICE + '. Une confirmation vous est ensuite envoyée par email.' + (ath ? " Si vous êtes retenu·e pour un match, vous recevez une proposition d'adversaire avant le 20 octobre. La carte des matchs est présentée officiellement après cette date." : "") + '</p>';
 
     if (!att && !later){
       var ref = ("VENDETTA " + S.d.SURNAME + " " + S.d.NAME).toUpperCase();
@@ -513,7 +537,7 @@ footer a:hover{color:var(--ink)}
 
     h += '<dl class="fiche"><dt>Nom</dt><dd>' + esc(S.d.NAME + " " + S.d.SURNAME) + '</dd>' +
       '<dt>Inscription</dt><dd>' + (ath ? "Athlète — bras : " + esc((S.d.ARM || "").toLowerCase()) + ", " + esc(S.d["WEIGHT (kg)"]) + " kg" : "Spectateur") + '</dd>' +
-      '<dt>Email</dt><dd>' + esc(S.d.EMAIL) + '</dd><dt>Téléphone</dt><dd>' + esc(S.d.PHONE) + '</dd></dl>' +
+      '<dt>Email</dt><dd>' + esc(S.d.EMAIL) + '</dd><dt>Téléphone</dt><dd>' + esc(phone()) + '</dd></dl>' +
       '<p class="petit-mot">Une erreur ? <a href="' + WHATSAPP + '" target="_blank" rel="noopener">Écrivez au club sur WhatsApp</a>, nous corrigeons.</p>' +
       '<div class="actions"><a class="btn petit" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent("Vendetta 2026 — 20 duels de bras de fer, samedi 7 novembre au Glacis, Luxembourg. Inscription : " + PAGE_URL) + '">Partager sur WhatsApp</a>' +
       '<button type="button" class="btn contour petit" data-copy="' + PAGE_URL + '">Copier le lien</button></div></div>';
@@ -548,7 +572,7 @@ footer a:hover{color:var(--ink)}
   function payload(){
     var ath = S.type === ATHLETE, out = { TYPE: S.type };
     // "82,5" devient "82.5" : la feuille doit recevoir des nombres triables.
-    function val(f){ var v = (S.d[f.key] || "").trim(); return f.t === "num" ? v.replace(",", ".") : v; }
+    function val(f){ var v = (S.d[f.key] || "").trim(); return f.t === "num" ? v.replace(",", ".") : f.t === "tel" ? phone() : v; }
     F2.forEach(function(f){ out[f.key] = val(f); });
     // Un spectateur qui aurait rempli le profil athlete avant de changer d'avis n'envoie pas ces valeurs.
     F3.forEach(function(f){ out[f.key] = ath ? val(f) : ""; });
@@ -594,6 +618,8 @@ footer a:hover{color:var(--ink)}
   app.addEventListener("change", function(e){ var c = e.target.getAttribute("data-c"); if (c) S.c[c] = e.target.checked; });
   app.addEventListener("focusout", function(e){
     var k = e.target.getAttribute && e.target.getAttribute("data-k"); if (!k) return;
+    // L'indicatif n'a pas de regle a lui : le quitter reverifie le telephone.
+    if (k === "_DIAL") k = "PHONE";
     var f = ALL.filter(function(x){ return x.key === k; })[0], m = check(f), before = S.err[k] || "";
     // Un champ vide qu'on quitte sans l'avoir touche n'est signale qu'au clic sur Continuer.
     if (m === "Renseignez ce champ." && !before) m = "";
