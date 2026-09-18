@@ -409,10 +409,19 @@ footer a:hover{color:var(--ink)}
     ["+46","Suède"],["+47","Norvège"],["+45","Danemark"],["+358","Finlande"],["+90","Turquie"],["+995","Géorgie"],
     ["+7","Kazakhstan / Russie"],["+1","États-Unis / Canada"],["","Autre pays"]];
   function dial(){ return S.d._DIAL == null ? "+352" : S.d._DIAL; }
-  // Numero complet : tel que tape s'il porte deja un indicatif, sinon indicatif choisi + numero.
+  // Numero complet au format "(+33)0649494949". Les parentheses evitent que la
+  // feuille prenne un texte commencant par "+" pour une formule.
   function phone(){
-    var v = (S.d.PHONE || "").trim();
-    return !v || /^(\+|00)/.test(v) || !dial() ? v : dial() + " " + v;
+    var v = (S.d.PHONE || "").replace(/[\s.\-\/]/g, "");
+    if (!v) return "";
+    if (/^(\+|00)/.test(v)){
+      // Indicatif tape a la main : on le reconnait parmi la liste, le plus long d'abord.
+      v = v.replace(/^00/, "+");
+      var codes = DIALS.map(function(o){ return o[0]; }).filter(Boolean).sort(function(a, b){ return b.length - a.length; });
+      for (var i = 0; i < codes.length; i++) if (v.indexOf(codes[i]) === 0) return "(" + codes[i] + ")" + v.slice(codes[i].length);
+      return "(" + v + ")";
+    }
+    return dial() ? "(" + dial() + ")" + v : v;
   }
   var STEP_NAMES = ["", "Vous venez comme…", "Vos coordonnées", "Votre profil d'athlète"];
 
