@@ -76,7 +76,7 @@ Supprime définitivement la classe de risque ci-dessus. Non appliqué à ce jour
 Une page sans lien entrant n'est jamais découverte, même présente dans le sitemap.
 
 Pages pivots à utiliser pour lier une nouveauté :
-- `articles.html` — hub principal, 22 liens sortants
+- `articles.html` — hub principal, 23 liens sortants
 - `index.html` — bloc « Le club près de chez vous »
 - `m/index.html` — 10 liens contextuels dans les slides (**seuls liens que Googlebot voit depuis la home**)
 

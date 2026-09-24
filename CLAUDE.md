@@ -49,6 +49,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 | [docs/DEPLOIEMENT.md](docs/DEPLOIEMENT.md) | Procédure de déploiement |
 | [docs/VENDETTA.md](docs/VENDETTA.md) | Collecte des candidatures Vendetta 2026 (Apps Script → Google Sheets) |
 | [docs/DUEL.md](docs/DUEL.md) | Spécification du Duel Mode (`duel.html`) |
+| [docs/GOOGLE-BUSINESS.md](docs/GOOGLE-BUSINESS.md) | Posts Google Business : règles, format, journal des posts |
 
 ## Règles à respecter
 
@@ -75,6 +76,10 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 - La redirection mobile ligne 5 de `index.html` — voir [docs/SEO.md](docs/SEO.md) pour la justification et ses contraintes.
 - Les `<h4>` de `comment-gagner`, `premier-tournoi` et `recuperation-tendinites` sautent le niveau `h3` : ils portent des styles dédiés (`.timeline-content h4`, `.checklist h4`). Les convertir changerait le rendu.
 - `.fade-in` reste à `opacity: 0` par défaut ; le repli sans JS passe par le `<noscript>` et le `onerror` de `main.js` dans `index.html`.
+
+## Posts Google Business
+
+Quand Nils demande de nouveaux posts Google Business : préparer **13 posts, un par semaine, pour les 3 mois suivants**, texte uniquement (Nils gère les photos), en suivant [docs/GOOGLE-BUSINESS.md](docs/GOOGLE-BUSINESS.md). Skill local : `.claude/skills/google-business-posts`.
 
 ## Contexte
 
