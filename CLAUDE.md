@@ -1,7 +1,7 @@
 # Armwrestling Club Strassen — site web
 
 Site vitrine statique du club de bras de fer de Strassen (Luxembourg), affilié LAF.
-Objectif principal : **convertir des visiteurs en participants à la séance d'essai gratuite du mardi 18h.**
+Objectif principal : **convertir des visiteurs en participants à la séance d'essai gratuite du mardi 19h.**
 
 ## Nature du projet
 
@@ -29,7 +29,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ├── style.css                      Feuille principale (~71 Ko)
 ├── blog.css                       Styles spécifiques aux articles
 ├── main.js                        Interactions globales
-├── sitemap.xml                    23 URLs indexables
+├── sitemap.xml                    24 URLs indexables
 ├── robots.txt
 ├── _config.yml                    Jekyll — exclut docs/, drafts/ et les .md du site publié
 ├── *.webp                         Images servies (compressées)
@@ -79,7 +79,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ## Contexte
 
 - **Président** : Nils Davoine, arbitre national luxembourgeois
-- **Sites d'entraînement** : Strassen (mardi 18h) et Munsbach (vendredi 18h)
+- **Sites d'entraînement** : Strassen, Centre National des Arts Martiaux (CNAM), 297 rue de Reckenthal, L-2410 (mardi 19h–21h30, depuis le 29/09/2026 ; 60 places, 5 tables) et Munsbach (vendredi 18h)
 - **Événement** : POWER ARM 1st Edition
 
 ## Agent skills
