@@ -8,7 +8,9 @@ export function ligneAthlete(p, villeNom, clubNom) {
   const id = esc(p.id);
   const nom = esc(p.prenom + ' ' + p.nom);
   const brasLigne = p.bras === 'Les deux' ? 'Les deux bras' : 'Bras ' + esc(String(p.bras).toLowerCase());
-  const pseudo = String(p.instagram || '').replace(/^@/, '');
+  // Un pseudo mal formé donnerait un lien cassé vers instagram.com : on ne l'affiche pas.
+  const brut = String(p.instagram || '').replace(/^@/, '');
+  const pseudo = /^[A-Za-z0-9._]{1,30}$/.test(brut) ? brut : '';
   const lignes = (p.palmares ? '<dt>Palmarès</dt><dd>' + esc(p.palmares) + '</dd>' : '')
     + (pseudo ? '<dt>Instagram</dt><dd><a href="https://www.instagram.com/' + esc(pseudo) + '/" rel="noopener" target="_blank">@' + esc(pseudo) + '</a></dd>' : '');
   const spec = (t, v, u) => '<div><dt>' + t + '</dt><dd>' + esc(v) + (u ? '<small>' + u + '</small>' : '') + '</dd></div>';
