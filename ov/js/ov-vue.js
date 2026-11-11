@@ -13,13 +13,15 @@ export function ligneAthlete(p, villeNom, clubNom) {
   const pseudo = /^[A-Za-z0-9._]{1,30}$/.test(brut) ? brut : '';
   const lignes = (p.palmares ? '<dt>Palmarès</dt><dd>' + esc(p.palmares) + '</dd>' : '')
     + (pseudo ? '<dt>Instagram</dt><dd><a href="https://www.instagram.com/' + esc(pseudo) + '/" rel="noopener" target="_blank">@' + esc(pseudo) + '</a></dd>' : '');
-  const spec = (t, v, u) => '<div><dt>' + t + '</dt><dd>' + esc(v) + (u ? '<small>' + u + '</small>' : '') + '</dd></div>';
+  // À l'écran, décimales à la française (84,5) ; data-poids garde le point pour le tri et les filtres.
+  const nb = (v) => esc(typeof v === 'number' ? String(v).replace('.', ',') : v);
+  const spec = (t, v, u) => '<div><dt>' + t + '</dt><dd>' + nb(v) + (u ? '<small>' + u + '</small>' : '') + '</dd></div>';
   return '<li class="athlete" data-ville="' + esc(villeNom) + '" data-bras="' + esc(p.bras) + '" data-poids="' + esc(p.poids) + '" data-club="' + esc(clubNom) + '">'
     + '<div class="athlete__row">'
     + '<figure class="athlete__thumb"><img src="' + esc(p.mini) + '" width="192" height="240" alt="' + nom + '" decoding="async"></figure>'
     + '<div class="athlete__id"><p class="athlete__name" translate="no"><button class="athlete__toggle" type="button" aria-expanded="false" aria-controls="fiche-' + id + '">' + nom + '</button></p><p class="athlete__club">' + esc(clubNom) + '</p></div>'
-    + '<p class="athlete__facts">' + brasLigne + '<span class="facts__more"> · ' + esc(p.taille) + ' cm · ' + esc(p.age) + ' ans</span></p>'
-    + '<p class="athlete__weight">' + esc(p.poids) + '<small>kg</small></p>' + CHEVRON
+    + '<p class="athlete__facts">' + brasLigne + '<span class="facts__more"> · ' + nb(p.taille) + ' cm · ' + esc(p.age) + ' ans</span></p>'
+    + '<p class="athlete__weight">' + nb(p.poids) + '<small>kg</small></p>' + CHEVRON
     + '</div>'
     + '<div class="athlete__fiche" id="fiche-' + id + '" hidden>'
     + '<figure class="fiche__photo"><img data-photo="' + id + '" width="960" height="640" alt="' + nom + '" decoding="async"></figure>'
