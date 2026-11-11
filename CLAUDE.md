@@ -25,11 +25,15 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ├── tournament.html                Outil de gestion de tournoi (noindex volontaire)
 ├── duel.html                      Outil de gestion de duels (noindex volontaire)
 ├── vendetta.html                  Candidature Vendetta 2026 — page publique indexable
+├── open-vendetta.html             Vitrine Open Vendetta (Firestore) — page publique indexable
+├── open-vendetta-ajouter.html     Inscription Open Vendetta (noindex, follow volontaire)
+├── open-vendetta-gestion.html     Gestion Open Vendetta (noindex, nofollow volontaire)
+├── ov/                            JS et assets d'Open Vendetta (voir docs/OPEN-VENDETTA.md)
 ├── *.html                         Pages SEO locales et articles de blog
 ├── style.css                      Feuille principale (~71 Ko)
 ├── blog.css                       Styles spécifiques aux articles
 ├── main.js                        Interactions globales
-├── sitemap.xml                    24 URLs indexables
+├── sitemap.xml                    25 URLs indexables
 ├── robots.txt
 ├── _config.yml                    Jekyll — exclut docs/, drafts/ et les .md du site publié
 ├── *.webp                         Images servies (compressées)
@@ -50,6 +54,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 | [docs/VENDETTA.md](docs/VENDETTA.md) | Collecte des candidatures Vendetta 2026 (Apps Script → Google Sheets) |
 | [docs/DUEL.md](docs/DUEL.md) | Spécification du Duel Mode (`duel.html`) |
 | [docs/GOOGLE-BUSINESS.md](docs/GOOGLE-BUSINESS.md) | Posts Google Business : règles, format, journal des posts |
+| [docs/OPEN-VENDETTA.md](docs/OPEN-VENDETTA.md) | Open Vendetta : vitrine, inscription, gestion (Firebase) |
 
 ## Règles à respecter
 
@@ -67,12 +72,13 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 - Ne **pas** renommer une image déjà en ligne pour l'esthétique : GitHub Pages ne sait pas rediriger un fichier image, et un renommage fait perdre son classement Google Images. Les 42 images en `snake_case` ou `PascalCase` restent telles quelles, volontairement.
 
 ### Mesure d'audience
-- GoatCounter (sans cookie, sans bannière RGPD) est déclaré en fin de `<body>` sur les 24 pages publiques.
+- GoatCounter (sans cookie, sans bannière RGPD) est déclaré en fin de `<body>` sur les 25 pages publiques.
 - **À activer** : remplacer `VOTRE-CODE-GOATCOUNTER` par le code obtenu à l'inscription sur goatcounter.com.
 
 ### Ce qui est volontaire — ne pas « corriger »
 - `tournament.html` : `noindex, follow`, pas de `<h1>` — c'est un outil interne, pas une page publique.
 - `m/evenement.html` : `noindex, nofollow` — formulaire réservé aux inscrits.
+- `open-vendetta-ajouter.html` (`noindex, follow`) et `open-vendetta-gestion.html` (`noindex, nofollow`, hors sitemap) : formulaire et outil de l'organisateur, pas des pages à classer.
 - La redirection mobile ligne 5 de `index.html` — voir [docs/SEO.md](docs/SEO.md) pour la justification et ses contraintes.
 - Les `<h4>` de `comment-gagner`, `premier-tournoi` et `recuperation-tendinites` sautent le niveau `h3` : ils portent des styles dédiés (`.timeline-content h4`, `.checklist h4`). Les convertir changerait le rendu.
 - `.fade-in` reste à `opacity: 0` par défaut ; le repli sans JS passe par le `<noscript>` et le `onerror` de `main.js` dans `index.html`.
