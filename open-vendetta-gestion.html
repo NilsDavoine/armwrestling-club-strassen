@@ -163,6 +163,10 @@
   .merge { display: grid; gap: var(--s-3); margin-top: var(--s-5); padding: var(--s-4); background: var(--panel); border-radius: var(--r-md); }
   .merge__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
 
+  .noimg { display: grid; place-items: center; width: 88px; height: 110px; padding: var(--s-1); border-radius: var(--r-sm); background: var(--surface); color: var(--muted); font-size: var(--t-label); text-align: center; }
+  .prow .noimg { width: 64px; height: 80px; grid-row: span 2; }
+  @media (min-width: 1024px) { .prow .noimg { grid-row: auto; } }
+
   .toast { position: fixed; left: var(--gut); right: var(--gut); bottom: calc(var(--tabbar) + var(--s-3) + env(safe-area-inset-bottom)); z-index: 25; margin: 0; padding: var(--s-3) var(--s-4);
     background: #ffffff; color: #181818; border-radius: var(--r-sm); font-weight: 500; box-shadow: 0 6px 24px rgb(0 0 0 / .4); }
   .toast:empty { display: none; }
@@ -200,7 +204,9 @@
     <h1>Gestion d’Open Vendetta</h1>
     <p class="login__lock">Réservé à l’organisateur</p>
     <p>Les profils en attente, les candidatures reçues, les villes et les clubs.</p>
+    <p class="login__note" role="alert" data-login-msg hidden></p>
     <button class="btn btn--google" type="button" data-login><img src="ov/assets/icons/google-icon.svg" alt="" width="20" height="20">Se connecter avec Google</button>
+    <button class="btn btn--secondary" type="button" data-denied-logout hidden>Se déconnecter</button>
     <p class="login__note">Seul le compte Google de l’organisateur ouvre cette page.</p>
   </div>
   <figure class="login__photo"><img src="ov/assets/img/club/match-table-noir.webp" width="1961" height="1024" alt="" loading="lazy" decoding="async"></figure>
@@ -236,300 +242,496 @@
 </div>
 
 <script src="ov/js/ov-forms.js"></script>
-<script>
-(() => {
-  // ------------------------------------------------------------------ state (empty until loaded)
-  const S = {
-    villes: [],
-    clubs: [],
-    profils: [],
-    cands: [],
-  };
-  const ETATS = [['nouvelle', 'Nouvelle'], ['en_discussion', 'En discussion'], ['match_organise', 'Match organisé'], ['sans_suite', 'Sans suite']];
-  const etatNom = (k) => (ETATS.find((e) => e[0] === k) || [k, k])[1];
-  const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null };
+<script type="module">
+import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majPhoto, supprimerProfil, majCandidature, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-firebase.js';
+import { clubProche, athletesDeLaFeuille, BRAS } from './ov/js/ov-data.js';
+import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
+import { esc } from './ov/js/ov-vue.js';
 
-  // ------------------------------------------------------------------ helpers
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const club = (id) => S.clubs.find((c) => c.id === id);
-  const ville = (id) => S.villes.find((v) => v.id === id);
-  const profil = (id) => S.profils.find((p) => p.id === id);
-  const full = (p) => p.prenom + ' ' + p.nom;
-  const brasTxt = (b) => b === 'Les deux' ? 'les deux bras' : 'bras ' + b.toLowerCase();
-  const nb = (n, one, many) => n + ' ' + (n > 1 ? many : one);
-  const slug = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'x';
-  const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
-  function distance(a, b) {
-    const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
-    for (let j = 1; j <= b.length; j++) d[0][j] = j;
-    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-    return d[a.length][b.length];
-  }
-  // the existing club closest to what the athlete typed (a typo, a missing letter, the wrong case)
-  function closest(typed) {
-    const t = norm(typed); let best = null, score = 0;
-    for (const c of S.clubs) { const n = norm(c.nom); const s = 1 - distance(t, n) / Math.max(t.length, n.length); if (s > score) { score = s; best = c; } }
-    return score >= 0.6 ? best : null;
-  }
-  let toastTimer = 0;
-  function toast(text) {
-    const t = $('[data-toast]'); t.textContent = text;
-    clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.textContent = ''; }, 5000);
-  }
-  const SVG_UP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>';
-  const SVG_DOWN = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5"/></svg>';
+// ------------------------------------------------------------------ state (filled by chargerTout)
+const S = { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() };
+const ETATS = [['nouvelle', 'Nouvelle'], ['en_discussion', 'En discussion'], ['match_organise', 'Match organisé'], ['sans_suite', 'Sans suite']];
+const etatNom = (k) => (ETATS.find((e) => e[0] === k) || [k, k])[1];
+const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null };
 
-  // ------------------------------------------------------------------ the edit form (Corriger, Modifier)
-  function field(id, label, name, value, opts = {}) {
-    const attrs = opts.num ? ' inputmode="' + (opts.dec ? 'decimal' : 'numeric') + '" data-min="' + opts.min + '" data-max="' + opts.max + '"' : '';
-    const req = opts.req ? ' required data-check data-err="' + esc(opts.err) + '"' : (opts.num ? ' data-check' : '');
-    const fmt = opts.num || opts.fmt ? ' data-err-format="' + esc(opts.fmt) + '"' : '';
-    return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"><label for="' + id + '">' + label + '</label>' +
-      (opts.area ? '<textarea id="' + id + '" name="' + name + '" rows="3">' + esc(value) + '</textarea>'
-        : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + attrs + req + fmt + ' aria-describedby="' + id + '-err">') +
-      '<p class="field__error" id="' + id + '-err" hidden></p></div>';
+// ------------------------------------------------------------------ helpers
+const $ = (sel, root = document) => root.querySelector(sel);
+// lookups by identifier go through a Map : an identifier from the database may be any string, even __proto__
+let idx = { villes: new Map(), clubs: new Map(), profils: new Map(), cands: new Map() };
+function reindex() {
+  idx = { villes: new Map(S.villes.map((v) => [v.id, v])), clubs: new Map(S.clubs.map((c) => [c.id, c])),
+    profils: new Map(S.profils.map((p) => [p.id, p])), cands: new Map(S.cands.map((c) => [c.id, c])) };
+}
+const club = (id) => idx.clubs.get(id);
+const ville = (id) => idx.villes.get(id);
+const profil = (id) => idx.profils.get(id);
+const contact = (p) => S.contacts.get(p.id) || {};
+const q = (attr, id) => '[' + attr + '="' + CSS.escape(String(id)) + '"]';
+const full = (p) => (p.prenom || '') + ' ' + (p.nom || '');
+const brasOk = (b) => BRAS.includes(b);
+const brasTxt = (b) => !brasOk(b) ? 'bras à préciser' : b === 'Les deux' ? 'les deux bras' : 'bras ' + b.toLowerCase();
+const nb = (n, one, many) => n + ' ' + (n > 1 ? many : one);
+const ans = (v) => v == null ? 'âge ?' : nb(v, 'an', 'ans');
+const kg = (v) => v == null ? 'poids ?' : esc(v) + ' kg';
+const cm = (v) => v == null ? '<span class="muted">?</span>' : esc(v) + ' cm';
+const date = (t) => { const d = t && typeof t.toDate === 'function' ? t.toDate() : null; return d ? d.toLocaleDateString('fr-FR') : ''; };
+const mailLink = (e) => e ? '<a href="' + esc('mailto:' + encodeURIComponent(e)) + '">' + esc(e) + '</a>' : '<span class="muted">Aucun</span>';
+const telLink = (t) => t ? '<a href="' + esc('tel:' + encodeURIComponent(t)) + '">' + esc(t) + '</a>' : '<span class="muted">Aucun</span>';
+const photoImg = (p, w, h, alt) => p.mini && String(p.mini).startsWith('data:image/')
+  ? '<img src="' + esc(p.mini) + '" width="' + w + '" height="' + h + '" alt="' + esc(alt) + '">'
+  : '<span class="noimg" role="img" aria-label="Pas de photo">Pas de photo</span>';
+const parDate = (sens) => (a, b) => sens * (((a.creeLe && a.creeLe.seconds) || 0) - ((b.creeLe && b.creeLe.seconds) || 0));
+// what a profile still lacks before it can be published
+function manque(p) {
+  const m = [];
+  if (!p.mini) m.push('la photo');
+  if (!p.clubId || !club(p.clubId)) m.push('le club');
+  if (!p.villeId || !ville(p.villeId)) m.push('la ville');
+  if (!brasOk(p.bras)) m.push('le bras');
+  return m;
+}
+let toastTimer = 0;
+function toast(text) {
+  const t = $('[data-toast]'); t.textContent = text;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.textContent = ''; }, 5000);
+}
+const SVG_UP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>';
+const SVG_DOWN = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5"/></svg>';
+
+// ------------------------------------------------------------------ load and write
+async function recharger() {
+  const t = await chargerTout();
+  S.villes = t.villes.sort((a, b) => (a.ordre ?? 0) - (b.ordre ?? 0));
+  S.clubs = t.clubs.sort((a, b) => String(a.nom || '').localeCompare(String(b.nom || ''), 'fr'));
+  S.contacts = new Map(t.contacts.map((c) => [c.id, c]));
+  S.profils = t.profils.sort(parDate(1));
+  S.cands = t.candidatures.sort(parDate(-1));
+  reindex();
+}
+const trierClubs = () => S.clubs.sort((a, b) => String(a.nom || '').localeCompare(String(b.nom || ''), 'fr'));
+let busy = false;
+// the write first, then `apres` updates S and draws again; a failed write leaves S as it was
+async function agir(ecriture, apres, echec) {
+  if (busy) return false;
+  busy = true;
+  const bts = [...document.querySelectorAll('#views button, #views select, #views input')].filter((b) => !b.disabled);
+  bts.forEach((b) => { b.disabled = true; });
+  try { await ecriture(); }
+  catch (err) {
+    console.error(err);
+    bts.forEach((b) => { b.disabled = false; });
+    busy = false;
+    toast(err && err.message === 'photo-trop-lourde' ? 'Photo trop lourde : choisissez-en une autre.' : 'Pas enregistré : réessayez.');
+    if (echec) echec();
+    return false;
   }
-  function select(id, label, name, value, options) {
-    return '<div class="field"><label for="' + id + '">' + label + '</label><select id="' + id + '" name="' + name + '">' +
-      options.map(([v, t]) => '<option value="' + esc(v) + '"' + (v === value ? ' selected' : '') + '>' + esc(t) + '</option>').join('') + '</select></div>';
-  }
-  function editForm(p) {
-    const k = 'e-' + p.id + '-';
-    const clubs = [['', p.club ? '' : 'À ranger : « ' + (p.clubSaisi || '') + ' »'], ...S.clubs.map((c) => [c.id, c.nom])].filter((o) => o[0] || o[1]);
-    return '<form class="edit" data-edit="' + p.id + '" novalidate aria-label="Modifier la fiche de ' + esc(full(p)) + '"><div class="edit__grid">' +
-      field(k + 'prenom', 'Prénom', 'prenom', p.prenom, { req: true, err: 'Écrivez le prénom.' }) +
-      field(k + 'nom', 'Nom', 'nom', p.nom, { req: true, err: 'Écrivez le nom.' }) +
-      select(k + 'ville', 'Ville', 'ville', p.ville, S.villes.map((v) => [v.id, v.nom])) +
-      select(k + 'club', 'Club', 'club', p.club || '', clubs) +
-      field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
-      field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
-      field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, req: true, err: 'Écrivez le tour de bras.', fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
-      field(k + 'age', 'Âge', 'age', p.age, { num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
-      field(k + 'pratique', 'Années de pratique', 'pratique', p.pratique, { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
-      select(k + 'bras', 'Bras', 'bras', p.bras, [['Droit', 'Droit'], ['Gauche', 'Gauche'], ['Les deux', 'Les deux']]) +
-      field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
-      field(k + 'insta', 'Instagram', 'instagram', p.instagram, {}) +
-      field(k + 'email', 'Email (jamais affiché)', 'email', p.email, { type: 'email', req: true, err: 'Écrivez l’email.', fmt: 'Une adresse email avec un @, comme nom@exemple.lu.' }) +
-      field(k + 'tel', 'Téléphone (jamais affiché)', 'tel', p.tel, {}) +
-      '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
-  }
-  function saveEdit(form) {
-    if (OVForms.validate(form).length) { toast('Un champ est à corriger dans la fiche.'); return false; }
-    const p = profil(form.dataset.edit), f = form.elements;
-    Object.assign(p, { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), ville: f.ville.value, poids: Number(f.poids.value.replace(',', '.')), taille: Number(f.taille.value),
-      biceps: Number(f.biceps.value.replace(',', '.')), age: Number(f.age.value), pratique: Number(f.pratique.value), bras: f.bras.value, palmares: f.palmares.value.trim(),
-      instagram: f.instagram.value.trim(), email: f.email.value.trim(), tel: f.tel.value.trim() });
-    if (f.club.value) p.club = f.club.value;
+  busy = false;
+  await apres();
+  return true;
+}
+
+// ------------------------------------------------------------------ the edit form (Corriger, Modifier)
+function field(id, label, name, value, opts = {}) {
+  const attrs = opts.num ? ' inputmode="' + (opts.dec ? 'decimal' : 'numeric') + '" data-min="' + opts.min + '" data-max="' + opts.max + '"' : '';
+  const req = opts.req ? ' required data-check data-err="' + esc(opts.err) + '"' : (opts.num || opts.kind ? ' data-check' : '');
+  const kind = opts.kind ? ' data-kind="' + opts.kind + '"' : '';
+  const fmt = opts.num || opts.fmt ? ' data-err-format="' + esc(opts.fmt) + '"' : '';
+  return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"><label for="' + id + '">' + label + '</label>' +
+    (opts.area ? '<textarea id="' + id + '" name="' + name + '" rows="3">' + esc(value) + '</textarea>'
+      : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + attrs + kind + req + fmt + ' aria-describedby="' + id + '-err">') +
+    '<p class="field__error" id="' + id + '-err" hidden></p></div>';
+}
+function select(id, label, name, value, options, opts = {}) {
+  const req = opts.req ? ' required data-check data-err="' + esc(opts.err) + '" aria-describedby="' + id + '-err"' : '';
+  return '<div class="field"><label for="' + id + '">' + label + '</label><select id="' + id + '" name="' + name + '"' + req + '>' +
+    options.map(([v, t]) => '<option value="' + esc(v) + '"' + (v === value ? ' selected' : '') + '>' + esc(t) + '</option>').join('') + '</select>' +
+    (opts.req ? '<p class="field__error" id="' + id + '-err" hidden></p>' : '') + '</div>';
+}
+function editForm(p) {
+  const k = 'e-' + esc(p.id) + '-';
+  const clubOk = p.clubId && club(p.clubId), villeOk = p.villeId && ville(p.villeId);
+  const clubs = [...(clubOk ? [] : [['', p.clubSaisi ? 'À ranger : « ' + p.clubSaisi + ' »' : 'À ranger']]), ...S.clubs.map((c) => [c.id, c.nom])];
+  const villes = [...(villeOk ? [] : [['', p.villeSaisie ? 'À choisir (saisi : « ' + p.villeSaisie + ' »)' : 'À choisir']]), ...S.villes.map((v) => [v.id, v.nom])];
+  const bras = [...(brasOk(p.bras) ? [] : [['', 'À choisir']]), ['Droit', 'Droit'], ['Gauche', 'Gauche'], ['Les deux', 'Les deux']];
+  return '<form class="edit" data-edit="' + esc(p.id) + '" novalidate aria-label="Modifier la fiche de ' + esc(full(p)) + '"><div class="edit__grid">' +
+    field(k + 'prenom', 'Prénom', 'prenom', p.prenom, { req: true, err: 'Écrivez le prénom.' }) +
+    field(k + 'nom', 'Nom', 'nom', p.nom, { req: true, err: 'Écrivez le nom.' }) +
+    select(k + 'ville', 'Ville', 'ville', villeOk ? p.villeId : '', villes) +
+    select(k + 'club', 'Club', 'club', clubOk ? p.clubId : '', clubs) +
+    field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
+    field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
+    field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, req: true, err: 'Écrivez le tour de bras.', fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
+    field(k + 'age', 'Âge', 'age', p.age, { num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
+    field(k + 'pratique', 'Années de pratique', 'pratique', p.pratique, { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
+    select(k + 'bras', 'Bras', 'bras', brasOk(p.bras) ? p.bras : '', bras, { req: true, err: 'Choisissez le bras.' }) +
+    field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
+    field(k + 'insta', 'Instagram', 'instagram', p.instagram, { kind: 'handle', fmt: 'Un pseudo Instagram : lettres, chiffres, points et tirets bas.' }) +
+    '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
+    '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
+}
+async function saveEdit(form) {
+  if (OVForms.validate(form).length) { toast('Un champ est à corriger dans la fiche.'); return; }
+  const p = profil(form.dataset.edit); if (!p) return;
+  const f = form.elements;
+  const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: Number(f.poids.value.replace(',', '.')), taille: Number(f.taille.value),
+    biceps: Number(f.biceps.value.replace(',', '.')), age: Number(f.age.value), pratique: Number(f.pratique.value), bras: f.bras.value,
+    palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
+  if (f.ville.value && ville(f.ville.value)) champs.villeId = f.ville.value;
+  if (f.club.value && club(f.club.value)) champs.clubId = f.club.value;
+  const fichier = f.photo.files && f.photo.files[0];
+  let photo = null;
+  await agir(async () => {
+    if (fichier) {
+      // one after the other : two canvases decoded at once weigh too much on a phone
+      const image = await reduirePhoto(fichier, FICHE.max, FICHE.limite);
+      const mini = await reduirePhoto(fichier, MINI.max, MINI.limite);
+      photo = { image, mini };
+    }
+    await majProfil(p.id, champs);
+    if (photo) await majPhoto(p.id, photo.image, photo.mini);
+  }, () => {
+    Object.assign(p, champs); if (photo) p.mini = photo.mini;
     ui.open = null;
     toast(p.statut === 'en_attente' ? 'Fiche de ' + full(p) + ' corrigée. Elle attend toujours votre validation.' : 'Fiche de ' + full(p) + ' enregistrée.');
-    return true;
-  }
-
-  // ------------------------------------------------------------------ the views
-  function pendingCard(p) {
-    const c = club(p.club), guess = !c && p.clubSaisi ? closest(p.clubSaisi) : null;
-    let clubBlock = '';
-    if (!c) {
-      clubBlock = '<div class="clubfix" data-clubfix="' + p.id + '" tabindex="-1"><p><b>Ce club n’existe pas encore.</b> ' + (guess ? 'Il ressemble à ' + esc(guess.nom) + '.' : 'Aucun club existant ne lui ressemble.') + '</p>' +
-        (guess ? '<button class="btn btn--secondary" type="button" data-act="ranger" data-club="' + guess.id + '">Ranger dans ' + esc(guess.nom) + '&nbsp;?</button>' : '') +
-        (ui.newClub === p.id
-          ? '<form class="inline-form" data-newclub="' + p.id + '" novalidate>' + field('nc-' + p.id, 'Nom du nouveau club', 'nom', p.clubSaisi.replace(/\b\p{L}/gu, (m) => m.toUpperCase()), { req: true, err: 'Écrivez le nom du club.' }) +
-            '<div class="edit__actions"><button class="btn btn--primary" type="submit">Créer ce club</button><button class="btn btn--secondary" type="button" data-act="annuler-club">Annuler</button></div></form>'
-          : '<button class="btn btn--secondary" type="button" data-act="creer-club">Créer un nouveau club</button>') + '</div>';
-    } else {
-      clubBlock = '<p class="clubok">Club : ' + esc(c.nom) + '</p>';
-    }
-    const refuse = ui.refuse === p.id
-      ? '<div class="confirm" role="group" aria-label="Confirmer le refus"><p>Refuser la fiche de ' + esc(p.prenom) + '&nbsp;? Elle ne sera pas publiée.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="refuser-ok">Refuser la fiche</button><button class="btn btn--secondary" type="button" data-act="annuler">Garder la fiche</button></div></div>'
-      : '';
-    return '<article class="acard" data-profil="' + p.id + '"><div class="acard__top"><img src="' + p.photo + '" width="88" height="110" alt="Photo envoyée par ' + esc(full(p)) + '">' +
-      '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + esc(ville(p.ville)?.nom) + ' · ' + nb(p.age, 'an', 'ans') + ' · ' + p.poids + ' kg · ' + brasTxt(p.bras) + '</p><p class="acard__sub">Reçue le ' + esc(p.recu) + '</p></div></div>' +
-      '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + p.taille + ' cm</dd><dt>Tour de bras</dt><dd>' + p.biceps + ' cm</dd><dt>Pratique</dt><dd>' + nb(p.pratique, 'an', 'ans') + '</dd>' +
-      '<dt>Palmarès</dt><dd>' + (esc(p.palmares) || '<span class="muted">Rien d’indiqué</span>') + '</dd><dt>Instagram</dt><dd>' + (esc(p.instagram) || '<span class="muted">Aucun</span>') + '</dd>' +
-      '<dt>Email</dt><dd><a href="mailto:' + esc(p.email) + '">' + esc(p.email) + '</a></dd><dt>Téléphone</dt><dd>' + (esc(p.tel) || '<span class="muted">Aucun</span>') + '</dd>' +
-      (p.age < 18 ? '<dt>Accord parent</dt><dd>' + (p.accordParent ? 'Oui, coché' : 'Non') + '</dd>' : '') + '</dl>' +
-      clubBlock +
-      (ui.open === p.id ? editForm(p) : '<div class="acard__actions"><button class="btn btn--primary" type="button" data-act="valider">Valider</button><button class="btn btn--secondary" type="button" data-act="corriger">Corriger</button><button class="btn btn--secondary btn--danger" type="button" data-act="refuser">Refuser</button></div>') +
-      refuse + '</article>';
-  }
-  function candCard(c) {
-    const p = profil(c.cible);
-    return '<article class="acard" data-cand="' + c.id + '"><p class="who"><b>' + esc(c.prenom + ' ' + c.nom) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
-      '<p class="acard__sub">' + c.poids + ' kg · ' + brasTxt(c.bras) + ' · ' + nb(c.age, 'an', 'ans') + ' · ' + nb(c.pratique, 'an', 'ans') + ' de pratique · ' + esc(c.ville) + '</p>' +
-      '<dl class="kv"><dt>Club</dt><dd>' + esc(c.club) + '</dd><dt>Email</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd><dt>Téléphone</dt><dd>' + (esc(c.tel) || '<span class="muted">Aucun</span>') + '</dd>' +
-      (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') + '</dl>' +
-      (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
-      '<div class="field"><label for="etat-' + c.id + '">État de la candidature</label><select id="etat-' + c.id + '" data-etat-select="' + c.id + '">' +
-      ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
-      '<p class="acard__sub"><span class="state-ok" data-etat="' + c.etat + '">' + etatNom(c.etat) + '</span> · reçue le ' + esc(c.recue) + '</p></article>';
-  }
-  function viewTraiter() {
-    const pend = S.profils.filter((p) => p.statut === 'en_attente');
-    const nouv = S.cands.filter((c) => c.etat === 'nouvelle');
-    const disc = S.cands.filter((c) => c.etat === 'en_discussion');
-    return '<h2 tabindex="-1" id="h-traiter">À traiter</h2><p class="view__lead">Les fiches à relire avant publication, puis les nouvelles demandes de match.</p>' +
-      '<div class="counters"><div class="counter"><b>' + pend.length + '</b><span>' + (pend.length > 1 ? 'profils en attente' : 'profil en attente') + '</span></div>' +
-      '<div class="counter"><b>' + nouv.length + '</b><span>' + (nouv.length > 1 ? 'nouvelles candidatures' : 'nouvelle candidature') + '</span></div>' +
-      '<div class="counter"><b>' + disc.length + '</b><span>en discussion</span></div></div>' +
-      '<div class="cols"><section class="block" aria-labelledby="h-attente"><h3 id="h-attente">Profils en attente</h3>' +
-      (pend.length ? '<div class="card-list">' + pend.map(pendingCard).join('') + '</div>' : '<p class="empty">Aucun profil en attente. Tout est relu.</p>') + '</section>' +
-      '<section class="block" aria-labelledby="h-nouvelles"><h3 id="h-nouvelles">Nouvelles candidatures</h3>' +
-      (nouv.length ? '<div class="card-list">' + nouv.map(candCard).join('') + '</div>' : '<p class="empty">Aucune nouvelle candidature.</p>') + '</section></div>';
-  }
-  function viewProfils() {
-    let html = '<h2 tabindex="-1" id="h-profils">Profils</h2><p class="view__lead">Les fiches publiées et cachées, par ville. Une fiche cachée n’apparaît plus sur la page.</p>';
-    for (const v of S.villes) {
-      const list = S.profils.filter((p) => p.ville === v.id && (p.statut === 'publie' || p.statut === 'cache')).sort((a, b) => b.poids - a.poids);
-      html += '<section class="block" aria-labelledby="h-v-' + v.id + '"><h3 id="h-v-' + v.id + '">' + esc(v.nom) + ' <span class="muted">· ' + nb(list.length, 'fiche', 'fiches') + '</span></h3>';
-      if (!list.length) { html += '<p class="empty">Aucune fiche dans cette ville pour l’instant.</p></section>'; continue; }
-      html += list.map((p) => '<div class="prow' + (p.statut === 'cache' ? ' is-hidden' : '') + '" data-profil="' + p.id + '"><img src="' + p.photo + '" width="64" height="80" alt="">' +
-        '<div><p class="prow__name">' + esc(full(p)) + (p.statut === 'cache' ? ' <span class="pill pill--off">Cachée</span>' : ' <span class="pill">Publiée</span>') + '</p>' +
-        '<p class="muted">' + esc(club(p.club)?.nom || 'Sans club') + ' · ' + p.poids + ' kg · ' + brasTxt(p.bras) + '</p></div>' +
-        (ui.open === p.id ? editForm(p) : '<div class="prow__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="modifier">Modifier</button><button class="btn btn--secondary btn--sm" type="button" data-act="' + (p.statut === 'cache' ? 'afficher">Afficher' : 'cacher">Cacher') + '</button></div>') +
-        '</div>').join('') + '</section>';
-    }
-    return html;
-  }
-  function viewCands() {
-    const counts = Object.fromEntries(ETATS.map(([k]) => [k, S.cands.filter((c) => c.etat === k).length]));
-    const list = S.cands.filter((c) => ui.filtre === 'toutes' || c.etat === ui.filtre);
-    return '<h2 tabindex="-1" id="h-candidatures">Candidatures</h2><p class="view__lead">Toutes les demandes de match. Changez l’état à mesure que vous organisez.</p>' +
-      '<div class="filters" role="group" aria-label="Filtrer par état"><button class="chip" type="button" data-filtre="toutes" aria-pressed="' + (ui.filtre === 'toutes') + '">Toutes (' + S.cands.length + ')</button>' +
-      ETATS.map(([k, t]) => '<button class="chip" type="button" data-filtre="' + k + '" aria-pressed="' + (ui.filtre === k) + '">' + t + ' (' + counts[k] + ')</button>').join('') + '</div>' +
-      (list.length ? '<div class="card-list card-list--cands">' + list.map(candCard).join('') + '</div>' : '<p class="empty">Aucune candidature dans cet état.</p>');
-  }
-  function viewVilles() {
-    const count = (fn) => S.profils.filter((p) => (p.statut === 'publie' || p.statut === 'cache' || p.statut === 'en_attente') && fn(p)).length;
-    const villes = S.villes.map((v, i) => '<li data-ville="' + v.id + '"><span class="olist__name">' + (i + 1) + '. ' + esc(v.nom) + '<small>' + nb(count((p) => p.ville === v.id), 'fiche', 'fiches') + '</small></span>' +
-      '<span class="olist__actions"><button class="icon-btn" type="button" data-act="monter" aria-label="Monter ' + esc(v.nom) + '"' + (i === 0 ? ' disabled' : '') + '>' + SVG_UP + '</button>' +
-      '<button class="icon-btn" type="button" data-act="descendre" aria-label="Descendre ' + esc(v.nom) + '"' + (i === S.villes.length - 1 ? ' disabled' : '') + '>' + SVG_DOWN + '</button>' +
-      '<button class="btn btn--secondary btn--sm" type="button" data-act="renommer-ville">Renommer</button></span>' +
-      (ui.rename === 'v:' + v.id ? renameForm('v:' + v.id, v.nom, 'Nouveau nom de la ville') : '') + '</li>').join('');
-    const clubs = S.clubs.map((c) => '<li data-club="' + c.id + '"><span class="olist__name">' + esc(c.nom) + '<small>' + nb(count((p) => p.club === c.id), 'fiche', 'fiches') + '</small></span>' +
-      '<span class="olist__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="renommer-club">Renommer</button></span>' +
-      (ui.rename === 'c:' + c.id ? renameForm('c:' + c.id, c.nom, 'Nouveau nom du club') : '') + '</li>').join('');
-    const opts = (sel) => S.clubs.map((c) => '<option value="' + c.id + '"' + (c.id === sel ? ' selected' : '') + '>' + esc(c.nom) + '</option>').join('');
-    const m = ui.merge;
-    const mergeConfirm = m ? '<div class="confirm"><p>' + nb(count((p) => p.club === m.from), 'fiche passe', 'fiches passent') + ' de ' + esc(club(m.from).nom) + ' à ' + esc(club(m.to).nom) + ', puis ' + esc(club(m.from).nom) + ' disparaît de la liste.</p>' +
-      '<div class="confirm__actions"><button class="btn btn--primary" type="button" data-act="fusion-ok">Fusionner les clubs</button><button class="btn btn--secondary" type="button" data-act="fusion-annuler">Annuler</button></div></div>' : '';
-    return '<h2 tabindex="-1" id="h-villes">Villes et clubs</h2><p class="view__lead">L’ordre des villes est celui de la page. Un club mal écrit se range ici, une fois pour toutes.</p><div class="split2">' +
-      '<section class="block" aria-labelledby="h-liste-villes"><h3 id="h-liste-villes">Villes</h3><ol class="olist">' + villes + '</ol>' +
-      '<form class="inline-form" data-new="ville" novalidate>' + field('new-ville', 'Nouvelle ville', 'nom', '', { req: true, err: 'Écrivez le nom de la ville.' }) + '<button class="btn btn--primary" type="submit">Créer la ville</button></form></section>' +
-      '<section class="block" aria-labelledby="h-liste-clubs"><h3 id="h-liste-clubs">Clubs</h3><ul class="olist">' + clubs + '</ul>' +
-      '<form class="merge" data-merge novalidate><p><b>Fusionner deux clubs</b> <span class="muted">quand un même club existe sous deux noms.</span></p><div class="merge__row">' +
-      '<div class="field"><label for="m-from">Club à fondre</label><select id="m-from" name="from">' + opts(m ? m.from : S.clubs[S.clubs.length - 1]?.id) + '</select></div><p class="muted" aria-hidden="true">dans</p>' +
-      '<div class="field"><label for="m-to">Club à garder</label><select id="m-to" name="to">' + opts(m ? m.to : S.clubs[0]?.id) + '</select></div></div>' +
-      '<p class="field__error" data-merge-err hidden></p><button class="btn btn--secondary" type="submit">Fusionner</button>' + mergeConfirm + '</form>' +
-      '<form class="inline-form" data-new="club" novalidate>' + field('new-club', 'Nouveau club', 'nom', '', { req: true, err: 'Écrivez le nom du club.' }) + '<button class="btn btn--primary" type="submit">Créer le club</button></form></section></div>';
-  }
-  function renameForm(key, value, label) {
-    return '<form class="inline-form" data-rename="' + key + '" novalidate>' + field('r-' + key.replace(':', '-'), label, 'nom', value, { req: true, err: 'Écrivez le nouveau nom.' }) +
-      '<div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer le nom</button><button class="btn btn--secondary" type="button" data-act="renommer-annuler">Annuler</button></div></form>';
-  }
-
-  const VIEWS = { traiter: viewTraiter, profils: viewProfils, candidatures: viewCands, villes: viewVilles };
-  function render(focusSel) {
-    // one view in the page at a time: the hidden ones are emptied, so no id (a candidature's state, a profile's field) is there twice
-    document.querySelectorAll('.view').forEach((v) => { v.hidden = v.dataset.view !== ui.tab; if (v.hidden) v.innerHTML = ''; });
-    const view = $('.view[data-view="' + ui.tab + '"]');
-    view.innerHTML = VIEWS[ui.tab]();
-    document.querySelectorAll('[data-tab]').forEach((b) => { if (b.dataset.tab === ui.tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
-    const pend = S.profils.filter((p) => p.statut === 'en_attente').length + S.cands.filter((c) => c.etat === 'nouvelle').length;
-    const bT = $('[data-badge="traiter"]'); bT.textContent = pend || ''; bT.hidden = !pend; bT.setAttribute('aria-label', nb(pend, 'chose à traiter', 'choses à traiter'));
-    const nouv = S.cands.filter((c) => c.etat === 'nouvelle').length;
-    const bC = $('[data-badge="candidatures"]'); bC.textContent = nouv || ''; bC.hidden = !nouv; bC.setAttribute('aria-label', nb(nouv, 'nouvelle', 'nouvelles'));
-    view.querySelectorAll('form').forEach((f) => OVForms.watch(f));
-    if (focusSel) { const el = view.querySelector(focusSel); if (el) el.focus(); }
-  }
-
-  // ------------------------------------------------------------------ what each click does
-  document.querySelector('[data-login]').addEventListener('click', () => {
-    $('#login').hidden = true; $('#app').hidden = false; ui.tab = 'traiter'; render('h2'); $('#h-traiter').setAttribute('tabindex', '-1'); $('#h-traiter').focus();
+    render('h2');
   });
-  document.querySelector('[data-logout]').addEventListener('click', () => { $('#app').hidden = true; $('#login').hidden = false; $('[data-login]').focus(); });
-  document.querySelector('.tabs').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-tab]'); if (!b) return;
-    ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null;
-    render(); window.scrollTo(0, 0);
-    const h = $('#h-' + ui.tab); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-  });
+}
 
-  const views = $('#views');
-  views.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-act], [data-filtre]'); if (!b) return;
-    if (b.dataset.filtre) { ui.filtre = b.dataset.filtre; render('[data-filtre="' + ui.filtre + '"]'); return; }
-    const act = b.dataset.act;
-    const pEl = b.closest('[data-profil]'), p = pEl ? profil(pEl.dataset.profil) : null;
-    const vEl = b.closest('[data-ville]'), cEl = b.closest('[data-club]');
-    switch (act) {
-      case 'valider':
-        if (!p.club) { toast('Rangez d’abord le club de ' + p.prenom + ' : un club existant, ou un nouveau.'); const fix = $('[data-clubfix="' + p.id + '"]'); if (fix) fix.focus(); return; }
-        p.statut = 'publie'; toast('Fiche de ' + full(p) + ' publiée, dans ' + ville(p.ville).nom + '.'); render('h2'); return;
-      case 'corriger': case 'modifier': ui.open = p.id; render('[data-edit="' + p.id + '"] input'); return;
-      case 'fermer': ui.open = null; render('[data-profil="' + p.id + '"] [data-act="' + (p.statut === 'en_attente' ? 'corriger' : 'modifier') + '"]'); return;
-      case 'refuser': ui.refuse = p.id; render('[data-act="refuser-ok"]'); return;
-      case 'refuser-ok': p.statut = 'refuse'; ui.refuse = null; toast('Fiche de ' + full(p) + ' refusée. Elle ne sera pas publiée.'); render('h2'); return;
-      case 'annuler': ui.refuse = null; render('[data-profil="' + p.id + '"] [data-act="refuser"]'); return;
-      case 'ranger': { const c = club(b.dataset.club); p.club = c.id; toast('Club de ' + p.prenom + ' rangé dans ' + c.nom + '. Vous pouvez valider la fiche.'); render('[data-profil="' + p.id + '"] [data-act="valider"]'); return; }
-      case 'creer-club': ui.newClub = p.id; render('[data-newclub="' + p.id + '"] input'); return;
-      case 'annuler-club': ui.newClub = null; render('[data-profil="' + p.id + '"] [data-act="creer-club"]'); return;
-      case 'cacher': p.statut = 'cache'; toast('Fiche de ' + full(p) + ' cachée. Elle n’apparaît plus sur la page.'); render('[data-profil="' + p.id + '"] [data-act="afficher"]'); return;
-      case 'afficher': p.statut = 'publie'; toast('Fiche de ' + full(p) + ' de nouveau visible.'); render('[data-profil="' + p.id + '"] [data-act="cacher"]'); return;
-      case 'monter': case 'descendre': {
-        const i = S.villes.findIndex((v) => v.id === vEl.dataset.ville), j = act === 'monter' ? i - 1 : i + 1;
-        [S.villes[i], S.villes[j]] = [S.villes[j], S.villes[i]];
-        toast(S.villes[j].nom + ' passe en position ' + (j + 1) + ' sur la page.');
-        render('[data-ville="' + S.villes[j].id + '"] [data-act="' + act + '"]:not(:disabled), [data-ville="' + S.villes[j].id + '"] [data-act="renommer-ville"]'); return;
-      }
-      case 'renommer-ville': ui.rename = 'v:' + vEl.dataset.ville; render('[data-rename] input'); return;
-      case 'renommer-club': ui.rename = 'c:' + cEl.dataset.club; render('[data-rename] input'); return;
-      case 'renommer-annuler': ui.rename = null; render(); return;
-      case 'fusion-ok': {
-        const from = club(ui.merge.from), to = club(ui.merge.to);
-        const moved = S.profils.filter((x) => x.club === from.id); moved.forEach((x) => { x.club = to.id; });
+// ------------------------------------------------------------------ the views
+function pendingCard(p) {
+  const c = p.clubId ? club(p.clubId) : null, guess = !c && p.clubSaisi ? clubProche(p.clubSaisi, S.clubs) : null, ct = contact(p);
+  const id = esc(p.id), vOk = p.villeId ? ville(p.villeId) : null, m = manque(p);
+  let clubBlock = '';
+  if (!c) {
+    clubBlock = '<div class="clubfix" data-clubfix="' + id + '" tabindex="-1"><p><b>Ce club n’existe pas encore.</b> ' + (guess ? 'Il ressemble à ' + esc(guess.nom) + '.' : 'Aucun club existant ne lui ressemble.') + '</p>' +
+      (guess ? '<button class="btn btn--secondary" type="button" data-act="ranger" data-club="' + esc(guess.id) + '">Ranger dans ' + esc(guess.nom) + '&nbsp;?</button>' : '') +
+      (ui.newClub === p.id
+        ? '<form class="inline-form" data-newclub="' + id + '" novalidate>' + field('nc-' + id, 'Nom du nouveau club', 'nom', String(p.clubSaisi || '').replace(/\b\p{L}/gu, (x) => x.toUpperCase()), { req: true, err: 'Écrivez le nom du club.' }) +
+          '<div class="edit__actions"><button class="btn btn--primary" type="submit">Créer ce club</button><button class="btn btn--secondary" type="button" data-act="annuler-club">Annuler</button></div></form>'
+        : '<button class="btn btn--secondary" type="button" data-act="creer-club">Créer un nouveau club</button>') + '</div>';
+  } else {
+    clubBlock = '<p class="clubok">Club : ' + esc(c.nom) + '</p>';
+  }
+  const refuse = ui.refuse === p.id
+    ? '<div class="confirm" role="group" aria-label="Confirmer le refus"><p>Refuser la fiche de ' + esc(p.prenom) + '&nbsp;? Elle sera supprimée.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="refuser-ok">Refuser la fiche</button><button class="btn btn--secondary" type="button" data-act="annuler">Garder la fiche</button></div></div>'
+    : '';
+  const mineur = (p.age != null && p.age < 18) || ct.accordParent;
+  const recu = date(p.creeLe);
+  return '<article class="acard" data-profil="' + id + '"><div class="acard__top">' + photoImg(p, 88, 110, 'Photo envoyée par ' + full(p)) +
+    '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + (vOk ? esc(vOk.nom) : 'Ville à choisir' + (p.villeSaisie ? ' (saisi : « ' + esc(p.villeSaisie) + ' »)' : '')) + ' · ' + ans(p.age) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p>' +
+    '<p class="acard__sub">' + (recu ? 'Reçue le ' + esc(recu) : '') + (p.source ? (recu ? ' · ' : '') + 'Importée de la feuille Vendetta 2026' : '') + '</p></div></div>' +
+    '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + cm(p.taille) + '</dd><dt>Tour de bras</dt><dd>' + cm(p.biceps) + '</dd><dt>Pratique</dt><dd>' + (p.pratique == null ? '<span class="muted">?</span>' : nb(p.pratique, 'an', 'ans')) + '</dd>' +
+    '<dt>Palmarès</dt><dd>' + (esc(p.palmares) || '<span class="muted">Rien d’indiqué</span>') + '</dd><dt>Instagram</dt><dd>' + (esc(p.instagram) || '<span class="muted">Aucun</span>') + '</dd>' +
+    '<dt>Email</dt><dd>' + mailLink(ct.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(ct.telephone) + '</dd>' +
+    (mineur ? '<dt>Accord parent</dt><dd>' + (ct.accordParent ? 'Oui, coché' : 'Non') + '</dd>' : '') + '</dl>' +
+    clubBlock +
+    (ui.open === p.id ? editForm(p)
+      : (m.length ? '<p class="muted" data-manque>Pour valider, il manque : ' + m.join(', ') + '. Corrigez la fiche ou rangez le club.</p>' : '') +
+        '<div class="acard__actions"><button class="btn btn--primary" type="button" data-act="valider"' + (m.length ? ' disabled' : '') + '>Valider</button><button class="btn btn--secondary" type="button" data-act="corriger">Corriger</button><button class="btn btn--secondary btn--danger" type="button" data-act="refuser">Refuser</button></div>') +
+    refuse + '</article>';
+}
+function candCard(c) {
+  const p = c.profilId ? profil(c.profilId) : null, id = esc(c.id);
+  return '<article class="acard" data-cand="' + id + '"><p class="who"><b>' + esc((c.prenom || '') + ' ' + (c.nom || '')) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
+    '<p class="acard__sub">' + kg(c.poids) + ' · ' + brasTxt(c.bras) + ' · ' + ans(c.age) + ' · ' + (c.pratique == null ? 'pratique ?' : nb(c.pratique, 'an', 'ans') + ' de pratique') + ' · ' + esc(c.ville) + '</p>' +
+    '<dl class="kv"><dt>Club</dt><dd>' + (esc(c.club) || '<span class="muted">Aucun</span>') + '</dd><dt>Email</dt><dd>' + mailLink(c.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(c.telephone) + '</dd>' +
+    (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') +
+    (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché (' + ans(c.age) + ')</dd>' : '') + '</dl>' +
+    (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
+    '<div class="field"><label for="etat-' + id + '">État de la candidature</label><select id="etat-' + id + '" data-etat-select="' + id + '">' +
+    ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
+    '<p class="acard__sub"><span class="state-ok" data-etat="' + esc(c.etat) + '">' + esc(etatNom(c.etat)) + '</span>' + (date(c.creeLe) ? ' · reçue le ' + esc(date(c.creeLe)) : '') + '</p></article>';
+}
+function viewTraiter() {
+  const pend = S.profils.filter((p) => p.statut === 'en_attente');
+  const nouv = S.cands.filter((c) => c.etat === 'nouvelle');
+  const disc = S.cands.filter((c) => c.etat === 'en_discussion');
+  return '<h2 tabindex="-1" id="h-traiter">À traiter</h2><p class="view__lead">Les fiches à relire avant publication, puis les nouvelles demandes de match.</p>' +
+    '<div class="counters"><div class="counter"><b>' + pend.length + '</b><span>' + (pend.length > 1 ? 'profils en attente' : 'profil en attente') + '</span></div>' +
+    '<div class="counter"><b>' + nouv.length + '</b><span>' + (nouv.length > 1 ? 'nouvelles candidatures' : 'nouvelle candidature') + '</span></div>' +
+    '<div class="counter"><b>' + disc.length + '</b><span>en discussion</span></div></div>' +
+    '<div class="cols"><section class="block" aria-labelledby="h-attente"><h3 id="h-attente">Profils en attente</h3>' +
+    (pend.length ? '<div class="card-list">' + pend.map(pendingCard).join('') + '</div>' : '<p class="empty">Aucun profil en attente. Tout est relu.</p>') + '</section>' +
+    '<section class="block" aria-labelledby="h-nouvelles"><h3 id="h-nouvelles">Nouvelles candidatures</h3>' +
+    (nouv.length ? '<div class="card-list">' + nouv.map(candCard).join('') + '</div>' : '<p class="empty">Aucune nouvelle candidature.</p>') + '</section></div>';
+}
+function viewProfils() {
+  let html = '<h2 tabindex="-1" id="h-profils">Profils</h2><p class="view__lead">Les fiches publiées et cachées, par ville. Une fiche cachée n’apparaît plus sur la page.</p>';
+  for (const v of S.villes) {
+    const vid = esc(v.id);
+    const list = S.profils.filter((p) => p.villeId === v.id && (p.statut === 'publie' || p.statut === 'cache')).sort((a, b) => (b.poids ?? 0) - (a.poids ?? 0));
+    html += '<section class="block" aria-labelledby="h-v-' + vid + '"><h3 id="h-v-' + vid + '">' + esc(v.nom) + ' <span class="muted">· ' + nb(list.length, 'fiche', 'fiches') + '</span></h3>';
+    if (!list.length) { html += '<p class="empty">Aucune fiche dans cette ville pour l’instant.</p></section>'; continue; }
+    html += list.map((p) => '<div class="prow' + (p.statut === 'cache' ? ' is-hidden' : '') + '" data-profil="' + esc(p.id) + '">' + photoImg(p, 64, 80, '') +
+      '<div><p class="prow__name">' + esc(full(p)) + (p.statut === 'cache' ? ' <span class="pill pill--off">Cachée</span>' : ' <span class="pill">Publiée</span>') + '</p>' +
+      '<p class="muted">' + esc((p.clubId && club(p.clubId) && club(p.clubId).nom) || 'Sans club') + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p></div>' +
+      (ui.open === p.id ? editForm(p) : '<div class="prow__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="modifier">Modifier</button><button class="btn btn--secondary btn--sm" type="button" data-act="' + (p.statut === 'cache' ? 'afficher">Afficher' : 'cacher">Cacher') + '</button></div>') +
+      '</div>').join('') + '</section>';
+  }
+  return html;
+}
+function viewCands() {
+  const counts = new Map(ETATS.map(([k]) => [k, S.cands.filter((c) => c.etat === k).length]));
+  const list = S.cands.filter((c) => ui.filtre === 'toutes' || c.etat === ui.filtre);
+  return '<h2 tabindex="-1" id="h-candidatures">Candidatures</h2><p class="view__lead">Toutes les demandes de match. Changez l’état à mesure que vous organisez.</p>' +
+    '<div class="filters" role="group" aria-label="Filtrer par état"><button class="chip" type="button" data-filtre="toutes" aria-pressed="' + (ui.filtre === 'toutes') + '">Toutes (' + S.cands.length + ')</button>' +
+    ETATS.map(([k, t]) => '<button class="chip" type="button" data-filtre="' + k + '" aria-pressed="' + (ui.filtre === k) + '">' + t + ' (' + counts.get(k) + ')</button>').join('') + '</div>' +
+    (list.length ? '<div class="card-list card-list--cands">' + list.map(candCard).join('') + '</div>' : '<p class="empty">Aucune candidature dans cet état.</p>');
+}
+function importBlock() {
+  const imp = ui.imp;
+  let apercu = '';
+  if (imp && imp.erreur) apercu = '<p role="status" class="field__error">' + esc(imp.erreur) + '</p>';
+  else if (imp && imp.entrees.length === 0) apercu = '<p role="status" class="field__error">Aucun athlète trouvé dans ce fichier. Vérifiez que c’est bien la feuille Vendetta 2026 exportée en CSV, avec ses colonnes NAME et SURNAME.</p>';
+  else if (imp) apercu = '<p role="status"><b>' + nb(imp.entrees.length, 'athlète trouvé', 'athlètes trouvés') + '</b> dans « ' + esc(imp.fichier) + ' ».</p>' +
+    '<button class="btn btn--primary" type="button" data-act="importer">Importer ' + nb(imp.entrees.length, 'athlète', 'athlètes') + ' en attente</button>';
+  return '<section class="block" aria-labelledby="h-import"><h3 id="h-import">Importer la feuille Vendetta 2026</h3>' +
+    '<p class="muted">Les athlètes importés arrivent en attente, sans photo, sans ville choisie et sans accord : vous les relisez dans « À traiter ». N’importez une feuille qu’une seule fois.</p>' +
+    '<div class="inline-form"><div class="field"><label for="import-file">Fichier CSV de la feuille</label><input id="import-file" type="file" accept=".csv,text/csv" data-import-file></div>' + apercu + '</div></section>';
+}
+function viewVilles() {
+  const count = (fn) => S.profils.filter((p) => (p.statut === 'publie' || p.statut === 'cache' || p.statut === 'en_attente') && fn(p)).length;
+  const villes = S.villes.map((v, i) => '<li data-ville="' + esc(v.id) + '"><span class="olist__name">' + (i + 1) + '. ' + esc(v.nom) + '<small>' + nb(count((p) => p.villeId === v.id), 'fiche', 'fiches') + '</small></span>' +
+    '<span class="olist__actions"><button class="icon-btn" type="button" data-act="monter" aria-label="Monter ' + esc(v.nom) + '"' + (i === 0 ? ' disabled' : '') + '>' + SVG_UP + '</button>' +
+    '<button class="icon-btn" type="button" data-act="descendre" aria-label="Descendre ' + esc(v.nom) + '"' + (i === S.villes.length - 1 ? ' disabled' : '') + '>' + SVG_DOWN + '</button>' +
+    '<button class="btn btn--secondary btn--sm" type="button" data-act="renommer-ville">Renommer</button></span>' +
+    (ui.rename === 'v:' + v.id ? renameForm('v:' + v.id, v.nom, 'Nouveau nom de la ville') : '') + '</li>').join('');
+  const clubs = S.clubs.map((c) => '<li data-club="' + esc(c.id) + '"><span class="olist__name">' + esc(c.nom) + '<small>' + nb(count((p) => p.clubId === c.id), 'fiche', 'fiches') + '</small></span>' +
+    '<span class="olist__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="renommer-club">Renommer</button></span>' +
+    (ui.rename === 'c:' + c.id ? renameForm('c:' + c.id, c.nom, 'Nouveau nom du club') : '') + '</li>').join('');
+  const opts = (sel) => S.clubs.map((c) => '<option value="' + esc(c.id) + '"' + (c.id === sel ? ' selected' : '') + '>' + esc(c.nom) + '</option>').join('');
+  const m = ui.merge, mf = m && club(m.from), mt = m && club(m.to);
+  const mergeConfirm = mf && mt ? '<div class="confirm"><p>' + nb(count((p) => p.clubId === mf.id), 'fiche passe', 'fiches passent') + ' de ' + esc(mf.nom) + ' à ' + esc(mt.nom) + ', puis ' + esc(mf.nom) + ' disparaît de la liste.</p>' +
+    '<div class="confirm__actions"><button class="btn btn--primary" type="button" data-act="fusion-ok">Fusionner les clubs</button><button class="btn btn--secondary" type="button" data-act="fusion-annuler">Annuler</button></div></div>' : '';
+  return '<h2 tabindex="-1" id="h-villes">Villes et clubs</h2><p class="view__lead">L’ordre des villes est celui de la page. Un club mal écrit se range ici, une fois pour toutes.</p><div class="split2">' +
+    '<section class="block" aria-labelledby="h-liste-villes"><h3 id="h-liste-villes">Villes</h3><ol class="olist">' + villes + '</ol>' +
+    '<form class="inline-form" data-new="ville" novalidate>' + field('new-ville', 'Nouvelle ville', 'nom', '', { req: true, err: 'Écrivez le nom de la ville.' }) + '<button class="btn btn--primary" type="submit">Créer la ville</button></form></section>' +
+    '<section class="block" aria-labelledby="h-liste-clubs"><h3 id="h-liste-clubs">Clubs</h3><ul class="olist">' + clubs + '</ul>' +
+    '<form class="merge" data-merge novalidate><p><b>Fusionner deux clubs</b> <span class="muted">quand un même club existe sous deux noms.</span></p><div class="merge__row">' +
+    '<div class="field"><label for="m-from">Club à fondre</label><select id="m-from" name="from">' + opts(m ? m.from : (S.clubs[S.clubs.length - 1] || {}).id) + '</select></div><p class="muted" aria-hidden="true">dans</p>' +
+    '<div class="field"><label for="m-to">Club à garder</label><select id="m-to" name="to">' + opts(m ? m.to : (S.clubs[0] || {}).id) + '</select></div></div>' +
+    '<p class="field__error" data-merge-err hidden></p><button class="btn btn--secondary" type="submit">Fusionner</button>' + mergeConfirm + '</form>' +
+    '<form class="inline-form" data-new="club" novalidate>' + field('new-club', 'Nouveau club', 'nom', '', { req: true, err: 'Écrivez le nom du club.' }) + '<button class="btn btn--primary" type="submit">Créer le club</button></form></section></div>' +
+    importBlock();
+}
+function renameForm(key, value, label) {
+  return '<form class="inline-form" data-rename="' + esc(key) + '" novalidate>' + field('r-' + esc(key.replace(':', '-')), label, 'nom', value, { req: true, err: 'Écrivez le nouveau nom.' }) +
+    '<div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer le nom</button><button class="btn btn--secondary" type="button" data-act="renommer-annuler">Annuler</button></div></form>';
+}
+
+const VIEWS = { traiter: viewTraiter, profils: viewProfils, candidatures: viewCands, villes: viewVilles };
+function render(focusSel) {
+  reindex();
+  // one view in the page at a time: the hidden ones are emptied, so no id (a candidature's state, a profile's field) is there twice
+  document.querySelectorAll('.view').forEach((v) => { v.hidden = v.dataset.view !== ui.tab; if (v.hidden) v.innerHTML = ''; });
+  const view = $('.view[data-view="' + ui.tab + '"]');
+  view.innerHTML = VIEWS[ui.tab]();
+  document.querySelectorAll('[data-tab]').forEach((b) => { if (b.dataset.tab === ui.tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  const nouv = S.cands.filter((c) => c.etat === 'nouvelle').length;
+  const pend = S.profils.filter((p) => p.statut === 'en_attente').length + nouv;
+  const bT = $('[data-badge="traiter"]'); bT.textContent = pend || ''; bT.hidden = !pend; bT.setAttribute('aria-label', nb(pend, 'chose à traiter', 'choses à traiter'));
+  const bC = $('[data-badge="candidatures"]'); bC.textContent = nouv || ''; bC.hidden = !nouv; bC.setAttribute('aria-label', nb(nouv, 'nouvelle', 'nouvelles'));
+  view.querySelectorAll('form').forEach((f) => OVForms.watch(f));
+  if (focusSel) { const el = view.querySelector(focusSel); if (el) el.focus(); }
+}
+
+// ------------------------------------------------------------------ sign-in
+const loginMsg = $('[data-login-msg]'), loginBtn = $('[data-login]'), deniedBtn = $('[data-denied-logout]');
+function ecranConnexion(msg, refuse) {
+  $('#app').hidden = true; $('#login').hidden = false;
+  loginMsg.textContent = msg || ''; loginMsg.hidden = !msg;
+  loginBtn.hidden = !!refuse; deniedBtn.hidden = !refuse;
+}
+function vider() {
+  Object.assign(S, { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() });
+  Object.assign(ui, { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null });
+  document.querySelectorAll('.view').forEach((v) => { v.innerHTML = ''; });
+  reindex();
+}
+let seq = 0;
+surConnexion(async (user) => {
+  const mine = ++seq;
+  if (!user) { vider(); ecranConnexion(''); return; }
+  try {
+    await recharger();
+    if (mine !== seq) return;
+    $('#login').hidden = true; $('#app').hidden = false;
+    ui.tab = 'traiter'; render(); const h = $('#h-traiter'); if (h) h.focus();
+  } catch (err) {
+    if (mine !== seq) return;
+    console.error(err);
+    vider();
+    if (err && err.code === 'permission-denied') ecranConnexion('Ce compte n’a pas accès à la gestion.', true);
+    else ecranConnexion('Chargement impossible : vérifiez la connexion, puis réessayez.', true);
+  }
+});
+loginBtn.addEventListener('click', async () => {
+  loginMsg.hidden = true;
+  try { await connexion(); }
+  catch (err) {
+    if (err && (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request')) return;
+    console.error(err); loginMsg.textContent = 'Connexion impossible : réessayez.'; loginMsg.hidden = false;
+  }
+});
+const sortir = () => { deconnexion().catch((err) => { console.error(err); toast('Déconnexion impossible : réessayez.'); }); };
+$('[data-logout]').addEventListener('click', sortir);
+deniedBtn.addEventListener('click', sortir);
+
+// ------------------------------------------------------------------ what each click does
+$('.tabs').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-tab]'); if (!b) return;
+  ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null; ui.imp = null;
+  render(); window.scrollTo(0, 0);
+  const h = $('#h-' + ui.tab); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+});
+
+const views = $('#views');
+views.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-act], [data-filtre]'); if (!b || b.disabled || busy) return;
+  if (b.dataset.filtre) { ui.filtre = b.dataset.filtre; render('[data-filtre="' + ui.filtre + '"]'); return; }
+  const act = b.dataset.act;
+  const pEl = b.closest('[data-profil]'), p = pEl ? profil(pEl.dataset.profil) : null;
+  const vEl = b.closest('[data-ville]'), cEl = b.closest('[data-club]');
+  if (pEl && !p) return;
+  switch (act) {
+    case 'valider': {
+      const m = manque(p);
+      if (m.length) { toast('Il manque : ' + m.join(', ') + '.'); return; }
+      agir(() => majProfil(p.id, { statut: 'publie', clubId: p.clubId, villeId: p.villeId }),
+        () => { p.statut = 'publie'; toast('Fiche de ' + full(p) + ' publiée, dans ' + ville(p.villeId).nom + '.'); render('h2'); });
+      return;
+    }
+    case 'corriger': case 'modifier': ui.open = p.id; render(q('data-edit', p.id) + ' input'); return;
+    case 'fermer': ui.open = null; render(q('data-profil', p.id) + ' [data-act="' + (p.statut === 'en_attente' ? 'corriger' : 'modifier') + '"]'); return;
+    case 'refuser': ui.refuse = p.id; render('[data-act="refuser-ok"]'); return;
+    case 'refuser-ok':
+      agir(() => supprimerProfil(p.id), () => {
+        S.profils = S.profils.filter((x) => x.id !== p.id); S.contacts.delete(p.id); ui.refuse = null;
+        toast('Fiche de ' + full(p) + ' refusée et supprimée.'); render('h2');
+      });
+      return;
+    case 'annuler': ui.refuse = null; render(q('data-profil', p.id) + ' [data-act="refuser"]'); return;
+    case 'ranger': {
+      const c = club(b.dataset.club); if (!c) return;
+      agir(() => majProfil(p.id, { clubId: c.id }), () => {
+        p.clubId = c.id; toast('Club de ' + p.prenom + ' rangé dans ' + c.nom + '.');
+        render(q('data-profil', p.id) + ' [data-act="valider"]:not(:disabled), ' + q('data-profil', p.id) + ' [data-act="corriger"]');
+      });
+      return;
+    }
+    case 'creer-club': ui.newClub = p.id; render(q('data-newclub', p.id) + ' input'); return;
+    case 'annuler-club': ui.newClub = null; render(q('data-profil', p.id) + ' [data-act="creer-club"]'); return;
+    case 'cacher':
+      agir(() => majProfil(p.id, { statut: 'cache' }), () => { p.statut = 'cache'; toast('Fiche de ' + full(p) + ' cachée. Elle n’apparaît plus sur la page.'); render(q('data-profil', p.id) + ' [data-act="afficher"]'); });
+      return;
+    case 'afficher':
+      agir(() => majProfil(p.id, { statut: 'publie' }), () => { p.statut = 'publie'; toast('Fiche de ' + full(p) + ' de nouveau visible.'); render(q('data-profil', p.id) + ' [data-act="cacher"]'); });
+      return;
+    case 'monter': case 'descendre': {
+      const i = S.villes.findIndex((v) => v.id === vEl.dataset.ville), j = act === 'monter' ? i - 1 : i + 1;
+      if (i < 0 || j < 0 || j >= S.villes.length) return;
+      const ordre = S.villes.map((v) => v.id); [ordre[i], ordre[j]] = [ordre[j], ordre[i]];
+      agir(() => ordonnerVilles(ordre), () => {
+        const v = S.villes[i]; [S.villes[i], S.villes[j]] = [S.villes[j], S.villes[i]]; S.villes.forEach((x, n) => { x.ordre = n + 1; });
+        toast(v.nom + ' passe en position ' + (j + 1) + ' sur la page.');
+        const li = q('data-ville', v.id);
+        render(li + ' [data-act="' + act + '"]:not(:disabled), ' + li + ' [data-act="renommer-ville"]');
+      });
+      return;
+    }
+    case 'renommer-ville': ui.rename = 'v:' + vEl.dataset.ville; render('[data-rename] input'); return;
+    case 'renommer-club': ui.rename = 'c:' + cEl.dataset.club; render('[data-rename] input'); return;
+    case 'renommer-annuler': ui.rename = null; render(); return;
+    case 'fusion-ok': {
+      const from = ui.merge && club(ui.merge.from), to = ui.merge && club(ui.merge.to); if (!from || !to) return;
+      const moved = S.profils.filter((x) => x.clubId === from.id);
+      agir(() => fusionnerClubs(from.id, to.id, moved.map((x) => x.id)), () => {
+        moved.forEach((x) => { x.clubId = to.id; });
         S.clubs = S.clubs.filter((c) => c.id !== from.id); ui.merge = null;
-        toast(from.nom + ' est fondu dans ' + to.nom + ' (' + nb(moved.length, 'fiche déplacée', 'fiches déplacées') + ').'); render('[data-merge] select'); return;
-      }
-      case 'fusion-annuler': ui.merge = null; render('[data-merge] select'); return;
+        toast(from.nom + ' est fondu dans ' + to.nom + ' (' + nb(moved.length, 'fiche déplacée', 'fiches déplacées') + ').'); render('[data-merge] select');
+      });
+      return;
     }
-  });
-  views.addEventListener('change', (e) => {
-    const s = e.target.closest('[data-etat-select]'); if (!s) return;
-    const c = S.cands.find((x) => x.id === s.dataset.etatSelect); c.etat = s.value;
-    toast('Candidature de ' + c.prenom + ' ' + c.nom + ' : ' + etatNom(c.etat) + '.');
-    const stay = ui.tab === 'candidatures';
-    render(stay ? '#etat-' + c.id : 'h2');
-  });
-  views.addEventListener('submit', (e) => {
-    const f = e.target; e.preventDefault();
-    if (f.matches('[data-edit]')) { if (saveEdit(f)) render('h2'); return; }
-    if (f.matches('[data-newclub]')) {
-      if (OVForms.validate(f).length) return;
-      const p = profil(f.dataset.newclub), nom = f.elements.nom.value.trim();
-      const c = { id: slug(nom) + '-' + Date.now().toString(36), nom }; S.clubs.push(c); p.club = c.id; ui.newClub = null;
-      toast('Club « ' + nom + ' » créé, et ' + p.prenom + ' y est rangé.'); render('[data-profil="' + p.id + '"] [data-act="valider"]'); return;
+    case 'fusion-annuler': ui.merge = null; render('[data-merge] select'); return;
+    case 'importer': {
+      const imp = ui.imp; if (!imp || !imp.entrees || !imp.entrees.length) return;
+      agir(() => importer(imp.entrees), async () => {
+        ui.imp = null;
+        try { await recharger(); toast(nb(imp.entrees.length, 'athlète importé', 'athlètes importés') + ', en attente dans « À traiter ».'); }
+        catch (err) { console.error(err); toast('Importé, mais la liste n’est pas à jour : rechargez la page.'); }
+        render('h2');
+      });
+      return;
     }
-    if (f.matches('[data-new="ville"]') || f.matches('[data-new="club"]')) {
-      if (OVForms.validate(f).length) return;
-      const nom = f.elements.nom.value.trim();
-      if (f.dataset.new === 'ville') { S.villes.push({ id: slug(nom) + '-' + Date.now().toString(36), nom }); toast('Ville « ' + nom + ' » créée, en dernière position.'); }
-      else { S.clubs.push({ id: slug(nom) + '-' + Date.now().toString(36), nom }); toast('Club « ' + nom + ' » créé.'); }
-      render('[data-new="' + f.dataset.new + '"] input'); return;
-    }
-    if (f.matches('[data-rename]')) {
-      if (OVForms.validate(f).length) return;
-      const [kind, id] = f.dataset.rename.split(':'), nom = f.elements.nom.value.trim();
-      const item = kind === 'v' ? ville(id) : club(id), old = item.nom; item.nom = nom; ui.rename = null;
-      toast(old + ' s’appelle maintenant ' + nom + '.'); render(); return;
-    }
-    if (f.matches('[data-merge]')) {
-      const from = f.elements.from.value, to = f.elements.to.value, err = f.querySelector('[data-merge-err]');
-      if (from === to) { err.textContent = 'Choisissez deux clubs différents : le club à fondre et le club à garder.'; err.hidden = false; f.elements.to.focus(); return; }
-      ui.merge = { from, to }; render('[data-act="fusion-ok"]'); return;
-    }
-  });
-})();
+  }
+});
+views.addEventListener('change', async (e) => {
+  const fi = e.target.closest('[data-import-file]');
+  if (fi) {
+    const fichier = fi.files && fi.files[0]; if (!fichier) return;
+    try { ui.imp = { fichier: fichier.name, entrees: athletesDeLaFeuille(await fichier.text()) }; }
+    catch (err) { console.error(err); ui.imp = { fichier: fichier.name, entrees: [], erreur: 'Ce fichier n’a pas pu être lu.' }; }
+    render('[data-import-file]'); return;
+  }
+  const s = e.target.closest('[data-etat-select]'); if (!s) return;
+  const c = idx.cands.get(s.dataset.etatSelect); if (!c || !ETATS.some((x) => x[0] === s.value)) return;
+  const etat = s.value, stay = ui.tab === 'candidatures';
+  agir(() => majCandidature(c.id, etat), () => {
+    c.etat = etat; toast('Candidature de ' + c.prenom + ' ' + c.nom + ' : ' + etatNom(etat) + '.');
+    render(stay ? '#etat-' + CSS.escape(c.id) : 'h2');
+  }, () => render(stay ? '#etat-' + CSS.escape(c.id) : null));
+});
+views.addEventListener('submit', (e) => {
+  const f = e.target; e.preventDefault();
+  if (busy) return;
+  if (f.matches('[data-edit]')) { saveEdit(f); return; }
+  if (f.matches('[data-newclub]')) {
+    if (OVForms.validate(f).length) return;
+    const p = profil(f.dataset.newclub); if (!p) return;
+    const nom = f.elements.nom.value.trim();
+    agir(async () => {
+      const id = await creerClub(nom);
+      // the club exists in the base from here on: S shows it, even if the next write fails
+      S.clubs.push({ id, nom }); trierClubs();
+      await majProfil(p.id, { clubId: id });
+      p.clubId = id;
+    }, () => {
+      ui.newClub = null; toast('Club « ' + nom + ' » créé, et ' + p.prenom + ' y est rangé.');
+      render(q('data-profil', p.id) + ' [data-act="valider"]:not(:disabled), ' + q('data-profil', p.id) + ' [data-act="corriger"]');
+    }, () => render());
+    return;
+  }
+  if (f.matches('[data-new="ville"]')) {
+    if (OVForms.validate(f).length) return;
+    const nom = f.elements.nom.value.trim();
+    agir(async () => { const id = await creerVille(nom, S.villes.length + 1); S.villes.push({ id, nom, ordre: S.villes.length + 1 }); },
+      () => { toast('Ville « ' + nom + ' » créée, en dernière position.'); render('[data-new="ville"] input'); });
+    return;
+  }
+  if (f.matches('[data-new="club"]')) {
+    if (OVForms.validate(f).length) return;
+    const nom = f.elements.nom.value.trim();
+    agir(async () => { const id = await creerClub(nom); S.clubs.push({ id, nom }); trierClubs(); },
+      () => { toast('Club « ' + nom + ' » créé.'); render('[data-new="club"] input'); });
+    return;
+  }
+  if (f.matches('[data-rename]')) {
+    if (OVForms.validate(f).length) return;
+    const key = f.dataset.rename, kind = key[0], id = key.slice(2), nom = f.elements.nom.value.trim();
+    const item = kind === 'v' ? ville(id) : club(id); if (!item) return;
+    const old = item.nom;
+    agir(() => (kind === 'v' ? renommerVille(id, nom) : renommerClub(id, nom)), () => {
+      item.nom = nom; ui.rename = null; if (kind === 'c') trierClubs();
+      toast(old + ' s’appelle maintenant ' + nom + '.'); render();
+    });
+    return;
+  }
+  if (f.matches('[data-merge]')) {
+    const from = f.elements.from.value, to = f.elements.to.value, err = f.querySelector('[data-merge-err]');
+    if (from === to) { err.textContent = 'Choisissez deux clubs différents : le club à fondre et le club à garder.'; err.hidden = false; f.elements.to.focus(); return; }
+    ui.merge = { from, to }; render('[data-act="fusion-ok"]'); return;
+  }
+});
 </script>
 </body>
 </html>
