@@ -70,7 +70,7 @@ export const brasTexte = (b) => (b === 'Les deux' ? 'les deux bras' : 'bras ' + 
 
 // CSV tel que l'exporte Google Sheets : virgules, guillemets doublés, retours à la ligne dans un champ.
 export function lireCsv(texte) {
-  const t = String(texte).replace(/^﻿/, '');
+  const t = String(texte).replace(/^\uFEFF/, '');
   const lignes = [];
   let champ = '', ligne = [], entreGuillemets = false;
   const finLigne = () => { ligne.push(champ); champ = ''; if (ligne.some((v) => v !== '')) lignes.push(ligne); ligne = []; };
