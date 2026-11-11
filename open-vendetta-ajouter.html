@@ -12,8 +12,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="ov/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#181818">
-<!-- <link rel="canonical" href="https://armwrestlingclubstrassen.com/[adresse de cette page à fixer]"> -->
-<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://armwrestlingclubstrassen.com/open-vendetta-ajouter.html">
+<meta name="robots" content="noindex, follow">
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
 <body>
 <!-- type: service · Open Vendetta, the sign-up page (same deal as index.html: hero split for a form page, nav-split,
      footer-dark, close-photo, block buttons, mark initial; palette brand from the client's reference).
-     A form in 3 steps; nothing is ever sent: the last screen says so. -->
+     A form in 3 steps; the last one sends the profile to Firestore (pending until the organiser has read it). -->
 <header class="nav nav--split">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Aller au contenu</a>
@@ -189,33 +189,32 @@
             <legend class="sr-only">Étape 1 sur 3 : vous</legend>
             <div class="wizard__grid">
               <div class="field"><label for="a-prenom">Prénom</label>
-                <input id="a-prenom" name="prenom" type="text" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="a-prenom-err">
+                <input id="a-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="a-prenom-err">
                 <p class="field__error" id="a-prenom-err" hidden></p></div>
               <div class="field"><label for="a-nom">Nom</label>
-                <input id="a-nom" name="nom" type="text" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="a-nom-err">
+                <input id="a-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="a-nom-err">
                 <p class="field__error" id="a-nom-err" hidden></p></div>
               <div class="field"><label for="a-email">Email</label>
-                <input id="a-email" name="email" type="email" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : le club vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="a-email-err">
+                <input id="a-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : le club vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="a-email-err">
                 <p class="field__error" id="a-email-err" hidden></p></div>
               <div class="field"><div class="tel">
           <div class="tel__code"><label for="a-ind">Indicatif</label><select id="a-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
-          <div class="tel__num"><label for="a-tel">Téléphone</label><input id="a-tel" name="telephone" type="tel" autocomplete="tel-national" required data-check data-err="Écrivez votre numéro de téléphone." data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="a-tel-err"></div>
+          <div class="tel__num"><label for="a-tel">Téléphone</label><input id="a-tel" name="telephone" type="tel" maxlength="20" autocomplete="tel-national" required data-check data-err="Écrivez votre numéro de téléphone." data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="a-tel-err"></div>
         </div>
         <p class="field__error" id="a-tel-err" hidden></p></div>
               <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre ville." aria-describedby="a-ville-err">
                 <legend>Ville</legend>
                 <div class="choice">
-                  <label><input type="radio" name="ville" value="Luxembourg"> Luxembourg</label>
-                  <label><input type="radio" name="ville" value="Strasbourg"> Strasbourg</label>
                   <label><input type="radio" name="ville" value="autre"> Autre ville</label>
                 </div>
+                <p class="field__hint" data-villes-note hidden></p>
                 <p class="field__error" id="a-ville-err" hidden></p>
               </fieldset>
               <div class="field" data-when="autre-ville" hidden><label for="a-autre">Nom de votre ville</label>
-                <input id="a-autre" name="autre_ville" type="text" autocomplete="address-level2" required data-check data-err="Écrivez le nom de votre ville." aria-describedby="a-autre-err">
+                <input id="a-autre" name="autre_ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez le nom de votre ville." aria-describedby="a-autre-err">
                 <p class="field__error" id="a-autre-err" hidden></p></div>
               <div class="field"><label for="a-age">Âge</label>
-                <input id="a-age" name="age" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="99" data-err="Écrivez votre âge." data-err-format="Écrivez votre âge en années, avec des chiffres." aria-describedby="a-age-err">
+                <input id="a-age" name="age" type="text" inputmode="numeric" maxlength="2" autocomplete="off" required data-check data-min="14" data-max="99" data-err="Écrivez votre âge." data-err-format="Écrivez votre âge en années, entre 14 et 99." aria-describedby="a-age-err">
                 <p class="field__error" id="a-age-err" hidden></p></div>
               <div class="field field--check field--full" data-when="mineur" hidden>
                 <input id="a-parent" name="accord_parent" type="checkbox" required data-check data-err="Entre 14 et 17 ans, cochez cette case : un parent doit être d’accord." aria-describedby="a-parent-err">
@@ -234,8 +233,8 @@
             <legend class="sr-only">Étape 2 sur 3 : votre profil sportif</legend>
             <div class="wizard__grid">
               <div class="field"><label for="a-club">Club</label>
-                <input id="a-club" name="club" type="text" autocomplete="organization" list="a-clubs" required data-check data-err="Écrivez votre club, ou « Sans club »." aria-describedby="a-club-err a-club-hint">
-                <datalist id="a-clubs"><option value="Armwrestling Club Strassen"></option><option value="Esch Arm Club"></option><option value="Strasbourg Bras de Fer"></option></datalist>
+                <input id="a-club" name="club" type="text" maxlength="80" autocomplete="organization" list="a-clubs" required data-check data-err="Écrivez votre club, ou « Sans club »." aria-describedby="a-club-err a-club-hint">
+                <datalist id="a-clubs"></datalist>
                 <p class="field__hint" id="a-club-hint">Choisissez un club de la liste ou écrivez le vôtre.</p>
                 <p class="field__error" id="a-club-err" hidden></p></div>
               <div class="field"><label for="a-poids">Poids (kg)</label>
@@ -251,7 +250,7 @@
                 <input id="a-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="a-pratique-err">
                 <p class="field__error" id="a-pratique-err" hidden></p></div>
               <div class="field"><label for="a-insta">Instagram (facultatif)</label>
-                <input id="a-insta" name="instagram" type="text" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="a-insta-err">
+                <input id="a-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="a-insta-err">
                 <p class="field__error" id="a-insta-err" hidden></p></div>
               <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="a-bras-err">
                 <legend>Bras</legend>
@@ -263,7 +262,7 @@
                 <p class="field__error" id="a-bras-err" hidden></p>
               </fieldset>
               <div class="field field--full"><label for="a-palmares">Palmarès (facultatif)</label>
-                <textarea id="a-palmares" name="palmares" rows="3" aria-describedby="a-palmares-hint"></textarea>
+                <textarea id="a-palmares" name="palmares" rows="3" maxlength="500" aria-describedby="a-palmares-hint"></textarea>
                 <p class="field__hint" id="a-palmares-hint">Vos tournois et vos podiums, en une ou deux phrases. Rien si vous débutez.</p></div>
             </div>
           </fieldset>
@@ -306,7 +305,7 @@
         </form>
 
         <div class="wizard__done" data-done role="status" tabindex="-1" hidden>
-          <h3>Votre fiche est prête</h3>
+          <h3>Fiche envoyée</h3>
           <p data-done-text></p>
           <div class="btn-row"><a class="btn btn--primary" href="open-vendetta.html#profils">Voir les profils</a><button class="btn btn--secondary" type="button" data-restart>Recommencer une fiche</button></div>
         </div>
@@ -346,23 +345,32 @@
 <script type="module" src="ov/assets/system.js"></script>
 <script type="module" src="ov/assets/motion/motion.js"></script>
 <script type="module" src="ov/assets/layout/layout.js"></script>
-<!-- the three steps: each is checked before the next opens; the steps done stay open to a click; the photograph is
-     reduced in the browser; the last screen says plainly that nothing was sent -->
-<script>
+<!-- les trois étapes : chacune est vérifiée avant l’ouverture de la suivante ; les étapes faites restent ouvertes au clic ;
+     la photo est réduite dans le navigateur, puis la fiche part dans Firestore, en attente de relecture -->
+<script type="module">
+import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
+import { notifier } from './ov/js/ov-notify.js';
+
+// ov-firebase.js attend le SDK Firestore sur le réseau : on le charge à part, pour que le formulaire
+// reste utilisable (étapes, validation, « Autre ville ») si ce chargement échoue.
+const firebase = import('./ov/js/ov-firebase.js');
+
 (() => {
   const form = document.getElementById('wizard');
   if (!form) return;
   document.documentElement.classList.add('ov-js');
+  const f = form.elements;
   const steps = [...form.querySelectorAll('[data-step]')];
   const tabs = [...document.querySelectorAll('[data-step-tab]')];
   const next = form.querySelector('[data-next]'), back = form.querySelector('[data-back]');
   const status = form.querySelector('[data-status]');
   const done = document.querySelector('[data-done]');
   const NAMES = ['Vous', 'Votre profil sportif', 'Photo et accords'];
-  let current = 1, reached = 1;
+  const MSG_ENVOI = 'L’envoi n’a pas marché. Vérifiez votre connexion et réessayez.';
+  let current = 1, reached = 1, sending = false;
 
   const when = (name) => form.querySelector('[data-when="' + name + '"]');
-  const age = () => { const n = Number(form.elements.age.value.trim()); return form.elements.age.value.trim() && Number.isFinite(n) ? n : null; };
+  const age = () => { const n = Number(f.age.value.trim()); return f.age.value.trim() && Number.isFinite(n) ? n : null; };
   function follow() {
     const v = form.querySelector('input[name="ville"]:checked');
     when('autre-ville').hidden = !(v && v.value === 'autre');
@@ -373,6 +381,34 @@
   form.addEventListener('input', follow);
   form.addEventListener('change', follow);
   OVForms.watch(form);
+
+  // ---- les villes et les clubs viennent de la base ----
+  const choix = form.querySelector('input[name="ville"][value="autre"]').closest('label');
+  const noteVilles = form.querySelector('[data-villes-note]');
+  function afficherVilles(villes) {
+    [...villes].sort((a, b) => (a.ordre ?? 0) - (b.ordre ?? 0)).forEach((v) => {
+      const label = document.createElement('label'), radio = document.createElement('input');
+      radio.type = 'radio'; radio.name = 'ville'; radio.value = v.id;
+      label.append(radio, ' ' + v.nom);
+      choix.before(label);
+    });
+  }
+  firebase
+    .then((fb) => fb.chargerVilles())
+    .then(afficherVilles)
+    .catch(() => {
+      noteVilles.textContent = 'La liste des villes ne s’est pas chargée. Choisissez « Autre ville » et écrivez la vôtre.';
+      noteVilles.hidden = false;
+    });
+  firebase
+    .then((fb) => fb.chargerVitrine())
+    .then((v) => {
+      const liste = document.getElementById('a-clubs');
+      v.clubs.map((c) => c.nom).filter(Boolean).sort((a, b) => a.localeCompare(b, 'fr')).forEach((nom) => {
+        const o = document.createElement('option'); o.value = nom; liste.append(o);
+      });
+    })
+    .catch(() => { /* les suggestions manquent seulement : le champ Club reste en texte libre */ });
 
   function show(n, focus) {
     current = n; reached = Math.max(reached, n);
@@ -392,23 +428,88 @@
   }
   document.querySelector('.steps').addEventListener('click', (e) => {
     const b = e.target.closest('[data-goto]');
-    if (b) show(Number(b.dataset.goto), true);
+    if (b && !sending) show(Number(b.dataset.goto), true);
   });
-  back.addEventListener('click', () => show(current - 1, true));
+  back.addEventListener('click', () => { if (!sending) show(current - 1, true); });
 
-  form.addEventListener('submit', (e) => {
+  // Contrôle d'une étape (même cachée, car une étape déjà passée peut avoir été modifiée au retour).
+  // L'email de 5 caractères (a@b.c) passerait le contrôle de format mais la règle de la base veut 6 caractères au moins.
+  function checkStep(i) {
+    const s = steps[i], was = s.hidden;
+    s.hidden = false;
+    const bad = OVForms.validate(s);
+    const mail = f.email.value.trim();
+    if (i === 0 && !bad.includes(f.email) && mail.length > 0 && mail.length < 6) {
+      OVForms.setError(f.email, 'Écrivez une adresse email d’au moins 6 caractères.');
+      if (!bad.length) f.email.focus();
+      bad.push(f.email);
+    }
+    s.hidden = was;
+    return bad;
+  }
+  const nombreDeChamps = (n) => (n === 1 ? 'Un champ est à corriger.' : n + ' champs sont à corriger.');
+  const n = (v) => Number(String(v).replace(',', '.'));
+
+  async function envoyer() {
+    const fichier = f.photo.files[0];
+    // l'une après l'autre : décoder deux fois une photo de 24 Mpx en même temps fait tomber un iPhone
+    let image, mini;
+    try {
+      image = await reduirePhoto(fichier, FICHE.max, FICHE.limite);
+      mini = await reduirePhoto(fichier, MINI.max, MINI.limite);
+    } catch (e) {
+      OVForms.setError(f.photo, 'Cette photo ne passe pas. Essayez une autre photo (JPEG ou PNG).');
+      f.photo.focus();
+      return false;
+    }
+    const profil = {
+      prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), clubSaisi: f.club.value.trim(),
+      poids: n(f.poids.value), taille: n(f.taille.value), biceps: n(f.tour_de_bras.value),
+      age: n(f.age.value), pratique: n(f.pratique.value), bras: f.bras.value, mini,
+    };
+    if (f.ville.value === 'autre') profil.villeSaisie = f.autre_ville.value.trim(); else profil.villeId = f.ville.value;
+    if (f.palmares.value.trim()) profil.palmares = f.palmares.value.trim();
+    if (f.instagram.value.trim()) profil.instagram = f.instagram.value.trim().replace(/^@?/, '@');
+    const contact = {
+      email: f.email.value.trim(),
+      accordParent: profil.age < 18 && !!(f.accord_parent && f.accord_parent.checked),
+      publicOk: f.fiche_publique.checked, usageOk: f.usage.checked,
+    };
+    if (f.telephone.value.trim()) contact.telephone = f.indicatif.value + ' ' + f.telephone.value.trim();
+    try {
+      const fb = await firebase;
+      await fb.envoyerProfil(profil, contact, image);
+    } catch (e) {
+      status.textContent = MSG_ENVOI;
+      return false;
+    }
+    notifier('Nouveau profil à valider');
+    return true;
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (sending) return;
     follow();
-    const step = steps[current - 1];
-    const bad = OVForms.validate(step);
     const a = age();
-    if (current === 1 && a !== null && a < 14) { status.textContent = 'La vitrine accueille les athlètes à partir de 14 ans.'; return; }
-    if (bad.length) { status.textContent = bad.length === 1 ? 'Un champ est à corriger.' : bad.length + ' champs sont à corriger.'; return; }
+    if (current === 1 && a !== null && a < 14) { status.textContent = 'La vitrine accueille les athlètes à partir de 14 ans.'; return; }
+    const bad = checkStep(current - 1);
+    if (bad.length) { status.textContent = nombreDeChamps(bad.length); return; }
     if (current < 3) { show(current + 1, true); return; }
-    // the end: nothing is sent, and the page says so
-    const v = form.querySelector('input[name="ville"]:checked').value;
-    const ville = v === 'autre' ? form.elements.autre_ville.value.trim() : v;
-    done.querySelector('[data-done-text]').textContent = 'C’est une maquette : rien n’a été envoyé, ' + form.elements.prenom.value.trim() + '. Dans la version finale, votre fiche part en attente ; l’organisateur la relit, puis elle apparaît avec les profils de ' + ville + '. Votre email et votre téléphone ne s’affichent jamais.';
+
+    // dernière étape : toutes les étapes sont revérifiées avant l'envoi
+    for (let i = 0; i < 2; i++) {
+      const autre = checkStep(i);
+      if (autre.length) { show(i + 1, false); checkStep(i); status.textContent = nombreDeChamps(autre.length); return; }
+    }
+    sending = true; next.disabled = true; back.disabled = true;
+    next.textContent = 'Envoi en cours…'; status.textContent = '';
+    let ok = false;
+    try { ok = await envoyer(); } catch (err) { status.textContent = MSG_ENVOI; }
+    sending = false; next.disabled = false; back.disabled = false;
+    next.textContent = 'Envoyer ma fiche';
+    if (!ok) return;
+    done.querySelector('[data-done-text]').textContent = 'Votre fiche est envoyée. Elle apparaîtra sur la page dès que l’organisateur l’aura relue.';
     form.hidden = true; document.querySelector('.steps').hidden = true; done.hidden = false; done.focus();
   });
   done.querySelector('[data-restart]').addEventListener('click', () => {
@@ -416,8 +517,8 @@
     reached = 1; follow(); form.hidden = false; document.querySelector('.steps').hidden = false; done.hidden = true; show(1, true);
   });
 
-  // the photograph, reduced in the browser to 800 px on its long side before the (future) send
-  const input = form.elements.photo, preview = form.querySelector('[data-photo-preview]'), size = form.querySelector('[data-photo-size]');
+  // la photo : un aperçu réduit à 800 px dans le navigateur ; l'envoi la réduit de nouveau (fiche et vignette)
+  const input = f.photo, preview = form.querySelector('[data-photo-preview]'), size = form.querySelector('[data-photo-size]');
   input.addEventListener('change', () => {
     const file = input.files && input.files[0];
     if (!file) return;
@@ -431,7 +532,7 @@
       const data = c.toDataURL('image/jpeg', 0.85);
       URL.revokeObjectURL(url);
       preview.innerHTML = ''; const p = new Image(); p.src = data; p.alt = 'Aperçu de votre photo'; preview.append(p); preview.classList.add('has-photo');
-      size.textContent = 'Photo réduite à ' + c.width + ' × ' + c.height + ' px, environ ' + Math.round(data.length * 0.75 / 1024) + ' Ko.';
+      size.textContent = 'Photo réduite à ' + c.width + ' × ' + c.height + ' px, environ ' + Math.round(data.length * 0.75 / 1024) + ' Ko.';
       OVForms.check(input);
     };
     img.src = url;
