@@ -34,11 +34,11 @@ export function grouperParVille(profils, villes, f, ordre) {
 }
 
 export function norm(t) {
-  return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+  return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
 }
 
 export function slug(t) {
-  return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'x';
 }
 
