@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open Vendetta : matchs de bras de fer au Luxembourg</title>
-<meta name="description" content="Choisissez un athlète de bras de fer à Luxembourg ou à Strasbourg et proposez-lui un match. Le club fixe ensuite le lieu et la date avec vous.">
+<meta name="description" content="Athlètes de bras de fer ouverts à un match au Luxembourg et à Strasbourg. Choisissez un profil, proposez un match : le club organise la rencontre.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open Vendetta : matchs de bras de fer au Luxembourg">
 <meta property="og:description" content="Des athlètes de Luxembourg et de Strasbourg ouverts à un match. Vous choisissez, le club organise.">
@@ -13,7 +13,10 @@
 <link rel="icon" href="ov/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#181818">
 <link rel="canonical" href="https://armwrestlingclubstrassen.com/open-vendetta.html">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","name":"Open Vendetta","url":"https://armwrestlingclubstrassen.com/open-vendetta.html","inLanguage":"fr-LU","description":"Athlètes de bras de fer ouverts à un match au Luxembourg et à Strasbourg.","isPartOf":{"@type":"WebSite","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"}}
+</script>
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -305,7 +308,7 @@
             <select id="f-tri" name="tri"><option value="desc">Du plus lourd au plus léger</option><option value="asc">Du plus léger au plus lourd</option></select></div>
         </div>
         <div class="roster__bar">
-          <p class="roster__status" role="status" aria-atomic="true" data-roster-status>10 profils affichés</p>
+          <p class="roster__status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
           <button class="roster__toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
           <button class="roster__reset" type="button" data-roster-reset hidden>Retirer les filtres</button>
         </div>
@@ -363,7 +366,7 @@
   </div>
 </footer>
 
-<!-- the proposal form: copied into the sheet of the athlete chosen (ids prefixed with the sheet's own), never sent -->
+<!-- the proposal form: copied into the sheet of the athlete chosen (ids prefixed with the sheet's own) -->
 <template id="tpl-propose">
   <form class="propose__form" novalidate aria-labelledby="__ID__-titre">
     <div class="propose__head">
@@ -373,16 +376,16 @@
     </div>
     <div class="propose__grid">
       <div class="field"><label for="__ID__-prenom">Prénom</label>
-        <input id="__ID__-prenom" name="prenom" type="text" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="__ID__-prenom-err">
+        <input id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="__ID__-prenom-err">
         <p class="field__error" id="__ID__-prenom-err" hidden></p></div>
       <div class="field"><label for="__ID__-nom">Nom</label>
-        <input id="__ID__-nom" name="nom" type="text" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="__ID__-nom-err">
+        <input id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="__ID__-nom-err">
         <p class="field__error" id="__ID__-nom-err" hidden></p></div>
       <div class="field"><label for="__ID__-club">Club (facultatif)</label>
-        <input id="__ID__-club" name="club" type="text" autocomplete="organization" list="ov-clubs">
+        <input id="__ID__-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs">
       </div>
       <div class="field"><label for="__ID__-ville">Ville ou pays</label>
-        <input id="__ID__-ville" name="ville" type="text" autocomplete="address-level2" required data-check data-err="Écrivez votre ville ou votre pays." aria-describedby="__ID__-ville-err">
+        <input id="__ID__-ville" name="ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez votre ville ou votre pays." aria-describedby="__ID__-ville-err">
         <p class="field__error" id="__ID__-ville-err" hidden></p></div>
       <div class="field"><label for="__ID__-poids">Poids (kg)</label>
         <input id="__ID__-poids" name="poids" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="30" data-max="250" data-err="Écrivez votre poids en kilos." data-err-format="Écrivez un poids en kilos, entre 30 et 250." aria-describedby="__ID__-poids-err">
@@ -403,18 +406,23 @@
         <input id="__ID__-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="__ID__-pratique-err">
         <p class="field__error" id="__ID__-pratique-err" hidden></p></div>
       <div class="field"><label for="__ID__-email">Email</label>
-        <input id="__ID__-email" name="email" type="email" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : l’organisateur vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="__ID__-email-err">
+        <input id="__ID__-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : l’organisateur vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="__ID__-email-err">
         <p class="field__error" id="__ID__-email-err" hidden></p></div>
       <div class="field"><div class="tel">
           <div class="tel__code"><label for="__ID__-ind">Indicatif</label><select id="__ID__-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
-          <div class="tel__num"><label for="__ID__-tel">Téléphone (facultatif)</label><input id="__ID__-tel" name="telephone" type="tel" autocomplete="tel-national" data-check data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="__ID__-tel-err"></div>
+          <div class="tel__num"><label for="__ID__-tel">Téléphone (facultatif)</label><input id="__ID__-tel" name="telephone" type="tel" maxlength="15" autocomplete="tel-national" data-check data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="__ID__-tel-err"></div>
         </div>
         <p class="field__error" id="__ID__-tel-err" hidden></p></div>
       <div class="field"><label for="__ID__-insta">Instagram (facultatif)</label>
-        <input id="__ID__-insta" name="instagram" type="text" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="__ID__-insta-err">
+        <input id="__ID__-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="__ID__-insta-err">
         <p class="field__error" id="__ID__-insta-err" hidden></p></div>
       <div class="field field--full"><label for="__ID__-message">Message (facultatif)</label>
-        <textarea id="__ID__-message" name="message" rows="4"></textarea>
+        <textarea id="__ID__-message" name="message" rows="4" maxlength="1000"></textarea>
+      </div>
+      <div class="field field--check field--full" data-when="mineur" hidden>
+        <input id="__ID__-parent" name="accord_parent" type="checkbox" required data-check data-err="Entre 14 et 17 ans, cochez cette case : un parent doit être d’accord." aria-describedby="__ID__-parent-err">
+        <label for="__ID__-parent">Un parent est d’accord (obligatoire de 14 à 17 ans)</label>
+        <p class="field__error" id="__ID__-parent-err" hidden></p>
       </div>
       <div class="field field--check field--full">
         <input id="__ID__-accord" name="accord" type="checkbox" required data-check data-err="Cochez cette case pour que l’organisateur puisse utiliser vos informations." aria-describedby="__ID__-accord-err">
@@ -431,137 +439,9 @@
 <script type="module" src="ov/assets/system.js"></script>
 <script type="module" src="ov/assets/motion/motion.js"></script>
 <script type="module" src="ov/assets/layout/layout.js"></script>
-<!-- the roster: filters, weight order, the sheets that unfold in their row, and the two buttons whose forms come at the next step -->
-<script>
-(() => {
-  const roster = document.getElementById('profils');
-  if (!roster) return;
-  document.documentElement.classList.add('ov-js');
-  const pick = (name) => roster.querySelector('[name="' + name + '"]').value;
-  const groups = [...roster.querySelectorAll('.roster__group')];
-  const status = roster.querySelector('[data-roster-status]');
-  const empty = roster.querySelector('[data-roster-empty]');
-  const reset = roster.querySelector('[data-roster-reset]');
-  const selects = [...roster.querySelectorAll('.filters select')];
-  const plural = (n, one, many) => n + ' ' + (n > 1 ? many : one);
-  const inWeight = (kg, band) => band === 'tous' || (band === 'lt70' ? kg < 70 : band === '70-89' ? kg >= 70 && kg < 90 : kg >= 90);
-
-  function apply() {
-    const ville = pick('ville'), bras = pick('bras'), poids = pick('poids'), club = pick('club'), ordre = pick('tri');
-    let total = 0;
-    for (const group of groups) {
-      const list = group.querySelector('.roster__list');
-      const items = [...list.children].sort((a, b) => ordre === 'asc' ? a.dataset.poids - b.dataset.poids : b.dataset.poids - a.dataset.poids);
-      items.forEach((li) => list.appendChild(li));
-      let shown = 0;
-      for (const li of items) {
-        const ok = (ville === 'toutes' || li.dataset.ville === ville)
-          && (bras === 'tous' || li.dataset.bras === bras || li.dataset.bras === 'Les deux')
-          && inWeight(Number(li.dataset.poids), poids)
-          && (club === 'tous' || li.dataset.club === club);
-        li.hidden = !ok;
-        if (ok) shown++;
-      }
-      group.hidden = shown === 0;
-      total += shown;
-    }
-    status.textContent = total === 0 ? 'Aucun profil affiché' : plural(total, 'profil affiché', 'profils affichés');
-    empty.hidden = total !== 0;
-    const narrowed = ville !== 'toutes' || bras !== 'tous' || poids !== 'tous' || club !== 'tous';
-    roster.classList.toggle('is-filtered', narrowed);
-    reset.hidden = !narrowed;
-    // the chosen filters stay in the address, so a shared link opens on the same list
-    const params = new URLSearchParams(location.search);
-    for (const s of selects) { if (s.selectedIndex === 0) params.delete(s.name); else params.set(s.name, s.value); }
-    const q = params.toString();
-    history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
-  }
-  const start = new URLSearchParams(location.search);
-  let fromUrl = false;
-  for (const s of selects) {
-    const v = start.get(s.name);
-    if (v !== null && [...s.options].some((o) => o.value === v)) { s.value = v; fromUrl = true; }
-  }
-  if (fromUrl) apply();
-  selects.forEach((s) => s.addEventListener('change', apply));
-  reset.addEventListener('click', () => { selects.forEach((s) => { s.selectedIndex = 0; }); apply(); selects[0].focus(); });
-
-  const filterToggle = roster.querySelector('.roster__toggle');
-  const filters = roster.querySelector('.filters');
-  filterToggle.addEventListener('click', () => {
-    const open = filterToggle.getAttribute('aria-expanded') !== 'true';
-    filterToggle.setAttribute('aria-expanded', String(open));
-    filters.classList.toggle('is-open', open);
-  });
-
-  roster.addEventListener('click', (e) => {
-    const toggle = e.target.closest('.athlete__toggle');
-    if (toggle) {
-      const li = toggle.closest('.athlete');
-      const sheet = document.getElementById(toggle.getAttribute('aria-controls'));
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      toggle.setAttribute('aria-expanded', String(open));
-      sheet.hidden = !open;
-      li.classList.toggle('is-open', open);
-      roster.classList.toggle('has-open', !!roster.querySelector('.athlete.is-open'));
-      // the open profile goes in the address too, so a link can open one athlete's sheet
-      const params = new URLSearchParams(location.search);
-      if (open) params.set('profil', sheet.id.replace('fiche-', ''));
-      else if (params.get('profil') === sheet.id.replace('fiche-', '')) params.delete('profil');
-      const q = params.toString();
-      history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
-      return;
-    }
-    const propose = e.target.closest('[data-propose]');
-    if (propose) openPropose(propose);
-  });
-
-  // "Proposer un match à X": the form opens under the athlete's figures, his photograph still beside it
-  const tpl = document.getElementById('tpl-propose');
-  function openPropose(btn) {
-    const box = document.getElementById(btn.getAttribute('aria-controls'));
-    const athlete = btn.closest('.athlete').querySelector('.athlete__toggle').textContent.trim();
-    if (!box.firstElementChild) {
-      box.innerHTML = tpl.innerHTML.split('__ID__').join(box.id).split('__PRENOM__').join(btn.dataset.prenom);
-      const form = box.querySelector('form');
-      const li = btn.closest('.athlete');
-      form.querySelector('[data-recap]').textContent = athlete + ' · ' + li.dataset.poids + ' kg · ' + (li.dataset.bras === 'Les deux' ? 'les deux bras' : 'bras ' + li.dataset.bras.toLowerCase());
-      OVForms.watch(form);
-      form.addEventListener('submit', (ev) => {
-        ev.preventDefault();
-        const status = form.querySelector('.form__status');
-        const bad = OVForms.validate(form);
-        if (bad.length) { status.textContent = bad.length === 1 ? 'Un champ est à corriger.' : bad.length + ' champs sont à corriger.'; return; }
-        status.textContent = '';
-        const done = document.createElement('div');
-        done.className = 'propose__done'; done.setAttribute('role', 'status'); done.tabIndex = -1;
-        const title = document.createElement('p'); title.className = 'propose__done-title';
-        title.textContent = 'Votre proposition à ' + athlete + ' est prête';
-        const text = document.createElement('p');
-        text.textContent = 'C’est une maquette : rien n’a été envoyé. Dans la version finale, l’organisateur reçoit votre proposition et vous écrit à ' + form.elements.email.value.trim() + ' pour fixer l’adversaire, le lieu et la date.';
-        const again = document.createElement('button');
-        again.type = 'button'; again.className = 'btn btn--secondary'; again.textContent = 'Modifier la proposition';
-        again.addEventListener('click', () => { done.remove(); form.hidden = false; form.elements.prenom.focus(); });
-        done.append(title, text, again);
-        form.hidden = true; form.after(done); done.focus();
-      });
-      form.querySelector('[data-propose-cancel]').addEventListener('click', () => {
-        box.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded', 'false'); btn.focus();
-      });
-    }
-    box.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded', 'true');
-    const first = box.querySelector('form:not([hidden]) input, .propose__done');
-    if (first) first.focus({ preventScroll: true });
-  }
-
-  const linked = start.get('profil');
-  const linkedToggle = linked && /^[a-z]+$/.test(linked) ? roster.querySelector('[aria-controls="fiche-' + linked + '"]') : null;
-  if (linkedToggle) {
-    linkedToggle.click();
-    if (start.get('proposer') === '1') openPropose(linkedToggle.closest('.athlete').querySelector('[data-propose]'));
-    linkedToggle.closest('.athlete').scrollIntoView({ block: 'start' });
-  }
-})();
-</script>
+<script type="module" src="ov/js/ov-vitrine.js"></script>
+<!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
+     A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
+<script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
