@@ -1,14 +1,14 @@
 // Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match), branchée sur Firestore.
-import { chargerVitrine, chargerPhoto, envoyerCandidature } from './ov-firebase.js';
 import { notifier } from './ov-notify.js';
-import { dansTranche } from './ov-data.js';
+import { dansTranche, slug } from './ov-data.js';
 import { ligneAthlete, esc } from './ov-vue.js';
 
 const roster = document.getElementById('profils');
 const anchor = roster.querySelector('[data-roster-empty]'); // les groupes de villes se placent juste avant
-let data;
+let data, fb;
 try {
-  data = await chargerVitrine();
+  fb = await import('./ov-firebase.js');
+  data = await fb.chargerVitrine();
 } catch (e) {
   roster.querySelector('[data-roster-status]').textContent = 'Les profils ne se chargent pas. Réessayez dans un moment.';
   throw e;
@@ -21,16 +21,20 @@ for (const v of [...data.villes].sort((a, b) => a.ordre - b.ordre)) {
   const g = document.createElement('div');
   g.className = 'roster__group';
   g.dataset.ville = v.nom;
+  g.id = slug(v.nom);
   g.innerHTML = '<div class="roster__head"><h3 id="ville-' + esc(v.id) + '">' + esc(v.nom) + '</h3></div><ul class="roster__list">'
     + siens.map((p) => ligneAthlete(p, v.nom, clubNom(p.clubId))).join('') + '</ul>';
   anchor.before(g);
 }
+if (location.hash) { const cible = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (cible) cible.scrollIntoView(); }
 // Les menus Ville et Club ne proposent que ce qui existe vraiment.
 const remplir = (name, premier, noms) => {
   const s = roster.querySelector('select[name="' + name + '"]');
   s.innerHTML = premier + noms.map((n) => '<option value="' + esc(n) + '">' + esc(n) + '</option>').join('');
 };
 remplir('ville', '<option value="toutes">Toutes les villes</option>', [...new Set(data.profils.map((p) => villeNom(p.villeId)))].filter(Boolean));
+const listeClubs = document.getElementById('ov-clubs');
+if (listeClubs) listeClubs.replaceChildren(...[...new Set(data.clubs.map((c) => c.nom).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'fr')).map((n) => { const o = document.createElement('option'); o.value = n; return o; }));
 remplir('club', '<option value="tous">Tous les clubs</option>', [...new Set(data.profils.map((p) => clubNom(p.clubId)))].filter(Boolean).sort());
 
 document.documentElement.classList.add('ov-js');
@@ -98,7 +102,7 @@ roster.addEventListener('click', (e) => {
     toggle.setAttribute('aria-expanded', String(open));
     sheet.hidden = !open;
     const img = sheet.querySelector('img[data-photo]');
-    if (open && img && !img.src) chargerPhoto(img.dataset.photo).then((src) => { if (src) img.src = src; }).catch(() => {});
+    if (open && img && !img.src) fb.chargerPhoto(img.dataset.photo).then((src) => { if (src) img.src = src; }).catch(() => {});
     li.classList.toggle('is-open', open);
     roster.classList.toggle('has-open', !!roster.querySelector('.athlete.is-open'));
     // the open profile goes in the address too, so a link can open one athlete's sheet
@@ -119,7 +123,7 @@ function openPropose(btn) {
   const box = document.getElementById(btn.getAttribute('aria-controls'));
   const athlete = btn.closest('.athlete').querySelector('.athlete__toggle').textContent.trim();
   if (!box.firstElementChild) {
-    box.innerHTML = tpl.innerHTML.split('__ID__').join(box.id).split('__PRENOM__').join(btn.dataset.prenom);
+    box.innerHTML = tpl.innerHTML.split('__ID__').join(esc(box.id)).split('__PRENOM__').join(esc(btn.dataset.prenom));
     const form = box.querySelector('form');
     const li = btn.closest('.athlete');
     form.querySelector('[data-recap]').textContent = athlete + ' · ' + li.dataset.poids + ' kg · ' + (li.dataset.bras === 'Les deux' ? 'les deux bras' : 'bras ' + li.dataset.bras.toLowerCase());
@@ -156,7 +160,7 @@ function openPropose(btn) {
       const envoyer = form.querySelector('[type="submit"]');
       envoyer.disabled = true;
       try {
-        await envoyerCandidature(c);
+        await fb.envoyerCandidature(c);
       } catch (err) {
         envoyer.disabled = false;
         status.textContent = 'L’envoi n’a pas marché. Vérifiez votre connexion et réessayez.';
@@ -171,7 +175,7 @@ function openPropose(btn) {
       const text = document.createElement('p');
       text.textContent = 'L’organisateur vous écrit à ' + form.elements.email.value.trim() + ' pour fixer l’adversaire, le lieu et la date.';
       const again = document.createElement('button');
-      again.type = 'button'; again.className = 'btn btn--secondary'; again.textContent = 'Modifier la proposition';
+      again.type = 'button'; again.className = 'btn btn--secondary'; again.textContent = 'Envoyer une autre proposition';
       again.addEventListener('click', () => { done.remove(); form.hidden = false; form.elements.prenom.focus(); });
       done.append(title, text, again);
       form.hidden = true; form.after(done); done.focus();

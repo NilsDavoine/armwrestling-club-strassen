@@ -20,6 +20,7 @@ export async function chargerVitrine() {
   ]);
   return { villes: lire(villes), clubs: lire(clubs), profils: lire(profils) };
 }
+export async function chargerClubs() { return lire(await fs.getDocs(col('clubs'))); }
 export async function chargerVilles() {
   return lire(await fs.getDocs(col('villes')));
 }
@@ -52,6 +53,7 @@ export async function chargerTout() {
   return Object.fromEntries(noms.map((n, i) => [n, lire(res[i])]));
 }
 export const majProfil = (id, champs) => fs.updateDoc(ref('profils', id), champs);
+export const majContact = (id, champs) => fs.updateDoc(ref('contacts', id), champs);
 export async function majPhoto(id, image, mini) {
   const b = fs.writeBatch(db);
   b.set(ref('photos', id), { image });
@@ -79,11 +81,11 @@ export async function fusionnerClubs(deId, versId, profilIds) {
   b.delete(ref('clubs', deId));
   await b.commit();
 }
-// entrees = athletesDeLaFeuille(csv) ; 2 écritures par athlète, lots de 200 (limite Firestore : 500).
+// entrees = athletesDeLaFeuille(csv) ; 2 écritures par athlète, lots de 100 (limite Firestore : 500).
 export async function importer(entrees) {
-  for (let i = 0; i < entrees.length; i += 200) {
+  for (let i = 0; i < entrees.length; i += 100) {
     const b = fs.writeBatch(db);
-    for (const e of entrees.slice(i, i + 200)) {
+    for (const e of entrees.slice(i, i + 100)) {
       const p = fs.doc(col('profils'));
       b.set(p, { ...e.profil, statut: 'en_attente', source: 'feuille-vendetta-2026', creeLe: fs.serverTimestamp() });
       b.set(ref('contacts', p.id), { ...e.contact, accordParent: false, publicOk: false, usageOk: false, creeLe: fs.serverTimestamp() });

@@ -401,10 +401,10 @@ const firebase = import('./ov/js/ov-firebase.js');
       noteVilles.hidden = false;
     });
   firebase
-    .then((fb) => fb.chargerVitrine())
-    .then((v) => {
+    .then((fb) => fb.chargerClubs())
+    .then((clubs) => {
       const liste = document.getElementById('a-clubs');
-      v.clubs.map((c) => c.nom).filter(Boolean).sort((a, b) => a.localeCompare(b, 'fr')).forEach((nom) => {
+      clubs.map((c) => c.nom).filter(Boolean).sort((a, b) => a.localeCompare(b, 'fr')).forEach((nom) => {
         const o = document.createElement('option'); o.value = nom; liste.append(o);
       });
     })

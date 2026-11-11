@@ -243,7 +243,7 @@
 
 <script src="ov/js/ov-forms.js"></script>
 <script type="module">
-import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majPhoto, supprimerProfil, majCandidature, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-firebase.js';
+import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-firebase.js';
 import { clubProche, athletesDeLaFeuille, BRAS } from './ov/js/ov-data.js';
 import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
 import { esc } from './ov/js/ov-vue.js';
@@ -288,6 +288,9 @@ function manque(p) {
   if (!p.clubId || !club(p.clubId)) m.push('le club');
   if (!p.villeId || !ville(p.villeId)) m.push('la ville');
   if (!brasOk(p.bras)) m.push('le bras');
+  const c = contact(p);
+  if (c.publicOk !== true) m.push('l’accord de publication');
+  if (!(p.age >= 18) && c.accordParent !== true) m.push('l’accord d’un parent');
   return m;
 }
 let toastTimer = 0;
@@ -366,6 +369,8 @@ function editForm(p) {
     select(k + 'bras', 'Bras', 'bras', brasOk(p.bras) ? p.bras : '', bras, { req: true, err: 'Choisissez le bras.' }) +
     field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
     field(k + 'insta', 'Instagram', 'instagram', p.instagram, { kind: 'handle', fmt: 'Un pseudo Instagram : lettres, chiffres, points et tirets bas.' }) +
+    '<div class="field field--full"><label><input type="checkbox" name="publicOk"' + (contact(p).publicOk === true ? ' checked' : '') + '> Accord de publication obtenu (la personne a dit oui)</label></div>' +
+    (p.age >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
     '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
     '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
 }
@@ -373,12 +378,16 @@ async function saveEdit(form) {
   if (OVForms.validate(form).length) { toast('Un champ est à corriger dans la fiche.'); return; }
   const p = profil(form.dataset.edit); if (!p) return;
   const f = form.elements;
-  const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: Number(f.poids.value.replace(',', '.')), taille: Number(f.taille.value),
-    biceps: Number(f.biceps.value.replace(',', '.')), age: Number(f.age.value), pratique: Number(f.pratique.value), bras: f.bras.value,
+  const num = (v) => Number(String(v).replace(',', '.'));
+  const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: num(f.poids.value), taille: num(f.taille.value),
+    biceps: num(f.biceps.value), age: num(f.age.value), pratique: num(f.pratique.value), bras: f.bras.value,
     palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
   if (f.ville.value && ville(f.ville.value)) champs.villeId = f.ville.value;
   if (f.club.value && club(f.club.value)) champs.clubId = f.club.value;
   const fichier = f.photo.files && f.photo.files[0];
+  const c0 = contact(p);
+  const accords = { publicOk: f.publicOk.checked, accordParent: f.accordParent ? f.accordParent.checked : c0.accordParent === true };
+  const accordsChanges = accords.publicOk !== (c0.publicOk === true) || accords.accordParent !== (c0.accordParent === true);
   let photo = null;
   await agir(async () => {
     if (fichier) {
@@ -388,9 +397,10 @@ async function saveEdit(form) {
       photo = { image, mini };
     }
     await majProfil(p.id, champs);
+    if (accordsChanges) await majContact(p.id, accords);
     if (photo) await majPhoto(p.id, photo.image, photo.mini);
   }, () => {
-    Object.assign(p, champs); if (photo) p.mini = photo.mini;
+    Object.assign(p, champs); if (accordsChanges) S.contacts.set(p.id, { ...c0, ...accords }); if (photo) p.mini = photo.mini;
     ui.open = null;
     toast(p.statut === 'en_attente' ? 'Fiche de ' + full(p) + ' corrigée. Elle attend toujours votre validation.' : 'Fiche de ' + full(p) + ' enregistrée.');
     render('h2');
@@ -562,7 +572,7 @@ surConnexion(async (user) => {
     console.error(err);
     vider();
     if (err && err.code === 'permission-denied') ecranConnexion('Ce compte n’a pas accès à la gestion.', true);
-    else ecranConnexion('Chargement impossible : vérifiez la connexion, puis réessayez.', true);
+    else ecranConnexion('Chargement impossible : vérifiez la connexion, puis réessayez.', false);
   }
 });
 loginBtn.addEventListener('click', async () => {
