@@ -107,6 +107,10 @@
   .photo-pick__preview img { width: 100%; height: 100%; object-fit: cover; }
   .field input[type="file"] { height: auto; padding: var(--s-3); cursor: pointer; }
 
+  .donnees { border: 1px solid var(--line); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4); color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+  .donnees summary { cursor: pointer; color: var(--ink); font-weight: 600; min-height: 24px; }
+  .donnees p { margin: var(--s-3) 0 0; }
+  .donnees a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
   .aside-photo { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r-lg); }
   .aside-photo img { width: 100%; height: 100%; object-fit: cover; }
   #signup .grid { align-items: start; }
@@ -282,6 +286,7 @@
                   </div>
                 </div>
               </div>
+              <details class="donnees field--full"><summary>Vos données</summary><p>L’Armwrestling Club Strassen garde vos réponses pour publier votre fiche, si vous l’acceptez, et pour vous proposer des matchs. Votre email, votre téléphone et l’accord d’un parent ne s’affichent jamais : seul l’organisateur les voit. Les données sont stockées chez Google Firebase, dans l’Union européenne. Votre fiche reste en ligne tant que vous le voulez ; sur simple demande, elle est supprimée avec votre photo et vos coordonnées. Pour voir, corriger ou supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
               <div class="field field--check field--full">
                 <input id="a-public" name="fiche_publique" type="checkbox" required data-check data-err="Cochez cette case : la fiche est faite pour être vue sur la page." aria-describedby="a-public-err">
                 <label for="a-public">J’accepte que ma fiche soit publique sur cette page.</label>

@@ -23,5 +23,5 @@ export async function reduirePhoto(fichier, max, limite) {
 }
 
 // Les deux tailles stockées : la vignette de la liste et la photo de la fiche (limites des règles Firestore).
-export const MINI = { max: 240, limite: 40000 };
+export const MINI = { max: 160, limite: 12000 };
 export const FICHE = { max: 960, limite: 300000 };

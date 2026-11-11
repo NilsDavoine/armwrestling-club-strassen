@@ -243,8 +243,8 @@
 
 <script src="ov/js/ov-forms.js"></script>
 <script type="module">
-import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-firebase.js';
-import { clubProche, athletesDeLaFeuille, BRAS } from './ov/js/ov-data.js';
+import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
+import { clubProche, athletesDeLaFeuille, norm, BRAS } from './ov/js/ov-data.js';
 import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
 import { esc } from './ov/js/ov-vue.js';
 
@@ -252,7 +252,7 @@ import { esc } from './ov/js/ov-vue.js';
 const S = { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() };
 const ETATS = [['nouvelle', 'Nouvelle'], ['en_discussion', 'En discussion'], ['match_organise', 'Match organisé'], ['sans_suite', 'Sans suite']];
 const etatNom = (k) => (ETATS.find((e) => e[0] === k) || [k, k])[1];
-const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null };
+const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null, supprCand: null };
 
 // ------------------------------------------------------------------ helpers
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -358,17 +358,19 @@ function editForm(p) {
   const bras = [...(brasOk(p.bras) ? [] : [['', 'À choisir']]), ['Droit', 'Droit'], ['Gauche', 'Gauche'], ['Les deux', 'Les deux']];
   return '<form class="edit" data-edit="' + esc(p.id) + '" novalidate aria-label="Modifier la fiche de ' + esc(full(p)) + '"><div class="edit__grid">' +
     field(k + 'prenom', 'Prénom', 'prenom', p.prenom, { req: true, err: 'Écrivez le prénom.' }) +
-    field(k + 'nom', 'Nom', 'nom', p.nom, { req: true, err: 'Écrivez le nom.' }) +
+    field(k + 'nom', 'Nom', 'nom', p.nom || '', { req: false }) +
     select(k + 'ville', 'Ville', 'ville', villeOk ? p.villeId : '', villes) +
     select(k + 'club', 'Club', 'club', clubOk ? p.clubId : '', clubs) +
     field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
     field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
-    field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, req: true, err: 'Écrivez le tour de bras.', fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
+    field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
     field(k + 'age', 'Âge', 'age', p.age, { num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
     field(k + 'pratique', 'Années de pratique', 'pratique', p.pratique, { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
     select(k + 'bras', 'Bras', 'bras', brasOk(p.bras) ? p.bras : '', bras, { req: true, err: 'Choisissez le bras.' }) +
     field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
     field(k + 'insta', 'Instagram', 'instagram', p.instagram, { kind: 'handle', fmt: 'Un pseudo Instagram : lettres, chiffres, points et tirets bas.' }) +
+    field(k + 'email', 'Email', 'email', contact(p).email || '', { type: 'email', req: false, fmt: 'Une adresse email avec un @, comme nom@exemple.lu.' }) +
+    field(k + 'tel', 'Téléphone (facultatif)', 'telephone', contact(p).telephone || '', { type: 'tel' }) +
     '<div class="field field--full"><label><input type="checkbox" name="publicOk"' + (contact(p).publicOk === true ? ' checked' : '') + '> Accord de publication obtenu (la personne a dit oui)</label></div>' +
     (p.age >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
     '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
@@ -380,12 +382,16 @@ async function saveEdit(form) {
   const f = form.elements;
   const num = (v) => Number(String(v).replace(',', '.'));
   const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: num(f.poids.value), taille: num(f.taille.value),
-    biceps: num(f.biceps.value), age: num(f.age.value), pratique: num(f.pratique.value), bras: f.bras.value,
+    biceps: f.biceps.value.trim() ? num(f.biceps.value) : null, age: num(f.age.value), pratique: num(f.pratique.value), bras: f.bras.value,
     palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
   if (f.ville.value && ville(f.ville.value)) champs.villeId = f.ville.value;
   if (f.club.value && club(f.club.value)) champs.clubId = f.club.value;
+  const email = f.email.value.trim(), tel = f.telephone.value.trim();
+  if (email && (email.length < 6 || email.length > 120)) { OVForms.setError(f.email, 'L’email doit faire de 6 à 120 caractères.'); f.email.focus(); toast('Un champ est à corriger dans la fiche.'); return; }
+  if (tel.length > 30) { OVForms.setError(f.telephone, 'Le téléphone fait 30 caractères au plus.'); f.telephone.focus(); toast('Un champ est à corriger dans la fiche.'); return; }
   const fichier = f.photo.files && f.photo.files[0];
   const c0 = contact(p);
+  const contactChange = email !== (c0.email || '') || tel !== (c0.telephone || '');
   const accords = { publicOk: f.publicOk.checked, accordParent: f.accordParent ? f.accordParent.checked : c0.accordParent === true };
   const accordsChanges = accords.publicOk !== (c0.publicOk === true) || accords.accordParent !== (c0.accordParent === true);
   let photo = null;
@@ -398,9 +404,12 @@ async function saveEdit(form) {
     }
     await majProfil(p.id, champs);
     if (accordsChanges) await majContact(p.id, accords);
+    if (contactChange) await majContact(p.id, { email, telephone: tel ? tel : champSupprime() });
     if (photo) await majPhoto(p.id, photo.image, photo.mini);
   }, () => {
-    Object.assign(p, champs); if (accordsChanges) S.contacts.set(p.id, { ...c0, ...accords }); if (photo) p.mini = photo.mini;
+    Object.assign(p, champs); if (accordsChanges) S.contacts.set(p.id, { ...contact(p), ...accords });
+    if (contactChange) { const c1 = { ...contact(p), email }; if (tel) c1.telephone = tel; else delete c1.telephone; S.contacts.set(p.id, c1); }
+    if (photo) p.mini = photo.mini;
     ui.open = null;
     toast(p.statut === 'en_attente' ? 'Fiche de ' + full(p) + ' corrigée. Elle attend toujours votre validation.' : 'Fiche de ' + full(p) + ' enregistrée.');
     render('h2');
@@ -450,7 +459,10 @@ function candCard(c) {
     (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
     '<div class="field"><label for="etat-' + id + '">État de la candidature</label><select id="etat-' + id + '" data-etat-select="' + id + '">' +
     ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
-    '<p class="acard__sub"><span class="state-ok" data-etat="' + esc(c.etat) + '">' + esc(etatNom(c.etat)) + '</span>' + (date(c.creeLe) ? ' · reçue le ' + esc(date(c.creeLe)) : '') + '</p></article>';
+    '<p class="acard__sub"><span class="state-ok" data-etat="' + esc(c.etat) + '">' + esc(etatNom(c.etat)) + '</span>' + (date(c.creeLe) ? ' · reçue le ' + esc(date(c.creeLe)) : '') + '</p>' +
+    (ui.supprCand === c.id
+      ? '<div class="confirm" role="group" aria-label="Confirmer la suppression"><p>Supprimer cette candidature&nbsp;? Elle disparaît pour de bon.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="suppr-cand-ok">Confirmer la suppression</button><button class="btn btn--secondary" type="button" data-act="suppr-cand-non">Garder la candidature</button></div></div>'
+      : '<div class="acard__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="suppr-cand">Supprimer</button></div>') + '</article>';
 }
 function viewTraiter() {
   const pend = S.profils.filter((p) => p.statut === 'en_attente');
@@ -493,11 +505,35 @@ function importBlock() {
   let apercu = '';
   if (imp && imp.erreur) apercu = '<p role="status" class="field__error">' + esc(imp.erreur) + '</p>';
   else if (imp && imp.entrees.length === 0) apercu = '<p role="status" class="field__error">Aucun athlète trouvé dans ce fichier. Vérifiez que c’est bien la feuille Vendetta 2026 exportée en CSV, avec ses colonnes NAME et SURNAME.</p>';
-  else if (imp) apercu = '<p role="status"><b>' + nb(imp.entrees.length, 'athlète trouvé', 'athlètes trouvés') + '</b> dans « ' + esc(imp.fichier) + ' ».</p>' +
-    '<button class="btn btn--primary" type="button" data-act="importer">Importer ' + nb(imp.entrees.length, 'athlète', 'athlètes') + ' en attente</button>';
+  else if (imp) apercu = '<p role="status"><b>' + nb(imp.entrees.length, 'athlète trouvé', 'athlètes trouvés') + '</b>, dont ' + imp.doublons + ' déjà ' + (imp.doublons > 1 ? 'présents' : 'présent') + ' (' + (imp.doublons > 1 ? 'ignorés' : 'ignoré') + ') dans « ' + esc(imp.fichier) + ' ».</p>' +
+    (imp.nouveaux.length ? '<button class="btn btn--primary" type="button" data-act="importer">Importer ' + nb(imp.nouveaux.length, 'athlète', 'athlètes') + ' en attente</button>' : '');
   return '<section class="block" aria-labelledby="h-import"><h3 id="h-import">Importer la feuille Vendetta 2026</h3>' +
     '<p class="muted">Les athlètes importés arrivent en attente, sans photo, sans ville choisie et sans accord : vous les relisez dans « À traiter ». N’importez une feuille qu’une seule fois.</p>' +
     '<div class="inline-form"><div class="field"><label for="import-file">Fichier CSV de la feuille</label><input id="import-file" type="file" accept=".csv,text/csv" data-import-file></div>' + apercu + '</div></section>';
+}
+function exportBlock() {
+  return '<section class="block" aria-labelledby="h-export"><h3 id="h-export">Sauvegarde</h3>' +
+    '<button class="btn btn--secondary" type="button" data-act="exporter">Exporter la base (sauvegarde)</button>' +
+    '<p class="muted">À faire une fois par mois. Le fichier contient des données personnelles : gardez-le sur votre ordinateur, ne le partagez pas.</p></section>';
+}
+// Firestore timestamps become ISO text; the thumbnail is left out for size.
+const enTexte = (v) => v && typeof v.toDate === 'function' ? v.toDate().toISOString() : Array.isArray(v) ? v.map(enTexte)
+  : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, enTexte(x)])) : v;
+async function exporterBase(btn) {
+  btn.disabled = true;
+  try {
+    const t = await chargerTout();
+    const sortie = { exporteLe: new Date().toISOString(), villes: t.villes, clubs: t.clubs,
+      profils: t.profils.map(({ mini, ...reste }) => reste), contacts: t.contacts, candidatures: t.candidatures };
+    const blob = new Blob([JSON.stringify(enTexte(sortie), null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'open-vendetta-sauvegarde-' + new Date().toLocaleDateString('fr-CA') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast('Sauvegarde téléchargée.');
+  } catch (err) { console.error(err); toast('Export impossible : réessayez.'); }
+  btn.disabled = false;
 }
 function viewVilles() {
   const count = (fn) => S.profils.filter((p) => (p.statut === 'publie' || p.statut === 'cache' || p.statut === 'en_attente') && fn(p)).length;
@@ -522,7 +558,7 @@ function viewVilles() {
     '<div class="field"><label for="m-to">Club à garder</label><select id="m-to" name="to">' + opts(m ? m.to : (S.clubs[0] || {}).id) + '</select></div></div>' +
     '<p class="field__error" data-merge-err hidden></p><button class="btn btn--secondary" type="submit">Fusionner</button>' + mergeConfirm + '</form>' +
     '<form class="inline-form" data-new="club" novalidate>' + field('new-club', 'Nouveau club', 'nom', '', { req: true, err: 'Écrivez le nom du club.' }) + '<button class="btn btn--primary" type="submit">Créer le club</button></form></section></div>' +
-    importBlock();
+    importBlock() + exportBlock();
 }
 function renameForm(key, value, label) {
   return '<form class="inline-form" data-rename="' + esc(key) + '" novalidate>' + field('r-' + esc(key.replace(':', '-')), label, 'nom', value, { req: true, err: 'Écrivez le nouveau nom.' }) +
@@ -554,7 +590,7 @@ function ecranConnexion(msg, refuse) {
 }
 function vider() {
   Object.assign(S, { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() });
-  Object.assign(ui, { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null });
+  Object.assign(ui, { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null, supprCand: null });
   document.querySelectorAll('.view').forEach((v) => { v.innerHTML = ''; });
   reindex();
 }
@@ -590,7 +626,7 @@ deniedBtn.addEventListener('click', sortir);
 // ------------------------------------------------------------------ what each click does
 $('.tabs').addEventListener('click', (e) => {
   const b = e.target.closest('[data-tab]'); if (!b) return;
-  ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null; ui.imp = null;
+  ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null; ui.imp = null; ui.supprCand = null;
   render(); window.scrollTo(0, 0);
   const h = $('#h-' + ui.tab); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
 });
@@ -613,6 +649,16 @@ views.addEventListener('click', (e) => {
     }
     case 'corriger': case 'modifier': ui.open = p.id; render(q('data-edit', p.id) + ' input'); return;
     case 'fermer': ui.open = null; render(q('data-profil', p.id) + ' [data-act="' + (p.statut === 'en_attente' ? 'corriger' : 'modifier') + '"]'); return;
+    case 'suppr-cand': { const cc = b.closest('[data-cand]'); if (!cc) return; ui.supprCand = cc.dataset.cand; render('[data-act="suppr-cand-ok"]'); return; }
+    case 'suppr-cand-non': { const id = ui.supprCand; ui.supprCand = null; render(id ? q('data-cand', id) + ' [data-act="suppr-cand"]' : null); return; }
+    case 'suppr-cand-ok': {
+      const cc = b.closest('[data-cand]'), c = cc && idx.cands.get(cc.dataset.cand); if (!c) return;
+      agir(() => supprimerCandidature(c.id), () => {
+        S.cands = S.cands.filter((x) => x.id !== c.id); ui.supprCand = null;
+        toast('Candidature de ' + (c.prenom || '') + ' ' + (c.nom || '') + ' supprimée.'); render('h2');
+      });
+      return;
+    }
     case 'refuser': ui.refuse = p.id; render('[data-act="refuser-ok"]'); return;
     case 'refuser-ok':
       agir(() => supprimerProfil(p.id), () => {
@@ -662,12 +708,13 @@ views.addEventListener('click', (e) => {
       });
       return;
     }
+    case 'exporter': exporterBase(b); return;
     case 'fusion-annuler': ui.merge = null; render('[data-merge] select'); return;
     case 'importer': {
-      const imp = ui.imp; if (!imp || !imp.entrees || !imp.entrees.length) return;
-      agir(() => importer(imp.entrees), async () => {
+      const imp = ui.imp; if (!imp || !imp.nouveaux || !imp.nouveaux.length) return;
+      agir(() => importer(imp.nouveaux), async () => {
         ui.imp = null;
-        try { await recharger(); toast(nb(imp.entrees.length, 'athlète importé', 'athlètes importés') + ', en attente dans « À traiter ».'); }
+        try { await recharger(); toast(nb(imp.nouveaux.length, 'athlète importé', 'athlètes importés') + ', en attente dans « À traiter ».'); }
         catch (err) { console.error(err); toast('Importé, mais la liste n’est pas à jour : rechargez la page.'); }
         render('h2');
       });
@@ -679,7 +726,12 @@ views.addEventListener('change', async (e) => {
   const fi = e.target.closest('[data-import-file]');
   if (fi) {
     const fichier = fi.files && fi.files[0]; if (!fichier) return;
-    try { ui.imp = { fichier: fichier.name, entrees: athletesDeLaFeuille(await fichier.text()) }; }
+    try {
+      const entrees = athletesDeLaFeuille(await fichier.text());
+      const connus = new Set(S.profils.map((p) => norm((p.prenom || '') + (p.nom || ''))));
+      const nouveaux = entrees.filter((e) => !connus.has(norm(e.profil.prenom + e.profil.nom)));
+      ui.imp = { fichier: fichier.name, entrees, nouveaux, doublons: entrees.length - nouveaux.length };
+    }
     catch (err) { console.error(err); ui.imp = { fichier: fichier.name, entrees: [], erreur: 'Ce fichier n’a pas pu être lu.' }; }
     render('[data-import-file]'); return;
   }

@@ -15,7 +15,7 @@ export function ligneAthlete(p, villeNom, clubNom) {
     + (pseudo ? '<dt>Instagram</dt><dd><a href="https://www.instagram.com/' + esc(pseudo) + '/" rel="noopener" target="_blank">@' + esc(pseudo) + '</a></dd>' : '');
   // À l'écran, décimales à la française (84,5) ; data-poids garde le point pour le tri et les filtres.
   const nb = (v) => esc(typeof v === 'number' ? String(v).replace('.', ',') : v);
-  const spec = (t, v, u) => '<div><dt>' + t + '</dt><dd>' + nb(v) + (u ? '<small>' + u + '</small>' : '') + '</dd></div>';
+  const spec = (t, v, u) => v == null || v === '' ? '' : '<div><dt>' + t + '</dt><dd>' + nb(v) + (u ? '<small>' + u + '</small>' : '') + '</dd></div>';
   return '<li class="athlete" data-ville="' + esc(villeNom) + '" data-bras="' + esc(p.bras) + '" data-poids="' + esc(p.poids) + '" data-club="' + esc(clubNom) + '">'
     + '<div class="athlete__row">'
     + '<figure class="athlete__thumb"><img src="' + esc(p.mini) + '" width="192" height="240" alt="' + nom + '" decoding="async"></figure>'

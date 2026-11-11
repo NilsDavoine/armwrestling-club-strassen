@@ -12,7 +12,7 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 | Emplacement | Contenu |
 |---|---|
 | `open-vendetta*.html` (ce dépôt) | Les 3 pages, reprises de la maquette validée `m3-ferrari`. |
-| `ov/js/` | `ov-config.js` (configuration publique, version du SDK, sujet ntfy), `ov-firebase.js` (tout l'accès Firestore et Google), `ov-data.js` (logique pure), `ov-vue.js` (rangée d'athlète échappée), `ov-image.js` (réduction des photos), `ov-notify.js` (alertes), `ov-forms.js` (vérification des champs), `ov-vitrine.js` (script de la vitrine). |
+| `ov/js/` | `ov-config.js` (configuration publique, version du SDK, sujet ntfy), `ov-firebase.js` (module public : Firestore Lite, sans connexion, pour la vitrine et l'inscription), `ov-admin.js` (module de gestion : Firestore complet + connexion Google ; une page ne charge jamais les deux), `ov-data.js` (logique pure), `ov-vue.js` (rangée d'athlète échappée), `ov-image.js` (réduction des photos), `ov-notify.js` (alertes), `ov-forms.js` (vérification des champs), `ov-vitrine.js` (script de la vitrine). |
 | `ov/assets/` | Kit CSS/JS de la compétence taste (licence MIT : `ov/assets/LICENSE-taste-skill.txt`) et photos du club. |
 | `C:\Users\NILS\armwrestlingclubstrassen\open-vendetta\` (hors dépôt, jamais publié, Git local) | `firestore.rules` (**seule copie de référence**), `tests/` (`data.test.mjs`, `rules.test.mjs`, `prod-check.mjs`), `ETAT.md`. |
 
@@ -28,6 +28,12 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 | `candidatures/{id}` | `profilId`, infos sportives, `email`, `telephone`, `instagram`, `message`, `accord`, `accordParent`, `etat` (`nouvelle`, `en_discussion`, `match_organise`, `sans_suite`), `creeLe` | **l'organisateur seulement** |
 
 Un visiteur crée un profil, son contact et sa photo **dans un seul envoi**, toujours `en_attente`. De 14 à 17 ans, l'accord d'un parent est obligatoire, pour un profil comme pour une proposition de match. « Valider » en gestion exige photo, club, ville, bras, accord de publication et, pour un mineur, accord d'un parent.
+
+## Sauvegarde, confidentialité, vignettes
+
+- **Sauvegarde** : bouton « Exporter la base (sauvegarde) » en gestion, onglet « Villes et clubs », une fois par mois. Il télécharge `open-vendetta-sauvegarde-AAAA-MM-JJ.json` (villes, clubs, profils sans vignette, contacts, candidatures). Le fichier contient des données personnelles : à garder sur l'ordinateur de l'organisateur.
+- **Note de confidentialité** : bloc repliable « Vos données » dans `open-vendetta-ajouter.html` (au-dessus des cases d'accord de l'étape 3) et dans le modèle « Proposer un match » de `open-vendetta.html` (`<template id="tpl-propose">`). Les candidatures sont gardées 12 mois au plus ; une fiche est supprimée sur simple demande. Un profil ou une candidature se supprime en gestion.
+- **Vignettes** : `MINI` = 160 px, 12 000 caractères au plus (`ov/js/ov-image.js`). Les vignettes déjà enregistrées gardent leur ancienne taille jusqu'à un changement de photo.
 
 ## Changer une règle de sécurité
 

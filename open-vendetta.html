@@ -214,6 +214,10 @@
   @media (max-width: 639px) {
     .propose__grid { grid-template-columns: minmax(0, 1fr); }
   }
+  .donnees { border: 1px solid var(--line); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4); color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+  .donnees summary { cursor: pointer; color: var(--ink); font-weight: 600; min-height: 24px; }
+  .donnees p { margin: var(--s-3) 0 0; }
+  .donnees a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) { .athlete__chev svg, .athlete__thumb img { transition: none; } }
 </style>
 </head>
@@ -423,6 +427,7 @@
         <label for="__ID__-parent">Un parent est d’accord (obligatoire de 14 à 17 ans)</label>
         <p class="field__error" id="__ID__-parent-err" hidden></p>
       </div>
+      <details class="donnees field--full"><summary>Vos données</summary><p>Le club garde votre proposition (nom, mesures, contact, message) pour organiser le match, puis la supprime au plus tard 12 mois après. Seul l’organisateur la lit ; rien ne s’affiche sur la page. Les données sont stockées chez Google Firebase, dans l’Union européenne. Pour la voir, la corriger ou la faire supprimer, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
       <div class="field field--check field--full">
         <input id="__ID__-accord" name="accord" type="checkbox" required data-check data-err="Cochez cette case pour que l’organisateur puisse utiliser vos informations." aria-describedby="__ID__-accord-err">
         <label for="__ID__-accord">J’accepte que l’organisateur utilise ces informations pour organiser le match.</label>
