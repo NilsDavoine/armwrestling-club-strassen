@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="fr" data-type="service" data-radius="sharp" data-buttons="solid">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Vendetta : gestion des profils et des candidatures</title>
+<meta name="description" content="La page de l’organisateur d’Open Vendetta : valider les profils, suivre les candidatures, ranger les villes et les clubs.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="ov/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#181818">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ov/assets/system.css">
+<!-- palette: start.mjs brand, the client's chosen reference (the same as index.html) -->
+<style>
+:root {
+  --p-bg: #181818; --p-surface: #303030; --p-ink: #ffffff; --p-muted: #9e9e9e;
+  --p-accent: #da291c; --p-accent-ink: #ffffff; --p-action: #da291c; --p-action-ink: #ffffff;
+  --p-inv-bg: #ffffff; --p-inv-surface: #ededed; --p-inv-ink: #181818; --p-inv-muted: #666666;
+  --p-inv-accent: #da291c; --p-inv-accent-ink: #ffffff; --p-inv-action: #da291c; --p-inv-action-ink: #ffffff;
+  --font-display: "Instrument Sans", system-ui, sans-serif;
+  --font-text: "Instrument Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.028em;
+  --display-tracking-xl: -0.036em;
+  --display-stretch: 96%;
+  --ly-scale: 1.04;
+}
+</style>
+<!-- page CSS: an application screen, phone first: one thing at a time, large controls, the tab bar at the foot on a
+     phone and as a column on a desktop -->
+<style>
+  :root { color-scheme: dark; --tabbar: 68px; --panel: #222222; }
+  a, button, select, label, input, textarea { touch-action: manipulation; }
+  body { min-height: 100svh; }
+  .app-banner { position: sticky; top: 0; z-index: 30; margin: 0; padding: var(--s-2) var(--gut); background: #9d2211; color: #ffffff; font-size: var(--t-small); font-weight: 500; }
+  .btn { height: 48px; }
+  .btn--sm { height: 44px; }
+  .btn--danger { color: #ff8a80; border-color: color-mix(in oklab, #ff8a80 60%, transparent); }
+  .btn--google { background: #ffffff; color: #1f1f1f; border-color: #ffffff; gap: var(--s-3); }
+  .btn--google:hover { background: #ececec; }
+  .btn--google img { width: 20px; height: 20px; }
+  .muted { color: var(--muted); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* the sign-in screen */
+  .login { display: grid; grid-template-columns: minmax(0, 1fr); min-height: calc(100svh - 36px); }
+  .login__box { display: grid; gap: var(--s-5); align-content: start; padding: var(--s-9) var(--gut) var(--s-8); max-width: 640px; }
+  .login__brand { display: inline-flex; align-items: center; gap: var(--s-2); font: 500 20px/1 var(--font-display); }
+  .login h1 { font-size: var(--t-h1); line-height: 1.04; letter-spacing: var(--display-tracking-xl); }
+  .login__lock { display: inline-flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-3); border: 1px solid var(--line-strong); border-radius: var(--r-sm); font-size: var(--t-small); font-weight: 500; justify-self: start; }
+  .login__note { color: var(--ink); font-size: var(--t-body); max-width: 48ch; }
+  .login__photo { display: none; margin: 0; }
+  .login__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
+  @media (min-width: 1024px) {
+    .login { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .login__photo { display: block; }
+    .login__box { padding-left: var(--gut); }
+  }
+
+  /* the application: a bar at the top, the four tabs, one view at a time */
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); min-height: 64px; padding: 0 var(--gut); border-bottom: 1px solid var(--line); }
+  .topbar h1 { display: inline-flex; align-items: center; gap: var(--s-2); font: 500 18px/1 var(--font-display); letter-spacing: -0.01em; }
+  .topbar__brand { color: var(--muted); font-weight: 400; }
+  @media (max-width: 639px) { .topbar__brand, .app-banner__more { display: none; } }
+  .logout { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--ink); font: 500 var(--t-small)/1 var(--font-text); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
+  .logout:hover { text-decoration-color: currentColor; }
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-bottom: env(safe-area-inset-bottom); background: #111111; border-top: 1px solid var(--line); }
+  .tab-btn { position: relative; display: grid; justify-items: center; align-content: center; gap: 4px; min-height: var(--tabbar); padding: var(--s-2) 2px; border: 0; background: none;
+    color: var(--muted); font: 500 var(--t-label)/1.15 var(--font-text); text-align: center; cursor: pointer; transition: color var(--dur) var(--ease); }
+  .tab-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn[aria-current="page"] { color: var(--ink); }
+  .tab-btn[aria-current="page"]::before { content: ""; position: absolute; top: 0; left: 20%; right: 20%; height: 2px; background: var(--action); }
+  .tab-btn .badge { position: absolute; top: 6px; left: calc(50% + 8px); min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--action); color: #ffffff;
+    font-size: var(--t-label); line-height: 20px; }
+  .views { padding: var(--s-6) var(--gut) calc(var(--tabbar) + var(--s-8)); }
+  .view > h2 { font-size: var(--t-h2); margin-bottom: var(--s-2); }
+  .view > .view__lead { color: var(--muted); margin-bottom: var(--s-6); max-width: 60ch; }
+  .block + .block { margin-top: var(--s-8); }
+  .block > h3 { font-size: var(--t-h3); margin-bottom: var(--s-4); }
+  .empty { padding: var(--s-5) 0; color: var(--muted); border-top: 1px solid var(--line); }
+
+  .counters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); margin-bottom: var(--s-7); }
+  .counter { display: grid; gap: var(--s-1); padding: var(--s-4); background: var(--panel); border-radius: var(--r-md); }
+  .counter b { font: var(--display-weight) 40px/1 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
+  .counter span { color: var(--muted); font-size: var(--t-small); line-height: 1.3; }
+
+  /* a card: a pending profile or a candidature, one under the other on a phone */
+  .card-list { display: grid; gap: var(--s-4); }
+  .acard { display: grid; gap: var(--s-4); padding: var(--s-5); background: var(--panel); border-radius: var(--r-md); }
+  .acard__top { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: var(--s-4); align-items: start; }
+  .acard__top img { width: 88px; height: 110px; object-fit: cover; border-radius: var(--r-sm); background: var(--surface); }
+  .acard h4 { font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
+  .acard__sub { color: var(--muted); margin-top: var(--s-1); }
+  .kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--s-2) var(--s-4); margin: 0; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; overflow-wrap: anywhere; }
+  .kv a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+  .acard__actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); }
+  .acard__actions > .btn { width: 100%; padding-inline: var(--s-2); }
+  .clubfix { display: grid; gap: var(--s-3); padding: var(--s-4); border-left: 3px solid var(--action); background: #2a2a2a; }
+  .clubfix p { margin: 0; }
+  .clubfix .btn { width: 100%; white-space: normal; height: auto; min-height: 48px; padding-block: var(--s-2); text-align: center; line-height: 1.3; }
+  .clubok { color: var(--ink); }
+  .clubok::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: var(--s-2); border-radius: 999px; background: #3fbf6f; vertical-align: 0.1em; }
+  .confirm { display: grid; gap: var(--s-3); padding: var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm); }
+  .confirm__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+  .msg { margin: 0; padding-left: var(--s-4); border-left: 2px solid var(--line-strong); font-style: italic; }
+  .who { font-size: var(--t-lead); line-height: 1.35; }
+  .who b { font-weight: 500; }
+
+  /* the fields (edit forms, the states, the cities) */
+  .field select { width: 100%; height: 48px; padding: 0 40px 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm);
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center / 12px;
+    background-color: var(--bg); color: var(--ink); font: 400 var(--t-body)/1 var(--font-text); appearance: none; cursor: pointer; }
+  .field select option { background-color: #181818; color: #ffffff; }
+  .field input, .field textarea { color: var(--ink); background-color: var(--bg); }
+  .field label { color: var(--muted); }
+  .edit { display: grid; gap: var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+  .edit__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4) var(--s-3); }
+  .edit__grid > .field--full { grid-column: 1 / -1; }
+  .edit__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+
+  /* profiles by city */
+  .prow { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: var(--s-2) var(--s-4); padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+  .prow img { width: 64px; height: 80px; object-fit: cover; border-radius: var(--r-sm); grid-row: span 2; }
+  .prow__name { font: var(--display-weight) 20px/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
+  .prow__name .pill { margin-left: var(--s-2); vertical-align: 0.15em; }
+  .prow__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+  .prow .edit { grid-column: 1 / -1; }
+  .prow.is-hidden img { opacity: .45; }
+  .pill { display: inline-flex; align-items: center; height: 24px; padding: 0 var(--s-2); border-radius: 999px; border: 1px solid var(--line-strong); font: 500 var(--t-label)/1 var(--font-text); }
+  .pill--off { color: var(--muted); }
+
+  /* candidatures */
+  .filters { display: flex; gap: var(--s-2); overflow-x: auto; padding-bottom: var(--s-2); margin-bottom: var(--s-4); scrollbar-width: none; }
+  .chip { flex: none; min-height: 44px; padding: 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: 999px; background: none; color: var(--ink); font: 500 var(--t-small)/1 var(--font-text); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .state-ok::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: var(--s-2); border-radius: 999px; background: var(--muted); vertical-align: 0.1em; }
+  .state-ok[data-etat="nouvelle"]::before { background: var(--action); }
+  .state-ok[data-etat="en_discussion"]::before { background: #e8b84a; }
+  .state-ok[data-etat="match_organise"]::before { background: #3fbf6f; }
+
+  /* cities and clubs */
+  .olist { display: grid; margin: 0; padding: 0; list-style: none; }
+  .olist > li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-2) var(--s-3); align-items: center; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+  .olist__name { font-size: var(--t-lead); }
+  .olist__name small { display: block; color: var(--muted); font-size: var(--t-small); }
+  .olist__actions { display: flex; gap: var(--s-2); }
+  @media (max-width: 639px) { .olist > li { grid-template-columns: minmax(0, 1fr); } .olist__actions > .btn { flex: 1 1 auto; } }
+  .icon-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--r-btn); background: none; color: var(--ink); cursor: pointer; }
+  .icon-btn:hover { border-color: var(--ink); }
+  .icon-btn:disabled { opacity: .35; cursor: default; }
+  .icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .inline-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); margin-top: var(--s-4); }
+  .olist .inline-form { grid-column: 1 / -1; margin-top: 0; }
+  .merge { display: grid; gap: var(--s-3); margin-top: var(--s-5); padding: var(--s-4); background: var(--panel); border-radius: var(--r-md); }
+  .merge__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
+
+  .toast { position: fixed; left: var(--gut); right: var(--gut); bottom: calc(var(--tabbar) + var(--s-3) + env(safe-area-inset-bottom)); z-index: 25; margin: 0; padding: var(--s-3) var(--s-4);
+    background: #ffffff; color: #181818; border-radius: var(--r-sm); font-weight: 500; box-shadow: 0 6px 24px rgb(0 0 0 / .4); }
+  .toast:empty { display: none; }
+
+  @media (min-width: 1024px) {
+    .shell { display: grid; grid-template-columns: 248px minmax(0, 1fr); grid-template-rows: auto 1fr; min-height: calc(100svh - 36px); }
+    .topbar { grid-column: 1 / -1; padding: 0 var(--s-6); }
+    .tabs { position: sticky; top: 36px; bottom: auto; align-self: start; display: grid; grid-template-columns: 1fr; gap: var(--s-1); padding: var(--s-5) var(--s-3); background: none; border-top: 0; border-right: 1px solid var(--line); min-height: calc(100svh - 100px); align-content: start; }
+    .tab-btn { grid-template-columns: 22px minmax(0, 1fr) auto; justify-items: start; align-items: center; gap: var(--s-3); min-height: 48px; padding: 0 var(--s-3); font-size: var(--t-body); text-align: left; border-radius: var(--r-sm); }
+    .tab-btn[aria-current="page"] { background: var(--panel); }
+    .tab-btn[aria-current="page"]::before { top: 8px; bottom: 8px; left: 0; right: auto; width: 2px; height: auto; }
+    .tab-btn .badge { position: static; }
+    .views { padding: var(--s-7) var(--s-8) var(--s-9); max-width: 1240px; }
+    .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); align-items: start; }
+    .cols > .block + .block { margin-top: 0; }
+    .counters { grid-template-columns: repeat(3, minmax(0, 220px)); }
+    .prow { grid-template-columns: 64px minmax(0, 1fr) 260px; align-items: center; }
+    .prow img { grid-row: auto; }
+    .prow .edit { grid-column: 1 / -1; }
+    .split2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8); align-items: start; }
+    .split2 > .block + .block { margin-top: 0; }
+    .merge__row { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; }
+    .toast { left: auto; right: var(--s-6); bottom: var(--s-6); max-width: 420px; }
+    .card-list--cands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) { .tab-btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<!-- the sign-in screen: one button, the page is the organiser's only -->
+<main class="login" id="login">
+  <div class="login__box">
+    <p class="login__brand" translate="no"><span class="mark mark--initial" aria-hidden="true">O</span>Open Vendetta</p>
+    <h1>Gestion d’Open Vendetta</h1>
+    <p class="login__lock">Réservé à l’organisateur</p>
+    <p>Les profils en attente, les candidatures reçues, les villes et les clubs.</p>
+    <button class="btn btn--google" type="button" data-login><img src="ov/assets/icons/google-icon.svg" alt="" width="20" height="20">Se connecter avec Google</button>
+    <p class="login__note">Seul le compte Google de l’organisateur ouvre cette page.</p>
+  </div>
+  <figure class="login__photo"><img src="ov/assets/img/club/match-table-noir.webp" width="1961" height="1024" alt="" loading="lazy" decoding="async"></figure>
+</main>
+
+<!-- the application, once signed in -->
+<div class="shell" id="app" hidden>
+  <header class="topbar">
+    <h1><span class="mark mark--initial" aria-hidden="true">O</span><span class="topbar__brand" translate="no">Open Vendetta ·</span> Gestion</h1>
+    <button class="logout" type="button" data-logout>Se déconnecter</button>
+  </header>
+  <nav class="tabs" aria-label="Parties de la gestion">
+    <button class="tab-btn" type="button" data-tab="traiter" aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4"/><path d="M5.5 6h13L20 13v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-5z"/></svg>
+      <span>À traiter</span><span class="badge" data-badge="traiter"></span></button>
+    <button class="tab-btn" type="button" data-tab="profils">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 19c.8-3.3 3.3-5 6.5-5s5.7 1.7 6.5 5"/><path d="M16 5.5a3 3 0 0 1 0 5.6M18 14.2c2 .7 3.2 2.3 3.6 4.8"/></svg>
+      <span>Profils</span></button>
+    <button class="tab-btn" type="button" data-tab="candidatures">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+      <span>Candidatures</span><span class="badge" data-badge="candidatures"></span></button>
+    <button class="tab-btn" type="button" data-tab="villes">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+      <span>Villes et clubs</span></button>
+  </nav>
+  <main class="views" id="views">
+    <div class="view" role="region" data-view="traiter" aria-labelledby="h-traiter"></div>
+    <div class="view" role="region" data-view="profils" aria-labelledby="h-profils" hidden></div>
+    <div class="view" role="region" data-view="candidatures" aria-labelledby="h-candidatures" hidden></div>
+    <div class="view" role="region" data-view="villes" aria-labelledby="h-villes" hidden></div>
+  </main>
+  <p class="toast" role="status" aria-live="polite" data-toast></p>
+</div>
+
+<script src="ov/js/ov-forms.js"></script>
+<script>
+(() => {
+  // ------------------------------------------------------------------ state (empty until loaded)
+  const S = {
+    villes: [],
+    clubs: [],
+    profils: [],
+    cands: [],
+  };
+  const ETATS = [['nouvelle', 'Nouvelle'], ['en_discussion', 'En discussion'], ['match_organise', 'Match organisé'], ['sans_suite', 'Sans suite']];
+  const etatNom = (k) => (ETATS.find((e) => e[0] === k) || [k, k])[1];
+  const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null };
+
+  // ------------------------------------------------------------------ helpers
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const club = (id) => S.clubs.find((c) => c.id === id);
+  const ville = (id) => S.villes.find((v) => v.id === id);
+  const profil = (id) => S.profils.find((p) => p.id === id);
+  const full = (p) => p.prenom + ' ' + p.nom;
+  const brasTxt = (b) => b === 'Les deux' ? 'les deux bras' : 'bras ' + b.toLowerCase();
+  const nb = (n, one, many) => n + ' ' + (n > 1 ? many : one);
+  const slug = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'x';
+  const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+  function distance(a, b) {
+    const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+    for (let j = 1; j <= b.length; j++) d[0][j] = j;
+    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[a.length][b.length];
+  }
+  // the existing club closest to what the athlete typed (a typo, a missing letter, the wrong case)
+  function closest(typed) {
+    const t = norm(typed); let best = null, score = 0;
+    for (const c of S.clubs) { const n = norm(c.nom); const s = 1 - distance(t, n) / Math.max(t.length, n.length); if (s > score) { score = s; best = c; } }
+    return score >= 0.6 ? best : null;
+  }
+  let toastTimer = 0;
+  function toast(text) {
+    const t = $('[data-toast]'); t.textContent = text;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.textContent = ''; }, 5000);
+  }
+  const SVG_UP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>';
+  const SVG_DOWN = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5"/></svg>';
+
+  // ------------------------------------------------------------------ the edit form (Corriger, Modifier)
+  function field(id, label, name, value, opts = {}) {
+    const attrs = opts.num ? ' inputmode="' + (opts.dec ? 'decimal' : 'numeric') + '" data-min="' + opts.min + '" data-max="' + opts.max + '"' : '';
+    const req = opts.req ? ' required data-check data-err="' + esc(opts.err) + '"' : (opts.num ? ' data-check' : '');
+    const fmt = opts.num || opts.fmt ? ' data-err-format="' + esc(opts.fmt) + '"' : '';
+    return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"><label for="' + id + '">' + label + '</label>' +
+      (opts.area ? '<textarea id="' + id + '" name="' + name + '" rows="3">' + esc(value) + '</textarea>'
+        : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + attrs + req + fmt + ' aria-describedby="' + id + '-err">') +
+      '<p class="field__error" id="' + id + '-err" hidden></p></div>';
+  }
+  function select(id, label, name, value, options) {
+    return '<div class="field"><label for="' + id + '">' + label + '</label><select id="' + id + '" name="' + name + '">' +
+      options.map(([v, t]) => '<option value="' + esc(v) + '"' + (v === value ? ' selected' : '') + '>' + esc(t) + '</option>').join('') + '</select></div>';
+  }
+  function editForm(p) {
+    const k = 'e-' + p.id + '-';
+    const clubs = [['', p.club ? '' : 'À ranger : « ' + (p.clubSaisi || '') + ' »'], ...S.clubs.map((c) => [c.id, c.nom])].filter((o) => o[0] || o[1]);
+    return '<form class="edit" data-edit="' + p.id + '" novalidate aria-label="Modifier la fiche de ' + esc(full(p)) + '"><div class="edit__grid">' +
+      field(k + 'prenom', 'Prénom', 'prenom', p.prenom, { req: true, err: 'Écrivez le prénom.' }) +
+      field(k + 'nom', 'Nom', 'nom', p.nom, { req: true, err: 'Écrivez le nom.' }) +
+      select(k + 'ville', 'Ville', 'ville', p.ville, S.villes.map((v) => [v.id, v.nom])) +
+      select(k + 'club', 'Club', 'club', p.club || '', clubs) +
+      field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
+      field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
+      field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, req: true, err: 'Écrivez le tour de bras.', fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
+      field(k + 'age', 'Âge', 'age', p.age, { num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
+      field(k + 'pratique', 'Années de pratique', 'pratique', p.pratique, { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
+      select(k + 'bras', 'Bras', 'bras', p.bras, [['Droit', 'Droit'], ['Gauche', 'Gauche'], ['Les deux', 'Les deux']]) +
+      field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
+      field(k + 'insta', 'Instagram', 'instagram', p.instagram, {}) +
+      field(k + 'email', 'Email (jamais affiché)', 'email', p.email, { type: 'email', req: true, err: 'Écrivez l’email.', fmt: 'Une adresse email avec un @, comme nom@exemple.lu.' }) +
+      field(k + 'tel', 'Téléphone (jamais affiché)', 'tel', p.tel, {}) +
+      '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
+  }
+  function saveEdit(form) {
+    if (OVForms.validate(form).length) { toast('Un champ est à corriger dans la fiche.'); return false; }
+    const p = profil(form.dataset.edit), f = form.elements;
+    Object.assign(p, { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), ville: f.ville.value, poids: Number(f.poids.value.replace(',', '.')), taille: Number(f.taille.value),
+      biceps: Number(f.biceps.value.replace(',', '.')), age: Number(f.age.value), pratique: Number(f.pratique.value), bras: f.bras.value, palmares: f.palmares.value.trim(),
+      instagram: f.instagram.value.trim(), email: f.email.value.trim(), tel: f.tel.value.trim() });
+    if (f.club.value) p.club = f.club.value;
+    ui.open = null;
+    toast(p.statut === 'en_attente' ? 'Fiche de ' + full(p) + ' corrigée. Elle attend toujours votre validation.' : 'Fiche de ' + full(p) + ' enregistrée.');
+    return true;
+  }
+
+  // ------------------------------------------------------------------ the views
+  function pendingCard(p) {
+    const c = club(p.club), guess = !c && p.clubSaisi ? closest(p.clubSaisi) : null;
+    let clubBlock = '';
+    if (!c) {
+      clubBlock = '<div class="clubfix" data-clubfix="' + p.id + '" tabindex="-1"><p><b>Ce club n’existe pas encore.</b> ' + (guess ? 'Il ressemble à ' + esc(guess.nom) + '.' : 'Aucun club existant ne lui ressemble.') + '</p>' +
+        (guess ? '<button class="btn btn--secondary" type="button" data-act="ranger" data-club="' + guess.id + '">Ranger dans ' + esc(guess.nom) + '&nbsp;?</button>' : '') +
+        (ui.newClub === p.id
+          ? '<form class="inline-form" data-newclub="' + p.id + '" novalidate>' + field('nc-' + p.id, 'Nom du nouveau club', 'nom', p.clubSaisi.replace(/\b\p{L}/gu, (m) => m.toUpperCase()), { req: true, err: 'Écrivez le nom du club.' }) +
+            '<div class="edit__actions"><button class="btn btn--primary" type="submit">Créer ce club</button><button class="btn btn--secondary" type="button" data-act="annuler-club">Annuler</button></div></form>'
+          : '<button class="btn btn--secondary" type="button" data-act="creer-club">Créer un nouveau club</button>') + '</div>';
+    } else {
+      clubBlock = '<p class="clubok">Club : ' + esc(c.nom) + '</p>';
+    }
+    const refuse = ui.refuse === p.id
+      ? '<div class="confirm" role="group" aria-label="Confirmer le refus"><p>Refuser la fiche de ' + esc(p.prenom) + '&nbsp;? Elle ne sera pas publiée.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="refuser-ok">Refuser la fiche</button><button class="btn btn--secondary" type="button" data-act="annuler">Garder la fiche</button></div></div>'
+      : '';
+    return '<article class="acard" data-profil="' + p.id + '"><div class="acard__top"><img src="' + p.photo + '" width="88" height="110" alt="Photo envoyée par ' + esc(full(p)) + '">' +
+      '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + esc(ville(p.ville)?.nom) + ' · ' + nb(p.age, 'an', 'ans') + ' · ' + p.poids + ' kg · ' + brasTxt(p.bras) + '</p><p class="acard__sub">Reçue le ' + esc(p.recu) + '</p></div></div>' +
+      '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + p.taille + ' cm</dd><dt>Tour de bras</dt><dd>' + p.biceps + ' cm</dd><dt>Pratique</dt><dd>' + nb(p.pratique, 'an', 'ans') + '</dd>' +
+      '<dt>Palmarès</dt><dd>' + (esc(p.palmares) || '<span class="muted">Rien d’indiqué</span>') + '</dd><dt>Instagram</dt><dd>' + (esc(p.instagram) || '<span class="muted">Aucun</span>') + '</dd>' +
+      '<dt>Email</dt><dd><a href="mailto:' + esc(p.email) + '">' + esc(p.email) + '</a></dd><dt>Téléphone</dt><dd>' + (esc(p.tel) || '<span class="muted">Aucun</span>') + '</dd>' +
+      (p.age < 18 ? '<dt>Accord parent</dt><dd>' + (p.accordParent ? 'Oui, coché' : 'Non') + '</dd>' : '') + '</dl>' +
+      clubBlock +
+      (ui.open === p.id ? editForm(p) : '<div class="acard__actions"><button class="btn btn--primary" type="button" data-act="valider">Valider</button><button class="btn btn--secondary" type="button" data-act="corriger">Corriger</button><button class="btn btn--secondary btn--danger" type="button" data-act="refuser">Refuser</button></div>') +
+      refuse + '</article>';
+  }
+  function candCard(c) {
+    const p = profil(c.cible);
+    return '<article class="acard" data-cand="' + c.id + '"><p class="who"><b>' + esc(c.prenom + ' ' + c.nom) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
+      '<p class="acard__sub">' + c.poids + ' kg · ' + brasTxt(c.bras) + ' · ' + nb(c.age, 'an', 'ans') + ' · ' + nb(c.pratique, 'an', 'ans') + ' de pratique · ' + esc(c.ville) + '</p>' +
+      '<dl class="kv"><dt>Club</dt><dd>' + esc(c.club) + '</dd><dt>Email</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd><dt>Téléphone</dt><dd>' + (esc(c.tel) || '<span class="muted">Aucun</span>') + '</dd>' +
+      (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') + '</dl>' +
+      (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
+      '<div class="field"><label for="etat-' + c.id + '">État de la candidature</label><select id="etat-' + c.id + '" data-etat-select="' + c.id + '">' +
+      ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
+      '<p class="acard__sub"><span class="state-ok" data-etat="' + c.etat + '">' + etatNom(c.etat) + '</span> · reçue le ' + esc(c.recue) + '</p></article>';
+  }
+  function viewTraiter() {
+    const pend = S.profils.filter((p) => p.statut === 'en_attente');
+    const nouv = S.cands.filter((c) => c.etat === 'nouvelle');
+    const disc = S.cands.filter((c) => c.etat === 'en_discussion');
+    return '<h2 tabindex="-1" id="h-traiter">À traiter</h2><p class="view__lead">Les fiches à relire avant publication, puis les nouvelles demandes de match.</p>' +
+      '<div class="counters"><div class="counter"><b>' + pend.length + '</b><span>' + (pend.length > 1 ? 'profils en attente' : 'profil en attente') + '</span></div>' +
+      '<div class="counter"><b>' + nouv.length + '</b><span>' + (nouv.length > 1 ? 'nouvelles candidatures' : 'nouvelle candidature') + '</span></div>' +
+      '<div class="counter"><b>' + disc.length + '</b><span>en discussion</span></div></div>' +
+      '<div class="cols"><section class="block" aria-labelledby="h-attente"><h3 id="h-attente">Profils en attente</h3>' +
+      (pend.length ? '<div class="card-list">' + pend.map(pendingCard).join('') + '</div>' : '<p class="empty">Aucun profil en attente. Tout est relu.</p>') + '</section>' +
+      '<section class="block" aria-labelledby="h-nouvelles"><h3 id="h-nouvelles">Nouvelles candidatures</h3>' +
+      (nouv.length ? '<div class="card-list">' + nouv.map(candCard).join('') + '</div>' : '<p class="empty">Aucune nouvelle candidature.</p>') + '</section></div>';
+  }
+  function viewProfils() {
+    let html = '<h2 tabindex="-1" id="h-profils">Profils</h2><p class="view__lead">Les fiches publiées et cachées, par ville. Une fiche cachée n’apparaît plus sur la page.</p>';
+    for (const v of S.villes) {
+      const list = S.profils.filter((p) => p.ville === v.id && (p.statut === 'publie' || p.statut === 'cache')).sort((a, b) => b.poids - a.poids);
+      html += '<section class="block" aria-labelledby="h-v-' + v.id + '"><h3 id="h-v-' + v.id + '">' + esc(v.nom) + ' <span class="muted">· ' + nb(list.length, 'fiche', 'fiches') + '</span></h3>';
+      if (!list.length) { html += '<p class="empty">Aucune fiche dans cette ville pour l’instant.</p></section>'; continue; }
+      html += list.map((p) => '<div class="prow' + (p.statut === 'cache' ? ' is-hidden' : '') + '" data-profil="' + p.id + '"><img src="' + p.photo + '" width="64" height="80" alt="">' +
+        '<div><p class="prow__name">' + esc(full(p)) + (p.statut === 'cache' ? ' <span class="pill pill--off">Cachée</span>' : ' <span class="pill">Publiée</span>') + '</p>' +
+        '<p class="muted">' + esc(club(p.club)?.nom || 'Sans club') + ' · ' + p.poids + ' kg · ' + brasTxt(p.bras) + '</p></div>' +
+        (ui.open === p.id ? editForm(p) : '<div class="prow__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="modifier">Modifier</button><button class="btn btn--secondary btn--sm" type="button" data-act="' + (p.statut === 'cache' ? 'afficher">Afficher' : 'cacher">Cacher') + '</button></div>') +
+        '</div>').join('') + '</section>';
+    }
+    return html;
+  }
+  function viewCands() {
+    const counts = Object.fromEntries(ETATS.map(([k]) => [k, S.cands.filter((c) => c.etat === k).length]));
+    const list = S.cands.filter((c) => ui.filtre === 'toutes' || c.etat === ui.filtre);
+    return '<h2 tabindex="-1" id="h-candidatures">Candidatures</h2><p class="view__lead">Toutes les demandes de match. Changez l’état à mesure que vous organisez.</p>' +
+      '<div class="filters" role="group" aria-label="Filtrer par état"><button class="chip" type="button" data-filtre="toutes" aria-pressed="' + (ui.filtre === 'toutes') + '">Toutes (' + S.cands.length + ')</button>' +
+      ETATS.map(([k, t]) => '<button class="chip" type="button" data-filtre="' + k + '" aria-pressed="' + (ui.filtre === k) + '">' + t + ' (' + counts[k] + ')</button>').join('') + '</div>' +
+      (list.length ? '<div class="card-list card-list--cands">' + list.map(candCard).join('') + '</div>' : '<p class="empty">Aucune candidature dans cet état.</p>');
+  }
+  function viewVilles() {
+    const count = (fn) => S.profils.filter((p) => (p.statut === 'publie' || p.statut === 'cache' || p.statut === 'en_attente') && fn(p)).length;
+    const villes = S.villes.map((v, i) => '<li data-ville="' + v.id + '"><span class="olist__name">' + (i + 1) + '. ' + esc(v.nom) + '<small>' + nb(count((p) => p.ville === v.id), 'fiche', 'fiches') + '</small></span>' +
+      '<span class="olist__actions"><button class="icon-btn" type="button" data-act="monter" aria-label="Monter ' + esc(v.nom) + '"' + (i === 0 ? ' disabled' : '') + '>' + SVG_UP + '</button>' +
+      '<button class="icon-btn" type="button" data-act="descendre" aria-label="Descendre ' + esc(v.nom) + '"' + (i === S.villes.length - 1 ? ' disabled' : '') + '>' + SVG_DOWN + '</button>' +
+      '<button class="btn btn--secondary btn--sm" type="button" data-act="renommer-ville">Renommer</button></span>' +
+      (ui.rename === 'v:' + v.id ? renameForm('v:' + v.id, v.nom, 'Nouveau nom de la ville') : '') + '</li>').join('');
+    const clubs = S.clubs.map((c) => '<li data-club="' + c.id + '"><span class="olist__name">' + esc(c.nom) + '<small>' + nb(count((p) => p.club === c.id), 'fiche', 'fiches') + '</small></span>' +
+      '<span class="olist__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="renommer-club">Renommer</button></span>' +
+      (ui.rename === 'c:' + c.id ? renameForm('c:' + c.id, c.nom, 'Nouveau nom du club') : '') + '</li>').join('');
+    const opts = (sel) => S.clubs.map((c) => '<option value="' + c.id + '"' + (c.id === sel ? ' selected' : '') + '>' + esc(c.nom) + '</option>').join('');
+    const m = ui.merge;
+    const mergeConfirm = m ? '<div class="confirm"><p>' + nb(count((p) => p.club === m.from), 'fiche passe', 'fiches passent') + ' de ' + esc(club(m.from).nom) + ' à ' + esc(club(m.to).nom) + ', puis ' + esc(club(m.from).nom) + ' disparaît de la liste.</p>' +
+      '<div class="confirm__actions"><button class="btn btn--primary" type="button" data-act="fusion-ok">Fusionner les clubs</button><button class="btn btn--secondary" type="button" data-act="fusion-annuler">Annuler</button></div></div>' : '';
+    return '<h2 tabindex="-1" id="h-villes">Villes et clubs</h2><p class="view__lead">L’ordre des villes est celui de la page. Un club mal écrit se range ici, une fois pour toutes.</p><div class="split2">' +
+      '<section class="block" aria-labelledby="h-liste-villes"><h3 id="h-liste-villes">Villes</h3><ol class="olist">' + villes + '</ol>' +
+      '<form class="inline-form" data-new="ville" novalidate>' + field('new-ville', 'Nouvelle ville', 'nom', '', { req: true, err: 'Écrivez le nom de la ville.' }) + '<button class="btn btn--primary" type="submit">Créer la ville</button></form></section>' +
+      '<section class="block" aria-labelledby="h-liste-clubs"><h3 id="h-liste-clubs">Clubs</h3><ul class="olist">' + clubs + '</ul>' +
+      '<form class="merge" data-merge novalidate><p><b>Fusionner deux clubs</b> <span class="muted">quand un même club existe sous deux noms.</span></p><div class="merge__row">' +
+      '<div class="field"><label for="m-from">Club à fondre</label><select id="m-from" name="from">' + opts(m ? m.from : S.clubs[S.clubs.length - 1]?.id) + '</select></div><p class="muted" aria-hidden="true">dans</p>' +
+      '<div class="field"><label for="m-to">Club à garder</label><select id="m-to" name="to">' + opts(m ? m.to : S.clubs[0]?.id) + '</select></div></div>' +
+      '<p class="field__error" data-merge-err hidden></p><button class="btn btn--secondary" type="submit">Fusionner</button>' + mergeConfirm + '</form>' +
+      '<form class="inline-form" data-new="club" novalidate>' + field('new-club', 'Nouveau club', 'nom', '', { req: true, err: 'Écrivez le nom du club.' }) + '<button class="btn btn--primary" type="submit">Créer le club</button></form></section></div>';
+  }
+  function renameForm(key, value, label) {
+    return '<form class="inline-form" data-rename="' + key + '" novalidate>' + field('r-' + key.replace(':', '-'), label, 'nom', value, { req: true, err: 'Écrivez le nouveau nom.' }) +
+      '<div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer le nom</button><button class="btn btn--secondary" type="button" data-act="renommer-annuler">Annuler</button></div></form>';
+  }
+
+  const VIEWS = { traiter: viewTraiter, profils: viewProfils, candidatures: viewCands, villes: viewVilles };
+  function render(focusSel) {
+    // one view in the page at a time: the hidden ones are emptied, so no id (a candidature's state, a profile's field) is there twice
+    document.querySelectorAll('.view').forEach((v) => { v.hidden = v.dataset.view !== ui.tab; if (v.hidden) v.innerHTML = ''; });
+    const view = $('.view[data-view="' + ui.tab + '"]');
+    view.innerHTML = VIEWS[ui.tab]();
+    document.querySelectorAll('[data-tab]').forEach((b) => { if (b.dataset.tab === ui.tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+    const pend = S.profils.filter((p) => p.statut === 'en_attente').length + S.cands.filter((c) => c.etat === 'nouvelle').length;
+    const bT = $('[data-badge="traiter"]'); bT.textContent = pend || ''; bT.hidden = !pend; bT.setAttribute('aria-label', nb(pend, 'chose à traiter', 'choses à traiter'));
+    const nouv = S.cands.filter((c) => c.etat === 'nouvelle').length;
+    const bC = $('[data-badge="candidatures"]'); bC.textContent = nouv || ''; bC.hidden = !nouv; bC.setAttribute('aria-label', nb(nouv, 'nouvelle', 'nouvelles'));
+    view.querySelectorAll('form').forEach((f) => OVForms.watch(f));
+    if (focusSel) { const el = view.querySelector(focusSel); if (el) el.focus(); }
+  }
+
+  // ------------------------------------------------------------------ what each click does
+  document.querySelector('[data-login]').addEventListener('click', () => {
+    $('#login').hidden = true; $('#app').hidden = false; ui.tab = 'traiter'; render('h2'); $('#h-traiter').setAttribute('tabindex', '-1'); $('#h-traiter').focus();
+  });
+  document.querySelector('[data-logout]').addEventListener('click', () => { $('#app').hidden = true; $('#login').hidden = false; $('[data-login]').focus(); });
+  document.querySelector('.tabs').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-tab]'); if (!b) return;
+    ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null;
+    render(); window.scrollTo(0, 0);
+    const h = $('#h-' + ui.tab); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  });
+
+  const views = $('#views');
+  views.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-act], [data-filtre]'); if (!b) return;
+    if (b.dataset.filtre) { ui.filtre = b.dataset.filtre; render('[data-filtre="' + ui.filtre + '"]'); return; }
+    const act = b.dataset.act;
+    const pEl = b.closest('[data-profil]'), p = pEl ? profil(pEl.dataset.profil) : null;
+    const vEl = b.closest('[data-ville]'), cEl = b.closest('[data-club]');
+    switch (act) {
+      case 'valider':
+        if (!p.club) { toast('Rangez d’abord le club de ' + p.prenom + ' : un club existant, ou un nouveau.'); const fix = $('[data-clubfix="' + p.id + '"]'); if (fix) fix.focus(); return; }
+        p.statut = 'publie'; toast('Fiche de ' + full(p) + ' publiée, dans ' + ville(p.ville).nom + '.'); render('h2'); return;
+      case 'corriger': case 'modifier': ui.open = p.id; render('[data-edit="' + p.id + '"] input'); return;
+      case 'fermer': ui.open = null; render('[data-profil="' + p.id + '"] [data-act="' + (p.statut === 'en_attente' ? 'corriger' : 'modifier') + '"]'); return;
+      case 'refuser': ui.refuse = p.id; render('[data-act="refuser-ok"]'); return;
+      case 'refuser-ok': p.statut = 'refuse'; ui.refuse = null; toast('Fiche de ' + full(p) + ' refusée. Elle ne sera pas publiée.'); render('h2'); return;
+      case 'annuler': ui.refuse = null; render('[data-profil="' + p.id + '"] [data-act="refuser"]'); return;
+      case 'ranger': { const c = club(b.dataset.club); p.club = c.id; toast('Club de ' + p.prenom + ' rangé dans ' + c.nom + '. Vous pouvez valider la fiche.'); render('[data-profil="' + p.id + '"] [data-act="valider"]'); return; }
+      case 'creer-club': ui.newClub = p.id; render('[data-newclub="' + p.id + '"] input'); return;
+      case 'annuler-club': ui.newClub = null; render('[data-profil="' + p.id + '"] [data-act="creer-club"]'); return;
+      case 'cacher': p.statut = 'cache'; toast('Fiche de ' + full(p) + ' cachée. Elle n’apparaît plus sur la page.'); render('[data-profil="' + p.id + '"] [data-act="afficher"]'); return;
+      case 'afficher': p.statut = 'publie'; toast('Fiche de ' + full(p) + ' de nouveau visible.'); render('[data-profil="' + p.id + '"] [data-act="cacher"]'); return;
+      case 'monter': case 'descendre': {
+        const i = S.villes.findIndex((v) => v.id === vEl.dataset.ville), j = act === 'monter' ? i - 1 : i + 1;
+        [S.villes[i], S.villes[j]] = [S.villes[j], S.villes[i]];
+        toast(S.villes[j].nom + ' passe en position ' + (j + 1) + ' sur la page.');
+        render('[data-ville="' + S.villes[j].id + '"] [data-act="' + act + '"]:not(:disabled), [data-ville="' + S.villes[j].id + '"] [data-act="renommer-ville"]'); return;
+      }
+      case 'renommer-ville': ui.rename = 'v:' + vEl.dataset.ville; render('[data-rename] input'); return;
+      case 'renommer-club': ui.rename = 'c:' + cEl.dataset.club; render('[data-rename] input'); return;
+      case 'renommer-annuler': ui.rename = null; render(); return;
+      case 'fusion-ok': {
+        const from = club(ui.merge.from), to = club(ui.merge.to);
+        const moved = S.profils.filter((x) => x.club === from.id); moved.forEach((x) => { x.club = to.id; });
+        S.clubs = S.clubs.filter((c) => c.id !== from.id); ui.merge = null;
+        toast(from.nom + ' est fondu dans ' + to.nom + ' (' + nb(moved.length, 'fiche déplacée', 'fiches déplacées') + ').'); render('[data-merge] select'); return;
+      }
+      case 'fusion-annuler': ui.merge = null; render('[data-merge] select'); return;
+    }
+  });
+  views.addEventListener('change', (e) => {
+    const s = e.target.closest('[data-etat-select]'); if (!s) return;
+    const c = S.cands.find((x) => x.id === s.dataset.etatSelect); c.etat = s.value;
+    toast('Candidature de ' + c.prenom + ' ' + c.nom + ' : ' + etatNom(c.etat) + '.');
+    const stay = ui.tab === 'candidatures';
+    render(stay ? '#etat-' + c.id : 'h2');
+  });
+  views.addEventListener('submit', (e) => {
+    const f = e.target; e.preventDefault();
+    if (f.matches('[data-edit]')) { if (saveEdit(f)) render('h2'); return; }
+    if (f.matches('[data-newclub]')) {
+      if (OVForms.validate(f).length) return;
+      const p = profil(f.dataset.newclub), nom = f.elements.nom.value.trim();
+      const c = { id: slug(nom) + '-' + Date.now().toString(36), nom }; S.clubs.push(c); p.club = c.id; ui.newClub = null;
+      toast('Club « ' + nom + ' » créé, et ' + p.prenom + ' y est rangé.'); render('[data-profil="' + p.id + '"] [data-act="valider"]'); return;
+    }
+    if (f.matches('[data-new="ville"]') || f.matches('[data-new="club"]')) {
+      if (OVForms.validate(f).length) return;
+      const nom = f.elements.nom.value.trim();
+      if (f.dataset.new === 'ville') { S.villes.push({ id: slug(nom) + '-' + Date.now().toString(36), nom }); toast('Ville « ' + nom + ' » créée, en dernière position.'); }
+      else { S.clubs.push({ id: slug(nom) + '-' + Date.now().toString(36), nom }); toast('Club « ' + nom + ' » créé.'); }
+      render('[data-new="' + f.dataset.new + '"] input'); return;
+    }
+    if (f.matches('[data-rename]')) {
+      if (OVForms.validate(f).length) return;
+      const [kind, id] = f.dataset.rename.split(':'), nom = f.elements.nom.value.trim();
+      const item = kind === 'v' ? ville(id) : club(id), old = item.nom; item.nom = nom; ui.rename = null;
+      toast(old + ' s’appelle maintenant ' + nom + '.'); render(); return;
+    }
+    if (f.matches('[data-merge]')) {
+      const from = f.elements.from.value, to = f.elements.to.value, err = f.querySelector('[data-merge-err]');
+      if (from === to) { err.textContent = 'Choisissez deux clubs différents : le club à fondre et le club à garder.'; err.hidden = false; f.elements.to.focus(); return; }
+      ui.merge = { from, to }; render('[data-act="fusion-ok"]'); return;
+    }
+  });
+})();
+</script>
+</body>
+</html>
