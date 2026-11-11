@@ -22,12 +22,14 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 |---|---|---|
 | `villes/{id}` | `nom`, `ordre` | tout le monde |
 | `clubs/{id}` | `nom` | tout le monde |
-| `profils/{id}` | `prenom`, `nom`, `clubId`, `clubSaisi`, `villeId` ou `villeSaisie`, `poids`, `taille`, `biceps`, `age`, `pratique`, `bras` (`Droit`, `Gauche`, `Les deux`), `palmares`, `instagram`, `mini` (vignette), `statut` (`en_attente`, `publie`, `cache`), `source`, `creeLe` | tout le monde si `publie` ; sinon l'organisateur |
+| `profils/{id}` | `prenom`, `nom`, `clubId`, `clubSaisi`, `villeId` ou `villeSaisie`, `poids`, `taille`, `biceps`, `age`, `pratique`, `naissance` (`AAAA-MM-JJ`, facultatif), `pratiqueDepuis` (`AAAA-MM-JJ`, facultatif), `bras` (`Droit`, `Gauche`, `Les deux`), `palmares`, `instagram`, `mini` (vignette), `statut` (`en_attente`, `publie`, `cache`), `source`, `creeLe` | tout le monde si `publie` ; sinon l'organisateur |
 | `photos/{profilId}` | `image` (photo de la fiche, data URL ≤ 300 000 caractères) | comme le profil |
 | `contacts/{profilId}` | `email`, `telephone`, `accordParent`, `publicOk`, `usageOk`, `creeLe` | **l'organisateur seulement** |
 | `candidatures/{id}` | `profilId`, infos sportives, `email`, `telephone`, `instagram`, `message`, `accord`, `accordParent`, `etat` (`nouvelle`, `en_discussion`, `match_organise`, `sans_suite`), `creeLe` | **l'organisateur seulement** |
 
 Un visiteur crée un profil, son contact et sa photo **dans un seul envoi**, toujours `en_attente`. De 14 à 17 ans, l'accord d'un parent est obligatoire, pour un profil comme pour une proposition de match. « Valider » en gestion exige photo, club, ville, bras, accord de publication et, pour un mineur, accord d'un parent.
+
+**Âge et pratique calculés.** Quand un profil a `naissance`, son âge s'affiche tout seul et gagne un an à chaque anniversaire ; quand il a `pratiqueDepuis`, les années de pratique gagnent un an à chaque date anniversaire (fonctions `ageDe` et `pratiqueDe` de `ov/js/ov-data.js`, date locale). `age` et `pratique` restent écrits comme valeurs de secours : ils servent seuls aux anciens profils sans date, et les règles vérifient toujours `age` (14 à 99). Les 22 profils importés sont nés un 31 décembre et pratiquent depuis un 11 novembre.
 
 ## Sauvegarde, confidentialité, vignettes
 

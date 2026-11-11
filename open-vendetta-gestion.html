@@ -107,6 +107,8 @@
   .clubfix { display: grid; gap: var(--s-3); padding: var(--s-4); border-left: 3px solid var(--action); background: #2a2a2a; }
   .clubfix p { margin: 0; }
   .clubfix .btn { width: 100%; white-space: normal; height: auto; min-height: 48px; padding-block: var(--s-2); text-align: center; line-height: 1.3; }
+  .accords { display: grid; gap: var(--s-2); margin-bottom: var(--s-3); color: var(--ink); }
+  .accords label { display: flex; gap: var(--s-2); align-items: center; }
   .clubok { color: var(--ink); }
   .clubok::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: var(--s-2); border-radius: 999px; background: #3fbf6f; vertical-align: 0.1em; }
   .confirm { display: grid; gap: var(--s-3); padding: var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm); }
@@ -244,7 +246,7 @@
 <script src="ov/js/ov-forms.js"></script>
 <script type="module">
 import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
-import { clubProche, athletesDeLaFeuille, norm, BRAS } from './ov/js/ov-data.js';
+import { clubProche, athletesDeLaFeuille, norm, BRAS, ageAu, ageDe, pratiqueDe, dateIlYA } from './ov/js/ov-data.js';
 import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
 import { esc } from './ov/js/ov-vue.js';
 
@@ -290,7 +292,7 @@ function manque(p) {
   if (!brasOk(p.bras)) m.push('le bras');
   const c = contact(p);
   if (c.publicOk !== true) m.push('l’accord de publication');
-  if (!(p.age >= 18) && c.accordParent !== true) m.push('l’accord d’un parent');
+  if (!(ageDe(p) >= 18) && c.accordParent !== true) m.push('l’accord d’un parent');
   return m;
 }
 let toastTimer = 0;
@@ -341,7 +343,7 @@ function field(id, label, name, value, opts = {}) {
   const fmt = opts.num || opts.fmt ? ' data-err-format="' + esc(opts.fmt) + '"' : '';
   return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"><label for="' + id + '">' + label + '</label>' +
     (opts.area ? '<textarea id="' + id + '" name="' + name + '" rows="3">' + esc(value) + '</textarea>'
-      : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + attrs + kind + req + fmt + ' aria-describedby="' + id + '-err">') +
+      : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + (opts.disabled ? ' disabled' : '') + attrs + kind + req + fmt + ' aria-describedby="' + id + '-err">') +
     '<p class="field__error" id="' + id + '-err" hidden></p></div>';
 }
 function select(id, label, name, value, options, opts = {}) {
@@ -364,15 +366,17 @@ function editForm(p) {
     field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
     field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
     field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
-    field(k + 'age', 'Âge', 'age', p.age, { num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
-    field(k + 'pratique', 'Années de pratique', 'pratique', p.pratique, { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
+    field(k + 'naissance', 'Date de naissance (facultatif)', 'naissance', p.naissance || '', { type: 'date' }) +
+    field(k + 'age', 'Âge', 'age', ageDe(p), { disabled: !!p.naissance, num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
+    field(k + 'pratique', 'Années de pratique', 'pratique', pratiqueDe(p), { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
+    '<div class="field field--full"><p class="muted" data-agenote' + (p.naissance ? '' : ' hidden') + '>L’âge se calcule tout seul à partir de la date de naissance : ce champ n’est utile que sans date.</p></div>' +
     select(k + 'bras', 'Bras', 'bras', brasOk(p.bras) ? p.bras : '', bras, { req: true, err: 'Choisissez le bras.' }) +
     field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
     field(k + 'insta', 'Instagram', 'instagram', p.instagram, { kind: 'handle', fmt: 'Un pseudo Instagram : lettres, chiffres, points et tirets bas.' }) +
     field(k + 'email', 'Email', 'email', contact(p).email || '', { type: 'email', req: false, fmt: 'Une adresse email avec un @, comme nom@exemple.lu.' }) +
     field(k + 'tel', 'Téléphone (facultatif)', 'telephone', contact(p).telephone || '', { type: 'tel' }) +
     '<div class="field field--full"><label><input type="checkbox" name="publicOk"' + (contact(p).publicOk === true ? ' checked' : '') + '> Accord de publication obtenu (la personne a dit oui)</label></div>' +
-    (p.age >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
+    (ageDe(p) >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
     '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
     '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
 }
@@ -381,9 +385,19 @@ async function saveEdit(form) {
   const p = profil(form.dataset.edit); if (!p) return;
   const f = form.elements;
   const num = (v) => Number(String(v).replace(',', '.'));
+  const naissance = f.naissance.value.trim();
+  if (naissance) {
+    const a = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(naissance) ? ageAu(naissance) : NaN;
+    if (!(a >= 14 && a <= 99)) { OVForms.setError(f.naissance, 'Une date de naissance entre 14 et 99 ans, pas dans le futur.'); f.naissance.focus(); toast('Un champ est à corriger dans la fiche.'); return; }
+    OVForms.setError(f.naissance, '');
+  }
   const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: num(f.poids.value), taille: num(f.taille.value),
-    biceps: f.biceps.value.trim() ? num(f.biceps.value) : null, age: num(f.age.value), pratique: num(f.pratique.value), bras: f.bras.value,
+    biceps: f.biceps.value.trim() ? num(f.biceps.value) : null, bras: f.bras.value,
     palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
+  if (naissance) { champs.naissance = naissance; champs.age = ageAu(naissance); }
+  else { champs.age = num(f.age.value); if (p.naissance) champs.naissance = champSupprime(); }
+  const pratique = num(f.pratique.value);
+  if (pratique !== pratiqueDe(p)) { champs.pratique = pratique; champs.pratiqueDepuis = dateIlYA(Math.round(pratique)); }
   if (f.ville.value && ville(f.ville.value)) champs.villeId = f.ville.value;
   if (f.club.value && club(f.club.value)) champs.clubId = f.club.value;
   const email = f.email.value.trim(), tel = f.telephone.value.trim();
@@ -407,7 +421,7 @@ async function saveEdit(form) {
     if (contactChange) await majContact(p.id, { email, telephone: tel ? tel : champSupprime() });
     if (photo) await majPhoto(p.id, photo.image, photo.mini);
   }, () => {
-    Object.assign(p, champs); if (accordsChanges) S.contacts.set(p.id, { ...contact(p), ...accords });
+    Object.assign(p, champs); if (!naissance) delete p.naissance; if (accordsChanges) S.contacts.set(p.id, { ...contact(p), ...accords });
     if (contactChange) { const c1 = { ...contact(p), email }; if (tel) c1.telephone = tel; else delete c1.telephone; S.contacts.set(p.id, c1); }
     if (photo) p.mini = photo.mini;
     ui.open = null;
@@ -434,18 +448,22 @@ function pendingCard(p) {
   const refuse = ui.refuse === p.id
     ? '<div class="confirm" role="group" aria-label="Confirmer le refus"><p>Refuser la fiche de ' + esc(p.prenom) + '&nbsp;? Elle sera supprimée.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="refuser-ok">Refuser la fiche</button><button class="btn btn--secondary" type="button" data-act="annuler">Garder la fiche</button></div></div>'
     : '';
-  const mineur = (p.age != null && p.age < 18) || ct.accordParent;
+  const age = ageDe(p), mineur = (age != null && age < 18) || ct.accordParent;
+  const seulsAccords = m.length > 0 && m.every((x) => x.startsWith('l’accord'));
+  const casesAccords = seulsAccords ? '<div class="accords" data-accords>' +
+    (m.includes('l’accord de publication') ? '<label><input type="checkbox" data-accord="publicOk"> Accord de publication obtenu (la personne a dit oui)</label>' : '') +
+    (m.includes('l’accord d’un parent') ? '<label><input type="checkbox" data-accord="accordParent"> Accord d’un parent obtenu</label>' : '') + '</div>' : '';
   const recu = date(p.creeLe);
   return '<article class="acard" data-profil="' + id + '"><div class="acard__top">' + photoImg(p, 88, 110, 'Photo envoyée par ' + full(p)) +
-    '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + (vOk ? esc(vOk.nom) : 'Ville à choisir' + (p.villeSaisie ? ' (saisi : « ' + esc(p.villeSaisie) + ' »)' : '')) + ' · ' + ans(p.age) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p>' +
+    '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + (vOk ? esc(vOk.nom) : 'Ville à choisir' + (p.villeSaisie ? ' (saisi : « ' + esc(p.villeSaisie) + ' »)' : '')) + ' · ' + ans(age) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p>' +
     '<p class="acard__sub">' + (recu ? 'Reçue le ' + esc(recu) : '') + (p.source ? (recu ? ' · ' : '') + 'Importée de la feuille Vendetta 2026' : '') + '</p></div></div>' +
-    '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + cm(p.taille) + '</dd><dt>Tour de bras</dt><dd>' + cm(p.biceps) + '</dd><dt>Pratique</dt><dd>' + (p.pratique == null ? '<span class="muted">?</span>' : nb(p.pratique, 'an', 'ans')) + '</dd>' +
+    '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + cm(p.taille) + '</dd><dt>Tour de bras</dt><dd>' + cm(p.biceps) + '</dd><dt>Pratique</dt><dd>' + (pratiqueDe(p) == null ? '<span class="muted">?</span>' : nb(pratiqueDe(p), 'an', 'ans')) + '</dd>' +
     '<dt>Palmarès</dt><dd>' + (esc(p.palmares) || '<span class="muted">Rien d’indiqué</span>') + '</dd><dt>Instagram</dt><dd>' + (esc(p.instagram) || '<span class="muted">Aucun</span>') + '</dd>' +
     '<dt>Email</dt><dd>' + mailLink(ct.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(ct.telephone) + '</dd>' +
     (mineur ? '<dt>Accord parent</dt><dd>' + (ct.accordParent ? 'Oui, coché' : 'Non') + '</dd>' : '') + '</dl>' +
     clubBlock +
     (ui.open === p.id ? editForm(p)
-      : (m.length ? '<p class="muted" data-manque>Pour valider, il manque : ' + m.join(', ') + '. Corrigez la fiche ou rangez le club.</p>' : '') +
+      : (m.length && !seulsAccords ? '<p class="muted" data-manque>Pour valider, il manque : ' + m.join(', ') + '. Corrigez la fiche ou rangez le club.</p>' : '') + casesAccords +
         '<div class="acard__actions"><button class="btn btn--primary" type="button" data-act="valider"' + (m.length ? ' disabled' : '') + '>Valider</button><button class="btn btn--secondary" type="button" data-act="corriger">Corriger</button><button class="btn btn--secondary btn--danger" type="button" data-act="refuser">Refuser</button></div>') +
     refuse + '</article>';
 }
@@ -642,9 +660,14 @@ views.addEventListener('click', (e) => {
   switch (act) {
     case 'valider': {
       const m = manque(p);
-      if (m.length) { toast('Il manque : ' + m.join(', ') + '.'); return; }
-      agir(() => majProfil(p.id, { statut: 'publie', clubId: p.clubId, villeId: p.villeId }),
-        () => { p.statut = 'publie'; toast('Fiche de ' + full(p) + ' publiée, dans ' + ville(p.villeId).nom + '.'); render('h2'); });
+      const seulsAccords = m.length > 0 && m.every((x) => x.startsWith('l’accord'));
+      const cases = seulsAccords ? [...pEl.querySelectorAll('[data-accord]')] : [];
+      if (m.length && !(seulsAccords && cases.length && cases.every((x) => x.checked))) { toast('Il manque : ' + m.join(', ') + '.'); return; }
+      const accords = seulsAccords ? { publicOk: true, accordParent: m.includes('l’accord d’un parent') || contact(p).accordParent === true } : null;
+      agir(async () => {
+        if (accords) await majContact(p.id, accords);
+        await majProfil(p.id, { statut: 'publie', clubId: p.clubId, villeId: p.villeId });
+      }, () => { if (accords) S.contacts.set(p.id, { ...contact(p), ...accords }); p.statut = 'publie'; toast('Fiche de ' + full(p) + ' publiée, dans ' + ville(p.villeId).nom + '.'); render('h2'); });
       return;
     }
     case 'corriger': case 'modifier': ui.open = p.id; render(q('data-edit', p.id) + ' input'); return;
@@ -722,7 +745,22 @@ views.addEventListener('click', (e) => {
     }
   }
 });
+// a date of birth typed in the edit form: the age is worked out from it, so its own field is switched off
+views.addEventListener('input', (e) => {
+  if (!e.target.matches || !e.target.matches('input[name="naissance"]')) return;
+  const form = e.target.form, v = e.target.value.trim(), age = form.elements.age;
+  const ok = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(v);
+  age.disabled = ok;
+  if (ok) age.value = ageAu(v);
+  const note = form.querySelector('[data-agenote]'); if (note) note.hidden = !ok;
+});
 views.addEventListener('change', async (e) => {
+  const ac = e.target.closest('[data-accord]');
+  if (ac) {
+    const carte = ac.closest('[data-profil]'), v = carte && carte.querySelector('[data-act="valider"]');
+    if (v) v.disabled = ![...carte.querySelectorAll('[data-accord]')].every((x) => x.checked);
+    return;
+  }
   const fi = e.target.closest('[data-import-file]');
   if (fi) {
     const fichier = fi.files && fi.files[0]; if (!fichier) return;

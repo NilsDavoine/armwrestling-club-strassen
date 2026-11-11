@@ -19,6 +19,19 @@
     inputsOf(el).forEach((i) => { if (msg) i.setAttribute('aria-invalid', 'true'); else i.removeAttribute('aria-invalid'); });
     if (e) { e.textContent = msg || ''; e.hidden = !msg; }
   }
+  // a date of birth (AAAA-MM-JJ): a real date, not in the future, between data-age-min and data-age-max years old
+  function birthError(el, v) {
+    const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(v);
+    if (!m) return el.dataset.errFormat;
+    const y = Number(m[1]), mo = Number(m[2]), d = Number(m[3]), t = new Date(y, mo - 1, d), now = new Date();
+    if (t.getMonth() !== mo - 1 || t.getDate() !== d) return el.dataset.errFormat;
+    let age = now.getFullYear() - y;
+    if (now.getMonth() + 1 < mo || (now.getMonth() + 1 === mo && now.getDate() < d)) age--;
+    if (age < 0) return el.dataset.errFuture;
+    if (age < Number(el.dataset.ageMin)) return el.dataset.errYoung;
+    if (age > Number(el.dataset.ageMax)) return el.dataset.errOld;
+    return '';
+  }
   function check(el) {
     if (el.closest('[hidden]')) { setError(el, ''); return true; }
     const required = el.hasAttribute('required') || el.dataset.required === 'true';
@@ -34,6 +47,7 @@
       if (!v) { if (required) msg = el.dataset.err; }
       else if (el.type === 'email' && !EMAIL.test(v)) msg = el.dataset.errFormat;
       else if (el.dataset.kind === 'handle' && !HANDLE.test(v)) msg = el.dataset.errFormat;
+      else if (el.dataset.kind === 'birth') msg = birthError(el, v);
       else if (el.type === 'tel' && !PHONE.test(v)) msg = el.dataset.errFormat;
       else if (el.dataset.min || el.dataset.max) {
         const n = Number(v.replace(',', '.'));

@@ -114,3 +114,23 @@ export function athletesDeLaFeuille(texte) {
       contact: { email: v(l, 'email'), telephone: v(l, 'tel') },
     }));
 }
+
+// ---- Âge et années de pratique : calculés à partir de dates 'AAAA-MM-JJ', en date locale, sans fuseau horaire ----
+const partiesDate = (t) => String(t).split('-').map(Number);
+// Années pleines entre une date de départ et `jour` (un 29 février compte le 1er mars les années non bissextiles).
+function anneesPleines(depuis, jour) {
+  const [a, m, j] = partiesDate(depuis);
+  let n = jour.getFullYear() - a;
+  const mois = jour.getMonth() + 1, jj = jour.getDate();
+  if (mois < m || (mois === m && jj < j)) n--;
+  return n;
+}
+export const ageAu = (naissance, jour = new Date()) => anneesPleines(naissance, jour);
+export const anneesDepuis = (debut, jour = new Date()) => anneesPleines(debut, jour);
+// La date située `annees` ans avant `jour`, même mois et même jour ('AAAA-MM-JJ').
+export function dateIlYA(annees, jour = new Date()) {
+  const deux = (n) => String(n).padStart(2, '0');
+  return (jour.getFullYear() - annees) + '-' + deux(jour.getMonth() + 1) + '-' + deux(jour.getDate());
+}
+export const ageDe = (p, jour) => (p.naissance ? ageAu(p.naissance, jour) : p.age);
+export const pratiqueDe = (p, jour) => (p.pratiqueDepuis ? anneesDepuis(p.pratiqueDepuis, jour) : p.pratique);
