@@ -22,8 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <!-- la photo de l'accroche est un fond CSS : on la demande tout de suite -->
-<link rel="preload" as="image" href="ov/assets/img/club/match-arbitre-table-fond-noir-large.webp" media="(min-width: 901px)">
-<link rel="preload" as="image" href="ov/assets/img/club/match-arbitre-table-fond-noir-telephone.webp" media="(max-width: 900px)">
+<link rel="preload" as="image" href="ov/assets/img/club/match-arbitre-table-fond-noir-large.webp">
 <!-- La feuille du site du club, telle quelle : nav, #hero, section, .section-tag, h2 span, .event-card,
      .about-card, .btn-register, .btn-primary, .btn-outline, .form-input, .divider, #contact, footer -->
 <link rel="stylesheet" href="style.css">
@@ -44,14 +43,14 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 
 /* ===== ACCROCHE COURTE (choix 1A du 12/11/2026) : le nom, une phrase, la photo de match retouchée à droite.
    Elle ne prend plus tout l'écran : les profils arrivent dès le premier écran. ===== */
-#hero.ov-hero { min-height: 0; padding: calc(68px + 2.4rem) 4rem 2.4rem; }
-.ov-hero-bg {
-  background:
-    linear-gradient(90deg, #0a0a0a 0%, rgba(10,10,10,.94) 34%, rgba(10,10,10,.3) 62%, rgba(10,10,10,.05) 100%),
-    url("ov/assets/img/club/match-arbitre-table-fond-noir-large.webp") right center / auto 118% no-repeat,
-    #0a0a0a;
-}
-.ov-hero .hero-inner { grid-template-columns: minmax(0, 560px); }
+#hero.ov-hero { min-height: 0; padding: calc(68px + 1.4rem) 4rem 1.4rem; }
+.ov-hero-bg { background: #0a0a0a; }
+/* la photo est dans le cadre de la page, entière (les deux athlètes et l'arbitre) : à droite du titre sur grand écran,
+   au-dessus sur téléphone. Son fond est le noir de la page et ses bords fondent : aucun rectangle visible. */
+.ov-hero .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 2rem; align-items: center; }
+.ov-hero-photo { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 675; object-fit: cover;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%), linear-gradient(0deg, transparent 0, #000 14%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0, #000 12%), linear-gradient(0deg, transparent 0, #000 14%); mask-composite: intersect; }
 #hero.ov-hero h1 { font-size: clamp(3rem, 6.4vw, 5.4rem); margin-bottom: 1.1rem; }
 #hero.ov-hero .hero-desc { max-width: 26ch; margin-bottom: 0; font-size: 1.25rem; line-height: 1.5; color: rgba(245, 240, 232, .88); }
 
@@ -355,13 +354,10 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 
 /* ===== TABLETTE ET TÉLÉPHONE ===== */
 @media (max-width: 900px) {
-  #hero.ov-hero { padding: calc(68px + 2.4rem) 1.5rem 2.2rem; }
-  .ov-hero-bg {
-    background:
-      linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.78) 48%, rgba(10,10,10,.3) 100%),
-      url("ov/assets/img/club/match-arbitre-table-fond-noir-telephone.webp") right center / cover no-repeat,
-      #0a0a0a;
-  }
+  #hero.ov-hero { padding: 68px 1.5rem 1rem; }
+  .ov-hero .hero-inner { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .ov-hero-photo { order: -1; width: calc(100% + 3rem); max-width: none; margin-inline: -1.5rem; aspect-ratio: auto; height: clamp(132px, 34vw, 250px); object-position: 50% 0;
+    -webkit-mask-image: linear-gradient(0deg, transparent 0, #000 16%); -webkit-mask-composite: source-over; mask-image: linear-gradient(0deg, transparent 0, #000 16%); mask-composite: add; }
   #hero.ov-hero h1 { font-size: clamp(2.6rem, 12vw, 4rem); margin-bottom: .8rem; }
   #hero.ov-hero .hero-desc { font-size: 1.08rem; }
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -506,6 +502,12 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   #profils { padding-top: 2rem; }
 }
 @media (max-width: 639px) {
+  /* téléphone : la photo du haut prend de la place ; l'étiquette part et le titre tient sur une ligne, pour garder un athlète au premier écran */
+  #profils .section-tag { display: none; }
+  #profils h2 { font-size: 1.7rem; }
+  #profils { padding-top: 1.4rem; }
+  .ov-etapes { padding-top: .8rem; }
+  .roster-group { margin-top: 1rem; }
   .insc-boutons { width: 100%; }
   .insc-boutons > * { flex: 1 1 100%; justify-content: center; text-align: center; }
   .insc-prog li { font-size: .75rem; letter-spacing: .06em; }
@@ -535,6 +537,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         <h1 id="hero-h">Open Vendetta</h1>
         <p class="hero-desc">Choisissez un adversaire à votre poids. Le club organise le match.</p>
       </div>
+      <img class="ov-hero-photo" src="ov/assets/img/club/match-arbitre-table-fond-noir-large.webp" alt="Deux athlètes en plein match de bras de fer, sous le regard de l’arbitre" width="1440" height="675" fetchpriority="high">
     </div>
   </section>
 

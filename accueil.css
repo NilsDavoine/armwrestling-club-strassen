@@ -15,7 +15,7 @@
   --titre: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --texte: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   /* les 6 tailles */
-  --t1: clamp(3.25rem, 7.2vw, 5rem);     /* 80 px : le nom du club */
+  --t1: clamp(3.25rem, 5.6vw, 5rem);     /* 80 px : le nom du club */
   --t2: clamp(2rem, 4.4vw, 2.75rem);     /* 44 px : titres de section, grands chiffres */
   --t3: 1.75rem;                         /* 28 px : sous-titres */
   --t4: 1.25rem;                         /* 20 px : phrases mises en avant */
@@ -72,10 +72,14 @@ strong { font-weight: 600; }
 .burger span { display: block; width: 24px; height: 2px; background: var(--blanc); }
 
 /* ----- 1. L'accroche : le nom, le prochain mardi, un geste ----- */
-.accroche { position: relative; padding-top: var(--barre); background: var(--noir); overflow: hidden; }
-.accroche-photo { position: absolute; inset: var(--barre) 0 0 auto; width: min(64%, 980px); height: calc(100% - var(--barre)); object-fit: cover; object-position: 60% 30%; }
-.accroche::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--noir) 0%, var(--noir) 34%, rgba(10, 10, 10, .72) 52%, rgba(10, 10, 10, .08) 78%); pointer-events: none; }
-.accroche .cadre { position: relative; z-index: 2; display: grid; gap: 1.6rem; align-content: center; justify-items: start; min-height: min(78vh, 660px); padding-block: clamp(3rem, 7vw, 5rem); }
+/* La photo reste dans le cadre de la page, entière, sans texte posé sur les athlètes. Son fond est le noir de la page
+   (#0a0a0a) et ses bords gauche et bas fondent dans la page : aucun rectangle visible. */
+.accroche { padding-top: var(--barre); background: var(--noir); }
+.accroche .cadre { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; padding-block: clamp(2rem, 4vw, 3.5rem); }
+.accroche-texte { display: grid; gap: 1.6rem; justify-items: start; }
+.accroche-photo { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%), linear-gradient(0deg, transparent 0, #000 12%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0, #000 12%), linear-gradient(0deg, transparent 0, #000 12%); mask-composite: intersect; }
 .accroche h1 { font-size: var(--t1); line-height: .92; }
 .accroche h1 em { font-style: normal; color: var(--rouge-clair); }
 .prochain { display: grid; gap: .35rem; padding: 1rem 0 0; border-top: 2px solid var(--rouge); max-width: 30rem; }
@@ -183,9 +187,11 @@ strong { font-weight: 600; }
   .menu.ouvert { display: flex; }
   .menu a:not(.btn) { min-height: 52px; font-size: var(--t5); border-bottom: 1px solid var(--trait); }
   .menu .btn { margin-top: 1rem; min-height: 52px; }
-  .accroche::before { background: linear-gradient(0deg, var(--noir) 0%, var(--noir) 38%, rgba(10, 10, 10, .7) 58%, rgba(10, 10, 10, .12) 100%); }
-  .accroche-photo { inset: var(--barre) 0 auto 0; width: 100%; height: 62vw; max-height: 420px; object-position: 55% 25%; }
-  .accroche .cadre { min-height: 0; padding-top: calc(min(62vw, 420px) - 5.5rem); padding-bottom: 2.6rem; gap: 1.3rem; }
+  /* téléphone : la photo entière en haut, sur toute la largeur ; le titre dessous, jamais sur les athlètes */
+  .accroche .cadre { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-top: 0; padding-bottom: 2.6rem; }
+  .accroche-photo { order: -1; width: calc(100% + 2 * var(--marge)); max-width: none; margin-inline: calc(-1 * var(--marge)); max-height: 440px; object-position: 50% 30%;
+    -webkit-mask-image: linear-gradient(0deg, transparent 0, #000 14%); -webkit-mask-composite: source-over; mask-image: linear-gradient(0deg, transparent 0, #000 14%); mask-composite: add; }
+  .accroche-texte { gap: 1.3rem; }
   .venir, .deux, .articles { grid-template-columns: minmax(0, 1fr); }
   .articles li:nth-child(2) a { border-top: 1px solid var(--trait); }
   .pied .cadre { grid-template-columns: minmax(0, 1fr); }
