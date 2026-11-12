@@ -55,7 +55,18 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 
 /* ===== PROFILS ===== */
 #profils { background: var(--black); }
-.filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(2, minmax(0, 1.5fr)); gap: 1rem; align-items: end; }
+/* lu seulement par les lecteurs d'écran */
+.ov-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* les petites actions (retirer, changer, autre photo…) : petits boutons à bord, icône rouge */
+.roster-reset, .crop__change, .ov-mini-btn {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: 0 .95rem; border: 1px solid rgba(245, 240, 232, .24); background: none; color: var(--white); cursor: pointer; text-decoration: none;
+  font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: border-color .2s, color .2s;
+}
+.roster-reset svg, .crop__change svg, .ov-mini-btn svg { width: 13px; height: 13px; flex: none; color: var(--red-hot); }
+.roster-reset:hover, .crop__change:hover, .ov-mini-btn:hover { border-color: var(--red-hot); }
+/* les filtres : un bouton « Filtrer » ouvre le panneau ; les filtres actifs restent visibles en étiquettes */
+.filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(2, minmax(0, 1.5fr)); gap: 1rem; align-items: end; margin-top: 1rem; padding: 1.2rem; background: var(--dark); border: 1px solid rgba(245, 240, 232, .08); }
+html.ov-js .filters:not(.is-open) { display: none; }
 .field { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
 .field .form-label { color: rgba(245, 240, 232, .62); }
 .ov-select {
@@ -67,35 +78,43 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .ov-select:focus { border-color: var(--red-hot); }
 .ov-select:focus-visible { outline: 2px solid var(--red-hot); outline-offset: 2px; }
 .ov-select option { background: #111; color: #f5f0e8; }
-.roster-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; margin-top: 1rem; }
-.roster-status, .roster-reset, .roster-toggle, .roster-head p, .athlete-facts, .fiche-meta {
-  font-family: var(--font-display); font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+.roster-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem 1rem; min-height: 48px; margin-top: .4rem; }
+.roster-status, .roster-head p { font-family: var(--font-display); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.roster-status { font-size: .8rem; color: rgba(245, 240, 232, .65); }
+.roster-status b { margin-right: .45rem; font-size: 2.3rem; font-weight: 900; letter-spacing: 0; line-height: 1; color: var(--white); vertical-align: -.35rem; font-variant-numeric: tabular-nums; }
+.roster-toggle {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 46px; padding: 0 1rem 0 1.1rem; border: 1px solid rgba(245, 240, 232, .65); background: none; color: var(--white); cursor: pointer;
+  font-family: var(--font-display); font-size: .85rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: border-color .2s, background .2s;
 }
-.roster-status { font-size: .8rem; color: var(--grey); }
-.roster-reset, .roster-toggle {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
-  font-size: .8rem; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px;
-}
-.roster-reset:hover, .roster-toggle:hover { color: var(--red-hot); }
-.roster-toggle { display: none; }
+.roster-toggle svg { width: 16px; height: 16px; color: var(--red-hot); }
+.roster-toggle:hover, .roster-toggle[aria-expanded="true"] { border-color: var(--red-hot); }
+.roster-toggle[aria-expanded="true"] { background: rgba(192, 57, 43, .12); }
+html:not(.ov-js) .roster-toggle { display: none; }
+.filtre-nb { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; background: var(--red); font-style: normal; font-size: .82rem; letter-spacing: 0; }
+.roster-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .7rem; }
+.filtre-tag { display: inline-flex; align-items: center; gap: .6rem; min-height: 40px; padding: 0 .75rem 0 .85rem; border: 1px solid rgba(245, 240, 232, .14); background: var(--dark2); color: var(--white); font-size: .92rem; cursor: pointer; transition: border-color .2s; }
+.filtre-tag svg { width: 11px; height: 11px; color: var(--red-hot); }
+.filtre-tag:hover { border-color: var(--red-hot); }
 
 .roster-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid rgba(192, 57, 43, .45); }
 .roster-head h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; scroll-margin-top: 92px; }
 .roster-head p { font-size: .78rem; color: var(--grey); }
 .roster-list { list-style: none; }
-/* chaque ville est un bloc ; une languette centrée en bas déroule le volet des autres profils */
+/* chaque ville est un bloc ; en bas, les mini-photos des profils cachés et le bouton qui déroule la suite */
 .roster-group { position: relative; margin-top: 2.2rem; padding: 0 1.2rem; background: var(--dark); border: 1px solid rgba(245, 240, 232, .07); border-top: 3px solid var(--red); }
-.roster-group.has-more { padding-bottom: 1.6rem; margin-bottom: 1.6rem; }
 .roster-group .roster-head { padding-top: 1.1rem; }
 .roster-group .athlete:last-child { border-bottom: 0; }
-/* replié : le bas de la liste s'efface dans le fond du bloc, pour montrer qu'il y a une suite */
-.roster-group.has-more:not(.is-deplie) .roster-list { position: relative; }
-.roster-group.has-more:not(.is-deplie) .roster-list::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(transparent, var(--dark)); pointer-events: none; }
-.roster-more { position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%); z-index: 3; display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; padding: 0 1.4rem; border: 1px solid var(--red); background: var(--black); color: var(--white); cursor: pointer; white-space: nowrap;
-  font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: background .2s, color .2s; }
-.roster-more svg { width: 12px; height: 12px; color: var(--red-hot); transition: transform .3s; }
-.roster-more:hover { background: var(--red); }
-.roster-more:hover svg { color: var(--white); }
+.roster-more { display: flex; align-items: center; gap: .9rem; width: 100%; min-height: 58px; padding: .5rem .2rem .5rem 1.4rem; border: 0; border-top: 1px solid rgba(245, 240, 232, .12); background: none; color: var(--white); cursor: pointer; text-align: left; font-size: .98rem; transition: color .2s; }
+.roster-more:hover { color: var(--red-hot); }
+.more-vigs { display: flex; flex: none; }
+.more-vigs:empty { display: none; }
+.more-vig { display: grid; place-items: end center; width: 26px; aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 1px solid var(--red); box-shadow: 0 0 0 2px var(--dark);
+  background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(231,76,60,.8) 0%, rgba(192,57,43,.3) 45%, transparent 78%), var(--dark2);
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
+.more-vig + .more-vig { margin-left: -6px; }
+.more-vig img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+.more-txt { flex: 1; min-width: 0; }
+.roster-more svg { width: 12px; height: 12px; flex: none; margin-right: .2rem; color: var(--red-hot); transition: transform .3s; }
 .roster-group.is-deplie .roster-more svg { transform: rotate(180deg); }
 .athlete.is-revele { animation: ov-volet .35s ease-out both; }
 @keyframes ov-volet { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
@@ -109,7 +128,7 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .athlete::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transform-origin: top; transition: transform .35s; z-index: 2; }
 .athlete.is-open { background: var(--dark); }
 .athlete.is-open::before { transform: scaleY(1); }
-.athlete-row { position: relative; display: grid; grid-template-columns: 60px minmax(0, 1.25fr) minmax(0, 1fr) 120px 40px; column-gap: 1.5rem; align-items: center; min-height: 84px; padding: .5rem 1.2rem .5rem 1.4rem; }
+.athlete-row { position: relative; display: grid; grid-template-columns: 60px minmax(0, 1.25fr) minmax(0, 1fr) 120px 14px; column-gap: 1.5rem; align-items: center; min-height: 84px; padding: .5rem 1.2rem .5rem 1.4rem; }
 .athlete-row:has(.athlete-toggle:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: -2px; }
 .athlete-toggle:focus-visible { outline: none; }
 /* la photo posée sur la lueur rouge du site (le radial de .hero-bg, poussé) */
@@ -123,18 +142,19 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .athlete-name { font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
 .athlete-toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; text-align: left; cursor: pointer; }
 .athlete-toggle::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-.athlete-club { font-size: .9rem; color: rgba(245, 240, 232, .65); line-height: 1.4; }
-.athlete-facts { font-size: .82rem; color: var(--light-grey); }
-.athlete-facts .sep { color: var(--red-hot); margin: 0 .5rem; }
+/* sous le nom : le club et le bras sur une ligne ; taille et âge à part, sur grand écran */
+.athlete-sub { margin-top: .2rem; font-size: .9rem; color: rgba(245, 240, 232, .65); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
+.athlete-facts { font-size: .95rem; color: rgba(245, 240, 232, .65); white-space: nowrap; }
+.athlete .sep { color: var(--red-hot); margin: 0 .5rem; }
 .athlete-weight { text-align: right; white-space: nowrap; font-family: var(--font-display); font-size: 2.4rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
 .athlete-weight small { margin-left: .2rem; font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--red-hot); }
-.athlete-chev { justify-self: end; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(245, 240, 232, .2); transition: background .2s, border-color .2s; }
-.athlete-chev svg { width: 14px; height: 14px; transition: transform .25s; }
-.athlete.is-open .athlete-chev { background: var(--red); border-color: var(--red); }
-.athlete.is-open .athlete-chev svg { transform: rotate(45deg); }
+/* une petite flèche rouge à la place du carré « + » ; elle pivote vers le bas, fiche ouverte */
+.athlete-chev { justify-self: end; display: grid; place-items: center; width: 14px; height: 14px; color: var(--red-hot); }
+.athlete-chev svg { width: 13px; height: 13px; transition: transform .25s; }
+.athlete.is-open .athlete-chev svg { transform: rotate(90deg); }
 @media (hover: hover) and (pointer: fine) {
   .athlete:hover::before { transform: scaleY(1); }
-  .athlete-row:hover .athlete-chev { background: var(--red); border-color: var(--red); }
+  .athlete:not(.is-open) .athlete-row:hover .athlete-chev svg { transform: translateX(3px); }
   .athlete-row:hover .athlete-thumb img { transform: scale(1.06); }
 }
 
@@ -156,20 +176,24 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 /* la photo arrivée, l'initiale s'efface */
 .fiche-photo img:not([hidden]) + .initiale { display: none; }
 .fiche-body { display: flex; flex-direction: column; gap: 1.4rem; min-width: 0; }
-.fiche-meta { font-size: .8rem; color: var(--grey); }
-.fiche-meta strong { color: var(--white); font-weight: 700; }
-/* les mesures : la grille .event-figures du site (filets rouges de 1 px, cases noires) */
-.specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; background: rgba(192, 57, 43, .22); border: 1px solid rgba(192, 57, 43, .28); }
-.specs > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 1.1rem .8rem; background: var(--black); text-align: center; }
-.specs > .wide { grid-column: span 2; }
-.specs > .full { grid-column: 1 / -1; }
-.specs dt { margin-top: .45rem; font-family: var(--font-display); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(245, 240, 232, .62); }
-.specs dd { font-family: var(--font-display); font-size: 2rem; font-weight: 900; line-height: 1; text-transform: uppercase; font-variant-numeric: tabular-nums; }
-.specs dd small { margin-left: .2rem; font-size: .9rem; font-weight: 700; color: var(--red-hot); }
-.fiche-lines { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.5rem; margin: 0; }
-.fiche-lines dt { font-family: var(--font-display); font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--grey); padding-top: .2rem; }
-.fiche-lines dd { color: rgba(245, 240, 232, .85); }
-.fiche-lines a { text-decoration-color: var(--red); text-underline-offset: 4px; }
+/* en tête de la fiche : le club en titre, la ville dessous, Instagram dans un carré */
+.fiche-tete { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1.1rem; border-bottom: 1px solid rgba(245, 240, 232, .12); }
+.fiche-club { font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
+.fiche-ville { margin-top: .35rem; font-size: .92rem; color: rgba(245, 240, 232, .65); }
+.fiche-insta { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid rgba(245, 240, 232, .24); color: var(--red-hot); transition: border-color .2s, background .2s; }
+.fiche-insta svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.fiche-insta:hover { border-color: var(--red-hot); background: rgba(192, 57, 43, .1); }
+/* les mesures : poids / taille / âge en une ligne de grands chiffres, le reste en texte */
+.mesures { display: grid; gap: .65rem; }
+.mesures-cles { display: flex; flex-wrap: wrap; align-items: baseline; row-gap: .2rem; font-family: var(--font-display); font-size: 2.6rem; font-weight: 900; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.mesures-cles span + span::before { content: "/"; margin: 0 .75rem; font-weight: 400; color: var(--red); }
+.mesures-cles small { margin-left: .2rem; font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--red-hot); }
+.mesures-texte { font-size: 1rem; color: rgba(245, 240, 232, .78); }
+.mesures-bras { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .35rem 1.2rem; margin: 0; font-size: .95rem; }
+.mesures-bras > div { display: contents; }
+.mesures-bras dt { color: rgba(245, 240, 232, .6); }
+.mesures-bras dd { margin: 0; font-variant-numeric: tabular-nums; }
+.fiche-palmares { max-width: 60ch; font-size: 1rem; line-height: 1.65; color: rgba(245, 240, 232, .85); }
 .fiche-propose { margin-top: auto; }
 /* bureau : la photo de l'athlète reste en vue pendant qu'on remplit le formulaire */
 @media (min-width: 901px) { .fiche-photo { position: sticky; top: 92px; align-self: start; } }
@@ -187,48 +211,80 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .propose textarea.form-input { min-height: 110px; resize: vertical; line-height: 1.6; }
 .propose .form-input:focus { border-color: var(--red-hot); }
 .propose .form-input[aria-invalid="true"] { border-color: var(--red-hot); }
-.field__error { font-size: .85rem; color: var(--red-hot); }
+/* une erreur : un « ! » cerclé devant le message */
+.field__error { display: flex; align-items: flex-start; gap: .5rem; font-size: .85rem; line-height: 1.45; color: var(--red-hot); }
+.field__error::before { content: "!"; flex: none; display: grid; place-items: center; width: 17px; height: 17px; margin-top: .05rem; border: 1.5px solid currentColor; border-radius: 50%; font-size: .7rem; font-weight: 700; line-height: 1; }
 fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
 fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
-.choice { display: flex; flex-wrap: wrap; gap: 0 1.8rem; }
-.choice label { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; font-size: .95rem; cursor: pointer; }
-.choice input, .field--check input { width: 20px; height: 20px; margin: 0; accent-color: var(--red); }
-.field.field--check { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: .8rem; align-items: start; }
-.field--check > input { margin-top: 3px; }
+/* les choix (ville, bras) : des boutons à angles droits, le choisi en rouge plein ; la vraie case reste, invisible */
+.choice { display: flex; flex-wrap: wrap; gap: .5rem; }
+.choice label { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid rgba(245, 240, 232, .24); cursor: pointer; text-align: center;
+  font-family: var(--font-display); font-size: .88rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(245, 240, 232, .78); transition: border-color .2s, background .2s, color .2s; }
+.choice label:hover { border-color: var(--red-hot); color: var(--white); }
+.choice label:has(input:checked) { background: var(--red); border-color: var(--red); color: var(--white); }
+.choice label:has(input:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: 2px; }
+.choice label:has(input[aria-invalid="true"]) { border-color: var(--red-hot); }
+.choice input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+/* le bras : trois boutons collés, comme un sélecteur */
+.choice--seg { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; }
+.choice--seg label { padding: 0 .5rem; }
+.choice--seg label + label { margin-left: -1px; }
+/* les cases à cocher : carrées, rouges une fois cochées */
+.field.field--check { display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: .9rem; align-items: start; }
+.field--check > input { appearance: none; -webkit-appearance: none; width: 24px; height: 24px; margin: 0; border: 1.5px solid rgba(245, 240, 232, .5); background: transparent center / 15px no-repeat; cursor: pointer; transition: background-color .15s, border-color .15s; }
+.field--check > input:hover { border-color: var(--red-hot); }
+.field--check > input:checked { background-color: var(--red); border-color: var(--red);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5' fill='none' stroke='%23f5f0e8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.field--check > input[aria-invalid="true"] { border-color: var(--red-hot); }
 .field--check > label { font-size: .95rem; line-height: 1.5; color: rgba(245, 240, 232, .85); cursor: pointer; }
 .field--check > .field__error { grid-column: 2; }
 .tel { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: .5rem; }
 .tel > div { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
-.donnees { border: 1px solid rgba(245, 240, 232, .12); padding: .8rem 1rem; font-size: .85rem; line-height: 1.6; color: rgba(245, 240, 232, .65); }
-.donnees summary { min-height: 24px; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); }
-.donnees p { margin-top: .6rem; }
+/* « Ce que le club fait de vos données » : un simple lien qui déplie le texte */
+.donnees { font-size: .85rem; line-height: 1.6; color: rgba(245, 240, 232, .65); }
+.donnees summary { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; cursor: pointer; list-style: none; font-size: .92rem; color: rgba(245, 240, 232, .78); transition: color .2s; }
+.donnees summary::-webkit-details-marker { display: none; }
+.donnees summary::after { content: ""; width: 7px; height: 7px; border-top: 1.8px solid var(--red-hot); border-right: 1.8px solid var(--red-hot); transform: rotate(45deg); transition: transform .2s; }
+.donnees[open] summary::after { transform: rotate(135deg); }
+.donnees summary:hover { color: var(--white); }
+.donnees p { margin-top: .2rem; padding-left: .9rem; border-left: 2px solid rgba(192, 57, 43, .45); }
 .donnees a { text-decoration-color: var(--red); text-underline-offset: 3px; }
 .propose__actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 1rem; margin-top: 1.6rem; }
 .propose .form__status { min-height: 1.5em; margin-top: .8rem; font-size: .88rem; color: rgba(245, 240, 232, .68); }
 .propose__intro a, .field__hint a { text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
 .propose__intro a:hover { color: var(--red-hot); }
-/* « Retrouvez votre profil » : le visiteur tape son nom, choisit sa fiche dans la liste */
-.propose__noms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: .3rem; }
-.moi-liste { display: grid; gap: .5rem; list-style: none; margin: .2rem 0; padding: 0; }
+/* « Votre nom » : un seul champ ; les profils trouvés s'affichent juste dessous, on touche le sien */
+.moi-cherche { border: 1px solid rgba(245, 240, 232, .2); background: rgba(255, 255, 255, .04); transition: border-color .2s; }
+.moi-cherche:focus-within, .moi-cherche:has(.moi-liste:not(:empty)) { border-color: var(--red-hot); }
+.moi-cherche:has([aria-invalid="true"]) { border-color: var(--red-hot); }
+.moi-champ { display: flex; align-items: center; gap: .65rem; padding-left: .95rem; }
+.moi-champ svg { flex: none; width: 16px; height: 16px; color: rgba(245, 240, 232, .6); }
+.propose .moi-champ .form-input { height: 48px; padding-left: 0; border: 0; background: none; }
+.moi-champ .form-input:focus-visible { outline: none; }
+.moi-liste { list-style: none; margin: 0; padding: 0; }
 .moi-liste:empty { display: none; }
-.moi-choix, .moi-carte { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: .9rem; }
-.moi-choix { grid-template-columns: 20px 44px minmax(0, 1fr); min-height: 68px; padding: .55rem .9rem; border: 1px solid rgba(245, 240, 232, .14); cursor: pointer; transition: border-color .2s, background .2s; }
-.moi-choix:hover { border-color: rgba(245, 240, 232, .4); }
-.moi-choix:has(input:checked) { border-color: var(--red-hot); background: rgba(192, 57, 43, .12); }
-.moi-choix:has(input:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: 2px; }
-.moi-choix input { width: 20px; height: 20px; margin: 0; accent-color: var(--red); }
-.moi-vignette { display: grid; place-items: end center; width: 44px; aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 2px solid var(--red);
+.moi-liste li { border-top: 1px solid rgba(245, 240, 232, .08); }
+.moi-choix, .moi-carte { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: center; gap: .85rem; }
+.moi-choix { width: 100%; min-height: 62px; padding: .5rem .95rem; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; transition: background .2s; }
+.moi-choix:hover, .moi-choix:focus-visible { background: rgba(192, 57, 43, .14); }
+.moi-choix:focus-visible { outline: 2px solid var(--red-hot); outline-offset: -2px; }
+.moi-vignette { display: grid; place-items: end center; width: 36px; aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 2px solid var(--red);
   background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(231,76,60,.8) 0%, rgba(192,57,43,.3) 45%, transparent 78%), var(--dark2);
-  font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
 .moi-vignette img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 .moi-texte { display: grid; gap: .15rem; min-width: 0; }
 .moi-nom { font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1.1; overflow-wrap: anywhere; }
 .moi-infos { font-size: .85rem; color: rgba(245, 240, 232, .65); line-height: 1.4; }
-.propose__moi { display: grid; gap: .6rem; justify-items: start; padding: .9rem 1rem; border: 1px solid rgba(245, 240, 232, .14); border-left: 3px solid var(--red); }
-.propose__moi .moi-carte { width: 100%; }
-.propose__changer { min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white);
-  text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
-.propose__changer:hover { color: var(--red-hot); }
+/* le profil choisi reste dans le champ, avec une croix pour en changer */
+.propose__moi { display: grid; gap: .45rem; }
+.moi-puce { display: flex; align-items: center; gap: .6rem; min-height: 62px; padding: .4rem .4rem .4rem .95rem; border: 1px solid rgba(245, 240, 232, .24); background: rgba(255, 255, 255, .04); }
+.moi-puce .moi-carte { flex: 1; min-width: 0; }
+.moi-changer { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(245, 240, 232, .2); background: none; color: var(--red-hot); cursor: pointer; transition: border-color .2s; }
+.moi-changer svg { width: 13px; height: 13px; }
+.moi-changer:hover { border-color: var(--red-hot); }
+/* envoyé : une coche rouge, le titre, le texte */
+.ok-coche { display: grid; place-items: center; width: 52px; height: 52px; background: var(--red); color: var(--white); }
+.ok-coche svg { width: 26px; height: 26px; }
 .propose__done { display: grid; gap: 1rem; justify-items: start; padding: 1.2rem 0; outline: none; }
 .propose__done-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; line-height: 1.05; }
 .propose__done p:not(.propose__done-title) { max-width: 56ch; color: rgba(245, 240, 232, .8); }
@@ -242,8 +298,12 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 .insc-form { display: grid; gap: 1.6rem; padding: 2.2rem 2.4rem; background: var(--black); border: 1px solid rgba(245, 240, 232, .08); border-top: 3px solid var(--red); }
 .insc-group { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 1.1rem; }
 .insc-group + .insc-group { padding-top: 1.6rem; border-top: 1px solid rgba(245, 240, 232, .08); }
-.insc-legend { padding: 0; margin-bottom: 1.1rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
-.insc-legend span { color: var(--red-hot); margin-right: .4rem; }
+/* le titre d'une étape : son numéro dans un carré rouge, puis une ligne de ce qu'on va remplir */
+/* posé en float, le titre ne coupe plus le filet du haut de l'étape : il devient la première case de la grille */
+.insc-legend { float: left; width: 100%; display: flex; align-items: center; gap: .9rem; padding: 0; margin: 0 0 .4rem; }
+.insc-num { flex: none; display: grid; place-items: center; width: 34px; height: 34px; background: var(--red); font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; line-height: 1; }
+.insc-legend__t { display: grid; gap: .3rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; line-height: 1; }
+.insc-legend__t small { font-family: var(--font-body); font-size: .85rem; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.3; color: rgba(245, 240, 232, .55); }
 .insc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; align-items: start; }
 .insc-grid > .field--full { grid-column: 1 / -1; }
 .field__hint { font-size: .82rem; color: rgba(245, 240, 232, .55); line-height: 1.5; }
@@ -255,12 +315,20 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 .insc-done { display: grid; justify-items: center; gap: 1rem; padding: 2.4rem; text-align: center; background: var(--black); border-top: 3px solid var(--red); outline: none; }
 .insc-done__title { font-family: var(--font-display); font-size: 2rem; font-weight: 900; text-transform: uppercase; }
 .insc-done__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-/* la photo : une grande zone à cliquer, puis le cadre de recadrage */
+/* la photo : un cadre portrait à la forme finale (4:5) et le bouton « Ajouter ma photo », puis le cadre de recadrage */
 .photo-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-.photo-drop { display: grid; gap: .3rem; justify-items: center; padding: 1.8rem 1rem; border: 1px dashed rgba(245, 240, 232, .3); text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
-.photo-drop:hover { border-color: var(--red-hot); background: rgba(192, 57, 43, .06); }
-.field:has(.photo-input:focus-visible) .photo-drop { outline: 2px solid var(--red-hot); outline-offset: 2px; }
-.photo-drop__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.photo-drop { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 1.2rem; align-items: center; cursor: pointer; }
+.photo-drop__cadre { width: 96px; aspect-ratio: 4 / 5; border: 1px solid rgba(245, 240, 232, .24); border-bottom: 3px solid var(--red); transition: border-color .2s;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'%3E%3Cg fill='none' stroke='%23f5f0e8' stroke-opacity='.35' stroke-width='1.2' stroke-dasharray='3 3'%3E%3Ccircle cx='40' cy='40' r='16'/%3E%3Cpath d='M8 100c1-23 15-36 32-36s31 13 32 36'/%3E%3C/g%3E%3C/svg%3E") 50% 100% / 86% auto no-repeat,
+    linear-gradient(rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 16px 16px, linear-gradient(90deg, rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 16px 16px, #0d0d0d; }
+.photo-drop__texte { display: grid; gap: .6rem; justify-items: start; }
+.photo-drop__btn { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgba(245, 240, 232, .4);
+  font-family: var(--font-display); font-size: .88rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: border-color .2s; }
+.photo-drop__btn svg { width: 13px; height: 13px; color: var(--red-hot); }
+.photo-drop:hover .photo-drop__btn { border-color: var(--red-hot); }
+.photo-drop:hover .photo-drop__cadre, .field:has(.photo-input[aria-invalid="true"]) .photo-drop__cadre { border-color: var(--red-hot); border-bottom-color: var(--red); }
+.field:has(.photo-input:focus-visible) .photo-drop__btn { outline: 2px solid var(--red-hot); outline-offset: 2px; }
 .photo-drop__hint { font-size: .85rem; color: rgba(245, 240, 232, .6); }
 .crop { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.2rem 1.6rem; align-items: start; }
 .crop__frame { width: 240px; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(245, 240, 232, .2); border-bottom: 3px solid var(--red);
@@ -275,7 +343,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 .crop__btn--text { font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .crop__btn:hover { border-color: var(--red-hot); color: var(--red-hot); }
 .crop__hint { grid-column: 1 / -1; font-size: .82rem; color: rgba(245, 240, 232, .55); }
-.crop__change { justify-self: start; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.crop__change { justify-self: start; }
 .insc-form .form-input { border-color: rgba(245, 240, 232, .2); }
 .insc-form .form-input:not(textarea) { height: 48px; }
 .insc-form textarea.form-input { min-height: 96px; resize: vertical; line-height: 1.6; }
@@ -295,45 +363,48 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   #hero h1 { font-size: clamp(2.6rem, 11vw, 4.6rem); }
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filters .field-wide { grid-column: 1 / -1; }
-  .athlete-row { grid-template-columns: 52px minmax(0, 1fr) auto 32px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; column-gap: .9rem; row-gap: .15rem; min-height: 80px; padding: .5rem .8rem .5rem 1rem; }
-  .athlete-thumb { grid-area: thumb; width: 52px; }
-  .athlete-id { grid-area: id; align-self: end; }
-  .athlete-facts { grid-area: facts; align-self: start; font-size: .72rem; }
-  .athlete-weight { grid-area: weight; font-size: 2rem; }
-  .athlete-chev { grid-area: chev; width: 32px; height: 32px; }
+  /* la rangée : photo, nom et « club · bras », poids, flèche ; taille et âge sont dans la fiche */
+  .athlete-row { grid-template-columns: 52px minmax(0, 1fr) auto 12px; column-gap: .9rem; min-height: 78px; padding: .5rem .8rem .5rem 1rem; }
+  .athlete-facts { display: none; }
+  .athlete-thumb { width: 52px; }
+  .athlete-weight { font-size: 2rem; }
+  .athlete-chev { width: 12px; }
   .athlete-name { font-size: 1.25rem; }
-  .athlete-club { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .athlete-club { font-size: .8rem; line-height: 1.35; }
+  .athlete-sub { font-size: .82rem; line-height: 1.35; }
   .athlete-fiche { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: .4rem .8rem 2rem 1rem; }
+  .mesures-cles { font-size: 2.2rem; }
+  .roster-more { padding-left: 1rem; }
   }
 @media (max-width: 639px) {
   .roster-group { padding: 0 .35rem; }
-  .roster-group.has-more { padding-bottom: 1.6rem; }
+  .filters { padding: 1rem; }
   .insc-form { padding: 1.4rem 1.1rem; }
   .insc-grid { grid-template-columns: minmax(0, 1fr); }
   .crop { grid-template-columns: minmax(0, 1fr); justify-items: center; }
   .crop__tools { width: 100%; }
   .insc-actions .btn-register, .insc-done__actions > * { width: 100%; justify-content: center; text-align: center; }
-  .roster-toggle { display: inline-flex; }
-  html.ov-js .filters:not(.is-open) { display: none; }
-  .facts-more { display: none; }
-  .athlete-row { grid-template-columns: 46px minmax(0, 1fr) auto 28px; column-gap: .7rem; min-height: 72px; padding: .45rem .5rem .45rem .75rem; }
+  .roster-status b { font-size: 2rem; }
+  .athlete-row { grid-template-columns: 46px minmax(0, 1fr) auto 10px; column-gap: .75rem; min-height: 70px; padding: .45rem .5rem .45rem .75rem; }
   .athlete-thumb { width: 46px; }
   .athlete-thumb .initiale { font-size: 2rem; }
   .athlete-name { font-size: 1.1rem; }
   .athlete-weight { font-size: 1.6rem; }
   .athlete-weight small { font-size: .8rem; }
-  .athlete-chev { width: 28px; height: 28px; }
+  .athlete-chev { width: 10px; }
   .athlete-fiche { padding: .2rem .5rem 1.8rem .75rem; }
-  .specs > div { padding: .9rem .3rem; }
-  .specs dd { font-size: 1.6rem; }
-  .specs dd small { font-size: .75rem; }
-  .propose__grid, .propose__noms { grid-template-columns: minmax(0, 1fr); }
-  .moi-choix { padding: .5rem .7rem; column-gap: .7rem; }
+  .fiche-club { font-size: 1.45rem; }
+  .mesures-cles { font-size: 1.9rem; }
+  .mesures-cles span + span::before { margin: 0 .55rem; }
+  .mesures-cles small { font-size: .8rem; }
+  .roster-more { padding-left: .75rem; font-size: .92rem; }
+  .propose__grid { grid-template-columns: minmax(0, 1fr); }
+  .moi-choix { padding: .5rem .75rem; column-gap: .7rem; }
+  .photo-drop { grid-template-columns: 84px minmax(0, 1fr); gap: 1rem; }
+  .photo-drop__cadre { width: 84px; }
   .fiche-propose .btn-register, .propose__actions > button, .insc-actions .btn-register { width: 100%; justify-content: center; text-align: center; padding: 1rem 1.2rem; font-size: 1rem; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .athlete, .athlete::before, .athlete-thumb img, .athlete-chev, .athlete-chev svg { transition: none; }
+  .athlete, .athlete::before, .athlete-thumb img, .athlete-chev svg, .roster-more svg, .donnees summary::after { transition: none; }
 }
 </style>
 </head>
@@ -376,6 +447,14 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
       <div class="section-tag">Les profils</div>
       <h2 id="profils-h">Profils ouverts<br><span>à un match</span></h2>
       <div class="roster">
+        <!-- le nombre de profils en grand et « Filtrer » ; dessous, chaque filtre actif en étiquette avec sa croix, puis le panneau -->
+        <div class="roster-bar">
+          <p class="roster-status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
+          <button class="roster-toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
+        </div>
+        <div class="roster-tags" data-roster-tags hidden>
+          <button class="roster-reset" type="button" data-roster-reset hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Tout retirer</button>
+        </div>
         <div class="filters" id="filtres" role="search" aria-label="Filtrer les profils">
           <div class="field"><label class="form-label" for="f-ville">Ville</label>
             <select class="form-input ov-select" id="f-ville" name="ville"><option value="toutes">Toutes les villes</option></select></div>
@@ -387,11 +466,6 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
             <select class="form-input ov-select" id="f-club" name="club"><option value="tous">Tous les clubs</option></select></div>
           <div class="field field-wide"><label class="form-label" for="f-tri">Ordre</label>
             <select class="form-input ov-select" id="f-tri" name="tri"><option value="desc">Du plus lourd au plus léger</option><option value="asc">Du plus léger au plus lourd</option></select></div>
-        </div>
-        <div class="roster-bar">
-          <p class="roster-status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
-          <button class="roster-toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
-          <button class="roster-reset" type="button" data-roster-reset hidden>Retirer les filtres</button>
         </div>
         <div class="roster-empty" data-roster-empty hidden>
           <p>Aucun profil ne correspond à ces filtres.</p>
@@ -410,7 +484,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
       </div>
       <form class="insc-form" id="inscription-form" novalidate aria-labelledby="inscription-h">
         <fieldset class="insc-group">
-          <legend class="insc-legend"><span aria-hidden="true">01</span> Vous</legend>
+          <legend class="insc-legend"><span class="insc-num" aria-hidden="true">1</span><span class="insc-legend__t">Vous<small>Nom, contact, date de naissance, ville</small></span></legend>
           <div class="insc-grid">
             <div class="field"><label class="form-label" for="i-prenom">Prénom</label>
               <input class="form-input" id="i-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="i-prenom-err">
@@ -429,7 +503,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
             <div class="field"><label class="form-label" for="i-naissance">Date de naissance</label>
               <input class="form-input" id="i-naissance" name="naissance" type="date" autocomplete="bday" required data-check data-kind="birth" data-age-min="14" data-age-max="99" data-err="Écrivez votre date de naissance." data-err-format="Écrivez une date de naissance valide, jour, mois et année." data-err-future="Cette date est dans le futur : vérifiez l’année." data-err-young="La vitrine accueille les athlètes à partir de 14 ans." data-err-old="Vérifiez l’année : la vitrine accueille les athlètes jusqu’à 99 ans." aria-describedby="i-naissance-err">
               <p class="field__error" id="i-naissance-err" hidden></p></div>
-            <fieldset class="field" data-check data-required="true" data-err="Choisissez votre ville." aria-describedby="i-ville-err">
+            <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre ville." aria-describedby="i-ville-err">
               <legend class="form-label">Ville</legend>
               <div class="choice"><label><input type="radio" name="ville" value="autre"> Autre ville</label></div>
               <p class="field__hint" data-villes-note hidden></p>
@@ -451,7 +525,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         </fieldset>
 
         <fieldset class="insc-group">
-          <legend class="insc-legend"><span aria-hidden="true">02</span> Votre profil sportif</legend>
+          <legend class="insc-legend"><span class="insc-num" aria-hidden="true">2</span><span class="insc-legend__t">Votre profil sportif<small>Club, poids, taille, bras et mesures</small></span></legend>
           <div class="insc-grid">
             <div class="field field--full"><label class="form-label" for="i-club">Club</label>
               <input class="form-input" id="i-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs" required data-check data-err="Écrivez votre club, ou « Sans club »." aria-describedby="i-club-err i-club-hint">
@@ -465,7 +539,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
               <p class="field__error" id="i-taille-err" hidden></p></div>
             <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="i-bras-hint i-bras-err">
               <legend class="form-label">Bras</legend>
-              <div class="choice">
+              <div class="choice choice--seg">
                 <label><input type="radio" name="bras" value="Droit"> Droit</label>
                 <label><input type="radio" name="bras" value="Gauche"> Gauche</label>
                 <label><input type="radio" name="bras" value="Les deux"> Les deux</label>
@@ -499,19 +573,22 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         </fieldset>
 
         <fieldset class="insc-group">
-          <legend class="insc-legend"><span aria-hidden="true">03</span> Photo et accords</legend>
+          <legend class="insc-legend"><span class="insc-num" aria-hidden="true">3</span><span class="insc-legend__t">Photo et accords<small>Votre photo, puis deux cases à cocher</small></span></legend>
           <div class="field">
             <span class="form-label" id="i-photo-label">Votre photo</span>
             <label class="photo-drop" for="i-photo" data-photo-pick>
-              <span class="photo-drop__title">Choisir une photo</span>
-              <span class="photo-drop__hint">Une photo nette de vous, de face ou à la table. Vous la recadrez ensuite.</span>
+              <span class="photo-drop__cadre" aria-hidden="true"></span>
+              <span class="photo-drop__texte">
+                <span class="photo-drop__btn"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5v11M1.5 7h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ajouter ma photo</span>
+                <span class="photo-drop__hint">Une photo nette de vous, en portrait, de face ou à la table. Vous la recadrez ensuite.</span>
+              </span>
             </label>
             <input class="photo-input" id="i-photo" name="photo" type="file" accept="image/*" required data-check data-err="Ajoutez une photo de vous : sans photo, la fiche ne peut pas être publiée." aria-labelledby="i-photo-label" aria-describedby="i-photo-err">
             <div class="crop" data-crop hidden></div>
-            <button class="crop__change" type="button" data-photo-change hidden>Choisir une autre photo</button>
+            <button class="crop__change" type="button" data-photo-change hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h2.5l1.2-1.8h3.6l1.2 1.8h2.5v7h-11z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8" cy="9" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Choisir une autre photo</button>
             <p class="field__error" id="i-photo-err" hidden></p>
           </div>
-          <details class="donnees"><summary>Vos données</summary><p>L’Armwrestling Club Strassen garde vos réponses pour publier votre fiche, si vous l’acceptez, et pour vous proposer des matchs. Votre email, votre téléphone et l’accord d’un parent ne s’affichent jamais : seul l’organisateur les voit. Les données sont stockées chez Google Firebase, dans l’Union européenne. Votre fiche reste en ligne tant que vous le voulez ; sur simple demande, elle est supprimée avec votre photo et vos coordonnées. Pour voir, corriger ou supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
+          <details class="donnees"><summary>Ce que le club fait de vos données</summary><p>L’Armwrestling Club Strassen garde vos réponses pour publier votre fiche, si vous l’acceptez, et pour vous proposer des matchs. Votre email, votre téléphone et l’accord d’un parent ne s’affichent jamais : seul l’organisateur les voit. Les données sont stockées chez Google Firebase, dans l’Union européenne. Votre fiche reste en ligne tant que vous le voulez ; sur simple demande, elle est supprimée avec votre photo et vos coordonnées. Pour voir, corriger ou supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
           <div class="field field--check">
             <input id="i-public" name="fiche_publique" type="checkbox" required data-check data-err="Cochez cette case : la fiche est faite pour être vue sur la page." aria-describedby="i-public-err">
             <label for="i-public">J’accepte que ma fiche soit publique sur cette page.</label>
@@ -530,9 +607,10 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         </div>
       </form>
       <div class="insc-done" data-insc-done role="status" tabindex="-1" hidden>
+        <span class="ok-coche" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <p class="insc-done__title">Fiche envoyée</p>
         <p>Elle apparaîtra dans la liste dès que l’organisateur l’aura relue.</p>
-        <div class="insc-done__actions"><a class="btn-register" href="#profils">Voir les profils</a><button class="btn-outline" type="button" data-insc-restart>Ajouter une autre fiche</button></div>
+        <div class="insc-done__actions"><a class="btn-register" href="#profils">Voir les profils</a><button class="ov-mini-btn" type="button" data-insc-restart><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5v11M1.5 7h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ajouter une autre fiche</button></div>
       </div>
     </div>
   </section>
@@ -562,23 +640,23 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
       <p class="propose__intro">Pour proposer un match, il vous faut votre propre profil sur Open Vendetta : l’organisateur vous recontacte avec les coordonnées de votre fiche. Pas encore de profil&nbsp;? <a href="#inscription">Ajoutez le vôtre en bas de la page</a>.</p>
     </div>
     <div class="propose__grid">
-      <fieldset class="field field--full" data-moi-recherche data-check data-required="true" data-err="Sélectionnez votre profil dans la liste." aria-describedby="__ID__-moi-err">
-        <legend class="form-label">Retrouvez votre profil</legend>
-        <div class="propose__noms">
-          <div class="field"><label class="form-label" for="__ID__-prenom">Votre prénom</label>
-            <input class="form-input" id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" aria-controls="__ID__-moi-liste"></div>
-          <div class="field"><label class="form-label" for="__ID__-nom">Votre nom</label>
-            <input class="form-input" id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" aria-controls="__ID__-moi-liste"></div>
+      <!-- un seul champ : on tape son nom, ses profils apparaissent juste dessous, on touche le sien -->
+      <fieldset class="field field--full" data-moi-recherche data-check data-required="true" data-err="Touchez votre profil dans la liste, sous le champ." aria-describedby="__ID__-moi-err">
+        <legend class="ov-sr">Retrouvez votre profil</legend>
+        <label class="form-label" for="__ID__-qui">Votre nom</label>
+        <div class="moi-cherche">
+          <div class="moi-champ"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.4 10.4l3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input class="form-input" id="__ID__-qui" name="qui" type="text" maxlength="100" autocomplete="name" placeholder="Votre prénom et votre nom" aria-controls="__ID__-moi-liste" aria-describedby="__ID__-moi-aide"></div>
+          <ul class="moi-liste" id="__ID__-moi-liste" data-moi-liste></ul>
         </div>
-        <p class="field__hint" data-moi-aide role="status">Tapez votre prénom et votre nom : votre profil apparaît ici.</p>
-        <ul class="moi-liste" id="__ID__-moi-liste" data-moi-liste></ul>
+        <p class="field__hint" id="__ID__-moi-aide" data-moi-aide role="status">Tapez votre nom : votre profil apparaît sous le champ.</p>
         <p class="field__error" id="__ID__-moi-err" hidden></p>
         <p class="field__hint">Votre fiche n’apparaît pas&nbsp;? Elle doit d’abord être validée par le club.</p>
       </fieldset>
+      <!-- le profil choisi reste dans le champ, avec une croix pour en changer -->
       <div class="propose__moi field--full" data-moi-choisi hidden>
         <p class="form-label">Vous proposez le match avec votre profil</p>
-        <div class="moi-carte" data-moi-carte></div>
-        <button class="propose__changer" type="button" data-moi-changer>Ce n’est pas vous&nbsp;? Changer</button>
+        <div class="moi-puce"><div class="moi-carte" data-moi-carte></div><button class="moi-changer" type="button" data-moi-changer aria-label="Ce n’est pas vous ? Changer de profil" title="Ce n’est pas vous ? Changer de profil"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
       </div>
       <div class="field field--full"><label class="form-label" for="__ID__-message">Message (facultatif)</label>
         <textarea class="form-input" id="__ID__-message" name="message" rows="4" maxlength="1000"></textarea>
@@ -588,7 +666,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         <label for="__ID__-parent">Un parent est d’accord (obligatoire de 14 à 17 ans)</label>
         <p class="field__error" id="__ID__-parent-err" hidden></p>
       </div>
-      <details class="donnees field--full"><summary>Vos données</summary><p>Le club garde votre proposition (votre profil, le profil choisi, votre message) pour organiser le match, puis la supprime au plus tard 12 mois après. Seul l’organisateur la lit ; rien ne s’affiche sur la page. Il vous recontacte avec l’email et le téléphone de votre fiche. Les données sont stockées chez Google Firebase, dans l’Union européenne. Ce navigateur retient seulement quel profil est le vôtre, pour ne pas vous le redemander ; « Changer » l’oublie. Pour voir, corriger ou faire supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
+      <details class="donnees field--full"><summary>Ce que le club fait de vos données</summary><p>Le club garde votre proposition (votre profil, le profil choisi, votre message) pour organiser le match, puis la supprime au plus tard 12 mois après. Seul l’organisateur la lit ; rien ne s’affiche sur la page. Il vous recontacte avec l’email et le téléphone de votre fiche. Les données sont stockées chez Google Firebase, dans l’Union européenne. Ce navigateur retient seulement quel profil est le vôtre, pour ne pas vous le redemander ; la croix à côté de votre profil l’oublie. Pour voir, corriger ou faire supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
       <div class="field field--check field--full">
         <input id="__ID__-accord" name="accord" type="checkbox" required data-check data-err="Cochez cette case pour que l’organisateur puisse utiliser ces informations." aria-describedby="__ID__-accord-err">
         <label for="__ID__-accord">J’accepte que l’organisateur utilise ces informations pour organiser le match.</label>
@@ -615,7 +693,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=6"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=7"></script>
 <script type="module" src="ov/js/ov-inscription.js?v=3"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->

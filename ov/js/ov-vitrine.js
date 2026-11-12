@@ -1,7 +1,7 @@
 // Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match depuis son propre profil), branchée sur Firestore.
 import { notifier } from './ov-notify.js';
 import { dansTranche, slug, norm, ageDe } from './ov-data.js';
-import { ligneAthlete, esc } from './ov-vue.js?v=3';
+import { ligneAthlete, esc } from './ov-vue.js?v=4';
 
 const roster = document.getElementById('profils');
 const anchor = roster.querySelector('[data-roster-empty]'); // les groupes de villes se placent juste avant
@@ -50,11 +50,30 @@ const groups = [...roster.querySelectorAll('.roster-group')];
 const status = roster.querySelector('[data-roster-status]');
 const empty = roster.querySelector('[data-roster-empty]');
 const reset = roster.querySelector('[data-roster-reset]');
+const tagsBox = roster.querySelector('[data-roster-tags]');
+const filterToggle = roster.querySelector('.roster-toggle');
+const filters = roster.querySelector('.filters');
 const selects = [...roster.querySelectorAll('.filters select')];
 const plural = (n, one, many) => n + ' ' + (n > 1 ? many : one);
 // Chaque ville montre ses 3 premiers profils ; le bouton « Voir les autres » déplie la suite.
 const LIMITE = 3;
 const deplies = new Set(); // villes dépliées par le visiteur
+const CHEV_BAS = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CROIX = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const ICONE_FILTRE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M4.5 8h7M6.5 12h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+// la mini-photo d'un profil caché, sur le bouton « Voir les autres »
+const miniDe = (li) => {
+  const img = li.querySelector('.athlete-thumb img');
+  return '<span class="more-vig">' + (img ? '<img src="' + esc(img.getAttribute('src')) + '" width="26" height="33" alt="" decoding="async">'
+    : esc((li.querySelector('.athlete-thumb .initiale') || {}).textContent || '')) + '</span>';
+};
+// le texte d'une étiquette de filtre actif
+const ETIQUETTE = {
+  ville: (o) => o.text,
+  bras: (o) => 'Bras ' + o.text.toLowerCase(),
+  poids: (o) => o.text,
+  club: (o) => o.text,
+};
 
 function apply() {
   const ville = pick('ville'), bras = pick('bras'), poids = pick('poids'), club = pick('club'), ordre = pick('tri');
@@ -66,32 +85,52 @@ function apply() {
     items.forEach((li) => list.appendChild(li));
     const deplie = deplies.has(group.dataset.ville);
     let shown = 0;
+    const auDela = []; // les profils retenus au-delà des 3 premiers
     for (const li of items) {
       const ok = (ville === 'toutes' || li.dataset.ville === ville)
         && (bras === 'tous' || li.dataset.bras === bras || li.dataset.bras === 'Les deux')
         && dansTranche(Number(li.dataset.poids), poids)
         && (club === 'tous' || li.dataset.club === club);
+      if (ok && shown >= LIMITE) auDela.push(li);
       // au-delà des 3 premiers, caché tant que la ville n'est pas dépliée (sauf une fiche ouverte)
       li.hidden = !ok || (shown >= LIMITE && !deplie && !li.classList.contains('is-open'));
       if (ok) shown++;
     }
     group.hidden = shown === 0;
     group.querySelector('[data-group-count]').textContent = plural(shown, 'profil', 'profils');
-    // la languette au milieu du bas du bloc de la ville : elle déroule (ou remonte) le volet des autres profils
+    // en bas du bloc de la ville : les mini-photos des profils cachés ; le bouton déroule (ou remonte) la suite
     const more = group.querySelector('[data-more]');
     const reste = shown - LIMITE;
     more.hidden = reste <= 0;
     group.classList.toggle('has-more', reste > 0);
     group.classList.toggle('is-deplie', deplie && reste > 0);
     more.setAttribute('aria-expanded', String(deplie));
-    more.innerHTML = '<span>' + (deplie ? 'Réduire' : (reste === 1 ? 'Voir l’autre profil' : 'Voir les ' + reste + ' autres profils')) + '</span>'
-      + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+    more.innerHTML = deplie
+      ? '<span class="more-txt">Réduire</span>' + CHEV_BAS
+      : '<span class="more-vigs" aria-hidden="true">' + auDela.slice(0, 4).map(miniDe).join('') + '</span><span class="more-txt">'
+        + (reste === 1 ? 'Voir l’autre profil' : 'Voir les ' + reste + ' autres profils') + ' à ' + esc(group.dataset.ville) + '</span>' + CHEV_BAS;
     total += shown;
   }
-  status.textContent = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché' : plural(total, 'profil', 'profils');
-  empty.hidden = total !== 0;
   const narrowed = ville !== 'toutes' || bras !== 'tous' || poids !== 'tous' || club !== 'tous';
-  reset.hidden = !narrowed;
+  // le compteur en grand : « 4 profils sur 12 » quand un filtre en retire
+  status.innerHTML = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché'
+    : '<b>' + total + '</b> ' + (total > 1 ? 'profils' : 'profil') + (total < data.profils.length ? ' sur ' + data.profils.length : '');
+  empty.hidden = total !== 0;
+  // les filtres actifs, chacun en étiquette avec sa croix ; leur nombre sur le bouton « Filtrer »
+  const actifs = selects.filter((s) => s.name !== 'tri' && s.selectedIndex > 0);
+  tagsBox.querySelectorAll('[data-filtre]').forEach((t) => t.remove());
+  reset.before(...actifs.map((s) => {
+    const b = document.createElement('button');
+    const t = ETIQUETTE[s.name](s.options[s.selectedIndex]);
+    b.type = 'button'; b.className = 'filtre-tag'; b.dataset.filtre = s.name;
+    b.setAttribute('aria-label', 'Retirer le filtre : ' + t);
+    b.innerHTML = '<span>' + esc(t) + '</span>' + CROIX;
+    return b;
+  }));
+  tagsBox.hidden = !narrowed;
+  reset.hidden = actifs.length < 2;
+  filterToggle.innerHTML = ICONE_FILTRE + '<span>Filtrer</span>'
+    + (actifs.length ? '<em class="filtre-nb" aria-hidden="true">' + actifs.length + '</em><span class="ov-sr"> (' + plural(actifs.length, 'filtre actif', 'filtres actifs') + ')</span>' : '');
   // the chosen filters stay in the address, so a shared link opens on the same list
   const params = new URLSearchParams(location.search);
   for (const s of selects) { if (s.selectedIndex === 0) params.delete(s.name); else params.set(s.name, s.value); }
@@ -105,10 +144,9 @@ for (const s of selects) {
 }
 apply();
 selects.forEach((s) => s.addEventListener('change', apply));
-reset.addEventListener('click', () => { selects.forEach((s) => { s.selectedIndex = 0; }); apply(); selects[0].focus(); });
+// « Tout retirer » : la liste complète revient ; le focus repart sur « Filtrer » (le bouton, lui, disparaît)
+reset.addEventListener('click', () => { selects.forEach((s) => { if (s.name !== 'tri') s.selectedIndex = 0; }); apply(); filterToggle.focus(); });
 
-const filterToggle = roster.querySelector('.roster-toggle');
-const filters = roster.querySelector('.filters');
 filterToggle.addEventListener('click', () => {
   const open = filterToggle.getAttribute('aria-expanded') !== 'true';
   filterToggle.setAttribute('aria-expanded', String(open));
@@ -116,6 +154,14 @@ filterToggle.addEventListener('click', () => {
 });
 
 roster.addEventListener('click', (e) => {
+  // la croix d'une étiquette retire ce filtre-là ; le focus passe à l'étiquette suivante, ou à « Filtrer »
+  const tag = e.target.closest('[data-filtre]');
+  if (tag) {
+    const s = roster.querySelector('select[name="' + tag.dataset.filtre + '"]');
+    s.selectedIndex = 0; apply();
+    (tagsBox.hidden ? filterToggle : tagsBox.querySelector('[data-filtre]') || filterToggle).focus();
+    return;
+  }
   const more = e.target.closest('[data-more]');
   if (more) {
     const group = more.closest('.roster-group');
@@ -182,8 +228,9 @@ function carteMoi(p) {
   return '<span class="moi-vignette" aria-hidden="true">' + vignette + '</span><span class="moi-texte"><span class="moi-nom" translate="no">'
     + esc(nomComplet(p)) + '</span><span class="moi-infos">' + esc(infosMoi(p)) + '</span></span>';
 }
-// Prénom et nom chacun à sa place, ou tapés ensemble dans un seul champ, dans un ordre ou l'autre ; accents et majuscules
-// ignorés. null : pas encore assez de lettres pour chercher. L'athlète visé n'est jamais proposé.
+// Prénom et nom chacun à sa place, ou tapés ensemble dans un seul champ (la vitrine n'a plus que celui-là, nom = ''),
+// dans un ordre ou l'autre ; accents et majuscules ignorés. null : pas encore assez de lettres pour chercher.
+// L'athlète visé n'est jamais proposé.
 function trouverProfils(prenom, nom, exclu) {
   const tp = norm(prenom), tn = norm(nom), q = tp + tn;
   if (q.length < 2) return null;
@@ -215,30 +262,35 @@ function openPropose(btn) {
     const parent = form.querySelector('[data-when="mineur"]');
     let moi = null; // le profil du visiteur
     const choisir = (p) => { moi = p || null; parent.hidden = !(moi && mineur(moi)); };
+    // un seul champ « Votre nom » : les profils trouvés s'affichent juste dessous, on touche le sien
     const chercher = () => {
-      const trouves = trouverProfils(f.prenom.value, f.nom.value, cible);
-      const garde = moi && trouves && trouves.some((p) => p.id === moi.id) ? moi.id : null;
-      if (!garde) choisir(null);
+      const trouves = trouverProfils(f.qui.value, '', cible);
       if (!trouves || !trouves.length) {
         liste.replaceChildren();
         // le nom tapé est celui de l'athlète visé : on ne se propose pas un match à soi-même
-        const lui = trouves && trouverProfils(f.prenom.value, f.nom.value, null).some((p) => p.id === cible);
-        aide.textContent = !trouves ? 'Tapez votre prénom et votre nom : votre profil apparaît ici.'
+        const lui = trouves && trouverProfils(f.qui.value, '', null).some((p) => p.id === cible);
+        aide.textContent = !trouves ? 'Tapez votre nom : votre profil apparaît sous le champ.'
           : lui ? 'C’est la fiche que vous regardez : choisissez un autre athlète pour proposer un match.' : 'Aucun profil publié à ce nom.';
         return;
       }
-      liste.innerHTML = trouves.slice(0, MAX_TROUVES).map((p) => '<li><label class="moi-choix"><input type="radio" name="moi" value="' + esc(p.id) + '"'
-        + (p.id === garde ? ' checked' : '') + '>' + carteMoi(p) + '</label></li>').join('');
+      liste.innerHTML = trouves.slice(0, MAX_TROUVES).map((p) => '<li><button class="moi-choix" type="button" data-moi="' + esc(p.id) + '">'
+        + carteMoi(p) + '</button></li>').join('');
       aide.textContent = trouves.length > MAX_TROUVES ? trouves.length + ' profils correspondent : précisez votre nom.'
-        : trouves.length === 1 ? 'Est-ce vous ? Sélectionnez votre profil.' : trouves.length + ' profils correspondent : sélectionnez le vôtre.';
+        : trouves.length === 1 ? 'Est-ce vous ? Touchez votre profil.' : trouves.length + ' profils correspondent : touchez le vôtre.';
     };
-    f.prenom.addEventListener('input', chercher);
-    f.nom.addEventListener('input', chercher);
-    liste.addEventListener('change', (e) => { if (e.target.name === 'moi') choisir(parId.get(e.target.value)); });
+    f.qui.addEventListener('input', chercher);
     const montrerChoisi = (p) => {
       form.querySelector('[data-moi-carte]').innerHTML = carteMoi(p);
+      OVForms.setError(recherche, '');
       choisi.hidden = false; recherche.hidden = true; choisir(p);
     };
+    // le profil touché reste dans le champ, avec une croix pour en changer
+    liste.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-moi]');
+      if (!b || !parId.has(b.dataset.moi)) return;
+      montrerChoisi(parId.get(b.dataset.moi));
+      f.message.focus();
+    });
     const montrerRecherche = () => { choisi.hidden = true; recherche.hidden = false; choisir(null); chercher(); };
     // Le profil retenu par ce navigateur est déjà choisi ; sauf si c'est l'athlète visé, ou une fiche qui n'est plus publiée.
     const majMoi = () => {
@@ -249,12 +301,12 @@ function openPropose(btn) {
       else if (!choisi.hidden) montrerRecherche();
     };
     majMoiDe.set(box, majMoi);
-    form.querySelector('[data-moi-changer]').addEventListener('click', () => { ecrireMoi(null); montrerRecherche(); f.prenom.focus(); });
+    form.querySelector('[data-moi-changer]').addEventListener('click', () => { ecrireMoi(null); montrerRecherche(); f.qui.focus(); });
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       const status = form.querySelector('.form__status');
       const bad = OVForms.validate(form);
-      if (!bad.length && !moi) { montrerRecherche(); OVForms.setError(recherche, recherche.dataset.err); f.prenom.focus(); bad.push(recherche); }
+      if (!bad.length && !moi) { montrerRecherche(); OVForms.setError(recherche, recherche.dataset.err); f.qui.focus(); bad.push(recherche); }
       if (bad.length) { status.textContent = bad.length === 1 ? 'Un champ est à corriger.' : bad.length + ' champs sont à corriger.'; return; }
       status.textContent = '';
       const c = { profilId: cible, adversaireId: moi.id, accord: f.accord.checked };
@@ -274,14 +326,17 @@ function openPropose(btn) {
       notifier('Nouvelle demande de match');
       const done = document.createElement('div');
       done.className = 'propose__done'; done.setAttribute('role', 'status'); done.tabIndex = -1;
+      const coche = document.createElement('span'); coche.className = 'ok-coche'; coche.setAttribute('aria-hidden', 'true');
+      coche.innerHTML = '<svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       const title = document.createElement('p'); title.className = 'propose__done-title';
       title.textContent = 'Votre proposition à ' + athlete + ' est envoyée';
       const text = document.createElement('p');
       text.textContent = 'L’organisateur vous recontacte avec les coordonnées de votre fiche (' + nomComplet(moi) + ') pour fixer le lieu et la date.';
       const again = document.createElement('button');
-      again.type = 'button'; again.className = 'btn-outline'; again.textContent = 'Envoyer une autre proposition';
-      again.addEventListener('click', () => { done.remove(); form.hidden = false; f.message.value = ''; majMoi(); (recherche.hidden ? f.message : f.prenom).focus(); });
-      done.append(title, text, again);
+      again.type = 'button'; again.className = 'ov-mini-btn';
+      again.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Envoyer une autre proposition';
+      again.addEventListener('click', () => { done.remove(); form.hidden = false; f.message.value = ''; majMoi(); (recherche.hidden ? f.message : f.qui).focus(); });
+      done.append(coche, title, text, again);
       form.hidden = true; form.after(done); done.focus();
     });
     form.querySelector('[data-propose-cancel]').addEventListener('click', () => {
@@ -291,7 +346,7 @@ function openPropose(btn) {
   majMoiDe.get(box)();
   box.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded', 'true');
   const form = box.querySelector('form');
-  const first = !form.hidden ? (form.querySelector('[data-moi-recherche]').hidden ? form.elements.message : form.elements.prenom) : box.querySelector('.propose__done');
+  const first = !form.hidden ? (form.querySelector('[data-moi-recherche]').hidden ? form.elements.message : form.elements.qui) : box.querySelector('.propose__done');
   if (first) first.focus({ preventScroll: true });
 }
 
