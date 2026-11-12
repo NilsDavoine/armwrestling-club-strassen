@@ -245,9 +245,9 @@
 
 <script src="ov/js/ov-forms.js"></script>
 <script type="module">
-import { connexion, deconnexion, surConnexion, chargerTout, chargerPhoto, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
+import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
 import { clubProche, athletesDeLaFeuille, norm, BRAS, ageAu, ageDe, pratiqueDe, dateIlYA } from './ov/js/ov-data.js';
-import { reduirePhoto, tournerPhoto, enBlob, MINI, FICHE } from './ov/js/ov-image.js?v=2';
+import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js?v=2';
 import { esc } from './ov/js/ov-vue.js';
 
 // ------------------------------------------------------------------ state (filled by chargerTout)
@@ -378,8 +378,6 @@ function editForm(p) {
     '<div class="field field--full"><label><input type="checkbox" name="publicOk"' + (contact(p).publicOk === true ? ' checked' : '') + '> Accord de publication obtenu (la personne a dit oui)</label></div>' +
     (ageDe(p) >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
     '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
-    '<div class="field field--full"><label for="' + k + 'tourner">Tourner la photo (la nouvelle si vous en choisissez une, sinon l’actuelle)</label><select id="' + k + 'tourner" name="tourner">' +
-    '<option value="0">Ne pas tourner</option><option value="1">D’un quart de tour, sens horaire</option><option value="2">D’un demi-tour</option><option value="3">D’un quart de tour, sens antihoraire</option></select></div>' +
     '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
 }
 async function saveEdit(form) {
@@ -410,13 +408,10 @@ async function saveEdit(form) {
   const contactChange = email !== (c0.email || '') || tel !== (c0.telephone || '');
   const accords = { publicOk: f.publicOk.checked, accordParent: f.accordParent ? f.accordParent.checked : c0.accordParent === true };
   const accordsChanges = accords.publicOk !== (c0.publicOk === true) || accords.accordParent !== (c0.accordParent === true);
-  const quarts = Number(f.tourner.value) || 0;
   let photo = null;
   await agir(async () => {
-    if (fichier || (quarts && p.mini)) {
-      // sans nouveau fichier, on tourne la photo enregistrée (la grande ; à défaut, la vignette)
-      let source = fichier || enBlob((await chargerPhoto(p.id)) || p.mini);
-      if (quarts) source = await tournerPhoto(source, quarts);
+    if (fichier) {
+      const source = fichier;
       // one after the other : two canvases decoded at once weigh too much on a phone
       const image = await reduirePhoto(source, FICHE.max, FICHE.limite);
       const mini = await reduirePhoto(source, MINI.max, MINI.limite);
