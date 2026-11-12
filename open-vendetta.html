@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <!-- la photo de l'accroche est un fond CSS : on la demande tout de suite -->
-<link rel="preload" as="image" href="ov/assets/img/club/match-table-noir.webp" media="(min-width: 901px)">
-<link rel="preload" as="image" href="ov/assets/img/club/match-table-phone.webp" media="(max-width: 900px)">
+<link rel="preload" as="image" href="ov/assets/img/club/match-arbitre-table-fond-noir-large.webp" media="(min-width: 901px)">
+<link rel="preload" as="image" href="ov/assets/img/club/match-arbitre-table-fond-noir-telephone.webp" media="(max-width: 900px)">
 <!-- La feuille du site du club, telle quelle : nav, #hero, section, .section-tag, h2 span, .event-card,
      .about-card, .btn-register, .btn-primary, .btn-outline, .form-input, .divider, #contact, footer -->
 <link rel="stylesheet" href="style.css">
@@ -42,16 +42,18 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .section-tag::before, .hero-eyebrow::before { background: var(--red-hot); }
 .footer-label { color: rgba(245, 240, 232, .55); }
 
-/* ===== ACCROCHE : le #hero du site, avec la photo de match, sans colonne de chiffres ===== */
+/* ===== ACCROCHE COURTE (choix 1A du 12/11/2026) : le nom, une phrase, la photo de match retouchée à droite.
+   Elle ne prend plus tout l'écran : les profils arrivent dès le premier écran. ===== */
+#hero.ov-hero { min-height: 0; padding: calc(68px + 2.4rem) 4rem 2.4rem; }
 .ov-hero-bg {
   background:
-    linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.74) 40%, rgba(0,0,0,.36) 70%, rgba(0,0,0,.2) 100%),
-    radial-gradient(ellipse 80% 60% at 72% 50%, rgba(192,57,43,.16) 0%, transparent 72%),
-    url("ov/assets/img/club/match-table-noir.webp") center right / cover no-repeat,
+    linear-gradient(90deg, #0a0a0a 0%, rgba(10,10,10,.94) 34%, rgba(10,10,10,.3) 62%, rgba(10,10,10,.05) 100%),
+    url("ov/assets/img/club/match-arbitre-table-fond-noir-large.webp") right center / auto 118% no-repeat,
     #0a0a0a;
 }
-.ov-hero .hero-inner { grid-template-columns: minmax(0, 760px); }
-#hero .hero-desc { color: rgba(245, 240, 232, .78); }
+.ov-hero .hero-inner { grid-template-columns: minmax(0, 560px); }
+#hero.ov-hero h1 { font-size: clamp(3rem, 6.4vw, 5.4rem); margin-bottom: 1.1rem; }
+#hero.ov-hero .hero-desc { max-width: 26ch; margin-bottom: 0; font-size: 1.25rem; line-height: 1.5; color: rgba(245, 240, 232, .88); }
 
 /* ===== PROFILS ===== */
 #profils { background: var(--black); }
@@ -353,14 +355,15 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 
 /* ===== TABLETTE ET TÉLÉPHONE ===== */
 @media (max-width: 900px) {
-  #hero.ov-hero { padding: calc(68px + 46vw) 1.5rem 3.5rem; }
+  #hero.ov-hero { padding: calc(68px + 2.4rem) 1.5rem 2.2rem; }
   .ov-hero-bg {
     background:
-      linear-gradient(180deg, rgba(10,10,10,.05) 0, rgba(10,10,10,.35) calc(68px + 26vw), #0a0a0a calc(68px + 62vw)),
-      url("ov/assets/img/club/match-table-phone.webp") center 68px / 100% auto no-repeat,
+      linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.78) 48%, rgba(10,10,10,.3) 100%),
+      url("ov/assets/img/club/match-arbitre-table-fond-noir-telephone.webp") right center / cover no-repeat,
       #0a0a0a;
   }
-  #hero h1 { font-size: clamp(2.6rem, 11vw, 4.6rem); }
+  #hero.ov-hero h1 { font-size: clamp(2.6rem, 12vw, 4rem); margin-bottom: .8rem; }
+  #hero.ov-hero .hero-desc { font-size: 1.08rem; }
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filters .field-wide { grid-column: 1 / -1; }
   /* la rangée : photo, nom et « club · bras », poids, flèche ; taille et âge sont dans la fiche */
@@ -406,6 +409,107 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 @media (prefers-reduced-motion: reduce) {
   .athlete, .athlete::before, .athlete-thumb img, .athlete-chev svg, .roster-more svg, .donnees summary::after { transition: none; }
 }
+
+/* ===== REFONTE DU 12/11/2026 : les 8 choix de Nils après l'audit ===== */
+/* 6A : un seul bouton dans le menu, en contour ; sur téléphone, le bouton du menu fait 44 px */
+.nav-links a.ov-nav-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 0 1.1rem; border: 1px solid rgba(245, 240, 232, .65); color: var(--white); transition: border-color .2s, background .2s; }
+.nav-links a.ov-nav-btn:hover { border-color: var(--red-hot); background: rgba(192, 57, 43, .12); color: var(--white); }
+.nav-burger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+
+/* 2A : les 3 étapes, sous l'accroche. L'ordre est une vraie information : il faut un profil avant de proposer. */
+#etapes { padding: 0 4rem; background: var(--black); }
+.ov-etapes { list-style: none; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-top: 1.6rem; }
+.ov-etapes li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1rem; align-items: start; padding-top: 1rem; border-top: 2px solid var(--red); }
+.ov-etapes .n { font-family: var(--font-display); font-size: 2.6rem; font-weight: 900; line-height: .9; color: var(--red-hot); font-variant-numeric: tabular-nums; }
+.ov-etapes b { display: block; font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; line-height: 1.05; }
+.ov-etapes .t { display: block; margin-top: .3rem; font-size: .98rem; line-height: 1.45; color: rgba(245, 240, 232, .74); }
+.ov-etapes a { color: inherit; text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.ov-etapes a:hover { color: var(--red-hot); }
+#profils { padding-top: 2.4rem; }
+#profils h2 { margin-bottom: .4rem; }
+.roster-group { margin-top: 1.4rem; }
+
+/* 7A : une ligne vraie, sous le compteur */
+.roster-depuis { flex: 1 1 auto; margin: 0; font-size: .98rem; color: rgba(245, 240, 232, .7); }
+@media (max-width: 900px) { .roster-depuis { order: 3; flex-basis: 100%; } }
+.roster-panne { margin-top: 1rem; }
+
+/* 8A : des rangées grises tiennent la place des profils pendant le chargement */
+.roster-attente { margin-top: 2.2rem; }
+.roster-attente > div { display: grid; grid-template-columns: 52px minmax(0, 1fr) 70px; column-gap: 1rem; align-items: center; min-height: 78px; border-bottom: 1px solid rgba(245, 240, 232, .08); }
+.roster-attente i, .roster-attente b, .roster-attente em { display: block; background: var(--dark2); }
+.roster-attente i { aspect-ratio: 4 / 5; }
+.roster-attente b { height: 16px; width: min(240px, 70%); }
+.roster-attente em { height: 26px; }
+.roster-attente > div:nth-child(4) { display: none; }
+
+/* 3B : toutes les photos d'athlètes reçoivent le même traitement, fait par la page : noir et blanc, voile rouge,
+   cadre en hauteur rempli. Les photos gardées dans la base ne changent pas. */
+.athlete-thumb img, .more-vig img, .moi-vignette img, .fiche-photo img { filter: grayscale(1) contrast(1.14) brightness(.92); }
+.more-vig, .moi-vignette { position: relative; }
+.athlete-thumb:has(img)::after, .more-vig:has(img)::after, .moi-vignette:has(img)::after, .fiche-photo:has(img:not([hidden]))::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: multiply;
+  background:
+    radial-gradient(ellipse 78% 86% at 50% 42%, rgba(10, 10, 10, 0) 42%, rgba(10, 10, 10, .6) 100%),
+    linear-gradient(0deg, rgba(192, 57, 43, .9) 0%, rgba(170, 50, 38, .58) 45%, rgba(110, 32, 25, .5) 100%);
+}
+.fiche-photo { aspect-ratio: 4 / 5; }
+.fiche-photo img { object-fit: cover; object-position: 50% 30%; }
+.fiche-photo::after { z-index: 2; }
+@media (min-width: 901px) { .athlete-fiche { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); } }
+
+/* 4A : sur grand écran, des cartes-portraits, 4 par ligne. La carte ouverte reprend toute la largeur et redevient
+   une rangée, avec sa fiche dessous. Sur téléphone, les rangées restent comme avant. */
+@media (min-width: 901px) {
+  .roster-group { padding-bottom: 1.4rem; }
+  .roster-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.8rem 1.2rem; grid-auto-flow: dense; padding-top: 1.4rem; }
+  .athlete { border-bottom: 0; }
+  .athlete.is-open { grid-column: 1 / -1; border-top: 1px solid rgba(245, 240, 232, .08); border-bottom: 1px solid rgba(245, 240, 232, .08); }
+  .athlete:not(.is-open)::before { display: none; }
+  .athlete:not(.is-open) .athlete-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "photo photo" "nom poids" "faits faits"; column-gap: .8rem; row-gap: .6rem; align-items: start; min-height: 0; padding: 0; }
+  .athlete:not(.is-open) .athlete-thumb { grid-area: photo; width: 100%; border-bottom-width: 3px; transition: border-color .2s; }
+  .athlete:not(.is-open) .athlete-thumb .initiale { font-size: 9rem; }
+  .athlete:not(.is-open) .athlete-id { grid-area: nom; }
+  .athlete:not(.is-open) .athlete-name { font-size: 1.3rem; }
+  .athlete:not(.is-open) .athlete-weight { grid-area: poids; font-size: 1.9rem; }
+  .athlete:not(.is-open) .athlete-weight small { font-size: .85rem; }
+  .athlete:not(.is-open) .athlete-facts { grid-area: faits; margin-top: -.25rem; font-size: .9rem; }
+  .athlete:not(.is-open) .athlete-chev { display: none; }
+  .athlete:not(.is-open) .athlete-sub { display: block; }
+  .athlete:not(.is-open) .athlete-sub .sep { display: block; height: 0; margin: 0; overflow: hidden; }
+  .roster-more { margin-top: 1.4rem; }
+  .roster-attente { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+  .roster-attente > div, .roster-attente > div:nth-child(4) { display: block; min-height: 0; border-bottom: 0; }
+  .roster-attente b { margin-top: .8rem; }
+  .roster-attente em { display: none; }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .athlete:not(.is-open) .athlete-row:hover .athlete-thumb { border-bottom-color: var(--red-hot); }
+  .athlete:not(.is-open) .athlete-row:hover .athlete-toggle { color: var(--red-hot); }
+}
+
+/* 5A : le formulaire avance une étape à la fois ; la barre du haut dit où l'on est */
+.insc-prog { display: none; list-style: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+.insc-etapes .insc-prog { display: grid; }
+.insc-prog li { padding-top: .6rem; border-top: 3px solid rgba(245, 240, 232, .16); font-family: var(--font-display); font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.2; color: rgba(245, 240, 232, .58); }
+.insc-prog li.on { border-color: var(--red); color: var(--white); }
+.insc-etapes .insc-group + .insc-group { padding-top: 0; border-top: 0; }
+.insc-boutons { display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: .8rem; }
+@media (max-width: 900px) {
+  #etapes { padding: 0 1.5rem; }
+  .ov-etapes { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 1.2rem; }
+  .ov-etapes li { padding: .6rem 0; border-top: 1px solid rgba(245, 240, 232, .12); align-items: center; }
+  .ov-etapes li:first-child { border-top: 2px solid var(--red); }
+  .ov-etapes .n { font-size: 1.9rem; min-width: 1.4rem; }
+  .ov-etapes b { font-size: 1.1rem; }
+  .ov-etapes .t { margin-top: .1rem; font-size: .9rem; }
+  #profils { padding-top: 2rem; }
+}
+@media (max-width: 639px) {
+  .insc-boutons { width: 100%; }
+  .insc-boutons > * { flex: 1 1 100%; justify-content: center; text-align: center; }
+  .insc-prog li { font-size: .75rem; letter-spacing: .06em; }
+}
 </style>
 </head>
 <body>
@@ -413,12 +517,10 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 <nav aria-label="Principal">
   <a href="index.html" class="logo-wrap" aria-label="Accueil du club"><img src="logo.webp" alt="" class="nav-logo-img" width="44" height="44"><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="index.html">Le club</a></li>
     <li><a href="articles.html">Articles</a></li>
     <li><a href="#profils">Les profils</a></li>
-    <li><a href="#inscription" class="nav-inscriptions">M’inscrire</a></li>
-    <li><a href="#profils" class="nav-cta">Proposer un match</a></li>
+    <li><a href="#inscription" class="ov-nav-btn">Ajouter mon profil</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks" type="button">
     <span></span><span></span><span></span>
@@ -428,30 +530,34 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 <main id="top">
   <section id="hero" class="ov-hero" aria-labelledby="hero-h">
     <div class="hero-bg ov-hero-bg" aria-hidden="true"></div>
-    <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-eyebrow">Armwrestling Club Strassen · Ouvert toute l’année</div>
-        <h1 id="hero-h">Open Vendetta <em>Découvrez vos futurs adversaires</em></h1>
-        <p class="hero-desc">Parcourez les athlètes inscrits et dites à celui que vous voulez affronter que vous êtes intéressé. Le club fait le lien et aide à organiser le match, au Luxembourg ou ailleurs.</p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#profils">Proposer un match</a>
-          <a class="btn-outline" href="#inscription">Ajouter mon profil</a>
-        </div>
+        <h1 id="hero-h">Open Vendetta</h1>
+        <p class="hero-desc">Choisissez un adversaire à votre poids. Le club organise le match.</p>
       </div>
     </div>
+  </section>
+
+  <section id="etapes" aria-label="Comment ça marche">
+    <ol class="ov-etapes">
+      <li><span class="n" aria-hidden="true">1</span><div><b><a href="#inscription">Ajoutez votre profil</a></b><span class="t">Le club le relit, puis le publie.</span></div></li>
+      <li><span class="n" aria-hidden="true">2</span><div><b>Choisissez un adversaire</b><span class="t">À votre poids, dans votre ville ou ailleurs.</span></div></li>
+      <li><span class="n" aria-hidden="true">3</span><div><b>Le club organise</b><span class="t">Il vous recontacte pour fixer la date et le lieu.</span></div></li>
+    </ol>
   </section>
 
   <section id="profils" aria-labelledby="profils-h">
     <div class="wrap">
       <div class="section-tag">Les profils</div>
-      <h2 id="profils-h">Profils ouverts<br><span>à un match</span></h2>
+      <h2 id="profils-h">Profils ouverts <span>à un match</span></h2>
       <div class="roster">
         <!-- le nombre de profils en grand et « Filtrer » ; dessous, chaque filtre actif en étiquette avec sa croix, puis le panneau -->
         <div class="roster-bar">
           <p class="roster-status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
+          <p class="roster-depuis">Ouvert depuis le 11 novembre 2026. Les premiers matchs seront annoncés ici.</p>
           <button class="roster-toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
         </div>
+        <p class="roster-panne" data-roster-panne hidden><button class="ov-mini-btn" type="button">Réessayer</button></p>
         <div class="roster-tags" data-roster-tags hidden>
           <button class="roster-reset" type="button" data-roster-reset hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Tout retirer</button>
         </div>
@@ -467,6 +573,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
           <div class="field field-wide"><label class="form-label" for="f-tri">Ordre</label>
             <select class="form-input ov-select" id="f-tri" name="tri"><option value="desc">Du plus lourd au plus léger</option><option value="asc">Du plus léger au plus lourd</option></select></div>
         </div>
+        <!-- pendant le chargement : des rangées grises (des cartes grises sur grand écran) ; ov-vitrine.js les retire -->
+        <div class="roster-attente" data-roster-attente aria-hidden="true"><div><i></i><b></b><em></em></div><div><i></i><b></b><em></em></div><div><i></i><b></b><em></em></div><div><i></i><b></b><em></em></div></div>
         <div class="roster-empty" data-roster-empty hidden>
           <p>Aucun profil ne correspond à ces filtres.</p>
           <p>Retirez un filtre pour voir plus d’athlètes.</p>
@@ -483,7 +591,9 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         <p class="section-intro">Votre fiche est publiée après relecture par le club. Votre email et votre téléphone ne s’affichent jamais. Dès 14 ans.</p>
       </div>
       <form class="insc-form" id="inscription-form" novalidate aria-labelledby="inscription-h">
-        <fieldset class="insc-group">
+        <!-- une étape à la fois : ov-inscription.js montre la barre et cache les étapes qui ne sont pas à l'écran -->
+        <ol class="insc-prog" data-insc-prog aria-label="Les 3 étapes"><li>1 · Vous</li><li>2 · Profil sportif</li><li>3 · Photo et accords</li></ol>
+        <fieldset class="insc-group" data-etape="1">
           <legend class="insc-legend"><span class="insc-num" aria-hidden="true">1</span><span class="insc-legend__t">Vous<small>Nom, contact, date de naissance, ville</small></span></legend>
           <div class="insc-grid">
             <div class="field"><label class="form-label" for="i-prenom">Prénom</label>
@@ -524,7 +634,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
           </div>
         </fieldset>
 
-        <fieldset class="insc-group">
+        <fieldset class="insc-group" data-etape="2">
           <legend class="insc-legend"><span class="insc-num" aria-hidden="true">2</span><span class="insc-legend__t">Votre profil sportif<small>Club, poids, taille, bras et mesures</small></span></legend>
           <div class="insc-grid">
             <div class="field field--full"><label class="form-label" for="i-club">Club</label>
@@ -572,7 +682,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
           </div>
         </fieldset>
 
-        <fieldset class="insc-group">
+        <fieldset class="insc-group" data-etape="3">
           <legend class="insc-legend"><span class="insc-num" aria-hidden="true">3</span><span class="insc-legend__t">Photo et accords<small>Votre photo, puis deux cases à cocher</small></span></legend>
           <div class="field">
             <span class="form-label" id="i-photo-label">Votre photo</span>
@@ -602,7 +712,11 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         </fieldset>
 
         <div class="insc-actions">
-          <button class="btn-register" type="submit">Envoyer ma fiche <span aria-hidden="true">→</span></button>
+          <div class="insc-boutons">
+            <button class="btn-outline" type="button" data-insc-retour hidden>Retour</button>
+            <button class="btn-register" type="button" data-insc-suite hidden>Continuer <span aria-hidden="true">→</span></button>
+            <button class="btn-register" type="submit">Envoyer ma fiche <span aria-hidden="true">→</span></button>
+          </div>
           <p class="insc-status" role="status" data-insc-status></p>
         </div>
       </form>
@@ -623,9 +737,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   </div>
   <ul class="footer-links">
     <li><a href="#profils">Les profils</a></li>
-    <li><a href="#inscription">Conditions du profil</a></li>
     <li><a href="#inscription">Ajouter mon profil</a></li>
-    <li><a href="https://armwrestlingclubstrassen.com/">Voir le site du club</a></li>
+    <li><a href="https://armwrestlingclubstrassen.com/">Le site du club</a></li>
   </ul>
   <div class="footer-col"><p>&copy; 2026 Armwrestling Club Strassen</p></div>
 </footer>
@@ -693,8 +806,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=7"></script>
-<script type="module" src="ov/js/ov-inscription.js?v=3"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=8"></script>
+<script type="module" src="ov/js/ov-inscription.js?v=4"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
 <script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

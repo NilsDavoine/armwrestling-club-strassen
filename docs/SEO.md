@@ -1,15 +1,27 @@
 # SEO — règles et configuration
 
-## Configuration mobile : URLs séparées (m-dot)
+## Configuration mobile : une seule page d'accueil (depuis le 2026-11-12)
 
-Le site utilise la configuration **« URLs séparées »** documentée par Google, et non le responsive design.
+`index.html` est la page d'accueil sur ordinateur **et** sur téléphone. Sur téléphone, elle passe en une colonne qui défile (`accueil.css`). Il n'y a plus de redirection vers `/m/`, ni de balise `rel="alternate" media`. Décision de Nils du 2026-11-12 : `docs/superpowers/specs/2026-11-12-refonte-accueil-open-vendetta-design.md`.
+
+Ce qu'il faut garder :
+
+- **`/m/index.html` reste en place**, comme simple renvoi vers `/` (balise `refresh`, `location.replace('/')`, `canonical` vers `/`, `index, follow`). Ne pas le supprimer et ne pas y mettre `noindex` : pendant des mois, Google a lu cette adresse à la place de l'accueil.
+- `m/evenement.html` ne change pas.
+- Les questions affichées dans `index.html` et celles du bloc `FAQPage` restent identiques, mot pour mot.
+- Les ancres `#about`, `#entrainement`, `#licence`, `#contact`, `#inscriptions` et `#tournoi` sont utilisées par les autres pages : ne pas les renommer.
+- `index.html` porte les liens vers les 8 guides, les 3 pages locales, la page allemande, `club-demenage-cnam-strassen.html`, `open-vendetta.html`, `articles.html`, `tournament.html`, `duel.html` et `m/evenement.html`. En retirer un fait perdre un lien entrant à la page visée.
+
+### Avant le 2026-11-12 : URLs séparées (m-dot), pour mémoire
+
+Le site utilisait la configuration **« URLs séparées »** documentée par Google, et non le responsive design.
 
 ```
 /          →  version desktop, responsive (11 media queries dans style.css)
 /m/        →  version mobile, carrousel plein écran
 ```
 
-### Comment ça fonctionne
+#### Comment ça fonctionnait
 
 `index.html` ligne 5 contient une redirection JavaScript :
 
@@ -19,7 +31,7 @@ if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) location.replace(
 
 Elle s'applique aussi à **Googlebot Smartphone**, dont l'user-agent contient `Android` et `Mobile`. Google indexant en mobile-first, il explore donc `/m/` et non `/`.
 
-### Les quatre conditions à respecter impérativement
+#### Les quatre conditions qu'il fallait respecter
 
 Cette configuration n'est valide que si les quatre points suivants sont réunis. En casser un a déjà provoqué une désindexation complète de la page d'accueil.
 
@@ -32,7 +44,7 @@ Cette configuration n'est valide que si les quatre points suivants sont réunis.
 
 La parité couvre : le `title`, la `meta description`, les données structurées JSON-LD, et le contenu textuel.
 
-### Incident de référence — juillet 2026
+#### Incident de référence — juillet 2026
 
 `m/index.html` était en `noindex, nofollow`. Google, redirigé vers cette page, a appliqué le `noindex` à la page d'accueil.
 
@@ -44,18 +56,6 @@ Conséquences mesurées sur 90 jours :
 
 **Leçon : toute modification de `m/index.html` doit être vérifiée comme si elle s'appliquait à la page d'accueil. C'est le cas.**
 
-### Alternative envisagée
-
-Fusionner `/m/` dans `/` via `scroll-snap` CSS — une seule URL, le carrousel conservé sur mobile par media query :
-
-```css
-@media (max-width: 640px) {
-  html { scroll-snap-type: y mandatory; }
-  section { scroll-snap-align: start; min-height: 100dvh; overflow-y: auto; }
-}
-```
-
-Supprime définitivement la classe de risque ci-dessus. Non appliqué à ce jour : demande une passe éditoriale, les textes de `/m/` étant écrits courts pour tenir dans une slide.
 
 ## Checklist d'une nouvelle page publique
 
@@ -78,7 +78,7 @@ Une page sans lien entrant n'est jamais découverte, même présente dans le sit
 Pages pivots à utiliser pour lier une nouveauté :
 - `articles.html` — hub principal, 23 liens sortants
 - `index.html` — bloc « Le club près de chez vous »
-- `m/index.html` — 10 liens contextuels dans les slides (**seuls liens que Googlebot voit depuis la home**)
+- `index.html` — la liste « Huit guides » et la ligne des pages locales, lues par Google depuis le 2026-11-12 (avant, il lisait `/m/`)
 
 Éviter les ancres génériques (« cliquez ici », « lire l'article »). Préférer l'intention de recherche visée : « le calendrier des compétitions de bras de fer au Luxembourg ».
 

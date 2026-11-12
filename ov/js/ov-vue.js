@@ -63,7 +63,7 @@ export function ligneAthlete(p, villeNom, clubNom) {
     + '</div>'
     + '<div class="athlete-fiche" id="fiche-' + id + '" hidden>'
     // La grande photo se charge à l'ouverture de la fiche (ov-vitrine.js) ; d'ici là, l'initiale.
-    + '<figure class="fiche-photo"><span class="fiche-ghost" aria-hidden="true">' + nb(p.poids) + '</span><img data-photo="' + id + '" width="960" height="640" alt="' + nom + '" decoding="async" hidden>' + ini + '</figure>'
+    + '<figure class="fiche-photo"><span class="fiche-ghost" aria-hidden="true">' + nb(p.poids) + '</span><img data-photo="' + id + '" width="768" height="960" alt="' + nom + '" decoding="async" hidden>' + ini + '</figure>'
     + '<div class="fiche-body">'
     + '<div class="fiche-tete"><div><p class="fiche-club">' + esc(titre) + '</p>' + (sousTitre ? '<p class="fiche-ville">' + esc(sousTitre) + '</p>' : '') + '</div>' + insta + '</div>'
     + '<div class="mesures">' + (cles ? '<p class="mesures-cles">' + cles + '</p>' : '') + '<p class="mesures-texte">' + texte + '</p>'

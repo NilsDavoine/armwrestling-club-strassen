@@ -7,6 +7,20 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 - Gestion : `open-vendetta-gestion.html` (`noindex, nofollow`, hors sitemap, compte Google de l'organisateur seulement)
 - Décisions : [superpowers/specs/2026-11-11-open-vendetta-design.md](superpowers/specs/2026-11-11-open-vendetta-design.md) · plan : [superpowers/plans/2026-11-11-open-vendetta.md](superpowers/plans/2026-11-11-open-vendetta.md)
 
+## Refonte du 2026-11-12 (après l'audit, 8 choix de Nils)
+
+Fiche de décision : [superpowers/specs/2026-11-12-refonte-accueil-open-vendetta-design.md](superpowers/specs/2026-11-12-refonte-accueil-open-vendetta-design.md). Tout est dans `open-vendetta.html` (styles en fin de bloc `<style>`) et dans trois scripts.
+
+- **Accroche courte** : le nom, une phrase, la photo de match retouchée. Les profils arrivent dès le premier écran.
+- **3 étapes** sous l'accroche (`#etapes`) : ajouter son profil, choisir un adversaire, le club organise.
+- **Photos des athlètes** : la page applique le même traitement à toutes (noir et blanc, voile rouge, cadre 4 pour 5 rempli). C'est du CSS : les photos gardées dans la base ne changent pas.
+- **Grand écran (901 px et plus)** : les profils sont des cartes-portraits, 4 par ligne, 4 visibles par ville. Une carte ouverte reprend toute la largeur et redevient une rangée, avec sa fiche dessous. La carte montre la vignette, puis la grande photo quand elle arrive à l'écran : une lecture de `photos/{id}` par carte visible, partagée avec la fiche (`photoDe` dans `ov-vitrine.js`). Sur téléphone : les rangées, 3 par ville, comme avant.
+- **Formulaire d'inscription** : une étape à la fois (`data-etape` sur les 3 `fieldset`, barre `data-insc-prog`, boutons « Retour » et « Continuer »). Chaque étape est contrôlée quand on la quitte, et les trois sont recontrôlées avant l'envoi. Une étape cachée garde ses réponses. Les données envoyées ne changent pas.
+- **Menu et pied de page** : un seul bouton « Ajouter mon profil » ; le bouton du menu fait 44 px sur téléphone.
+- **Ligne « Ouvert depuis le 11 novembre 2026 »** sous le compteur : à remplacer par les matchs annoncés quand il y en aura.
+- **Chargement** : des rangées grises (`data-roster-attente`) tiennent la place des profils ; si la base ne répond pas, un bouton « Réessayer » recharge la page.
+- Versions : `ov-vitrine.js?v=8`, `ov-vue.js?v=5`, `ov-inscription.js?v=4`.
+
 ## Où sont les fichiers
 
 | Emplacement | Contenu |

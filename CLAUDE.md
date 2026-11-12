@@ -52,10 +52,12 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 
 ```
 /
-├── index.html                     Page d'accueil (desktop + responsive)
+├── index.html                     Page d'accueil, la même sur ordinateur et sur téléphone (refonte du 2026-11-12)
+├── accueil.css                    Feuille de l'accueil, seule (index.html ne charge plus style.css)
+├── accueil.js                     Accueil : date du prochain mardi, menu du téléphone
 ├── articles.html                  Index du blog — hub de maillage interne
-├── m/                             Version mobile (carrousel plein écran)
-│   ├── index.html                 Carrousel — canonical vers /
+├── m/                             Ancienne version mobile
+│   ├── index.html                 Simple renvoi vers / (à garder : voir docs/SEO.md)
 │   └── evenement.html             Formulaire perfs POWER ARM (noindex volontaire)
 ├── tournament.html                Outil de gestion de tournoi (noindex volontaire)
 ├── duel.html                      Outil de gestion de duels (noindex volontaire)
@@ -65,7 +67,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ├── open-vendetta-gestion.html     Gestion Open Vendetta (noindex, nofollow volontaire)
 ├── ov/                            JS et assets d'Open Vendetta (voir docs/OPEN-VENDETTA.md)
 ├── *.html                         Pages SEO locales et articles de blog
-├── style.css                      Feuille principale (~71 Ko)
+├── style.css                      Feuille des autres pages et d'Open Vendetta (~71 Ko)
 ├── blog.css                       Styles spécifiques aux articles
 ├── main.js                        Interactions globales
 ├── sitemap.xml                    25 URLs indexables
@@ -98,8 +100,8 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ### SEO — non négociable
 - Toute nouvelle page publique doit avoir : `title` (50-60 car.), `meta description` (120-160 car.), `robots index, follow`, `canonical` auto-référencé, **un seul** `<h1>`, un bloc JSON-LD, et une entrée dans `sitemap.xml`.
 - Toute nouvelle page doit recevoir **au moins 3 liens entrants** depuis des pages existantes. Une page sans lien entrant n'est pas découverte par Google.
-- `/m/index.html` doit rester **à parité** avec `index.html` : mêmes données structurées, même `title`, même `meta description`. Google indexe le contenu de `/m/` pour l'URL `/`.
-- Ne jamais mettre `noindex` sur une page atteignable par la redirection mobile.
+- `index.html` est la seule page d'accueil depuis le 2026-11-12, sur ordinateur comme sur téléphone. `/m/index.html` n'est plus qu'un renvoi vers `/` : ne pas le supprimer, ne pas y mettre `noindex` (voir [docs/SEO.md](docs/SEO.md)).
+- Les ancres de `index.html` (`#about`, `#entrainement`, `#licence`, `#contact`, `#inscriptions`, `#tournoi`) sont liées depuis les autres pages : ne pas les renommer.
 
 ### Images
 - Jamais d'image servie au-delà de **~300 Ko**. Passer par le workflow de [docs/IMAGES.md](docs/IMAGES.md).
@@ -116,9 +118,10 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 - `tournament.html` : `noindex, follow`, pas de `<h1>` — c'est un outil interne, pas une page publique.
 - `m/evenement.html` : `noindex, nofollow` — formulaire réservé aux inscrits.
 - `open-vendetta-ajouter.html` (`noindex, follow`) et `open-vendetta-gestion.html` (`noindex, nofollow`, hors sitemap) : formulaire et outil de l'organisateur, pas des pages à classer.
-- La redirection mobile ligne 5 de `index.html` — voir [docs/SEO.md](docs/SEO.md) pour la justification et ses contraintes.
+- `m/index.html` : un simple renvoi vers `/`, gardé exprès — voir [docs/SEO.md](docs/SEO.md).
 - Les `<h4>` de `comment-gagner`, `premier-tournoi` et `recuperation-tendinites` sautent le niveau `h3` : ils portent des styles dédiés (`.timeline-content h4`, `.checklist h4`). Les convertir changerait le rendu.
-- `.fade-in` reste à `opacity: 0` par défaut ; le repli sans JS passe par le `<noscript>` et le `onerror` de `main.js` dans `index.html`.
+- `.fade-in` (pages qui chargent `style.css` et `main.js`) reste à `opacity: 0` par défaut. L'accueil n'utilise plus ce fondu depuis le 2026-11-12.
+- L'accueil et Open Vendetta ont un style plus récent que les 23 autres pages (menu, boutons, titres) : choix de Nils du 2026-11-12, en attendant un chantier sur les autres pages.
 
 ## Posts Google Business
 

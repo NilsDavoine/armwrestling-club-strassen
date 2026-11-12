@@ -1,4 +1,4 @@
-// Open Vendetta : le formulaire d'inscription, en bas de la vitrine (une seule page, sans étapes).
+// Open Vendetta : le formulaire d'inscription, en bas de la vitrine (une étape à la fois depuis le 12/11/2026).
 // La photo est recadrée (ov-crop.js) puis réduite dans le navigateur ; la fiche part dans Firestore, en attente
 // de relecture par l'organisateur. Les données envoyées sont les mêmes qu'avec l'ancienne page d'inscription.
 import { reduirePhoto, MINI, FICHE } from './ov-image.js?v=2';
@@ -89,6 +89,51 @@ if (form) {
   const nombreDeChamps = (n) => (n === 1 ? 'Un champ est à corriger.' : n + ' champs sont à corriger.');
   const n = (v) => Number(String(v).replace(',', '.'));
 
+  // ---- une étape à la fois : Vous, Votre profil sportif, Photo et accords ----
+  // Une étape cachée garde ses réponses. Elle est contrôlée quand on la quitte, et encore une fois avant l'envoi.
+  const etapes = [...form.querySelectorAll('[data-etape]')];
+  const prog = [...form.querySelectorAll('[data-insc-prog] li')];
+  const retour = form.querySelector('[data-insc-retour]');
+  const suite = form.querySelector('[data-insc-suite]');
+  const derniere = etapes.length - 1;
+  let etape = 0;
+  function montrer(i, focus) {
+    etape = i;
+    etapes.forEach((g, k) => { g.hidden = k !== i; });
+    prog.forEach((li, k) => {
+      li.classList.toggle('on', k <= i);
+      if (k === i) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    });
+    retour.hidden = i === 0; suite.hidden = i === derniere; submit.hidden = i !== derniere;
+    if (focus) {
+      status.textContent = '';
+      form.scrollIntoView({ block: 'start' });
+      const premier = etapes[i].querySelector('input, select, textarea');
+      if (premier) premier.focus({ preventScroll: true });
+    }
+  }
+  // l'étape à l'écran est-elle bien remplie ? Sinon, les messages s'affichent sous les champs.
+  function etapeValide() {
+    follow();
+    const a = age();
+    if (etapes[etape].contains(f.naissance) && a !== null && a < 14) { status.textContent = 'La vitrine accueille les athlètes à partir de 14 ans.'; f.naissance.focus(); return false; }
+    const bad = OVForms.validate(etapes[etape]);
+    // la règle de la base veut un email de 6 caractères au moins (a@b.c passerait le contrôle de format)
+    const mail = f.email.value.trim();
+    if (etapes[etape].contains(f.email) && !bad.includes(f.email) && mail.length > 0 && mail.length < 6) {
+      OVForms.setError(f.email, 'Écrivez une adresse email d’au moins 6 caractères.');
+      if (!bad.length) f.email.focus();
+      bad.push(f.email);
+    }
+    if (bad.length) { status.textContent = nombreDeChamps(bad.length); return false; }
+    status.textContent = '';
+    return true;
+  }
+  suite.addEventListener('click', () => { if (etapeValide()) montrer(etape + 1, true); });
+  retour.addEventListener('click', () => montrer(etape - 1, true));
+  form.classList.add('insc-etapes');
+  montrer(0, false);
+
   async function envoyer() {
     // l'une après l'autre : deux grandes photos décodées en même temps font tomber un téléphone
     let image, mini;
@@ -139,18 +184,13 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (sending) return;
-    follow();
-    const a = age();
-    if (a !== null && a < 14) { status.textContent = 'La vitrine accueille les athlètes à partir de 14 ans.'; f.naissance.focus(); return; }
-    const bad = OVForms.validate(form);
-    // la règle de la base veut un email de 6 caractères au moins (a@b.c passerait le contrôle de format)
-    const mail = f.email.value.trim();
-    if (!bad.includes(f.email) && mail.length > 0 && mail.length < 6) {
-      OVForms.setError(f.email, 'Écrivez une adresse email d’au moins 6 caractères.');
-      if (!bad.length) f.email.focus();
-      bad.push(f.email);
+    // la touche Entrée avant la dernière étape fait avancer, elle n'envoie rien
+    if (etape < derniere) { if (etapeValide()) montrer(etape + 1, true); return; }
+    // avant l'envoi, les trois étapes sont recontrôlées ; la première qui ne passe pas revient à l'écran
+    for (let k = 0; k <= derniere; k++) {
+      montrer(k, false);
+      if (!etapeValide()) { form.scrollIntoView({ block: 'start' }); return; }
     }
-    if (bad.length) { status.textContent = nombreDeChamps(bad.length); return; }
     sending = true; submit.disabled = true; submit.firstChild.textContent = 'Envoi en cours… '; status.textContent = '';
     let ok = false;
     try { ok = await envoyer(); } catch (err) { status.textContent = MSG_ENVOI; }
@@ -161,7 +201,7 @@ if (form) {
 
   done.querySelector('[data-insc-restart]').addEventListener('click', () => {
     form.reset(); crop.vider(); cropBox.hidden = true; pick.hidden = false; changer.hidden = true;
-    follow(); form.hidden = false; done.hidden = true; f.prenom.focus();
+    follow(); montrer(0, false); status.textContent = ''; form.hidden = false; done.hidden = true; f.prenom.focus();
   });
   follow();
 }

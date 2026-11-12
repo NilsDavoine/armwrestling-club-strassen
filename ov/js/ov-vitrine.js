@@ -1,18 +1,24 @@
 // Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match depuis son propre profil), branchée sur Firestore.
 import { notifier } from './ov-notify.js';
 import { dansTranche, slug, norm, ageDe } from './ov-data.js';
-import { ligneAthlete, esc } from './ov-vue.js?v=4';
+import { ligneAthlete, esc } from './ov-vue.js?v=5';
 
 const roster = document.getElementById('profils');
 const anchor = roster.querySelector('[data-roster-empty]'); // les groupes de villes se placent juste avant
+const attente = roster.querySelector('[data-roster-attente]'); // les rangées grises montrées pendant le chargement
 let data, fb;
 try {
   fb = await import('./ov-firebase.js');
   data = await fb.chargerVitrine();
 } catch (e) {
-  roster.querySelector('[data-roster-status]').textContent = 'Les profils ne se chargent pas. Réessayez dans un moment.';
+  roster.querySelector('[data-roster-status]').textContent = 'Les profils ne se chargent pas.';
+  if (attente) attente.hidden = true;
+  // la base ne répond pas : un bouton recharge la page
+  const panne = roster.querySelector('[data-roster-panne]');
+  if (panne) { panne.hidden = false; panne.querySelector('button').addEventListener('click', () => location.reload()); }
   throw e;
 }
+if (attente) attente.hidden = true;
 const villeNom = (id) => (data.villes.find((v) => v.id === id) || {}).nom || '';
 const clubNom = (id) => (data.clubs.find((c) => c.id === id) || {}).nom || '';
 for (const v of [...data.villes].sort((a, b) => a.ordre - b.ordre)) {
@@ -55,8 +61,16 @@ const filterToggle = roster.querySelector('.roster-toggle');
 const filters = roster.querySelector('.filters');
 const selects = [...roster.querySelectorAll('.filters select')];
 const plural = (n, one, many) => n + ' ' + (n > 1 ? many : one);
-// Chaque ville montre ses 3 premiers profils ; le bouton « Voir les autres » déplie la suite.
-const LIMITE = 3;
+// Chaque ville montre ses premiers profils ; le bouton « Voir les autres » déplie la suite.
+// Sur grand écran, les profils sont des cartes-portraits, 4 par ligne : une ligne entière. Sur téléphone, 3 rangées.
+const grand = matchMedia('(min-width: 901px)');
+const limite = () => (grand.matches ? 4 : 3);
+// Les grandes photos : une seule lecture par profil, partagée entre la carte et la fiche.
+const photos = new Map();
+const photoDe = (id) => {
+  if (!photos.has(id)) photos.set(id, fb.chargerPhoto(id).catch(() => null));
+  return photos.get(id);
+};
 const deplies = new Set(); // villes dépliées par le visiteur
 const CHEV_BAS = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const CROIX = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
@@ -84,8 +98,9 @@ function apply() {
       || a.dataset.nom.localeCompare(b.dataset.nom, 'fr'));
     items.forEach((li) => list.appendChild(li));
     const deplie = deplies.has(group.dataset.ville);
+    const LIMITE = limite();
     let shown = 0;
-    const auDela = []; // les profils retenus au-delà des 3 premiers
+    const auDela = []; // les profils retenus au-delà des premiers
     for (const li of items) {
       const ok = (ville === 'toutes' || li.dataset.ville === ville)
         && (bras === 'tous' || li.dataset.bras === bras || li.dataset.bras === 'Les deux')
@@ -144,6 +159,19 @@ for (const s of selects) {
 }
 apply();
 selects.forEach((s) => s.addEventListener('change', apply));
+grand.addEventListener('change', apply); // la fenêtre passe du téléphone au grand écran : 3 rangées ou 4 cartes
+// Sur grand écran, la carte montre d'abord la vignette (160 px), puis la grande photo quand elle arrive à l'écran.
+if ('IntersectionObserver' in window) {
+  const vue = new IntersectionObserver((entrees) => {
+    for (const e of entrees) {
+      if (!e.isIntersecting || !grand.matches) continue;
+      vue.unobserve(e.target);
+      const img = e.target;
+      photoDe(img.closest('.athlete').id.replace('profil-', '')).then((src) => { if (src) img.src = src; });
+    }
+  }, { rootMargin: '200px' });
+  roster.querySelectorAll('.athlete-thumb img').forEach((img) => vue.observe(img));
+}
 // « Tout retirer » : la liste complète revient ; le focus repart sur « Filtrer » (le bouton, lui, disparaît)
 reset.addEventListener('click', () => { selects.forEach((s) => { if (s.name !== 'tri') s.selectedIndex = 0; }); apply(); filterToggle.focus(); });
 
@@ -188,11 +216,11 @@ roster.addEventListener('click', (e) => {
     // la grande photo n'arrive qu'à la première ouverture ; l'initiale reste tant qu'elle n'est pas là
     const img = sheet.querySelector('img[data-photo]');
     if (open && img && !img.src) {
-      fb.chargerPhoto(img.dataset.photo).then((src) => {
+      photoDe(img.dataset.photo).then((src) => {
         if (!src) return;
         img.addEventListener('load', () => { img.hidden = false; }, { once: true });
         img.src = src;
-      }).catch(() => {});
+      });
     }
     li.classList.toggle('is-open', open);
     // the open profile goes in the address too, so a link can open one athlete's sheet

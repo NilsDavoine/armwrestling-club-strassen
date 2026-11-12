@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-LU">
 <head>
   <meta charset="UTF-8" />
-  <script>if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent))location.replace('/m/');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Armwrestling Luxembourg | Club à Strassen – Essai gratuit</title>
   <meta name="description" content="Essai gratuit mardi 19h à Strassen. Club de bras de fer LAF — deux sites (Strassen & Munsbach), débutants bienvenus, compétitions officielles." />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="canonical" href="https://armwrestlingclubstrassen.com/" />
-  <link rel="alternate" media="only screen and (max-width: 640px)" href="https://armwrestlingclubstrassen.com/m/" />
   <link rel="alternate" hreflang="fr-LU" href="https://armwrestlingclubstrassen.com/"/>
   <link rel="alternate" hreflang="de" href="https://armwrestlingclubstrassen.com/armwrestling-luxemburg.html"/>
   <link rel="alternate" hreflang="x-default" href="https://armwrestlingclubstrassen.com/"/>
@@ -26,6 +25,8 @@
   <meta property="og:image:alt" content="Compétition de bras de fer au Luxembourg avec arbitres, athlètes et ambiance événementielle de l'Armwrestling Club Strassen" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://armwrestlingclubstrassen.com/sitemap.xml" />
 
+  <!-- Depuis le 12/11/2026, cette page est la seule page d'accueil, sur ordinateur comme sur téléphone :
+       plus de redirection vers /m/ (voir docs/SEO.md). Les questions ci-dessous sont celles affichées dans la page. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,7 +37,6 @@
         "name": "Armwrestling Club Strassen",
         "description": "Club de bras de fer à Strassen, proche Luxembourg-ville, avec entraînement le mardi à 19h et première séance d'essai gratuite.",
         "url": "https://armwrestlingclubstrassen.com/",
-        "telephone": "+352661495319",
         "sport": "Armwrestling",
         "foundingDate": "2026",
         "image": "https://armwrestlingclubstrassen.com/competition-bras-de-fer-luxembourg.webp",
@@ -59,31 +59,15 @@
           "https://share.google/ILHoQ0ByytjKJSuRy"
         ],
         "employee": [
-          {
-            "@type": "Person",
-            "name": "Nils Davoine",
-            "jobTitle": "Président, Armwrestling Club Strassen — Arbitre national luxembourgeois"
-          },
-          {
-            "@type": "Person",
-            "name": "Bogdan Roman",
-            "jobTitle": "Président, Grizzly of Luxembourg"
-          },
-          {
-            "@type": "Person",
-            "name": "Pascal Kramp",
-            "jobTitle": "Entraîneur"
-          },
-          {
-            "@type": "Person",
-            "name": "Adrian Simion",
-            "jobTitle": "Entraîneur"
-          }
+          { "@type": "Person", "name": "Nils Davoine", "jobTitle": "Président, Armwrestling Club Strassen, arbitre national luxembourgeois" },
+          { "@type": "Person", "name": "Bogdan Roman", "jobTitle": "Président, Grizzly of Luxembourg" },
+          { "@type": "Person", "name": "Pascal Kramp", "jobTitle": "Entraîneur" },
+          { "@type": "Person", "name": "Adrian Simion", "jobTitle": "Entraîneur" }
         ]
       },
       {
         "@type": "SportsActivityLocation",
-        "name": "Grizzly of Luxembourg — Munsbach",
+        "name": "Grizzly of Luxembourg, Munsbach",
         "sport": "Armwrestling",
         "address": {
           "@type": "PostalAddress",
@@ -101,30 +85,13 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Peut-on venir si on débute totalement au bras de fer ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui. Le club accueille les débutants et la première séance est gratuite, avec un encadrement sur les bases techniques et la sécurité."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Quand ont lieu les entraînements ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "L'entraînement à Strassen a lieu le mardi de 19h à 21h30 et l'entraînement à Munsbach le vendredi à 18h00."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Où se trouve le club ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Le club s'entraîne au Centre National des Arts Martiaux (CNAM), 297 rue de Reckenthal, L-2410 Strassen, à 8 minutes de Luxembourg-ville. Bâtiment principal, 2e étage, salle à droite. Parking gratuit, bus 16 et 11 (arrêt Strassen, Hondseck) ou bus 19 (arrêt Strassen, Schafsstrachen)."
-            }
-          }
+          { "@type": "Question", "name": "Faut-il déjà être fort pour commencer ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Le bras de fer est aussi une affaire de technique et de placement. Un débutant apprend les bases dès la première séance." } },
+          { "@type": "Question", "name": "Faut-il réserver avant de venir ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Un message sur WhatsApp avant votre première séance aide quand même le club à vous accueillir." } },
+          { "@type": "Question", "name": "Que faut-il apporter ?", "acceptedAnswer": { "@type": "Answer", "text": "Une tenue de sport. Le matériel est sur place." } },
+          { "@type": "Question", "name": "Combien coûte la licence ?", "acceptedAnswer": { "@type": "Answer", "text": "150 € par an. Elle ouvre les deux clubs, toutes les séances et le matériel, et comprend le t-shirt du club. La première séance est gratuite." } },
+          { "@type": "Question", "name": "Quel club choisir, Strassen ou Munsbach ?", "acceptedAnswer": { "@type": "Answer", "text": "Strassen pour commencer et apprendre la technique, le mardi. Munsbach pour plus de matchs d'entraînement, le vendredi. La même licence ouvre les deux." } },
+          { "@type": "Question", "name": "Comment venir depuis Luxembourg-ville ?", "acceptedAnswer": { "@type": "Answer", "text": "En voiture, 8 minutes par la route d'Arlon, avec un grand parking gratuit. En bus, lignes 16 ou 11 depuis Hamilius jusqu'à l'arrêt Strassen, Hondseck, puis 10 minutes à pied. Ou ligne 19 depuis la gare jusqu'à l'arrêt Strassen, Schafsstrachen, puis 5 minutes à pied." } },
+          { "@type": "Question", "name": "Les clubs sont-ils officiels ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. L'Armwrestling Club Strassen et Grizzly of Luxembourg sont membres de la Luxembourg Armwrestling Federation, la fédération nationale de bras de fer." } }
         ]
       }
     ]
@@ -133,1060 +100,256 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Filet de securite : si le JS est desactive, le contenu reste visible. -->
-  <noscript><style>.fade-in{opacity:1;transform:none;transition:none}</style></noscript>
-  <style>
-    #about {
-      background:
-        repeating-linear-gradient(-55deg, transparent 0, transparent 44px, rgba(255,255,255,.006) 44px, rgba(255,255,255,.006) 45px),
-        radial-gradient(ellipse 75% 55% at 50% 0%, rgba(192,57,43,.18) 0%, transparent 65%),
-        #050304;
-    }
-    #entrainement {
-      background:
-        repeating-linear-gradient(rgba(192,57,43,.022) 1px, transparent 1px 50px),
-        repeating-linear-gradient(90deg, rgba(192,57,43,.022) 1px, transparent 1px 50px),
-        radial-gradient(ellipse 45% 80% at -8% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 80% at 108% 50%, rgba(192,57,43,.12) 0%, transparent 60%),
-        #0d0508;
-    }
-    #equipement {
-      background:
-        repeating-linear-gradient(135deg, transparent 0, transparent 50px, rgba(255,255,255,.007) 50px, rgba(255,255,255,.007) 51px),
-        radial-gradient(ellipse 90% 55% at -15% 100%, rgba(192,57,43,.16) 0%, transparent 58%),
-        radial-gradient(ellipse 90% 55% at 115% 0%, rgba(150,100,30,.1) 0%, transparent 58%),
-        #050407;
-    }
-    #licence {
-      background:
-        radial-gradient(ellipse 85% 55% at 50% -10%, rgba(192,57,43,.18) 0%, transparent 65%),
-        radial-gradient(ellipse 30% 25% at 5% 100%, rgba(192,57,43,.06) 0%, transparent 55%),
-        var(--black);
-    }
-    #blog {
-      background:
-        repeating-linear-gradient(0deg, transparent 0, transparent 22px, rgba(255,160,0,.009) 22px, rgba(255,160,0,.009) 23px),
-        radial-gradient(ellipse 50% 35% at 8% 100%, rgba(192,57,43,.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 35% at 92% 100%, rgba(192,57,43,.08) 0%, transparent 55%),
-        radial-gradient(ellipse 110% 55% at 50% 125%, rgba(212,160,23,.2) 0%, rgba(180,80,0,.12) 35%, transparent 60%),
-        linear-gradient(180deg, #050305 0%, #0a0806 100%);
-    }
-    #faq {
-      background:
-        radial-gradient(ellipse 110% 110% at 50% 50%, transparent 28%, rgba(100,0,0,.35) 100%),
-        radial-gradient(ellipse 70% 40% at 50% 130%, rgba(150,0,0,.25) 0%, transparent 58%),
-        repeating-linear-gradient(-45deg, transparent 0, transparent 60px, rgba(192,57,43,.045) 60px, rgba(192,57,43,.045) 62px),
-        repeating-linear-gradient(45deg, transparent 0, transparent 60px, rgba(192,57,43,.045) 60px, rgba(192,57,43,.045) 62px),
-        #040203;
-    }
-  </style>
+  <link rel="preload" as="image" href="athletes-prise-en-main-table-bras-de-fer.webp" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="accueil.css" />
 </head>
 
 <body>
+<a class="aller" href="#contenu">Aller au contenu</a>
 
-<nav>
-  <a href="#hero" class="logo-wrap"><img src="logo.webp" alt="Logo de l'Armwrestling Club Strassen" class="nav-logo-img" /><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">Le Club</a></li>
-    <li><a href="#entrainement">Accès</a></li>
-    <li><a href="#licence">Licence</a></li>
-    <li><a href="articles.html">Articles</a></li>
-    <li><a href="#tournoi">Tournoi</a></li>
-    <li><a href="open-vendetta.html">Open Vendetta</a></li>
-    <li><a href="#inscriptions" class="nav-inscriptions">Inscriptions</a></li>
-    <li><a href="#contact" class="nav-cta">Rejoindre</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" type="button">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.1rem;">
-        <div class="hero-highlight">Essai gratuit · Mardi 19h · Strassen</div>
-        <a href="club-demenage-cnam-strassen.html" class="hero-highlight" style="text-decoration:none;border:1px solid rgba(192,57,43,.5);">Nouveau dès le 29 septembre 2026 : le club s'installe au CNAM, mardi 19h–21h30 →</a>
-      </div>
-      <div class="hero-eyebrow" style="font-size:1.1rem;">Club de bras de fer à Strassen — Luxembourg</div>
-      <h1>
-        Armwrestling<br>
-        Club
-        <em>Strassen</em>
-      </h1>
-      <p class="hero-desc">
-        Club de bras de fer à Strassen, proche Luxembourg-ville. Entraînement de bras de fer au Luxembourg
-        pour débutants, passionnés de sport de force et compétiteurs. Première séance d'essai gratuite le mardi à 19h.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Essayer gratuitement</a>
-        <a href="#entrainement" class="btn-outline">Voir les entraînements</a>
-      </div>
-
-      <div class="quick-info-grid">
-        <div class="quick-info-item">
-          <div class="quick-info-label">Quand</div>
-          <div class="quick-info-value">Mardi 19h à Strassen · Vendredi 18h à Munsbach</div>
-        </div>
-        <div class="quick-info-item">
-          <div class="quick-info-label">Pour qui</div>
-          <div class="quick-info-value">Débutants, loisir, compétition et initiation bras de fer Luxembourg</div>
-        </div>
-        <div class="quick-info-item">
-          <div class="quick-info-label">Accès rapide</div>
-          <div class="quick-info-value">CNAM, 297 rue de Reckenthal — 8 min du centre, bus 16 / 11 / 19, parking gratuit</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-side">
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">1<span>ère</span></div>
-          <div class="stat-label">séance gratuite</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">100<span>+</span></div>
-          <div class="stat-label">athlètes en compétition</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">2</div>
-          <div class="stat-label">clubs · 1 fédération nationale</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Découvrir
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="about">
-  <div class="about-laf-head fade-in">
-    <div class="about-laf-text">
-      <div class="section-tag">À propos</div>
-      <h2>Le bras de fer<br><span>officiel au Luxembourg</span></h2>
-      <p class="section-intro">
-        La <strong>Luxembourg Armwrestling Federation (LAF)</strong> est la fédération nationale
-        qui structure, encadre et représente le bras de fer au Grand-Duché — des premiers
-        entraînements jusqu'aux compétitions internationales.
-      </p>
-
-      <div class="laf-stats">
-        <div class="laf-stat">
-          <strong>Fédération</strong>
-          <span>nationale officielle</span>
-        </div>
-        <div class="laf-stat">
-          <strong>International</strong>
-          <span>compétitions & podiums</span>
-        </div>
-        <div class="laf-stat">
-          <strong>2 clubs</strong>
-          <span>affiliés à la LAF</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="about-laf-logo">
-      <div class="laf-logo-wrap">
-        <img
-          src="logo_laf.webp"
-          alt="Logo officiel de la Luxembourg Armwrestling Federation (LAF)"
-          width="141" height="200"
-          loading="lazy"
-        />
-      </div>
-      <p class="laf-logo-caption">
-        <strong>Luxembourg Armwrestling Federation</strong>
-        Fédération nationale officielle du Grand-Duché
-      </p>
-    </div>
-  </div>
-
-  <!-- Photo compétition pleine largeur -->
-  <div class="laf-banner fade-in">
-    <img
-      src="competition-bras-de-fer-luxembourg.webp"
-      alt="Compétition de bras de fer au Luxembourg avec arbitres officiels, table de match et athlètes de la fédération luxembourgeoise."
-      loading="lazy"
-      width="1100" height="360"
-    />
-    <div class="photo-caption">Compétition officielle · Luxembourg Armwrestling Federation</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="palmares" style="background:
-  repeating-linear-gradient(135deg, transparent 0, transparent 60px, rgba(192,57,43,.02) 60px, rgba(192,57,43,.02) 61px),
-  radial-gradient(ellipse 80% 50% at 50% 0%, rgba(192,57,43,.12) 0%, transparent 60%),
-  #060204;">
-
-  <div class="fade-in">
-    <div class="section-tag">Palmarès & Encadrement</div>
-    <h2>Un club reconnu,<br><span>des résultats au Luxembourg</span></h2>
-    <p class="section-intro">
-      Nos athlètes représentent le Luxembourg en compétition internationale. Voici quelques résultats concrets, l'équipe d'encadrement et ce que nos membres disent du club.
-    </p>
-  </div>
-
-  <!-- Palmarès + Encadrement + Témoignages — une seule ligne -->
-  <div class="recognition-grid fade-in">
-
-    <!-- Palmarès -->
-    <div class="palmares-stack">
-      <div class="palmares-row">
-        <div class="palmares-row-head">
-          <div class="equip-card-badge" style="color:#d4af37;">Europe 2025</div>
-          <div class="equip-card-name">Champions d'Europe</div>
-          <div class="equip-card-spec">LAF · 2025</div>
-        </div>
-        <p class="palmares-row-desc">Titre européen remporté sous les couleurs de la fédération luxembourgeoise — l'une des compétitions les plus exigeantes du calendrier continental.</p>
-      </div>
-      <div class="palmares-row">
-        <div class="palmares-row-head">
-          <div class="equip-card-badge">Médias</div>
-          <div class="equip-card-name">RTL Luxembourg Essentiel Radio</div>
-          <div class="equip-card-spec">Interviews radio</div>
-        </div>
-        <p class="palmares-row-desc">RTL Luxembourg et Essentiel Radio ont interviewé la fédération et ses clubs sur le développement du bras de fer au Grand-Duché.</p>
-      </div>
-      <div class="palmares-row">
-        <div class="palmares-row-head">
-          <div class="equip-card-badge">Compétition</div>
-          <div class="equip-card-name">Podiums chaque année</div>
-          <div class="equip-card-spec">Compétition internationale</div>
-        </div>
-        <p class="palmares-row-desc">Médailles remportées à chaque édition de la compétition internationale de bras de fer du Luxembourg — l'événement phare du pays, aujourd'hui à sa 7ème édition.</p>
-      </div>
-    </div>
-
-    <!-- Encadrement -->
-    <div>
-      <h3 class="block-title">Encadrement<br><span>technique</span></h3>
-      <div class="staff-list">
-        <div class="staff-card">
-          <div>
-            <div class="staff-card-name">Bogdan Roman</div>
-            <div class="staff-card-role">Grizzly of Luxembourg</div>
-          </div>
-          <span class="staff-card-badge">Président</span>
-        </div>
-        <div class="staff-card">
-          <div>
-            <div class="staff-card-name">Pascal Kramp</div>
-            <div class="staff-card-role">Club Strassen</div>
-          </div>
-          <span class="staff-card-badge">Entraîneur</span>
-        </div>
-        <div class="staff-card">
-          <div>
-            <div class="staff-card-name">Adrian Simion</div>
-            <div class="staff-card-role">Club Strassen</div>
-          </div>
-          <span class="staff-card-badge">Entraîneur</span>
-        </div>
-        <div class="staff-card">
-          <div>
-            <div class="staff-card-name">Nils Davoine</div>
-            <div class="staff-card-role">Arbitre national luxembourgeois</div>
-          </div>
-          <span class="staff-card-badge">Président ACS</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Témoignages -->
-    <div>
-      <h3 class="block-title">Ils ont<br><span>essayé</span></h3>
-      <div class="testimonial-list">
-        <div class="testimonial">
-          <p>« Super entraînement, vraiment fun, merci les gars ! Et merci pour ce club ! »</p>
-          <span>— Hugo</span>
-        </div>
-        <div class="testimonial">
-          <p>« J'apprécie vraiment l'effort que vous y mettez ! »</p>
-          <span>— Julian</span>
-        </div>
-        <div class="testimonial">
-          <p>« Merci pour la séance gratuite, j'ai adoré ! À la semaine prochaine, bien remis ! »</p>
-          <span>— Leonard</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Photos -->
-  <div class="palmares-photos fade-in">
-    <figure class="palmares-photo-card palmares-photo-card--wide">
-      <img
-        src="salle-cnam-strassen-entrainement-bras-de-fer.webp"
-        alt="Entraînement de bras de fer au Centre National des Arts Martiaux de Strassen — plusieurs tables en activité le mardi soir"
-        loading="lazy"
-        width="1012" height="1100"
-      />
-      <figcaption class="photo-caption">Salle du CNAM · Strassen · Mardi 19h</figcaption>
-    </figure>
-    <figure class="palmares-photo-card">
-      <img
-        src="table-bras-de-fer-club-strassen-cnam.webp"
-        alt="Deux membres de l'Armwrestling Club Strassen se mettent en garde sur la table du club au CNAM"
-        loading="lazy"
-        width="720" height="1280"
-        style="object-position: center 35%;"
-      />
-      <figcaption class="photo-caption">Mise en garde sur la table du club</figcaption>
-    </figure>
-    <figure class="palmares-photo-card">
-      <img
-        src="match-entrainement-bras-de-fer-cnam-strassen.webp"
-        alt="Match d'entraînement de bras de fer sur une table en bois au CNAM de Strassen"
-        loading="lazy"
-        width="720" height="1280"
-        style="object-position: center 30%;"
-      />
-      <figcaption class="photo-caption">Match d'entraînement · tous niveaux</figcaption>
-    </figure>
-  </div>
-
-  <!-- Récap vidéo Instagram -->
-  <div class="fade-in" style="text-align:center;">
-    <a
-      href="https://www.instagram.com/reel/DXAJtbXiRUU/?igsh=N3ZnazhxNGUyeG1n"
-      target="_blank"
-      rel="noopener"
-      style="display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,rgba(131,58,180,.18) 0%,rgba(253,29,29,.12) 50%,rgba(252,176,69,.12) 100%);border:1px solid rgba(200,100,150,.3);border-radius:10px;padding:.9rem 1.8rem;color:rgba(245,240,232,.9);text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase;"
-    >
-      <span style="font-size:1.1rem;line-height:1;">▶</span>
-      Récap vidéo · 6ème Édition Luxembourg · Instagram →
-    </a>
-  </div>
-
-</section>
-
-<div class="divider"></div>
-
-<section id="entrainement">
-  <div class="fade-in">
-    <div class="section-tag">Entraînements</div>
-    <h2>Deux clubs de bras de fer<br><span>au Luxembourg</span></h2>
-    <p class="section-intro">
-      Choisissez votre lieu d'entraînement selon vos objectifs.
-      La première séance est gratuite dans les deux clubs.
-    </p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:1.5rem;margin-bottom:2.5rem;padding:.9rem 1.5rem;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.2);border-radius:10px;max-width:600px;margin-left:auto;margin-right:auto;">
-      <span style="width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0"></span>
-      <span style="font-family:var(--font-display);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.75);">Les deux clubs sont membres de la <span style="color:var(--white);">Luxembourg Armwrestling Federation</span></span>
-    </div>
-  </div>
-
-  <div class="training-grid fade-in">
-    <div class="training-card">
-      <div class="card-club-name">Club Strassen</div>
-      <div class="location-badge-row"><span class="location-badge strassen">Base principale · Débutants</span></div>
-      <div class="card-location">📍 CNAM · 297 rue de Reckenthal, L-2410 Strassen</div>
-
-      <div class="card-detail">
-        <div class="card-detail-icon">📅</div>
-        <div>
-          <div class="card-detail-label">Jour & Heure</div>
-          <div class="card-detail-value">Mardi — 19h00 à 21h30</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">🎯</div>
-        <div>
-          <div class="card-detail-label">Spécialité</div>
-          <div class="card-detail-value">Technique & Fondamentaux</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">👥</div>
-        <div>
-          <div class="card-detail-label">Niveau</div>
-          <div class="card-detail-value">Débutant à Compétiteur</div>
-        </div>
-      </div>
-
-      <p class="card-focus">
-        Entraînement idéal pour construire de solides fondamentaux, améliorer la forme et
-        s'entraîner avec un encadrement technique professionnel. Accès à tout l'équipement du club.
-      </p>
-
-      <div class="card-access">
-        <div class="card-access-title">Accès depuis Luxembourg-ville</div>
-        <div class="card-access-row">🚗 <span><strong>8 min</strong> en voiture par la route d'Arlon · Parking gigantesque, gratuit, ouvert en permanence</span></div>
-        <div class="card-access-row">🚌 <span><strong>Bus 16 ou 11</strong> depuis Hamilius, arrêt Strassen, Hondseck (10 min à pied) · <strong>Bus 19</strong> depuis la gare, arrêt Strassen, Schafsstrachen (5 min à pied) · gratuit</span></div>
-        <div class="card-access-row">🚲 <span><strong>17 min</strong> à vélo depuis le centre par la route d'Arlon</span></div>
-        <div class="card-access-row">🚪 <span>Bâtiment principal, 2ᵉ étage, salle à droite · en cas de doute, la conciergerie au rez-de-chaussée vous oriente</span></div>
-        <div class="card-map-links">
-          <a class="card-map-link" href="https://www.google.com/maps/search/?api=1&query=297+rue+de+Reckenthal+Strassen+Luxembourg" target="_blank" rel="noopener">Google Maps</a>
-          <a class="card-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=297+rue+de+Reckenthal+Strassen+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Itinéraire →</a>
-          <a class="card-map-link" href="club-demenage-cnam-strassen.html">La nouvelle salle →</a>
-        </div>
-      </div>
-
-      <div class="free-badge">✓ 1ère séance gratuite</div>
-      <div class="training-actions">
-        <a class="training-link" href="#contact">Réserver un essai</a>
-      </div>
-    </div>
-
-    <div class="training-card">
-      <div class="card-club-name">Grizzly of Luxembourg</div>
-      <div class="location-badge-row"><span class="location-badge munsbach">Sparring · Compétition</span></div>
-      <div class="card-location">📍 185 rue Principale, Munsbach, Luxembourg</div>
-
-      <div class="card-detail">
-        <div class="card-detail-icon">📅</div>
-        <div>
-          <div class="card-detail-label">Jour & Heure</div>
-          <div class="card-detail-value">Vendredi — 18h00</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">🎯</div>
-        <div>
-          <div class="card-detail-label">Spécialité</div>
-          <div class="card-detail-value">Sparring & Pratique en Match</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">👥</div>
-        <div>
-          <div class="card-detail-label">Niveau</div>
-          <div class="card-detail-value">Tous niveaux bienvenus</div>
-        </div>
-      </div>
-
-      <p class="card-focus">
-        La diversité des niveaux rend ces séances parfaites pour tester sa force, appliquer
-        sa technique et acquérir une vraie expérience de table. Compétiteurs internationaux présents.
-      </p>
-
-      <div class="card-access">
-        <div class="card-access-title">Accès depuis Luxembourg-ville</div>
-        <div class="card-access-row">🚗 <span><strong>13–15 min</strong> en voiture · Parking sur place</span></div>
-        <div class="card-access-row">🚂 <span><strong>17 min</strong> en train · Gare de Munsbach, salle polyvalente Hall 2</span></div>
-        <div class="card-map-links">
-          <a class="card-map-link" href="https://www.google.com/maps/search/?api=1&query=185+rue+Principale+Munsbach+Luxembourg" target="_blank" rel="noopener">Google Maps</a>
-          <a class="card-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=185+rue+Principale+Munsbach+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Itinéraire →</a>
-        </div>
-      </div>
-
-      <div class="free-badge">✓ 1ère séance gratuite</div>
-      <div class="training-actions">
-        <a class="training-link" href="#contact">Poser une question</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="equipement">
-  <div class="fade-in">
-    <div class="section-tag">Matériel</div>
-    <h2>Équipement<br><span>professionnel</span></h2>
-    <p class="section-intro">
-      Le club est entièrement équipé pour un entraînement de bras de fer complet et sécurisé,
-      du débutant au compétiteur de haut niveau.
-    </p>
-  </div>
-
-  <div class="equip-grid fade-in">
-
-    <div class="equip-card">
-      <div class="equip-card-badge">Compétition</div>
-      <div class="equip-card-name">Tables officielles</div>
-      <div class="equip-card-spec">2 tables · Norme WAF · Format compétition</div>
-      <p class="equip-card-desc">Dimensions et hauteur réglementaires — s'entraîner dans les mêmes conditions qu'une compétition officielle dès la première séance.</p>
-    </div>
-
-    <figure class="equip-photo">
-      <img src="tables_bras_de_fer_club_strassen.webp" alt="Tables officielles de bras de fer au club de Strassen" width="1672" height="941" loading="lazy" />
-      <figcaption>Tables officielles · Norme WAF</figcaption>
-    </figure>
-
-    <div class="equip-card">
-      <div class="equip-card-badge">Force spécifique</div>
-      <div class="equip-card-name">Système à poulies</div>
-      <div class="equip-card-spec">Résistance réglable · Angles multiples</div>
-      <p class="equip-card-desc">Travail technique ciblé en supination, pronation et déviation ulnaire — les mouvements spécifiques que la table seule ne permet pas.</p>
-    </div>
-
-    <figure class="equip-photo">
-      <img src="warm_up_armwrestling.webp" alt="Échauffement avant l'entraînement de bras de fer" width="1100" height="619" loading="lazy" />
-      <figcaption>Échauffement · Prévention des blessures</figcaption>
-    </figure>
-
-    <div class="equip-card">
-      <div class="equip-card-badge">Prise & poignet</div>
-      <div class="equip-card-name">Poignées armwrestling</div>
-      <div class="equip-card-spec">Handles spécialisés · Diamètres variés</div>
-      <p class="equip-card-desc">Équipement conçu exclusivement pour le bras de fer : développement de la prise, du poignet et des avant-bras dans les angles du sport.</p>
-    </div>
-
-    <figure class="equip-photo">
-      <img src="pulley_armwrestling_training.webp" alt="Entraînement sur système à poulies pour le bras de fer" width="1100" height="619" loading="lazy" />
-      <figcaption>Système à poulies · Travail technique</figcaption>
-    </figure>
-
-    <div class="equip-card">
-      <div class="equip-card-badge">Mobilité · Récupération</div>
-      <div class="equip-card-name">Bandes élastiques</div>
-      <div class="equip-card-spec">Résistances progressives · Théraband</div>
-      <p class="equip-card-desc">Échauffement articulaire, rééducation des tendons et renforcement en décharge — indispensables pour prévenir les blessures chroniques.</p>
-    </div>
-
-    <figure class="equip-photo">
-      <img src="armwrestling_luxembourg.webp" alt="Entraînement de bras de fer au Luxembourg" width="1535" height="1024" loading="lazy" />
-      <figcaption>Club de bras de fer · Luxembourg</figcaption>
-    </figure>
-
-    <div class="equip-card">
-      <div class="equip-card-badge">Conditionnement</div>
-      <div class="equip-card-name">Haltères & accessoires</div>
-      <div class="equip-card-spec">Gamme complète · Charges progressives</div>
-      <p class="equip-card-desc">Matériel complémentaire pour le conditionnement général — force de base, hypertrophie et travail fonctionnel entre les séances de table.</p>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="licence">
-  <div class="fade-in">
-    <div class="section-tag">Adhésion</div>
-    <h2>Rejoindre<br><span>le club de bras de fer</span></h2>
-    <p class="section-intro">
-      Une seule licence fédérale — délivrée par la <strong>Luxembourg Armwrestling Federation</strong> — pour accéder aux deux clubs, au matériel professionnel,
-      et aux compétitions européennes.
-    </p>
-  </div>
-
-  <div class="licence-layout fade-in">
-    <div class="price-block">
-      <div class="price-amount"><sup>€</sup>150</div>
-      <div class="price-period">par an · licence annuelle</div>
-      <ul class="price-includes">
-        <li>Accès à toutes les séances d'entraînement</li>
-        <li>T-shirt officiel du club</li>
-        <li>Contribution aux inscriptions compétitions européennes</li>
-        <li>Contribution aux frais de déplacement internationaux</li>
-        <li>Accès à l'équipement professionnel complet</li>
+<header class="barre">
+  <div class="cadre">
+    <a class="marque" href="#hero" aria-label="Armwrestling Club Strassen, haut de la page"><img src="logo.webp" alt="" width="40" height="40" /><span>ACS <span class="rouge">Luxembourg</span></span></a>
+    <nav aria-label="Principal">
+      <ul class="menu" id="menu">
+        <li><a href="#about">Le club</a></li>
+        <li><a href="#entrainement">Venir</a></li>
+        <li><a href="#licence">Tarif</a></li>
+        <li><a href="#blog">Articles</a></li>
+        <li><a href="open-vendetta.html">Open Vendetta</a></li>
+        <li><a class="btn btn-plein" href="#contact">Essai gratuit</a></li>
       </ul>
-      <br>
-      <a href="#contact" class="btn-primary">S'inscrire maintenant</a>
-    </div>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-    <div class="licence-info">
-      <p>
-        La licence vous donne accès à l'intégralité de la communauté armwrestling
-        luxembourgeoise — entraînements à Strassen le mardi et à Munsbach le vendredi.
-        Elle est délivrée dans le cadre de la <strong>Luxembourg Armwrestling Federation</strong>, qui chapeaute les deux clubs.
-      </p>
-      <p>
-        Nos athlètes participent à des compétitions de niveau international, avec une aide
-        du club pour les inscriptions et les déplacements.
-      </p>
-      <p>
-        Le bras de fer est organisé par catégories de poids, ce qui garantit
-        des confrontations équilibrées et un sport accessible à toutes les morphologies.
-      </p>
-      <div class="highlight-box">
-        <strong>Première séance gratuite</strong> dans les deux clubs.
-        Venez tester l'entraînement sans engagement — aucune inscription préalable nécessaire.
-        Présentez-vous directement le mardi à Strassen ou le vendredi à Munsbach.
+<main id="contenu">
+
+<!-- 1. Accroche : le nom, le prochain mardi (calculé par accueil.js), un geste -->
+<section class="accroche" id="hero">
+  <img class="accroche-photo" src="athletes-prise-en-main-table-bras-de-fer.webp" alt="Deux athlètes en prise à la table de bras de fer, juste avant le départ" width="1440" height="960" fetchpriority="high" />
+  <div class="cadre">
+    <h1>Armwrestling <br>Club <em>Strassen</em></h1>
+    <div class="prochain">
+      <span class="etq rouge">Prochain entraînement</span>
+      <time class="prochain-quand" data-prochain data-sans-seance="">Chaque mardi, 19h</time>
+      <span class="gris">Club de bras de fer à Strassen, au CNAM, à 8 minutes de Luxembourg-ville. La première séance est gratuite.</span>
+    </div>
+    <div class="gestes">
+      <a class="btn btn-plein" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Je viens mardi</a>
+      <a class="lien lien-seul" href="#entrainement">Voir l’accès</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Venir : Strassen d'abord, Munsbach en une ligne -->
+<section class="section" id="entrainement">
+  <div class="cadre">
+    <div class="venir">
+      <div class="venir-texte">
+        <div class="section-tete">
+          <h2>Mardi, 19h à 21h30, au CNAM de Strassen.</h2>
+          <p class="grand">Centre National des Arts Martiaux, 297 rue de Reckenthal, L-2410 Strassen. Bâtiment principal, 2e étage, salle à droite. En cas de doute, la conciergerie au rez-de-chaussée vous oriente.</p>
+        </div>
+        <div class="acces">
+          <div><span class="chiffre">8<small>min</small></span><p>en voiture depuis Luxembourg-ville, par la route d’Arlon. Grand parking gratuit.</p></div>
+          <div><span class="chiffre">16 · 11</span><p>en bus depuis Hamilius, arrêt Strassen, Hondseck. Puis 10 minutes à pied.</p></div>
+          <div><span class="chiffre">19</span><p>en bus depuis la gare, arrêt Strassen, Schafsstrachen. Puis 5 minutes à pied.</p></div>
+        </div>
+        <p class="gris">À vélo, comptez 17 minutes depuis le centre. Le bus est gratuit.</p>
+        <div class="gestes">
+          <a class="btn btn-plein" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Venir mardi</a>
+          <a class="btn btn-contour" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=297+rue+de+Reckenthal+Strassen+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Itinéraire</a>
+          <a class="lien lien-seul" href="club-demenage-cnam-strassen.html">La nouvelle salle au CNAM</a>
+        </div>
+      </div>
+      <div class="venir-photos">
+        <img src="mise-en-garde-table-club-strassen.webp" alt="Deux membres du club se mettent en garde sur la table marquée Strassen, au CNAM" width="720" height="902" loading="lazy" />
+        <img src="match-entrainement-table-bois-cnam.webp" alt="Match d’entraînement de bras de fer sur une table en bois, au CNAM de Strassen" width="720" height="903" loading="lazy" />
+      </div>
+    </div>
+    <p class="aussi">Aussi le vendredi à 18h à Munsbach, avec le club Grizzly of Luxembourg : 185 rue Principale, salle polyvalente Hall 2, à 17 minutes en train de Luxembourg. La première séance y est gratuite aussi. <a class="lien" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Ville+Centre&destination=185+rue+Principale+Munsbach+Luxembourg&travelmode=transit" target="_blank" rel="noopener">Itinéraire vers Munsbach</a></p>
+  </div>
+</section>
+
+<!-- La seule bande rouge de la page -->
+<section class="bande" aria-labelledby="essai-h">
+  <div class="cadre">
+    <div>
+      <h2 id="essai-h">La première séance est gratuite.</h2>
+      <p>Venez en tenue de sport. Tout le matériel est sur place.</p>
+    </div>
+    <a class="btn" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Je viens mardi</a>
+  </div>
+</section>
+
+<!-- 3. Le club : le titre européen, les résultats datés, la salle -->
+<section class="section" id="about">
+  <div class="cadre">
+    <div class="titre-europe">
+      <img src="match-competition-internationale-luxembourg-arbitres.webp" alt="Match de bras de fer en compétition au Luxembourg, entouré d’arbitres en maillot rayé" width="1440" height="960" loading="lazy" />
+      <div>
+        <p class="chiffre" aria-hidden="true">2025</p>
+        <h2>Champions d’Europe<span class="sr"> 2025</span>.</h2>
+        <p class="grand">Un titre remporté sous les couleurs de la fédération luxembourgeoise.</p>
+      </div>
+    </div>
+    <div class="deux">
+      <div>
+        <p class="grand">L’Armwrestling Club Strassen est un club de bras de fer affilié à la Luxembourg Armwrestling Federation (LAF), la fédération nationale. Débutants et compétiteurs s’entraînent ensemble, à la même table.</p>
+        <dl class="resultats lignes" style="margin-top:1.6rem">
+          <div><dt>2025</dt><dd><b>Champions d’Europe</b>Titre européen remporté avec la fédération luxembourgeoise.</dd></div>
+          <div><dt>Chaque année</dt><dd><b>Podiums à Luxembourg</b>Des médailles à chaque édition de la compétition internationale de bras de fer du Luxembourg.</dd></div>
+          <div><dt>Radio</dt><dd><b>RTL et Essentiel Radio</b>Les deux radios ont interviewé la fédération et ses clubs.</dd></div>
+          <div><dt>L’équipe</dt><dd><b>Deux entraîneurs, un arbitre national</b>Pascal Kramp et Adrian Simion entraînent à Strassen. Nils Davoine, président du club, est arbitre national. Bogdan Roman préside Grizzly of Luxembourg.</dd></div>
+        </dl>
+      </div>
+      <div class="salle">
+        <img src="entrainement-mardi-soir-salle-cnam-strassen.webp" alt="Un mardi soir dans la salle du CNAM à Strassen : plusieurs tables de bras de fer occupées" width="986" height="743" loading="lazy" />
+        <h3>Tout le matériel est sur place.</h3>
+        <p>Tables de compétition, poulies, poignées, élastiques et haltères. Venez en tenue de sport, rien d’autre à apporter.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-<div class="divider"></div>
-
-<section id="blog">
-  <div class="fade-in">
-    <div class="section-tag">Articles & Ressources</div>
-    <h2>Articles & Guides<br><span>bras de fer Luxembourg</span></h2>
-    <p class="section-intro">Guides, techniques et analyses développés par l'ACS Luxembourg pour progresser en bras de fer et comprendre le sport en profondeur.</p>
-  </div>
-
-  <!-- Card featured -->
-  <div class="fade-in">
-    <a href="guide-debutant-bras-de-fer.html" class="blog-featured">
-      <div class="blog-featured-left">
-        <div>
-          <div class="blog-featured-tag">Article à la une · Guide Débutant</div>
-          <div class="blog-featured-title">Guide complet pour débuter le bras de fer</div>
-          <p class="blog-featured-desc">Technique, sécurité, matériel, placement, erreurs à éviter et programme de progression — tout ce qu'il faut savoir avant de venir pour la première fois.</p>
-        </div>
-        <div class="blog-featured-cta">Lire le guide complet →</div>
+<!-- 4. Tarif : l'essai, puis la licence -->
+<section class="section" id="licence">
+  <div class="cadre">
+    <h2>150 € par an. L’essai est gratuit.</h2>
+    <div class="deux">
+      <div class="colonne">
+        <span class="etiquette">D’abord</span>
+        <span class="chiffre">0 €</span>
+        <p>Une séance d’essai, le mardi à Strassen ou le vendredi à Munsbach. Sans engagement.</p>
+        <a class="btn btn-plein" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Venir mardi</a>
       </div>
-      <div class="blog-featured-right">
-        <div class="blog-featured-chapter">
-          <span class="blog-featured-chapter-num">01</span>
-          <span class="blog-featured-chapter-label">Technique & placement</span>
-        </div>
-        <div class="blog-featured-chapter">
-          <span class="blog-featured-chapter-num">02</span>
-          <span class="blog-featured-chapter-label">Sécurité & matériel</span>
-        </div>
-        <div class="blog-featured-chapter">
-          <span class="blog-featured-chapter-num">03</span>
-          <span class="blog-featured-chapter-label">Progression & sparring</span>
-        </div>
-        <div class="blog-featured-chapter">
-          <span class="blog-featured-chapter-num">04</span>
-          <span class="blog-featured-chapter-label">Erreurs courantes</span>
-        </div>
+      <div class="colonne">
+        <span class="etiquette">Ensuite</span>
+        <span class="chiffre">150 €<small>par an</small></span>
+        <p>La licence de la fédération (LAF) ouvre les deux clubs, toutes les séances et tout le matériel. Elle comprend le t-shirt du club.</p>
+        <p>Le club participe aussi aux frais d’inscription et de déplacement pour les compétitions européennes.</p>
       </div>
-    </a>
-  </div>
-
-  <div class="blog-grid-v2 fade-in">
-
-    <a href="preparation-competition-bras-de-fer.html" class="blog-card-v2 c-red">
-      <div class="blog-card-v2-category">Guide · Compétition</div>
-      <div class="blog-card-v2-title">Se préparer pour une compétition de bras de fer</div>
-      <p class="blog-card-v2-desc">Entraînement sur 8 semaines, gestion du poids, tactique, échauffement le jour J et gestion du stress compétitif.</p>
-      <span class="blog-card-v2-cta">Lire l'article →</span>
-    </a>
-
-    <a href="comment-gagner-bras-de-fer.html" class="blog-card-v2 c-blue">
-      <div class="blog-card-v2-category">Technique · Stratégie</div>
-      <div class="blog-card-v2-title">Comment gagner au bras de fer</div>
-      <p class="blog-card-v2-desc">Placement, prises, explosivité et erreurs à éviter — les vraies clés pour gagner au-delà de la force brute.</p>
-      <span class="blog-card-v2-cta">Lire l'article →</span>
-    </a>
-
-    <a href="blessures-bras-de-fer.html" class="blog-card-v2 c-green">
-      <div class="blog-card-v2-category">Santé · Sécurité</div>
-      <div class="blog-card-v2-title">Blessures au bras de fer — pratiquer sans risque</div>
-      <p class="blog-card-v2-desc">Fracture de l'humérus, douleurs au poignet, sécurité débutant, échauffement et positions dangereuses à éviter.</p>
-      <span class="blog-card-v2-cta">Lire l'article →</span>
-    </a>
-
-    <a href="entrainement-bras-de-fer-maison.html" class="blog-card-v2 c-amber">
-      <div class="blog-card-v2-category">Programme · Domicile</div>
-      <div class="blog-card-v2-title">Entraînement bras de fer à la maison</div>
-      <p class="blog-card-v2-desc">Exercices spécifiques pour la prise, le poignet et les avant-bras — sans table, avec peu de matériel.</p>
-      <span class="blog-card-v2-cta">Lire le programme →</span>
-    </a>
-
-    <a href="sport-de-force-luxembourg-comparatif.html" class="blog-card-v2 c-purple">
-      <div class="blog-card-v2-category">Guide · Sports de force</div>
-      <div class="blog-card-v2-title">Sports de force au Luxembourg — le guide complet</div>
-      <p class="blog-card-v2-desc">Powerlifting, CrossFit, fitness, bras de fer — clubs actifs, adresses et fourchettes de prix au Grand-Duché.</p>
-      <span class="blog-card-v2-cta">Lire le guide →</span>
-    </a>
-
-    <a href="recuperation-tendinites-bras-de-fer.html" class="blog-card-v2 c-gold">
-      <div class="blog-card-v2-category">Santé · Récupération</div>
-      <div class="blog-card-v2-title">Récupération et tendinites au bras de fer</div>
-      <p class="blog-card-v2-desc">Protocole de récupération, gestion des tendinites et prévention des blessures chroniques pour pratiquer sur le long terme.</p>
-      <span class="blog-card-v2-cta">Lire l'article →</span>
-    </a>
-
-  </div>
-
-  <div style="text-align:center;margin-top:2.5rem" class="fade-in">
-    <a href="articles.html" class="btn-outline" style="display:inline-block">Voir tous les articles →</a>
-  </div>
-
-  <div class="fade-in" style="margin-top:3rem;text-align:center">
-    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin-bottom:1rem">Le club près de chez vous</p>
-    <div style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center">
-      <a href="entrainement-bras-de-fer-strassen.html" class="btn-outline" style="display:inline-block">Entraînement de bras de fer à Strassen</a>
-      <a href="bras-de-fer-luxembourg-ville.html" class="btn-outline" style="display:inline-block">Bras de fer à Luxembourg-Ville</a>
-      <a href="club-bras-de-fer-debutant-luxembourg.html" class="btn-outline" style="display:inline-block">Club de bras de fer pour débutants</a>
-      <a href="armwrestling-luxemburg.html" class="btn-outline" style="display:inline-block" hreflang="de">Auf Deutsch — Armdrücken Verein in Luxemburg</a>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- 5. Compétition : la 7e édition et Open Vendetta -->
+<section class="section" id="inscriptions">
+  <div class="cadre">
+    <h2>7e édition au printemps 2027.</h2>
+    <div class="deux">
+      <div class="colonne">
+        <span class="etiquette">Inscriptions ouvertes</span>
+        <h3>La compétition internationale du Luxembourg</h3>
+        <p>À Munsbach, 185 rue Principale. Plus de 100 athlètes et plus de 300 spectateurs. Bras gauche et bras droit, toutes les catégories de poids, hommes et femmes. Les débutants peuvent s’inscrire. La date exacte n’est pas encore fixée.</p>
+        <a class="btn btn-plein" href="https://nilsdavoine.github.io/tournament_registration/" target="_blank" rel="noopener">S’inscrire à la 7e édition</a>
+        <a class="lien lien-seul" href="https://www.instagram.com/reel/DXAJtbXiRUU/?igsh=N3ZnazhxNGUyeG1n" target="_blank" rel="noopener">Voir la vidéo de la 6e édition</a>
+      </div>
+      <div class="colonne">
+        <span class="etiquette">Toute l’année</span>
+        <h3>Open Vendetta</h3>
+        <p>Choisissez un adversaire à votre poids et proposez-lui un match. Le club organise le lieu et la date. Gratuit, dès 14 ans.</p>
+        <a class="btn btn-contour" href="open-vendetta.html">Voir les profils</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="faq">
-  <div class="fade-in">
-    <div class="section-tag">FAQ</div>
-    <h2>Questions fréquentes<br><span>avant de venir</span></h2>
-    <p class="section-intro">
-      Vous trouvez ici les réponses aux questions les plus fréquentes avant de venir essayer le bras de fer au Luxembourg.
+<!-- 6. Articles : une liste de titres -->
+<section class="section" id="blog">
+  <div class="cadre">
+    <h2>Huit guides pour débuter et progresser.</h2>
+    <ul class="articles">
+      <li><a href="guide-debutant-bras-de-fer.html"><span class="cat">Guide du débutant</span><span class="nom">Débuter le bras de fer</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="technique-prise-bras-de-fer.html"><span class="cat">Technique</span><span class="nom">La prise et la technique au bras de fer</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="comment-gagner-bras-de-fer.html"><span class="cat">Stratégie</span><span class="nom">Comment gagner au bras de fer</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="preparation-competition-bras-de-fer.html"><span class="cat">Compétition</span><span class="nom">Se préparer pour une compétition</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="blessures-bras-de-fer.html"><span class="cat">Santé</span><span class="nom">Pratiquer sans se blesser</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="recuperation-tendinites-bras-de-fer.html"><span class="cat">Santé</span><span class="nom">Récupération et tendinites</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="entrainement-bras-de-fer-maison.html"><span class="cat">Programme</span><span class="nom">S’entraîner au bras de fer à la maison</span><span class="va" aria-hidden="true">→</span></a></li>
+      <li><a href="sport-de-force-luxembourg-comparatif.html"><span class="cat">Guide</span><span class="nom">Les sports de force au Luxembourg</span><span class="va" aria-hidden="true">→</span></a></li>
+    </ul>
+    <p><a class="lien lien-seul" href="articles.html">Tous les articles</a></p>
+    <p class="pres">
+      <a class="lien lien-seul" href="entrainement-bras-de-fer-strassen.html">Entraînement de bras de fer à Strassen</a>
+      <a class="lien lien-seul" href="bras-de-fer-luxembourg-ville.html">Bras de fer à Luxembourg-Ville</a>
+      <a class="lien lien-seul" href="club-bras-de-fer-debutant-luxembourg.html">Club de bras de fer pour débutants</a>
+      <a class="lien lien-seul" href="armwrestling-luxemburg.html" hreflang="de" lang="de">Auf Deutsch: Armdrücken Verein in Luxemburg</a>
     </p>
   </div>
+</section>
 
-  <div class="faq-list fade-in">
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Les clubs sont-ils officiels et reconnus ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Oui. L'Armwrestling Club Strassen et le Grizzly of Luxembourg sont tous deux membres de la <strong>Luxembourg Armwrestling Federation</strong>, la fédération nationale officielle qui encadre le bras de fer au Luxembourg et représente le pays dans les compétitions internationales.</p>
-        </div>
-      </div>
+<!-- 7. Questions : les mêmes que dans les données structurées du haut de page -->
+<section class="section" id="faq">
+  <div class="cadre">
+    <h2>Sept questions avant de venir.</h2>
+    <div class="questions">
+      <details><summary>Faut-il déjà être fort pour commencer ?</summary><p>Non. Le bras de fer est aussi une affaire de technique et de placement. Un débutant apprend les bases dès la première séance.</p></details>
+      <details><summary>Faut-il réserver avant de venir ?</summary><p>Non. Un message sur WhatsApp avant votre première séance aide quand même le club à vous accueillir.</p></details>
+      <details><summary>Que faut-il apporter ?</summary><p>Une tenue de sport. Le matériel est sur place.</p></details>
+      <details><summary>Combien coûte la licence ?</summary><p>150 € par an. Elle ouvre les deux clubs, toutes les séances et le matériel, et comprend le t-shirt du club. La première séance est gratuite.</p></details>
+      <details><summary>Quel club choisir, Strassen ou Munsbach ?</summary><p>Strassen pour commencer et apprendre la technique, le mardi. Munsbach pour plus de matchs d’entraînement, le vendredi. La même licence ouvre les deux.</p></details>
+      <details><summary>Comment venir depuis Luxembourg-ville ?</summary><p>En voiture, 8 minutes par la route d’Arlon, avec un grand parking gratuit. En bus, lignes 16 ou 11 depuis Hamilius jusqu’à l’arrêt Strassen, Hondseck, puis 10 minutes à pied. Ou ligne 19 depuis la gare jusqu’à l’arrêt Strassen, Schafsstrachen, puis 5 minutes à pied.</p></details>
+      <details><summary>Les clubs sont-ils officiels ?</summary><p>Oui. L’Armwrestling Club Strassen et Grizzly of Luxembourg sont membres de la Luxembourg Armwrestling Federation, la fédération nationale de bras de fer.</p></details>
     </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Faut-il déjà être fort pour commencer ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Non. Le bras de fer est aussi une affaire de technique, de placement et de progression. Un débutant peut venir apprendre proprement dès la première séance.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Faut-il réserver avant de venir ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Ce n'est pas obligatoire, mais c'est préférable pour prévenir le club. Vous pouvez appeler, envoyer un message ou écrire via WhatsApp avant votre première séance.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Quel club choisir entre Strassen et Munsbach ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Strassen est idéal pour commencer, apprendre les fondamentaux et faire une initiation. Munsbach complète très bien avec plus de sparring et d'expérience de table. Les deux clubs font partie de la même communauté, encadrée par la Luxembourg Armwrestling Federation.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Combien coûte la licence et que couvre-t-elle ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>La licence annuelle est à 150€, avec accès aux deux clubs, au matériel, au t-shirt officiel et une contribution du club pour certaines compétitions et déplacements.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Comment venir depuis Luxembourg-ville ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Le club de Strassen (CNAM, 297 rue de Reckenthal) est à 8 min en voiture du centre-ville, avec un grand parking gratuit. En bus : lignes 16 ou 11 depuis Hamilius jusqu'à l'arrêt Strassen, Hondseck, puis 10 min à pied ; ou ligne 19 depuis la gare jusqu'à Strassen, Schafsstrachen, puis 5 min à pied. Le club de Munsbach est à 13–15 min en voiture ou 17 min en train.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq-accordion-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span>Que dois-je apporter pour le premier entraînement ?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-panel" role="region">
-        <div class="faq-panel-inner">
-          <p>Une tenue de sport simple suffit. Le plus important est de venir prêt à découvrir la technique, les règles de sécurité et l'ambiance du club. Aucun équipement spécifique requis.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="contact">
-  <div class="fade-in">
-    <div class="section-tag">Contact</div>
-    <h2>Nous<br><span>contacter</span></h2>
-    <p class="section-intro">
-      Intéressé par le bras de fer au Luxembourg ? Contactez directement les présidents des clubs, demandez votre essai gratuit ou consultez le Google Business Profile pour l'accès et les avis.
+<!-- 8. Contact : un seul grand geste -->
+<section class="section contact" id="contact">
+  <div class="cadre">
+    <div class="section-tete">
+      <h2>On vous attend mardi.</h2>
+      <p class="grand">Une question avant de venir ? Écrivez au club.</p>
+    </div>
+    <a class="btn btn-plein btn-grand" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+    <p class="adresse">Armwrestling Club Strassen. Mardi, 19h à 21h30. CNAM, 297 rue de Reckenthal, L-2410 Strassen.</p>
+    <p class="reseaux">
+      <a class="lien lien-seul" href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener">Instagram</a>
+      <a class="lien lien-seul" href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener">TikTok</a>
+      <a class="lien lien-seul" href="https://www.facebook.com/profile.php?id=61583958687728" target="_blank" rel="noopener">Facebook</a>
+      <a class="lien lien-seul" href="https://share.google/ILHoQ0ByytjKJSuRy" target="_blank" rel="noopener">Avis Google</a>
     </p>
   </div>
-
-  <div class="contact-grid fade-in">
-    <div class="contact-card">
-      <div class="contact-club">Armwrestling Club Strassen</div>
-      <div class="contact-name">Nils Davoine</div>
-      <div class="contact-role">Président</div>
-      <div style="font-size:0.9rem;color:rgba(245,240,232,0.65);margin-bottom:1rem;">📍 CNAM, 297 rue de Reckenthal, Strassen</div>
-      <a href="tel:+352661495319" class="contact-phone">
-        📞 +352 661 495 319
-      </a>
-    </div>
-
-    <div class="contact-card">
-      <div class="contact-club">Grizzly of Luxembourg</div>
-      <div class="contact-name">Roman Bogdan</div>
-      <div class="contact-role">Président</div>
-      <div style="font-size:0.9rem;color:rgba(245,240,232,0.65);margin-bottom:1rem;">📍 185 rue Principale, Munsbach</div>
-      <a href="tel:+352621252872" class="contact-phone">
-        📞 +352 621 252 872
-      </a>
-    </div>
-  </div>
-
-  <div class="social-row fade-in">
-    <!-- WhatsApp en premier et mis en avant -->
-    <a href="https://wa.me/352661495319" target="_blank" rel="noopener" class="social-link" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.35);color:#25d366;font-size:.9rem;padding:.9rem 1.8rem;">
-      💬 WhatsApp — Essai gratuit
-    </a>
-    <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener" class="social-link">
-      Instagram — @armwrestlingclubstrassen
-    </a>
-    <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener" class="social-link">
-      TikTok — @armwrestlingclubstrassen
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61583958687728" target="_blank" rel="noopener" class="social-link">
-      Facebook — Club Strassen
-    </a>
-    <a href="https://share.google/ILHoQ0ByytjKJSuRy" target="_blank" rel="noopener" class="social-link">
-      Google Business Profile
-    </a>
-  </div>
 </section>
 
-<a class="whatsapp-float" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener" aria-label="Contacter le club sur WhatsApp">WhatsApp · Essai gratuit</a>
+</main>
 
-<!-- ============================================================
-  TOURNAMENT MANAGER SECTION
-============================================================ -->
-
-<div class="divider"></div>
-
-<section id="inscriptions">
-
-  <div class="inscriptions-bg" aria-hidden="true"></div>
-  <div class="inscriptions-grid-bg" aria-hidden="true"></div>
-
-  <div class="fade-in" style="position:relative;z-index:1">
-    <div class="section-tag">Inscriptions</div>
-    <h2>Inscriptions aux<br><span>événements</span></h2>
-    <p class="section-intro">
-      Toutes les inscriptions et candidatures ouvertes, réunies au même endroit.
-      Chaque événement a son format, ses conditions et son propre mode d'inscription —
-      lisez le détail avant de vous engager.
-    </p>
-    <div class="section-note">
-      <span class="section-note-dot"></span>
-      <span>Événements organisés sous l'égide de la <span class="section-note-strong">Luxembourg Armwrestling Federation</span></span>
+<footer class="pied">
+  <div class="cadre">
+    <div>
+      <p class="marque">Armwrestling Club <span class="rouge">Strassen</span></p>
+      <p>Membre de la Luxembourg Armwrestling Federation.</p>
+      <p>© 2026 Armwrestling Club Strassen</p>
     </div>
-  </div>
-
-  <!-- Une carte par evenement ouvert. Pour en ajouter un, dupliquer un bloc
-       <article class="event-card"> : la grille se reorganise seule. -->
-  <div class="event-grid fade-in">
-
-    <article class="event-card">
-      <div class="event-status">Inscriptions ouvertes</div>
-      <h3 class="event-name">7ème Édition</h3>
-      <div class="event-when">Compétition annuelle · Printemps 2027</div>
-
-      <div class="card-detail">
-        <div class="card-detail-icon">📅</div>
-        <div>
-          <div class="card-detail-label">Date</div>
-          <div class="card-detail-value">Printemps 2027 — date exacte à venir</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">📍</div>
-        <div>
-          <div class="card-detail-label">Lieu</div>
-          <div class="card-detail-value">185 rue Principale, Munsbach</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">🏆</div>
-        <div>
-          <div class="card-detail-label">Catégories</div>
-          <div class="card-detail-value">Bras gauche &amp; droit · Toutes catégories de poids · Hommes et femmes</div>
-        </div>
-      </div>
-
-      <p class="card-focus">
-        Le plus grand événement de bras de fer du Luxembourg, organisé sous l'égide de la
-        Luxembourg Armwrestling Federation. Athlètes venus des quatre coins du monde,
-        ambiance de scène internationale. Ouvert aux compétiteurs licenciés comme aux
-        débutants qui veulent une première expérience de table.
-      </p>
-
-      <div class="event-figures">
-        <div class="event-figure">
-          <div class="event-figure-num">100<span class="red">+</span></div>
-          <div class="event-figure-label">Athlètes</div>
-        </div>
-        <div class="event-figure">
-          <div class="event-figure-num">300<span class="red">+</span></div>
-          <div class="event-figure-label">Spectateurs</div>
-        </div>
-        <div class="event-figure">
-          <div class="event-figure-num"><span class="red">#</span>7</div>
-          <div class="event-figure-label">Édition</div>
-        </div>
-      </div>
-
-      <div class="event-actions">
-        <a href="https://nilsdavoine.github.io/tournament_registration/" target="_blank" rel="noopener" class="btn-register">
-          S'inscrire maintenant →
-        </a>
-      </div>
-    </article>
-
-    <article class="event-card">
-      <div class="event-status">Ouvert toute l'année</div>
-      <h3 class="event-name">Open Vendetta</h3>
-      <div class="event-when">Trouvez un adversaire à votre poids</div>
-
-      <div class="card-detail">
-        <div class="card-detail-icon">⚔️</div>
-        <div>
-          <div class="card-detail-label">Principe</div>
-          <div class="card-detail-value">Choisissez un profil, proposez un match · le club organise le lieu et la date</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">👥</div>
-        <div>
-          <div class="card-detail-label">Pour qui</div>
-          <div class="card-detail-value">Athlètes de bras de fer dès 14 ans · accord d'un parent de 14 à 17 ans</div>
-        </div>
-      </div>
-      <div class="card-detail">
-        <div class="card-detail-icon">🎟️</div>
-        <div>
-          <div class="card-detail-label">Prix</div>
-          <div class="card-detail-value">Gratuit pour proposer un match ou créer son profil</div>
-        </div>
-      </div>
-
-      <p class="card-focus">
-        Pas de tournoi ni de date fixe : parcourez les profils des athlètes ouverts à
-        un match et proposez-en un à celui qui correspond à votre poids.
-      </p>
-
-      <div class="event-actions">
-        <a href="open-vendetta.html" class="btn-register">
-          Voir les profils →
-        </a>
-      </div>
-    </article>
-
-  </div>
-
-</section>
-
-<div class="divider"></div>
-
-<section id="tournoi">
-
-  <div class="tournoi-bg" aria-hidden="true"></div>
-
-  <div class="fade-in" style="position:relative;z-index:1">
-    <div class="section-tag">Outils · Tournoi</div>
-    <h2>Tournament<br><span>Manager</span></h2>
-    <p class="section-intro">
-      Logiciel de gestion de tournoi développé spécifiquement pour les compétitions
-      d'armwrestling. Inscriptions, système suisse automatique, affichage grand écran
-      et résultats en direct.
-    </p>
-  </div>
-
-  <div class="tournoi-features fade-in">
-    <div class="tournoi-feature-card">
-      <div class="tournoi-feature-icon">📋</div>
-      <div class="tournoi-feature-title">Inscriptions</div>
-      <p class="tournoi-feature-desc">Enregistrez les participants avec photo, drapeau, catégories et bras. Générateur de codes-barres intégré.</p>
-    </div>
-    <div class="tournoi-feature-card">
-      <div class="tournoi-feature-icon">⚙️</div>
-      <div class="tournoi-feature-title">Système Suisse</div>
-      <p class="tournoi-feature-desc">Appariements automatiques winner/loser queue. 2 défaites = élimination. Classement temps réel.</p>
-    </div>
-    <div class="tournoi-feature-card">
-      <div class="tournoi-feature-icon">📺</div>
-      <div class="tournoi-feature-title">Écran Géant</div>
-      <p class="tournoi-feature-desc">Affichage dédié pour grand écran avec podium animé, photos, drapeaux et prochains matchs.</p>
-    </div>
-    <div class="tournoi-feature-card">
-      <div class="tournoi-feature-icon">📡</div>
-      <div class="tournoi-feature-title">Scan Live</div>
-      <p class="tournoi-feature-desc">Scanner USB codes-barres pour déclarer les vainqueurs instantanément. 3 sections simultanées.</p>
-    </div>
-  </div>
-
-  <div class="tournoi-cta-card fade-in">
-    <div style="flex:1;min-width:240px">
-      <div class="tournoi-cta-title">Gérez votre tournoi<br>d'armwrestling</div>
-      <p class="tournoi-cta-desc">Outil complet pour organiser les compétitions ACS Luxembourg — bras gauche et droit, toutes catégories, planning des sections configurable, 100% local, sans installation.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-end;flex-shrink:0">
-      <a href="tournament.html" target="_blank" rel="noopener" class="btn-tournament">
-        Ouvrir le Tournament Manager
-      </a>
-      <a href="duel.html" target="_blank" rel="noopener" class="btn-tournament alt">
-        Ouvrir le Vendetta Manager
-      </a>
-      <span class="btn-tournament-note">Fonctionne dans le navigateur · Aucune installation</span>
-    </div>
-  </div>
-
-</section>
-  
-<footer>
-  <div class="footer-col">
-    <div class="footer-logo">Armwrestling Club <span>Strassen</span></div>
-    <div class="footer-label">Membre officiel · LAF</div>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/armwrestlingclubstrassen" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@armwrestlingclubstrassen" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.facebook.com/profile.php?id=61583958687728" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://wa.me/352661495319" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://share.google/ILHoQ0ByytjKJSuRy" target="_blank" rel="noopener">Google</a>
-    </div>
-  </div>
-  <ul class="footer-links">
-    <li><a href="#about">Le Club</a></li>
-    <li><a href="#entrainement">Accès</a></li>
-    <li><a href="#licence">Licence</a></li>
-    <li><a href="articles.html">Articles</a></li>
-    <li><a href="#inscriptions">Inscriptions</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="armwrestling-luxemburg.html" style="opacity:.55;">Auf Deutsch</a></li>
-  </ul>
-  <div class="footer-col" style="text-align:right">
-    <p style="margin-bottom:.4rem">© 2026 Armwrestling Club Strassen · Luxembourg</p>
-    <p style="font-size:.78rem;color:rgba(245,240,232,.3);">Mardi 19h · Strassen · Essai gratuit</p>
-    <p style="font-size:.75rem;color:rgba(245,240,232,.2);margin-top:.3rem;">Vendredi 18h · Munsbach</p>
+    <nav aria-label="Pied de page">
+      <h2>La page</h2>
+      <ul>
+        <li><a href="#entrainement">Venir</a></li>
+        <li><a href="#licence">Tarif</a></li>
+        <li><a href="#inscriptions">Compétition</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="armwrestling-luxemburg.html" hreflang="de" lang="de">Auf Deutsch</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Outils pour les organisateurs" id="tournoi">
+      <h2>Pour les organisateurs</h2>
+      <ul>
+        <li><a href="tournament.html">Gestion de tournoi</a></li>
+        <li><a href="duel.html">Gestion de duels</a></li>
+        <li><a href="m/evenement.html">Événement POWER ARM</a></li>
+      </ul>
+    </nav>
   </div>
 </footer>
 
-<script src="main.js" onerror="document.querySelectorAll('.fade-in').forEach(function(e){e.classList.add('visible')})"></script>
+<!-- Sur téléphone seulement : le geste principal reste sous le pouce -->
+<a class="barre-bas" href="https://wa.me/352661495319?text=Bonjour%2C%20je%20voudrais%20venir%20faire%20un%20essai%20gratuit%20mardi%20%C3%A0%2019h%20%C3%A0%20Strassen." target="_blank" rel="noopener">Essai gratuit · mardi 19h</a>
+
+<script src="accueil.js" defer></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
 <script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
