@@ -22,6 +22,31 @@ export async function reduirePhoto(fichier, max, limite) {
   throw new Error('photo-trop-lourde');
 }
 
+// Tourne une image de `quarts` quarts de tour dans le sens horaire (1 = 90°, 2 = 180°, 3 = 270°). Rend un Blob PNG
+// (sans perte, transparence gardée pour les photos détourées), à passer ensuite à reduirePhoto().
+export async function tournerPhoto(source, quarts) {
+  const bmp = await createImageBitmap(source);
+  const c = document.createElement('canvas');
+  try {
+    const debout = quarts % 2 === 1;
+    c.width = debout ? bmp.height : bmp.width; c.height = debout ? bmp.width : bmp.height;
+    const g = c.getContext('2d');
+    g.translate(c.width / 2, c.height / 2);
+    g.rotate((quarts * Math.PI) / 2); // angle positif = sens horaire sur un canvas (l'axe y descend)
+    g.drawImage(bmp, -bmp.width / 2, -bmp.height / 2);
+  } finally { bmp.close(); }
+  return new Promise((ok, ko) => c.toBlob((b) => (b ? ok(b) : ko(new Error('rotation-impossible'))), 'image/png'));
+}
+
+// Une photo déjà enregistrée (data URL) en Blob, pour la retravailler.
+export function enBlob(dataUrl) {
+  const [tete, b64] = String(dataUrl).split(',');
+  const bin = atob(b64);
+  const octets = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) octets[i] = bin.charCodeAt(i);
+  return new Blob([octets], { type: tete.slice(5, tete.indexOf(';')) });
+}
+
 // Les deux tailles stockées : la vignette de la liste et la photo de la fiche (limites des règles Firestore).
 export const MINI = { max: 160, limite: 12000 };
 export const FICHE = { max: 960, limite: 300000 };

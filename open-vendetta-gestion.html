@@ -134,7 +134,7 @@
   .prow img { width: 64px; height: 80px; object-fit: cover; border-radius: var(--r-sm); grid-row: span 2; }
   .prow__name { font: var(--display-weight) 20px/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
   .prow__name .pill { margin-left: var(--s-2); vertical-align: 0.15em; }
-  .prow__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+  .prow__actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); }
   .prow .edit { grid-column: 1 / -1; }
   .prow.is-hidden img { opacity: .45; }
   .pill { display: inline-flex; align-items: center; height: 24px; padding: 0 var(--s-2); border-radius: 999px; border: 1px solid var(--line-strong); font: 500 var(--t-label)/1 var(--font-text); }
@@ -185,7 +185,7 @@
     .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); align-items: start; }
     .cols > .block + .block { margin-top: 0; }
     .counters { grid-template-columns: repeat(3, minmax(0, 220px)); }
-    .prow { grid-template-columns: 64px minmax(0, 1fr) 260px; align-items: center; }
+    .prow { grid-template-columns: 64px minmax(0, 1fr) 360px; align-items: center; }
     .prow img { grid-row: auto; }
     .prow .edit { grid-column: 1 / -1; }
     .split2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8); align-items: start; }
@@ -245,16 +245,16 @@
 
 <script src="ov/js/ov-forms.js"></script>
 <script type="module">
-import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
+import { connexion, deconnexion, surConnexion, chargerTout, chargerPhoto, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
 import { clubProche, athletesDeLaFeuille, norm, BRAS, ageAu, ageDe, pratiqueDe, dateIlYA } from './ov/js/ov-data.js';
-import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js';
+import { reduirePhoto, tournerPhoto, enBlob, MINI, FICHE } from './ov/js/ov-image.js?v=2';
 import { esc } from './ov/js/ov-vue.js';
 
 // ------------------------------------------------------------------ state (filled by chargerTout)
 const S = { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() };
 const ETATS = [['nouvelle', 'Nouvelle'], ['en_discussion', 'En discussion'], ['match_organise', 'Match organisé'], ['sans_suite', 'Sans suite']];
 const etatNom = (k) => (ETATS.find((e) => e[0] === k) || [k, k])[1];
-const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null, supprCand: null };
+const ui = { tab: 'traiter', filtre: 'toutes', open: null, refuse: null, newClub: null, rename: null, merge: null, imp: null, supprCand: null, supprProfil: null };
 
 // ------------------------------------------------------------------ helpers
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -378,6 +378,8 @@ function editForm(p) {
     '<div class="field field--full"><label><input type="checkbox" name="publicOk"' + (contact(p).publicOk === true ? ' checked' : '') + '> Accord de publication obtenu (la personne a dit oui)</label></div>' +
     (ageDe(p) >= 18 ? '' : '<div class="field field--full"><label><input type="checkbox" name="accordParent"' + (contact(p).accordParent === true ? ' checked' : '') + '> Accord d’un parent obtenu</label></div>') +
     '<div class="field field--full"><label for="' + k + 'photo">Nouvelle photo (facultatif)</label><input id="' + k + 'photo" name="photo" type="file" accept="image/*"></div>' +
+    '<div class="field field--full"><label for="' + k + 'tourner">Tourner la photo (la nouvelle si vous en choisissez une, sinon l’actuelle)</label><select id="' + k + 'tourner" name="tourner">' +
+    '<option value="0">Ne pas tourner</option><option value="1">D’un quart de tour, sens horaire</option><option value="2">D’un demi-tour</option><option value="3">D’un quart de tour, sens antihoraire</option></select></div>' +
     '</div><div class="edit__actions"><button class="btn btn--primary" type="submit">Enregistrer</button><button class="btn btn--secondary" type="button" data-act="fermer">Annuler</button></div></form>';
 }
 async function saveEdit(form) {
@@ -408,12 +410,16 @@ async function saveEdit(form) {
   const contactChange = email !== (c0.email || '') || tel !== (c0.telephone || '');
   const accords = { publicOk: f.publicOk.checked, accordParent: f.accordParent ? f.accordParent.checked : c0.accordParent === true };
   const accordsChanges = accords.publicOk !== (c0.publicOk === true) || accords.accordParent !== (c0.accordParent === true);
+  const quarts = Number(f.tourner.value) || 0;
   let photo = null;
   await agir(async () => {
-    if (fichier) {
+    if (fichier || (quarts && p.mini)) {
+      // sans nouveau fichier, on tourne la photo enregistrée (la grande ; à défaut, la vignette)
+      let source = fichier || enBlob((await chargerPhoto(p.id)) || p.mini);
+      if (quarts) source = await tournerPhoto(source, quarts);
       // one after the other : two canvases decoded at once weigh too much on a phone
-      const image = await reduirePhoto(fichier, FICHE.max, FICHE.limite);
-      const mini = await reduirePhoto(fichier, MINI.max, MINI.limite);
+      const image = await reduirePhoto(source, FICHE.max, FICHE.limite);
+      const mini = await reduirePhoto(source, MINI.max, MINI.limite);
       photo = { image, mini };
     }
     await majProfil(p.id, champs);
@@ -505,7 +511,10 @@ function viewProfils() {
     html += list.map((p) => '<div class="prow' + (p.statut === 'cache' ? ' is-hidden' : '') + '" data-profil="' + esc(p.id) + '">' + photoImg(p, 64, 80, '') +
       '<div><p class="prow__name">' + esc(full(p)) + (p.statut === 'cache' ? ' <span class="pill pill--off">Cachée</span>' : ' <span class="pill">Publiée</span>') + '</p>' +
       '<p class="muted">' + esc((p.clubId && club(p.clubId) && club(p.clubId).nom) || 'Sans club') + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p></div>' +
-      (ui.open === p.id ? editForm(p) : '<div class="prow__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="modifier">Modifier</button><button class="btn btn--secondary btn--sm" type="button" data-act="' + (p.statut === 'cache' ? 'afficher">Afficher' : 'cacher">Cacher') + '</button></div>') +
+      (ui.open === p.id ? editForm(p)
+        : ui.supprProfil === p.id
+          ? '<div class="confirm" role="group" aria-label="Confirmer la suppression"><p>Supprimer la fiche de ' + esc(full(p)) + '&nbsp;? Elle disparaît de la page et de la base, avec sa photo et son contact.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="suppr-profil-ok">Supprimer la fiche</button><button class="btn btn--secondary" type="button" data-act="suppr-profil-non">Garder la fiche</button></div></div>'
+          : '<div class="prow__actions"><button class="btn btn--secondary btn--sm" type="button" data-act="modifier">Modifier</button><button class="btn btn--secondary btn--sm" type="button" data-act="' + (p.statut === 'cache' ? 'afficher">Afficher' : 'cacher">Cacher') + '</button><button class="btn btn--secondary btn--sm btn--danger" type="button" data-act="suppr-profil">Supprimer</button></div>') +
       '</div>').join('') + '</section>';
   }
   return html;
@@ -644,7 +653,7 @@ deniedBtn.addEventListener('click', sortir);
 // ------------------------------------------------------------------ what each click does
 $('.tabs').addEventListener('click', (e) => {
   const b = e.target.closest('[data-tab]'); if (!b) return;
-  ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null; ui.imp = null; ui.supprCand = null;
+  ui.tab = b.dataset.tab; ui.open = null; ui.refuse = null; ui.newClub = null; ui.rename = null; ui.merge = null; ui.imp = null; ui.supprCand = null; ui.supprProfil = null;
   render(); window.scrollTo(0, 0);
   const h = $('#h-' + ui.tab); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
 });
@@ -690,6 +699,15 @@ views.addEventListener('click', (e) => {
       });
       return;
     case 'annuler': ui.refuse = null; render(q('data-profil', p.id) + ' [data-act="refuser"]'); return;
+    // onglet Profils : supprimer une fiche publiée ou cachée (profil, photo et contact, en un seul envoi)
+    case 'suppr-profil': ui.supprProfil = p.id; render('[data-act="suppr-profil-ok"]'); return;
+    case 'suppr-profil-non': ui.supprProfil = null; render(q('data-profil', p.id) + ' [data-act="suppr-profil"]'); return;
+    case 'suppr-profil-ok':
+      agir(() => supprimerProfil(p.id), () => {
+        S.profils = S.profils.filter((x) => x.id !== p.id); S.contacts.delete(p.id); ui.supprProfil = null;
+        toast('Fiche de ' + full(p) + ' supprimée.'); render('h2');
+      });
+      return;
     case 'ranger': {
       const c = club(b.dataset.club); if (!c) return;
       agir(() => majProfil(p.id, { clubId: c.id }), () => {
