@@ -1,372 +1,405 @@
 <!doctype html>
-<html lang="fr" data-type="service" data-radius="sharp" data-buttons="block" data-motion>
+<html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Open Vendetta : matchs de bras de fer au Luxembourg</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Vendetta : matchs de bras de fer au Luxembourg</title>
 <meta name="description" content="Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match de bras de fer. Le club organise ensuite la rencontre avec vous.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Open Vendetta : matchs de bras de fer au Luxembourg">
+<meta property="og:title" content="Open Vendetta : matchs de bras de fer au Luxembourg">
 <meta property="og:description" content="Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match de bras de fer. Le club organise ensuite la rencontre avec vous.">
 <meta property="og:image" content="https://armwrestlingclubstrassen.com/ov/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="ov/favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#181818">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="https://armwrestlingclubstrassen.com/open-vendetta.html">
 <meta name="robots" content="index, follow">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"Open Vendetta","url":"https://armwrestlingclubstrassen.com/open-vendetta.html","inLanguage":"fr-LU","description":"Athlètes inscrits à Open Vendetta, ouverts à un match de bras de fer.","isPartOf":{"@type":"WebSite","name":"Armwrestling Club Strassen","url":"https://armwrestlingclubstrassen.com/"}}
 </script>
-<meta name="site-kind" content="other">
-<meta name="page-type" content="service">
+<!-- Les polices du site du club, chargées comme dans index.html -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="ov/assets/system.css">
-<link rel="stylesheet" href="ov/assets/ui/cards.css">
-<link rel="stylesheet" href="ov/assets/motion/motion.css">
-<link rel="stylesheet" href="ov/assets/layout/layout.css">
-<!-- palette: start.mjs brand, the client’s chosen reference (near-black canvas, white type, one racing red) -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- la photo de l'accroche est un fond CSS : on la demande tout de suite -->
+<link rel="preload" as="image" href="ov/assets/img/club/match-table-noir.webp" media="(min-width: 901px)">
+<link rel="preload" as="image" href="ov/assets/img/club/match-table-phone.webp" media="(max-width: 900px)">
+<!-- La feuille du site du club, telle quelle : nav, #hero, section, .section-tag, h2 span, .event-card,
+     .about-card, .btn-register, .btn-primary, .btn-outline, .form-input, .divider, #contact, footer -->
+<link rel="stylesheet" href="style.css">
 <style>
-:root {
-  --p-bg: #181818; --p-surface: #303030; --p-ink: #ffffff; --p-muted: #9e9e9e;
-  --p-accent: #da291c; --p-accent-ink: #ffffff; --p-action: #da291c; --p-action-ink: #ffffff;
-  --p-inv-bg: #ffffff; --p-inv-surface: #ededed; --p-inv-ink: #181818; --p-inv-muted: #666666;
-  --p-inv-accent: #da291c; --p-inv-accent-ink: #ffffff; --p-inv-action: #da291c; --p-inv-action-ink: #ffffff;
-  --font-display: "Instrument Sans", system-ui, sans-serif;
-  --font-text: "Instrument Sans", system-ui, sans-serif;
-  --display-weight: 400;
-  --display-tracking: -0.028em;
-  --display-tracking-xl: -0.036em;
-  --display-stretch: 96%;
-  --ly-scale: 1.04;
+/* Open Vendetta (maquette m6, style du site) : seulement ce que style.css n'a pas */
+:root { color-scheme: dark; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 84px; }
+:focus-visible { outline: 2px solid var(--red-hot); outline-offset: 3px; }
+a, button, select, label { touch-action: manipulation; }
+.wrap { max-width: 1160px; margin: 0 auto; }
+button { font: inherit; }
+button.btn-register, button.btn-outline { cursor: pointer; }
+/* petits libellés rouges : #e74c3c (5,2:1 sur le noir) au lieu de #c0392b (3,6:1), trop pâle à 12 px */
+.section-tag, .hero-eyebrow { color: var(--red-hot); }
+.section-tag::before, .hero-eyebrow::before { background: var(--red-hot); }
+.footer-label { color: rgba(245, 240, 232, .55); }
+
+/* ===== ACCROCHE : le #hero du site, avec la photo de match, sans colonne de chiffres ===== */
+.ov-hero-bg {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.74) 40%, rgba(0,0,0,.36) 70%, rgba(0,0,0,.2) 100%),
+    radial-gradient(ellipse 80% 60% at 72% 50%, rgba(192,57,43,.16) 0%, transparent 72%),
+    url("ov/assets/img/club/match-table-noir.webp") center right / cover no-repeat,
+    #0a0a0a;
 }
-</style>
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="ov/assets/moments/moments.js">
-<link rel="modulepreload" href="ov/assets/moments/lib.js">
-<link rel="modulepreload" href="ov/assets/moments/picture-develops/moment.js">
-<!-- page CSS: the roster (its filters, rows and profile sheets), the step panels' height, the develop frame -->
-<style>
-  :root { color-scheme: dark; }
-  a, button, select, label { touch-action: manipulation; }
-  .hero--photo .hero__text > .hero-notice { margin-bottom: var(--s-5); color: var(--p-muted); }
-  #principe .panel { --p-h: 320px; }
+.ov-hero .hero-inner { grid-template-columns: minmax(0, 760px); }
+#hero .hero-desc { color: rgba(245, 240, 232, .78); }
 
-  /* the filters: five selects on the grid, the count under them */
-  .filters { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: var(--s-4); align-items: end; }
-  .filters > .field { grid-column: auto / span 2; }
-  .filters > .field--wide { grid-column: auto / span 3; }
-  .field select { width: 100%; height: 48px; padding: 0 40px 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm);
-    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center / 12px;
-    background-color: var(--bg); color: var(--ink); font: 400 var(--t-body)/1 var(--font-text); appearance: none; cursor: pointer; transition: border-color var(--dur) var(--ease); }
-  .field select option { background-color: #181818; color: #ffffff; }
-  .field select:hover { border-color: var(--ink); }
-  .field label { color: var(--muted); }
-  .roster__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); min-height: 44px; margin-top: var(--s-2); }
-  .roster__status { color: var(--muted); font-size: var(--t-small); }
-  .roster__reset, .roster__toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--ink); font: 500 var(--t-small)/1 var(--font-text); cursor: pointer;
-    text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); transition: text-decoration-color var(--dur) var(--ease); }
-  .roster__reset:hover, .roster__toggle:hover { text-decoration-color: currentColor; }
-  .roster__toggle { display: none; }
+/* ===== PRINCIPE : trois .event-card du site ===== */
+#principe { background: var(--black); }
+.steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.steps .event-card { margin-top: 0; padding: 0; }
+.step-photo { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; background: var(--dark2); }
+.step-photo img { width: 100%; height: 100%; object-fit: cover; }
+.step-body { display: flex; flex-direction: column; gap: .6rem; padding: 1.8rem 2rem 2.2rem; }
+.step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: .9; color: var(--red); }
+.step-body h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1.05; }
+.step-body p { font-size: .95rem; color: rgba(245, 240, 232, .7); line-height: 1.7; }
 
-  /* the groups: a city, its count, then one row per athlete, heaviest first */
-  .roster__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); margin: var(--s-5) 0 0; }
-  .roster__head h3 { font: 560 18px/26px var(--font-text); letter-spacing: -0.012em; scroll-margin-top: calc(var(--nav) + var(--s-6)); }
-  .roster__head p { color: var(--muted); font-size: var(--t-small); }
-  .roster__empty { margin-top: var(--s-6); display: grid; gap: var(--s-2); justify-items: start; }
+/* ===== PROFILS ===== */
+#profils { background: var(--black); }
+.filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(2, minmax(0, 1.5fr)); gap: 1rem; align-items: end; }
+.field { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
+.field .form-label { color: rgba(245, 240, 232, .62); }
+.ov-select {
+  height: 48px; padding: 0 2.6rem 0 1rem; cursor: pointer; appearance: none; -webkit-appearance: none;
+  border: 1px solid rgba(245, 240, 232, .2);
+  background: rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%23e74c3c' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 1rem center / 12px;
+}
+.ov-select:hover { border-color: rgba(245, 240, 232, .45); }
+.ov-select:focus { border-color: var(--red-hot); }
+.ov-select:focus-visible { outline: 2px solid var(--red-hot); outline-offset: 2px; }
+.ov-select option { background: #111; color: #f5f0e8; }
+.roster-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; margin-top: 1rem; }
+.roster-status, .roster-reset, .roster-toggle, .roster-head p, .athlete-facts, .fiche-meta {
+  font-family: var(--font-display); font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+}
+.roster-status { font-size: .8rem; color: var(--grey); }
+.roster-reset, .roster-toggle {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  font-size: .8rem; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px;
+}
+.roster-reset:hover, .roster-toggle:hover { color: var(--red-hot); }
+.roster-toggle { display: none; }
 
-  .athlete { border-bottom: 1px solid var(--line); }
-  .athlete__row { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center; min-height: 100px; padding-block: 10px; }
-  .athlete__thumb { grid-column: 1 / span 1; width: 64px; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; border-radius: var(--r-sm); background: var(--surface); }
-  .athlete__thumb img, .fiche__photo img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); transition: transform 600ms var(--ease); }
-  .athlete__id { grid-column: 2 / span 4; display: grid; gap: 2px; }
-  .athlete__name { margin: 0; font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
-  .athlete__toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
-  .athlete__toggle::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-  .athlete__club { color: var(--muted); font-size: var(--t-body); }
-  .athlete__facts { grid-column: 6 / span 4; margin: 0; font-size: var(--t-body); }
-  .specs dt { font-size: var(--t-label); font-weight: 500; color: var(--muted); }
-  .specs dd { margin: 2px 0 0; }
-  .athlete__weight { grid-column: 10 / span 2; margin: 0; text-align: right; white-space: nowrap; font: var(--display-weight) var(--t-h2)/1 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
-  .athlete__weight small { margin-left: 6px; font: 500 var(--t-small)/1 var(--font-text); letter-spacing: 0; color: var(--muted); }
-  .athlete__chev { grid-column: 12 / span 1; justify-self: end; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: var(--r-btn);
-    transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
-  .athlete__chev svg { width: 12px; height: 12px; transition: transform 240ms var(--ease); }
-  .athlete.is-open .athlete__chev svg { transform: rotate(180deg); }
-  @media (hover: hover) and (pointer: fine) {
-    .athlete__row:hover .athlete__chev { background: var(--action); border-color: var(--action); color: var(--action-ink); }
-    .athlete__row:hover .athlete__thumb img { transform: scale(1.03); }
+.roster-group { margin-top: 3rem; }
+.roster-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid rgba(192, 57, 43, .45); }
+.roster-head h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; scroll-margin-top: 92px; }
+.roster-head p { font-size: .78rem; color: var(--grey); }
+.roster-list { list-style: none; }
+.roster-empty { margin-top: 2.5rem; }
+.roster-empty p:first-child { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
+.roster-empty p + p { color: rgba(245, 240, 232, .65); }
+
+/* une rangée par athlète ; le filet rouge à gauche reprend .about-card::before */
+.athlete { position: relative; border-bottom: 1px solid rgba(245, 240, 232, .08); scroll-margin-top: 84px; transition: background .3s; }
+.athlete::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transform-origin: top; transition: transform .35s; z-index: 2; }
+.athlete.is-open { background: var(--dark); }
+.athlete.is-open::before { transform: scaleY(1); }
+.athlete-row { position: relative; display: grid; grid-template-columns: 88px minmax(0, 1.25fr) minmax(0, 1fr) 150px 44px; column-gap: 2rem; align-items: center; min-height: 134px; padding: .9rem 1.2rem .9rem 1.4rem; }
+.athlete-row:has(.athlete-toggle:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: -2px; }
+.athlete-toggle:focus-visible { outline: none; }
+/* la photo posée sur la lueur rouge du site (le radial de .hero-bg, poussé) */
+.athlete-thumb {
+  position: relative; width: 88px; aspect-ratio: 4 / 5; margin: 0; overflow: hidden;
+  background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(231,76,60,.8) 0%, rgba(192,57,43,.3) 45%, transparent 78%), var(--dark2);
+  border-bottom: 2px solid var(--red);
+}
+.athlete-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; transform-origin: 50% 100%; transition: transform .5s; }
+.athlete-thumb .initiale { display: grid; place-items: end center; height: 100%; font-family: var(--font-display); font-size: 3.6rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
+.athlete-name { font-family: var(--font-display); font-size: 1.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
+.athlete-toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; text-align: left; cursor: pointer; }
+.athlete-toggle::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.athlete-club { font-size: .9rem; color: rgba(245, 240, 232, .65); line-height: 1.4; }
+.athlete-facts { font-size: .82rem; color: var(--light-grey); }
+.athlete-facts .sep { color: var(--red-hot); margin: 0 .5rem; }
+.athlete-weight { text-align: right; white-space: nowrap; font-family: var(--font-display); font-size: 3.2rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.athlete-weight small { margin-left: .2rem; font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--red-hot); }
+.athlete-chev { justify-self: end; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(245, 240, 232, .2); transition: background .2s, border-color .2s; }
+.athlete-chev svg { width: 14px; height: 14px; transition: transform .25s; }
+.athlete.is-open .athlete-chev { background: var(--red); border-color: var(--red); }
+.athlete.is-open .athlete-chev svg { transform: rotate(45deg); }
+@media (hover: hover) and (pointer: fine) {
+  .athlete:hover::before { transform: scaleY(1); }
+  .athlete-row:hover .athlete-chev { background: var(--red); border-color: var(--red); }
+  .athlete-row:hover .athlete-thumb img { transform: scale(1.06); }
+}
+
+/* la fiche, dépliée dans la rangée */
+.athlete-fiche { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2.5rem; padding: .4rem 1.2rem 2.6rem 1.4rem; }
+.fiche-photo {
+  position: relative; margin: 0; aspect-ratio: 3 / 2; overflow: hidden; container-type: inline-size;
+  border: 1px solid rgba(192, 57, 43, .25);
+  background:
+    radial-gradient(ellipse 62% 78% at 50% 100%, rgba(231,76,60,.62) 0%, rgba(192,57,43,.22) 42%, transparent 72%),
+    linear-gradient(rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 40px 40px,
+    #0d0d0d;
+}
+.fiche-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--red); }
+.fiche-ghost { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-56%); text-align: center; font-family: var(--font-display); font-size: 50cqw; font-weight: 900; line-height: .8; letter-spacing: -.02em; color: transparent; -webkit-text-stroke: 1px rgba(245, 240, 232, .16); pointer-events: none; user-select: none; }
+.fiche-photo img { position: relative; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%; }
+.fiche-photo .initiale { position: absolute; inset: 0; display: grid; place-items: end center; font-family: var(--font-display); font-size: 40cqw; font-weight: 900; line-height: .78; color: var(--white); }
+/* la photo arrivée, l'initiale s'efface */
+.fiche-photo img:not([hidden]) + .initiale { display: none; }
+.fiche-body { display: flex; flex-direction: column; gap: 1.4rem; min-width: 0; }
+.fiche-meta { font-size: .8rem; color: var(--grey); }
+.fiche-meta strong { color: var(--white); font-weight: 700; }
+/* les mesures : la grille .event-figures du site (filets rouges de 1 px, cases noires) */
+.specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; background: rgba(192, 57, 43, .22); border: 1px solid rgba(192, 57, 43, .28); }
+.specs > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 1.1rem .8rem; background: var(--black); text-align: center; }
+.specs > .wide { grid-column: span 2; }
+.specs dt { margin-top: .45rem; font-family: var(--font-display); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(245, 240, 232, .62); }
+.specs dd { font-family: var(--font-display); font-size: 2rem; font-weight: 900; line-height: 1; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.specs dd small { margin-left: .2rem; font-size: .9rem; font-weight: 700; color: var(--red-hot); }
+.fiche-lines { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.5rem; margin: 0; }
+.fiche-lines dt { font-family: var(--font-display); font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--grey); padding-top: .2rem; }
+.fiche-lines dd { color: rgba(245, 240, 232, .85); }
+.fiche-lines a { text-decoration-color: var(--red); text-underline-offset: 4px; }
+.fiche-propose { margin-top: auto; }
+/* bureau : la photo de l'athlète reste en vue pendant qu'on remplit le formulaire */
+@media (min-width: 901px) { .fiche-photo { position: sticky; top: 92px; align-self: start; } }
+
+/* ===== PROPOSITION DE MATCH : le formulaire, déplié dans la fiche ===== */
+.propose { padding-top: 1.6rem; border-top: 1px solid rgba(192, 57, 43, .45); }
+.propose__head { display: grid; gap: .5rem; margin-bottom: 1.6rem; }
+.propose__title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1.05; }
+.propose__recap { font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red-hot); }
+.propose__intro { font-size: .92rem; color: rgba(245, 240, 232, .68); max-width: 52ch; }
+.propose__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; }
+.propose__grid > .field--full { grid-column: 1 / -1; }
+.propose .form-input { border-color: rgba(245, 240, 232, .2); }
+.propose .form-input:not(textarea) { height: 48px; }
+.propose textarea.form-input { min-height: 110px; resize: vertical; line-height: 1.6; }
+.propose .form-input:focus { border-color: var(--red-hot); }
+.propose .form-input[aria-invalid="true"] { border-color: var(--red-hot); }
+.field__error { font-size: .85rem; color: var(--red-hot); }
+fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
+fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
+.choice { display: flex; flex-wrap: wrap; gap: 0 1.8rem; }
+.choice label { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; font-size: .95rem; cursor: pointer; }
+.choice input, .field--check input { width: 20px; height: 20px; margin: 0; accent-color: var(--red); }
+.field.field--check { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: .8rem; align-items: start; }
+.field--check > input { margin-top: 3px; }
+.field--check > label { font-size: .95rem; line-height: 1.5; color: rgba(245, 240, 232, .85); cursor: pointer; }
+.field--check > .field__error { grid-column: 2; }
+.tel { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: .5rem; }
+.tel > div { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
+.donnees { border: 1px solid rgba(245, 240, 232, .12); padding: .8rem 1rem; font-size: .85rem; line-height: 1.6; color: rgba(245, 240, 232, .65); }
+.donnees summary { min-height: 24px; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); }
+.donnees p { margin-top: .6rem; }
+.donnees a { text-decoration-color: var(--red); text-underline-offset: 3px; }
+.propose__actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 1rem; margin-top: 1.6rem; }
+.propose .form__status { min-height: 1.5em; margin-top: .8rem; font-size: .88rem; color: rgba(245, 240, 232, .68); }
+.propose__done { display: grid; gap: 1rem; justify-items: start; padding: 1.2rem 0; outline: none; }
+.propose__done-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; line-height: 1.05; }
+.propose__done p:not(.propose__done-title) { max-width: 56ch; color: rgba(245, 240, 232, .8); }
+
+/* ===== INSCRIPTION : les .about-card du site ===== */
+#inscription { background: var(--dark); }
+.insc-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3.5rem; align-items: stretch; }
+.insc-cards { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.insc-cards .about-card { padding: 1.5rem 1.6rem; }
+.insc-cards .about-card p { color: rgba(245, 240, 232, .68); }
+.insc-actions { margin-top: 2rem; }
+.insc-photo { position: relative; margin: 0; min-height: 440px; overflow: hidden; border: 1px solid rgba(245, 240, 232, .07); }
+.insc-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.insc-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--red); }
+
+/* ===== CLÔTURE : le fond #contact du site ===== */
+.close-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; align-items: center; }
+.close-grid .section-intro { margin-bottom: 2rem; }
+.close-photo { position: relative; margin: 0; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(212, 160, 23, .14); }
+.close-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+
+/* ===== TABLETTE ET TÉLÉPHONE ===== */
+@media (max-width: 900px) {
+  #hero.ov-hero { padding: calc(68px + 46vw) 1.5rem 3.5rem; }
+  .ov-hero-bg {
+    background:
+      linear-gradient(180deg, rgba(10,10,10,.05) 0, rgba(10,10,10,.35) calc(68px + 26vw), #0a0a0a calc(68px + 62vw)),
+      url("ov/assets/img/club/match-table-phone.webp") center 68px / 100% auto no-repeat,
+      #0a0a0a;
   }
-
-  /* the profile sheet, unfolded inside its row: the large photograph, then the figures */
-  .athlete__fiche { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); padding: var(--s-5) 0 var(--s-7); }
-  .fiche__photo { grid-column: 1 / span 4; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-md); background: var(--surface); }
-  .fiche__body { grid-column: 6 / span 7; display: flex; flex-direction: column; gap: var(--s-6); }
-  .fiche__meta { font-size: var(--t-lead); }
-  .specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); margin: 0; }
-  .specs > div { padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
-  .specs dd { font: var(--display-weight) var(--t-stat)/1.1 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
-  .specs dd small { margin-left: 4px; font: 500 var(--t-small)/1 var(--font-text); letter-spacing: 0; color: var(--muted); }
-  .fiche__lines { display: grid; grid-template-columns: max-content 1fr; gap: var(--s-3) var(--s-6); margin: 0; }
-  .fiche__lines dt { color: var(--muted); }
-  .fiche__lines dd { margin: 0; }
-  .fiche__note { min-height: 1.5em; color: var(--muted); font-size: var(--t-small); }
-
-  /* the develop frame (picture-develops), as tall as the words beside it */
-  .develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(560px, var(--ly-fit, 560px)); }
-  .develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  #inscription .btn-row > .btn--secondary { padding-left: 0; }
-  .inscription__note { min-height: 1.5em; margin-top: var(--s-3); color: var(--muted); font-size: var(--t-small); }
-
-  .footer__club { display: flex; align-items: center; gap: var(--s-4); }
-  .footer__club img { width: 56px; height: 56px; border-radius: 999px; background: #ffffff; }
-
-  /* a screen grows when a sheet opens or a filter narrows the list (the content changes, the box follows) */
-  @media (min-width: 1280px) {
-    #profils:is(.has-open, .is-filtered) { height: auto; min-height: 200svh; }
-    /* the wide desktop: larger rows and portraits, so the list runs down its two screens */
-    .athlete__row { min-height: 120px; }
-    .athlete__thumb { width: 80px; }
-  }
-
-  /* the tablet and the small desktop: the three steps stay side by side, so the section is one screen */
-  @media (min-width: 640px) and (max-width: 1279px) {
-    #principe .grid > .card { grid-column: auto / span 4; }
-    #principe .panel { --p-h: 220px; }
-  }
-  @media (min-width: 640px) and (max-width: 1023px) { #principe .panel { --p-h: 340px; } }
-  @media (max-width: 1023px) {
-    .filters > .field { grid-column: auto / span 4; }
-    .filters > .field--wide { grid-column: auto / span 6; }
-    .athlete__row { grid-template-columns: 88px minmax(0, 1fr) 96px 44px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; row-gap: 2px; min-height: 132px; }
-    .athlete__thumb { grid-area: thumb; width: 88px; }
-    .athlete__id { grid-area: id; align-self: end; }
-    .athlete__facts { grid-area: facts; align-self: start; color: var(--muted); font-size: var(--t-small); }
-    .athlete__weight { grid-area: weight; }
-    .athlete__chev { grid-area: chev; }
-    .athlete__fiche { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-5); }
-    .fiche__photo { grid-column: 1; aspect-ratio: 3 / 2; }
-    .fiche__body { grid-column: 1; }
-  }
-  /* the tablet: the sign-up split stays beside its photograph (7 and 5 columns), one screen */
-  @media (min-width: 640px) and (max-width: 1023px) {
-    #inscription .grid > .inscription__text { grid-column: auto / span 7; }
-    #inscription .grid > .develop { grid-column: auto / span 5; height: auto; aspect-ratio: 4 / 5; }
-    #contact .closing__links .footer__col { grid-column: auto / span 4; }
-  }
-  @media (max-width: 639px) {
-    #top > .hero--photo { --photo: 34svh; }
-    /* the bar keeps the name and the menu; the main action is in the sheet, the hero and the close */
-    .nav:not(.is-open) .nav__actions { display: none; }
-    .nav:not(.is-open) .nav__toggle, .nav:not(.is-open) .nav__actions + .nav__toggle { margin-left: auto; }
-    /* on a phone the row keeps the arm; the height, age and the rest are in the sheet */
-    .facts__more { display: none; }
-    .hero--photo .hero__text > .hero-notice { margin-bottom: var(--s-4); }
-    #principe .panel { --p-h: 260px; }
-    .roster__toggle { display: inline-flex; }
-    html.ov-js .filters:not(.is-open) { display: none; }
-    .filters > .field { grid-column: auto / span 6; }
-    .filters > .field--wide { grid-column: 1 / -1; }
-    .athlete__row { grid-template-columns: 64px minmax(0, 1fr) 68px 20px; column-gap: var(--s-3); min-height: 100px; }
-    .athlete__chev { width: 20px; border: 0; }
-    .athlete__thumb { width: 64px; }
-    .athlete__name { font-size: 20px; }
-    .athlete__club { font-size: var(--t-small); }
-    .athlete__weight { font-size: 26px; }
-    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .specs dd { font-size: 26px; }
-    .develop { height: auto; aspect-ratio: 3 / 5; margin-top: var(--s-7); }
-    #inscription .rows > li { padding-block: var(--s-5); }
-    #inscription .rows > li:first-child { padding-top: 0; }
-  }
-
-  /* the proposal form, opened in the sheet under the athlete's figures */
-  .propose { margin-top: var(--s-2); padding-top: var(--s-5); border-top: 1px solid var(--line); }
-  .propose__head { display: grid; gap: var(--s-2); margin-bottom: var(--s-5); }
-  .propose__title { font: var(--display-weight) var(--t-h3)/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
-  .propose__intro { color: var(--muted); max-width: 52ch; }
-  .propose__recap { font-weight: 500; }
-  .athlete { scroll-margin-top: var(--nav); }
-  /* the athlete's photograph stays in view beside the form while it is filled in (desktop, open sheet only) */
-  @media (min-width: 1024px) { .athlete__fiche .fiche__photo { position: sticky; top: calc(var(--nav) + var(--s-5)); align-self: start; } }
-  .propose__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5) var(--gutter); }
-  .propose__grid > .field--full { grid-column: 1 / -1; }
-  .propose__actions { margin-top: var(--s-6); }
-  .propose__done { display: grid; gap: var(--s-4); justify-items: start; padding: var(--s-5) 0; outline: none; }
-  .propose__done-title { font: var(--display-weight) var(--t-h3)/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
-  .propose__done p { max-width: 56ch; }
-  .propose .form__status { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-small); min-height: 1.5em; }
-  fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
-  fieldset.field > legend { padding: 0; margin-bottom: var(--s-2); color: var(--muted); font-size: var(--t-small); font-weight: 500; }
-  .choice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
-  .choice label { display: inline-flex; align-items: center; gap: var(--s-3); min-height: 44px; padding: 0; color: var(--ink); font-size: var(--t-body); font-weight: 400; cursor: pointer; }
-  .choice label:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-strong); }
-  .tel { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: var(--s-2); }
-  .tel > div { display: grid; gap: var(--s-2); }
-  .choice input, .field--check input { width: 20px; height: 20px; margin: 0; accent-color: var(--action); }
-  .field--check { grid-template-columns: 20px minmax(0, 1fr); column-gap: var(--s-3); align-items: start; }
-  .field--check > label { color: var(--ink); font-size: var(--t-body); font-weight: 400; line-height: 1.5; cursor: pointer; }
-  .field--check > input { margin-top: 3px; }
-  .field--check > .field__error { grid-column: 2; }
-  .field input, .field textarea { color: var(--ink); background-color: var(--bg); }
-  @media (max-width: 639px) {
-    .propose__grid { grid-template-columns: minmax(0, 1fr); }
-  }
-  .donnees { border: 1px solid var(--line); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4); color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
-  .donnees summary { cursor: pointer; color: var(--ink); font-weight: 600; min-height: 24px; }
-  .donnees p { margin: var(--s-3) 0 0; }
-  .donnees a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-  @media (prefers-reduced-motion: reduce) { .athlete__chev svg, .athlete__thumb img { transition: none; } }
+  #hero h1 { font-size: clamp(2.6rem, 11vw, 4.6rem); }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .step-photo { aspect-ratio: 16 / 9; }
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters .field-wide { grid-column: 1 / -1; }
+  .athlete-row { grid-template-columns: 72px minmax(0, 1fr) auto 32px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; column-gap: 1rem; row-gap: .25rem; min-height: 112px; padding: .8rem .8rem .8rem 1rem; }
+  .athlete-thumb { grid-area: thumb; width: 72px; }
+  .athlete-id { grid-area: id; align-self: end; }
+  .athlete-facts { grid-area: facts; align-self: start; font-size: .72rem; }
+  .athlete-weight { grid-area: weight; font-size: 2.4rem; }
+  .athlete-chev { grid-area: chev; width: 32px; height: 32px; }
+  .athlete-name { font-size: 1.4rem; }
+  .athlete-club { font-size: .8rem; line-height: 1.35; }
+  .athlete-fiche { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: .4rem .8rem 2rem 1rem; }
+  .insc-grid, .close-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .insc-photo { min-height: 0; aspect-ratio: 16 / 10; }
+}
+@media (max-width: 639px) {
+  .roster-toggle { display: inline-flex; }
+  html.ov-js .filters:not(.is-open) { display: none; }
+  .facts-more { display: none; }
+  .insc-cards { grid-template-columns: minmax(0, 1fr); }
+  .athlete-row { grid-template-columns: 60px minmax(0, 1fr) auto 28px; column-gap: .8rem; min-height: 96px; padding: .7rem .5rem .7rem .75rem; }
+  .athlete-thumb { width: 60px; }
+  .athlete-thumb .initiale { font-size: 2.6rem; }
+  .athlete-name { font-size: 1.3rem; }
+  .athlete-weight { font-size: 2rem; }
+  .athlete-weight small { font-size: .8rem; }
+  .athlete-chev { width: 28px; height: 28px; }
+  .athlete-fiche { padding: .2rem .5rem 1.8rem .75rem; }
+  .specs > div { padding: .9rem .3rem; }
+  .specs dd { font-size: 1.6rem; }
+  .specs dd small { font-size: .75rem; }
+  .propose__grid { grid-template-columns: minmax(0, 1fr); }
+  .fiche-propose .btn-register, .propose__actions > button, .insc-actions .btn-register, #contact .btn-register { width: 100%; justify-content: center; text-align: center; padding: 1rem 1.2rem; font-size: 1rem; letter-spacing: .1em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .athlete, .athlete::before, .athlete-thumb img, .athlete-chev, .athlete-chev svg { transition: none; }
+}
 </style>
 </head>
 <body>
-<!-- type: service (site-kind other) · Open Vendetta, une page de l’Armwrestling Club Strassen
-     deal: hero photo (data-box none, data-tone dark, data-calm left) · palette brand: the client chose the
-     reference (near-black #181818, white type, one racing red #da291c for the main action) · type instrument
-     (Instrument Sans, one family: the reference sets a single grotesk at modest weights) · radius sharp (the
-     reference’s square corners) · nav nav-split (nav-mega dealt first: its use, a site of many product pages,
-     does not fit one page) · footer footer-dark (footer-visit dealt first: no address or hours in the brief) ·
-     close close-photo · rhythm space · buttons block · mark initial
-     moments: picture-develops (film) on the club’s competition tables, in #inscription: the one photograph
-     that comes up as the visitor reaches the sign-up terms
-     voice: direct, sportif, ton d’organisateur; "vous" pour le visiteur, "le club" pour l’organisateur;
-     phrases de 8 à 16 mots; pas d’humour, pas d’ego, pas de chambrage
-     screens at 1440: hero 1, principe 1, profils 2, inscription 1, footer.closing 1 -->
-<header class="nav nav--split">
-  <div class="wrap nav__bar">
-    <a class="skip-link" href="#top">Aller au contenu</a>
-    <a class="nav__logo" href="#top" translate="no"><span class="mark mark--initial" aria-hidden="true">O</span>Open Vendetta</a>
-    <nav class="nav__links" aria-label="Principal">
-      <div class="nav__item"><a class="nav__link" href="#principe">Principe</a></div>
-      <div class="nav__item"><a class="nav__link" href="#profils">Les profils</a></div>
-      <div class="nav__item"><a class="nav__link" href="#inscription">Inscription</a></div>
-    </nav>
-    <div class="nav__actions">
-      <a class="btn btn--primary" href="#profils">Proposer un match</a>
-    </div>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-</header>
+
+<nav aria-label="Principal">
+  <a href="#top" class="logo-wrap"><img src="logo.webp" alt="" class="nav-logo-img" width="44" height="44"><span class="nav-logo" translate="no">Open <span>Vendetta</span></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#principe">Principe</a></li>
+    <li><a href="#profils">Les profils</a></li>
+    <li><a href="#inscription">Inscription</a></li>
+    <li><a href="#profils" class="nav-cta">Proposer un match</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
 <main id="top">
-  <section class="hero hero--photo" data-enter data-box="none" data-tone="dark" data-calm="left" aria-labelledby="hero-h">
-    <picture class="hero__bg"><source media="(max-width: 639px)" srcset="ov/assets/img/club/match-table-phone.webp" width="780" height="574"><source media="(max-width: 1023px)" srcset="ov/assets/img/club/match-table-noir-1000.webp" width="1000" height="522"><img src="ov/assets/img/club/match-table-noir.webp" width="1961" height="1024" alt="Match de bras de fer sur une table de compétition, l’arbitre penché au-dessus des mains serrées" style="--ly-pos: 0% 50%; --ly-pos-phone: 50% 50%" fetchpriority="high" data-source="client" data-subject="un match du club"></picture>
-    <div class="wrap"><div class="hero-text">
-      <div class="hero__text">
-        <h1 id="hero-h">Matchs de bras de fer au Luxembourg</h1>
-        <p class="hero__lead">Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match. Le club vous recontacte et fixe le lieu et la date.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="#profils">Proposer un match</a><a class="btn btn--secondary" href="open-vendetta-ajouter.html">Ajouter mon profil</a></div>
-      </div>
-    </div></div>
-  </section>
-
-  <section class="section" id="principe" style="--h: 1; --hm: 2" aria-labelledby="principe-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="principe-h">Un match en 3 étapes. <span class="muted">La date se fixe ensuite avec le club.</span></h2>
-      </div>
-      <div class="grid">
-        <article class="card card--row card--open span-4">
-          <span class="step-num">1</span>
-          <h3>Choisir un athlète</h3>
-          <p>Filtrez par ville, bras, poids et club. Chaque fiche donne le poids, la taille, le bras et le palmarès.</p>
-          <div class="panel"><img class="frame__img" src="ov/assets/img/club/seance-encadree.webp" srcset="ov/assets/img/club/seance-encadree-600.webp 600w, ov/assets/img/club/seance-encadree.webp 1000w" sizes="(min-width: 1280px) 480px, 100vw" width="1000" height="667" alt="Deux athlètes face à face à la table pendant une séance encadrée par un arbitre" loading="lazy" decoding="async" style="object-position: 40% 40%" data-source="client" data-subject="une séance au club"></div>
-        </article>
-        <article class="card card--row card--open span-4">
-          <span class="step-num">2</span>
-          <h3>Envoyer une proposition de match</h3>
-          <p>Vous indiquez votre poids, votre bras, votre email et un message. Aucune date n’est demandée.</p>
-          <div class="panel"><img class="frame__img" src="ov/assets/img/club/match-public.webp" srcset="ov/assets/img/club/match-public-600.webp 600w, ov/assets/img/club/match-public.webp 1000w" sizes="(min-width: 1280px) 480px, 100vw" width="1000" height="667" alt="Un match serré à la table, le public debout derrière les athlètes" loading="lazy" decoding="async" style="object-position: 50% 40%" data-source="client" data-subject="un match en compétition"></div>
-        </article>
-        <article class="card card--row card--open span-4">
-          <span class="step-num">3</span>
-          <h3>Recevoir lieu et date du match</h3>
-          <p>L’organisateur vous recontacte, vérifie l’accord des deux athlètes, puis fixe le lieu et la date.</p>
-          <div class="panel"><img class="frame__img" src="ov/assets/img/club/arbitre-table.webp" srcset="ov/assets/img/club/arbitre-table-600.webp 600w, ov/assets/img/club/arbitre-table.webp 1000w" sizes="(min-width: 1280px) 480px, 100vw" width="1000" height="667" alt="Un arbitre officiel place les mains de deux athlètes avant le départ" loading="lazy" decoding="async" style="object-position: 50% 45%" data-source="client" data-subject="un départ arbitré"></div>
-        </article>
+  <section id="hero" class="ov-hero" aria-labelledby="hero-h">
+    <div class="hero-bg ov-hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Open Vendetta · Ouvert toute l’année</div>
+        <h1 id="hero-h">Matchs de bras de fer <em>au Luxembourg</em></h1>
+        <p class="hero-desc">Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match. Le club vous recontacte et fixe le lieu et la date.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#profils">Proposer un match</a>
+          <a class="btn-outline" href="open-vendetta-ajouter.html">Ajouter mon profil</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="profils" style="--h: 2" aria-labelledby="profils-h">
+  <section id="principe" aria-labelledby="principe-h">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="profils-h">Profils ouverts à un match</h2>
-      </div>
+      <div class="section-tag">Principe</div>
+      <h2 id="principe-h">Un match<br><span>en 3 étapes</span></h2>
+      <p class="section-intro">La date se fixe ensuite avec le club.</p>
+      <ol class="steps">
+        <li class="event-card">
+          <figure class="step-photo"><img src="ov/assets/img/club/seance-encadree-600.webp" width="600" height="400" alt="Deux athlètes face à face à la table pendant une séance encadrée par un arbitre" loading="lazy" decoding="async" style="object-position: 40% 40%"></figure>
+          <div class="step-body"><span class="step-num" aria-hidden="true">01</span><h3>Choisir un athlète</h3><p>Filtrez par ville, bras, poids et club. Chaque fiche donne le poids, la taille, le bras et le palmarès.</p></div>
+        </li>
+        <li class="event-card">
+          <figure class="step-photo"><img src="ov/assets/img/club/match-public-600.webp" width="600" height="400" alt="Un match serré à la table, le public debout derrière les athlètes" loading="lazy" decoding="async"></figure>
+          <div class="step-body"><span class="step-num" aria-hidden="true">02</span><h3>Envoyer une proposition de match</h3><p>Vous indiquez votre poids, votre bras, votre email et un message. Aucune date n’est demandée.</p></div>
+        </li>
+        <li class="event-card">
+          <figure class="step-photo"><img src="ov/assets/img/club/arbitre-table-600.webp" width="600" height="400" alt="Un arbitre officiel place les mains de deux athlètes avant le départ" loading="lazy" decoding="async"></figure>
+          <div class="step-body"><span class="step-num" aria-hidden="true">03</span><h3>Recevoir lieu et date du match</h3><p>L’organisateur vous recontacte, vérifie l’accord des deux athlètes, puis fixe le lieu et la date.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="profils" aria-labelledby="profils-h">
+    <div class="wrap">
+      <div class="section-tag">Les profils</div>
+      <h2 id="profils-h">Profils ouverts<br><span>à un match</span></h2>
       <div class="roster">
         <div class="filters" id="filtres" role="search" aria-label="Filtrer les profils">
-          <div class="field"><label for="f-ville">Ville</label>
-            <select id="f-ville" name="ville"><option value="toutes">Toutes les villes</option><option value="Luxembourg">Luxembourg</option><option value="Strasbourg">Strasbourg</option></select></div>
-          <div class="field"><label for="f-bras">Bras</label>
-            <select id="f-bras" name="bras"><option value="tous">Les deux bras</option><option value="Droit">Droit</option><option value="Gauche">Gauche</option></select></div>
-          <div class="field"><label for="f-poids">Poids</label>
-            <select id="f-poids" name="poids"><option value="tous">Tous les poids</option><option value="lt70">Moins de 70 kg</option><option value="70-89">De 70 à 89 kg</option><option value="90">90 kg et plus</option></select></div>
-          <div class="field field--wide"><label for="f-club">Club</label>
-            <select id="f-club" name="club"><option value="tous">Tous les clubs</option><option value="Armwrestling Club Strassen">Armwrestling Club Strassen</option><option value="Esch Arm Club">Esch Arm Club</option><option value="Strasbourg Bras de Fer">Strasbourg Bras de Fer</option></select></div>
-          <div class="field field--wide"><label for="f-tri">Ordre</label>
-            <select id="f-tri" name="tri"><option value="desc">Du plus lourd au plus léger</option><option value="asc">Du plus léger au plus lourd</option></select></div>
+          <div class="field"><label class="form-label" for="f-ville">Ville</label>
+            <select class="form-input ov-select" id="f-ville" name="ville"><option value="toutes">Toutes les villes</option></select></div>
+          <div class="field"><label class="form-label" for="f-bras">Bras</label>
+            <select class="form-input ov-select" id="f-bras" name="bras"><option value="tous">Les deux bras</option><option value="Droit">Droit</option><option value="Gauche">Gauche</option></select></div>
+          <div class="field"><label class="form-label" for="f-poids">Poids</label>
+            <select class="form-input ov-select" id="f-poids" name="poids"><option value="tous">Tous les poids</option><option value="lt70">Moins de 70 kg</option><option value="70-89">De 70 à 89 kg</option><option value="90">90 kg et plus</option></select></div>
+          <div class="field field-wide"><label class="form-label" for="f-club">Club</label>
+            <select class="form-input ov-select" id="f-club" name="club"><option value="tous">Tous les clubs</option></select></div>
+          <div class="field field-wide"><label class="form-label" for="f-tri">Ordre</label>
+            <select class="form-input ov-select" id="f-tri" name="tri"><option value="desc">Du plus lourd au plus léger</option><option value="asc">Du plus léger au plus lourd</option></select></div>
         </div>
-        <div class="roster__bar">
-          <p class="roster__status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
-          <button class="roster__toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
-          <button class="roster__reset" type="button" data-roster-reset hidden>Retirer les filtres</button>
+        <div class="roster-bar">
+          <p class="roster-status" role="status" aria-atomic="true" data-roster-status>Chargement des profils…</p>
+          <button class="roster-toggle" type="button" aria-expanded="false" aria-controls="filtres">Filtrer et trier</button>
+          <button class="roster-reset" type="button" data-roster-reset hidden>Retirer les filtres</button>
         </div>
-
-        <div class="roster__empty" data-roster-empty hidden>
-          <p class="t-lead">Aucun profil ne correspond à ces filtres.</p>
-          <p class="muted">Retirez un filtre pour voir plus d’athlètes.</p>
+        <div class="roster-empty" data-roster-empty hidden>
+          <p>Aucun profil ne correspond à ces filtres.</p>
+          <p>Retirez un filtre pour voir plus d’athlètes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="inscription" style="--h: 1; --hm: 2" aria-labelledby="inscription-h">
-    <div class="wrap grid grid--top">
-      <div class="span-6 inscription__text">
-        <div class="section-head">
-          <h2 id="inscription-h">Votre profil d’athlète sur la vitrine. <span class="muted">Il est publié après validation par le club.</span></h2>
-        </div>
-        <ul class="rows">
-          <li><span class="rows__name">Photo obligatoire</span><p>Envoyez une photo nette de vous, de face ou à la table. Sans photo, le profil reste hors ligne.</p></li>
-          <li><span class="rows__name">Validation par le club</span><p>L’organisateur relit chaque profil avant de le publier.</p></li>
-          <li><span class="rows__name">Coordonnées privées</span><p>Votre email et votre téléphone servent au club. Ils ne s’affichent jamais sur la page.</p></li>
-          <li><span class="rows__name">Dès 14 ans</span><p>Entre 14 et 17 ans, l’accord d’un parent est demandé.</p></li>
+  <section id="inscription" aria-labelledby="inscription-h">
+    <div class="wrap insc-grid">
+      <div>
+        <div class="section-tag">Inscription</div>
+        <h2 id="inscription-h">Votre profil d’athlète<br><span>sur la vitrine</span></h2>
+        <p class="section-intro">Il est publié après validation par le club.</p>
+        <ul class="insc-cards">
+          <li class="about-card"><h3>Photo obligatoire</h3><p>Envoyez une photo nette de vous, de face ou à la table. Sans photo, le profil reste hors ligne.</p></li>
+          <li class="about-card"><h3>Validation par le club</h3><p>L’organisateur relit chaque profil avant de le publier.</p></li>
+          <li class="about-card"><h3>Coordonnées privées</h3><p>Votre email et votre téléphone servent au club. Ils ne s’affichent jamais sur la page.</p></li>
+          <li class="about-card"><h3>Dès 14 ans</h3><p>Entre 14 et 17 ans, l’accord d’un parent est demandé.</p></li>
         </ul>
-        <div class="btn-row" style="margin-top: var(--s-6)"><a class="btn btn--secondary" href="open-vendetta-ajouter.html">Ajouter mon profil</a></div>
+        <div class="insc-actions"><a class="btn-register" href="open-vendetta-ajouter.html">Ajouter mon profil <span aria-hidden="true">→</span></a></div>
       </div>
-      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="ov/assets/img/club/tables-club.webp" srcset="ov/assets/img/club/tables-club-portrait.webp 371w, ov/assets/img/club/tables-club.webp 1100w" sizes="(max-width: 1023px) 342px, 1000px" width="1100" height="619" alt="Les tables de compétition du club, rouges, blanches et bleues, alignées dans le noir" loading="lazy" decoding="async" data-source="client" data-subject="les tables du club"></figure>
+      <figure class="insc-photo"><img src="ov/assets/img/club/tables-club.webp" width="1100" height="619" alt="Les tables de compétition du club, rouges, blanches et bleues, alignées dans le noir" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="close-h">
+    <div class="wrap close-grid">
+      <div>
+        <div class="section-tag">Proposer un match</div>
+        <h2 id="close-h">Votre prochain match<br><span>de bras de fer</span></h2>
+        <p class="section-intro">L’organisateur vous recontacte après chaque proposition.</p>
+        <a class="btn-register" href="#profils">Proposer un match <span aria-hidden="true">→</span></a>
+      </div>
+      <figure class="close-photo"><img src="ov/assets/img/club/match-intense-700.webp" srcset="ov/assets/img/club/match-intense-700.webp 700w, ov/assets/img/club/match-intense.webp 1600w" sizes="(max-width: 900px) 100vw, 560px" width="1600" height="1067" alt="Deux athlètes à la table en pleine poussée, la salle remplie derrière eux" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 </main>
 
-<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
-  <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Votre prochain match de bras de fer</h2><p class="t-lead">L’organisateur vous recontacte après chaque proposition.</p></div>
-        <a class="btn btn--primary" href="#profils">Proposer un match<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-      </div>
-      <div class="close__media"><img src="ov/assets/img/club/match-intense.webp" srcset="ov/assets/img/club/match-intense-700.webp 700w, ov/assets/img/club/match-intense.webp 1600w" sizes="(max-width: 639px) 600px, 1280px" width="1600" height="1067" alt="Deux athlètes à la table en pleine poussée, la salle remplie derrière eux" loading="lazy" decoding="async" style="--pos: 50% 38%" data-source="client" data-subject="un match en compétition"></div>
-    </div>
-    <div class="closing__links">
-      <div class="grid">
-        <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top" translate="no">Open Vendetta</a>
-          <div class="footer__club"><img src="ov/assets/img/club/logo-acs.webp" width="184" height="184" alt="Logo de l’Armwrestling Club Strassen" loading="lazy"><p class="footer__lede">Une page de l'<span translate="no">Armwrestling Club Strassen</span></p></div>
-        </div>
-        <div class="span-2 start-7 footer__col"><h3>Vitrine</h3><ul><li><a href="#principe">Principe</a></li><li><a href="#profils">Les profils</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Inscription</h3><ul><li><a href="open-vendetta-ajouter.html">Ajouter mon profil</a></li><li><a href="#inscription">Conditions du profil</a></li><li><a href="#profils">Proposer un match</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Club</h3><ul><li><a href="https://armwrestlingclubstrassen.com/">Voir le site du club</a></li></ul></div>
-      </div>
-      <div class="footer__legal">
-        <span>&copy; 2026 Armwrestling Club Strassen</span>
-      </div>
-    </div>
+<footer>
+  <div class="footer-col">
+    <div class="footer-logo" translate="no">Open <span>Vendetta</span></div>
+    <div class="footer-label">Une page de l’<span translate="no">Armwrestling Club Strassen</span></div>
   </div>
+  <ul class="footer-links">
+    <li><a href="#principe">Principe</a></li>
+    <li><a href="#profils">Les profils</a></li>
+    <li><a href="#inscription">Conditions du profil</a></li>
+    <li><a href="open-vendetta-ajouter.html">Ajouter mon profil</a></li>
+    <li><a href="https://armwrestlingclubstrassen.com/">Voir le site du club</a></li>
+  </ul>
+  <div class="footer-col"><p>&copy; 2026 Armwrestling Club Strassen</p></div>
 </footer>
 
 <!-- the proposal form: copied into the sheet of the athlete chosen (ids prefixed with the sheet's own) -->
@@ -378,26 +411,26 @@
       <p class="propose__intro">Vos coordonnées vont à l’organisateur, jamais sur la page. Aucune date à choisir : il vous recontacte.</p>
     </div>
     <div class="propose__grid">
-      <div class="field"><label for="__ID__-prenom">Prénom</label>
-        <input id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="__ID__-prenom-err">
+      <div class="field"><label class="form-label" for="__ID__-prenom">Prénom</label>
+        <input class="form-input" id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="__ID__-prenom-err">
         <p class="field__error" id="__ID__-prenom-err" hidden></p></div>
-      <div class="field"><label for="__ID__-nom">Nom</label>
-        <input id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="__ID__-nom-err">
+      <div class="field"><label class="form-label" for="__ID__-nom">Nom</label>
+        <input class="form-input" id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="__ID__-nom-err">
         <p class="field__error" id="__ID__-nom-err" hidden></p></div>
-      <div class="field"><label for="__ID__-club">Club (facultatif)</label>
-        <input id="__ID__-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs">
+      <div class="field"><label class="form-label" for="__ID__-club">Club (facultatif)</label>
+        <input class="form-input" id="__ID__-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs">
       </div>
-      <div class="field"><label for="__ID__-ville">Ville ou pays</label>
-        <input id="__ID__-ville" name="ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez votre ville ou votre pays." aria-describedby="__ID__-ville-err">
+      <div class="field"><label class="form-label" for="__ID__-ville">Ville ou pays</label>
+        <input class="form-input" id="__ID__-ville" name="ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez votre ville ou votre pays." aria-describedby="__ID__-ville-err">
         <p class="field__error" id="__ID__-ville-err" hidden></p></div>
-      <div class="field"><label for="__ID__-poids">Poids (kg)</label>
-        <input id="__ID__-poids" name="poids" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="30" data-max="250" data-err="Écrivez votre poids en kilos." data-err-format="Écrivez un poids en kilos, entre 30 et 250." aria-describedby="__ID__-poids-err">
+      <div class="field"><label class="form-label" for="__ID__-poids">Poids (kg)</label>
+        <input class="form-input" id="__ID__-poids" name="poids" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="30" data-max="250" data-err="Écrivez votre poids en kilos." data-err-format="Écrivez un poids en kilos, entre 30 et 250." aria-describedby="__ID__-poids-err">
         <p class="field__error" id="__ID__-poids-err" hidden></p></div>
-      <div class="field"><label for="__ID__-age">Âge</label>
-        <input id="__ID__-age" name="age" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="14" data-max="99" data-err="Écrivez votre âge." data-err-format="Écrivez votre âge en années : 14 ans au moins." aria-describedby="__ID__-age-err">
+      <div class="field"><label class="form-label" for="__ID__-age">Âge</label>
+        <input class="form-input" id="__ID__-age" name="age" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="14" data-max="99" data-err="Écrivez votre âge." data-err-format="Écrivez votre âge en années : 14 ans au moins." aria-describedby="__ID__-age-err">
         <p class="field__error" id="__ID__-age-err" hidden></p></div>
       <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="__ID__-bras-err">
-        <legend>Bras</legend>
+        <legend class="form-label">Bras</legend>
         <div class="choice">
           <label><input type="radio" name="bras" value="Droit"> Droit</label>
           <label><input type="radio" name="bras" value="Gauche"> Gauche</label>
@@ -405,22 +438,22 @@
         </div>
         <p class="field__error" id="__ID__-bras-err" hidden></p>
       </fieldset>
-      <div class="field"><label for="__ID__-pratique">Années de pratique</label>
-        <input id="__ID__-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="__ID__-pratique-err">
+      <div class="field"><label class="form-label" for="__ID__-pratique">Années de pratique</label>
+        <input class="form-input" id="__ID__-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="__ID__-pratique-err">
         <p class="field__error" id="__ID__-pratique-err" hidden></p></div>
-      <div class="field"><label for="__ID__-email">Email</label>
-        <input id="__ID__-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : l’organisateur vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="__ID__-email-err">
+      <div class="field"><label class="form-label" for="__ID__-email">Email</label>
+        <input class="form-input" id="__ID__-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : l’organisateur vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="__ID__-email-err">
         <p class="field__error" id="__ID__-email-err" hidden></p></div>
       <div class="field"><div class="tel">
-          <div class="tel__code"><label for="__ID__-ind">Indicatif</label><select id="__ID__-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
-          <div class="tel__num"><label for="__ID__-tel">Téléphone (facultatif)</label><input id="__ID__-tel" name="telephone" type="tel" maxlength="15" autocomplete="tel-national" data-check data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="__ID__-tel-err"></div>
+          <div class="tel__code"><label class="form-label" for="__ID__-ind">Indicatif</label><select class="form-input ov-select" id="__ID__-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
+          <div class="tel__num"><label class="form-label" for="__ID__-tel">Téléphone (facultatif)</label><input class="form-input" id="__ID__-tel" name="telephone" type="tel" maxlength="15" autocomplete="tel-national" data-check data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="__ID__-tel-err"></div>
         </div>
         <p class="field__error" id="__ID__-tel-err" hidden></p></div>
-      <div class="field"><label for="__ID__-insta">Instagram (facultatif)</label>
-        <input id="__ID__-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="__ID__-insta-err">
+      <div class="field"><label class="form-label" for="__ID__-insta">Instagram (facultatif)</label>
+        <input class="form-input" id="__ID__-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="__ID__-insta-err">
         <p class="field__error" id="__ID__-insta-err" hidden></p></div>
-      <div class="field field--full"><label for="__ID__-message">Message (facultatif)</label>
-        <textarea id="__ID__-message" name="message" rows="4" maxlength="1000"></textarea>
+      <div class="field field--full"><label class="form-label" for="__ID__-message">Message (facultatif)</label>
+        <textarea class="form-input" id="__ID__-message" name="message" rows="4" maxlength="1000"></textarea>
       </div>
       <div class="field field--check field--full" data-when="mineur" hidden>
         <input id="__ID__-parent" name="accord_parent" type="checkbox" required data-check data-err="Entre 14 et 17 ans, cochez cette case : un parent doit être d’accord." aria-describedby="__ID__-parent-err">
@@ -434,15 +467,26 @@
         <p class="field__error" id="__ID__-accord-err" hidden></p>
       </div>
     </div>
-    <div class="btn-row propose__actions"><button class="btn btn--primary" type="submit">Envoyer la proposition</button><button class="btn btn--secondary" type="button" data-propose-cancel>Fermer le formulaire</button></div>
+    <div class="propose__actions"><button class="btn-register" type="submit">Envoyer la proposition <span aria-hidden="true">→</span></button><button class="btn-outline" type="button" data-propose-cancel>Fermer le formulaire</button></div>
     <p class="form__status" role="status"></p>
   </form>
 </template>
 <datalist id="ov-clubs"></datalist>
+<script>
+// Le menu du téléphone : à part du module de la vitrine, il marche même si la base ne répond pas.
+(function () {
+  var burger = document.getElementById('burger');
+  var links = document.getElementById('navLinks');
+  var menu = function (open) {
+    links.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  };
+  burger.addEventListener('click', function () { menu(!links.classList.contains('open')); });
+  links.addEventListener('click', function (e) { if (e.target.closest('a')) menu(false); });
+})();
+</script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/assets/system.js"></script>
-<script type="module" src="ov/assets/motion/motion.js"></script>
-<script type="module" src="ov/assets/layout/layout.js"></script>
 <script type="module" src="ov/js/ov-vitrine.js"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->

@@ -11,9 +11,9 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 
 | Emplacement | Contenu |
 |---|---|
-| `open-vendetta*.html` (ce dépôt) | Les 3 pages, reprises de la maquette validée `m3-ferrari`. |
+| `open-vendetta*.html` (ce dépôt) | Les 3 pages. La vitrine (`open-vendetta.html`) reprend la maquette `m6-style-du-site` (feuille `style.css` du club, polices Barlow), **sans** le panneau de chiffres de l'accroche ; l'inscription et la gestion restent sur la maquette `m3-ferrari` (kit taste de `ov/assets/`). |
 | `ov/js/` | `ov-config.js` (configuration publique, version du SDK, sujet ntfy), `ov-firebase.js` (module public : Firestore Lite, sans connexion, pour la vitrine et l'inscription), `ov-admin.js` (module de gestion : Firestore complet + connexion Google ; une page ne charge jamais les deux), `ov-data.js` (logique pure), `ov-vue.js` (rangée d'athlète échappée), `ov-image.js` (réduction des photos), `ov-notify.js` (alertes), `ov-forms.js` (vérification des champs), `ov-vitrine.js` (script de la vitrine). |
-| `ov/assets/` | Kit CSS/JS de la compétence taste (licence MIT : `ov/assets/LICENSE-taste-skill.txt`) et photos du club. |
+| `ov/assets/` | Kit CSS/JS de la compétence taste (licence MIT : `ov/assets/LICENSE-taste-skill.txt`), utilisé par l'inscription et la gestion, et photos du club (utilisées aussi par la vitrine). |
 | `C:\Users\NILS\armwrestlingclubstrassen\open-vendetta\` (hors dépôt, jamais publié, Git local) | `firestore.rules` (**seule copie de référence**), `tests/` (`data.test.mjs`, `rules.test.mjs`, `prod-check.mjs`), `ETAT.md`. |
 
 ## Données (Firestore, projet `open-vendetta`, région `eur3`)

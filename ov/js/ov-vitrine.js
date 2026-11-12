@@ -19,12 +19,18 @@ for (const v of [...data.villes].sort((a, b) => a.ordre - b.ordre)) {
   const siens = data.profils.filter((p) => p.villeId === v.id);
   if (!siens.length) continue;
   const g = document.createElement('div');
-  g.className = 'roster__group';
+  g.className = 'roster-group';
   g.dataset.ville = v.nom;
   g.id = slug(v.nom);
-  g.innerHTML = '<div class="roster__head"><h3 id="ville-' + esc(v.id) + '">' + esc(v.nom) + '</h3></div><ul class="roster__list">'
+  g.innerHTML = '<div class="roster-head"><h3 id="ville-' + esc(v.id) + '">' + esc(v.nom) + '</h3><p data-group-count></p></div><ul class="roster-list">'
     + siens.map((p) => ligneAthlete(p, v.nom, clubNom(p.clubId))).join('') + '</ul>';
   anchor.before(g);
+}
+// Aucun profil publié : on le dit, au lieu de parler de filtres qui n'ont rien retiré.
+if (!data.profils.length) {
+  const [titre, texte] = anchor.querySelectorAll('p');
+  titre.textContent = 'Aucun profil publié pour l’instant.';
+  texte.textContent = 'Les profils apparaissent ici après validation par le club.';
 }
 if (location.hash) { const cible = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (cible) cible.scrollIntoView(); }
 // Les menus Ville et Club ne proposent que ce qui existe vraiment.
@@ -39,7 +45,7 @@ remplir('club', '<option value="tous">Tous les clubs</option>', [...new Set(data
 
 document.documentElement.classList.add('ov-js');
 const pick = (name) => roster.querySelector('[name="' + name + '"]').value;
-const groups = [...roster.querySelectorAll('.roster__group')];
+const groups = [...roster.querySelectorAll('.roster-group')];
 const status = roster.querySelector('[data-roster-status]');
 const empty = roster.querySelector('[data-roster-empty]');
 const reset = roster.querySelector('[data-roster-reset]');
@@ -50,8 +56,9 @@ function apply() {
   const ville = pick('ville'), bras = pick('bras'), poids = pick('poids'), club = pick('club'), ordre = pick('tri');
   let total = 0;
   for (const group of groups) {
-    const list = group.querySelector('.roster__list');
-    const items = [...list.children].sort((a, b) => ordre === 'asc' ? a.dataset.poids - b.dataset.poids : b.dataset.poids - a.dataset.poids);
+    const list = group.querySelector('.roster-list');
+    const items = [...list.children].sort((a, b) => (ordre === 'asc' ? a.dataset.poids - b.dataset.poids : b.dataset.poids - a.dataset.poids)
+      || a.dataset.nom.localeCompare(b.dataset.nom, 'fr'));
     items.forEach((li) => list.appendChild(li));
     let shown = 0;
     for (const li of items) {
@@ -63,12 +70,12 @@ function apply() {
       if (ok) shown++;
     }
     group.hidden = shown === 0;
+    group.querySelector('[data-group-count]').textContent = plural(shown, 'profil', 'profils');
     total += shown;
   }
-  status.textContent = total === 0 ? 'Aucun profil affiché' : plural(total, 'profil affiché', 'profils affichés');
+  status.textContent = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché' : plural(total, 'profil affiché', 'profils affichés');
   empty.hidden = total !== 0;
   const narrowed = ville !== 'toutes' || bras !== 'tous' || poids !== 'tous' || club !== 'tous';
-  roster.classList.toggle('is-filtered', narrowed);
   reset.hidden = !narrowed;
   // the chosen filters stay in the address, so a shared link opens on the same list
   const params = new URLSearchParams(location.search);
@@ -85,7 +92,7 @@ apply();
 selects.forEach((s) => s.addEventListener('change', apply));
 reset.addEventListener('click', () => { selects.forEach((s) => { s.selectedIndex = 0; }); apply(); selects[0].focus(); });
 
-const filterToggle = roster.querySelector('.roster__toggle');
+const filterToggle = roster.querySelector('.roster-toggle');
 const filters = roster.querySelector('.filters');
 filterToggle.addEventListener('click', () => {
   const open = filterToggle.getAttribute('aria-expanded') !== 'true';
@@ -94,17 +101,23 @@ filterToggle.addEventListener('click', () => {
 });
 
 roster.addEventListener('click', (e) => {
-  const toggle = e.target.closest('.athlete__toggle');
+  const toggle = e.target.closest('.athlete-toggle');
   if (toggle) {
     const li = toggle.closest('.athlete');
     const sheet = document.getElementById(toggle.getAttribute('aria-controls'));
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open));
     sheet.hidden = !open;
+    // la grande photo n'arrive qu'à la première ouverture ; l'initiale reste tant qu'elle n'est pas là
     const img = sheet.querySelector('img[data-photo]');
-    if (open && img && !img.src) fb.chargerPhoto(img.dataset.photo).then((src) => { if (src) img.src = src; }).catch(() => {});
+    if (open && img && !img.src) {
+      fb.chargerPhoto(img.dataset.photo).then((src) => {
+        if (!src) return;
+        img.addEventListener('load', () => { img.hidden = false; }, { once: true });
+        img.src = src;
+      }).catch(() => {});
+    }
     li.classList.toggle('is-open', open);
-    roster.classList.toggle('has-open', !!roster.querySelector('.athlete.is-open'));
     // the open profile goes in the address too, so a link can open one athlete's sheet
     const params = new URLSearchParams(location.search);
     if (open) params.set('profil', sheet.id.replace('fiche-', ''));
@@ -121,7 +134,7 @@ roster.addEventListener('click', (e) => {
 const tpl = document.getElementById('tpl-propose');
 function openPropose(btn) {
   const box = document.getElementById(btn.getAttribute('aria-controls'));
-  const athlete = btn.closest('.athlete').querySelector('.athlete__toggle').textContent.trim();
+  const athlete = btn.closest('.athlete').querySelector('.athlete-toggle').textContent.trim();
   if (!box.firstElementChild) {
     box.innerHTML = tpl.innerHTML.split('__ID__').join(esc(box.id)).split('__PRENOM__').join(esc(btn.dataset.prenom));
     const form = box.querySelector('form');
@@ -175,7 +188,7 @@ function openPropose(btn) {
       const text = document.createElement('p');
       text.textContent = 'L’organisateur vous écrit à ' + form.elements.email.value.trim() + ' pour fixer l’adversaire, le lieu et la date.';
       const again = document.createElement('button');
-      again.type = 'button'; again.className = 'btn btn--secondary'; again.textContent = 'Envoyer une autre proposition';
+      again.type = 'button'; again.className = 'btn-outline'; again.textContent = 'Envoyer une autre proposition';
       again.addEventListener('click', () => { done.remove(); form.hidden = false; form.elements.prenom.focus(); });
       done.append(title, text, again);
       form.hidden = true; form.after(done); done.focus();
