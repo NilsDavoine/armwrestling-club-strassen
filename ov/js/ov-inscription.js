@@ -103,15 +103,19 @@ if (form) {
     const profil = {
       prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), clubSaisi: f.club.value.trim(),
       poids: n(f.poids.value), taille: n(f.taille.value),
-      naissance: f.naissance.value.trim(), age: ageAu(f.naissance.value.trim()), pratique: n(f.pratique.value), bras: f.bras.value, mini,
+      naissance: f.naissance.value.trim(), age: ageAu(f.naissance.value.trim()), bras: f.bras.value, mini,
     };
-    // biceps et avant-bras du ou des bras choisis ; biceps (vitrine, gestion, anciens profils) : celui du bras, le plus grand pour « Les deux »
+    // facultatifs : biceps et avant-bras du ou des bras choisis, années de pratique ; un champ vide n'est pas envoyé.
+    // biceps (vitrine, gestion, anciens profils) : celui du bras, le plus grand pour « Les deux », s'il y en a un.
+    const rempli = (champ) => champ.value.trim() !== '';
     for (const c of cotes()) {
-      profil['biceps' + c] = n(f['biceps_' + c.toLowerCase()].value);
-      profil['avantBras' + c] = n(f['avant_bras_' + c.toLowerCase()].value);
+      const b = f['biceps_' + c.toLowerCase()], a = f['avant_bras_' + c.toLowerCase()];
+      if (rempli(b)) profil['biceps' + c] = n(b.value);
+      if (rempli(a)) profil['avantBras' + c] = n(a.value);
     }
-    profil.biceps = Math.max(...cotes().map((c) => profil['biceps' + c]));
-    profil.pratiqueDepuis = dateIlYA(Math.round(profil.pratique));
+    const biceps = cotes().map((c) => profil['biceps' + c]).filter((v) => v != null);
+    if (biceps.length) profil.biceps = Math.max(...biceps);
+    if (rempli(f.pratique)) { profil.pratique = n(f.pratique.value); profil.pratiqueDepuis = dateIlYA(Math.round(profil.pratique)); }
     if (f.ville.value === 'autre') profil.villeSaisie = f.autre_ville.value.trim(); else profil.villeId = f.ville.value;
     if (f.palmares.value.trim()) profil.palmares = f.palmares.value.trim();
     if (f.instagram.value.trim()) profil.instagram = f.instagram.value.trim().replace(/^@?/, '@');
