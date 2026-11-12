@@ -63,6 +63,6 @@ Fichiers : `index.html` (réécrit), `accueil.css` et `accueil.js` (nouveaux), `
 
 ## Tâche 5 : mise en ligne (sur demande de Nils seulement)
 
-- [ ] `git status`, n'ajouter que les fichiers de ce chantier, commit.
-- [ ] `git push origin main` quand Nils le demande.
-- [ ] Relire en ligne : `200`, 1440 et 390 px, console, `/m/` renvoie vers `/`.
+- [x] `git status`, n'ajouter que les fichiers de ce chantier, commit (`8113836`, 22 fichiers).
+- [x] `git push origin main` quand Nils le demande (« publie », le 2026-11-12).
+- [x] Relire en ligne : `200`, 1440 et 390 px, console, `/m/` renvoie vers `/`. Fait le 2026-11-12, détail dans `docs/ETAT.md`.
