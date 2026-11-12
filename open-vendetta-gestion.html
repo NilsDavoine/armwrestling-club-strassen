@@ -114,8 +114,6 @@
   .confirm { display: grid; gap: var(--s-3); padding: var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm); }
   .confirm__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
   .msg { margin: 0; padding-left: var(--s-4); border-left: 2px solid var(--line-strong); font-style: italic; }
-  .who { font-size: var(--t-lead); line-height: 1.35; }
-  .who b { font-weight: 500; }
 
   /* the fields (edit forms, the states, the cities) */
   .field select { width: 100%; height: 48px; padding: 0 40px 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-sm);
@@ -148,6 +146,45 @@
   .state-ok[data-etat="nouvelle"]::before { background: var(--action); }
   .state-ok[data-etat="en_discussion"]::before { background: #e8b84a; }
   .state-ok[data-etat="match_organise"]::before { background: #3fbf6f; }
+  /* a candidature shown as a duel: the two athletes face to face, their numbers side by side */
+  .duel__etat { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-2); margin: 0; color: var(--muted); font-size: var(--t-small); }
+  .duel__etat .state-ok { color: var(--ink); font-weight: 500; }
+  .duel__face { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--s-3); align-items: start; }
+  .duel__side { display: grid; gap: var(--s-1); justify-items: start; min-width: 0; }
+  .duel__side--r { justify-items: end; text-align: right; }
+  .duel__side img, .duel__side .noimg { width: 96px; height: 120px; object-fit: cover; border-radius: var(--r-sm); background: var(--surface); margin-bottom: var(--s-2); }
+  .duel__role { color: var(--muted); font: 500 var(--t-label)/1 var(--font-text); letter-spacing: .08em; text-transform: uppercase; }
+  .duel__nom { font: var(--display-weight) var(--t-h3)/1.1 var(--font-display); letter-spacing: var(--display-tracking); overflow-wrap: anywhere; }
+  .duel__club { color: var(--muted); font-size: var(--t-small); line-height: 1.35; overflow-wrap: anywhere; }
+  .duel__vs { align-self: start; display: grid; place-items: center; width: 44px; height: 44px; margin-top: 38px; background: var(--action); color: #ffffff; font: 500 16px/1 var(--font-display); letter-spacing: .02em; }
+  .tape { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .tape td, .tape th { padding: var(--s-2) 0; border-top: 1px solid var(--line); vertical-align: baseline; }
+  .tape tr:last-child td, .tape tr:last-child th { border-bottom: 1px solid var(--line); }
+  .tape td { width: 38%; font-size: var(--t-lead); }
+  .tape td:last-child { text-align: right; }
+  .tape th { color: var(--muted); font: 400 var(--t-small)/1.2 var(--font-text); text-align: center; }
+  .duel__tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0; list-style: none; }
+  .tag { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 32px; padding: 0 var(--s-3); border: 1px solid var(--line-strong); font-size: var(--t-small); }
+  .tag::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: #3fbf6f; }
+  .tag--warn::before { background: #e8b84a; }
+  .duel__msg { display: grid; gap: var(--s-2); margin: 0; }
+  .duel__msg figcaption { color: var(--muted); font-size: var(--t-small); }
+  .duel__contacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+  .duel__contacts > div:last-child { text-align: right; }
+  .duel__contacts h5 { margin: 0 0 var(--s-2); color: var(--muted); font: 500 var(--t-small)/1.2 var(--font-text); }
+  .clist { display: grid; gap: var(--s-1); margin: 0; padding: 0; list-style: none; overflow-wrap: anywhere; }
+  .clist a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+  .duel__actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); align-items: end; }
+  .duel__actions .btn { width: 100%; }
+  @media (min-width: 640px) { .duel__actions { grid-template-columns: minmax(0, 1fr) auto; } .duel__actions .btn { width: auto; } }
+  .duel__suppr { justify-self: start; min-height: 44px; padding: 0; border: 0; background: none; color: #ff8a80; font: 500 var(--t-small)/1 var(--font-text); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in oklab, #ff8a80 50%, transparent); }
+  @media (max-width: 639px) {
+    .duel__nom { font-size: 20px; overflow-wrap: break-word; hyphens: auto; }
+    .duel__contacts { grid-template-columns: minmax(0, 1fr); }
+    .duel__contacts > div:last-child { text-align: left; }
+  }
+  @media (max-width: 420px) { .duel__side img, .duel__side .noimg { width: 80px; height: 100px; } .duel__vs { width: 36px; height: 36px; margin-top: 32px; font-size: 14px; } }
 
   /* cities and clubs */
   .olist { display: grid; margin: 0; padding: 0; list-style: none; }
@@ -498,38 +535,78 @@ function pendingCard(p) {
 const candNom = (c) => c.adversaireId ? (profil(c.adversaireId) ? full(profil(c.adversaireId)).trim() : 'profil supprimé') : ((c.prenom || '') + ' ' + (c.nom || '')).trim();
 const nomClub = (p) => (p.clubId && club(p.clubId) ? club(p.clubId).nom : p.clubSaisi) || 'club ?';
 const nomVille = (p) => (p.villeId && ville(p.villeId) ? ville(p.villeId).nom : p.villeSaisie) || 'ville ?';
-const pratiqueTxt = (v) => v == null ? 'pratique ?' : nb(v, 'an', 'ans') + ' de pratique';
-function candTete(c, p) {
-  if (!c.adversaireId) {
-    return '<p class="who"><b>' + esc((c.prenom || '') + ' ' + (c.nom || '')) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
-      '<p class="acard__sub">' + kg(c.poids) + ' · ' + brasTxt(c.bras) + ' · ' + ans(c.age) + ' · ' + pratiqueTxt(c.pratique) + ' · ' + esc(c.ville) + '</p>' +
-      '<dl class="kv"><dt>Club</dt><dd>' + (esc(c.club) || '<span class="muted">Aucun</span>') + '</dd><dt>Email</dt><dd>' + mailLink(c.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(c.telephone) + '</dd>' +
-      (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') +
-      (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché (' + ans(c.age) + ')</dd>' : '') + '</dl>';
-  }
-  const a = profil(c.adversaireId), ct = S.contacts.get(c.adversaireId) || {};
-  const qui = a
-    ? '<p class="who"><b>' + esc(full(a)) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
-      '<p class="acard__sub">' + esc(nomClub(a)) + ' · ' + esc(nomVille(a)) + ' · ' + kg(a.poids) + ' · ' + brasTxt(a.bras) + ' · ' + ans(ageDe(a)) + ' · ' + pratiqueTxt(pratiqueDe(a)) + '</p>'
-    : '<p class="who"><b>Un profil supprimé</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>';
-  const contre = p
-    ? '<p class="acard__sub">Contre ' + esc(full(p)) + ' : ' + esc(nomClub(p)) + ' · ' + esc(nomVille(p)) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + ' · ' + ans(ageDe(p)) + '</p>'
-    : '<p class="acard__sub">L’athlète visé a été supprimé.</p>';
-  return '<div class="acard__top">' + (a ? photoImg(a, 88, 110, 'Photo de ' + full(a)) : '<span class="noimg">Profil supprimé</span>') + '<div>' + qui + contre + '</div></div>' +
-    '<dl class="kv"><dt>Email</dt><dd>' + mailLink(ct.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(ct.telephone) + '</dd>' +
-    (a && a.instagram ? '<dt>Instagram</dt><dd>' + esc(a.instagram) + '</dd>' : '') +
-    (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché' + (a ? ' (' + ans(ageDe(a)) + ')' : '') + '</dd>' : '') + '</dl>';
+// one side of the duel, the same shape for a profile and for an old candidature typed by hand
+function coteProfil(p, role) {
+  if (!p) return { role, absent: true };
+  const ct = contact(p);
+  return { role, nom: full(p).trim(), photo: photoImg(p, 96, 120, 'Photo de ' + full(p)), club: nomClub(p), ville: nomVille(p),
+    poids: p.poids, bras: p.bras, age: ageDe(p), pratique: pratiqueDe(p), email: ct.email, telephone: ct.telephone, instagram: p.instagram };
+}
+function coteSaisi(c, role) {
+  return { role, nom: ((c.prenom || '') + ' ' + (c.nom || '')).trim() || '?', photo: '<span class="noimg" role="img" aria-label="Pas de photo">Pas de photo</span>',
+    club: c.club || 'sans club', ville: c.ville || 'ville ?', poids: c.poids, bras: c.bras, age: c.age, pratique: c.pratique,
+    email: c.email, telephone: c.telephone, instagram: c.instagram };
+}
+// the arm both can pull with: « Les deux » meets any arm; two different single arms meet on none
+function brasCommun(x, y) {
+  if (!brasOk(x) || !brasOk(y)) return null;
+  if (x === y) return x;
+  if (x === 'Les deux') return y;
+  if (y === 'Les deux') return x;
+  return '';
+}
+const nombre = (v) => v != null && v !== '' && Number.isFinite(Number(v)) ? Number(v) : null;
+function duelVerdict(A, B, c) {
+  const tags = [];
+  const pa = nombre(A.poids), pb = nombre(B.poids);
+  if (pa != null && pb != null) {
+    const d = Math.round(Math.abs(pa - pb) * 10) / 10;
+    tags.push(d === 0 ? ['ok', 'Même poids'] : [d >= 10 ? 'warn' : 'ok', 'Écart de poids : ' + d + ' kg']);
+  } else tags.push(['warn', 'Poids à vérifier']);
+  const bc = brasCommun(A.bras, B.bras);
+  if (bc === null) tags.push(['warn', 'Bras à vérifier']);
+  else if (bc === '') tags.push(['warn', 'Aucun bras en commun']);
+  else tags.push(['ok', bc === 'Les deux' ? 'Possible des deux bras' : 'Possible au bras ' + bc.toLowerCase()]);
+  if (c.accordParent) tags.push(['warn', 'Mineur : accord parent coché']);
+  return '<ul class="duel__tags" aria-label="Ce qu’il faut savoir">' + tags.map(([k, t]) => '<li class="tag tag--' + k + '">' + esc(t) + '</li>').join('') + '</ul>';
+}
+function duelCote(X, droite) {
+  if (X.absent) return '<div class="duel__side' + (droite ? ' duel__side--r' : '') + '"><span class="noimg">Profil supprimé</span><span class="duel__role">' + X.role + '</span><b class="duel__nom muted">Supprimé</b></div>';
+  return '<div class="duel__side' + (droite ? ' duel__side--r' : '') + '">' + X.photo + '<span class="duel__role">' + X.role + '</span>' +
+    '<b class="duel__nom">' + esc(X.nom) + '</b><span class="duel__club">' + esc(X.club) + '<br>' + esc(X.ville) + '</span></div>';
+}
+function duelTape(A, B) {
+  const val = (X, f) => X.absent ? '<span class="muted">·</span>' : f(X);
+  const rows = [['Poids', (X) => kg(X.poids)], ['Bras', (X) => brasOk(X.bras) ? esc(X.bras) : '?'],
+    ['Âge', (X) => ans(X.age)], ['Pratique', (X) => X.pratique == null ? '?' : nb(X.pratique, 'an', 'ans')]];
+  return '<table class="tape"><caption class="sr-only">Les deux athlètes côte à côte</caption><tbody>' +
+    rows.map(([t, f]) => '<tr><td>' + val(A, f) + '</td><th scope="row">' + t + '</th><td>' + val(B, f) + '</td></tr>').join('') + '</tbody></table>';
+}
+function duelContact(X) {
+  if (X.absent) return '<div><h5>Profil supprimé</h5><p class="muted">Plus de contact.</p></div>';
+  return '<div><h5>Contacter ' + esc(X.nom.split(' ')[0] || X.nom) + '</h5><ul class="clist">' +
+    '<li>' + (X.email ? mailLink(X.email) : '<span class="muted">Pas d’email</span>') + '</li><li>' + (X.telephone ? telLink(X.telephone) : '<span class="muted">Pas de téléphone</span>') + '</li>' +
+    (X.instagram ? '<li>' + esc(X.instagram) + '</li>' : '') + '</ul></div>';
 }
 function candCard(c) {
   const p = c.profilId ? profil(c.profilId) : null, id = esc(c.id);
-  return '<article class="acard" data-cand="' + id + '">' + candTete(c, p) +
-    (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
-    '<div class="field"><label for="etat-' + id + '">État de la candidature</label><select id="etat-' + id + '" data-etat-select="' + id + '">' +
-    ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
-    '<p class="acard__sub"><span class="state-ok" data-etat="' + esc(c.etat) + '">' + esc(etatNom(c.etat)) + '</span>' + (date(c.creeLe) ? ' · reçue le ' + esc(date(c.creeLe)) : '') + '</p>' +
+  const A = c.adversaireId ? coteProfil(profil(c.adversaireId), 'Propose') : coteSaisi(c, 'Propose');
+  const B = coteProfil(p, 'Défié');
+  const recu = date(c.creeLe);
+  const deux = !A.absent && !B.absent && A.email && B.email
+    ? '<a class="btn btn--primary" href="' + esc('mailto:' + encodeURIComponent(A.email) + ',' + encodeURIComponent(B.email) + '?subject=' + encodeURIComponent('Open Vendetta : ' + A.nom + ' contre ' + B.nom)) + '">Écrire aux deux</a>' : '';
+  return '<article class="acard duel" data-cand="' + id + '">' +
+    '<p class="duel__etat"><span class="state-ok" data-etat="' + esc(c.etat) + '">' + esc(etatNom(c.etat)) + '</span>' + (recu ? '<span>Reçue le ' + esc(recu) + '</span>' : '') + '</p>' +
+    '<h4 class="sr-only">' + esc(A.absent ? 'Profil supprimé' : A.nom) + ' contre ' + esc(B.absent ? 'profil supprimé' : B.nom) + '</h4>' +
+    '<div class="duel__face">' + duelCote(A, false) + '<span class="duel__vs" aria-hidden="true">VS</span>' + duelCote(B, true) + '</div>' +
+    duelTape(A, B) + duelVerdict(A, B, c) +
+    (c.message ? '<figure class="duel__msg"><figcaption>Message de ' + esc(A.absent ? 'l’athlète' : A.nom.split(' ')[0]) + '</figcaption><blockquote class="msg">' + esc(c.message) + '</blockquote></figure>' : '') +
+    '<div class="duel__contacts">' + duelContact(A) + duelContact(B) + '</div>' +
+    '<div class="duel__actions"><div class="field"><label for="etat-' + id + '">État de la candidature</label><select id="etat-' + id + '" data-etat-select="' + id + '">' +
+    ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' + deux + '</div>' +
     (ui.supprCand === c.id
       ? '<div class="confirm" role="group" aria-label="Confirmer la suppression"><p>Supprimer cette candidature&nbsp;? Elle disparaît pour de bon.</p><div class="confirm__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="suppr-cand-ok">Confirmer la suppression</button><button class="btn btn--secondary" type="button" data-act="suppr-cand-non">Garder la candidature</button></div></div>'
-      : '<div class="acard__actions"><button class="btn btn--secondary btn--danger" type="button" data-act="suppr-cand">Supprimer</button></div>') + '</article>';
+      : '<button class="duel__suppr" type="button" data-act="suppr-cand">Supprimer la candidature</button>') + '</article>';
 }
 function viewTraiter() {
   const pend = S.profils.filter((p) => p.statut === 'en_attente');
