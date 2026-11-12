@@ -248,7 +248,7 @@
 import { connexion, deconnexion, surConnexion, chargerTout, majProfil, majContact, majPhoto, supprimerProfil, majCandidature, supprimerCandidature, champSupprime, creerVille, renommerVille, ordonnerVilles, creerClub, renommerClub, fusionnerClubs, importer } from './ov/js/ov-admin.js';
 import { clubProche, athletesDeLaFeuille, norm, BRAS, ageAu, ageDe, pratiqueDe, dateIlYA } from './ov/js/ov-data.js';
 import { reduirePhoto, MINI, FICHE } from './ov/js/ov-image.js?v=2';
-import { esc } from './ov/js/ov-vue.js';
+import { esc } from './ov/js/ov-vue.js?v=3';
 
 // ------------------------------------------------------------------ state (filled by chargerTout)
 const S = { villes: [], clubs: [], profils: [], cands: [], contacts: new Map() };
@@ -276,6 +276,14 @@ const nb = (n, one, many) => n + ' ' + (n > 1 ? many : one);
 const ans = (v) => v == null ? 'âge ?' : nb(v, 'an', 'ans');
 const kg = (v) => v == null ? 'poids ?' : esc(v) + ' kg';
 const cm = (v) => v == null ? '<span class="muted">?</span>' : esc(v) + ' cm';
+// arm measurements: per arm for the sign-ups since November 2026 (bicepsDroit…), else the old biceps (« tour de bras »)
+const COTES = [['Droit', 'droit'], ['Gauche', 'gauche']];
+const bicepsParBras = (p) => COTES.some(([c]) => p['biceps' + c] != null);
+function mesuresKv(p) {
+  const ligne = (t, v) => '<dt>' + t + '</dt><dd>' + cm(v) + '</dd>';
+  const de = (m, t) => COTES.filter(([c]) => p[m + c] != null).map(([c, s]) => ligne(t + ' ' + s, p[m + c])).join('');
+  return (bicepsParBras(p) ? de('biceps', 'Biceps') : ligne('Tour de bras', p.biceps)) + de('avantBras', 'Avant-bras');
+}
 const date = (t) => { const d = t && typeof t.toDate === 'function' ? t.toDate() : null; return d ? d.toLocaleDateString('fr-FR') : ''; };
 const mailLink = (e) => e ? '<a href="' + esc('mailto:' + encodeURIComponent(e)) + '">' + esc(e) + '</a>' : '<span class="muted">Aucun</span>';
 const telLink = (t) => t ? '<a href="' + esc('tel:' + encodeURIComponent(t)) + '">' + esc(t) + '</a>' : '<span class="muted">Aucun</span>';
@@ -341,9 +349,10 @@ function field(id, label, name, value, opts = {}) {
   const req = opts.req ? ' required data-check data-err="' + esc(opts.err) + '"' : (opts.num || opts.kind ? ' data-check' : '');
   const kind = opts.kind ? ' data-kind="' + opts.kind + '"' : '';
   const fmt = opts.num || opts.fmt ? ' data-err-format="' + esc(opts.fmt) + '"' : '';
-  return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"><label for="' + id + '">' + label + '</label>' +
+  return '<div class="field' + (opts.fullw ? ' field--full' : '') + '"' + (opts.box || '') + '><label for="' + id + '">' + label + '</label>' +
     (opts.area ? '<textarea id="' + id + '" name="' + name + '" rows="3">' + esc(value) + '</textarea>'
       : '<input id="' + id + '" name="' + name + '" type="' + (opts.type || 'text') + '" value="' + esc(value) + '" autocomplete="off"' + (opts.disabled ? ' disabled' : '') + attrs + kind + req + fmt + ' aria-describedby="' + id + '-err">') +
+    (opts.hint ? '<p class="muted">' + opts.hint + '</p>' : '') +
     '<p class="field__error" id="' + id + '-err" hidden></p></div>';
 }
 function select(id, label, name, value, options, opts = {}) {
@@ -358,6 +367,13 @@ function editForm(p) {
   const clubs = [...(clubOk ? [] : [['', p.clubSaisi ? 'À ranger : « ' + p.clubSaisi + ' »' : 'À ranger']]), ...S.clubs.map((c) => [c.id, c.nom])];
   const villes = [...(villeOk ? [] : [['', p.villeSaisie ? 'À choisir (saisi : « ' + p.villeSaisie + ' »)' : 'À choisir']]), ...S.villes.map((v) => [v.id, v.nom])];
   const bras = [...(brasOk(p.bras) ? [] : [['', 'À choisir']]), ['Droit', 'Droit'], ['Gauche', 'Gauche'], ['Les deux', 'Les deux']];
+  // biceps and forearm of the arm chosen, or of both ; the old « tour de bras » only for a profile without them
+  const vu = (c) => !brasOk(p.bras) || p.bras === 'Les deux' || p.bras === c;
+  const mesures = COTES.map(([c, t]) =>
+    field(k + 'biceps' + c, 'Biceps ' + t + ', contracté (cm)', 'biceps' + c, p['biceps' + c], { num: true, dec: true, min: 20, max: 70, fmt: 'Un tour de biceps en centimètres, entre 20 et 70.', box: ' data-mesure="' + c + '"' + (vu(c) ? '' : ' hidden') }) +
+    field(k + 'avantBras' + c, 'Avant-bras ' + t + ' (cm)', 'avantBras' + c, p['avantBras' + c], { num: true, dec: true, min: 15, max: 60, fmt: 'Un tour d’avant-bras en centimètres, entre 15 et 60.', box: ' data-mesure="' + c + '"' + (vu(c) ? '' : ' hidden') })).join('');
+  const ancien = field(k + 'biceps', 'Tour de bras (cm), ancienne mesure', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, fmt: 'Un tour de bras en centimètres, entre 20 et 70.',
+    hint: 'Sans bras précisé. Un biceps rempli ci-dessous la remplace.', fullw: true, box: bicepsParBras(p) ? ' hidden' : '' });
   return '<form class="edit" data-edit="' + esc(p.id) + '" novalidate aria-label="Modifier la fiche de ' + esc(full(p)) + '"><div class="edit__grid">' +
     field(k + 'prenom', 'Prénom', 'prenom', p.prenom, { req: true, err: 'Écrivez le prénom.' }) +
     field(k + 'nom', 'Nom', 'nom', p.nom || '', { req: false }) +
@@ -365,12 +381,12 @@ function editForm(p) {
     select(k + 'club', 'Club', 'club', clubOk ? p.clubId : '', clubs) +
     field(k + 'poids', 'Poids (kg)', 'poids', p.poids, { num: true, dec: true, min: 30, max: 250, req: true, err: 'Écrivez le poids.', fmt: 'Un poids en kilos, entre 30 et 250.' }) +
     field(k + 'taille', 'Taille (cm)', 'taille', p.taille, { num: true, min: 120, max: 230, req: true, err: 'Écrivez la taille.', fmt: 'Une taille en centimètres, entre 120 et 230.' }) +
-    field(k + 'biceps', 'Tour de bras (cm)', 'biceps', p.biceps, { num: true, dec: true, min: 20, max: 70, fmt: 'Un tour de bras en centimètres, entre 20 et 70.' }) +
     field(k + 'naissance', 'Date de naissance (facultatif)', 'naissance', p.naissance || '', { type: 'date' }) +
     field(k + 'age', 'Âge', 'age', ageDe(p), { disabled: !!p.naissance, num: true, min: 14, max: 99, req: true, err: 'Écrivez l’âge.', fmt: 'Un âge en années, 14 ans au moins.' }) +
-    field(k + 'pratique', 'Années de pratique', 'pratique', pratiqueDe(p), { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
     '<div class="field field--full"><p class="muted" data-agenote' + (p.naissance ? '' : ' hidden') + '>L’âge se calcule tout seul à partir de la date de naissance : ce champ n’est utile que sans date.</p></div>' +
+    field(k + 'pratique', 'Années de pratique', 'pratique', pratiqueDe(p), { num: true, min: 0, max: 60, req: true, err: 'Écrivez les années de pratique.', fmt: 'Un nombre d’années, 0 pour un débutant.' }) +
     select(k + 'bras', 'Bras', 'bras', brasOk(p.bras) ? p.bras : '', bras, { req: true, err: 'Choisissez le bras.' }) +
+    ancien + mesures +
     field(k + 'palmares', 'Palmarès', 'palmares', p.palmares, { area: true, fullw: true }) +
     field(k + 'insta', 'Instagram', 'instagram', p.instagram, { kind: 'handle', fmt: 'Un pseudo Instagram : lettres, chiffres, points et tirets bas.' }) +
     field(k + 'email', 'Email', 'email', contact(p).email || '', { type: 'email', req: false, fmt: 'Une adresse email avec un @, comme nom@exemple.lu.' }) +
@@ -392,8 +408,17 @@ async function saveEdit(form) {
     OVForms.setError(f.naissance, '');
   }
   const champs = { prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), poids: num(f.poids.value), taille: num(f.taille.value),
-    biceps: f.biceps.value.trim() ? num(f.biceps.value) : null, bras: f.bras.value,
-    palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
+    bras: f.bras.value, palmares: f.palmares.value.trim(), instagram: f.instagram.value.trim() };
+  // biceps and forearm: those of the arm chosen, or of both ; the other arm's are removed. biceps follows: the arm's,
+  // the larger for « Les deux » ; without any per-arm biceps, the old « tour de bras » field when it is shown, else nothing
+  const cotes = champs.bras === 'Les deux' ? ['Droit', 'Gauche'] : [champs.bras], retires = [];
+  for (const [c] of COTES) for (const m of ['biceps', 'avantBras']) {
+    const key = m + c, v = cotes.includes(c) ? f[key].value.trim() : '';
+    if (v) champs[key] = num(v);
+    else if (p[key] != null) { champs[key] = champSupprime(); retires.push(key); }
+  }
+  const bicepsBras = cotes.map((c) => champs['biceps' + c]).filter((v) => typeof v === 'number');
+  champs.biceps = bicepsBras.length ? Math.max(...bicepsBras) : !f.biceps.closest('[hidden]') && f.biceps.value.trim() ? num(f.biceps.value) : null;
   if (naissance) { champs.naissance = naissance; champs.age = ageAu(naissance); }
   else { champs.age = num(f.age.value); if (p.naissance) champs.naissance = champSupprime(); }
   const pratique = num(f.pratique.value);
@@ -422,7 +447,7 @@ async function saveEdit(form) {
     if (contactChange) await majContact(p.id, { email, telephone: tel ? tel : champSupprime() });
     if (photo) await majPhoto(p.id, photo.image, photo.mini);
   }, () => {
-    Object.assign(p, champs); if (!naissance) delete p.naissance; if (accordsChanges) S.contacts.set(p.id, { ...contact(p), ...accords });
+    Object.assign(p, champs); retires.forEach((key) => delete p[key]); if (!naissance) delete p.naissance; if (accordsChanges) S.contacts.set(p.id, { ...contact(p), ...accords });
     if (contactChange) { const c1 = { ...contact(p), email }; if (tel) c1.telephone = tel; else delete c1.telephone; S.contacts.set(p.id, c1); }
     if (photo) p.mini = photo.mini;
     ui.open = null;
@@ -458,7 +483,7 @@ function pendingCard(p) {
   return '<article class="acard" data-profil="' + id + '"><div class="acard__top">' + photoImg(p, 88, 110, 'Photo envoyée par ' + full(p)) +
     '<div><h4>' + esc(full(p)) + '</h4><p class="acard__sub">' + (vOk ? esc(vOk.nom) : 'Ville à choisir' + (p.villeSaisie ? ' (saisi : « ' + esc(p.villeSaisie) + ' »)' : '')) + ' · ' + ans(age) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + '</p>' +
     '<p class="acard__sub">' + (recu ? 'Reçue le ' + esc(recu) : '') + (p.source ? (recu ? ' · ' : '') + 'Importée de la feuille Vendetta 2026' : '') + '</p></div></div>' +
-    '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + cm(p.taille) + '</dd><dt>Tour de bras</dt><dd>' + cm(p.biceps) + '</dd><dt>Pratique</dt><dd>' + (pratiqueDe(p) == null ? '<span class="muted">?</span>' : nb(pratiqueDe(p), 'an', 'ans')) + '</dd>' +
+    '<dl class="kv"><dt>Club tapé</dt><dd>« ' + esc(p.clubSaisi) + ' »</dd><dt>Taille</dt><dd>' + cm(p.taille) + '</dd>' + mesuresKv(p) + '<dt>Pratique</dt><dd>' + (pratiqueDe(p) == null ? '<span class="muted">?</span>' : nb(pratiqueDe(p), 'an', 'ans')) + '</dd>' +
     '<dt>Palmarès</dt><dd>' + (esc(p.palmares) || '<span class="muted">Rien d’indiqué</span>') + '</dd><dt>Instagram</dt><dd>' + (esc(p.instagram) || '<span class="muted">Aucun</span>') + '</dd>' +
     '<dt>Email</dt><dd>' + mailLink(ct.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(ct.telephone) + '</dd>' +
     (mineur ? '<dt>Accord parent</dt><dd>' + (ct.accordParent ? 'Oui, coché' : 'Non') + '</dd>' : '') + '</dl>' +
@@ -789,6 +814,16 @@ views.addEventListener('input', (e) => {
   age.disabled = ok;
   if (ok) age.value = ageAu(v);
   const note = form.querySelector('[data-agenote]'); if (note) note.hidden = !ok;
+});
+// the arm chosen in the edit form: the measurement fields of an arm not chosen are hidden (OVForms skips them, saveEdit removes them)
+views.addEventListener('change', (e) => {
+  if (!e.target.matches || !e.target.matches('form[data-edit] select[name="bras"]')) return;
+  const b = e.target.value;
+  e.target.form.querySelectorAll('[data-mesure]').forEach((box) => {
+    const cache = brasOk(b) && b !== 'Les deux' && box.dataset.mesure !== b;
+    if (cache) OVForms.setError(box.querySelector('input'), '');
+    box.hidden = cache;
+  });
 });
 views.addEventListener('change', async (e) => {
   const ac = e.target.closest('[data-accord]');

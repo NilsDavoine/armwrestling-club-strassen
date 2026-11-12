@@ -35,7 +35,16 @@ if (form) {
     const a = age();
     when('mineur').hidden = !(a !== null && a >= 14 && a <= 17);
     when('trop-jeune').hidden = !(a !== null && a < 14);
+    // les mesures du bras choisi, ou des deux ; rien tant que le bras n'est pas choisi
+    const b = form.querySelector('input[name="bras"]:checked');
+    form.querySelectorAll('[data-mesure]').forEach((box) => {
+      const cache = !b || !(b.value === 'Les deux' || b.value === box.dataset.mesure);
+      if (cache && !box.hidden) OVForms.setError(box.querySelector('input'), '');
+      box.hidden = cache;
+    });
   }
+  // les bras dont on envoie les mesures : 'Droit', 'Gauche' ou les deux
+  const cotes = () => ({ Droit: ['Droit'], Gauche: ['Gauche'], 'Les deux': ['Droit', 'Gauche'] }[f.bras.value] || []);
   form.addEventListener('input', follow);
   form.addEventListener('change', follow);
   OVForms.watch(form);
@@ -93,9 +102,15 @@ if (form) {
     }
     const profil = {
       prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), clubSaisi: f.club.value.trim(),
-      poids: n(f.poids.value), taille: n(f.taille.value), biceps: n(f.tour_de_bras.value),
+      poids: n(f.poids.value), taille: n(f.taille.value),
       naissance: f.naissance.value.trim(), age: ageAu(f.naissance.value.trim()), pratique: n(f.pratique.value), bras: f.bras.value, mini,
     };
+    // biceps et avant-bras du ou des bras choisis ; biceps (vitrine, gestion, anciens profils) : celui du bras, le plus grand pour « Les deux »
+    for (const c of cotes()) {
+      profil['biceps' + c] = n(f['biceps_' + c.toLowerCase()].value);
+      profil['avantBras' + c] = n(f['avant_bras_' + c.toLowerCase()].value);
+    }
+    profil.biceps = Math.max(...cotes().map((c) => profil['biceps' + c]));
     profil.pratiqueDepuis = dateIlYA(Math.round(profil.pratique));
     if (f.ville.value === 'autre') profil.villeSaisie = f.autre_ville.value.trim(); else profil.villeId = f.ville.value;
     if (f.palmares.value.trim()) profil.palmares = f.palmares.value.trim();

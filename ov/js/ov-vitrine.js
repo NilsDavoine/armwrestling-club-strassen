@@ -1,7 +1,7 @@
 // Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match depuis son propre profil), branchée sur Firestore.
 import { notifier } from './ov-notify.js';
 import { dansTranche, slug, norm, ageDe } from './ov-data.js';
-import { ligneAthlete, esc } from './ov-vue.js?v=2';
+import { ligneAthlete, esc } from './ov-vue.js?v=3';
 
 const roster = document.getElementById('profils');
 const anchor = roster.querySelector('[data-roster-empty]'); // les groupes de villes se placent juste avant

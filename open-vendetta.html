@@ -162,6 +162,7 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; background: rgba(192, 57, 43, .22); border: 1px solid rgba(192, 57, 43, .28); }
 .specs > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 1.1rem .8rem; background: var(--black); text-align: center; }
 .specs > .wide { grid-column: span 2; }
+.specs > .full { grid-column: 1 / -1; }
 .specs dt { margin-top: .45rem; font-family: var(--font-display); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(245, 240, 232, .62); }
 .specs dd { font-family: var(--font-display); font-size: 2rem; font-weight: 900; line-height: 1; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 .specs dd small { margin-left: .2rem; font-size: .9rem; font-weight: 700; color: var(--red-hot); }
@@ -462,21 +463,32 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
             <div class="field"><label class="form-label" for="i-taille">Taille (cm)</label>
               <input class="form-input" id="i-taille" name="taille" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="120" data-max="230" data-err="Écrivez votre taille en centimètres." data-err-format="Écrivez une taille en centimètres, entre 120 et 230." aria-describedby="i-taille-err">
               <p class="field__error" id="i-taille-err" hidden></p></div>
-            <div class="field"><label class="form-label" for="i-biceps">Tour de bras contracté (cm)</label>
-              <input class="form-input" id="i-biceps" name="tour_de_bras" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="20" data-max="70" data-err="Écrivez votre tour de bras, bras contracté, en centimètres." data-err-format="Écrivez un tour de bras en centimètres, entre 20 et 70." aria-describedby="i-biceps-err">
-              <p class="field__error" id="i-biceps-err" hidden></p></div>
-            <div class="field"><label class="form-label" for="i-pratique">Années de pratique</label>
-              <input class="form-input" id="i-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="i-pratique-err">
-              <p class="field__error" id="i-pratique-err" hidden></p></div>
-            <fieldset class="field" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="i-bras-err">
+            <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="i-bras-hint i-bras-err">
               <legend class="form-label">Bras</legend>
               <div class="choice">
                 <label><input type="radio" name="bras" value="Droit"> Droit</label>
                 <label><input type="radio" name="bras" value="Gauche"> Gauche</label>
                 <label><input type="radio" name="bras" value="Les deux"> Les deux</label>
               </div>
+              <p class="field__hint" id="i-bras-hint">Ensuite, vos mesures pour ce bras, ou les deux : le biceps contracté, l’avant-bras à l’endroit le plus large.</p>
               <p class="field__error" id="i-bras-err" hidden></p>
             </fieldset>
+            <!-- les mesures du ou des bras choisis : ov-inscription.js cache les autres (un champ caché n'est pas vérifié ni envoyé) -->
+            <div class="field" data-mesure="Droit" hidden><label class="form-label" for="i-biceps-d">Tour de biceps droit, contracté (cm)</label>
+              <input class="form-input" id="i-biceps-d" name="biceps_droit" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="20" data-max="70" data-err="Écrivez le tour de votre biceps droit, bras contracté, en centimètres." data-err-format="Écrivez un tour de biceps en centimètres, entre 20 et 70." aria-describedby="i-biceps-d-err">
+              <p class="field__error" id="i-biceps-d-err" hidden></p></div>
+            <div class="field" data-mesure="Droit" hidden><label class="form-label" for="i-avb-d">Tour d’avant-bras droit (cm)</label>
+              <input class="form-input" id="i-avb-d" name="avant_bras_droit" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="15" data-max="60" data-err="Écrivez le tour de votre avant-bras droit, en centimètres." data-err-format="Écrivez un tour d’avant-bras en centimètres, entre 15 et 60." aria-describedby="i-avb-d-err">
+              <p class="field__error" id="i-avb-d-err" hidden></p></div>
+            <div class="field" data-mesure="Gauche" hidden><label class="form-label" for="i-biceps-g">Tour de biceps gauche, contracté (cm)</label>
+              <input class="form-input" id="i-biceps-g" name="biceps_gauche" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="20" data-max="70" data-err="Écrivez le tour de votre biceps gauche, bras contracté, en centimètres." data-err-format="Écrivez un tour de biceps en centimètres, entre 20 et 70." aria-describedby="i-biceps-g-err">
+              <p class="field__error" id="i-biceps-g-err" hidden></p></div>
+            <div class="field" data-mesure="Gauche" hidden><label class="form-label" for="i-avb-g">Tour d’avant-bras gauche (cm)</label>
+              <input class="form-input" id="i-avb-g" name="avant_bras_gauche" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="15" data-max="60" data-err="Écrivez le tour de votre avant-bras gauche, en centimètres." data-err-format="Écrivez un tour d’avant-bras en centimètres, entre 15 et 60." aria-describedby="i-avb-g-err">
+              <p class="field__error" id="i-avb-g-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-pratique">Années de pratique</label>
+              <input class="form-input" id="i-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="i-pratique-err">
+              <p class="field__error" id="i-pratique-err" hidden></p></div>
             <div class="field"><label class="form-label" for="i-insta">Instagram (facultatif)</label>
               <input class="form-input" id="i-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" placeholder="@prenom.nom" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="i-insta-err">
               <p class="field__error" id="i-insta-err" hidden></p></div>
@@ -603,8 +615,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=5"></script>
-<script type="module" src="ov/js/ov-inscription.js?v=1"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=6"></script>
+<script type="module" src="ov/js/ov-inscription.js?v=2"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
 <script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
