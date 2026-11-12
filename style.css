@@ -992,17 +992,13 @@ h2 span {
   color: rgba(245, 240, 232, 0.6);
 }
 
+/* Mosaïque CNAM : la salle en grand, deux matchs à côté, même hauteur */
 .palmares-photos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 1.25rem;
+  max-width: 1160px;
   margin: 0 auto 3rem;
-}
-
-/* Sélecteur double : l'emporte sur le max-width 1160px de .fade-in, déclaré plus bas */
-.fade-in.palmares-photos,
-.palmares-photos {
-  max-width: 820px;
 }
 
 .palmares-photo-card {
@@ -1015,14 +1011,36 @@ h2 span {
   overflow: hidden;
 }
 
-/* Photos portrait (3:4) : cadrage 4:5 pour garder les personnes entières */
 .palmares-photo-card img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
+  height: 440px;
   object-fit: cover;
-  object-position: center 60%;
+  object-position: center 55%;
+}
+
+/* Mobile : la salle en pleine largeur, les deux matchs côte à côte dessous.
+   .fade-in.palmares-photos l'emporte sur la règle 1 colonne commune, déclarée plus bas. */
+@media (max-width: 900px) {
+  .fade-in.palmares-photos {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .palmares-photo-card--wide {
+    grid-column: 1 / -1;
+  }
+  .palmares-photo-card img {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+  .palmares-photo-card--wide img {
+    aspect-ratio: 1 / 1;
+  }
+  .palmares-photo-card .photo-caption {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
 }
 
 .palmares-photo-card .photo-caption {
