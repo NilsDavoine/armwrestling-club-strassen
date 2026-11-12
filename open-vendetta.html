@@ -90,11 +90,13 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .roster-reset:hover, .roster-toggle:hover { color: var(--red-hot); }
 .roster-toggle { display: none; }
 
-.roster-group { margin-top: 3rem; }
+.roster-group { margin-top: 2rem; }
 .roster-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid rgba(192, 57, 43, .45); }
-.roster-head h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; scroll-margin-top: 92px; }
+.roster-head h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; scroll-margin-top: 92px; }
 .roster-head p { font-size: .78rem; color: var(--grey); }
 .roster-list { list-style: none; }
+.roster-more { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; padding: 0 0 0 1.4rem; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.roster-more:hover { color: var(--red-hot); }
 .roster-empty { margin-top: 2.5rem; }
 .roster-empty p:first-child { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
 .roster-empty p + p { color: rgba(245, 240, 232, .65); }
@@ -104,26 +106,26 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .athlete::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transform-origin: top; transition: transform .35s; z-index: 2; }
 .athlete.is-open { background: var(--dark); }
 .athlete.is-open::before { transform: scaleY(1); }
-.athlete-row { position: relative; display: grid; grid-template-columns: 88px minmax(0, 1.25fr) minmax(0, 1fr) 150px 44px; column-gap: 2rem; align-items: center; min-height: 134px; padding: .9rem 1.2rem .9rem 1.4rem; }
+.athlete-row { position: relative; display: grid; grid-template-columns: 60px minmax(0, 1.25fr) minmax(0, 1fr) 120px 40px; column-gap: 1.5rem; align-items: center; min-height: 84px; padding: .5rem 1.2rem .5rem 1.4rem; }
 .athlete-row:has(.athlete-toggle:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: -2px; }
 .athlete-toggle:focus-visible { outline: none; }
 /* la photo posée sur la lueur rouge du site (le radial de .hero-bg, poussé) */
 .athlete-thumb {
-  position: relative; width: 88px; aspect-ratio: 4 / 5; margin: 0; overflow: hidden;
+  position: relative; width: 60px; aspect-ratio: 4 / 5; margin: 0; overflow: hidden;
   background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(231,76,60,.8) 0%, rgba(192,57,43,.3) 45%, transparent 78%), var(--dark2);
   border-bottom: 2px solid var(--red);
 }
 .athlete-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; transform-origin: 50% 100%; transition: transform .5s; }
-.athlete-thumb .initiale { display: grid; place-items: end center; height: 100%; font-family: var(--font-display); font-size: 3.6rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
-.athlete-name { font-family: var(--font-display); font-size: 1.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
+.athlete-thumb .initiale { display: grid; place-items: end center; height: 100%; font-family: var(--font-display); font-size: 2.6rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
+.athlete-name { font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; }
 .athlete-toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; text-align: left; cursor: pointer; }
 .athlete-toggle::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .athlete-club { font-size: .9rem; color: rgba(245, 240, 232, .65); line-height: 1.4; }
 .athlete-facts { font-size: .82rem; color: var(--light-grey); }
 .athlete-facts .sep { color: var(--red-hot); margin: 0 .5rem; }
-.athlete-weight { text-align: right; white-space: nowrap; font-family: var(--font-display); font-size: 3.2rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.athlete-weight { text-align: right; white-space: nowrap; font-family: var(--font-display); font-size: 2.4rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
 .athlete-weight small { margin-left: .2rem; font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--red-hot); }
-.athlete-chev { justify-self: end; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(245, 240, 232, .2); transition: background .2s, border-color .2s; }
+.athlete-chev { justify-self: end; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(245, 240, 232, .2); transition: background .2s, border-color .2s; }
 .athlete-chev svg { width: 14px; height: 14px; transition: transform .25s; }
 .athlete.is-open .athlete-chev { background: var(--red); border-color: var(--red); }
 .athlete.is-open .athlete-chev svg { transform: rotate(45deg); }
@@ -234,13 +236,14 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   .step-photo { aspect-ratio: 16 / 9; }
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filters .field-wide { grid-column: 1 / -1; }
-  .athlete-row { grid-template-columns: 72px minmax(0, 1fr) auto 32px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; column-gap: 1rem; row-gap: .25rem; min-height: 112px; padding: .8rem .8rem .8rem 1rem; }
-  .athlete-thumb { grid-area: thumb; width: 72px; }
+  .athlete-row { grid-template-columns: 52px minmax(0, 1fr) auto 32px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; column-gap: .9rem; row-gap: .15rem; min-height: 80px; padding: .5rem .8rem .5rem 1rem; }
+  .athlete-thumb { grid-area: thumb; width: 52px; }
   .athlete-id { grid-area: id; align-self: end; }
   .athlete-facts { grid-area: facts; align-self: start; font-size: .72rem; }
-  .athlete-weight { grid-area: weight; font-size: 2.4rem; }
+  .athlete-weight { grid-area: weight; font-size: 2rem; }
   .athlete-chev { grid-area: chev; width: 32px; height: 32px; }
-  .athlete-name { font-size: 1.4rem; }
+  .athlete-name { font-size: 1.25rem; }
+  .athlete-club { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .athlete-club { font-size: .8rem; line-height: 1.35; }
   .athlete-fiche { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: .4rem .8rem 2rem 1rem; }
   .insc-grid, .close-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
@@ -251,11 +254,11 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   html.ov-js .filters:not(.is-open) { display: none; }
   .facts-more { display: none; }
   .insc-cards { grid-template-columns: minmax(0, 1fr); }
-  .athlete-row { grid-template-columns: 60px minmax(0, 1fr) auto 28px; column-gap: .8rem; min-height: 96px; padding: .7rem .5rem .7rem .75rem; }
-  .athlete-thumb { width: 60px; }
-  .athlete-thumb .initiale { font-size: 2.6rem; }
-  .athlete-name { font-size: 1.3rem; }
-  .athlete-weight { font-size: 2rem; }
+  .athlete-row { grid-template-columns: 46px minmax(0, 1fr) auto 28px; column-gap: .7rem; min-height: 72px; padding: .45rem .5rem .45rem .75rem; }
+  .athlete-thumb { width: 46px; }
+  .athlete-thumb .initiale { font-size: 2rem; }
+  .athlete-name { font-size: 1.1rem; }
+  .athlete-weight { font-size: 1.6rem; }
   .athlete-weight small { font-size: .8rem; }
   .athlete-chev { width: 28px; height: 28px; }
   .athlete-fiche { padding: .2rem .5rem 1.8rem .75rem; }
@@ -487,7 +490,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=2"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=3"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
 <script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

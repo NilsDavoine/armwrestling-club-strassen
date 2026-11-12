@@ -22,8 +22,9 @@ for (const v of [...data.villes].sort((a, b) => a.ordre - b.ordre)) {
   g.className = 'roster-group';
   g.dataset.ville = v.nom;
   g.id = slug(v.nom);
-  g.innerHTML = '<div class="roster-head"><h3 id="ville-' + esc(v.id) + '">' + esc(v.nom) + '</h3><p data-group-count></p></div><ul class="roster-list">'
-    + siens.map((p) => ligneAthlete(p, v.nom, clubNom(p.clubId))).join('') + '</ul>';
+  g.innerHTML = '<div class="roster-head"><h3 id="ville-' + esc(v.id) + '">' + esc(v.nom) + '</h3><p data-group-count></p></div><ul class="roster-list" id="liste-' + esc(v.id) + '">'
+    + siens.map((p) => ligneAthlete(p, v.nom, clubNom(p.clubId))).join('') + '</ul>'
+    + '<button class="roster-more" type="button" data-more aria-expanded="false" aria-controls="liste-' + esc(v.id) + '" hidden></button>';
   anchor.before(g);
 }
 // Aucun profil publié : on le dit, au lieu de parler de filtres qui n'ont rien retiré.
@@ -51,6 +52,9 @@ const empty = roster.querySelector('[data-roster-empty]');
 const reset = roster.querySelector('[data-roster-reset]');
 const selects = [...roster.querySelectorAll('.filters select')];
 const plural = (n, one, many) => n + ' ' + (n > 1 ? many : one);
+// Chaque ville montre ses 3 premiers profils ; le bouton « Voir les autres » déplie la suite.
+const LIMITE = 3;
+const deplies = new Set(); // villes dépliées par le visiteur
 
 function apply() {
   const ville = pick('ville'), bras = pick('bras'), poids = pick('poids'), club = pick('club'), ordre = pick('tri');
@@ -60,20 +64,27 @@ function apply() {
     const items = [...list.children].sort((a, b) => (ordre === 'asc' ? a.dataset.poids - b.dataset.poids : b.dataset.poids - a.dataset.poids)
       || a.dataset.nom.localeCompare(b.dataset.nom, 'fr'));
     items.forEach((li) => list.appendChild(li));
+    const deplie = deplies.has(group.dataset.ville);
     let shown = 0;
     for (const li of items) {
       const ok = (ville === 'toutes' || li.dataset.ville === ville)
         && (bras === 'tous' || li.dataset.bras === bras || li.dataset.bras === 'Les deux')
         && dansTranche(Number(li.dataset.poids), poids)
         && (club === 'tous' || li.dataset.club === club);
-      li.hidden = !ok;
+      // au-delà des 3 premiers, caché tant que la ville n'est pas dépliée (sauf une fiche ouverte)
+      li.hidden = !ok || (shown >= LIMITE && !deplie && !li.classList.contains('is-open'));
       if (ok) shown++;
     }
     group.hidden = shown === 0;
     group.querySelector('[data-group-count]').textContent = plural(shown, 'profil', 'profils');
+    const more = group.querySelector('[data-more]');
+    const reste = shown - LIMITE;
+    more.hidden = reste <= 0;
+    more.setAttribute('aria-expanded', String(deplie));
+    more.textContent = deplie ? 'Réduire la liste' : 'Voir ' + (reste === 1 ? 'l’autre profil' : 'les ' + reste + ' autres profils');
     total += shown;
   }
-  status.textContent = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché' : plural(total, 'profil affiché', 'profils affichés');
+  status.textContent = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché' : plural(total, 'profil', 'profils');
   empty.hidden = total !== 0;
   const narrowed = ville !== 'toutes' || bras !== 'tous' || poids !== 'tous' || club !== 'tous';
   reset.hidden = !narrowed;
@@ -101,6 +112,16 @@ filterToggle.addEventListener('click', () => {
 });
 
 roster.addEventListener('click', (e) => {
+  const more = e.target.closest('[data-more]');
+  if (more) {
+    const group = more.closest('.roster-group');
+    const ouvrir = !deplies.has(group.dataset.ville);
+    if (ouvrir) deplies.add(group.dataset.ville); else deplies.delete(group.dataset.ville);
+    apply();
+    // replié : on remonte au nom de la ville, sinon le visiteur se retrouve plus bas, dans la ville suivante
+    if (!ouvrir) group.querySelector('h3').scrollIntoView({ block: 'start' });
+    return;
+  }
   const toggle = e.target.closest('.athlete-toggle');
   if (toggle) {
     const li = toggle.closest('.athlete');
@@ -205,6 +226,8 @@ function openPropose(btn) {
 const linked = start.get('profil');
 const linkedToggle = linked && /^[A-Za-z0-9]{1,40}$/.test(linked) ? roster.querySelector('[aria-controls="fiche-' + linked + '"]') : null;
 if (linkedToggle) {
+  // un lien vers un profil au-delà des 3 premiers déplie sa ville
+  if (linkedToggle.closest('.athlete').hidden) { deplies.add(linkedToggle.closest('.roster-group').dataset.ville); apply(); }
   linkedToggle.click();
   if (start.get('proposer') === '1') openPropose(linkedToggle.closest('.athlete').querySelector('[data-propose]'));
   linkedToggle.closest('.athlete').scrollIntoView({ block: 'start' });
