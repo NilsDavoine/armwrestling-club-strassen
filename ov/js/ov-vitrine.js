@@ -1,6 +1,6 @@
-// Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match), branchée sur Firestore.
+// Open Vendetta : la vitrine (liste, filtres, fiches, proposition de match depuis son propre profil), branchée sur Firestore.
 import { notifier } from './ov-notify.js';
-import { dansTranche, slug } from './ov-data.js';
+import { dansTranche, slug, norm, ageDe } from './ov-data.js';
 import { ligneAthlete, esc } from './ov-vue.js?v=2';
 
 const roster = document.getElementById('profils');
@@ -161,46 +161,105 @@ roster.addEventListener('click', (e) => {
   if (propose) openPropose(propose);
 });
 
-// "Proposer un match à X": the form opens under the athlete's figures, his photograph still beside it
+// "Proposer un match à X": the form opens under the athlete's figures, his photograph still beside it.
+// Le visiteur ne retape pas son profil : il retrouve sa fiche publiée par son nom et la choisit.
+// Son contact est déjà chez l'organisateur (contacts/{son profil}) : la proposition ne porte que les deux profils.
 const tpl = document.getElementById('tpl-propose');
+const parId = new Map(data.profils.map((p) => [p.id, p]));
+// Le profil choisi est retenu dans ce navigateur pour la fois suivante. Sans stockage (navigation privée,
+// données bloquées), tout marche pareil : le visiteur retape seulement son nom.
+const CLE_MOI = 'ov-mon-profil';
+const lireMoi = () => { try { return localStorage.getItem(CLE_MOI); } catch (e) { return null; } };
+const ecrireMoi = (id) => { try { if (id) localStorage.setItem(CLE_MOI, id); else localStorage.removeItem(CLE_MOI); } catch (e) { /* rien à retenir */ } };
+// La base exige l'accord d'un parent tant que l'âge écrit dans le profil n'est pas d'au moins 18 ans ;
+// l'âge affiché (calculé depuis la date de naissance) compte aussi.
+const mineur = (p) => !(typeof p.age === 'number' && p.age >= 18) || ageDe(p) < 18;
+const nomComplet = (p) => p.prenom + (p.nom ? ' ' + p.nom : '');
+const insecable = String.fromCharCode(160); // « 88 kg » ne se coupe pas en fin de ligne
+const infosMoi = (p) => [clubNom(p.clubId), villeNom(p.villeId), String(p.poids).replace('.', ',') + insecable + 'kg'].filter(Boolean).join(' · ');
+function carteMoi(p) {
+  const vignette = p.mini ? '<img src="' + esc(p.mini) + '" width="44" height="55" alt="" decoding="async">' : esc(String(p.prenom || '').charAt(0));
+  return '<span class="moi-vignette" aria-hidden="true">' + vignette + '</span><span class="moi-texte"><span class="moi-nom" translate="no">'
+    + esc(nomComplet(p)) + '</span><span class="moi-infos">' + esc(infosMoi(p)) + '</span></span>';
+}
+// Prénom et nom chacun à sa place, ou tapés ensemble dans un seul champ, dans un ordre ou l'autre ; accents et majuscules
+// ignorés. null : pas encore assez de lettres pour chercher. L'athlète visé n'est jamais proposé.
+function trouverProfils(prenom, nom, exclu) {
+  const tp = norm(prenom), tn = norm(nom), q = tp + tn;
+  if (q.length < 2) return null;
+  return data.profils.filter((p) => {
+    if (p.id === exclu) return false;
+    const pp = norm(p.prenom), pn = norm(p.nom);
+    return (pp.includes(tp) && pn.includes(tn)) || (pp + pn).includes(q) || (pn + pp).includes(q) || (tp !== '' && !pn && pp.includes(tp));
+  }).sort((a, b) => nomComplet(a).localeCompare(nomComplet(b), 'fr'));
+}
+const MAX_TROUVES = 6;
+const majMoiDe = new WeakMap(); // la boîte d'une fiche → remet à jour « votre profil » à chaque ouverture
+
 function openPropose(btn) {
   const box = document.getElementById(btn.getAttribute('aria-controls'));
   const athlete = btn.closest('.athlete').querySelector('.athlete-toggle').textContent.trim();
+  const cible = btn.dataset.profil;
   if (!box.firstElementChild) {
     box.innerHTML = tpl.innerHTML.split('__ID__').join(esc(box.id)).split('__PRENOM__').join(esc(btn.dataset.prenom));
     const form = box.querySelector('form');
     const li = btn.closest('.athlete');
-    form.querySelector('[data-recap]').textContent = athlete + ' · ' + li.dataset.poids + ' kg · ' + (li.dataset.bras === 'Les deux' ? 'les deux bras' : 'bras ' + li.dataset.bras.toLowerCase());
+    form.querySelector('[data-recap]').textContent = athlete + ' · ' + li.dataset.poids + ' kg · ' + (li.dataset.bras === 'Les deux' ? 'les deux bras' : 'bras ' + li.dataset.bras.toLowerCase());
     OVForms.watch(form);
-    // La case du parent n'apparaît que de 14 à 17 ans ; masquée, elle n'est pas contrôlée.
+    const f = form.elements;
+    const recherche = form.querySelector('[data-moi-recherche]');
+    const choisi = form.querySelector('[data-moi-choisi]');
+    const liste = form.querySelector('[data-moi-liste]');
+    const aide = form.querySelector('[data-moi-aide]');
+    // La case du parent n'apparaît que pour un profil mineur ; masquée, elle n'est pas contrôlée.
     const parent = form.querySelector('[data-when="mineur"]');
-    const ageSaisi = () => { const t = form.elements.age.value.trim(); const v = Number(t.replace(',', '.')); return t !== '' && Number.isFinite(v) ? v : null; };
-    const suivreAge = () => { const a = ageSaisi(); parent.hidden = !(a !== null && a >= 14 && a < 18); };
-    form.addEventListener('input', suivreAge);
-    form.addEventListener('change', suivreAge);
+    let moi = null; // le profil du visiteur
+    const choisir = (p) => { moi = p || null; parent.hidden = !(moi && mineur(moi)); };
+    const chercher = () => {
+      const trouves = trouverProfils(f.prenom.value, f.nom.value, cible);
+      const garde = moi && trouves && trouves.some((p) => p.id === moi.id) ? moi.id : null;
+      if (!garde) choisir(null);
+      if (!trouves || !trouves.length) {
+        liste.replaceChildren();
+        // le nom tapé est celui de l'athlète visé : on ne se propose pas un match à soi-même
+        const lui = trouves && trouverProfils(f.prenom.value, f.nom.value, null).some((p) => p.id === cible);
+        aide.textContent = !trouves ? 'Tapez votre prénom et votre nom : votre profil apparaît ici.'
+          : lui ? 'C’est la fiche que vous regardez : choisissez un autre athlète pour proposer un match.' : 'Aucun profil publié à ce nom.';
+        return;
+      }
+      liste.innerHTML = trouves.slice(0, MAX_TROUVES).map((p) => '<li><label class="moi-choix"><input type="radio" name="moi" value="' + esc(p.id) + '"'
+        + (p.id === garde ? ' checked' : '') + '>' + carteMoi(p) + '</label></li>').join('');
+      aide.textContent = trouves.length > MAX_TROUVES ? trouves.length + ' profils correspondent : précisez votre nom.'
+        : trouves.length === 1 ? 'Est-ce vous ? Sélectionnez votre profil.' : trouves.length + ' profils correspondent : sélectionnez le vôtre.';
+    };
+    f.prenom.addEventListener('input', chercher);
+    f.nom.addEventListener('input', chercher);
+    liste.addEventListener('change', (e) => { if (e.target.name === 'moi') choisir(parId.get(e.target.value)); });
+    const montrerChoisi = (p) => {
+      form.querySelector('[data-moi-carte]').innerHTML = carteMoi(p);
+      choisi.hidden = false; recherche.hidden = true; choisir(p);
+    };
+    const montrerRecherche = () => { choisi.hidden = true; recherche.hidden = false; choisir(null); chercher(); };
+    // Le profil retenu par ce navigateur est déjà choisi ; sauf si c'est l'athlète visé, ou une fiche qui n'est plus publiée.
+    const majMoi = () => {
+      const id = lireMoi();
+      if (id && !parId.has(id)) ecrireMoi(null);
+      const p = id && id !== cible ? parId.get(id) : null;
+      if (p) { if (choisi.hidden || !moi || moi.id !== p.id) montrerChoisi(p); }
+      else if (!choisi.hidden) montrerRecherche();
+    };
+    majMoiDe.set(box, majMoi);
+    form.querySelector('[data-moi-changer]').addEventListener('click', () => { ecrireMoi(null); montrerRecherche(); f.prenom.focus(); });
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       const status = form.querySelector('.form__status');
-      suivreAge();
       const bad = OVForms.validate(form);
-      // La règle de la base veut au moins 6 caractères pour l'email.
-      if (!bad.length && form.elements.email.value.trim().length < 6) { OVForms.setError(form.elements.email, form.elements.email.dataset.errFormat); form.elements.email.focus(); bad.push(form.elements.email); }
-      if (bad.length) { status.textContent = bad.length === 1 ? 'Un champ est à corriger.' : bad.length + ' champs sont à corriger.'; return; }
+      if (!bad.length && !moi) { montrerRecherche(); OVForms.setError(recherche, recherche.dataset.err); f.prenom.focus(); bad.push(recherche); }
+      if (bad.length) { status.textContent = bad.length === 1 ? 'Un champ est à corriger.' : bad.length + ' champs sont à corriger.'; return; }
       status.textContent = '';
-      const f = form.elements;
-      const n = (v) => Number(String(v).replace(',', '.'));
-      const tel = f.telephone.value.trim();
-      const c = {
-        profilId: btn.dataset.profil,
-        prenom: f.prenom.value.trim(), nom: f.nom.value.trim(), ville: f.ville.value.trim(),
-        poids: n(f.poids.value), bras: f.bras.value, age: n(f.age.value), pratique: n(f.pratique.value),
-        email: f.email.value.trim(), accord: f.accord.checked,
-      };
-      if (!parent.hidden && f.accord_parent.checked) c.accordParent = true;
-      if (f.club.value.trim()) c.club = f.club.value.trim();
-      if (tel) c.telephone = f.indicatif.value + ' ' + tel;
-      if (f.instagram.value.trim()) c.instagram = f.instagram.value.trim().replace(/^@?/, '@');
+      const c = { profilId: cible, adversaireId: moi.id, accord: f.accord.checked };
       if (f.message.value.trim()) c.message = f.message.value.trim();
+      if (!parent.hidden && f.accord_parent.checked) c.accordParent = true;
       const envoyer = form.querySelector('[type="submit"]');
       envoyer.disabled = true;
       try {
@@ -211,16 +270,17 @@ function openPropose(btn) {
         return;
       }
       envoyer.disabled = false;
+      ecrireMoi(moi.id);
       notifier('Nouvelle demande de match');
       const done = document.createElement('div');
       done.className = 'propose__done'; done.setAttribute('role', 'status'); done.tabIndex = -1;
       const title = document.createElement('p'); title.className = 'propose__done-title';
       title.textContent = 'Votre proposition à ' + athlete + ' est envoyée';
       const text = document.createElement('p');
-      text.textContent = 'L’organisateur vous écrit à ' + form.elements.email.value.trim() + ' pour fixer l’adversaire, le lieu et la date.';
+      text.textContent = 'L’organisateur vous recontacte avec les coordonnées de votre fiche (' + nomComplet(moi) + ') pour fixer le lieu et la date.';
       const again = document.createElement('button');
       again.type = 'button'; again.className = 'btn-outline'; again.textContent = 'Envoyer une autre proposition';
-      again.addEventListener('click', () => { done.remove(); form.hidden = false; form.elements.prenom.focus(); });
+      again.addEventListener('click', () => { done.remove(); form.hidden = false; f.message.value = ''; majMoi(); (recherche.hidden ? f.message : f.prenom).focus(); });
       done.append(title, text, again);
       form.hidden = true; form.after(done); done.focus();
     });
@@ -228,8 +288,10 @@ function openPropose(btn) {
       box.hidden = true; btn.hidden = false; btn.setAttribute('aria-expanded', 'false'); btn.focus();
     });
   }
+  majMoiDe.get(box)();
   box.hidden = false; btn.hidden = true; btn.setAttribute('aria-expanded', 'true');
-  const first = box.querySelector('form:not([hidden]) input, .propose__done');
+  const form = box.querySelector('form');
+  const first = !form.hidden ? (form.querySelector('[data-moi-recherche]').hidden ? form.elements.message : form.elements.prenom) : box.querySelector('.propose__done');
   if (first) first.focus({ preventScroll: true });
 }
 

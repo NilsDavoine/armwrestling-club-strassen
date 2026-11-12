@@ -204,6 +204,30 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 .donnees a { text-decoration-color: var(--red); text-underline-offset: 3px; }
 .propose__actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 1rem; margin-top: 1.6rem; }
 .propose .form__status { min-height: 1.5em; margin-top: .8rem; font-size: .88rem; color: rgba(245, 240, 232, .68); }
+.propose__intro a, .field__hint a { text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+.propose__intro a:hover { color: var(--red-hot); }
+/* « Retrouvez votre profil » : le visiteur tape son nom, choisit sa fiche dans la liste */
+.propose__noms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: .3rem; }
+.moi-liste { display: grid; gap: .5rem; list-style: none; margin: .2rem 0; padding: 0; }
+.moi-liste:empty { display: none; }
+.moi-choix, .moi-carte { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: .9rem; }
+.moi-choix { grid-template-columns: 20px 44px minmax(0, 1fr); min-height: 68px; padding: .55rem .9rem; border: 1px solid rgba(245, 240, 232, .14); cursor: pointer; transition: border-color .2s, background .2s; }
+.moi-choix:hover { border-color: rgba(245, 240, 232, .4); }
+.moi-choix:has(input:checked) { border-color: var(--red-hot); background: rgba(192, 57, 43, .12); }
+.moi-choix:has(input:focus-visible) { outline: 2px solid var(--red-hot); outline-offset: 2px; }
+.moi-choix input { width: 20px; height: 20px; margin: 0; accent-color: var(--red); }
+.moi-vignette { display: grid; place-items: end center; width: 44px; aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 2px solid var(--red);
+  background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(231,76,60,.8) 0%, rgba(192,57,43,.3) 45%, transparent 78%), var(--dark2);
+  font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; line-height: .82; color: rgba(245, 240, 232, .92); }
+.moi-vignette img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+.moi-texte { display: grid; gap: .15rem; min-width: 0; }
+.moi-nom { font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1.1; overflow-wrap: anywhere; }
+.moi-infos { font-size: .85rem; color: rgba(245, 240, 232, .65); line-height: 1.4; }
+.propose__moi { display: grid; gap: .6rem; justify-items: start; padding: .9rem 1rem; border: 1px solid rgba(245, 240, 232, .14); border-left: 3px solid var(--red); }
+.propose__moi .moi-carte { width: 100%; }
+.propose__changer { min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white);
+  text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.propose__changer:hover { color: var(--red-hot); }
 .propose__done { display: grid; gap: 1rem; justify-items: start; padding: 1.2rem 0; outline: none; }
 .propose__done-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; line-height: 1.05; }
 .propose__done p:not(.propose__done-title) { max-width: 56ch; color: rgba(245, 240, 232, .8); }
@@ -303,7 +327,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   .specs > div { padding: .9rem .3rem; }
   .specs dd { font-size: 1.6rem; }
   .specs dd small { font-size: .75rem; }
-  .propose__grid { grid-template-columns: minmax(0, 1fr); }
+  .propose__grid, .propose__noms { grid-template-columns: minmax(0, 1fr); }
+  .moi-choix { padding: .5rem .7rem; column-gap: .7rem; }
   .fiche-propose .btn-register, .propose__actions > button, .insc-actions .btn-register { width: 100%; justify-content: center; text-align: center; padding: 1rem 1.2rem; font-size: 1rem; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -515,56 +540,34 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   <div class="footer-col"><p>&copy; 2026 Armwrestling Club Strassen</p></div>
 </footer>
 
-<!-- the proposal form: copied into the sheet of the athlete chosen (ids prefixed with the sheet's own) -->
+<!-- the proposal form: copied into the sheet of the athlete chosen (ids prefixed with the sheet's own).
+     Le visiteur ne retape rien : il choisit son propre profil publié (ov-vitrine.js), le contact est déjà chez l'organisateur. -->
 <template id="tpl-propose">
   <form class="propose__form" novalidate aria-labelledby="__ID__-titre">
     <div class="propose__head">
       <h4 id="__ID__-titre" class="propose__title">Proposer un match à __PRENOM__</h4>
       <p class="propose__recap" data-recap></p>
-      <p class="propose__intro">Vos coordonnées vont à l’organisateur, jamais sur la page. Aucune date à choisir : il vous recontacte.</p>
+      <p class="propose__intro">Pour proposer un match, il vous faut votre propre profil sur Open Vendetta : l’organisateur vous recontacte avec les coordonnées de votre fiche. Pas encore de profil&nbsp;? <a href="#inscription">Ajoutez le vôtre en bas de la page</a>.</p>
     </div>
     <div class="propose__grid">
-      <div class="field"><label class="form-label" for="__ID__-prenom">Prénom</label>
-        <input class="form-input" id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="__ID__-prenom-err">
-        <p class="field__error" id="__ID__-prenom-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-nom">Nom</label>
-        <input class="form-input" id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="__ID__-nom-err">
-        <p class="field__error" id="__ID__-nom-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-club">Club (facultatif)</label>
-        <input class="form-input" id="__ID__-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs">
-      </div>
-      <div class="field"><label class="form-label" for="__ID__-ville">Ville ou pays</label>
-        <input class="form-input" id="__ID__-ville" name="ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez votre ville ou votre pays." aria-describedby="__ID__-ville-err">
-        <p class="field__error" id="__ID__-ville-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-poids">Poids (kg)</label>
-        <input class="form-input" id="__ID__-poids" name="poids" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="30" data-max="250" data-err="Écrivez votre poids en kilos." data-err-format="Écrivez un poids en kilos, entre 30 et 250." aria-describedby="__ID__-poids-err">
-        <p class="field__error" id="__ID__-poids-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-age">Âge</label>
-        <input class="form-input" id="__ID__-age" name="age" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="14" data-max="99" data-err="Écrivez votre âge." data-err-format="Écrivez votre âge en années : 14 ans au moins." aria-describedby="__ID__-age-err">
-        <p class="field__error" id="__ID__-age-err" hidden></p></div>
-      <fieldset class="field field--full" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="__ID__-bras-err">
-        <legend class="form-label">Bras</legend>
-        <div class="choice">
-          <label><input type="radio" name="bras" value="Droit"> Droit</label>
-          <label><input type="radio" name="bras" value="Gauche"> Gauche</label>
-          <label><input type="radio" name="bras" value="Les deux"> Les deux</label>
+      <fieldset class="field field--full" data-moi-recherche data-check data-required="true" data-err="Sélectionnez votre profil dans la liste." aria-describedby="__ID__-moi-err">
+        <legend class="form-label">Retrouvez votre profil</legend>
+        <div class="propose__noms">
+          <div class="field"><label class="form-label" for="__ID__-prenom">Votre prénom</label>
+            <input class="form-input" id="__ID__-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" aria-controls="__ID__-moi-liste"></div>
+          <div class="field"><label class="form-label" for="__ID__-nom">Votre nom</label>
+            <input class="form-input" id="__ID__-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" aria-controls="__ID__-moi-liste"></div>
         </div>
-        <p class="field__error" id="__ID__-bras-err" hidden></p>
+        <p class="field__hint" data-moi-aide role="status">Tapez votre prénom et votre nom : votre profil apparaît ici.</p>
+        <ul class="moi-liste" id="__ID__-moi-liste" data-moi-liste></ul>
+        <p class="field__error" id="__ID__-moi-err" hidden></p>
+        <p class="field__hint">Votre fiche n’apparaît pas&nbsp;? Elle doit d’abord être validée par le club.</p>
       </fieldset>
-      <div class="field"><label class="form-label" for="__ID__-pratique">Années de pratique</label>
-        <input class="form-input" id="__ID__-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="__ID__-pratique-err">
-        <p class="field__error" id="__ID__-pratique-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-email">Email</label>
-        <input class="form-input" id="__ID__-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : l’organisateur vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="__ID__-email-err">
-        <p class="field__error" id="__ID__-email-err" hidden></p></div>
-      <div class="field"><div class="tel">
-          <div class="tel__code"><label class="form-label" for="__ID__-ind">Indicatif</label><select class="form-input ov-select" id="__ID__-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
-          <div class="tel__num"><label class="form-label" for="__ID__-tel">Téléphone (facultatif)</label><input class="form-input" id="__ID__-tel" name="telephone" type="tel" maxlength="15" autocomplete="tel-national" data-check data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="__ID__-tel-err"></div>
-        </div>
-        <p class="field__error" id="__ID__-tel-err" hidden></p></div>
-      <div class="field"><label class="form-label" for="__ID__-insta">Instagram (facultatif)</label>
-        <input class="form-input" id="__ID__-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="__ID__-insta-err">
-        <p class="field__error" id="__ID__-insta-err" hidden></p></div>
+      <div class="propose__moi field--full" data-moi-choisi hidden>
+        <p class="form-label">Vous proposez le match avec votre profil</p>
+        <div class="moi-carte" data-moi-carte></div>
+        <button class="propose__changer" type="button" data-moi-changer>Ce n’est pas vous&nbsp;? Changer</button>
+      </div>
       <div class="field field--full"><label class="form-label" for="__ID__-message">Message (facultatif)</label>
         <textarea class="form-input" id="__ID__-message" name="message" rows="4" maxlength="1000"></textarea>
       </div>
@@ -573,9 +576,9 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
         <label for="__ID__-parent">Un parent est d’accord (obligatoire de 14 à 17 ans)</label>
         <p class="field__error" id="__ID__-parent-err" hidden></p>
       </div>
-      <details class="donnees field--full"><summary>Vos données</summary><p>Le club garde votre proposition (nom, mesures, contact, message) pour organiser le match, puis la supprime au plus tard 12 mois après. Seul l’organisateur la lit ; rien ne s’affiche sur la page. Les données sont stockées chez Google Firebase, dans l’Union européenne. Pour la voir, la corriger ou la faire supprimer, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
+      <details class="donnees field--full"><summary>Vos données</summary><p>Le club garde votre proposition (votre profil, le profil choisi, votre message) pour organiser le match, puis la supprime au plus tard 12 mois après. Seul l’organisateur la lit ; rien ne s’affiche sur la page. Il vous recontacte avec l’email et le téléphone de votre fiche. Les données sont stockées chez Google Firebase, dans l’Union européenne. Ce navigateur retient seulement quel profil est le vôtre, pour ne pas vous le redemander ; « Changer » l’oublie. Pour voir, corriger ou faire supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
       <div class="field field--check field--full">
-        <input id="__ID__-accord" name="accord" type="checkbox" required data-check data-err="Cochez cette case pour que l’organisateur puisse utiliser vos informations." aria-describedby="__ID__-accord-err">
+        <input id="__ID__-accord" name="accord" type="checkbox" required data-check data-err="Cochez cette case pour que l’organisateur puisse utiliser ces informations." aria-describedby="__ID__-accord-err">
         <label for="__ID__-accord">J’accepte que l’organisateur utilise ces informations pour organiser le match.</label>
         <p class="field__error" id="__ID__-accord-err" hidden></p>
       </div>
@@ -600,7 +603,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=4"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=5"></script>
 <script type="module" src="ov/js/ov-inscription.js?v=1"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->

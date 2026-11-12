@@ -468,13 +468,36 @@ function pendingCard(p) {
         '<div class="acard__actions"><button class="btn btn--primary" type="button" data-act="valider"' + (m.length ? ' disabled' : '') + '>Valider</button><button class="btn btn--secondary" type="button" data-act="corriger">Corriger</button><button class="btn btn--secondary btn--danger" type="button" data-act="refuser">Refuser</button></div>') +
     refuse + '</article>';
 }
+// a candidature has two shapes: since November 2026 the visitor picks his own published profile (adversaireId) and his
+// contact is read in contacts/{adversaireId}; the older ones carry everything the visitor typed (prenom, nom, email...).
+const candNom = (c) => c.adversaireId ? (profil(c.adversaireId) ? full(profil(c.adversaireId)).trim() : 'profil supprimé') : ((c.prenom || '') + ' ' + (c.nom || '')).trim();
+const nomClub = (p) => (p.clubId && club(p.clubId) ? club(p.clubId).nom : p.clubSaisi) || 'club ?';
+const nomVille = (p) => (p.villeId && ville(p.villeId) ? ville(p.villeId).nom : p.villeSaisie) || 'ville ?';
+const pratiqueTxt = (v) => v == null ? 'pratique ?' : nb(v, 'an', 'ans') + ' de pratique';
+function candTete(c, p) {
+  if (!c.adversaireId) {
+    return '<p class="who"><b>' + esc((c.prenom || '') + ' ' + (c.nom || '')) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
+      '<p class="acard__sub">' + kg(c.poids) + ' · ' + brasTxt(c.bras) + ' · ' + ans(c.age) + ' · ' + pratiqueTxt(c.pratique) + ' · ' + esc(c.ville) + '</p>' +
+      '<dl class="kv"><dt>Club</dt><dd>' + (esc(c.club) || '<span class="muted">Aucun</span>') + '</dd><dt>Email</dt><dd>' + mailLink(c.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(c.telephone) + '</dd>' +
+      (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') +
+      (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché (' + ans(c.age) + ')</dd>' : '') + '</dl>';
+  }
+  const a = profil(c.adversaireId), ct = S.contacts.get(c.adversaireId) || {};
+  const qui = a
+    ? '<p class="who"><b>' + esc(full(a)) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
+      '<p class="acard__sub">' + esc(nomClub(a)) + ' · ' + esc(nomVille(a)) + ' · ' + kg(a.poids) + ' · ' + brasTxt(a.bras) + ' · ' + ans(ageDe(a)) + ' · ' + pratiqueTxt(pratiqueDe(a)) + '</p>'
+    : '<p class="who"><b>Un profil supprimé</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>';
+  const contre = p
+    ? '<p class="acard__sub">Contre ' + esc(full(p)) + ' : ' + esc(nomClub(p)) + ' · ' + esc(nomVille(p)) + ' · ' + kg(p.poids) + ' · ' + brasTxt(p.bras) + ' · ' + ans(ageDe(p)) + '</p>'
+    : '<p class="acard__sub">L’athlète visé a été supprimé.</p>';
+  return '<div class="acard__top">' + (a ? photoImg(a, 88, 110, 'Photo de ' + full(a)) : '<span class="noimg">Profil supprimé</span>') + '<div>' + qui + contre + '</div></div>' +
+    '<dl class="kv"><dt>Email</dt><dd>' + mailLink(ct.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(ct.telephone) + '</dd>' +
+    (a && a.instagram ? '<dt>Instagram</dt><dd>' + esc(a.instagram) + '</dd>' : '') +
+    (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché' + (a ? ' (' + ans(ageDe(a)) + ')' : '') + '</dd>' : '') + '</dl>';
+}
 function candCard(c) {
   const p = c.profilId ? profil(c.profilId) : null, id = esc(c.id);
-  return '<article class="acard" data-cand="' + id + '"><p class="who"><b>' + esc((c.prenom || '') + ' ' + (c.nom || '')) + '</b> veut affronter <b>' + esc(p ? full(p) : '?') + '</b></p>' +
-    '<p class="acard__sub">' + kg(c.poids) + ' · ' + brasTxt(c.bras) + ' · ' + ans(c.age) + ' · ' + (c.pratique == null ? 'pratique ?' : nb(c.pratique, 'an', 'ans') + ' de pratique') + ' · ' + esc(c.ville) + '</p>' +
-    '<dl class="kv"><dt>Club</dt><dd>' + (esc(c.club) || '<span class="muted">Aucun</span>') + '</dd><dt>Email</dt><dd>' + mailLink(c.email) + '</dd><dt>Téléphone</dt><dd>' + telLink(c.telephone) + '</dd>' +
-    (c.instagram ? '<dt>Instagram</dt><dd>' + esc(c.instagram) + '</dd>' : '') +
-    (c.accordParent ? '<dt>Accord parent</dt><dd>Oui, coché (' + ans(c.age) + ')</dd>' : '') + '</dl>' +
+  return '<article class="acard" data-cand="' + id + '">' + candTete(c, p) +
     (c.message ? '<blockquote class="msg">' + esc(c.message) + '</blockquote>' : '<p class="muted">Pas de message.</p>') +
     '<div class="field"><label for="etat-' + id + '">État de la candidature</label><select id="etat-' + id + '" data-etat-select="' + id + '">' +
     ETATS.map(([k, t]) => '<option value="' + k + '"' + (k === c.etat ? ' selected' : '') + '>' + t + '</option>').join('') + '</select></div>' +
@@ -682,7 +705,7 @@ views.addEventListener('click', (e) => {
       const cc = b.closest('[data-cand]'), c = cc && idx.cands.get(cc.dataset.cand); if (!c) return;
       agir(() => supprimerCandidature(c.id), () => {
         S.cands = S.cands.filter((x) => x.id !== c.id); ui.supprCand = null;
-        toast('Candidature de ' + (c.prenom || '') + ' ' + (c.nom || '') + ' supprimée.'); render('h2');
+        toast('Candidature de ' + candNom(c) + ' supprimée.'); render('h2');
       });
       return;
     }
@@ -790,7 +813,7 @@ views.addEventListener('change', async (e) => {
   const c = idx.cands.get(s.dataset.etatSelect); if (!c || !ETATS.some((x) => x[0] === s.value)) return;
   const etat = s.value, stay = ui.tab === 'candidatures';
   agir(() => majCandidature(c.id, etat), () => {
-    c.etat = etat; toast('Candidature de ' + c.prenom + ' ' + c.nom + ' : ' + etatNom(etat) + '.');
+    c.etat = etat; toast('Candidature de ' + candNom(c) + ' : ' + etatNom(etat) + '.');
     render(stay ? '#etat-' + CSS.escape(c.id) : 'h2');
   }, () => render(stay ? '#etat-' + CSS.escape(c.id) : null));
 });

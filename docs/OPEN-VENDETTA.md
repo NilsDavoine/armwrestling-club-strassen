@@ -25,16 +25,18 @@ Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un p
 | `profils/{id}` | `prenom`, `nom`, `clubId`, `clubSaisi`, `villeId` ou `villeSaisie`, `poids`, `taille`, `biceps`, `age`, `pratique`, `naissance` (`AAAA-MM-JJ`, facultatif), `pratiqueDepuis` (`AAAA-MM-JJ`, facultatif), `bras` (`Droit`, `Gauche`, `Les deux`), `palmares`, `instagram`, `mini` (vignette), `statut` (`en_attente`, `publie`, `cache`), `source`, `creeLe` | tout le monde si `publie` ; sinon l'organisateur |
 | `photos/{profilId}` | `image` (photo de la fiche, data URL ≤ 300 000 caractères) | comme le profil |
 | `contacts/{profilId}` | `email`, `telephone`, `accordParent`, `publicOk`, `usageOk`, `creeLe` | **l'organisateur seulement** |
-| `candidatures/{id}` | `profilId`, infos sportives, `email`, `telephone`, `instagram`, `message`, `accord`, `accordParent`, `etat` (`nouvelle`, `en_discussion`, `match_organise`, `sans_suite`), `creeLe` | **l'organisateur seulement** |
+| `candidatures/{id}` | `profilId` (athlète visé), `adversaireId` (profil de celui qui propose), `message` (facultatif, 1 000 caractères), `accord` (`true`), `accordParent` (facultatif), `etat` (`nouvelle`, `en_discussion`, `match_organise`, `sans_suite`), `creeLe`. Ancienne forme, encore acceptée : `profilId` + infos sportives tapées, `email`, `telephone`, `instagram` au lieu d'`adversaireId` | **l'organisateur seulement** |
 
 Un visiteur crée un profil, son contact et sa photo **dans un seul envoi**, toujours `en_attente`. De 14 à 17 ans, l'accord d'un parent est obligatoire, pour un profil comme pour une proposition de match. « Valider » en gestion exige photo, club, ville, bras, accord de publication et, pour un mineur, accord d'un parent.
+
+**Proposer un match.** Il faut avoir son propre profil publié ; sinon, le formulaire renvoie vers l'inscription (`#inscription`). Le visiteur tape son prénom et son nom, la page cherche parmi les profils publiés déjà chargés (accents et majuscules ignorés, l'athlète visé exclu) et il choisit sa fiche. Rien d'autre à retaper : la proposition ne porte que les deux profils, le message et les accords ; la gestion lit le contact du proposeur dans `contacts/{adversaireId}`. Le navigateur retient le profil choisi (`localStorage`, clé `ov-mon-profil`, rien d'autre) et le présélectionne la fois suivante, avec « Ce n'est pas vous ? Changer », qui l'oublie. Aucune connexion ni mot de passe : n'importe qui peut choisir n'importe quelle fiche publiée, c'est l'organisateur qui confirme en écrivant au contact de la fiche. Une fiche tout juste inscrite est `en_attente` et n'apparaît pas dans la recherche tant que le club ne l'a pas validée. Règle : les deux profils existent et sont `publie`, ils sont différents, et si l'`age` écrit dans le profil du proposeur n'est pas d'au moins 18 (ou manque), `accordParent` doit valoir `true` ; la page montre la case du parent dans ce cas, ou si l'âge calculé (`ageDe`) est sous 18.
 
 **Âge et pratique calculés.** Quand un profil a `naissance`, son âge s'affiche tout seul et gagne un an à chaque anniversaire ; quand il a `pratiqueDepuis`, les années de pratique gagnent un an à chaque date anniversaire (fonctions `ageDe` et `pratiqueDe` de `ov/js/ov-data.js`, date locale). `age` et `pratique` restent écrits comme valeurs de secours : ils servent seuls aux anciens profils sans date, et les règles vérifient toujours `age` (14 à 99). Les 22 profils importés sont nés un 31 décembre et pratiquent depuis un 11 novembre.
 
 ## Sauvegarde, confidentialité, vignettes
 
 - **Sauvegarde** : bouton « Exporter la base (sauvegarde) » en gestion, onglet « Villes et clubs », une fois par mois. Il télécharge `open-vendetta-sauvegarde-AAAA-MM-JJ.json` (villes, clubs, profils sans vignette, contacts, candidatures). Le fichier contient des données personnelles : à garder sur l'ordinateur de l'organisateur.
-- **Note de confidentialité** : bloc repliable « Vos données » dans `open-vendetta-ajouter.html` (au-dessus des cases d'accord de l'étape 3) et dans le modèle « Proposer un match » de `open-vendetta.html` (`<template id="tpl-propose">`). Les candidatures sont gardées 12 mois au plus ; une fiche est supprimée sur simple demande. Un profil ou une candidature se supprime en gestion.
+- **Note de confidentialité** : bloc repliable « Vos données » dans le formulaire d'inscription (au-dessus des cases d'accord de l'étape 3) et dans le modèle « Proposer un match » de `open-vendetta.html` (`<template id="tpl-propose">`, qui mentionne aussi le profil retenu par le navigateur). Les candidatures sont gardées 12 mois au plus ; une fiche est supprimée sur simple demande. Un profil ou une candidature se supprime en gestion.
 - **Vignettes** : `MINI` = 160 px, 12 000 caractères au plus (`ov/js/ov-image.js`). Les vignettes déjà enregistrées gardent leur ancienne taille jusqu'à un changement de photo.
 
 ## Changer une règle de sécurité
@@ -46,6 +48,8 @@ Dans `C:\Users\NILS\armwrestlingclubstrassen\open-vendetta\` :
 3. `npx firebase deploy --only firestore:rules` (compte de l'organisateur ; si la CLI n'est plus connectée : `npx firebase login --no-localhost`).
 4. `node tests/prod-check.mjs open-vendetta` → 5 lignes `OK` sur le vrai projet.
 5. Commit dans le Git local du dossier.
+
+Quand une page du site envoie une forme nouvelle (ex. la proposition de match par `adversaireId`), **déployer les règles avant de pousser la page** : sinon la base refuse les envois de la nouvelle page.
 
 ## Alertes sur le téléphone (ntfy)
 
