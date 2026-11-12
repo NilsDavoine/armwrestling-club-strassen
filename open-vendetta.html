@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Open Vendetta : matchs de bras de fer au Luxembourg</title>
+<title>Open Vendetta : découvrez vos futurs adversaires</title>
 <meta name="description" content="Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match de bras de fer. Le club organise ensuite la rencontre avec vous.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Open Vendetta : matchs de bras de fer au Luxembourg">
+<meta property="og:title" content="Open Vendetta : découvrez vos futurs adversaires">
 <meta property="og:description" content="Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match de bras de fer. Le club organise ensuite la rencontre avec vous.">
 <meta property="og:image" content="https://armwrestlingclubstrassen.com/ov/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -53,17 +53,6 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .ov-hero .hero-inner { grid-template-columns: minmax(0, 760px); }
 #hero .hero-desc { color: rgba(245, 240, 232, .78); }
 
-/* ===== PRINCIPE : trois .event-card du site ===== */
-#principe { background: var(--black); }
-.steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-.steps .event-card { margin-top: 0; padding: 0; }
-.step-photo { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; background: var(--dark2); }
-.step-photo img { width: 100%; height: 100%; object-fit: cover; }
-.step-body { display: flex; flex-direction: column; gap: .6rem; padding: 1.8rem 2rem 2.2rem; }
-.step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: .9; color: var(--red); }
-.step-body h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1.05; }
-.step-body p { font-size: .95rem; color: rgba(245, 240, 232, .7); line-height: 1.7; }
-
 /* ===== PROFILS ===== */
 #profils { background: var(--black); }
 .filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(2, minmax(0, 1.5fr)); gap: 1rem; align-items: end; }
@@ -90,13 +79,27 @@ button.btn-register, button.btn-outline { cursor: pointer; }
 .roster-reset:hover, .roster-toggle:hover { color: var(--red-hot); }
 .roster-toggle { display: none; }
 
-.roster-group { margin-top: 2rem; }
 .roster-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid rgba(192, 57, 43, .45); }
 .roster-head h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .03em; line-height: 1; scroll-margin-top: 92px; }
 .roster-head p { font-size: .78rem; color: var(--grey); }
 .roster-list { list-style: none; }
-.roster-more { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; padding: 0 0 0 1.4rem; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
-.roster-more:hover { color: var(--red-hot); }
+/* chaque ville est un bloc ; une languette centrée en bas déroule le volet des autres profils */
+.roster-group { position: relative; margin-top: 2.2rem; padding: 0 1.2rem; background: var(--dark); border: 1px solid rgba(245, 240, 232, .07); border-top: 3px solid var(--red); }
+.roster-group.has-more { padding-bottom: 1.6rem; margin-bottom: 1.6rem; }
+.roster-group .roster-head { padding-top: 1.1rem; }
+.roster-group .athlete:last-child { border-bottom: 0; }
+/* replié : le bas de la liste s'efface dans le fond du bloc, pour montrer qu'il y a une suite */
+.roster-group.has-more:not(.is-deplie) .roster-list { position: relative; }
+.roster-group.has-more:not(.is-deplie) .roster-list::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(transparent, var(--dark)); pointer-events: none; }
+.roster-more { position: absolute; left: 50%; bottom: 0; transform: translate(-50%, 50%); z-index: 3; display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; padding: 0 1.4rem; border: 1px solid var(--red); background: var(--black); color: var(--white); cursor: pointer; white-space: nowrap;
+  font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: background .2s, color .2s; }
+.roster-more svg { width: 12px; height: 12px; color: var(--red-hot); transition: transform .3s; }
+.roster-more:hover { background: var(--red); }
+.roster-more:hover svg { color: var(--white); }
+.roster-group.is-deplie .roster-more svg { transform: rotate(180deg); }
+.athlete.is-revele { animation: ov-volet .35s ease-out both; }
+@keyframes ov-volet { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .athlete.is-revele { animation: none; } }
 .roster-empty { margin-top: 2.5rem; }
 .roster-empty p:first-child { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
 .roster-empty p + p { color: rgba(245, 240, 232, .65); }
@@ -205,22 +208,55 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 .propose__done-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; line-height: 1.05; }
 .propose__done p:not(.propose__done-title) { max-width: 56ch; color: rgba(245, 240, 232, .8); }
 
-/* ===== INSCRIPTION : les .about-card du site ===== */
+/* ===== INSCRIPTION : le formulaire, centré dans la page ===== */
 #inscription { background: var(--dark); }
-.insc-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3.5rem; align-items: stretch; }
-.insc-cards { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
-.insc-cards .about-card { padding: 1.5rem 1.6rem; }
-.insc-cards .about-card p { color: rgba(245, 240, 232, .68); }
-.insc-actions { margin-top: 2rem; }
-.insc-photo { position: relative; margin: 0; min-height: 440px; overflow: hidden; border: 1px solid rgba(245, 240, 232, .07); }
-.insc-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.insc-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--red); }
-
-/* ===== CLÔTURE : le fond #contact du site ===== */
-.close-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; align-items: center; }
-.close-grid .section-intro { margin-bottom: 2rem; }
-.close-photo { position: relative; margin: 0; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(212, 160, 23, .14); }
-.close-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+.insc-wrap { max-width: 780px; margin: 0 auto; }
+.insc-head { text-align: center; }
+.insc-head .section-tag { justify-content: center; }
+.insc-head .section-intro { margin: 0 auto 2.5rem; }
+.insc-form { display: grid; gap: 1.6rem; padding: 2.2rem 2.4rem; background: var(--black); border: 1px solid rgba(245, 240, 232, .08); border-top: 3px solid var(--red); }
+.insc-group { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 1.1rem; }
+.insc-group + .insc-group { padding-top: 1.6rem; border-top: 1px solid rgba(245, 240, 232, .08); }
+.insc-legend { padding: 0; margin-bottom: 1.1rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
+.insc-legend span { color: var(--red-hot); margin-right: .4rem; }
+.insc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; align-items: start; }
+.insc-grid > .field--full { grid-column: 1 / -1; }
+.field__hint { font-size: .82rem; color: rgba(245, 240, 232, .55); line-height: 1.5; }
+.insc-stop { display: grid; gap: .4rem; padding: 1rem 0; border-top: 2px solid var(--red); }
+.insc-stop p:first-child { font-weight: 500; }
+.insc-actions { display: grid; justify-items: center; gap: .6rem; padding-top: .4rem; }
+.insc-actions .btn-register:disabled { opacity: .6; cursor: progress; transform: none; }
+.insc-status { min-height: 1.5em; font-size: .9rem; color: var(--red-hot); text-align: center; }
+.insc-done { display: grid; justify-items: center; gap: 1rem; padding: 2.4rem; text-align: center; background: var(--black); border-top: 3px solid var(--red); outline: none; }
+.insc-done__title { font-family: var(--font-display); font-size: 2rem; font-weight: 900; text-transform: uppercase; }
+.insc-done__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+/* la photo : une grande zone à cliquer, puis le cadre de recadrage */
+.photo-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.photo-drop { display: grid; gap: .3rem; justify-items: center; padding: 1.8rem 1rem; border: 1px dashed rgba(245, 240, 232, .3); text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
+.photo-drop:hover { border-color: var(--red-hot); background: rgba(192, 57, 43, .06); }
+.field:has(.photo-input:focus-visible) .photo-drop { outline: 2px solid var(--red-hot); outline-offset: 2px; }
+.photo-drop__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.photo-drop__hint { font-size: .85rem; color: rgba(245, 240, 232, .6); }
+.crop { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.2rem 1.6rem; align-items: start; }
+.crop__frame { width: 240px; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(245, 240, 232, .2); border-bottom: 3px solid var(--red);
+  background: linear-gradient(rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, rgba(192,57,43,.08) 1px, transparent 1px) 0 0 / 24px 24px, #0d0d0d; }
+.crop__canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+.crop__canvas:active { cursor: grabbing; }
+.crop__tools { display: grid; gap: 1rem; align-content: start; }
+.crop__zoom { display: grid; gap: .4rem; }
+.crop__zoom input { width: 100%; accent-color: var(--red); }
+.crop__buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+.crop__btn { min-width: 44px; min-height: 44px; padding: 0 .9rem; border: 1px solid rgba(245, 240, 232, .25); background: none; color: var(--white); font-size: 1.2rem; cursor: pointer; }
+.crop__btn--text { font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.crop__btn:hover { border-color: var(--red-hot); color: var(--red-hot); }
+.crop__hint { grid-column: 1 / -1; font-size: .82rem; color: rgba(245, 240, 232, .55); }
+.crop__change { justify-self: start; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font-family: var(--font-display); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.insc-form .form-input { border-color: rgba(245, 240, 232, .2); }
+.insc-form .form-input:not(textarea) { height: 48px; }
+.insc-form textarea.form-input { min-height: 96px; resize: vertical; line-height: 1.6; }
+.insc-form .form-input:focus { border-color: var(--red-hot); }
+.insc-form .form-input[aria-invalid="true"] { border-color: var(--red-hot); }
+.insc-form input[type="date"] { color-scheme: dark; }
 
 /* ===== TABLETTE ET TÉLÉPHONE ===== */
 @media (max-width: 900px) {
@@ -232,8 +268,6 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
       #0a0a0a;
   }
   #hero h1 { font-size: clamp(2.6rem, 11vw, 4.6rem); }
-  .steps { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-  .step-photo { aspect-ratio: 16 / 9; }
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filters .field-wide { grid-column: 1 / -1; }
   .athlete-row { grid-template-columns: 52px minmax(0, 1fr) auto 32px; grid-template-areas: "thumb id weight chev" "thumb facts weight chev"; column-gap: .9rem; row-gap: .15rem; min-height: 80px; padding: .5rem .8rem .5rem 1rem; }
@@ -246,14 +280,18 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   .athlete-club { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .athlete-club { font-size: .8rem; line-height: 1.35; }
   .athlete-fiche { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: .4rem .8rem 2rem 1rem; }
-  .insc-grid, .close-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
-  .insc-photo { min-height: 0; aspect-ratio: 16 / 10; }
-}
+  }
 @media (max-width: 639px) {
+  .roster-group { padding: 0 .35rem; }
+  .roster-group.has-more { padding-bottom: 1.6rem; }
+  .insc-form { padding: 1.4rem 1.1rem; }
+  .insc-grid { grid-template-columns: minmax(0, 1fr); }
+  .crop { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .crop__tools { width: 100%; }
+  .insc-actions .btn-register, .insc-done__actions > * { width: 100%; justify-content: center; text-align: center; }
   .roster-toggle { display: inline-flex; }
   html.ov-js .filters:not(.is-open) { display: none; }
   .facts-more { display: none; }
-  .insc-cards { grid-template-columns: minmax(0, 1fr); }
   .athlete-row { grid-template-columns: 46px minmax(0, 1fr) auto 28px; column-gap: .7rem; min-height: 72px; padding: .45rem .5rem .45rem .75rem; }
   .athlete-thumb { width: 46px; }
   .athlete-thumb .initiale { font-size: 2rem; }
@@ -266,7 +304,7 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   .specs dd { font-size: 1.6rem; }
   .specs dd small { font-size: .75rem; }
   .propose__grid { grid-template-columns: minmax(0, 1fr); }
-  .fiche-propose .btn-register, .propose__actions > button, .insc-actions .btn-register, #contact .btn-register { width: 100%; justify-content: center; text-align: center; padding: 1rem 1.2rem; font-size: 1rem; letter-spacing: .1em; }
+  .fiche-propose .btn-register, .propose__actions > button, .insc-actions .btn-register { width: 100%; justify-content: center; text-align: center; padding: 1rem 1.2rem; font-size: 1rem; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) {
   .athlete, .athlete::before, .athlete-thumb img, .athlete-chev, .athlete-chev svg { transition: none; }
@@ -276,11 +314,13 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 <body>
 
 <nav aria-label="Principal">
-  <a href="#top" class="logo-wrap"><img src="logo.webp" alt="" class="nav-logo-img" width="44" height="44"><span class="nav-logo" translate="no">Open <span>Vendetta</span></span></a>
+  <a href="index.html" class="logo-wrap" aria-label="Accueil du club"><img src="logo.webp" alt="" class="nav-logo-img" width="44" height="44"><span class="nav-logo">ACS <span>Luxembourg</span></span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#principe">Principe</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#about">Le Club</a></li>
+    <li><a href="articles.html">Articles</a></li>
     <li><a href="#profils">Les profils</a></li>
-    <li><a href="#inscription">Inscription</a></li>
+    <li><a href="#inscription" class="nav-inscriptions">M’inscrire</a></li>
     <li><a href="#profils" class="nav-cta">Proposer un match</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks" type="button">
@@ -294,40 +334,16 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-eyebrow">Open Vendetta · Ouvert toute l’année</div>
-        <h1 id="hero-h">Matchs de bras de fer <em>au Luxembourg</em></h1>
-        <p class="hero-desc">Choisissez un athlète parmi les inscrits d’Open Vendetta et proposez-lui un match. Le club vous recontacte et fixe le lieu et la date.</p>
+        <div class="hero-eyebrow">Armwrestling Club Strassen · Ouvert toute l’année</div>
+        <h1 id="hero-h">Open Vendetta <em>Découvrez vos futurs adversaires</em></h1>
+        <p class="hero-desc">Parcourez les athlètes inscrits et dites à celui que vous voulez affronter que vous êtes intéressé. Le club fait le lien et aide à organiser le match, au Luxembourg ou ailleurs.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="#profils">Proposer un match</a>
-          <a class="btn-outline" href="open-vendetta-ajouter.html">Ajouter mon profil</a>
+          <a class="btn-outline" href="#inscription">Ajouter mon profil</a>
         </div>
       </div>
     </div>
   </section>
-
-  <section id="principe" aria-labelledby="principe-h">
-    <div class="wrap">
-      <div class="section-tag">Principe</div>
-      <h2 id="principe-h">Un match<br><span>en 3 étapes</span></h2>
-      <p class="section-intro">La date se fixe ensuite avec le club.</p>
-      <ol class="steps">
-        <li class="event-card">
-          <figure class="step-photo"><img src="ov/assets/img/club/seance-encadree-600.webp" width="600" height="400" alt="Deux athlètes face à face à la table pendant une séance encadrée par un arbitre" loading="lazy" decoding="async" style="object-position: 40% 40%"></figure>
-          <div class="step-body"><span class="step-num" aria-hidden="true">01</span><h3>Choisir un athlète</h3><p>Filtrez par ville, bras, poids et club. Chaque fiche donne le poids, la taille, le bras et le palmarès.</p></div>
-        </li>
-        <li class="event-card">
-          <figure class="step-photo"><img src="ov/assets/img/club/match-public-600.webp" width="600" height="400" alt="Un match serré à la table, le public debout derrière les athlètes" loading="lazy" decoding="async"></figure>
-          <div class="step-body"><span class="step-num" aria-hidden="true">02</span><h3>Envoyer une proposition de match</h3><p>Vous indiquez votre poids, votre bras, votre email et un message. Aucune date n’est demandée.</p></div>
-        </li>
-        <li class="event-card">
-          <figure class="step-photo"><img src="ov/assets/img/club/arbitre-table-600.webp" width="600" height="400" alt="Un arbitre officiel place les mains de deux athlètes avant le départ" loading="lazy" decoding="async"></figure>
-          <div class="step-body"><span class="step-num" aria-hidden="true">03</span><h3>Recevoir lieu et date du match</h3><p>L’organisateur vous recontacte, vérifie l’accord des deux athlètes, puis fixe le lieu et la date.</p></div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <div class="divider"></div>
 
   <section id="profils" aria-labelledby="profils-h">
     <div class="wrap">
@@ -360,32 +376,127 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
   </section>
 
   <section id="inscription" aria-labelledby="inscription-h">
-    <div class="wrap insc-grid">
-      <div>
+    <div class="insc-wrap">
+      <div class="insc-head">
         <div class="section-tag">Inscription</div>
-        <h2 id="inscription-h">Votre profil d’athlète<br><span>sur la vitrine</span></h2>
-        <p class="section-intro">Il est publié après validation par le club.</p>
-        <ul class="insc-cards">
-          <li class="about-card"><h3>Photo obligatoire</h3><p>Envoyez une photo nette de vous, de face ou à la table. Sans photo, le profil reste hors ligne.</p></li>
-          <li class="about-card"><h3>Validation par le club</h3><p>L’organisateur relit chaque profil avant de le publier.</p></li>
-          <li class="about-card"><h3>Coordonnées privées</h3><p>Votre email et votre téléphone servent au club. Ils ne s’affichent jamais sur la page.</p></li>
-          <li class="about-card"><h3>Dès 14 ans</h3><p>Entre 14 et 17 ans, l’accord d’un parent est demandé.</p></li>
-        </ul>
-        <div class="insc-actions"><a class="btn-register" href="open-vendetta-ajouter.html">Ajouter mon profil <span aria-hidden="true">→</span></a></div>
+        <h2 id="inscription-h">Ajouter mon profil<br><span>d’athlète</span></h2>
+        <p class="section-intro">Votre fiche est publiée après relecture par le club. Votre email et votre téléphone ne s’affichent jamais. Dès 14 ans.</p>
       </div>
-      <figure class="insc-photo"><img src="ov/assets/img/club/tables-club.webp" width="1100" height="619" alt="Les tables de compétition du club, rouges, blanches et bleues, alignées dans le noir" loading="lazy" decoding="async"></figure>
-    </div>
-  </section>
+      <form class="insc-form" id="inscription-form" novalidate aria-labelledby="inscription-h">
+        <fieldset class="insc-group">
+          <legend class="insc-legend"><span aria-hidden="true">01</span> Vous</legend>
+          <div class="insc-grid">
+            <div class="field"><label class="form-label" for="i-prenom">Prénom</label>
+              <input class="form-input" id="i-prenom" name="prenom" type="text" maxlength="40" autocomplete="given-name" required data-check data-err="Écrivez votre prénom." aria-describedby="i-prenom-err">
+              <p class="field__error" id="i-prenom-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-nom">Nom</label>
+              <input class="form-input" id="i-nom" name="nom" type="text" maxlength="60" autocomplete="family-name" required data-check data-err="Écrivez votre nom." aria-describedby="i-nom-err">
+              <p class="field__error" id="i-nom-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-email">Email</label>
+              <input class="form-input" id="i-email" name="email" type="email" maxlength="120" autocomplete="email" spellcheck="false" required data-check data-err="Écrivez votre email : le club vous répond par là." data-err-format="Écrivez une adresse email avec un @, comme nom@exemple.lu." aria-describedby="i-email-err">
+              <p class="field__error" id="i-email-err" hidden></p></div>
+            <div class="field"><div class="tel">
+                <div><label class="form-label" for="i-ind">Indicatif</label><select class="form-input ov-select" id="i-ind" name="indicatif" autocomplete="tel-country-code"><option value="+352">LU +352</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+32">BE +32</option><option value="+351">PT +351</option></select></div>
+                <div><label class="form-label" for="i-tel">Téléphone</label><input class="form-input" id="i-tel" name="telephone" type="tel" maxlength="20" autocomplete="tel-national" required data-check data-err="Écrivez votre numéro de téléphone." data-err-format="Écrivez le numéro avec des chiffres seulement, sans l’indicatif." aria-describedby="i-tel-err"></div>
+              </div>
+              <p class="field__error" id="i-tel-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-naissance">Date de naissance</label>
+              <input class="form-input" id="i-naissance" name="naissance" type="date" autocomplete="bday" required data-check data-kind="birth" data-age-min="14" data-age-max="99" data-err="Écrivez votre date de naissance." data-err-format="Écrivez une date de naissance valide, jour, mois et année." data-err-future="Cette date est dans le futur : vérifiez l’année." data-err-young="La vitrine accueille les athlètes à partir de 14 ans." data-err-old="Vérifiez l’année : la vitrine accueille les athlètes jusqu’à 99 ans." aria-describedby="i-naissance-err">
+              <p class="field__error" id="i-naissance-err" hidden></p></div>
+            <fieldset class="field" data-check data-required="true" data-err="Choisissez votre ville." aria-describedby="i-ville-err">
+              <legend class="form-label">Ville</legend>
+              <div class="choice"><label><input type="radio" name="ville" value="autre"> Autre ville</label></div>
+              <p class="field__hint" data-villes-note hidden></p>
+              <p class="field__error" id="i-ville-err" hidden></p>
+            </fieldset>
+            <div class="field field--full" data-when="autre-ville" hidden><label class="form-label" for="i-autre">Nom de votre ville</label>
+              <input class="form-input" id="i-autre" name="autre_ville" type="text" maxlength="60" autocomplete="address-level2" required data-check data-err="Écrivez le nom de votre ville." aria-describedby="i-autre-err">
+              <p class="field__error" id="i-autre-err" hidden></p></div>
+            <div class="field field--check field--full" data-when="mineur" hidden>
+              <input id="i-parent" name="accord_parent" type="checkbox" required data-check data-err="Entre 14 et 17 ans, cochez cette case : un parent doit être d’accord." aria-describedby="i-parent-err">
+              <label for="i-parent">Un parent est d’accord pour que ma fiche soit publiée.</label>
+              <p class="field__error" id="i-parent-err" hidden></p>
+            </div>
+            <div class="insc-stop field--full" data-when="trop-jeune" role="status" hidden>
+              <p>La vitrine accueille les athlètes à partir de 14 ans.</p>
+              <p>Nous ne pouvons pas enregistrer votre fiche pour l’instant. Le club sera content de vous voir à l’entraînement en attendant.</p>
+            </div>
+          </div>
+        </fieldset>
 
-  <section id="contact" aria-labelledby="close-h">
-    <div class="wrap close-grid">
-      <div>
-        <div class="section-tag">Proposer un match</div>
-        <h2 id="close-h">Votre prochain match<br><span>de bras de fer</span></h2>
-        <p class="section-intro">L’organisateur vous recontacte après chaque proposition.</p>
-        <a class="btn-register" href="#profils">Proposer un match <span aria-hidden="true">→</span></a>
+        <fieldset class="insc-group">
+          <legend class="insc-legend"><span aria-hidden="true">02</span> Votre profil sportif</legend>
+          <div class="insc-grid">
+            <div class="field field--full"><label class="form-label" for="i-club">Club</label>
+              <input class="form-input" id="i-club" name="club" type="text" maxlength="80" autocomplete="organization" list="ov-clubs" required data-check data-err="Écrivez votre club, ou « Sans club »." aria-describedby="i-club-err i-club-hint">
+              <p class="field__hint" id="i-club-hint">Choisissez un club de la liste ou écrivez le vôtre. Sans club : écrivez « Sans club ».</p>
+              <p class="field__error" id="i-club-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-poids">Poids (kg)</label>
+              <input class="form-input" id="i-poids" name="poids" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="30" data-max="250" data-err="Écrivez votre poids en kilos." data-err-format="Écrivez un poids en kilos, entre 30 et 250." aria-describedby="i-poids-err">
+              <p class="field__error" id="i-poids-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-taille">Taille (cm)</label>
+              <input class="form-input" id="i-taille" name="taille" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="120" data-max="230" data-err="Écrivez votre taille en centimètres." data-err-format="Écrivez une taille en centimètres, entre 120 et 230." aria-describedby="i-taille-err">
+              <p class="field__error" id="i-taille-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-biceps">Tour de bras contracté (cm)</label>
+              <input class="form-input" id="i-biceps" name="tour_de_bras" type="text" inputmode="decimal" autocomplete="off" required data-check data-min="20" data-max="70" data-err="Écrivez votre tour de bras, bras contracté, en centimètres." data-err-format="Écrivez un tour de bras en centimètres, entre 20 et 70." aria-describedby="i-biceps-err">
+              <p class="field__error" id="i-biceps-err" hidden></p></div>
+            <div class="field"><label class="form-label" for="i-pratique">Années de pratique</label>
+              <input class="form-input" id="i-pratique" name="pratique" type="text" inputmode="numeric" autocomplete="off" required data-check data-min="0" data-max="60" data-err="Écrivez depuis combien d’années vous pratiquez, 0 si vous débutez." data-err-format="Écrivez un nombre d’années, 0 si vous débutez." aria-describedby="i-pratique-err">
+              <p class="field__error" id="i-pratique-err" hidden></p></div>
+            <fieldset class="field" data-check data-required="true" data-err="Choisissez votre bras : droit, gauche ou les deux." aria-describedby="i-bras-err">
+              <legend class="form-label">Bras</legend>
+              <div class="choice">
+                <label><input type="radio" name="bras" value="Droit"> Droit</label>
+                <label><input type="radio" name="bras" value="Gauche"> Gauche</label>
+                <label><input type="radio" name="bras" value="Les deux"> Les deux</label>
+              </div>
+              <p class="field__error" id="i-bras-err" hidden></p>
+            </fieldset>
+            <div class="field"><label class="form-label" for="i-insta">Instagram (facultatif)</label>
+              <input class="form-input" id="i-insta" name="instagram" type="text" maxlength="31" autocomplete="off" spellcheck="false" placeholder="@prenom.nom" data-check data-kind="handle" data-err-format="Écrivez votre nom Instagram, comme @prenom.nom." aria-describedby="i-insta-err">
+              <p class="field__error" id="i-insta-err" hidden></p></div>
+            <div class="field field--full"><label class="form-label" for="i-palmares">Palmarès (facultatif)</label>
+              <textarea class="form-input" id="i-palmares" name="palmares" rows="3" maxlength="500" aria-describedby="i-palmares-hint"></textarea>
+              <p class="field__hint" id="i-palmares-hint">Vos tournois et vos podiums, en une ou deux phrases. Rien si vous débutez.</p></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="insc-group">
+          <legend class="insc-legend"><span aria-hidden="true">03</span> Photo et accords</legend>
+          <div class="field">
+            <span class="form-label" id="i-photo-label">Votre photo</span>
+            <label class="photo-drop" for="i-photo" data-photo-pick>
+              <span class="photo-drop__title">Choisir une photo</span>
+              <span class="photo-drop__hint">Une photo nette de vous, de face ou à la table. Vous la recadrez ensuite.</span>
+            </label>
+            <input class="photo-input" id="i-photo" name="photo" type="file" accept="image/*" required data-check data-err="Ajoutez une photo de vous : sans photo, la fiche ne peut pas être publiée." aria-labelledby="i-photo-label" aria-describedby="i-photo-err">
+            <div class="crop" data-crop hidden></div>
+            <button class="crop__change" type="button" data-photo-change hidden>Choisir une autre photo</button>
+            <p class="field__error" id="i-photo-err" hidden></p>
+          </div>
+          <details class="donnees"><summary>Vos données</summary><p>L’Armwrestling Club Strassen garde vos réponses pour publier votre fiche, si vous l’acceptez, et pour vous proposer des matchs. Votre email, votre téléphone et l’accord d’un parent ne s’affichent jamais : seul l’organisateur les voit. Les données sont stockées chez Google Firebase, dans l’Union européenne. Votre fiche reste en ligne tant que vous le voulez ; sur simple demande, elle est supprimée avec votre photo et vos coordonnées. Pour voir, corriger ou supprimer vos données, écrivez au club par Instagram ou WhatsApp (rubrique <a href="index.html#contact">Contact</a>). Vous pouvez aussi vous adresser à la CNPD (cnpd.public.lu).</p></details>
+          <div class="field field--check">
+            <input id="i-public" name="fiche_publique" type="checkbox" required data-check data-err="Cochez cette case : la fiche est faite pour être vue sur la page." aria-describedby="i-public-err">
+            <label for="i-public">J’accepte que ma fiche soit publique sur cette page.</label>
+            <p class="field__error" id="i-public-err" hidden></p>
+          </div>
+          <div class="field field--check">
+            <input id="i-usage" name="usage" type="checkbox" required data-check data-err="Cochez cette case pour que le club puisse utiliser vos informations." aria-describedby="i-usage-err">
+            <label for="i-usage">J’accepte que le club utilise ces informations pour organiser des matchs et me recontacter.</label>
+            <p class="field__error" id="i-usage-err" hidden></p>
+          </div>
+        </fieldset>
+
+        <div class="insc-actions">
+          <button class="btn-register" type="submit">Envoyer ma fiche <span aria-hidden="true">→</span></button>
+          <p class="insc-status" role="status" data-insc-status></p>
+        </div>
+      </form>
+      <div class="insc-done" data-insc-done role="status" tabindex="-1" hidden>
+        <p class="insc-done__title">Fiche envoyée</p>
+        <p>Elle apparaîtra dans la liste dès que l’organisateur l’aura relue.</p>
+        <div class="insc-done__actions"><a class="btn-register" href="#profils">Voir les profils</a><button class="btn-outline" type="button" data-insc-restart>Ajouter une autre fiche</button></div>
       </div>
-      <figure class="close-photo"><img src="ov/assets/img/club/match-intense-700.webp" srcset="ov/assets/img/club/match-intense-700.webp 700w, ov/assets/img/club/match-intense.webp 1600w" sizes="(max-width: 900px) 100vw, 560px" width="1600" height="1067" alt="Deux athlètes à la table en pleine poussée, la salle remplie derrière eux" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 </main>
@@ -396,10 +507,9 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
     <div class="footer-label">Une page de l’<span translate="no">Armwrestling Club Strassen</span></div>
   </div>
   <ul class="footer-links">
-    <li><a href="#principe">Principe</a></li>
     <li><a href="#profils">Les profils</a></li>
     <li><a href="#inscription">Conditions du profil</a></li>
-    <li><a href="open-vendetta-ajouter.html">Ajouter mon profil</a></li>
+    <li><a href="#inscription">Ajouter mon profil</a></li>
     <li><a href="https://armwrestlingclubstrassen.com/">Voir le site du club</a></li>
   </ul>
   <div class="footer-col"><p>&copy; 2026 Armwrestling Club Strassen</p></div>
@@ -490,7 +600,8 @@ fieldset.field > legend { padding: 0; margin-bottom: .4rem; }
 })();
 </script>
 <script src="ov/js/ov-forms.js"></script>
-<script type="module" src="ov/js/ov-vitrine.js?v=3"></script>
+<script type="module" src="ov/js/ov-vitrine.js?v=4"></script>
+<script type="module" src="ov/js/ov-inscription.js?v=1"></script>
 <!-- Mesure d'audience GoatCounter — sans cookie, sans banniere RGPD.
      A ACTIVER : remplacer VOTRE-CODE-GOATCOUNTER par le code choisi a l'inscription. -->
 <script data-goatcounter="https://VOTRE-CODE-GOATCOUNTER.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

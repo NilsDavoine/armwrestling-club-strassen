@@ -77,11 +77,15 @@ function apply() {
     }
     group.hidden = shown === 0;
     group.querySelector('[data-group-count]').textContent = plural(shown, 'profil', 'profils');
+    // la languette au milieu du bas du bloc de la ville : elle déroule (ou remonte) le volet des autres profils
     const more = group.querySelector('[data-more]');
     const reste = shown - LIMITE;
     more.hidden = reste <= 0;
+    group.classList.toggle('has-more', reste > 0);
+    group.classList.toggle('is-deplie', deplie && reste > 0);
     more.setAttribute('aria-expanded', String(deplie));
-    more.textContent = deplie ? 'Réduire la liste' : 'Voir ' + (reste === 1 ? 'l’autre profil' : 'les ' + reste + ' autres profils');
+    more.innerHTML = '<span>' + (deplie ? 'Réduire' : (reste === 1 ? 'Voir l’autre profil' : 'Voir les ' + reste + ' autres profils')) + '</span>'
+      + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
     total += shown;
   }
   status.textContent = !data.profils.length ? 'Aucun profil publié' : total === 0 ? 'Aucun profil affiché' : plural(total, 'profil', 'profils');
@@ -117,7 +121,13 @@ roster.addEventListener('click', (e) => {
     const group = more.closest('.roster-group');
     const ouvrir = !deplies.has(group.dataset.ville);
     if (ouvrir) deplies.add(group.dataset.ville); else deplies.delete(group.dataset.ville);
+    const caches = ouvrir ? [...group.querySelectorAll('.athlete[hidden]')] : [];
     apply();
+    // les profils qui apparaissent descendent l'un après l'autre, comme un volet qui se déroule
+    caches.filter((li) => !li.hidden).forEach((li, i) => {
+      li.classList.remove('is-revele'); void li.offsetWidth;
+      li.style.animationDelay = Math.min(i, 8) * 40 + 'ms'; li.classList.add('is-revele');
+    });
     // replié : on remonte au nom de la ville, sinon le visiteur se retrouve plus bas, dans la ville suivante
     if (!ouvrir) group.querySelector('h3').scrollIntoView({ block: 'start' });
     return;

@@ -26,7 +26,7 @@ Chaque page est un fichier `.html` autonome à la racine, avec son CSS partagé 
 ├── duel.html                      Outil de gestion de duels (noindex volontaire)
 ├── vendetta.html                  Candidature Vendetta 2026 — page publique indexable
 ├── open-vendetta.html             Vitrine Open Vendetta (Firestore) — page publique indexable
-├── open-vendetta-ajouter.html     Inscription Open Vendetta (noindex, follow volontaire)
+├── open-vendetta-ajouter.html     Renvoi vers le formulaire en bas de open-vendetta.html (noindex volontaire)
 ├── open-vendetta-gestion.html     Gestion Open Vendetta (noindex, nofollow volontaire)
 ├── ov/                            JS et assets d'Open Vendetta (voir docs/OPEN-VENDETTA.md)
 ├── *.html                         Pages SEO locales et articles de blog

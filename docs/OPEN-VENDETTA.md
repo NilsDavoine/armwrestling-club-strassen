@@ -3,7 +3,7 @@
 Vitrine d'athlètes ouverts à un match de bras de fer. Un visiteur choisit un profil et propose un match ; l'organisateur fixe ensuite le lieu et la date. Les données sont dans Firebase (Firestore + connexion Google), le site reste 100 % statique.
 
 - Vitrine : https://armwrestlingclubstrassen.com/open-vendetta.html (indexée, dans `sitemap.xml`)
-- Inscription : `open-vendetta-ajouter.html` (`noindex, follow`, hors sitemap)
+- Inscription : formulaire en bas de la vitrine (`open-vendetta.html#inscription`, script `ov/js/ov-inscription.js`, recadrage de la photo `ov/js/ov-crop.js`). L'ancienne adresse `open-vendetta-ajouter.html` renvoie vers ce formulaire (`noindex`, hors sitemap).
 - Gestion : `open-vendetta-gestion.html` (`noindex, nofollow`, hors sitemap, compte Google de l'organisateur seulement)
 - Décisions : [superpowers/specs/2026-11-11-open-vendetta-design.md](superpowers/specs/2026-11-11-open-vendetta-design.md) · plan : [superpowers/plans/2026-11-11-open-vendetta.md](superpowers/plans/2026-11-11-open-vendetta.md)
 
